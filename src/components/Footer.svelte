@@ -1,5 +1,5 @@
 <script>
-    // Add your script logic here
+    import logos from '$lib/images/KoloraXWholesomeWareBlack.png';
 </script>
 
 <footer>
@@ -13,6 +13,7 @@
             target="_blank">Kolora</a
         > támogatásával 💝
     </p>
+    <img style="width: 100px;" src={logos} alt="Logók">
 </footer>
 
 <style>

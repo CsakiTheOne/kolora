@@ -1,5 +1,6 @@
 <script>
     import Card from "../../../components/Card.svelte";
+    import ContentWarning from "../../../components/ContentWarning.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
 </script>
@@ -107,7 +108,7 @@ Szép az élet
 
 <Card style="margin: 16px;">
     <iframe
-        style="width: 100%; aspect-ratio: 16/9;"
+        style="width: 100%; aspect-ratio: 4/3; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;"
         src="https://www.youtube.com/embed/H8WudYVAB_4?si=sUe1qqfhdV2B4QAB"
         title="YouTube video player"
         frameborder="0"
@@ -115,6 +116,7 @@ Szép az élet
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
     ></iframe>
+    <ContentWarning message="Veszélyesen sok bölcsesség"/>
 </Card>
 
 <Card style="margin: 16px; padding: 16px;">

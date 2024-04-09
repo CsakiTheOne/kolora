@@ -1,5 +1,6 @@
 <script>
     import Card from "../../../components/Card.svelte";
+    import ContentWarning from "../../../components/ContentWarning.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
 </script>
@@ -60,6 +61,18 @@ Majd lesz elég vasatok.
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
         src="https://www.youtube.com/embed/Rw_7_CgUFFU?si=CFBOkQ5J4WBW8F0R"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+</Card>
+
+<Card style="margin: 16px;">
+    <iframe
+        style="width: 100%; aspect-ratio: 16/9;"
+        src="https://www.youtube.com/embed/cxZkLkhX1cI?si=QmBsCM2GaOL621o6"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
