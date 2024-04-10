@@ -3,7 +3,10 @@
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
     import utcazene2024Poster from "$lib/images/utcazene.jpg";
+    import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
 </script>
+
+<StickerFoundCallout/>
 
 <PoemDisplay author="Varró Dániel" title="Éjszakai Busz">
 A Moszkva téri McDonald's előtt,

@@ -3,7 +3,10 @@
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
     import Footer from "../../../components/Footer.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
+    import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
 </script>
+
+<StickerFoundCallout/>
 
 <PoemDisplay author="Reményik Sándor" title="Szó és tett">
 Néha úgy érzem, mintha tűkön állnék;

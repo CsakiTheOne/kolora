@@ -2,7 +2,10 @@
     import Card from "../../../components/Card.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
+    import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
 </script>
+
+<StickerFoundCallout/>
 
 <PoemDisplay author="Csáki" title="Teszt versike">
 A rózsa vörös, az ibolya kék.

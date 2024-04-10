@@ -2,7 +2,10 @@
     import Card from "../../../components/Card.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
+    import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
 </script>
+
+<StickerFoundCallout/>
 
 <PoemDisplay author="Ady Endre" title="Kávéházban">
 Kávéházi sarokasztal,
@@ -277,6 +280,13 @@ Szentkirályszabadja,1944. október 31.
 
 <ExtraContentDivider/>
 
+<Card style="margin: var(--spacing); padding: var(--spacing);">
+    <p>
+        Ezen az oldalon a TI kedvelt műveitek is megtalálhatóak.
+        Mikor Instán kérdeztem, hogy kinek mi a kedvenc verse, azokból is válogattam ide.
+    </p>
+</Card>
+
 <Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
@@ -289,9 +299,17 @@ Szentkirályszabadja,1944. október 31.
     ></iframe>
 </Card>
 
-<Card style="margin: var(--spacing); padding: var(--spacing);">
-    <p>
-        Ezen az oldalon a TI kedvelt műveitek is megtalálhatóak.
-        Mikor Instán kérdeztem, hogy kinek mi a kedvenc verse, azokból is válogattam ide.
+<Card style="margin: var(--spacing);">
+    <iframe
+        style="width: 100%; aspect-ratio: 16/9; border-bottom-left-radius: var(--spacing); border-bottom-right-radius: var(--spacing);"
+        src="https://www.youtube.com/embed/9KaHaXLZ1Is?si=IRjsxUvZ49pnzlrV"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+    <p style="margin: var(--spacing);">
+        Köszönöm az ajánlást Dani! 🎶
     </p>
 </Card>

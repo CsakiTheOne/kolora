@@ -3,7 +3,10 @@
     import ContentWarning from "../../../components/ContentWarning.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
+    import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
 </script>
+
+<StickerFoundCallout/>
 
 <PoemDisplay author="Fekonya Róbert*" title="Madách 200">
 Isten és Lacika elmegy az állatkertbe,
