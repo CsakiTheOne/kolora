@@ -6,7 +6,7 @@
 </script>
 
 <PoemDisplay
-    author="Pavlényi Gyula Márk"
+    author="Pavlényi Gyula Márk*"
     title="A film címe: antibakteriális társadalomkezelés"
 >
 A film címe: antibakteriális társadalomkezelés
@@ -103,6 +103,10 @@ Csapó
 Újra
 Szép az élet
 </PoemDisplay>
+
+<p style="margin: 16px; text-align: center;">
+    * = sztárvendég a szomszéd vármegye slam-előitől
+</p>
 
 <ExtraContentDivider />
 
