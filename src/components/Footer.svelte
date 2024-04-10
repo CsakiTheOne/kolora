@@ -1,5 +1,13 @@
 <script>
     import logos from "$lib/images/KoloraXWholesomeWareBlack.png";
+
+    function startFuture() {
+        alert(
+            "If you are a non-employee who has discovered this facility amid " +
+                "the ruins of civilization, welcome! And remember: Testing " +
+                "is the future, and the future starts with you.",
+        );
+    }
 </script>
 
 <footer>
@@ -18,12 +26,17 @@
     <hr />
     <h1>Mi ez? Miért van itt QR kód?</h1>
     <p style="text-align: justify;">
-        Helló! Ha csak véletlen találtad meg ezt az NFC matricát és QR kódot,
-        akkor üdv a játékban! Magyar költészet napja alkalmából ilyesmiket
-        rejtettem el Fehérváron különböző helyeken. Damn, a város elég nagy, hol
-        a többi? Az Insta story-jaimba rakok segítségeket. Lesd meg itt: <a
-            href="https://instagram.com/csakitheone">@csakitheone</a
+        Helló! <a
+            on:click={startFuture}
+            href="https://youtu.be/XJIgHWnkcnA?si=-UEbccf0doUdc-Ui"
+            target="_blank"
+            >Ha csak véletlen találtad meg</a
         >
+        ezt az NFC matricát és QR kódot, akkor üdv a játékban! Magyar költészet napja
+        alkalmából ilyesmiket rejtettem el Fehérváron különböző helyeken. Damn, a
+        város elég nagy, hol a többi? Az Insta story-jaimba rakok segítségeket. Lesd
+        meg itt:
+        <a href="https://instagram.com/csakitheone">@csakitheone</a>
     </p>
 </footer>
 
