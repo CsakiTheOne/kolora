@@ -29,7 +29,7 @@ Fizetek jó jegyekért.
 <Card style="margin: var(--spacing); padding: var(--spacing);">
     <img
         style="display: inline-block; width: 64px; border-radius: var(--corner-radius);"
-        src="https://play-lh.googleusercontent.com/DNvr43nHsocrp4RE92jmC_BZTHoIuOqv-CNIl9r0BWFGgsC8cJS6GTPC49HzUeKgZwg=w240-h480-rw"
+        src="https://play-lh.googleusercontent.com/DNvr43nHsocrp4RE92jmC_BZTHoIuOqv-CNIl9r0BWFGgsC8cJS6GTPC49HzUeKgZwg"
         alt="app logó"
     />
     <h2 style="display: block; margin-top: 1rem;">

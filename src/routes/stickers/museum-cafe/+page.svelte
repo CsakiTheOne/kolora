@@ -174,6 +174,107 @@ Az uristen kegyelmezzen
 Tinektek!
 </PoemDisplay>
 
+<PoemDisplay author="Le Peter" title="Meggyvirág">
+Meggyvirág tiltott illata,
+Felettesd el velem búmat.
+Felettesd velem bánatom,
+Múljon végre a fájdalom.
+
+Emlékszem arra, milyen volt
+Akkor érezni illatod.
+Oly szép lett tőled a világ,
+Nem kívántam már semmi mást.
+
+Csak azt hogy ne érjen véget,
+Mint minden más, te ne hagyj el.
+Ásd magad mélyen szívembe,
+Hozz fényt megkínzott lelkembe.
+
+Tudom jól, a túl sok: átok,
+Részegít, többé nem látok.
+Bár nincs mit látni e földön,
+Csak sötétet a nagy ködtől.
+
+Részegíts hát, a köd szálljon,
+Messze el, hol nem találom.
+Csak te légy nekem, Meggyvirág,
+Tiéd leszek, s szebb a világ.
+
+Múljon végre a fájdalom,
+Felettesd velem bánatom.
+Felettesd el velem búmat,
+Meggyvirág tiltott illata.
+</PoemDisplay>
+
+<PoemDisplay author="Kosztolányi Dezső" title="Nyár nyár nyár">
+Nyár,
+A régi vágyam egyre jobban
+Lobban,
+De vár, még egyre vár.
+    
+Kár
+Így késlekedned, mert az éj setétül.
+Az élet
+Siralmas és sivár
+Enélkül.
+    
+Gigászi vágyam éhes, mint a hörcsög,
+Görcsök
+Emésztik s forró titkom mélye szörcsög.
+    
+Mostan hajolj feléje.
+Közel a lázak kéjes éje.
+Akarod?
+Remegve nyújtsd a szájad és karod.
+Itt ital illatja tégedet vár.
+Nektár.
+    
+Te
+Hűtelen, boldog leszel majd újra, hidd meg.
+Idd meg.
+</PoemDisplay>
+
+<PoemDisplay author="Radnóti Miklós" title="Razglednicák">
+1
+Bulgáriából vastag, vad ágyuszó gurul,
+a hegygerincre dobban, majd tétováz s lehull;
+torlódik ember, állat, szekér és gondolat,
+az út nyerítve hőköl, sörényes ég szalad.
+Te állandó vagy bennem e mozgó zürzavarban,
+tudatom mélyén fénylesz örökre mozdulatlan
+s némán, akár az angyal, ha pusztulást csodál,
+vagy korhadt fának odván temetkező bogár.
+1944. augusztus 30. A hegyek közt
+    
+2
+Kilenc kilométerre innen égnek
+a kazlak és a házak,
+s a rétek szélein megülve némán
+riadt pórok pipáznak.
+Itt még vizet fodroz a tóra lépő
+apró pásztorleány
+s felhőt iszik a vízre ráhajolva
+a fodros birkanyáj.
+Cservenka,1944. október 6.
+    
+3
+Az ökrök száján véres nyál csorog,
+az emberek mind véreset vizelnek,
+a század bűzös, vad csomókban áll.
+Fölöttünk fú a förtelmes halál.
+Mohács,1944. október 24.
+    
+4
+Mellézuhantam, átfordult a teste
+s feszes volt már, mint húr, ha pattan.
+Tarkólövés. - Így végzed hát te is, -
+súgtam magamnak, - csak feküdj nyugodtan.
+Halált virágzik most a türelem. -
+Der springt noch auf,* - hangzott fölöttem.
+Sárral kevert vér száradt fülemen.
+Szentkirályszabadja,1944. október 31.
+</PoemDisplay>
+
 <ExtraContentDivider/>
 
 <Card style="margin: var(--spacing);">
