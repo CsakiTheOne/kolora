@@ -50,4 +50,8 @@
         margin: 16px;
         border: 1px solid var(--on-background-color);
     }
+
+    h1 {
+        margin-inline: 16px;
+    }
 </style>

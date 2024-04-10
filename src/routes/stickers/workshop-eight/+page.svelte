@@ -42,3 +42,7 @@ S aki olvasná, megnyugodnék benne:
         allowfullscreen
     ></iframe>
 </Card>
+
+<Card>
+    Jaj, a slam szüzességem!
+</Card>

@@ -69,6 +69,19 @@ Ott csillogott az a könnycsepp
 Mindnyájunk szemében...
 </PoemDisplay>
 
+<PoemDisplay author="Somogyi Csaba" title="Tavasz a mosogatóban">
+A konyhában csend van,
+a mirelit magány a nyakamba olvad.
+Arcod sárgult abrosz,
+kések a fiókban, tányérok a polcon.
+Teríteni kéne.
+A tavaszt a mosogatóban hagytam,
+étvágytalanság csillog a szememben.
+A hűtőt kihúztam.
+Néha eszembe jut a gyomormosás,
+ha enni vágyom.
+</PoemDisplay>
+
 <ExtraContentDivider/>
 
 <Card style="margin: 16px;">

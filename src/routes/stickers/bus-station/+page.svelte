@@ -1,8 +1,8 @@
 <script>
     import Card from "../../../components/Card.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
-    import Footer from "../../../components/Footer.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
+    import utcazene2024Poster from "$lib/images/utcazene.jpg";
 </script>
 
 <PoemDisplay author="Varró Dániel" title="Éjszakai Busz">
@@ -36,7 +36,7 @@ a McDonald's előtt, a Moszkva téren.
             allowfullscreen
         ></iframe>
     </Card>
-    <p>
+    <p style="margin: 16px 0;">
         Fehérvárhoz húz a szívem, de Veszprémben töltöttem sok évem. A szomszéd
         vármegye székhelyén a kedvenc rendezvényemre szeretnélek meghívni
         titeket: Az Utcazenére. Nyáron, általában július végén kerül
@@ -44,4 +44,20 @@ a McDonald's előtt, a Moszkva téren.
         kávézóit. Gyertek el idén és nézzetek körbe! Lesznek helyi zenészek
         (akár ti?) és külföldi előadók is.
     </p>
+    <img
+        id="utcazene2024Poster"
+        src={utcazene2024Poster}
+        alt="Utcazene 2024"
+    />
+    <a href="https://www.facebook.com/utcazene" target="_blank">Utcazene Facebook oldal</a>
 </Card>
+
+<style>
+    #utcazene2024Poster {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16/9;
+        border-radius: 16px;
+        object-fit: cover;
+    }
+</style>
