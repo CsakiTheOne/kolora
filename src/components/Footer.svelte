@@ -42,14 +42,16 @@
 </footer>
 
 <style>
+    footer > * {
+        margin: var(--spacing);
+    }
+    
     h3,
     p {
-        margin-inline: var(--spacing);
         text-align: center;
     }
 
     hr {
-        margin: var(--spacing);
         border: 1px solid var(--on-background-color);
     }
 
