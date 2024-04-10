@@ -31,7 +31,7 @@ S aki olvasná, megnyugodnék benne:
 
 <ExtraContentDivider/>
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
         src="https://www.youtube.com/embed/g1VaFg9DzFE?si=7iSuwn9bFMn275AB"

@@ -176,7 +176,7 @@ Tinektek!
 
 <ExtraContentDivider/>
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
         src="https://www.youtube.com/embed/9B_zx9JOxLE?si=mwkrP3iJ73g6Qomw"
@@ -188,7 +188,7 @@ Tinektek!
     ></iframe>
 </Card>
 
-<Card>
+<Card style="margin: var(--spacing); padding: var(--spacing);">
     <p>
         Ezen az oldalon a TI kedvelt műveitek is megtalálhatóak.
         Mikor Instán kérdeztem, hogy kinek mi a kedvenc verse, azokból is válogattam ide.

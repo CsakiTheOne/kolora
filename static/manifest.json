@@ -1,0 +1,25 @@
+{
+    "background_color": "#ffffff",
+    "dir": "ltr",
+    "display": "standalone",
+    "name": "Kolora Egyesület",
+    "orientation": "any",
+    "scope": "/",
+    "short_name": "Kolora",
+    "start_url": "/index.html",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "./favicon.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        }
+    ],
+    "id": "kolora",
+    "lang": "hu",
+    "categories": [
+        "books",
+        "entertainment",
+        "social"
+    ]
+}

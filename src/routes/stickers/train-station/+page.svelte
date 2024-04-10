@@ -57,7 +57,7 @@ Majd lesz elég vasatok.
 
 <ExtraContentDivider />
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
         src="https://www.youtube.com/embed/Rw_7_CgUFFU?si=CFBOkQ5J4WBW8F0R"
@@ -69,7 +69,7 @@ Majd lesz elég vasatok.
     ></iframe>
 </Card>
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
         src="https://www.youtube.com/embed/cxZkLkhX1cI?si=QmBsCM2GaOL621o6"

@@ -7,7 +7,7 @@
     }
     
     hr {
-        margin: 16px;
+        margin: var(--spacing);
         border: 1px solid var(--on-background-color);
     }
 </style>

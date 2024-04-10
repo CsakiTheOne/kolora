@@ -31,7 +31,7 @@ Koporsóm fáját is magyar föld növelje!
 
 <ExtraContentDivider />
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
         src="https://www.youtube.com/embed/8HvcHaKYo40?si=2CbuqP_FwM1h3uzZ"
@@ -43,7 +43,7 @@ Koporsóm fáját is magyar föld növelje!
     ></iframe>
 </Card>
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
         src="https://www.youtube.com/embed/yeIMkOQW1M8?si=40ctGzs9omsGbXmM"

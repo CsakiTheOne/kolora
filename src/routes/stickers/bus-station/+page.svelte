@@ -24,7 +24,7 @@ a McDonald's előtt, a Moszkva téren.
 
 <ExtraContentDivider />
 
-<Card style="margin: 16px; padding: 16px;">
+<Card style="margin: var(--spacing); padding: var(--spacing);">
     <Card>
         <iframe
             style="width: calc(100%); aspect-ratio: 16/9;"
@@ -36,7 +36,7 @@ a McDonald's előtt, a Moszkva téren.
             allowfullscreen
         ></iframe>
     </Card>
-    <p style="margin: 16px 0;">
+    <p style="margin: var(--spacing) 0;">
         Fehérvárhoz húz a szívem, de Veszprémben töltöttem sok évem. A szomszéd
         vármegye székhelyén a kedvenc rendezvényemre szeretnélek meghívni
         titeket: Az Utcazenére. Nyáron, általában július végén kerül
@@ -54,10 +54,10 @@ a McDonald's előtt, a Moszkva téren.
 
 <style>
     #utcazene2024Poster {
-        display: block;
+        display: inline-block;
         width: 100%;
         aspect-ratio: 16/9;
-        border-radius: 16px;
+        border-radius: var(--corner-radius);
         object-fit: cover;
     }
 </style>

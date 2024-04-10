@@ -104,15 +104,15 @@ Csapó
 Szép az élet
 </PoemDisplay>
 
-<p style="margin: 16px; text-align: center;">
+<p style="margin: var(--spacing); text-align: center;">
     * = sztárvendég a szomszéd vármegye slam-előitől
 </p>
 
 <ExtraContentDivider />
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
-        style="width: 100%; aspect-ratio: 4/3; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;"
+        style="width: 100%; aspect-ratio: 4/3; border-bottom-left-radius: var(--spacing); border-bottom-right-radius: var(--spacing);"
         src="https://www.youtube.com/embed/H8WudYVAB_4?si=sUe1qqfhdV2B4QAB"
         title="YouTube video player"
         frameborder="0"
@@ -123,7 +123,7 @@ Szép az élet
     <ContentWarning message="Veszélyesen sok bölcsesség"/>
 </Card>
 
-<Card style="margin: 16px; padding: 16px;">
+<Card style="margin: var(--spacing); padding: var(--spacing);">
     <p>
         Amúgy csak mellékesen megjegyezném, hogy a legjobb barátomnak, Gyuszinak
         nagyon sokat köszönhetek művészet és élet terén is. A komfort zónám és

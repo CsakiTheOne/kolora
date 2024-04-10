@@ -4,9 +4,9 @@
 </script>
 
 <main>
-    <h1>{title}</h1>
-    <h3>{author}</h3>
-    <pre><slot></slot></pre>
+    <h1 style="margin-top: 2rem;">{title}</h1>
+    <h3 style="margin-top: .5rem;">{author}</h3>
+    <pre style="margin-top: 1rem;"><slot></slot></pre>
 </main>
 
 <style>
@@ -18,15 +18,12 @@
         width: 100%;
     }
 
-    main > * {
-        margin-top: 1rem;
-    }
-
     pre {
         font-size: .9rem;
         line-height: 1.5;
         text-align: left;
-        max-width: 90%;
+        min-width: calc(100% - 128px);
+        max-width: calc(100% - 32px);
         overflow-x: auto;
         white-space: pre-wrap;
         white-space: -moz-pre-wrap;

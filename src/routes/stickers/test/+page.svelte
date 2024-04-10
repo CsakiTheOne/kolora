@@ -11,7 +11,7 @@ Ha a kódom működne, annak nagyon örülnék.
 
 <ExtraContentDivider/>
 
-<Card style="margin: 16px; padding: 16px;">
+<Card style="margin: var(--spacing); padding: var(--spacing);">
     Yippeee!
     <p>
         Minden matricán / QR kódon lesz egy vers és egy vagy több extra tartalom.

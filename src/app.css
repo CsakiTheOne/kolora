@@ -5,6 +5,8 @@
     --on-primary-color: #2e1709;
     --on-background-color: #2e1709;
     --on-secondary-color: #d9c3a1;
+    --spacing: 16px;
+    --corner-radius: 24px;
 }
 
 * {

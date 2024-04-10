@@ -99,13 +99,13 @@ Mint elvinni egy kisfiút
 Megnézni a vidrákat.
 </PoemDisplay>
 
-<p style="margin: 16px; text-align: center;">
+<p style="margin: var(--spacing); text-align: center;">
     * = sztárvendég a szomszéd vármegye slam-előitől
 </p>
 
 <ExtraContentDivider />
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 4/3;"
         src="https://www.youtube.com/embed/hHoHHspkRn8?si=MLnaQRlBIZXt7tSu"
@@ -117,7 +117,7 @@ Megnézni a vidrákat.
     ></iframe>
 </Card>
 
-<Card style="margin: 16px;">
+<Card style="margin: var(--spacing);">
     <iframe
         style="width: 100%; aspect-ratio: 16/9;"
         src="https://www.youtube.com/embed/VIbXysaYDiY?si=ihGdRoHln_Vei2NN"
@@ -129,7 +129,7 @@ Megnézni a vidrákat.
     ></iframe>
 </Card>
 
-<Card style="margin: 16px; padding: 16px;">
+<Card style="margin: var(--spacing); padding: var(--spacing);">
     <p>
         Plázában már megvan a matrica? ...<br />
         Robi is egy nagyon jó barátom és (in my humble opinion) nagyon jó költő.

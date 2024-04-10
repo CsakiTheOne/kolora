@@ -3,3 +3,9 @@
 <p>
     Ez a weboldal egy kis játékot működtet a Kolora Egyesület tagjai számára.
 </p>
+
+<style>
+    p {
+        margin: var(--spacing);
+    }
+</style>
