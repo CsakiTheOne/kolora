@@ -1,7 +1,7 @@
 <script>
     import Card from "../../../components/Card.svelte";
-    import ContentWarning from "../../../components/ContentWarning.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
+    import FoundByRandomExplanation from "../../../components/FoundByRandomExplanation.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
     import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
 </script>
@@ -83,3 +83,5 @@ Majd lesz elég vasatok.
         allowfullscreen
     ></iframe>
 </Card>
+
+<FoundByRandomExplanation />

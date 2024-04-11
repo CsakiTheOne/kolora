@@ -4,6 +4,7 @@
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
     import utcazene2024Poster from "$lib/images/utcazene.jpg";
     import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
+    import FoundByRandomExplanation from "../../../components/FoundByRandomExplanation.svelte";
 </script>
 
 <StickerFoundCallout/>
@@ -54,6 +55,8 @@ a McDonald's előtt, a Moszkva téren.
     />
     <a href="https://www.facebook.com/utcazene" target="_blank">Utcazene Facebook oldal</a>
 </Card>
+
+<FoundByRandomExplanation />
 
 <style>
     #utcazene2024Poster {

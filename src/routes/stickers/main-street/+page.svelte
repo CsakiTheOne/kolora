@@ -1,7 +1,7 @@
 <script>
     import Card from "../../../components/Card.svelte";
-    import ContentWarning from "../../../components/ContentWarning.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
+    import FoundByRandomExplanation from "../../../components/FoundByRandomExplanation.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
     import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
 </script>
@@ -138,3 +138,5 @@ Megnézni a vidrákat.
         Robi is egy nagyon jó barátom és (in my humble opinion) nagyon jó költő.
     </p>
 </Card>
+
+<FoundByRandomExplanation />

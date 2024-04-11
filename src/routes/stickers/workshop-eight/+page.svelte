@@ -1,9 +1,9 @@
 <script>
     import Card from "../../../components/Card.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
-    import Footer from "../../../components/Footer.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
     import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
+    import FoundByRandomExplanation from "../../../components/FoundByRandomExplanation.svelte";
 </script>
 
 <StickerFoundCallout/>
@@ -46,6 +46,4 @@ S aki olvasná, megnyugodnék benne:
     ></iframe>
 </Card>
 
-<Card>
-    Jaj, a slam szüzességem!
-</Card>
+<FoundByRandomExplanation />

@@ -1,6 +1,7 @@
 <script>
     import Card from "../../../components/Card.svelte";
     import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
+    import FoundByRandomExplanation from "../../../components/FoundByRandomExplanation.svelte";
     import PoemDisplay from "../../../components/PoemDisplay.svelte";
     import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
 </script>
@@ -313,3 +314,5 @@ Szentkirályszabadja,1944. október 31.
         Köszönöm az ajánlást Dani! 🎶
     </p>
 </Card>
+
+<FoundByRandomExplanation />
