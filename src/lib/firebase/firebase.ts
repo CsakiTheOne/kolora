@@ -1,6 +1,6 @@
-import { initializeApp, type FirebaseApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 
-export function initializeFirebase(): FirebaseApp {
+export function initializeFirebase() {
     const firebaseConfig = {
         apiKey: "AIzaSyDuQVyLeoNnoV_wZSD_DN0kVFUPYHULJSU",
         authDomain: "kolora.firebaseapp.com",
@@ -11,5 +11,9 @@ export function initializeFirebase(): FirebaseApp {
         measurementId: "G-M6YRY1BZF5"
     };
 
-    return initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+
+    window.firebase = {
+        app: app,
+    };
 }
