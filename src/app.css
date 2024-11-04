@@ -1,12 +1,12 @@
 :root {
-    --primary-color: #d86144;
-    --secondary-color: #2e1709;
-    --background-color: #d9c3a1;
-    --on-primary-color: #fff;
-    --on-background-color: #2e1709;
-    --on-secondary-color: #d9c3a1;
+    --primary-color: #89023d;
+    --secondary-color: #313a71;
+    --background-color: #fff;
+    --on-primary-color: #db7e9c;
+    --on-secondary-color: #88bad5;
+    --on-background-color: #000;
     --spacing: 16px;
-    --corner-radius: 24px;
+    --corner-radius: 2px;
 }
 
 * {

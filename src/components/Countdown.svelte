@@ -1,9 +1,8 @@
 <script>
-    import Card from "./Card.svelte";
-
     const {
-        targetDate,
-        targetTime,
+        targetDateTime,
+        backgroundColor = 'var(--primary-color)',
+        color = 'var(--on-primary-color)',
         ...props
     } = $props();
 
@@ -12,22 +11,37 @@
     let minutes = $state('0');
     let seconds = $state('0');
 
-    setInterval(() => {
+    function updateTime() {
         const now = new Date();
-        const target = new Date(`${targetDate}T${targetTime}`);
-        const diff = target - now;
+        // @ts-ignore
+        const diff = targetDateTime - now;
+        if (diff < 0) {
+            days = 0;
+            hours = 0;
+            minutes = '00';
+            seconds = '00';
+            return;
+        }
         days = Math.floor(diff / (1000 * 60 * 60 * 24));
         hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutesInt = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         minutes = `${minutesInt < 10 ? '0' : ''}${minutesInt}`;
         const secondsInt = Math.floor((diff % (1000 * 60)) / 1000);
         seconds = `${secondsInt < 10 ? '0' : ''}${secondsInt}`;
+    }
+
+    setInterval(() => {
+        updateTime();
     }, 1000);
+
+    updateTime();
 </script>
 
-<div {...props}>
-    <h1 class="section">{days}</h1>
-    <h1 class="section">-</h1>
+<div style="--background-color: {backgroundColor}; --color: {color}" {...props}>
+    {#if days > 0}
+        <h1 class="section">{days}</h1>
+        <h1 class="section">-</h1>
+    {/if}
     <h1 class="section">{hours}</h1>
     <h1 class="section">:</h1>
     <h1 class="section">{minutes}</h1>
@@ -38,9 +52,9 @@
 <style>
     .section {
         display: inline-block;
-        background-color: var(--secondary-color);
-        color: var(--on-secondary-color);
-        border-radius: calc(var(--corner-radius) / 2);
+        background-color: var(--background-color);
+        color: var(--color);
+        border-radius: var(--corner-radius);
         min-width: 2.3rem;
         font-weight: bold;
         padding: 0.5rem;

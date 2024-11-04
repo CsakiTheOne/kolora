@@ -12,21 +12,21 @@
 
     <Card style="margin: var(--spacing);">
         <ul>
-            <a href="./stickers/bus-station.html"><li>Buszpályaudvar</li></a>
-            <a href="./stickers/cinema-city.html"
+            <a href="./bus-station"><li>Buszpályaudvar</li></a>
+            <a href="./cinema-city"
                 ><li>Alba Pláza, Cinema City</li></a
             >
-            <a href="./stickers/dancehouse.html"><li>Táncház</li></a>
-            <a href="./stickers/main-street.html"><li>Fő utca</li></a>
-            <a href="./stickers/museum-cafe.html"><li>Museum Café</li></a>
-            <a href="./stickers/train-station.html"><li>Vasútállomás</li></a>
-            <a href="./stickers/vpg.html"><li>Vasvári Pál Gimnázium</li></a>
-            <a href="./stickers/workshop-eight.html"><li>Igéző</li></a>
+            <a href="./dancehouse"><li>Táncház</li></a>
+            <a href="./main-street"><li>Fő utca</li></a>
+            <a href="./museum-cafe"><li>Museum Café</li></a>
+            <a href="./train-station"><li>Vasútállomás</li></a>
+            <a href="./vpg"><li>Vasvári Pál Gimnázium</li></a>
+            <a href="./workshop-eight"><li>Igéző</li></a>
         </ul>
     </Card>
     <Card style="margin: var(--spacing);">
         <ul>
-            <a href="./stickers/test.html"><li>Teszt oldal</li></a>
+            <a href="./test"><li>Teszt oldal</li></a>
         </ul>
     </Card>
 </main>
