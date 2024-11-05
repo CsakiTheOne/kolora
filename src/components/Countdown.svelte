@@ -1,15 +1,17 @@
 <script>
+    import { onMount } from "svelte";
+
     const {
         targetDateTime,
-        backgroundColor = 'var(--primary-color)',
-        color = 'var(--on-primary-color)',
+        backgroundColor = "var(--primary-color)",
+        color = "var(--on-primary-color)",
         ...props
     } = $props();
 
     let days = $state(0);
     let hours = $state(0);
-    let minutes = $state('0');
-    let seconds = $state('0');
+    let minutes = $state("0");
+    let seconds = $state("0");
 
     function updateTime() {
         const now = new Date();
@@ -18,23 +20,29 @@
         if (diff < 0) {
             days = 0;
             hours = 0;
-            minutes = '00';
-            seconds = '00';
+            minutes = "00";
+            seconds = "00";
             return;
         }
         days = Math.floor(diff / (1000 * 60 * 60 * 24));
         hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutesInt = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        minutes = `${minutesInt < 10 ? '0' : ''}${minutesInt}`;
+        minutes = `${minutesInt < 10 ? "0" : ""}${minutesInt}`;
         const secondsInt = Math.floor((diff % (1000 * 60)) / 1000);
-        seconds = `${secondsInt < 10 ? '0' : ''}${secondsInt}`;
+        seconds = `${secondsInt < 10 ? "0" : ""}${secondsInt}`;
     }
 
-    setInterval(() => {
+    onMount(() => {
         updateTime();
-    }, 1000);
 
-    updateTime();
+        const timer = setInterval(() => {
+            updateTime();
+        }, 1000);
+
+        return () => {
+            clearInterval(timer);
+        };
+    });
 </script>
 
 <div style="--background-color: {backgroundColor}; --color: {color}" {...props}>

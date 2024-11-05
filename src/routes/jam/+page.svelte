@@ -7,16 +7,28 @@
 </script>
 
 <header>
-    <Countdown
-        targetDateTime={currentEvent?.relevantDateTime}
-        backgroundColor="var(--on-primary-color)"
-        color="var(--primary-color)"
-    />
-    <h1>{currentEvent?.title}</h1>
+    {#if currentEvent !== undefined}
+        <Countdown
+            targetDateTime={currentEvent?.relevantDateTime}
+            backgroundColor="var(--on-primary-color)"
+            color="var(--primary-color)"
+        />
+        <h1>{currentEvent?.title}</h1>
+        {#if currentEvent?.state !== "upcoming"}
+            <h2>Téma: {currentEvent?.theme}</h2>
+        {/if}
+    {:else}
+        <h1>Slam Jam</h1>
+    {/if}
 </header>
 <main>
-    {#if currentEvent?.description}
-        <p>{currentEvent?.description}</p>
+    {#if currentEvent === undefined}
+        <p>
+            Jelenleg nincs tervezett Slam Jam esemény. Ha szeretnél részt venni
+            egy Slam Jamen, nézz vissza később!
+        </p>
+    {:else if currentEvent?.descriptionHTML}
+        <p>{@html currentEvent?.descriptionHTML}</p>
     {/if}
     <h3>Benedek Elek</h3>
     <h2>A játékos tót</h2>
@@ -63,5 +75,10 @@
         align-items: center;
         padding: var(--spacing);
         gap: var(--spacing);
+    }
+
+    main {
+        margin: 0 auto;
+        max-width: 720px;
     }
 </style>

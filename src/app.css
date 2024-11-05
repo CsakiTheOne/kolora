@@ -27,6 +27,11 @@ p {
 }
 
 a {
+    display: inline-block;
     color: var(--primary-color);
     text-decoration: none;
+}
+
+a:first-letter {
+    text-decoration: underline;
 }

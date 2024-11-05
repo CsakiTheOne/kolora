@@ -1,5 +1,5 @@
 {
-    "background_color": "#d9c3a1",
+    "background_color": "#89023d",
     "dir": "ltr",
     "display": "standalone",
     "name": "Kolora Egyesület",
@@ -7,7 +7,7 @@
     "scope": "/",
     "short_name": "Kolora",
     "start_url": "/index.html",
-    "theme_color": "#d86144",
+    "theme_color": "#89023d",
     "icons": [
         {
             "src": "./favicon.png",
@@ -21,5 +21,6 @@
         "books",
         "entertainment",
         "social"
-    ]
+    ],
+    "handle_links": "preferred"
 }
