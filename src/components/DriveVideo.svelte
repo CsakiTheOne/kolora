@@ -5,7 +5,7 @@
     } = $props();
 </script>
 
-<iframe title="" {...rest} src={`${src}/preview`} frameborder="0"></iframe>
+<iframe title="" {...rest} src={`${src}/preview`} frameborder="0" allowfullscreen></iframe>
 
 <style>
     iframe {

@@ -9,10 +9,12 @@
             <span class="mdi mdi-facebook"></span>
             Facebook
         </a>
+        -
         <a href="https://www.instagram.com/koloraegyesulet/" target="_blank">
             <span class="mdi mdi-instagram"></span>
             Instagram
         </a>
+        -
         <a href="https://www.youtube.com/@koloraegyesulet" target="_blank">
             <span class="mdi mdi-youtube"></span>
             YouTube

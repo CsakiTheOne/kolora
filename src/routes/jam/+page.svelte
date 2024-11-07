@@ -8,6 +8,7 @@
 
 <header>
     {#if currentEvent !== undefined}
+        <h1>???</h1>
         <Countdown
             targetDateTime={currentEvent?.relevantDateTime}
             backgroundColor="var(--on-primary-color)"
@@ -22,6 +23,7 @@
     {/if}
 </header>
 <main>
+    <a href="/">&Lt; Vissza a főoldalra</a>
     {#if currentEvent === undefined}
         <p>
             Jelenleg nincs tervezett Slam Jam esemény. Ha szeretnél részt venni
@@ -30,9 +32,9 @@
     {:else if currentEvent?.descriptionHTML}
         <p>{@html currentEvent?.descriptionHTML}</p>
     {/if}
-    <h3>Benedek Elek</h3>
-    <h2>A játékos tót</h2>
-    <p>
+    <h3 style="text-align: center;">Benedek Elek</h3>
+    <h2 style="text-align: center;">A játékos tót</h2>
+    <p style="margin: auto;">
         Tramta, tramta, gyerekek,<br />
         Itt a réz síp, vegyetek,<br />
         Van itt játék mindenféle,<br />
@@ -63,22 +65,26 @@
 
 <style>
     header {
+        display: grid;
+        gap: var(--spacing);
+        padding: var(--spacing) 0;
+        text-align: center;
         background-color: var(--primary-color);
         color: var(--on-primary-color);
     }
 
-    header,
     main {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: var(--spacing);
+        display: grid;
+        grid-template-columns: [full-start] 10% [main-start] 1fr [main-end] 10% [full-end];
         gap: var(--spacing);
+        padding: var(--spacing) 0;
     }
 
-    main {
-        margin: 0 auto;
-        max-width: 720px;
+    main > * {
+        grid-column: main;
+    }
+
+    main > :is(h1, h2, h3, h4, h5, h6) {
+        text-align: left;
     }
 </style>

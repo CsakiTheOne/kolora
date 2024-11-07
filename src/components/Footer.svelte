@@ -1,5 +1,9 @@
 <footer>
-    <p>A weboldalt készítette és kezeli a WholesomeWare</p>
+    <p>
+        A weboldalt készítette és kezeli a <a
+            href="https://www.instagram.com/wholesomewarestuff">WholesomeWare</a
+        >
+    </p>
 </footer>
 
 <style>
@@ -12,5 +16,10 @@
         gap: var(--spacing);
         background-color: var(--secondary-color);
         color: var(--on-secondary-color);
+        text-align: center;
+    }
+
+    a {
+        color: #fff;
     }
 </style>
