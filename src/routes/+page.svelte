@@ -2,6 +2,7 @@
     import "@mdi/font/css/materialdesignicons.min.css";
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
+    import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
 </script>
 
 <Header />
@@ -20,7 +21,7 @@
     <h2>Múzeumok éjszakája és 1. Kolora szülinap</h2>
     <h5>Július 22.</h5>
     <p>
-        //TODO: leírás, képek, videók, stb.
+        //TODO: leírás, képek (Emese pls), videók (?), stb.
     </p>
 
     <hr />
@@ -71,6 +72,7 @@
 
     <h2>Első slam poetry workshop</h2>
     <h5>Február 25.</h5>
+    <img style="width: 100%; max-height: 350px;" src={imgFirstKoloraWorkshopTable} alt="">
     <p>
         //TODO: workshop leírása, képek, stb.
     </p>
@@ -87,9 +89,17 @@
 
     main > * {
         grid-column: main;
+        object-fit: cover;
     }
 
     main > :is(h1, h2, h3, h4, h5, h6) {
         text-align: left;
+    }
+
+    hr {
+        grid-column: full;
+        margin: 0 calc(10% - 8px);
+        border: 0;
+        border-top: 1px solid var(--primary-color);
     }
 </style>
