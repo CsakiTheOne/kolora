@@ -156,6 +156,6 @@
         color: #fff;
         padding: var(--spacing) 10%;
         gap: var(--spacing);
-        overflow-x: scroll;
+        overflow-x: auto;
     }
 </style>

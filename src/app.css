@@ -1,4 +1,4 @@
-:root {
+body {
     --primary-color: #89023d;
     --secondary-color: #313a71;
     --background-color: #fff;
@@ -7,6 +7,15 @@
     --on-background-color: #000;
     --spacing: 16px;
     --corner-radius: 2px;
+}
+
+body.theme-dark {
+    --primary-color: #a80e51;
+    --secondary-color: #2c3361;
+    --background-color: #100;
+    --on-primary-color: #d1a5b3;
+    --on-secondary-color: #a1cae0;
+    --on-background-color: #fdd;
 }
 
 * {
