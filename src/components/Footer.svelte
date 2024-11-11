@@ -1,8 +1,9 @@
 <footer>
-    <p>
-        A weboldalt készítette és kezeli a <a
-            href="https://www.instagram.com/wholesomewarestuff">WholesomeWare</a
-        >
+    <p style="text-align: center;">
+        Az oldalt készítette és működteti:<br />
+        <a href="https://www.instagram.com/wholesomewarestuff" target="_blank">
+            WholesomeWare
+        </a>
     </p>
 </footer>
 

@@ -18,6 +18,15 @@ body.theme-dark {
     --on-background-color: #fdd;
 }
 
+body.theme-retro {
+    --primary-color: #e9458e;
+    --secondary-color: #49cdcb;
+    --background-color: #ebf79a;
+    --on-primary-color: #ebf79a;
+    --on-secondary-color: #ebf79a;
+    --on-background-color: #467edb;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -48,4 +57,9 @@ a {
 
 a:first-letter {
     text-decoration: underline;
+}
+
+a:hover {
+    background-color: var(--primary-color);
+    color: var(--on-primary-color);
 }

@@ -3,6 +3,7 @@
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
+    import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import VerticalTimelineItem from "../components/VerticalTimelineItem.svelte";
 </script>
 
@@ -100,7 +101,7 @@
             </a>
         </p>
         <img
-            style="width: 100%; max-height: 320px;"
+            style="width: 100%; max-height: 320px; object-fit: cover;"
             src={imgFirstKoloraWorkshopTable}
             alt=""
         />
@@ -132,6 +133,15 @@
             beszélni
         </p>
     </VerticalTimelineItem>
+
+    <p style="text-align: center;">
+        <img
+            onclick={() => document.body.classList.toggle("theme-retro")}
+            style="width: 128px; cursor: help;"
+            src={imgKoloraSzitakoto}
+            alt=""
+        />
+    </p>
 </main>
 <Footer />
 

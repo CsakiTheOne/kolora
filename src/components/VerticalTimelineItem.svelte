@@ -32,7 +32,7 @@
         gap: calc(var(--spacing) / 2);
     }
 
-    .indicators > .dot {
+    .dot {
         width: 1rem;
         height: 1rem;
         flex: 0;
@@ -40,13 +40,31 @@
         background-color: var(--primary-color);
         border-radius: 50%;
         margin-top: calc(var(--spacing) / 2);
+        transition: all .1s ease-in-out;
     }
 
-    .indicators > .line {
+    .timeline-item:hover .dot {
+        transform: scale(1.2);
+    }
+
+    .timeline-item:hover .dot:active {
+        transform: scale(.9);
+    }
+
+    .line {
         width: 1px;
         height: 100%;
         flex: 1;
         background-color: var(--primary-color);
+        transition: all .1s ease-in-out;
+    }
+
+    .timeline-item:hover .line {
+        width: 2px;
+    }
+
+    .indicators:active .line {
+        width: 3px;
     }
 
     .content {
@@ -75,6 +93,7 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing);
+        width: 100%;
     }
 
 </style>
