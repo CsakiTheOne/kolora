@@ -74,5 +74,6 @@
         min-width: 2.3rem;
         font-weight: bold;
         padding: 0.5rem;
+        text-align: center;
     }
 </style>
