@@ -45,7 +45,11 @@
     });
 </script>
 
-<div style="--background-color: {backgroundColor}; --color: {color}" {...props}>
+<div
+    class="countdown"
+    style="--background-color: {backgroundColor}; --color: {color}"
+    {...props}
+>
     {#if days > 0}
         <h1 class="section">{days}</h1>
         <h1 class="section">-</h1>
@@ -58,6 +62,10 @@
 </div>
 
 <style>
+    .countdown {
+        display: initial;
+    }
+
     .section {
         display: inline-block;
         background-color: var(--background-color);

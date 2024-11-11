@@ -75,9 +75,15 @@
 
     main {
         display: grid;
-        grid-template-columns: [full-start] 10% [main-start] 1fr [main-end] 10% [full-end];
+        grid-template-columns: [full-start] 16px [main-start] 1fr [main-end] 16px [full-end];
         gap: var(--spacing);
         padding: var(--spacing) 0;
+    }
+
+    @media(min-width: 720px) {
+        main {
+            grid-template-columns: [full-start] 20% [main-start] 1fr [main-end] 20% [full-end];
+        }
     }
 
     main > * {
