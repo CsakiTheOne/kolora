@@ -5,8 +5,9 @@ body {
     --on-primary-color: #db7e9c;
     --on-secondary-color: #88bad5;
     --on-background-color: #000;
+    --on-background-inverse-color: #fff;
     --spacing: 16px;
-    --corner-radius: 2px;
+    --corner-radius: 4px;
 }
 
 body.theme-dark {
@@ -16,6 +17,7 @@ body.theme-dark {
     --on-primary-color: #d1a5b3;
     --on-secondary-color: #a1cae0;
     --on-background-color: #fdd;
+    --on-background-inverse-color: #000;
 }
 
 body.theme-retro {
@@ -25,6 +27,7 @@ body.theme-retro {
     --on-primary-color: #ebf79a;
     --on-secondary-color: #ebf79a;
     --on-background-color: #467edb;
+    --on-background-inverse-color: #fff;
 }
 
 * {
@@ -61,5 +64,27 @@ a:first-letter {
 
 a:hover {
     background-color: var(--primary-color);
-    color: var(--on-primary-color);
+    color: var(--on-background-inverse-color) !important;
+}
+
+button {
+    appearance: none;
+    border: none;
+    border-radius: var(--corner-radius);
+    padding: calc(var(--spacing) / 2);
+    background-color: var(--primary-color);
+    color: var(--on-background-inverse-color);
+    cursor: pointer;
+    translate: 0 -3px;
+    box-shadow: 0 3px 0 var(--secondary-color);
+}
+
+button:hover {
+    translate: 0 -5px;
+    box-shadow: 0 5px 0 var(--secondary-color);
+}
+
+button:active {
+    translate: 0 0;
+    box-shadow: none;
 }
