@@ -38,6 +38,7 @@
     <HeaderTabRow
         tabs={[
             { title: "Idővonal", url: "/" },
+            { title: "???", url: "/jam" },
             { title: "Elérhetőségek", url: "/contacts" },
         ]}
         {selectedTab}
