@@ -1,12 +1,9 @@
 <script>
-
     import HeaderTabRow from "./HeaderTabRow.svelte";
 
-    const {
-        selectedTab = "",
-    } = $props();
-
+    const { selectedTab = "" } = $props();
 </script>
+
 <header>
     <div class="column">
         <p>művészet? kultúra? székesfehérvár?</p>
@@ -37,18 +34,16 @@
     <div class="toolbar">
         <!--span onclick={() => document.body.classList.toggle('theme-dark')} class="mdi mdi-brightness-6"></span-->
     </div>
+
+    <HeaderTabRow
+        tabs={[
+            { title: "Idővonal", url: "/" },
+            { title: "Elérhetőségek", url: "/contacts" },
+        ]}
+        {selectedTab}
+        onSelectTab={() => {}}
+    />
 </header>
-
-<HeaderTabRow
-    tabs={[
-        { title: "Idővonal", url: "/" },
-        { title: "Elérhetőségek", url: "/contacts" },
-    ]}
-    {selectedTab}
-    onSelectTab={() => {
-
-    }}
-/>
 
 <style>
     header {

@@ -15,10 +15,13 @@
 <style>
     .tab-row {
         display: flex;
-        justify-content: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
         gap: 1rem;
+        padding: 0 var(--spacing);
         background-color: var(--primary-color);
-        border-bottom: 2px solid var(--primary-color);
+        overflow-x: auto;
+        scrollbar-width: none;
     }
 
     .tab, .tab:hover {
@@ -35,5 +38,9 @@
 
     .tab.selected {
         translate: 0 2px;
+    }
+
+    .tab:not(.selected) {
+        border-bottom: 2px solid var(--primary-color);
     }
 </style>

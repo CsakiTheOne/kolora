@@ -163,24 +163,3 @@
     </p>
 </main>
 <Footer />
-
-<style>
-    main {
-        display: grid;
-        grid-template-columns: [full-start] 0 [main-start] 1fr [main-end] 0 [full-end];
-        gap: var(--spacing);
-        padding: var(--spacing) 0;
-        text-align: left;
-    }
-
-    @media (min-width: 720px) {
-        main {
-            grid-template-columns: [full-start] 20% [main-start] 1fr [main-end] 20% [full-end];
-        }
-    }
-
-    :global(main > *) {
-        grid-column: main;
-        object-fit: cover;
-    }
-</style>
