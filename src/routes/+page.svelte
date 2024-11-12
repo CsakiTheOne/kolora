@@ -6,9 +6,11 @@
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import VerticalTimelineItem from "../components/VerticalTimelineItem.svelte";
     import KoloraStaticDb from "$lib/KoloraStaticDb";
+    import HeaderTabRow from "../components/HeaderTabRow.svelte";
 </script>
 
-<Header />
+<Header selectedTab="Idővonal" />
+
 <main>
     <VerticalTimelineItem title="2024 visszatekintés">
         <p>
@@ -36,11 +38,18 @@
             Bodonyi Dani, Næz
         </p>
         <p style="text-align: center;">
-            <button onclick={() => {
-                const songsCount = KoloraStaticDb.bandSongs2024rewind.length;
-                const randomSong = KoloraStaticDb.bandSongs2024rewind[Math.floor(Math.random() * songsCount)];
-                window.open(randomSong, "_blank");
-            }}>
+            <button
+                class="elevated-button"
+                onclick={() => {
+                    const songsCount =
+                        KoloraStaticDb.bandSongs2024rewind.length;
+                    const randomSong =
+                        KoloraStaticDb.bandSongs2024rewind[
+                            Math.floor(Math.random() * songsCount)
+                        ];
+                    window.open(randomSong, "_blank");
+                }}
+            >
                 <span class="mdi mdi-music-note"></span> Hallgassunk valamit
             </button>
         </p>
@@ -161,6 +170,7 @@
         grid-template-columns: [full-start] 0 [main-start] 1fr [main-end] 0 [full-end];
         gap: var(--spacing);
         padding: var(--spacing) 0;
+        text-align: left;
     }
 
     @media (min-width: 720px) {
@@ -172,14 +182,5 @@
     :global(main > *) {
         grid-column: main;
         object-fit: cover;
-    }
-
-    main > :is(h1, h2, h3, h4, h5, h6) {
-        text-align: left;
-    }
-
-    hr {
-        border: 0;
-        border-top: 1px solid var(--primary-color);
     }
 </style>

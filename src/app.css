@@ -64,10 +64,10 @@ a:first-letter {
 
 a:hover {
     background-color: var(--primary-color);
-    color: var(--on-background-inverse-color) !important;
+    color: var(--on-background-inverse-color);
 }
 
-button {
+.elevated-button {
     appearance: none;
     border: none;
     border-radius: var(--corner-radius);
@@ -79,12 +79,12 @@ button {
     box-shadow: 0 3px 0 var(--secondary-color);
 }
 
-button:hover {
+.elevated-button:hover {
     translate: 0 -5px;
     box-shadow: 0 5px 0 var(--secondary-color);
 }
 
-button:active {
+.elevated-button:active {
     translate: 0 0;
     box-shadow: none;
 }

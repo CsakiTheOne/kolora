@@ -1,8 +1,17 @@
+<script>
+
+    import HeaderTabRow from "./HeaderTabRow.svelte";
+
+    const {
+        selectedTab = "",
+    } = $props();
+
+</script>
 <header>
     <div class="column">
         <p>művészet? kultúra? székesfehérvár?</p>
         <a href="/"><h1 style="color: #fff;">kolora!</h1></a>
-        <p>
+        <!--p>
             <a
                 href="https://www.facebook.com/profile.php?id=100094619973134"
                 target="_blank"
@@ -23,12 +32,23 @@
                 <span class="mdi mdi-youtube"></span>
                 YouTube
             </a>
-        </p>
+        </p-->
     </div>
     <div class="toolbar">
         <!--span onclick={() => document.body.classList.toggle('theme-dark')} class="mdi mdi-brightness-6"></span-->
     </div>
 </header>
+
+<HeaderTabRow
+    tabs={[
+        { title: "Idővonal", url: "/" },
+        { title: "Elérhetőségek", url: "/contacts" },
+    ]}
+    {selectedTab}
+    onSelectTab={() => {
+
+    }}
+/>
 
 <style>
     header {
