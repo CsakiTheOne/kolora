@@ -6,14 +6,14 @@
 
 <Header />
 <main>
-    <h1>2024 évnyitó slam</h1>
+    <h2>2024 évnyitó slam</h2>
     <p>
         A Nyolcas Műhely adott otthont a Kolora Egyesület 2024-es évnyitó slam
         versenyének, ahol 18 előadást láthattunk. Köztük volt 6 tehetséges
         versenyző és sok új ember, akik először álltak a színpadra. Köszönjük a
         helyet a Nyolcas Műhelynek és a támogatást minden fellépőnek és nézőnek!
     </p>
-    <h2>Open-mic fellépők</h2>
+    <h3>Open-mic fellépők</h3>
     <div class="video-row">
         <div>
             <p>Csáktornyai Ádám (Csáki)</p>
@@ -76,7 +76,7 @@
             />
         </div>
     </div>
-    <h2>Versenyzők</h2>
+    <h3>Versenyzők</h3>
     <div class="video-row">
         <div>
             <p>Esti Bálint Kornél</p>
@@ -115,7 +115,7 @@
             />
         </div>
     </div>
-    <h2>A ráadás</h2>
+    <h3>A ráadás</h3>
     <div class="video-row">
         <div>
             <p>Tóth Zsombor</p>
@@ -134,34 +134,19 @@
 <Footer />
 
 <style>
-    main {
-        display: grid;
-        grid-template-columns: [full-start] 16px [main-start] 1fr [main-end] 16px [full-end];
-        gap: var(--spacing);
-        padding: var(--spacing) 0;
-    }
-
-    @media(min-width: 720px) {
-        main {
-            grid-template-columns: [full-start] 20% [main-start] 1fr [main-end] 20% [full-end];
-        }
-    }
-
-    main > * {
-        grid-column: main;
-    }
-
-    main > :is(h1, h2, h3, h4, h5, h6) {
-        text-align: left;
-    }
-
     .video-row {
         grid-column: full;
         display: flex;
         background-color: var(--secondary-color);
         color: #fff;
-        padding: var(--spacing) calc(var(--spacing) * 4);
+        padding: var(--spacing);
         gap: var(--spacing);
         overflow-x: auto;
+    }
+
+    @media (min-width: 720px) {
+        .video-row {
+            padding: var(--spacing) 20%;
+        }
     }
 </style>

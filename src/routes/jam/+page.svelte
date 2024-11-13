@@ -23,7 +23,9 @@
     {/if}
 </header>
 <main>
-    <a href="/">&Lt; Vissza a főoldalra</a>
+    <p>
+        <a href="/">&Lt; Vissza a főoldalra</a>
+    </p>
     {#if currentEvent === undefined}
         <p>
             Jelenleg nincs tervezett Slam Jam esemény. Ha szeretnél részt venni
@@ -80,7 +82,7 @@
         padding: var(--spacing) 0;
     }
 
-    @media(min-width: 720px) {
+    @media (min-width: 720px) {
         main {
             grid-template-columns: [full-start] 20% [main-start] 1fr [main-end] 20% [full-end];
         }

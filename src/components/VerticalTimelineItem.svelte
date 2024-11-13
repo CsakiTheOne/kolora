@@ -1,5 +1,10 @@
 <script>
-    const { title = "", subtitle = "", isLastItem = false, children } = $props();
+    const {
+        title = "",
+        subtitle = "",
+        isLastItem = false,
+        children,
+    } = $props();
 </script>
 
 <div class="timeline-item">
@@ -10,7 +15,7 @@
         {/if}
     </div>
     <div class="content">
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <h5>{subtitle}</h5>
         <div>
             {@render children()}
@@ -19,6 +24,11 @@
 </div>
 
 <style>
+    h3 {
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
     .timeline-item {
         display: flex;
         flex-direction: row;
@@ -39,8 +49,8 @@
         aspect-ratio: 1;
         background-color: var(--primary-color);
         border-radius: 50%;
-        margin-top: calc(var(--spacing) / 2);
-        transition: all .1s ease-in-out;
+        margin-top: 3px;
+        transition: all 0.1s ease-in-out;
     }
 
     .timeline-item:hover .dot {
@@ -48,7 +58,8 @@
     }
 
     .timeline-item:hover .dot:active {
-        transform: scale(.9);
+        transform: scale(0.9);
+        background-color: var(--secondary-color);
     }
 
     .line {
@@ -56,10 +67,10 @@
         height: 100%;
         flex: 1;
         background-color: var(--primary-color);
-        transition: all .1s ease-in-out;
+        transition: all 0.1s ease-in-out;
     }
 
-    .timeline-item:hover .line {
+    .indicators:hover .line {
         width: 2px;
     }
 
@@ -75,7 +86,7 @@
         padding: 0 var(--spacing);
     }
 
-    .content > h2 {
+    .content > h3 {
         margin: 0;
         margin-bottom: calc(var(--spacing) / 3);
     }
@@ -85,7 +96,8 @@
         margin-bottom: var(--spacing);
     }
 
-    h2, h5 {
+    h3,
+    h5 {
         text-align: left;
     }
 
@@ -95,5 +107,4 @@
         gap: var(--spacing);
         width: 100%;
     }
-
 </style>

@@ -7,29 +7,7 @@
 <header>
     <div class="column">
         <p>művészet? kultúra? székesfehérvár?</p>
-        <a href="/"><h1 style="color: #fff;">kolora!</h1></a>
-        <!--p>
-            <a
-                href="https://www.facebook.com/profile.php?id=100094619973134"
-                target="_blank"
-            >
-                <span class="mdi mdi-facebook"></span>
-                Facebook
-            </a>
-            -
-            <a
-                href="https://www.instagram.com/koloraegyesulet/"
-                target="_blank"
-            >
-                <span class="mdi mdi-instagram"></span>
-                Instagram
-            </a>
-            -
-            <a href="https://www.youtube.com/@koloraegyesulet" target="_blank">
-                <span class="mdi mdi-youtube"></span>
-                YouTube
-            </a>
-        </p-->
+        <a href="/"><h1 id="kolora-title" style="color: #fff;">kolora!</h1></a>
     </div>
     <div class="toolbar">
         <!--span onclick={() => document.body.classList.toggle('theme-dark')} class="mdi mdi-brightness-6"></span-->
@@ -38,11 +16,10 @@
     <HeaderTabRow
         tabs={[
             { title: "Idővonal", url: "/" },
-            { title: "???", url: "/jam" },
+            { title: "Kiadás előtti teendők", url: "/todo" },
             { title: "Elérhetőségek", url: "/contacts" },
         ]}
         {selectedTab}
-        onSelectTab={() => {}}
     />
 </header>
 
@@ -81,5 +58,11 @@
 
     header a {
         color: var(--on-primary-color);
+    }
+
+    @media (min-width: 720px) {
+        header {
+            padding: 0 20%;
+        }
     }
 </style>

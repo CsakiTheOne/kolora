@@ -68,6 +68,7 @@
 
     .section {
         display: inline-block;
+        position: relative;
         background-color: var(--background-color);
         color: var(--color);
         border-radius: var(--corner-radius);
@@ -75,5 +76,18 @@
         font-weight: bold;
         padding: 0.5rem;
         text-align: center;
+        overflow: hidden;
+        transition: all .1s ease-in-out;
+    }
+    
+    .section::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background-color: #00000020;
     }
 </style>
