@@ -6,12 +6,20 @@
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import VerticalTimelineItem from "../components/VerticalTimelineItem.svelte";
     import KoloraStaticDb from "$lib/KoloraStaticDb";
-    import HeaderTabRow from "../components/HeaderTabRow.svelte";
+    import Alert from "../components/Alert.svelte";
 </script>
 
 <Header selectedTab="Idővonal" />
 
 <main>
+    <Alert title="Segítség kerestetik!">
+        Ezt az oldalt nem fogom tudni egyedül összehozni. Bár Március óta
+        gyakran látogattam az eseményeket és titeket, nem tudok úgy írni az
+        egyesületről ahogy azok, akik megalkották. Többet jelent ez nekem, mint
+        amennyire azt be merem vallani. :D Ezért csinálom ezt az oldalt és a
+        visszatekintést. De hogy mire tekintünk vissza, azt Ti alkottátok!
+    </Alert>
+
     <VerticalTimelineItem title="2024 visszatekintés">
         <p>
             Az elmúlt évben a Kolora Egyesület számos rendezvényt szervezett,
@@ -160,6 +168,20 @@
             src={imgKoloraSzitakoto}
             alt=""
         />
+    </p>
+
+    <hr />
+
+    <h2>Mi fog történni ezzel az oldallal 2025 eleje után?</h2>
+    <p>Marad emléknek amíg az kedves számunkra.</p>
+    <p>
+        Na jó, egy kicsit megváltozik. Ez az "Idővonal" oldal mellékszereplő
+        lesz és más tartalmaknak ad helyt, mint pl. a 2025-ös költészetnapi
+        eseménynek, ami még csak egy nem túl feltűnő linken keresztül érhető el.
+    </p>
+    <p>
+        Ezen kívül máshogy is megváltozik az idővonal. Nem csak a helye, de a tartalma is.
+        Az évek múlásával folyamatosan bővülni fog és egyre többmindenre tekinthetünk vissza.
     </p>
 </main>
 <Footer />

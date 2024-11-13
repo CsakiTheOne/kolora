@@ -61,6 +61,14 @@
             Instagram: @wholesomewarestuff
         </a>
     </p>
+    <p>
+        <a href="https://m.me/CsakiTheOne"
+            target="_blank"
+        >
+            <span class="mdi mdi-facebook-messenger"></span>
+            Messenger: Csáki
+        </a>
+    </p>
 </main>
 <Footer />
 
