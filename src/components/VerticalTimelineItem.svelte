@@ -9,7 +9,12 @@
 
 <div class="timeline-item">
     <div class="indicators">
-        <div class="dot"></div>
+        <div
+            class="dot"
+            onclick={() => {
+                navigator.vibrate(5);
+            }}
+        ></div>
         {#if !isLastItem}
             <div class="line"></div>
         {/if}

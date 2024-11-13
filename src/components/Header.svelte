@@ -15,9 +15,9 @@
 
     <HeaderTabRow
         tabs={[
-            { title: "Idővonal", url: "/" },
-            { title: "Kiadás előtti teendők", url: "/todo" },
-            { title: "Elérhetőségek", url: "/contacts" },
+            { icon: "timeline", title: "Idővonal", url: "/" },
+            { icon: "list-status", title: "Kiadás előtti teendők", url: "/todo" },
+            { icon: "at", title: "Elérhetőségek", url: "/contacts" },
         ]}
         {selectedTab}
     />
