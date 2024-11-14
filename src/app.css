@@ -1,6 +1,6 @@
 body {
     --primary-color: #89023d;
-    --primary-light-color: #db7e9c;
+    --primary-light-color: hsl(341, 56%, 68%);
     --secondary-color: #313a71;
     --secondary-light-color: #88bad5;
     --background-color: #fff;
@@ -14,16 +14,16 @@ body {
 }
 
 body.theme-dark {
-    --primary-color: #a80e51;
+    --primary-color: #e9458e;
     --primary-light-color: #f5a3c7;
-    --secondary-color: #2c3361;
+    --secondary-color: #4551a1;
     --secondary-light-color: #8ba9d6;
     --background-color: #100;
-    --on-primary-color: #d1a5b3;
-    --on-primary-light-color: #001;
-    --on-secondary-color: #a1cae0;
-    --on-secondary-light-color: #001;
-    --on-background-color: #fdd;
+    --on-primary-color: #fdd;
+    --on-primary-light-color: #100;
+    --on-secondary-color: #ddf;
+    --on-secondary-light-color: #ddf;
+    --on-background-color: #fee;
 }
 
 body.theme-retro {
@@ -51,10 +51,10 @@ html {
 }
 
 body {
-    background-color: var(--background-color);
+    background: var(--background-color);
     color: var(--on-background-color);
     text-align: center;
-    min-height: 100%;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

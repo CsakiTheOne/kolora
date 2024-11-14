@@ -1,4 +1,5 @@
 <script>
+    import ThemeManager from "$lib/ThemeManager";
     import HeaderTabRow from "./HeaderTabRow.svelte";
 
     const { selectedTab = "" } = $props();
@@ -10,7 +11,7 @@
         <a href="/"><h1 id="kolora-title" style="color: #fff;">kolora!</h1></a>
     </div>
     <div class="toolbar">
-        <!--span onclick={() => document.body.classList.toggle('theme-dark')} class="mdi mdi-brightness-6"></span-->
+        <span onclick={() => ThemeManager.toggle()} class="mdi mdi-brightness-6"></span>
     </div>
 
     <HeaderTabRow

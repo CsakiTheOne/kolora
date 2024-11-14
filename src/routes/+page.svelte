@@ -7,6 +7,7 @@
     import VerticalTimelineItem from "../components/VerticalTimelineItem.svelte";
     import KoloraStaticDb from "$lib/KoloraStaticDb";
     import Alert from "../components/Alert.svelte";
+    import ThemeManager from "$lib/ThemeManager";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -132,7 +133,12 @@
             src={imgFirstKoloraWorkshopTable}
             alt=""
         />
-        <p>//TODO: leírás</p>
+        <p>
+            Szvoren Eszter és Völgyesi Toma voltak az irodalom tanáraink idén,
+            akikkel együtt alkottunk, szójátékokat játszottunk és fejlődtünk.
+            Ezeket a workshop-okat az évben többször is megtartották
+            Vasárnaponként a kedvenc kávézónkban.
+        </p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem title="A kezdetek" subtitle="2023" isLastItem={true}>
@@ -163,7 +169,7 @@
 
     <p style="text-align: center;">
         <img
-            onclick={() => document.body.classList.toggle("theme-retro")}
+            onclick={() => ThemeManager.theme = "theme-retro"}
             style="width: 128px; cursor: help;"
             src={imgKoloraSzitakoto}
             alt=""
@@ -180,8 +186,9 @@
         eseménynek, ami még csak egy nem túl feltűnő linken keresztül érhető el.
     </p>
     <p>
-        Ezen kívül máshogy is megváltozik az idővonal. Nem csak a helye, de a tartalma is.
-        Az évek múlásával folyamatosan bővülni fog és egyre többmindenre tekinthetünk vissza.
+        Ezen kívül máshogy is megváltozik az idővonal. Nem csak a helye, de a
+        tartalma is. Az évek múlásával folyamatosan bővülni fog és egyre
+        többmindenre tekinthetünk vissza.
     </p>
 </main>
 <Footer />
