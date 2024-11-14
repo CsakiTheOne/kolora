@@ -5,7 +5,9 @@ export default class ThemeManager {
     static themes = ['theme-light', 'theme-dark', 'theme-retro'];
 
     static init() {
-        document.body.classList.add(this.theme);
+        if (browser) {
+            document.body.classList.add(this.theme);
+        }
     }
 
     static get theme() {
