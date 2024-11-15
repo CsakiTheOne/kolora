@@ -84,7 +84,7 @@
             amelyeken versek és egyéb jóságok voltak. A matricák tartalmai
             megtekinthetőek az alábbi linken:
         </p>
-        <p><a href="stickers"> 2024 költészet napi kincsvadászat</a></p>
+        <p><a href="/stickers"> 2024 költészet napi kincsvadászat</a></p>
         <p>
             <a href="https://www.instagram.com/p/C5nz8SNNHcc" target="_blank">
                 <span class="mdi mdi-instagram"></span>
@@ -95,7 +95,7 @@
             Viszont jövőre is vár a művészet kedvelőkre egy meglepetés. Már
             készül a 2025-ös költészet napi program, amely itt lesz elérhető:
         </p>
-        <p><a href="jam">2025 költészet napja</a></p>
+        <p><a href="/jam">2025 költészet napja</a></p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem title="2024 évnyitó slam" subtitle="Március 14.">
@@ -115,7 +115,7 @@
             színpadra. Köszönjük a helyet a Nyolcas Műhelynek és a támogatást
             minden fellépőnek és nézőnek!
         </p>
-        <p><a href="gallery/2024-evnyito-slam">Fellépők megtekintése</a></p>
+        <p><a href="/gallery/2024-evnyito-slam">Fellépők megtekintése</a></p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
