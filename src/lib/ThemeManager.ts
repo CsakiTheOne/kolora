@@ -2,6 +2,10 @@ import { browser } from "$app/environment";
 
 export default class ThemeManager {
 
+    /**
+     * Each theme has a corresponding CSS class that is added to the body element.
+     * See src/app.css for the CSS rules.
+     */
     static themes = ['theme-light', 'theme-dark', 'theme-retro'];
 
     static init() {
@@ -25,7 +29,7 @@ export default class ThemeManager {
         }
     }
 
-    static toggle() {
+    static toggleDarkLight() {
         this.theme = this.theme === 'theme-dark' ? 'theme-light' : 'theme-dark';
     }
 

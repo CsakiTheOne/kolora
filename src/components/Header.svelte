@@ -7,17 +7,17 @@
 
 <header>
     <div class="column">
-        <p>művészet? kultúra? székesfehérvár?</p>
-        <a href="/"><h1 id="kolora-title" style="color: #fff;">kolora!</h1></a>
+        <p>Művészet? Kultúra? Székesfehérvár?</p>
+        <a href="/"><h1 id="kolora-title">kolora!</h1></a>
     </div>
     <div class="toolbar">
-        <span onclick={() => ThemeManager.toggle()} class="mdi mdi-brightness-6"></span>
+        <span onclick={() => ThemeManager.toggleDarkLight()} class="mdi mdi-brightness-6"></span>
     </div>
 
     <HeaderTabRow
         tabs={[
-            { icon: "timeline", title: "Idővonal", url: "/" },
-            { icon: "note", title: "Emlékek 2024-25", url: "/memories-24-25" },
+            { icon: "timeline", title: "Idővonal", url: "/timeline" },
+            { icon: "note", title: "2024-25", url: "/memories-24-25" },
             { icon: "at", title: "Elérhetőségek", url: "/contacts" },
         ]}
         {selectedTab}
@@ -40,10 +40,11 @@
         justify-content: end;
         align-items: center;
         height: 48px;
+        overflow: hidden;
     }
 
     .toolbar span {
-        scale: 1.4;
+        font-size: 1.3rem;
         padding: var(--spacing);
         cursor: pointer;
     }

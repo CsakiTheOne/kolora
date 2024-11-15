@@ -9,7 +9,7 @@ body {
     --on-secondary-color: #88bad5;
     --on-secondary-light-color: #001;
     --on-background-color: #100;
-    --spacing: 12px;
+    --spacing: 16px;
     --corner-radius: 4px;
 }
 
@@ -128,6 +128,10 @@ main > * {
 .elevated-button:active {
     translate: 0 0;
     box-shadow: none;
+}
+
+#kolora-title {
+    color: #fff;
 }
 
 #kolora-title::first-letter {
