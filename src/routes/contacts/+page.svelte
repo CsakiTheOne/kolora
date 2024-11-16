@@ -62,13 +62,22 @@
         </a>
     </p>
     <p>
-        <a href="https://m.me/CsakiTheOne"
-            target="_blank"
-        >
+        <a href="https://m.me/CsakiTheOne" target="_blank">
             <span class="mdi mdi-facebook-messenger"></span>
             Messenger: Csáki
         </a>
     </p>
+
+    <!--h2>Általában erre vagyunk</h2>
+    <iframe
+        title="Museum Café"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2711.3903565053556!2d18.40735387631114!3d47.18937167115461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f7aef6eb0f7b%3A0xd732c4ac54d33b21!2sMuseum%20Caf%C3%A9!5e0!3m2!1sen!2shu!4v1731753946627!5m2!1sen!2shu"
+        width="100%"
+        height="350"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+    ></iframe-->
 </main>
 <Footer />
-

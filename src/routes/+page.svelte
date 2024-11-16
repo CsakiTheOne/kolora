@@ -5,22 +5,29 @@
 
 <div class="container">
     <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path fill="#fff" d="M 0 0 V 100 H 100 V 10 C 93 6 81 3 70 3 C 59 3 48 11 37 11 C 25 11 16 0 0 0 Z" />
+        <path
+            fill="#fff"
+            d="M 0 0 V 100 H 100 V 10 C 93 6 81 3 70 3 C 59 3 48 11 37 11 C 25 11 16 0 0 0 Z"
+        />
     </svg>
     <main>
-        <p>Művészet?</p>
-        <p>Kultúra?</p>
-        <p>Székesfehérvár?</p>
+        <div class="adaptive-col-row">
+            <p>Művészet?</p>
+            <p>Kultúra?</p>
+            <p>Székesfehérvár?</p>
+        </div>
         <h1 id="kolora-title">kolora!</h1>
-        <p>
-            <a href="/timeline">Idővonal</a>
-        </p>
-        <p>
-            <a href="/memories-24-25">2024-25</a>
-        </p>
-        <p>
-            <a href="/contacts">Elérhetőségek</a>
-        </p>
+        <div class="adaptive-col-row">
+            <p>
+                <a href="/timeline">Idővonal</a>
+            </p>
+            <p>
+                <a href="/memories-24-25">2024-25</a>
+            </p>
+            <p>
+                <a href="/contacts">Elérhetőségek</a>
+            </p>
+        </div>
     </main>
 </div>
 <Footer />
@@ -37,6 +44,19 @@
         position: absolute;
     }
 
+    svg {
+        display: block;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 45%;
+    }
+
+    svg > path {
+        fill: var(--primary-light-color);
+    }
+
     main {
         left: 0;
         right: 0;
@@ -50,16 +70,23 @@
         justify-content: space-evenly;
     }
 
-    svg {
-        display: block;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 45%;
+    h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
     }
 
-    svg > path {
-        fill: var(--primary-light-color);
+    .adaptive-col-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        flex: 1;
+    }
+
+    @media (min-width: 768px) {
+        .adaptive-col-row {
+            flex-direction: row;
+        }
     }
 </style>
