@@ -17,7 +17,7 @@
     <HeaderTabRow
         tabs={[
             { icon: "timeline", title: "Idővonal", url: "/timeline" },
-            { icon: "note", title: "2024-25", url: "/memories-24-25" },
+            { icon: "image", title: "Galéria", url: "/gallery" },
             { icon: "at", title: "Elérhetőségek", url: "/contacts" },
         ]}
         {selectedTab}

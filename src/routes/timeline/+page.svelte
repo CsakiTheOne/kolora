@@ -1,5 +1,4 @@
 <script>
-    import "@mdi/font/css/materialdesignicons.min.css";
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
@@ -73,6 +72,10 @@
                 <span class="mdi mdi-instagram"></span>
                 Instagram poszt
             </a>
+        </p>
+        <p>
+            Slam, Næz, DJ Bodonyi, italok és torta. Egy éves lett a Kolora és
+            megadtuk a módját az ünneplésnek a Museum Caféban.
         </p>
         <p>//TODO: leírás, képek (Emese pls), videók (?), stb.</p>
     </VerticalTimelineItem>
@@ -169,7 +172,7 @@
 
     <p style="text-align: center;">
         <img
-            onclick={() => ThemeManager.theme = "theme-retro"}
+            onclick={() => (ThemeManager.theme = "theme-retro")}
             style="width: 128px; cursor: help;"
             src={imgKoloraSzitakoto}
             alt=""

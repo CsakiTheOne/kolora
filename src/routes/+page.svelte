@@ -22,7 +22,7 @@
                 <a href="/timeline">Idővonal</a>
             </p>
             <p>
-                <a href="/memories-24-25">2024-25</a>
+                <a href="/gallery">Galéria</a>
             </p>
             <p>
                 <a href="/contacts">Elérhetőségek</a>
