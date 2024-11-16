@@ -21,7 +21,7 @@
     </p>
     <p>
         <a href="/contacts">
-            <span class="mdi mdi-email"></span>
+            <span class="mdi mdi-at"></span>
             Kolora további közösségi profiljai
         </a>
     </p>
