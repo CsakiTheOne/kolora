@@ -43,6 +43,10 @@
         height: 100svh;
     }
 
+    :global(body.theme-dark) .container {
+        background-color: var(--background-color);
+    }
+
     .container > * {
         position: absolute;
     }
@@ -58,6 +62,10 @@
 
     svg > path {
         fill: var(--primary-light-color);
+    }
+
+    :global(body.theme-dark) svg > path {
+        opacity: .2;
     }
 
     main {
