@@ -19,13 +19,16 @@
         <h1 id="kolora-title">kolora!</h1>
         <div class="adaptive-col-row">
             <p>
-                <a href="/timeline">Idővonal</a>
+                <a href="/timeline">
+                    <span class="mdi mdi-timeline"></span>
+                    Idővonal
+                </a>
             </p>
             <p>
-                <a href="/gallery">Galéria</a>
-            </p>
-            <p>
-                <a href="/contacts">Elérhetőségek</a>
+                <a href="/contacts">
+                    <span class="mdi mdi-at"></span>
+                    Elérhetőségek
+                </a>
             </p>
         </div>
     </main>

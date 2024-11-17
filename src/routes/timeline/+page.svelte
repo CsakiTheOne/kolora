@@ -10,16 +10,7 @@
 </script>
 
 <Header selectedTab="Idővonal" />
-
 <main>
-    <Alert title="Segítség kerestetik!">
-        Ezt az oldalt nem fogom tudni egyedül összehozni. Bár Március óta
-        gyakran látogattam az eseményeket és titeket, nem tudok úgy írni az
-        egyesületről ahogy azok, akik megalkották. Többet jelent ez nekem, mint
-        amennyire azt be merem vallani. :D Ezért csinálom ezt az oldalt és a
-        visszatekintést. De hogy mire tekintünk vissza, azt Ti alkottátok!
-    </Alert>
-
     <VerticalTimelineItem title="2024 visszatekintés">
         <p>
             Az elmúlt évben a Kolora Egyesület számos rendezvényt szervezett,
@@ -66,13 +57,8 @@
     <VerticalTimelineItem
         title="Múzeumok éjszakája és 1. Kolora szülinap"
         subtitle="Július 22."
+        instagramLink="https://www.instagram.com/p/C8MQxtZsmon"
     >
-        <p>
-            <a href="https://www.instagram.com/p/C8MQxtZsmon" target="_blank">
-                <span class="mdi mdi-instagram"></span>
-                Instagram poszt
-            </a>
-        </p>
         <p>
             Slam, Næz, DJ Bodonyi, italok és torta. Egy éves lett a Kolora és
             megadtuk a módját az ünneplésnek a Museum Caféban.
@@ -80,7 +66,12 @@
         <p>//TODO: leírás, képek (Emese pls), videók (?), stb.</p>
     </VerticalTimelineItem>
 
-    <VerticalTimelineItem title="Magyar költészet napja" subtitle="Április 11.">
+    <VerticalTimelineItem
+        title="Magyar költészet napja"
+        subtitle="Április 11."
+        instagramLink="https://www.instagram.com/p/C5jJoSmNd-w"
+        facebookLink="https://fb.me/e/1MldHJc9c"
+    >
         <p>
             A magyar költészet napján Csáki egy kincsvadászatot szervezett, ahol
             a résztvevőknek Székesfehérvár utcáin kellett keresniük matricákat,
@@ -89,28 +80,18 @@
         </p>
         <p><a href="/stickers"> 2024 költészet napi kincsvadászat</a></p>
         <p>
-            <a href="https://www.instagram.com/p/C5nz8SNNHcc" target="_blank">
-                <span class="mdi mdi-instagram"></span>
-                Csáki posztja a kincsvadászatról
-            </a>
-        </p>
-        <p>
             Viszont jövőre is vár a művészet kedvelőkre egy meglepetés. Már
             készül a 2025-ös költészet napi program, amely itt lesz elérhető:
         </p>
         <p><a href="/jam">2025 költészet napja</a></p>
     </VerticalTimelineItem>
 
-    <VerticalTimelineItem title="2024 évnyitó slam" subtitle="Március 14.">
-        <p>
-            <a
-                href="https://www.instagram.com/stories/highlights/17871723279011747/"
-                target="_blank"
-            >
-                <span class="mdi mdi-instagram"></span>
-                Instagram story
-            </a>
-        </p>
+    <VerticalTimelineItem
+        title="2024 évnyitó slam"
+        subtitle="Március 14."
+        instagramLink="https://www.instagram.com/stories/highlights/17871723279011747/"
+        facebookLink="https://fb.me/e/5qV6UfabB"
+    >
         <p>
             A Nyolcas Műhely adott otthont a Kolora Egyesület 2024-es évnyitó
             slam versenyének, ahol 18 előadást láthattunk. Köztük volt 6
@@ -118,19 +99,22 @@
             színpadra. Köszönjük a helyet a Nyolcas Műhelynek és a támogatást
             minden fellépőnek és nézőnek!
         </p>
-        <p><a href="/gallery/2024-evnyito-slam">Fellépők megtekintése</a></p>
+        <p>
+            <a
+                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=tzZyj71NrnGVyWnT"
+                target="_blank"
+            >
+                <span class="mdi mdi-youtube"></span>
+                Fellépők megtekintése
+            </a>
+        </p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
         title="Első slam poetry workshop"
         subtitle="Február 25."
+        instagramLink="https://www.instagram.com/p/C4n0kGGsKUc"
     >
-        <p>
-            <a href="https://www.instagram.com/p/C4n0kGGsKUc" target="_blank">
-                <span class="mdi mdi-instagram"></span>
-                Instagram poszt
-            </a>
-        </p>
         <img
             style="width: 100%; max-height: 320px; object-fit: cover;"
             src={imgFirstKoloraWorkshopTable}
@@ -144,13 +128,12 @@
         </p>
     </VerticalTimelineItem>
 
-    <VerticalTimelineItem title="A kezdetek" subtitle="2023" isLastItem={true}>
-        <p>
-            <a href="https://www.instagram.com/p/CuZs8OqsdHT" target="_blank">
-                <span class="mdi mdi-instagram"></span>
-                Instagram poszt
-            </a>
-        </p>
+    <VerticalTimelineItem
+        title="A kezdetek"
+        subtitle="2023"
+        instagramLink="https://www.instagram.com/p/CuZs8OqsdHT"
+        isLastItem={true}
+    >
         <p>
             Csáki: <i>
                 "A Kolora Egyesület 2023-ban alakult, viszont akkor én még nem
@@ -159,9 +142,10 @@
                 programok. Na de érdekesebb abba belegondolni, hogy mi
                 következik. Sajnos 2024 második felében ritkultak az események,
                 viszont remélem ezt a tendenciát sikerül együtt megfékezni. 😌
-                Jómagam már benne vagyok egy 2025-ös program tervezésében és
-                szervezésében, amit ismétlődő módon, rendszeresen szeretnék
-                megtartani. De egyelőre nem ígérek semmit, meglepetés lesz. 😄"
+                Toma már szervezkedik és Novemberben bejelentette a következő
+                slam eseményt és én is tervezgetek egy 2025-ös programot, amit
+                ismétlődő módon, rendszeresen szeretnék megtartani. De egyelőre
+                nem ígérek semmit, meglepetés lesz. 😄"
             </i>
         </p>
         <p>
@@ -171,12 +155,16 @@
     </VerticalTimelineItem>
 
     <p style="text-align: center;">
-        <img
+        <button
+            style="appearance: none; border: none; border-radius: 50%;"
             onclick={() => (ThemeManager.theme = "theme-retro")}
-            style="width: 128px; cursor: help;"
-            src={imgKoloraSzitakoto}
-            alt=""
-        />
+        >
+            <img
+                style="width: 128px; cursor: help;"
+                src={imgKoloraSzitakoto}
+                alt=""
+            />
+        </button>
     </p>
 
     <hr />

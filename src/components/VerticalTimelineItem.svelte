@@ -2,6 +2,8 @@
     const {
         title = "",
         subtitle = "",
+        facebookLink = "",
+        instagramLink = "",
         isLastItem = false,
         children,
     } = $props();
@@ -20,7 +22,19 @@
         {/if}
     </div>
     <div class="content">
-        <h3>{title}</h3>
+        <div class="title-row">
+            <h3>{title}</h3>
+            {#if facebookLink}
+                <a href={facebookLink} target="_blank">
+                    <span class="mdi mdi-facebook"></span>
+                </a>
+            {/if}
+            {#if instagramLink}
+                <a href={instagramLink} target="_blank">
+                    <span class="mdi mdi-instagram"></span>
+                </a>
+            {/if}
+        </div>
         <h5>{subtitle}</h5>
         <div>
             {@render children()}
@@ -29,11 +43,6 @@
 </div>
 
 <style>
-    h3 {
-        font-weight: bold;
-        color: var(--primary-color);
-    }
-
     .timeline-item {
         display: flex;
         flex-direction: row;
@@ -81,6 +90,29 @@
 
     .indicators:active .line {
         width: 3px;
+    }
+
+    .title-row {
+        display: flex;
+        flex-direction: row !important;
+        flex-wrap: nowrap;
+        align-items: start;
+        width: 100%;
+    }
+
+    h3 {
+        display: inline-block;
+        font-weight: bold;
+        color: var(--primary-color);
+        flex-grow: 1;
+        margin: 0;
+    }
+
+    .title-row > a {
+        display: inline-block;
+        flex-shrink: 0;
+        font-size: 1.3rem;
+        /*padding: calc(var(--spacing) / 4);*/
     }
 
     .content {
