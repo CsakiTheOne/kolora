@@ -14,13 +14,7 @@
         <span onclick={() => ThemeManager.toggleDarkLight()} class="mdi mdi-brightness-6"></span>
     </div>
 
-    <HeaderTabRow
-        tabs={[
-            { icon: "timeline", title: "Idővonal", url: "/timeline" },
-            { icon: "at", title: "Elérhetőségek", url: "/contacts" },
-        ]}
-        {selectedTab}
-    />
+    <HeaderTabRow {selectedTab} />
 </header>
 
 <style>

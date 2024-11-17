@@ -16,7 +16,9 @@
             <p>Kultúra?</p>
             <p>Székesfehérvár?</p>
         </div>
-        <h1 id="kolora-title">kolora!</h1>
+        <a href="/">
+            <h1 id="kolora-title">kolora!</h1>
+        </a>
         <div class="adaptive-col-row">
             <p>
                 <a href="/timeline">
