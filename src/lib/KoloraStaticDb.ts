@@ -1,3 +1,5 @@
+import ThemeManager from "./ThemeManager";
+
 export default class KoloraStaticDb {
     static bandSongs2024rewind = [
         // The Jex
@@ -19,4 +21,38 @@ export default class KoloraStaticDb {
         // Nedel'a
         'https://youtu.be/uWwkJXTX5rk?si=2Po9ujGyQGMAuhmz',
     ];
+
+    static secrets = [
+        {
+            code: '404',
+            url: '/404',
+        },
+        {
+            code: '230621',
+            action: 'setTheme',
+            data: 'theme-retro',
+        },
+        {
+            code: 'ny8lcas.sl24m',
+            url: 'https://youtu.be/5BbuzabCqR8',
+        },
+    ];
+
+    static tryCode(code: string) {
+        const secret = KoloraStaticDb.secrets.find(s => s.code === code);
+
+        if (!secret) {
+            return null;
+        }
+
+        if (secret.url) {
+            window.open(secret.url, '_blank');
+        }
+
+        if (secret.action) {
+            if (secret.action === 'setTheme') {
+                ThemeManager.theme = secret.data || 'theme-light';
+            }
+        }
+    }
 }

@@ -3,6 +3,7 @@
 
     let tabs = [
         { icon: "timeline", title: "Idővonal", url: "/timeline" },
+        { icon: "form-textbox-password", title: "Kódok", url: "/codes" },
         { icon: "at", title: "Elérhetőségek", url: "/contacts" },
     ];
 
