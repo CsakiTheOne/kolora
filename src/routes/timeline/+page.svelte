@@ -7,10 +7,13 @@
     import KoloraStaticDb from "$lib/KoloraStaticDb";
     import Alert from "../../components/Alert.svelte";
     import ThemeManager from "$lib/ThemeManager";
+    import Kiseger from "../../components/Kiseger.svelte";
 </script>
 
 <Header selectedTab="Idővonal" />
 <main>
+    <Kiseger />
+
     <VerticalTimelineItem title="2024 visszatekintés">
         <p>
             Az elmúlt évben a Kolora Egyesület számos rendezvényt szervezett,
@@ -170,7 +173,7 @@
     <hr />
 
     <h2>Mi fog történni ezzel az oldallal 2025 eleje után?</h2>
-    <p>Marad emléknek amíg az kedves számunkra.</p>
+    <p>Marad emléknek amíg azok kedvesek számunkra.</p>
     <p>
         Na jó, egy kicsit megváltozik. Ez az "Idővonal" oldal mellékszereplő
         lesz és más tartalmaknak ad helyt, mint pl. a 2025-ös költészetnapi

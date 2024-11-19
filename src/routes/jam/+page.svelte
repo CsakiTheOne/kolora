@@ -1,5 +1,5 @@
 <script>
-    import SlamJamConfig from "$lib/slamjam/slamjamconfig";
+    import SlamJamConfig from "$lib/slamjamconfig";
     import Countdown from "../../components/Countdown.svelte";
     import Footer from "../../components/Footer.svelte";
 

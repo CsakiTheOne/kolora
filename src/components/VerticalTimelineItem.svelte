@@ -7,16 +7,19 @@
         isLastItem = false,
         children,
     } = $props();
+
+    let thisElement = null;
 </script>
 
-<div class="timeline-item">
-    <div class="indicators">
-        <div
-            class="dot"
-            onclick={() => {
-                navigator.vibrate(5);
-            }}
-        ></div>
+<div class="timeline-item" bind:this={thisElement}>
+    <div
+        class="indicators"
+        onclick={() => {
+            thisElement.scrollIntoView({ behavior: "smooth" });
+            navigator.vibrate(5);
+        }}
+    >
+        <div class="dot"></div>
         {#if !isLastItem}
             <div class="line"></div>
         {/if}
