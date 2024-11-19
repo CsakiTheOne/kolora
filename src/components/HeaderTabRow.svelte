@@ -69,7 +69,7 @@
     }
 
     .tab:not(.selected) {
-        background-color: var(--primary-light-color);
+        background-color: var(--primary-variant-color);
     }
 
     .tab:not(.selected):hover {

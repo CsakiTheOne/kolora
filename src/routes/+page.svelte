@@ -63,11 +63,7 @@
     }
 
     svg > path {
-        fill: var(--primary-light-color);
-    }
-
-    :global(body.theme-dark) svg > path {
-        opacity: .2;
+        fill: var(--primary-variant-color);
     }
 
     main {

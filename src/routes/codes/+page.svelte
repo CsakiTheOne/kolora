@@ -28,6 +28,12 @@
     >
         Beváltás
     </button>
+    <p>
+        <abbr title="A funkcióval kapcsolatban bármi megváltozhat vagy akár teljesen meg is szűnhet.">
+            <span class="mdi mdi-test-tube"></span>
+            Kísérleti funkció
+        </abbr>
+    </p>
 </main>
 <Footer />
 
@@ -39,7 +45,7 @@
         border-radius: var(--corner-radius);
         background-color: transparent;
         color: var(--on-background-color);
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         text-security: disc;
         -webkit-text-security: disc;
         -moz-text-security: disc;
@@ -48,7 +54,7 @@
     }
 
     input:focus {
-        border: 3px solid var(--primary-light-color);
+        border: 3px solid var(--primary-variant-color);
         outline: none;
     }
 </style>
