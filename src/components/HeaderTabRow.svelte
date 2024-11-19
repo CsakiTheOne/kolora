@@ -60,7 +60,7 @@
         border-top-left-radius: var(--corner-radius);
         border-top-right-radius: var(--corner-radius);
         background-color: var(--background-color);
-        color: var(--primary-color);
+        color: var(--on-background-color);
         translate: 0 2px;
         cursor: pointer;
         transition: all 0.1s ease-in-out;
@@ -70,9 +70,11 @@
 
     .tab:not(.selected) {
         background-color: var(--primary-variant-color);
+        color: var(--on-primary-variant-color);
     }
 
     .tab:not(.selected):hover {
         background-color: var(--background-color);
+        color: var(--on-background-color);
     }
 </style>

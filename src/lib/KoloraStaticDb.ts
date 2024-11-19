@@ -33,7 +33,7 @@ export default class KoloraStaticDb {
             url: 'https://youtu.be/-9d2Bm0v4dk',
         },
         {
-            code: '',
+            code: 'mse',
             url: 'https://www.youtube.com/watch?v=CLzMPM1anl4&t=1s&pp=ygUQb3JpYXNpIGtpc2VnZXLFsQ%3D%3D',
         }
     ];

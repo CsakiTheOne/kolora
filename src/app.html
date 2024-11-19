@@ -15,9 +15,9 @@
 
 	<script>
 		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-		//document.body.classList.toggle('theme-dark', prefersDarkScheme.matches);
+		document.body.classList.toggle('theme-dark', prefersDarkScheme.matches);
 
-		if ('serviceWorker' in navigator) {
+		/*if ('serviceWorker' in navigator) {
 			window.addEventListener('load', function () {
 				navigator.serviceWorker.register('%sveltekit.assets%/sw.js').then(function (registration) {
 					// Registration was successful
@@ -27,7 +27,7 @@
 					console.log('ServiceWorker registration failed: ', err);
 				});
 			});
-		}
+		}*/
 	</script>
 </body>
 

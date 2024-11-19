@@ -5,15 +5,10 @@
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import VerticalTimelineItem from "../../components/VerticalTimelineItem.svelte";
     import KoloraStaticDb from "$lib/KoloraStaticDb";
-    import Alert from "../../components/Alert.svelte";
-    import ThemeManager from "$lib/ThemeManager";
-    import Kiseger from "../../components/Kiseger.svelte";
 </script>
 
 <Header selectedTab="Idővonal" />
 <main>
-    <Kiseger />
-
     <VerticalTimelineItem title="2024 visszatekintés">
         <p>
             Az elmúlt évben a Kolora Egyesület számos rendezvényt szervezett,
@@ -27,7 +22,7 @@
 
     <VerticalTimelineItem
         title="Kolora terasz és egyéb zenés rendezvények"
-        subtitle="Egész évben Februártól Augusztusig"
+        subtitle="Egész évben Februártól Novemberig"
     >
         <p>
             Az évben több alkalommal is megrendezésre kerültek a Kolora teraszok
@@ -132,43 +127,23 @@
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
-        title="A kezdetek"
-        subtitle="2023"
+        title="2023"
         instagramLink="https://www.instagram.com/p/CuZs8OqsdHT"
         isLastItem={true}
     >
-        <p>
-            Csáki: <i>
-                "A Kolora Egyesület 2023-ban alakult, viszont akkor én még nem
-                tudtam a létezéséről. 😅 A közösségi oldalakon láttam, hogy az
-                egyesület alakulásának évében is már voltak tök jó kis
-                programok. Na de érdekesebb abba belegondolni, hogy mi
-                következik. Sajnos 2024 második felében ritkultak az események,
-                viszont remélem ezt a tendenciát sikerül együtt megfékezni. 😌
-                Toma már szervezkedik és Novemberben bejelentette a következő
-                slam eseményt és én is tervezgetek egy 2025-ös programot, amit
-                ismétlődő módon, rendszeresen szeretnék megtartani. De egyelőre
-                nem ígérek semmit, meglepetés lesz. 😄"
-            </i>
-        </p>
-        <p>
-            //TODO: valami jobb szöveg ehelyett, nem akarok csak magam nevében
-            beszélni
+        <p style="text-align: center;">
+            <button
+                style="appearance: none; border: none; border-radius: 50%;"
+                onclick={() => alert("Kolora születése: 230621")}
+            >
+                <img
+                    style="width: 128px; cursor: help;"
+                    src={imgKoloraSzitakoto}
+                    alt=""
+                />
+            </button>
         </p>
     </VerticalTimelineItem>
-
-    <p style="text-align: center;">
-        <button
-            style="appearance: none; border: none; border-radius: 50%;"
-            onclick={() => alert("Kolora születése: 230621")}
-        >
-            <img
-                style="width: 128px; cursor: help;"
-                src={imgKoloraSzitakoto}
-                alt=""
-            />
-        </button>
-    </p>
 
     <hr />
 
