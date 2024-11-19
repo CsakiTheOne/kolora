@@ -157,7 +157,7 @@
     <p style="text-align: center;">
         <button
             style="appearance: none; border: none; border-radius: 50%;"
-            onclick={() => (ThemeManager.theme = "theme-retro")}
+            onclick={() => alert("Kolora születése: 230621")}
         >
             <img
                 style="width: 128px; cursor: help;"

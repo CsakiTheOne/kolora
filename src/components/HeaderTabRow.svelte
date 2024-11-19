@@ -1,9 +1,11 @@
 <script>
+    import Badge from "./Badge.svelte";
+
     const { selectedTab, ...rest } = $props();
 
     let tabs = [
         { icon: "timeline", title: "Idővonal", url: "/timeline" },
-        { icon: "form-textbox-password", title: "Kódok", url: "/codes" },
+        { icon: "form-textbox-password", title: "Kódok", url: "/codes", badge: "Béta" },
         { icon: "at", title: "Elérhetőségek", url: "/contacts" },
     ];
 
@@ -28,6 +30,9 @@
                 <span class={`mdi mdi-${tab.icon}`}></span>
             {/if}
             {tab.title}
+            {#if tab.badge}
+                <Badge>{tab.badge}</Badge>
+            {/if}
         </a>
     {/each}
 </div>

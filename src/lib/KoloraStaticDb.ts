@@ -24,17 +24,13 @@ export default class KoloraStaticDb {
 
     static secrets = [
         {
-            code: '404',
-            url: '/404',
-        },
-        {
             code: '230621',
             action: 'setTheme',
             data: 'theme-retro',
         },
         {
             code: 'ny8lcas.sl24m',
-            url: 'https://youtu.be/5BbuzabCqR8',
+            url: 'https://youtu.be/-9d2Bm0v4dk',
         },
     ];
 

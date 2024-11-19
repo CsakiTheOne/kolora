@@ -8,6 +8,11 @@
 
 <Header selectedTab="Kódok" />
 <main>
+    <p>
+        Járj Kolorás rendezvényekre és légy figyelmes! Néha kódokra bukkanhatsz,
+        amiket ide tudsz beírni extra tartalmakért és meglepetésekért. (Ezen a
+        weboldalon is van egy elrejtve.)
+    </p>
     <input
         type="text"
         bind:value={code}
