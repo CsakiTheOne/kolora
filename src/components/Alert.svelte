@@ -20,8 +20,8 @@
         flex-direction: column;
         gap: calc(var(--spacing) / 2);
         padding: calc(var(--spacing) / 2);
-        background-color: var(--primary-light-color);
-        color: var(--on-primary-light-color);
+        background-color: var(--primary-variant-color);
+        color: var(--on-primary-variant-color);
         border-radius: var(--corner-radius);
         overflow: hidden;
     }
