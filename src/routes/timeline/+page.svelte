@@ -134,7 +134,7 @@
         <p style="text-align: center;">
             <button
                 style="appearance: none; border: none; border-radius: 50%;"
-                onclick={() => alert("Kolora születése: 230621")}
+                onclick={() => alert("230621")}
             >
                 <img
                     style="width: 128px; cursor: help;"
@@ -142,6 +142,8 @@
                     alt=""
                 />
             </button>
+            <br />
+            Kolora születése: 2023.06.21.
         </p>
     </VerticalTimelineItem>
 

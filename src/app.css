@@ -14,11 +14,11 @@ body {
 }
 
 body.theme-dark {
-    --primary-color: #a9004c;
+    --primary-color: #b20050;
     --primary-variant-color: #532331;
-    --secondary-color: #262e64;
+    --secondary-color: #242950;
     --secondary-variant-color: #8ba9d6;
-    --background-color: #1e0000;
+    --background-color: #180000;
     --on-primary-color: #fdd;
     --on-primary-variant-color: #fdd;
     --on-secondary-color: #ddf;
