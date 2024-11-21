@@ -2,7 +2,7 @@ import type Work from "./model/Work";
 
 export default class InteractivePoem {
     pages: InteractivePoemPage[] = [];
-    variables: { [key: string]: string } = {};
+    variables: { [key: string]: string } = $state({});
 
     constructor(work: Work) {
         const rawPages = work.content.split("## ").slice(1);
@@ -14,7 +14,6 @@ export default class InteractivePoem {
                 .replace(/\[.*?\]\(#.*?\)/g, "") // Remove markdown links
                 .replace(/\n\/.*/g, "") // Remove markdown comments
                 .replace(/\r/g, "")
-                .replace(/\n> /g, "\n") // Remove markdown blockquotes
                 .replace(/\\\n+/g, "\n")
                 .trim()
                 .replace(/\n/g, "<br />")
@@ -25,8 +24,9 @@ export default class InteractivePoem {
                 const page = link.slice(link.indexOf("#"), link.lastIndexOf(")"));
                 return new InteractivePoemLink(text, page, new InteractivePoemCondition(condition));
             }) || [];
+            const commands = rawContent.match(/\/.*/g) || [];
 
-            return new InteractivePoemPage(title, content, links);
+            return new InteractivePoemPage(title, content, links, commands);
         });
     }
 
@@ -37,6 +37,39 @@ export default class InteractivePoem {
             return simplifiedPageTitle === simplifiedLinkTarget;
         });
         return nextPage;
+    }
+
+    runCommandsOnPage(page: InteractivePoemPage | undefined): void {
+        console.log(page?.title);
+        page?.commands.forEach((command) => {
+            console.log(command);
+            const [baseCommand, ...args] = command.split(" ");
+            switch (baseCommand) {
+                case "/set":
+                    const [variable, value] = args;
+                    if (value === "0") {
+                        delete this.variables[variable];
+                    }
+                    else {
+                        this.variables[variable] = value;
+                    }
+                    break;
+                case "/add":
+                    const [variableToAddTo, valueToAdd] = args;
+                    this.variables[variableToAddTo] = (parseInt(this.variables[variableToAddTo]) + parseInt(valueToAdd)).toString();
+                    break;
+                case "/subtract":
+                    const [variableToSubtractFrom, valueToSubtract] = args;
+                    this.variables[variableToSubtractFrom] = (parseInt(this.variables[variableToSubtractFrom]) - parseInt(valueToSubtract)).toString();
+                    break;
+                case "/clear":
+                    const variableToClear = args[0];
+                    delete this.variables[variableToClear];
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 }
 
@@ -80,20 +113,23 @@ class InteractivePoemCondition {
         this.value2 = value2;
     }
 
-    evaluate(): boolean {
+    evaluate(poem: InteractivePoem): boolean {
+        const value1 = this.value1.startsWith("{") ? poem.variables[this.value1.slice(1, -1)] : this.value1;
+        const value2 = this.value2.startsWith("{") ? poem.variables[this.value2.slice(1, -1)] : this.value2;
+
         switch (this.operator) {
             case "==":
-                return this.value1 === this.value2;
+                return value1 === value2;
             case "!=":
-                return this.value1 !== this.value2;
+                return value1 !== value2;
             case ">":
-                return this.value1 > this.value2;
+                return value1 > value2;
             case "<":
-                return this.value1 < this.value2;
+                return value1 < value2;
             case ">=":
-                return this.value1 >= this.value2;
+                return value1 >= value2;
             case "<=":
-                return this.value1 <= this.value2;
+                return value1 <= value2;
             default:
                 return false;
         }

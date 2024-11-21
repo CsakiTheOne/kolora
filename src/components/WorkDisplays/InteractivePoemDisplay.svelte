@@ -1,6 +1,6 @@
 <script lang="ts">
     import type Work from "$lib/model/Work";
-    import InteractivePoem, { InteractivePoemPage } from "$lib/InteractivePoem";
+    import InteractivePoem, { InteractivePoemPage } from "$lib/InteractivePoem.svelte";
 
     const {
         work,
@@ -9,26 +9,35 @@
     } = $props();
 
     let interactivePoem = $state(new InteractivePoem(work));
-    let currentPage: InteractivePoemPage | undefined = $state(interactivePoem.pages[0]);
+    let currentPage: InteractivePoemPage | undefined = $state(
+        interactivePoem.pages[0],
+    );
+
+    $effect(() => {
+        interactivePoem.runCommandsOnPage(currentPage);
+    });
 </script>
 
 <div class="work-display">
     <h2>{work.title}</h2>
     <h3>{currentPage?.title}</h3>
     <p>{@html currentPage?.content}</p>
-    <div class="links-row">
-        {#each currentPage?.links || [] as link}
-            <button
-                class="elevated-button"
-                onclick={() => {
-                    console.log(link);
-                    currentPage = interactivePoem.getPageByLink(link);
-                }}
-            >
+    {#each currentPage?.links || [] as link}
+        <button
+            class="interactive-poem-link"
+            onclick={() => {
+                scrollTo(0, 0);
+                currentPage = interactivePoem.getPageByLink(link);
+            }}
+            disabled={!link.condition.evaluate(interactivePoem)}
+        >
+            {#if !link.condition.evaluate(interactivePoem)}
+                <span class="mdi mdi-lock"></span>
+            {:else}
                 {link.text}
-            </button>
-        {/each}
-    </div>
+            {/if}
+        </button>
+    {/each}
 </div>
 
 <style>
@@ -38,12 +47,25 @@
         gap: var(--spacing);
     }
 
-    .links-row {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
+    .interactive-poem-link {
+        appearance: none;
         padding: var(--spacing);
-        gap: var(--spacing);
-        overflow-x: auto;
+        background-color: transparent;
+        color: var(--on-background-color);
+        border: 2px solid var(--primary-color);
+        border-radius: var(--corner-radius);
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .interactive-poem-link:hover:not(:disabled) {
+        background-color: var(--primary-color);
+        color: var(--on-primary-color);
+    }
+
+    .interactive-poem-link:disabled {
+        border: 1px solid var(--on-background-color);
+        cursor: not-allowed;
+        text-align: center;
     }
 </style>
