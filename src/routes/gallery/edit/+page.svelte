@@ -37,7 +37,7 @@
     function saveWork() {
         if (!db) return;
 
-        work.dateUploaded = new Date();
+        work.dateUploaded = new Date().toLocaleDateString();
 
         if (work.id) {
             const workRef = doc(db, "works", work.id);

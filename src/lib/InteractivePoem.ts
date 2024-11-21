@@ -9,8 +9,8 @@ export default class InteractivePoem {
 
         this.pages = rawPages.map((rawPage) => {
             const [title, ...rawContentArray] = rawPage.split("\n\n");
-            const content = rawContentArray
-                .join("\n\n")
+            const rawContent = rawContentArray.join("\n\n");
+            const content = rawContent
                 .replace(/\[.*?\]\(#.*?\)/g, "") // Remove markdown links
                 .replace(/\n\/.*/g, "") // Remove markdown comments
                 .replace(/\r/g, "")
@@ -19,17 +19,28 @@ export default class InteractivePoem {
                 .trim()
                 .replace(/\n/g, "<br />")
                 .replace(/{\{(\w+)\}\}/g, (match, variable) => this.variables[variable] || match);
-            const links = content.match(/\[.*?\]\(#.*?\)/g)?.map((link) => {
-                const [text, page] = link.slice(1, -1).split("](");
-                return new InteractivePoemLink(text, page);
+            const links = rawContent.match(/\[.*\]\(#.*\)/g)?.map((link) => {
+                const condition = link.includes(" ? ") ? link.split(" ? ")[0].slice(1) : "1 == 1";
+                const text = link.slice(link.indexOf("? "), link.indexOf("]")).slice(1).trim() || link.slice(1, link.indexOf("]"));
+                const page = link.slice(link.indexOf("#"), link.lastIndexOf(")"));
+                return new InteractivePoemLink(text, page, new InteractivePoemCondition(condition));
             }) || [];
 
             return new InteractivePoemPage(title, content, links);
         });
     }
+
+    getPageByLink(link: InteractivePoemLink): InteractivePoemPage | undefined {
+        const simplifiedLinkTarget = link.page.toLowerCase().replace(/\W*/g, "");
+        const nextPage = this.pages.find((page) => {
+            const simplifiedPageTitle = page.title.toLowerCase().replace(/\W*/g, "");
+            return simplifiedPageTitle === simplifiedLinkTarget;
+        });
+        return nextPage;
+    }
 }
 
-class InteractivePoemPage {
+export class InteractivePoemPage {
     title: string;
     content: string;
     links: InteractivePoemLink[];
@@ -62,7 +73,7 @@ class InteractivePoemCondition {
     operator: string;
     value2: string;
 
-    constructor(conditionText: string) {
+    constructor(conditionText: string = "1 == 1") {
         const [value1, operator, value2] = conditionText.split(" ");
         this.value1 = value1;
         this.operator = operator;

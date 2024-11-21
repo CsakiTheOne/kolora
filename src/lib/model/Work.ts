@@ -11,7 +11,7 @@ export default class Work {
     workType: string = '';
     content: string = '';
     dateCreated: string = '';
-    dateUploaded: Date | undefined;
+    dateUploaded: string = '';
     /**
      * The event that this work is associated with.
      */

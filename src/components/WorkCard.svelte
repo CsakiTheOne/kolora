@@ -19,7 +19,7 @@
     <p>{work.description}</p>
     <p><strong>Készítette:</strong> {work.author} - {work.dateCreated}</p>
     {#if work.dateUploaded}
-        <p><strong>Feltöltve:</strong> {new Date(work.dateUploaded).toDateString()}</p>
+        <p><strong>Feltöltve:</strong> {work.dateUploaded}</p>
     {/if}
 </a>
 
