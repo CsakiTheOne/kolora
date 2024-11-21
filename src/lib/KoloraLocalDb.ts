@@ -1,6 +1,6 @@
 import ThemeManager from "./ThemeManager";
 
-export default class KoloraStaticDb {
+export default class KoloraLocalDb {
     static bandSongs2024rewind = [
         // The Jex
         'https://youtu.be/aNlgE6vcbiI?si=F8zA4cdpKtEeYhYJ',
@@ -39,7 +39,7 @@ export default class KoloraStaticDb {
     ];
 
     static tryCode(code: string) {
-        const secret = KoloraStaticDb.secrets.find(s => s.code === code);
+        const secret = KoloraLocalDb.secrets.find(s => s.code === code);
 
         if (!secret) {
             return null;

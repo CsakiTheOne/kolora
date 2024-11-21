@@ -4,7 +4,7 @@
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import VerticalTimelineItem from "../../components/VerticalTimelineItem.svelte";
-    import KoloraStaticDb from "$lib/KoloraStaticDb";
+    import KoloraLocalDb from "$lib/KoloraLocalDb";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -39,9 +39,9 @@
                 class="elevated-button"
                 onclick={() => {
                     const songsCount =
-                        KoloraStaticDb.bandSongs2024rewind.length;
+                        KoloraLocalDb.bandSongs2024rewind.length;
                     const randomSong =
-                        KoloraStaticDb.bandSongs2024rewind[
+                        KoloraLocalDb.bandSongs2024rewind[
                             Math.floor(Math.random() * songsCount)
                         ];
                     window.open(randomSong, "_blank");

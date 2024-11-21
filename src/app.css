@@ -64,7 +64,11 @@ h1 {
     font-family: 'Times New Roman', Times, serif;
 }
 
-h2, h3, h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
     text-transform: uppercase;
 }
 
@@ -103,7 +107,7 @@ main {
     }
 }
 
-main > * {
+main>* {
     grid-column: main;
 }
 
@@ -128,6 +132,29 @@ main > * {
 .elevated-button:active {
     translate: 0 0;
     box-shadow: none;
+}
+
+.outlined-input {
+    width: 100%;
+    padding: var(--spacing);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--corner-radius);
+    background-color: transparent;
+    color: var(--on-background-color);
+    font-size: 1.1rem;
+    transition: all 0.1s ease-in-out;
+}
+
+.outlined-input:focus {
+    border: 3px solid var(--primary-variant-color);
+    outline: none;
+}
+
+.secret-input {
+    text-security: disc;
+    -webkit-text-security: disc;
+    -moz-text-security: disc;
+    input-security: dics;
 }
 
 #kolora-title {

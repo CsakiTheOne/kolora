@@ -1,12 +1,6 @@
 <script>
-    import { initializeFirebase } from "$lib/firebase/firebase";
-    import { onMount } from "svelte";
     import "../../app.css";
     import Footer from "../../components/OldFooter.svelte";
-
-    onMount(() => {
-        initializeFirebase();
-    });
 </script>
 
 <div>

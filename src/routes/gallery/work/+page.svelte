@@ -1,23 +1,44 @@
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
     import Footer from "../../../components/Footer.svelte";
     import Header from "../../../components/Header.svelte";
+    import { initializeFirebase } from "$lib/firebase/firebase";
+    import { doc, getDoc } from "firebase/firestore";
+    import Work from "$lib/model/Work";
+    import InteractivePoemDisplay from "../../../components/WorkDisplays/InteractivePoemDisplay.svelte";
+    import GalleryUtils from "$lib/GalleryUtils";
 
-    let id = $state('');
+    let work: Work | null = $state(null);
 
     onMount(() => {
-        const params = new URLSearchParams(window.location.search);
-        const workId = params.get('workId');
-        if (!workId) {
+        const id = GalleryUtils.workId;
+        if (!id) {
             window.history.back();
             return;
         }
-        id = params.get('id') || '';
+        const db = initializeFirebase().firestore;
+        const workRef = doc(db, "works", id);
+
+        getDoc(workRef)
+            .then((doc) => {
+                work = { ...new Work(), ...doc.data() };
+            })
+            .catch((err) => {
+                window.history.back();
+            });
     });
 </script>
 
 <Header selectedTab="Galéria" />
 <main>
-    <p>ID: {id}</p>
+    {#if work?.workType === "Interaktív költemény"}
+        <InteractivePoemDisplay {work} />
+    {:else}
+        <p>
+            {work?.author} - {work?.dateCreated}
+        </p>
+        <h2>{work?.title}</h2>
+        <p>{work?.content}</p>
+    {/if}
 </main>
 <Footer />

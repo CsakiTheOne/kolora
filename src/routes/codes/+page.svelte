@@ -1,5 +1,5 @@
 <script>
-    import KoloraStaticDb from "$lib/KoloraStaticDb";
+    import KoloraLocalDb from "$lib/KoloraLocalDb";
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
 
@@ -16,13 +16,14 @@
     <input
         type="text"
         bind:value={code}
+        class="outlined-input secret-input"
         autocomplete="off"
         placeholder="Adj meg egy kódot"
     />
     <button
         class="elevated-button"
         onclick={() => {
-            KoloraStaticDb.tryCode(code);
+            KoloraLocalDb.tryCode(code);
             code = "";
         }}
     >
@@ -36,25 +37,3 @@
     </p>
 </main>
 <Footer />
-
-<style>
-    input {
-        width: 100%;
-        padding: var(--spacing);
-        border: 2px solid var(--primary-color);
-        border-radius: var(--corner-radius);
-        background-color: transparent;
-        color: var(--on-background-color);
-        font-size: 1.2rem;
-        text-security: disc;
-        -webkit-text-security: disc;
-        -moz-text-security: disc;
-        input-security: dics;
-        transition: all 0.1s ease-in-out;
-    }
-
-    input:focus {
-        border: 3px solid var(--primary-variant-color);
-        outline: none;
-    }
-</style>
