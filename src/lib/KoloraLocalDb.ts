@@ -35,7 +35,11 @@ export default class KoloraLocalDb {
         {
             code: 'mse',
             url: 'https://www.youtube.com/watch?v=CLzMPM1anl4&t=1s&pp=ygUQb3JpYXNpIGtpc2VnZXLFsQ%3D%3D',
-        }
+        },
+        {
+            code: 'slamjam250411',
+            url: '/gallery/',
+        },
     ];
 
     static tryCode(code: string) {
@@ -46,6 +50,10 @@ export default class KoloraLocalDb {
         }
 
         if (secret.url) {
+            if (secret.url.startsWith('/')) {
+                window.location.href = secret.url;
+                return;
+            }
             window.open(secret.url, '_blank');
         }
 

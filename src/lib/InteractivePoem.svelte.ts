@@ -40,9 +40,7 @@ export default class InteractivePoem {
     }
 
     runCommandsOnPage(page: InteractivePoemPage | undefined): void {
-        console.log(page?.title);
         page?.commands.forEach((command) => {
-            console.log(command);
             const [baseCommand, ...args] = command.split(" ");
             switch (baseCommand) {
                 case "/set":

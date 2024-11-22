@@ -19,7 +19,7 @@
     <p>{work.description}</p>
     <p><strong>Készítette:</strong> {work.author} - {work.dateCreated}</p>
     {#if work.dateUploaded}
-        <p><strong>Feltöltve:</strong> {work.dateUploaded}</p>
+        <p style="font-size: .7rem;">{work.dateUploaded}</p>
     {/if}
 </a>
 
@@ -39,5 +39,14 @@
     .badges {
         display: flex;
         gap: var(--spacing);
+    }
+
+    p {
+        display: -webkit-box;
+        line-clamp: 1;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 </style>

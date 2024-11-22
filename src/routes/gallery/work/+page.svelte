@@ -31,14 +31,42 @@
 
 <Header selectedTab="Galéria" />
 <main>
+    <p>
+        {work?.author} - {work?.dateCreated}
+    </p>
+    <div class="title-row">
+        <h2>{work?.title}</h2>
+        <span
+            class="mdi mdi-share-variant"
+            onclick={() => {
+                navigator.share({
+                    url: window.location.href + "?id=" + work?.id,
+                });
+            }}
+        ></span>
+    </div>
+
+    <hr />
+
     {#if work?.workType === "Interaktív költemény"}
         <InteractivePoemDisplay {work} />
     {:else}
-        <p>
-            {work?.author} - {work?.dateCreated}
-        </p>
-        <h2>{work?.title}</h2>
         <p>{work?.content}</p>
     {/if}
 </main>
 <Footer />
+
+<style>
+    .title-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title-row span {
+        font-size: 1.3rem;
+        padding: var(--spacing);
+        cursor: pointer;
+    }
+</style>

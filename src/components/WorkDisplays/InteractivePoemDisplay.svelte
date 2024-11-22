@@ -19,7 +19,6 @@
 </script>
 
 <div class="work-display">
-    <h2>{work.title}</h2>
     <h3>{currentPage?.title}</h3>
     <p>{@html currentPage?.content}</p>
     {#each currentPage?.links || [] as link}
