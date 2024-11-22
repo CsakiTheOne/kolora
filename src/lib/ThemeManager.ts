@@ -10,12 +10,13 @@ export default class ThemeManager {
 
     static init() {
         if (browser) {
+            document.body.classList.remove(...this.themes);
             document.body.classList.add(this.theme);
         }
     }
 
     static get theme() {
-        return localStorage.getItem('theme') || 'light';
+        return localStorage.getItem('theme') || 'theme-light';
     }
 
     static set theme(value) {
