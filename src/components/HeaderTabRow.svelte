@@ -5,7 +5,13 @@
 
     let tabs = [
         { icon: "timeline", title: "Idővonal", url: "/timeline" },
-        { icon: "form-textbox-password", title: "Kódok", url: "/codes", badge: "Béta" },
+        { title: "???" }, // Galéria helye
+        {
+            icon: "form-textbox-password",
+            title: "Kódok",
+            url: "/codes",
+            badge: "Béta",
+        },
         { icon: "at", title: "Elérhetőségek", url: "/contacts" },
     ];
 
@@ -22,18 +28,30 @@
 
 <div {...rest} class="tab-row">
     {#each tabs as tab}
-        <a
-            href={tab.url}
-            class={`tab ${tab.title === selectedTab ? "selected" : ""}`}
-        >
-            {#if tab.icon}
-                <span class={`mdi mdi-${tab.icon}`}></span>
-            {/if}
-            {tab.title}
-            {#if tab.badge}
-                <Badge>{tab.badge}</Badge>
-            {/if}
-        </a>
+        {#if tab.url}
+            <a
+                href={tab.url}
+                class={`tab ${tab.title === selectedTab ? "selected" : ""}`}
+            >
+                {#if tab.icon}
+                    <span class={`mdi mdi-${tab.icon}`}></span>
+                {/if}
+                {tab.title}
+                {#if tab.badge}
+                    <Badge>{tab.badge}</Badge>
+                {/if}
+            </a>
+        {:else}
+            <div class="tab disabled">
+                {#if tab.icon}
+                    <span class={`mdi mdi-${tab.icon}`}></span>
+                {/if}
+                {tab.title}
+                {#if tab.badge}
+                    <Badge>{tab.badge}</Badge>
+                {/if}
+            </div>
+        {/if}
     {/each}
 </div>
 
@@ -76,5 +94,12 @@
     .tab:not(.selected):hover {
         background-color: var(--background-color);
         color: var(--on-background-color);
+    }
+
+    .tab.disabled, .tab.disabled:hover {
+        background-color: var(--primary-variant-color);
+        color: var(--on-background-color);
+        cursor: not-allowed;
+        opacity: .5;
     }
 </style>

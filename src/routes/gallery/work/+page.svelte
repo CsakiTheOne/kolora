@@ -66,7 +66,7 @@
 
     .title-row span {
         font-size: 1.3rem;
-        padding: var(--spacing);
+        padding: 0 var(--spacing);
         cursor: pointer;
     }
 </style>
