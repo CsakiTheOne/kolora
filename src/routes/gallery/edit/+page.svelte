@@ -41,7 +41,7 @@
 
         if (work.id) {
             const workRef = doc(db, "works", work.id);
-            setDoc(workRef, work)
+            setDoc(workRef, {...work})
                 .then(() => {
                     alert("Mű mentve!");
                 })
@@ -49,9 +49,11 @@
                     alert("Hiba történt a mentés során.");
                 });
         } else {
-            addDoc(collection(db, "works"), work)
-                .then(() => {
+            addDoc(collection(db, "works"), {...work})
+                .then((e) => {
                     alert("Új mű mentve!");
+                    work.id = e.id;
+                    saveWork();
                 })
                 .catch((err) => {
                     alert("Hiba történt az új mű mentése során.");

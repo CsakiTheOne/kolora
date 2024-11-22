@@ -12,15 +12,17 @@
     let currentPage: InteractivePoemPage | undefined = $state(
         interactivePoem.pages[0],
     );
+    let processedContent = $state("");
 
     $effect(() => {
         interactivePoem.runCommandsOnPage(currentPage);
+        processedContent = currentPage?.getProcessedContent(interactivePoem) || "";
     });
 </script>
 
 <div class="work-display">
     <h3>{currentPage?.title}</h3>
-    <p>{@html currentPage?.content}</p>
+    <p>{@html processedContent}</p>
     {#each currentPage?.links || [] as link}
         <button
             class="interactive-poem-link"

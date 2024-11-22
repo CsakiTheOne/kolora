@@ -2,7 +2,7 @@ import type Work from "./model/Work";
 
 export default class InteractivePoem {
     pages: InteractivePoemPage[] = [];
-    variables: { [key: string]: string } = $state({});
+    variables: { [key: string]: string } = {};
 
     constructor(work: Work) {
         const rawPages = work.content.split("## ").slice(1);
@@ -82,6 +82,10 @@ export class InteractivePoemPage {
         this.content = content;
         this.links = links;
         this.commands = commands;
+    }
+
+    getProcessedContent(poem: InteractivePoem): string {
+        return this.content.replace(/\{(\w+)\}/g, (match, variable) => poem.variables[variable] || match);
     }
 }
 
