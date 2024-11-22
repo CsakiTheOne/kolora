@@ -1,7 +1,7 @@
 <footer>
     <p style="text-align: center;">
         Az oldalt készítette és működteti:<br />
-        <a href="https://www.instagram.com/wholesomewarestuff" target="_blank">
+        <a href="https://github.com/wholesomeware" target="_blank">
             WholesomeWare
         </a>
     </p>
