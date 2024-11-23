@@ -29,6 +29,11 @@ export default class KoloraLocalDb {
             data: 'theme-retro',
         },
         {
+            code: '230621',
+            action: 'message',
+            data: 'Gratula! Ne mondd el senkinek a kódot vagy, hogy hogyan találtad meg! :D',
+        },
+        {
             code: 'ny8lcas.sl24m',
             url: 'https://youtu.be/-9d2Bm0v4dk',
         },
@@ -43,24 +48,34 @@ export default class KoloraLocalDb {
     ];
 
     static tryCode(code: string) {
-        const secret = KoloraLocalDb.secrets.find(s => s.code === code);
+        const secrets = KoloraLocalDb.secrets.filter(s => s.code === code);
 
-        if (!secret) {
+        if (!secrets) {
             return null;
         }
 
-        if (secret.url) {
-            if (secret.url.startsWith('/')) {
-                window.location.href = secret.url;
+        if (secrets.some(s => s.url)) {
+            const secretUrl = secrets.find(s => s.url)?.url;
+            if (secretUrl?.startsWith('/')) {
+                window.location.href = secretUrl;
                 return;
             }
-            window.open(secret.url, '_blank');
+            window.open(secretUrl, '_blank');
         }
 
-        if (secret.action) {
-            if (secret.action === 'setTheme') {
-                ThemeManager.theme = secret.data || 'theme-light';
-            }
+        if (secrets.some(s => s.action)) {
+            const secretActions = secrets.filter(s => s.action);
+
+            secretActions.forEach(secret => {
+                switch (secret.action) {
+                    case 'message':
+                        alert(secret.data);
+                        break;
+                    case 'setTheme':
+                        ThemeManager.theme = secret.data || 'theme-light';
+                        break;
+                }
+            });
         }
     }
 }
