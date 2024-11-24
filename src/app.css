@@ -14,7 +14,7 @@ body {
 }
 
 body.theme-dark {
-    --primary-color: #b20050;
+    --primary-color: #b90053;
     --primary-variant-color: #532331;
     --secondary-color: #242950;
     --secondary-variant-color: #8ba9d6;
@@ -82,6 +82,7 @@ a {
     color: var(--primary-color);
     text-decoration: none;
     border-radius: var(--corner-radius);
+    transition: background-color .1s ease-in-out, color .1s ease-in-out;
 }
 
 a:first-letter {

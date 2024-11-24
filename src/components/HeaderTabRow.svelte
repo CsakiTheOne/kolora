@@ -1,11 +1,15 @@
 <script>
     import Badge from "./Badge.svelte";
 
-    const { selectedTab, ...rest } = $props();
+    const {
+        selectedTab = "",
+        headerBgColor = "var(--header-bg-color)",
+        tabBgColor = "var(--primary-variant-color)",
+        ...rest
+    } = $props();
 
     let tabs = [
         { icon: "timeline", title: "Idővonal", url: "/timeline" },
-        { title: "???" }, // Galéria helye
         {
             icon: "form-textbox-password",
             title: "Kódok",
@@ -26,7 +30,7 @@
     });
 </script>
 
-<div {...rest} class="tab-row">
+<div {...rest} class="tab-row" style="--header-bg-color: {headerBgColor}; --tab-bg-color: {tabBgColor};">
     {#each tabs as tab}
         {#if tab.url}
             <a
@@ -65,15 +69,16 @@
         overflow-x: auto;
         overflow-y: hidden;
         scrollbar-width: none;
+        background-color: var(--header-bg-color);
     }
 
     .tab,
     .tab:hover {
         display: inline-block;
         padding: calc(var(--spacing) / 3) calc(var(--spacing) / 2);
-        border-left: 2px solid var(--primary-color);
-        border-top: 2px solid var(--primary-color);
-        border-right: 2px solid var(--primary-color);
+        border-left: 2px solid var(--header-bg-color);
+        border-top: 2px solid var(--header-bg-color);
+        border-right: 2px solid var(--header-bg-color);
         border-radius: 0;
         border-top-left-radius: var(--corner-radius);
         border-top-right-radius: var(--corner-radius);
@@ -87,7 +92,7 @@
     }
 
     .tab:not(.selected) {
-        background-color: var(--primary-variant-color);
+        background-color: var(--tab-bg-color);
         color: var(--on-primary-variant-color);
     }
 
@@ -96,10 +101,11 @@
         color: var(--on-background-color);
     }
 
-    .tab.disabled, .tab.disabled:hover {
-        background-color: var(--primary-variant-color);
+    .tab.disabled,
+    .tab.disabled:hover {
+        background-color: var(--tab-bg-color);
         color: var(--on-background-color);
         cursor: not-allowed;
-        opacity: .5;
+        opacity: 0.5;
     }
 </style>
