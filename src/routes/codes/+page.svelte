@@ -1,5 +1,6 @@
 <script>
     import KoloraLocalDb from "$lib/KoloraLocalDb";
+    import Badge from "../../components/Badge.svelte";
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
 
@@ -30,10 +31,10 @@
         Beváltás
     </button>
     <p>
-        <abbr title="A funkcióval kapcsolatban bármi megváltozhat vagy akár teljesen meg is szűnhet.">
+        <Badge>
             <span class="mdi mdi-test-tube"></span>
             Kísérleti funkció
-        </abbr>
+        </Badge>
     </p>
 </main>
 <Footer />
