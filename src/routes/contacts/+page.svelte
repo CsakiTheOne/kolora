@@ -2,10 +2,15 @@
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
     import HeaderTabRow from "../../components/HeaderTabRow.svelte";
+    import logoKolora from "$lib/images/kolora-logo.png";
+    import logoWholesomeWare from "$lib/images/wholesomeware-logo.png";
 </script>
 
 <Header selectedTab="Elérhetőségek" />
 <main>
+    <p class="logo-container">
+        <img src={logoKolora} alt="">
+    </p>
     <h2>Kolora Egyesület</h2>
     <p>
         <a href="mailto:koloraegyesulet@gmail.com" target="_blank">
@@ -44,6 +49,9 @@
         </a>
     </p>
 
+    <p class="logo-container">
+        <img src={logoWholesomeWare} alt="">
+    </p>
     <h2>WholesomeWare</h2>
     <p>
         Ha bármi probléma vagy kérdés van az oldallal kapcsolatban, ezeken a
@@ -81,3 +89,19 @@
     ></iframe-->
 </main>
 <Footer />
+
+<style>
+    .logo-container {
+        text-align: center;
+    }
+
+    .logo-container img {
+        max-width: 128px;
+        width: 25%;
+        border-radius: 50%;
+    }
+
+    h2 {
+        text-align: center;
+    }
+</style>
