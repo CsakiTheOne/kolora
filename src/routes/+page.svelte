@@ -1,5 +1,4 @@
 <script>
-    import { onMount } from "svelte";
     import Footer from "../components/Footer.svelte";
 </script>
 
@@ -7,7 +6,7 @@
     <svg viewBox="0 0 100 100" preserveAspectRatio="none">
         <path
             fill="#fff"
-            d="M 0 0 V 100 H 100 V 10 C 93 6 81 3 70 3 C 59 3 48 11 37 11 C 25 11 16 0 0 0 Z"
+            d="M 0 0 V 100 H 100 V -100 Z"
         />
     </svg>
     <main>
@@ -60,10 +59,22 @@
         bottom: 0;
         width: 100%;
         height: 45%;
+        animation: growFromBottom 2s ease-out;
     }
 
     svg > path {
         fill: var(--primary-variant-color);
+        transition: height 2s, d 2s;
+        d: path("M 0 0 V 100 H 100 V 10 C 93 6 81 3 70 3 C 59 3 48 11 37 11 C 25 11 16 0 0 0 Z");
+    }
+
+    @keyframes growFromBottom {
+        0% {
+            height: 0%;
+        }
+        100% {
+            height: 45%;
+        }
     }
 
     main {
