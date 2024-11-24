@@ -82,16 +82,10 @@ a {
     color: var(--primary-color);
     text-decoration: none;
     border-radius: var(--corner-radius);
-    transition: background-color .1s ease-in-out, color .1s ease-in-out;
 }
 
 a:first-letter {
     text-decoration: underline;
-}
-
-a:hover {
-    background-color: var(--primary-color);
-    color: var(--on-primary-color);
 }
 
 main {
