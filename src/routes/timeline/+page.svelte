@@ -1,10 +1,11 @@
 <script>
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
-    import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
-    import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import VerticalTimelineItem from "../../components/VerticalTimelineItem.svelte";
     import KoloraLocalDb from "$lib/KoloraLocalDb";
+    import imgYearOpeningSlam from "$lib/images/gallery/2024-evnyito-slam/event-banner.jpg";
+    import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
+    import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -21,25 +22,20 @@
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
-        title="Kolora terasz és egyéb zenés rendezvények"
+        title="Kolora terasz és zene"
         subtitle="Egész évben Februártól Novemberig"
     >
         <p>
             Az évben több alkalommal is megrendezésre kerültek a Kolora teraszok
             és más zenés események a Museum Caféban és a Nyolcas Műhelyben. Ezen
-            események során felléptek a Kolora Egyesület tagjai, barátai és más
-            zenekarok is.
-        </p>
-        <p>
-            Néhány fellépő: JEX, Nedel'a, Kalafatics Imi, Loophia, .kory,
-            Bodonyi Dani, Næz
+            események során felléptek a Kolora Egyesület tagjai, barátai, mint például Bodonyi Dani a DJ set-jével és más
+            zenekarok is, mint például a JEX, a Nedel'a, a Loophia és a Næz.
         </p>
         <p style="text-align: center;">
             <button
                 class="elevated-button"
                 onclick={() => {
-                    const songsCount =
-                        KoloraLocalDb.bandSongs2024rewind.length;
+                    const songsCount = KoloraLocalDb.bandSongs2024rewind.length;
                     const randomSong =
                         KoloraLocalDb.bandSongs2024rewind[
                             Math.floor(Math.random() * songsCount)
@@ -47,7 +43,8 @@
                     window.open(randomSong, "_blank");
                 }}
             >
-                <span class="mdi mdi-music-note"></span> Hallgassunk valamit
+                <span class="mdi mdi-music-note"></span>
+                Hallgassunk valamit
             </button>
         </p>
     </VerticalTimelineItem>
@@ -85,11 +82,29 @@
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
+        title="Kalafatics Imre önálló estje"
+        subtitle="Április 7."
+        instagramLink="https://www.instagram.com/p/C5giBg0sakJ"
+        facebookLink="https://fb.me/e/3zCpDvxrU"
+    >
+        <p>
+            Imre spontán koncertjeivel sokan találkozhattunk már a Museum
+            Café-ban. Egy vasárnapi este lírával állt ki elénk, a
+            dalokhoz pedig nem felejtette otthon a remek történeteit sem.
+        </p>
+    </VerticalTimelineItem>
+
+    <VerticalTimelineItem
         title="2024 évnyitó slam"
         subtitle="Március 14."
         instagramLink="https://www.instagram.com/stories/highlights/17871723279011747/"
         facebookLink="https://fb.me/e/5qV6UfabB"
     >
+        <img
+            style="width: 100%; max-height: 320px; object-fit: cover;"
+            src={imgYearOpeningSlam}
+            alt=""
+        />
         <p>
             A Nyolcas Műhely adott otthont a Kolora Egyesület 2024-es évnyitó
             slam versenyének, ahol 18 előadást láthattunk. Köztük volt 6
