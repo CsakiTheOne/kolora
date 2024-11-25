@@ -1,11 +1,13 @@
 <script>
     import ThemeManager from "$lib/ThemeManager";
     import HeaderTabRow from "./HeaderTabRow.svelte";
+    import headerImage from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/group photo with cake.jpg";
 
     const { selectedTab = "" } = $props();
 </script>
 
-<header>
+<header style="background-image: url({headerImage});">
+    <div class="background-filter"></div>
     <div class="column">
         <p>Művészet? Kultúra? Székesfehérvár?</p>
         <a href="/"><h1 id="kolora-title">kolora!</h1></a>
@@ -19,8 +21,25 @@
 
 <style>
     header {
-        background-color: var(--primary-color);
+        position: relative;
         color: var(--on-primary-color);
+        background-position: center;
+        background-size: cover;
+        max-height: min-content;
+    }
+
+    :global(header *) {
+        z-index: 1;
+    }
+
+    .background-filter {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background-color: var(--primary-color);
+        opacity: .9;
     }
 
     .toolbar {
