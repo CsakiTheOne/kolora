@@ -6,7 +6,7 @@
     <svg viewBox="0 0 100 100" preserveAspectRatio="none">
         <path
             fill="#fff"
-            d="M 0 0 V 100 H 100 V -100 Z"
+            d="M0 0C16 0 25 13 37 13 48 13 59 3 70 3s23 3 30 7v90H0V0Z"
         />
     </svg>
     <main>
@@ -65,7 +65,6 @@
     svg > path {
         fill: var(--primary-variant-color);
         transition: height 2s, d 2s;
-        d: path("M 0 0 V 100 H 100 V 10 C 93 6 81 3 70 3 C 59 3 48 11 37 11 C 25 11 16 0 0 0 Z");
     }
 
     @keyframes growFromBottom {

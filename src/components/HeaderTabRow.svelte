@@ -14,7 +14,6 @@
             icon: "form-textbox-password",
             title: "Kódok",
             url: "/codes",
-            badge: "Béta",
         },
         { icon: "at", title: "Elérhetőségek", url: "/contacts" },
     ];
@@ -30,7 +29,11 @@
     });
 </script>
 
-<div {...rest} class="tab-row" style="--header-bg-color: {headerBgColor}; --tab-bg-color: {tabBgColor};">
+<div
+    {...rest}
+    class="tab-row"
+    style="--header-bg-color: {headerBgColor}; --tab-bg-color: {tabBgColor};"
+>
     {#each tabs as tab}
         {#if tab.url}
             <a

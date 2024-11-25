@@ -1,3 +1,6 @@
+@import url('./kolora.css');
+@import url('./anims.css');
+
 body {
     --primary-color: #89023d;
     --primary-variant-color: #db809d;

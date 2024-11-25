@@ -66,8 +66,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: var(--spacing);
-        gap: var(--spacing);
+        padding: calc(var(--spacing) * 2);
+        gap: calc(var(--spacing) * 2);
     }
 
     header a {
