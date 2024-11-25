@@ -45,10 +45,6 @@ export default class KoloraLocalDb {
             code: 'slamjam250411',
             url: '/gallery/',
         },
-        {
-            code: 'kolora',
-            url: '/todo/',
-        }
     ];
 
     static tryCode(code: string) {
