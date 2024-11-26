@@ -3,7 +3,11 @@
     import Footer from "../components/Footer.svelte";
 </script>
 
-<span id="theme-toggle-button" onclick={() => ThemeManager.toggleDarkLight()} class="mdi mdi-brightness-6"></span>
+<span
+    id="theme-toggle-button"
+    onclick={() => ThemeManager.toggleDarkLight()}
+    class="mdi mdi-brightness-6"
+></span>
 <div class="page-container">
     <header class="container">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -23,6 +27,12 @@
             </a>
             <div class="adaptive-col-row">
                 <p>
+                    <a href="#about">
+                        <span class="mdi mdi-information"></span>
+                        Rólunk
+                    </a>
+                </p>
+                <p>
                     <a href="/timeline">
                         <span class="mdi mdi-timeline"></span>
                         Idővonal
@@ -35,12 +45,6 @@
                     </a>
                 </p>
             </div>
-            <a href="#about" style="padding: var(--spacing);">
-                <span
-                    class="mdi mdi-menu-down"
-                    style="font-size: 2rem;"
-                ></span>
-            </a>
         </div>
     </header>
     <main class="container">
