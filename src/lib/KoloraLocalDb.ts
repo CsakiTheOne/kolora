@@ -42,8 +42,12 @@ export default class KoloraLocalDb {
             url: 'https://www.youtube.com/watch?v=CLzMPM1anl4&t=1s&pp=ygUQb3JpYXNpIGtpc2VnZXLFsQ%3D%3D',
         },
         {
+            code: 'pultos',
+            url: '/timeline/kispiros',
+        },
+        {
             code: 'slamjam250411',
-            url: '/gallery/',
+            url: '/gallery',
         },
     ];
 

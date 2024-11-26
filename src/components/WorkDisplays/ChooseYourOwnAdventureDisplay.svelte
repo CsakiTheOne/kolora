@@ -1,6 +1,6 @@
 <script lang="ts">
     import type Work from "$lib/model/Work";
-    import InteractivePoem, { InteractivePoemPage } from "$lib/InteractivePoem.svelte";
+    import ChooseYourOwnAdventure, { ChooseYourOwnAdventurePage } from "$lib/ChooseYourOwnAdventure.svelte";
 
     const {
         work,
@@ -8,8 +8,8 @@
         work: Work;
     } = $props();
 
-    let interactivePoem = $state(new InteractivePoem(work));
-    let currentPage: InteractivePoemPage | undefined = $state(
+    let interactivePoem = $state(new ChooseYourOwnAdventure(work));
+    let currentPage: ChooseYourOwnAdventurePage | undefined = $state(
         interactivePoem.pages[0],
     );
     let processedContent = $state("");

@@ -5,7 +5,7 @@
     import { initializeFirebase } from "$lib/firebase/firebase";
     import { doc, getDoc } from "firebase/firestore";
     import Work from "$lib/model/Work";
-    import InteractivePoemDisplay from "../../../components/WorkDisplays/InteractivePoemDisplay.svelte";
+    import ChooseYourOwnAdventureDisplay from "../../../components/WorkDisplays/ChooseYourOwnAdventureDisplay.svelte";
     import GalleryUtils from "$lib/GalleryUtils";
 
     let work: Work | null = $state(null);
@@ -48,8 +48,8 @@
 
     <hr />
 
-    {#if work?.workType === "Interaktív költemény"}
-        <InteractivePoemDisplay {work} />
+    {#if work?.workType === "Choose your own adventure"}
+        <ChooseYourOwnAdventureDisplay {work} />
     {:else}
         <p>{work?.content}</p>
     {/if}

@@ -1,7 +1,7 @@
 import type Work from "./model/Work";
 
-export default class InteractivePoem {
-    pages: InteractivePoemPage[] = [];
+export default class ChooseYourOwnAdventure {
+    pages: ChooseYourOwnAdventurePage[] = [];
     variables: { [key: string]: string } = {};
 
     constructor(work: Work) {
@@ -22,15 +22,15 @@ export default class InteractivePoem {
                 const condition = link.includes(" ? ") ? link.split(" ? ")[0].slice(1) : "1 == 1";
                 const text = link.slice(link.indexOf("? "), link.indexOf("]")).slice(1).trim() || link.slice(1, link.indexOf("]"));
                 const page = link.slice(link.indexOf("#"), link.lastIndexOf(")"));
-                return new InteractivePoemLink(text, page, new InteractivePoemCondition(condition));
+                return new ChooseYourOwnAdventureLink(text, page, new InteractivePoemCondition(condition));
             }) || [];
             const commands = rawContent.match(/\/.*/g) || [];
 
-            return new InteractivePoemPage(title, content, links, commands);
+            return new ChooseYourOwnAdventurePage(title, content, links, commands);
         });
     }
 
-    getPageByLink(link: InteractivePoemLink): InteractivePoemPage | undefined {
+    getPageByLink(link: ChooseYourOwnAdventureLink): ChooseYourOwnAdventurePage | undefined {
         const simplifiedLinkTarget = link.page.toLowerCase().replace(/\W*/g, "");
         const nextPage = this.pages.find((page) => {
             const simplifiedPageTitle = page.title.toLowerCase().replace(/\W*/g, "");
@@ -39,7 +39,7 @@ export default class InteractivePoem {
         return nextPage;
     }
 
-    runCommandsOnPage(page: InteractivePoemPage | undefined): void {
+    runCommandsOnPage(page: ChooseYourOwnAdventurePage | undefined): void {
         page?.commands.forEach((command) => {
             const [baseCommand, ...args] = command.split(" ");
             switch (baseCommand) {
@@ -71,25 +71,25 @@ export default class InteractivePoem {
     }
 }
 
-export class InteractivePoemPage {
+export class ChooseYourOwnAdventurePage {
     title: string;
     content: string;
-    links: InteractivePoemLink[];
+    links: ChooseYourOwnAdventureLink[];
     commands: string[];
 
-    constructor(title: string, content: string, links: InteractivePoemLink[] = [], commands: string[] = []) {
+    constructor(title: string, content: string, links: ChooseYourOwnAdventureLink[] = [], commands: string[] = []) {
         this.title = title;
         this.content = content;
         this.links = links;
         this.commands = commands;
     }
 
-    getProcessedContent(poem: InteractivePoem): string {
+    getProcessedContent(poem: ChooseYourOwnAdventure): string {
         return this.content.replace(/\{(\w+)\}/g, (match, variable) => poem.variables[variable] || match);
     }
 }
 
-class InteractivePoemLink {
+class ChooseYourOwnAdventureLink {
     text: string;
     page: string;
     condition: InteractivePoemCondition = InteractivePoemCondition.alwaysTrue;
@@ -115,7 +115,7 @@ class InteractivePoemCondition {
         this.value2 = value2;
     }
 
-    evaluate(poem: InteractivePoem): boolean {
+    evaluate(poem: ChooseYourOwnAdventure): boolean {
         const value1 = this.value1.startsWith("{") ? poem.variables[this.value1.slice(1, -1)] : this.value1;
         const value2 = this.value2.startsWith("{") ? poem.variables[this.value2.slice(1, -1)] : this.value2;
 

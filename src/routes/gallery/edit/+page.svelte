@@ -95,7 +95,7 @@
             bind:value={work.workType}
             class="outlined-input"
         >
-            <option value="Interaktív költemény">Interaktív költemény</option>
+            <option value="Interaktív költemény">Choose your own adventure</option>
             <option value="Írott mű"
                 >Egyéb írott mű (vers, novella, regény, stb.)</option
             >
