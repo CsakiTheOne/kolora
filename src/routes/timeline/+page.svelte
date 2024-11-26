@@ -96,7 +96,7 @@
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
-        title="2024 évnyitó slam"
+        title="Évnyitó slam"
         subtitle="Március 14."
         instagramLink="https://www.instagram.com/stories/highlights/17871723279011747/"
         facebookLink="https://fb.me/e/5qV6UfabB"
@@ -174,11 +174,6 @@
         Na jó, egy kicsit megváltozik. Ez az "Idővonal" oldal mellékszereplő
         lesz és más tartalmaknak ad helyt, mint pl. a 2025-ös költészetnapi
         eseménynek, ami még csak egy nem túl feltűnő linken keresztül érhető el.
-    </p>
-    <p>
-        Ezen kívül máshogy is megváltozik az idővonal. Nem csak a helye, de a
-        tartalma is. Az évek múlásával folyamatosan bővülni fog és egyre
-        többmindenre tekinthetünk vissza.
     </p>
 </main>
 <Footer />
