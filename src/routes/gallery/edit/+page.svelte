@@ -27,6 +27,9 @@
             getDoc(workRef)
                 .then((doc) => {
                     work = { ...new Work(), ...doc.data() };
+                    // Remove the id from the URL
+                    const newUrl = window.location.origin + window.location.pathname;
+                    window.history.replaceState({}, document.title, newUrl);
                 })
                 .catch((err) => {
                     window.history.back();

@@ -29,6 +29,8 @@
 
 <style>
     button {
+        display: none;
+        opacity: 0;
         position: fixed;
         bottom: calc(var(--spacing) * 2);
         right: calc(var(--spacing) * 2);
