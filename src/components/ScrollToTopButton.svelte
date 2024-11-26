@@ -10,7 +10,7 @@
                 } else {
                     button.style.display = "none";
                 }
-                button.style.opacity = '' + (window.scrollY / 100);
+                button.style.opacity = '' + (window.scrollY / 200);
             }
         });
     });
