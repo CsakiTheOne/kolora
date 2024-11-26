@@ -20,6 +20,12 @@
         </a>
         <div class="adaptive-col-row">
             <p>
+                <a href="/about">
+                    <span class="mdi mdi-information"></span>
+                    Rólunk
+                </a>
+            </p>
+            <p>
                 <a href="/timeline">
                     <span class="mdi mdi-timeline"></span>
                     Idővonal
