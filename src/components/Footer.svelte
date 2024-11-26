@@ -1,5 +1,21 @@
 <footer>
     <p style="text-align: center;">
+        <a
+            href="https://www.facebook.com/profile.php?id=100094619973134"
+            target="_blank"
+        >
+            <span class="mdi mdi-facebook"></span>
+        </a>
+        
+        <a href="https://www.instagram.com/koloraegyesulet/" target="_blank">
+            <span class="mdi mdi-instagram"></span>
+        </a>
+
+        <a href="https://www.youtube.com/@koloraegyesulet" target="_blank">
+            <span class="mdi mdi-youtube"></span>
+        </a>
+    </p>
+    <p style="text-align: center;">
         Az oldalt készítette és működteti:<br />
         <a href="https://github.com/wholesomeware" target="_blank">
             WholesomeWare
@@ -22,5 +38,10 @@
 
     a {
         color: #fff;
+    }
+
+    a > span {
+        font-size: 1.2rem;
+        margin: 0 calc(var(--spacing) / 2);
     }
 </style>

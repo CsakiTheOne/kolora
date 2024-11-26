@@ -28,8 +28,9 @@
         <p>
             Az évben több alkalommal is megrendezésre kerültek a Kolora teraszok
             és más zenés események a Museum Caféban és a Nyolcas Műhelyben. Ezen
-            események során felléptek a Kolora Egyesület tagjai, barátai, mint például Bodonyi Dani a DJ set-jével és más
-            zenekarok is, mint például a JEX, a Nedel'a, a Loophia és a Næz.
+            események során felléptek a Kolora Egyesület tagjai, barátai, mint
+            például Bodonyi Dani a DJ set-jével és más zenekarok is, mint
+            például a JEX, a Nedel'a, a Loophia és a Næz.
         </p>
         <p style="text-align: center;">
             <button
@@ -89,8 +90,8 @@
     >
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
-            Café-ban. Egy vasárnapi este lírával állt ki elénk, a
-            dalokhoz pedig nem felejtette otthon a remek történeteit sem.
+            Café-ban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
+            nem felejtette otthon a remek történeteit sem.
         </p>
     </VerticalTimelineItem>
 
@@ -101,7 +102,7 @@
         facebookLink="https://fb.me/e/5qV6UfabB"
     >
         <img
-            style="width: 100%; max-height: 320px; object-fit: cover;"
+            style="width: 100%; max-height: 300px; object-fit: cover;"
             src={imgYearOpeningSlam}
             alt=""
         />
@@ -128,11 +129,14 @@
         subtitle="Február 25."
         instagramLink="https://www.instagram.com/p/C4n0kGGsKUc"
     >
-        <img
-            style="width: 100%; max-height: 320px; object-fit: cover;"
-            src={imgFirstKoloraWorkshopTable}
-            alt=""
-        />
+        <div>
+            <img
+                style="width: 100%; max-height: 300px; object-fit: cover;"
+                src={imgFirstKoloraWorkshopTable}
+                alt=""
+            />
+            <span>Fotó: Mészáros Emese</span>
+        </div>
         <p>
             Szvoren Eszter és Völgyesi Toma voltak az irodalom tanáraink idén,
             akikkel együtt alkottunk, szójátékokat játszottunk és fejlődtünk.
