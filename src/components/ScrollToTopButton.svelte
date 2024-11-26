@@ -42,5 +42,6 @@
         border: none;
         border-radius: var(--corner-radius);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
     }
 </style>
