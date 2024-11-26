@@ -97,6 +97,7 @@ main {
     gap: var(--spacing);
     padding: var(--spacing) 0;
     text-align: left;
+    align-items: center;
 }
 
 @media (min-width: 720px) {

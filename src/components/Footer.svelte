@@ -1,4 +1,10 @@
-<footer>
+<script>
+    const {
+        ...rest
+    } = $props();
+</script>
+
+<footer {...rest}>
     <p style="text-align: center;">
         <a
             href="https://www.facebook.com/profile.php?id=100094619973134"
@@ -27,7 +33,7 @@
     footer {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         padding: var(--spacing);
         gap: var(--spacing);

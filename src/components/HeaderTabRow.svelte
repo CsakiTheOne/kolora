@@ -9,7 +9,6 @@
     } = $props();
 
     let tabs = [
-        { icon: "information", title: "Rólunk", url: "/about" },
         { icon: "timeline", title: "Idővonal", url: "/timeline" },
         {
             icon: "form-textbox-password",

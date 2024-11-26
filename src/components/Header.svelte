@@ -39,7 +39,7 @@
         right: 0;
         height: 100%;
         background-color: var(--primary-color);
-        opacity: .9;
+        opacity: .8;
     }
 
     .toolbar {
