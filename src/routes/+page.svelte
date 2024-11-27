@@ -1,6 +1,7 @@
 <script>
     import ThemeManager from "$lib/ThemeManager";
     import Footer from "../components/Footer.svelte";
+    import Header from "../components/Header.svelte";
 </script>
 
 <span
@@ -47,45 +48,54 @@
             </div>
         </div>
     </header>
-    <main class="container">
-        <h2 id="about">Rólunk</h2>
-        <h3>Ki, és mit?</h3>
-        <p>
-            Fehérvári kötődésű fiatalokból álló szervezőcsapatunk célja a
-            művészetek népszerűsítése és a kulturális közélet fejlesztése a
-            fiatalság körében.
-        </p>
-        <h3>Hogyan?</h3>
-        <p>
-            Művészeti / kulturális rendezvényeinken és közösségi média
-            profiljainkon rendszeres bemutatkozási és fellépési lehetőséggel
-            támogatjuk a helyi feltörekvő művészeket.
-        </p>
-        <h3>Hol?</h3>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173512.4889738877!2d18.27644473538632!3d47.19441633333276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f793764a78df%3A0x400c4290c1e11f0!2zU3rDqWtlc2ZlaMOpcnbDoXI!5e0!3m2!1sen!2shu!4v1732642994688!5m2!1sen!2shu"
-            width="100%"
-            height="250"
-            style="border: none; border-radius: var(--corner-radius);"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-        <p>Legyen Székesfehérvár tele élettel!</p>
-    </main>
     <div class="container">
-        <Footer style="height: 100%;" />
+        <Header selectedTab="Főoldal" />
+        <main>
+            <h2 id="about">Rólunk</h2>
+            <div class="adaptive-col-row" style="align-items: start;">
+                <div>
+                    <h3 style="margin-bottom: calc(var(--spacing) / 2);">Ki, és mit?</h3>
+                    <p>
+                        Fehérvári kötődésű fiatalokból álló szervezőcsapatunk
+                        célja a művészetek népszerűsítése és a kulturális
+                        közélet fejlesztése a fiatalság körében.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: calc(var(--spacing) / 2);">Hogyan?</h3>
+                    <p>
+                        Művészeti / kulturális rendezvényeinken és közösségi
+                        média profiljainkon rendszeres bemutatkozási és
+                        fellépési lehetőséggel támogatjuk a helyi feltörekvő
+                        művészeket.
+                    </p>
+                </div>
+            </div>
+            <h3>Hol?</h3>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173512.4889738877!2d18.27644473538632!3d47.19441633333276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f793764a78df%3A0x400c4290c1e11f0!2zU3rDqWtlc2ZlaMOpcnbDoXI!5e0!3m2!1sen!2shu!4v1732642994688!5m2!1sen!2shu"
+                width="100%"
+                height="350"
+                style="border: none; border-radius: var(--corner-radius);"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <p>Legyen Székesfehérvár tele élettel!</p>
+        </main>
+        <Footer />
     </div>
 </div>
 
 <style>
     #theme-toggle-button {
-        position: fixed;
+        position: absolute;
         right: 0;
         top: 0;
         padding: var(--spacing);
         font-size: 1.2rem;
         cursor: pointer;
+        color: var(--on-primary-color);
         z-index: 2;
     }
 
@@ -97,11 +107,11 @@
     .container {
         scroll-snap-align: start;
         width: 100%;
-        height: 100svh;
+        min-height: 100svh;
     }
 
     :global(html) {
-        scroll-snap-type: y mandatory;
+        scroll-snap-type: y proximity;
     }
 
     :global(body.theme-dark) header {
@@ -154,20 +164,5 @@
     h1 {
         font-size: 3.5rem;
         font-weight: 700;
-    }
-
-    .adaptive-col-row {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
-        flex: 1;
-    }
-
-    @media (min-width: 768px) {
-        .adaptive-col-row {
-            flex-direction: row;
-        }
     }
 </style>

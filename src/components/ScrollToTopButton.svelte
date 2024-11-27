@@ -35,7 +35,7 @@
         bottom: calc(var(--spacing) * 2);
         right: calc(var(--spacing) * 2);
         font-size: 1.3rem;
-        padding: var(--spacing);
+        padding: calc(var(--spacing) / 2);
         appearance: none;
         background-color: var(--primary-color);
         color: var(--on-primary-color);
