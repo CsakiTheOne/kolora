@@ -6,6 +6,7 @@
     import imgYearOpeningSlam from "$lib/images/gallery/2024-evnyito-slam/event-banner.jpg";
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
+    import Carousel from "../../components/Carousel.svelte";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -94,6 +95,28 @@
             nem felejtette otthon a remek történeteit sem.
         </p>
     </VerticalTimelineItem>
+
+
+    <Carousel
+        style="aspect-ratio: 21/9;"
+        pages={[
+            {
+                background:
+                    "url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420517825_273892215774776_968796109561885963_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=PSvSI2JOEAkQ7kNvgHVGorO&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AZxBaY89hOlbb1vYhBtxhyg&oh=00_AYDFQRQRu4zDRat17hZaRGRJMNqDa1bwQ7TWHN714pEVLg&oe=674D1EDA')",
+                title: "Imi",
+            },
+            {
+                background:
+                    "url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/434601977_273892225774775_3835235214518132631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=828I0Q07troQ7kNvgHA0vYv&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AGJTOTJeFYHkXrBysHnMbUy&oh=00_AYBkjoDmRXamy_dekiuzYbg-JHAFN-05tOtSjzF4IkvSMw&oe=674D3D39')",
+                title: "Közönség",
+            },
+            {
+                background:
+                    "url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/417392054_273892075774790_7571420337483724355_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=l4He1B_JOa0Q7kNvgF9Gux9&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=A51gUIpJ5N_Kt7aDof5xKH7&oh=00_AYAj8pGcxp8Rbo-wUHULgDb5_ADbdnbzR99LHRcsGVMvQg&oe=674D37B2')",
+                title: "Hangszer",
+            },
+        ]}
+    />
 
     <VerticalTimelineItem
         title="Évnyitó slam"

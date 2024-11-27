@@ -108,6 +108,7 @@ main {
 
 main>* {
     grid-column: main;
+    width: 100% !important;
 }
 
 .elevated-button {

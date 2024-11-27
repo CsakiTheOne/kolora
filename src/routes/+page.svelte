@@ -54,7 +54,9 @@
             <h2 id="about">Rólunk</h2>
             <div class="adaptive-col-row" style="align-items: start;">
                 <div>
-                    <h3 style="margin-bottom: calc(var(--spacing) / 2);">Ki, és mit?</h3>
+                    <h3 style="margin-bottom: calc(var(--spacing) / 2);">
+                        Ki, és mit?
+                    </h3>
                     <p>
                         Fehérvári kötődésű fiatalokból álló szervezőcsapatunk
                         célja a művészetek népszerűsítése és a kulturális
@@ -62,7 +64,9 @@
                     </p>
                 </div>
                 <div>
-                    <h3 style="margin-bottom: calc(var(--spacing) / 2);">Hogyan?</h3>
+                    <h3 style="margin-bottom: calc(var(--spacing) / 2);">
+                        Hogyan?
+                    </h3>
                     <p>
                         Művészeti / kulturális rendezvényeinken és közösségi
                         média profiljainkon rendszeres bemutatkozási és

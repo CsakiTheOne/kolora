@@ -47,8 +47,10 @@
 
 <style>
     .timeline-item {
+        width: 100%;
         display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
     }
 
     .indicators {
@@ -120,6 +122,7 @@
 
     .content {
         flex: 1;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: start;
