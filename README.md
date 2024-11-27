@@ -2,18 +2,21 @@
 
 ## Teendők első kiadásig
 
-- [ ] még több kép az idővonalra
-- [ ] még több esemény és leírás az idővonalra
+A projektben keress rá a `//TODO` kommentekre.
 
 ## Teendők jövő Áprilisig
 
-- [ ] galéria befejezése
-- [ ] új főoldal, ami reklámozza a közelgő versenyt
-- [ ] oldalak és szövegek a versenynek
-  - [ ] leírás
-  - [ ] szabályzat
-  - [ ] choose your own adventure dokumentáció
-- [ ] verseny mechanikák elkészítése
-  - [ ] regisztráció
-  - [ ] mű beküldés / kezelés
-  - [ ] szavazás
+- [ ] felhasználó kezelés
+  - [ ] Firebase auth integráció
+  - [ ] UI elemek
+  - [ ] jogi doksik megírása (adatkezelési szabályzat, stb.)
+- [ ] Slam Jam 2025. Április
+  - [ ] főoldal frissítése a verseny hírével
+  - [ ] verseny oldala (leírás, szabályzat, stb.)
+  - [ ] *choose your own adventure* dokumentáció
+- [ ] művek kezelése
+  - [ ] galéria oldal
+  - [ ] művek feltöltése (akár eseményhez kötve)
+  - [ ] művek megjelenítése
+  - [ ] művek kezelése (csak admin és a művek tulajdonosai)
+  - [ ] művek szavazása

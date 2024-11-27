@@ -7,6 +7,8 @@
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import Carousel from "../../components/Carousel.svelte";
+    import FbPostEmbed from "../../components/FbPostEmbed.svelte";
+    import { subscribe } from "firebase/data-connect";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -23,44 +25,60 @@
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
-        title="Kolora terasz és zene"
-        subtitle="Egész évben Februártól Novemberig"
+        title="Kolora teraszok + spontán zene"
+        subtitle="Egész évben"
     >
         <p>
             Az évben több alkalommal is megrendezésre kerültek a Kolora teraszok
-            és más zenés események a Museum Caféban és a Nyolcas Műhelyben. Ezen
-            események során felléptek a Kolora Egyesület tagjai, barátai, mint
-            például Bodonyi Dani a DJ set-jével és más zenekarok is, mint
-            például a JEX, a Nedel'a, a Loophia és a Næz.
+            a Museum Caféban és előfordult, hogy nagyobb bejelentés nélkül is
+            zenével leptük meg az ott italozókat. Ezen események során felléptek
+            a Kolora Egyesület tagjai, barátai, mint például Bodonyi Dani a DJ
+            set-jével és más zenekarok is, mint például a .kory.
         </p>
-        <p style="text-align: center;">
-            <button
-                class="elevated-button"
-                onclick={() => {
-                    const songsCount = KoloraLocalDb.bandSongs2024rewind.length;
-                    const randomSong =
-                        KoloraLocalDb.bandSongs2024rewind[
-                            Math.floor(Math.random() * songsCount)
-                        ];
-                    window.open(randomSong, "_blank");
-                }}
-            >
-                <span class="mdi mdi-music-note"></span>
-                Hallgassunk valamit
-            </button>
-        </p>
+        //TODO: Dani mix, esetleg képek
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
-        title="Múzeumok éjszakája és 1. Kolora szülinap"
+        title="Múzeumok éjszakája a Museum Caféban + 1. Kolora szülinap"
         subtitle="Július 22."
         instagramLink="https://www.instagram.com/p/C8MQxtZsmon"
     >
         <p>
-            Slam, Næz, DJ Bodonyi, italok és torta. Egy éves lett a Kolora és
-            megadtuk a módját az ünneplésnek a Museum Caféban.
+            Slam, Næz, DJ Bodonyi, fényfestés, italok és torta. Egy éves lett a
+            Kolora Július 21-én és megadtuk a módját az ünneplésnek.
+        </p>
+        <p>
+            <a href="https://www.youtube.com/@naez.official" target="_blank">
+                <span class="mdi mdi-youtube"></span>
+                Næz?
+            </a>
         </p>
         <p>//TODO: leírás, képek (Emese pls), videók (?), stb.</p>
+    </VerticalTimelineItem>
+
+    <VerticalTimelineItem
+        title="Loophia koncert a Museum Caféban"
+        subtitle="Április 21."
+    >
+        <iframe
+            width="100%"
+            style="aspect-ratio: 16/9;"
+            src="https://www.youtube.com/embed/Paa2xhP3EVo?si=qy4NsKYvwBuW2VR6"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+        <p>
+            <a
+                href="https://youtu.be/p-_4iC-xHoo?si=nStmUZVY8CfajXPy"
+                target="_blank"
+            >
+                <span class="mdi mdi-youtube"></span>
+                Ki, vagy mi az a Loophia?
+            </a>
+        </p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -87,31 +105,15 @@
         title="Kalafatics Imre önálló estje"
         subtitle="Április 7."
         instagramLink="https://www.instagram.com/p/C5giBg0sakJ"
-        facebookLink="https://fb.me/e/3zCpDvxrU"
     >
+        <FbPostEmbed
+            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0CbsgvpnR7TEz5txir6Fbd2djUADzjRg6ZoH6GFxT1pPjK6xJevxrmHbCWfpjHRLil%26id%3D100094619973134&width=350&show_text=true&height=540&appId"
+        />
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
-            Café-ban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
+            Caféban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
             nem felejtette otthon a remek történeteit sem.
         </p>
-
-        <Carousel
-            style="aspect-ratio: 21/9;"
-            pages={[
-                {
-                    background:
-                        "url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420517825_273892215774776_968796109561885963_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=PSvSI2JOEAkQ7kNvgHVGorO&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AZxBaY89hOlbb1vYhBtxhyg&oh=00_AYDFQRQRu4zDRat17hZaRGRJMNqDa1bwQ7TWHN714pEVLg&oe=674D1EDA')",
-                },
-                {
-                    background:
-                        "url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/434601977_273892225774775_3835235214518132631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=828I0Q07troQ7kNvgHA0vYv&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AGJTOTJeFYHkXrBysHnMbUy&oh=00_AYBkjoDmRXamy_dekiuzYbg-JHAFN-05tOtSjzF4IkvSMw&oe=674D3D39')",
-                },
-                {
-                    background:
-                        "url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/417392054_273892075774790_7571420337483724355_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=l4He1B_JOa0Q7kNvgF9Gux9&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=A51gUIpJ5N_Kt7aDof5xKH7&oh=00_AYAj8pGcxp8Rbo-wUHULgDb5_ADbdnbzR99LHRcsGVMvQg&oe=674D37B2')",
-                },
-            ]}
-        />
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -146,6 +148,7 @@
     <VerticalTimelineItem
         title="Első slam poetry workshop"
         subtitle="Február 25."
+        facebookLink="https://www.facebook.com/permalink.php?story_fbid=pfbid0GffCQPFqTkqZTbrEXGCiq5wVYXpSksXKvrdz2RmGuQDWytgJowzap5yZrrHYZxnRl&id=100094619973134"
         instagramLink="https://www.instagram.com/p/C4n0kGGsKUc"
     >
         <div>
@@ -187,12 +190,12 @@
 
     <hr />
 
-    <h2>Mi fog történni ezzel az oldallal 2025 eleje után?</h2>
-    <p>Marad emléknek amíg azok kedvesek számunkra.</p>
+    <h2>Mi lesz az idővonallal 2024 után?</h2>
+    <p>Marad emléknek amíg az kedves számunkra.</p>
     <p>
         Na jó, egy kicsit megváltozik. Ez az "Idővonal" oldal mellékszereplő
-        lesz és más tartalmaknak ad helyt, mint pl. a 2025-ös költészetnapi
-        eseménynek, ami még csak egy nem túl feltűnő linken keresztül érhető el.
+        lesz és más tartalmaknak ad helyt. Milyen tartalmaknak? Majd
+        meglátjátok!
     </p>
 </main>
 <Footer />

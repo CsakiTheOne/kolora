@@ -1,4 +1,5 @@
 <script>
+    import KoloraLocalDb from "$lib/KoloraLocalDb";
     import ThemeManager from "$lib/ThemeManager";
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
@@ -86,6 +87,27 @@
                 referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
             <p>Legyen Székesfehérvár tele élettel!</p>
+
+            <h2>Barátaink</h2>
+            <p>
+                //TODO: szöveg a kedvenc bandáinkról, helyeinkről, stb.
+            </p>
+            <p style="text-align: center;">
+                <button
+                    class="elevated-button"
+                    onclick={() => {
+                        const songsCount = KoloraLocalDb.bandSongs2024rewind.length;
+                        const randomSong =
+                            KoloraLocalDb.bandSongs2024rewind[
+                                Math.floor(Math.random() * songsCount)
+                            ];
+                        window.open(randomSong, "_blank");
+                    }}
+                >
+                    <span class="mdi mdi-music-note"></span>
+                    Hallgassunk valamit
+                </button>
+            </p>
         </main>
         <Footer />
     </div>
