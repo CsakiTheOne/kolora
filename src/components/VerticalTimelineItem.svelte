@@ -47,7 +47,7 @@
 
 <style>
     .timeline-item {
-        width: 100%;
+        max-width: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -122,7 +122,7 @@
 
     .content {
         flex: 1;
-        width: 100%;
+        max-width: calc(100% - 1rem);
         display: flex;
         flex-direction: column;
         align-items: start;

@@ -100,15 +100,19 @@ main {
     align-items: center;
 }
 
+main>* {
+    grid-column: main;
+    max-width: calc(100vw - var(--spacing) * 2) !important;
+}
+
 @media (min-width: 720px) {
     main {
         grid-template-columns: [full-start] 20% [main-start] 1fr [main-end] 20% [full-end];
     }
-}
 
-main>* {
-    grid-column: main;
-    width: 100% !important;
+    main>* {
+        max-width: calc(60vw - var(--spacing) * 2) !important;
+    }
 }
 
 .elevated-button {
