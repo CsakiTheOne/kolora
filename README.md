@@ -2,7 +2,9 @@
 
 ## Teendők első kiadásig
 
-A projektben keress rá a `//TODO` kommentekre.
+Tervezett kiadás: 2024. December 20.
+
+A projektben keress rá a `//TODO` kommentekre a hátralévő feladatokért.
 
 ## Teendők jövő Áprilisig
 
@@ -16,7 +18,7 @@ A projektben keress rá a `//TODO` kommentekre.
   - [ ] *choose your own adventure* dokumentáció
 - [ ] művek kezelése
   - [ ] galéria oldal
-  - [ ] művek feltöltése (akár eseményhez kötve)
-  - [ ] művek megjelenítése
-  - [ ] művek kezelése (csak admin és a művek tulajdonosai)
-  - [ ] művek szavazása
+  - [ ] feltöltés (akár eseményhez kötve)
+  - [x] megjelenítés
+  - [ ] kezelés (csak admin és a művek tulajdonosai)
+  - [ ] szavazás
