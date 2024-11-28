@@ -16,13 +16,21 @@
             const pageElements = carousel?.querySelectorAll(".page") || [];
             
             pageElements.forEach((page: HTMLElement) => {
-                const distanceFromCenter =  page.offsetLeft - scrollLeft - carousel?.clientWidth / 3;
-                const pageWidth = Math.max(minPageWidth, Math.min(maxPageWidth, maxPageWidth - distanceFromCenter * .55));
+                const distanceFromCenter =  page.offsetLeft - scrollLeft - (carousel?.offsetLeft);
+                const pageWidth = Math.max(minPageWidth, Math.min(maxPageWidth, maxPageWidth - distanceFromCenter * .6));
                 const contentOpacity = Math.max(0, Math.min(1, 1 - Math.abs(distanceFromCenter) / carousel?.clientWidth));
                 
                 page.style.width = `${pageWidth}px`;
                 page.querySelector(".page-content").style.opacity = contentOpacity.toString();
+                //page.querySelector(".page-content").innerHTML = `w: ${carousel?.clientWidth} d: ${distanceFromCenter}`;
             });
+
+            const lastItemDistance = pageElements[pageElements.length - 1].offsetLeft - scrollLeft - (carousel?.offsetLeft);
+            if (lastItemDistance < 0) {
+                carousel?.scrollTo({
+                    left: scrollLeft + lastItemDistance,
+                });
+            }
         }
 
         document.addEventListener("resize", () => {
@@ -54,7 +62,6 @@
         text-wrap: nowrap;
         overflow-y: hidden;
         overflow-x: scroll;
-        padding: 0 calc(var(--spacing) * 2);
         border-radius: calc(var(--corner-radius) * 2);
     }
     
@@ -84,6 +91,6 @@
 
     .spacer {
         display: inline-block;
-        width: 30cqw;
+        width: 50cqw;
     }
 </style>
