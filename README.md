@@ -4,6 +4,16 @@
 
 Tervezett kiadás: 2024. December 20.
 
+- [ ] jogi hülyeségek
+  - [ ] impresszum
+  - [ ] adatvédelmi tájékoztató
+  - [ ] cookie tájékoztató
+  - [x] elérhetőségek
+- [ ] 2024 visszatekintés befejezése
+  - [ ] Dani mixe
+  - [ ] képek Emesétől
+- [ ] "Barátaink" szekció megírása
+
 A projektben keress rá a `//TODO` kommentekre a hátralévő feladatokért.
 
 ## Teendők jövő Áprilisig
@@ -11,7 +21,6 @@ A projektben keress rá a `//TODO` kommentekre a hátralévő feladatokért.
 - [ ] felhasználó kezelés
   - [ ] Firebase auth integráció
   - [ ] UI elemek
-  - [ ] jogi doksik megírása (adatkezelési szabályzat, stb.)
 - [ ] Slam Jam 2025. Április
   - [ ] főoldal frissítése a verseny hírével
   - [ ] verseny oldala (leírás, szabályzat, stb.)
@@ -21,4 +30,8 @@ A projektben keress rá a `//TODO` kommentekre a hátralévő feladatokért.
   - [ ] feltöltés (akár eseményhez kötve)
   - [x] megjelenítés
   - [ ] kezelés (csak admin és a művek tulajdonosai)
-  - [ ] szavazás
+  - [ ] szavazás (fiók nélkül is)
+
+## Ráérős egyéb teendők
+
+- [ ] régi, 2024-es kincsvadászatnál használt komponensek áthelyezése egy `archive` mappába
