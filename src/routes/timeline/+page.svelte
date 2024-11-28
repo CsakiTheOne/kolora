@@ -2,13 +2,11 @@
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
     import VerticalTimelineItem from "../../components/VerticalTimelineItem.svelte";
-    import KoloraLocalDb from "$lib/KoloraLocalDb";
+    import Carousel from "../../components/Carousel.svelte";
     import imgYearOpeningSlam from "$lib/images/gallery/2024-evnyito-slam/event-banner.jpg";
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
-    import Carousel from "../../components/Carousel.svelte";
-    import FbPostEmbed from "../../components/FbPostEmbed.svelte";
-    import { subscribe } from "firebase/data-connect";
+    import imgMuzeumokEjszakajaGroupPhoto from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/group photo with cake.jpg";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -43,6 +41,27 @@
         subtitle="Július 22."
         instagramLink="https://www.instagram.com/p/C8MQxtZsmon"
     >
+        <Carousel
+            style="aspect-ratio: 21/6;"
+            pages={[
+                {
+                    background: `url('${imgMuzeumokEjszakajaGroupPhoto}')`,
+                    title: "Csoportkép a tortával",
+                },
+                {
+                    background: `url('${imgMuzeumokEjszakajaGroupPhoto}')`,
+                    title: "Csoportkép a tortával",
+                },
+                {
+                    background: `url('${imgMuzeumokEjszakajaGroupPhoto}')`,
+                    title: "Csoportkép a tortával",
+                },
+                {
+                    background: `url('${imgMuzeumokEjszakajaGroupPhoto}')`,
+                    title: "Csoportkép a tortával",
+                },
+            ]}
+        />
         <p>
             Slam, Næz, DJ Bodonyi, fényfestés, italok és torta. Egy éves lett a
             Kolora Július 21-én és megadtuk a módját az ünneplésnek.
@@ -105,10 +124,64 @@
         title="Kalafatics Imre önálló estje"
         subtitle="Április 7."
         instagramLink="https://www.instagram.com/p/C5giBg0sakJ"
+        facebookLink="https://www.facebook.com/permalink.php?story_fbid=273894045774593&id=100094619973134&ref=embed_post"
     >
-        <FbPostEmbed
-            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0CbsgvpnR7TEz5txir6Fbd2djUADzjRg6ZoH6GFxT1pPjK6xJevxrmHbCWfpjHRLil%26id%3D100094619973134&width=350&show_text=true&height=540&appId"
-        />
+        <div>
+            <Carousel
+                style="aspect-ratio: 21/9;"
+                pages={[
+                    {
+                        background: `url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420517825_273892215774776_968796109561885963_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=PSvSI2JOEAkQ7kNvgFCAuru&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ATKq0bQJpN77E5p2eJV16GA&oh=00_AYDR7-a-1WnoT7kV4CYxsm5KCmg2P5V59KasuF6K5OQjYw&oe=674EA89A')`,
+                        onclick: () =>
+                            window.open(
+                                "https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420517825_273892215774776_968796109561885963_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=PSvSI2JOEAkQ7kNvgFCAuru&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ATKq0bQJpN77E5p2eJV16GA&oh=00_AYDR7-a-1WnoT7kV4CYxsm5KCmg2P5V59KasuF6K5OQjYw&oe=674EA89A",
+                                "_blank",
+                            ),
+                    },
+                    {
+                        background: `url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420479229_273892205774777_2826171396095097959_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=rfri3rzj8RYQ7kNvgEoCuwL&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AinHepIzhgRXwJKr6PT0ABE&oh=00_AYCJmjaopQB8wJKtr4SgFadq8ju9KtWm2FDElL_EnYrKLw&oe=674EA5AC')`,
+                        onclick: () =>
+                            window.open(
+                                "https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420479229_273892205774777_2826171396095097959_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=rfri3rzj8RYQ7kNvgEoCuwL&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AinHepIzhgRXwJKr6PT0ABE&oh=00_AYCJmjaopQB8wJKtr4SgFadq8ju9KtWm2FDElL_EnYrKLw&oe=674EA5AC",
+                                "_blank",
+                            ),
+                    },
+                    {
+                        background: `url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/434601977_273892225774775_3835235214518132631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=22PsWcmF1QcQ7kNvgGrX62m&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AmZ8gNCL3XDBCyOxENfdzzE&oh=00_AYDfzxkfYwqkYknyYZwwDWaBtxvMDYyQTbw7owkRHZiePw&oe=674E8EB9')`,
+                        onclick: () =>
+                            window.open(
+                                "https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/434601977_273892225774775_3835235214518132631_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=22PsWcmF1QcQ7kNvgGrX62m&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AmZ8gNCL3XDBCyOxENfdzzE&oh=00_AYDfzxkfYwqkYknyYZwwDWaBtxvMDYyQTbw7owkRHZiePw&oe=674E8EB9",
+                                "_blank",
+                            ),
+                    },
+                    {
+                        background: `url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/434594751_273892085774789_1323393024636415877_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wO_VPVq-QK4Q7kNvgFJR9dd&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=Ai0_QVYz5RROAawesDRVccH&oh=00_AYBL4DiWatfbpLDhMqyifN2CqtiQ8jNFTXhhv6rNwe9ZLg&oe=674EA813')`,
+                        onclick: () =>
+                            window.open(
+                                "https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/434594751_273892085774789_1323393024636415877_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wO_VPVq-QK4Q7kNvgFJR9dd&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=Ai0_QVYz5RROAawesDRVccH&oh=00_AYBL4DiWatfbpLDhMqyifN2CqtiQ8jNFTXhhv6rNwe9ZLg&oe=674EA813",
+                                "_blank",
+                            ),
+                    },
+                    {
+                        background: `url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420518033_273892095774788_5248966560286878263_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=b5txkfqOIawQ7kNvgENKFkf&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AuOajZUYkhAme2OooUyAIIS&oh=00_AYBkcljJBG6DGHOfr-K-xoycok_Bs4d8v3XzBRkimto-FA&oe=674EB88D')`,
+                        onclick: () =>
+                            window.open(
+                                "https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420518033_273892095774788_5248966560286878263_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=b5txkfqOIawQ7kNvgENKFkf&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AuOajZUYkhAme2OooUyAIIS&oh=00_AYBkcljJBG6DGHOfr-K-xoycok_Bs4d8v3XzBRkimto-FA&oe=674EB88D",
+                                "_blank",
+                            ),
+                    },
+                    {
+                        background: `url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/417392054_273892075774790_7571420337483724355_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=FRJ-BdOA68QQ7kNvgH8EgbO&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=AUf7jLHL36FtF8-tBBWubqV&oh=00_AYCXzIqrnMr54MNJDXzr3fXTonAQeup7rEDMI40QfEA2CA&oe=674E8932')`,
+                        onclick: () =>
+                            window.open(
+                                "https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/417392054_273892075774790_7571420337483724355_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=FRJ-BdOA68QQ7kNvgH8EgbO&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=AUf7jLHL36FtF8-tBBWubqV&oh=00_AYCXzIqrnMr54MNJDXzr3fXTonAQeup7rEDMI40QfEA2CA&oe=674E8932",
+                                "_blank",
+                            ),
+                    },
+                ]}
+            />
+            <span>Fotók: Tenki Márton</span>
+        </div>
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
             Caféban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
