@@ -1,31 +1,47 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
-    const {
-        pages,
-        ...rest
-    } = $props();
+    const { pages, ...rest } = $props();
 
     let carousel: HTMLElement | null = $state(null);
 
     onMount(() => {
         function updateWidths() {
             const minPageWidth = 42;
-            const maxPageWidth = (carousel?.clientWidth || 0) * .6;
+            const maxPageWidth = (carousel?.clientWidth || 0) * 0.6;
             const scrollLeft = carousel?.scrollLeft || 0;
             const pageElements = carousel?.querySelectorAll(".page") || [];
-            
+
             pageElements.forEach((page: HTMLElement) => {
-                const distanceFromCenter =  page.offsetLeft - scrollLeft - (carousel?.offsetLeft);
-                const pageWidth = Math.max(minPageWidth, Math.min(maxPageWidth, maxPageWidth - distanceFromCenter * .6));
-                const contentOpacity = Math.max(0, Math.min(1, 1 - Math.abs(distanceFromCenter) / carousel?.clientWidth));
-                
+                const distanceFromCenter =
+                    page.offsetLeft - scrollLeft - carousel?.offsetLeft;
+                const pageWidth = Math.max(
+                    minPageWidth,
+                    Math.min(
+                        maxPageWidth,
+                        maxPageWidth - distanceFromCenter * 0.6,
+                    ),
+                );
+                const contentOpacity = Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        1 -
+                            Math.abs(distanceFromCenter) /
+                                carousel?.clientWidth,
+                    ),
+                );
+
                 page.style.width = `${pageWidth}px`;
-                page.querySelector(".page-content").style.opacity = contentOpacity.toString();
+                page.querySelector(".page-content").style.opacity =
+                    contentOpacity.toString();
                 //page.querySelector(".page-content").innerHTML = `w: ${carousel?.clientWidth} d: ${distanceFromCenter}`;
             });
 
-            const lastItemDistance = pageElements[pageElements.length - 1].offsetLeft - scrollLeft - (carousel?.offsetLeft);
+            const lastItemDistance =
+                pageElements[pageElements.length - 1].offsetLeft -
+                scrollLeft -
+                carousel?.offsetLeft;
             if (lastItemDistance < 0) {
                 carousel?.scrollTo({
                     left: scrollLeft + lastItemDistance,
@@ -47,7 +63,14 @@
 
 <div class="carousel" bind:this={carousel} {...rest}>
     {#each pages as page}
-        <div class="page" style="background: {page.background};">
+        <div
+            class="page"
+            style="background: {page.background}; cursor: {page.onclick ? 'pointer' : 'default'};"
+            onclick={page.onclick ? page.onclick : () => {}}
+            onkeypress={page.onkeypress ? page.onkeypress : () => {}}
+            role="button"
+            tabindex="0"
+        >
             <div class="page-content">
                 {page.title}
             </div>
@@ -64,7 +87,7 @@
         overflow-x: scroll;
         border-radius: calc(var(--corner-radius) * 2);
     }
-    
+
     .page {
         display: inline-block;
         margin: 0 calc(var(--spacing) / 2);
@@ -74,6 +97,7 @@
 
         overflow: hidden;
 
+        background-color: var(--secondary-color);
         background-position: center !important;
         background-size: cover !important;
         color: white;
