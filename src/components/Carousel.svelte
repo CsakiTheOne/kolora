@@ -11,16 +11,17 @@
     onMount(() => {
         function updateWidths() {
             const minPageWidth = 42;
-            const maxPageWidth = (carousel?.clientWidth || 0) * .67;
+            const maxPageWidth = (carousel?.clientWidth || 0) * .6;
             const scrollLeft = carousel?.scrollLeft || 0;
             const pageElements = carousel?.querySelectorAll(".page") || [];
             
             pageElements.forEach((page: HTMLElement) => {
-                const distanceFromCenter = scrollLeft - (page.offsetLeft - page.clientWidth / 3);
-                const absoluteDistanceFromCenter = Math.abs(distanceFromCenter);
-                const pageWidth = Math.max(minPageWidth, maxPageWidth - absoluteDistanceFromCenter * .5);
+                const distanceFromCenter =  page.offsetLeft - scrollLeft - carousel?.clientWidth / 3;
+                const pageWidth = Math.max(minPageWidth, Math.min(maxPageWidth, maxPageWidth - distanceFromCenter * .55));
+                const contentOpacity = Math.max(0, Math.min(1, 1 - Math.abs(distanceFromCenter) / carousel?.clientWidth));
                 
                 page.style.width = `${pageWidth}px`;
+                page.querySelector(".page-content").style.opacity = contentOpacity.toString();
             });
         }
 
@@ -39,7 +40,9 @@
 <div class="carousel" bind:this={carousel} {...rest}>
     {#each pages as page}
         <div class="page" style="background: {page.background};">
-            {page.title}
+            <div class="page-content">
+                {page.title}
+            </div>
         </div>
     {/each}
     <div class="spacer"></div>
@@ -56,12 +59,7 @@
     }
     
     .page {
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: end;
-        gap: calc(var(--spacing) / 2);
-        padding: calc(var(--spacing) / 2);
-
+        display: inline-block;
         margin: 0 calc(var(--spacing) / 2);
         border-radius: calc(var(--corner-radius) * 2);
         min-width: 20px;
@@ -74,8 +72,18 @@
         color: white;
     }
 
+    .page-content {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: end;
+        gap: calc(var(--spacing) / 2);
+        padding: calc(var(--spacing) / 2);
+        width: 100%;
+        height: 100%;
+    }
+
     .spacer {
         display: inline-block;
-        width: 20cqw;
+        width: 30cqw;
     }
 </style>

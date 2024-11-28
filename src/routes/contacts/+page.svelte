@@ -9,7 +9,7 @@
 <Header selectedTab="Elérhetőségek" />
 <main>
     <p class="logo-container">
-        <img src={logoKolora} alt="">
+        <img src={logoKolora} alt="" />
     </p>
     <h2>Kolora Egyesület</h2>
     <p>
@@ -50,7 +50,7 @@
     </p>
 
     <p class="logo-container">
-        <img src={logoWholesomeWare} alt="">
+        <img src={logoWholesomeWare} alt="" />
     </p>
     <h2>WholesomeWare</h2>
     <p>
@@ -95,10 +95,19 @@
         text-align: center;
     }
 
-    .logo-container img {
+    .logo-container > img {
         max-width: 128px;
         width: 25%;
         border-radius: 50%;
+        transition: transform 0.2s;
+    }
+
+    .logo-container > img:hover {
+        transform: scale(1.1);
+    }
+
+    .logo-container > img:active {
+        transform: scale(0.9);
     }
 
     h2 {
