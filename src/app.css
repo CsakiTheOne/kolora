@@ -95,6 +95,25 @@ iframe {
     border-radius: var(--corner-radius);
 }
 
+ul {
+    border: 2px solid var(--primary-color);
+    border-radius: var(--corner-radius);
+    overflow: hidden;
+}
+
+ul > * {
+    display: block;
+    width: 100%;
+}
+
+ul li {
+    display: block;
+    width: 100%;
+    list-style: none;
+    padding: var(--spacing);
+    border-bottom: 1px solid var(--primary-color);
+}
+
 main {
     display: grid;
     grid-template-columns: [full-start] 0 [main-start] 1fr [main-end] 0 [full-end];
@@ -117,6 +136,21 @@ main>* {
     main>* {
         max-width: calc(60vw - var(--spacing) * 2) !important;
     }
+}
+
+button {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+}
+
+.icon-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    padding: calc(var(--spacing) / 2);
+    transition: all 0.1s ease-in-out;
 }
 
 .elevated-button {

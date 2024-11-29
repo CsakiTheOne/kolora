@@ -65,14 +65,16 @@
     {#each pages as page}
         <div
             class="page"
-            style="background: {page.background}; cursor: {page.onclick ? 'pointer' : 'default'};"
+            style="background: {page.background}; cursor: {page.onclick
+                ? 'pointer'
+                : 'default'};"
             onclick={page.onclick ? page.onclick : () => {}}
             onkeypress={page.onkeypress ? page.onkeypress : () => {}}
             role="button"
             tabindex="0"
         >
             <div class="page-content">
-                {page.title}
+                <h4>{page.title}</h4>
             </div>
         </div>
     {/each}
@@ -111,6 +113,10 @@
         padding: calc(var(--spacing) / 2);
         width: 100%;
         height: 100%;
+    }
+
+    .page-content h4 {
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
     }
 
     .spacer {

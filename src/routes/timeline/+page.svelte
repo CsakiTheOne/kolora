@@ -27,10 +27,10 @@
         subtitle="Egész évben"
     >
         <p>
-            Az évben több alkalommal is megrendezésre kerültek a Kolora teraszok
-            a Museum Caféban és előfordult, hogy nagyobb bejelentés nélkül is
-            zenével leptük meg az ott italozókat. Ezen események során felléptek
-            a Kolora Egyesület tagjai, barátai, mint például Bodonyi Dani a DJ
+            Az évben több alkalommal is megrendezésre került a Kolora terasz a
+            Museum Caféban, és előfordult az is, hogy nagyobb bejelentés nélkül
+            leptük meg az ott italozókat. Ezen események során felléptek a
+            Kolora Egyesület tagjai, barátai, mint például Bodonyi Dani a DJ
             set-jével és más zenekarok is, mint például a .kory.
         </p>
         //TODO: Dani mix, esetleg képek
@@ -64,7 +64,7 @@
         />
         <p>
             Slam, Næz, DJ Bodonyi, fényfestés, italok és torta. Egy éves lett a
-            Kolora Július 21-én és megadtuk a módját az ünneplésnek.
+            Kolora Július 21-én, és megadtuk a módját az ünneplésnek.
         </p>
         <p>
             <a href="https://www.youtube.com/@naez.official" target="_blank">
@@ -114,7 +114,7 @@
         </p>
         <p><a href="/stickers"> 2024 költészet napi kincsvadászat</a></p>
         <p>
-            Viszont jövőre is vár a művészet kedvelőkre egy meglepetés. Már
+            Viszont jövőre is vár a művészetkedvelőkre egy meglepetés. Már
             készül a 2025-ös költészet napi program, amely itt lesz elérhető:
         </p>
         <p><a href="/jam">2025 költészet napja</a></p>
@@ -185,7 +185,7 @@
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
             Caféban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
-            nem felejtette otthon a remek történeteit sem.
+            elhozta a remek történeteit is.
         </p>
     </VerticalTimelineItem>
 
@@ -234,9 +234,9 @@
         </div>
         <p>
             Szvoren Eszter és Völgyesi Toma voltak az irodalom tanáraink idén,
-            akikkel együtt alkottunk, szójátékokat játszottunk és fejlődtünk.
+            akikkel együtt alkottunk, játszottunk a szavakkal és fejlődtünk.
             Ezeket a workshop-okat az évben többször is megtartották
-            Vasárnaponként a kedvenc kávézónkban.
+            vasárnaponként a kedvenc kávézónkban.
         </p>
     </VerticalTimelineItem>
 
