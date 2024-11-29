@@ -37,28 +37,35 @@
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
+        title="Waiting Room + egy5egy félakusztik koncert @ Museum Café"
+        subtitle="Augusztus 4."
+    >
+        <img
+            style="aspect-ratio: 16/9; width: 100%; object-fit: cover;"
+            src="https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/453432938_469832785759751_2716462326812764600_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=hQyTiGwFZ2QQ7kNvgFOZGk4&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=A-C2OJx1CvR_MAB9ywfjw0t&oh=00_AYBQArICAsvKFZTT-3UkXqwgDC-0v4zWVkMZPfsyhTbCTQ&oe=674FAB4E"
+            alt=""
+        />
+    </VerticalTimelineItem>
+
+    <VerticalTimelineItem
         title="Múzeumok éjszakája a Museum Caféban + 1. Kolora szülinap"
         subtitle="Július 22."
         instagramLink="https://www.instagram.com/p/C8MQxtZsmon"
     >
         <Carousel
-            style="aspect-ratio: 21/6;"
+            style="aspect-ratio: 21/9;"
             pages={[
                 {
-                    background: `url('${imgMuzeumokEjszakajaGroupPhoto}')`,
-                    title: "Csoportkép a tortával",
+                    title: "Montázs by Brotond Productions",
+                    background: `var(--primary-color)`,
+                    onclick: () =>
+                        window.open(
+                            "https://www.instagram.com/reel/C8-WQVdPFUb/",
+                            "_blank",
+                        ),
                 },
                 {
-                    background: `url('${imgMuzeumokEjszakajaGroupPhoto}')`,
-                    title: "Csoportkép a tortával",
-                },
-                {
-                    background: `url('${imgMuzeumokEjszakajaGroupPhoto}')`,
-                    title: "Csoportkép a tortával",
-                },
-                {
-                    background: `url('${imgMuzeumokEjszakajaGroupPhoto}')`,
-                    title: "Csoportkép a tortával",
+                    title: "//TODO: képek ide"
                 },
             ]}
         />
@@ -72,7 +79,7 @@
                 Næz?
             </a>
         </p>
-        <p>//TODO: leírás, képek (Emese pls), videók (?), stb.</p>
+        <p>//TODO: leírás, képek (Emese pls), stb.</p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem

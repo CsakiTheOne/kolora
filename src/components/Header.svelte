@@ -13,10 +13,15 @@
         <a href="/"><h1 id="kolora-title">kolora!</h1></a>
     </div>
     <div class="toolbar">
-        <span onclick={() => ThemeManager.toggleDarkLight()} class="mdi mdi-brightness-6"></span>
+        <span
+            onclick={() => ThemeManager.toggleDarkLight()}
+            class="mdi mdi-brightness-6"
+        ></span>
     </div>
 
-    <HeaderTabRow {selectedTab} />
+    <div class="main-container">
+        <HeaderTabRow {selectedTab} />
+    </div>
 </header>
 
 <style>
@@ -39,7 +44,7 @@
         right: 0;
         height: 100%;
         background-color: var(--primary-color);
-        opacity: .8;
+        opacity: 0.8;
     }
 
     .toolbar {
@@ -72,11 +77,5 @@
 
     header a {
         color: var(--on-primary-color);
-    }
-
-    @media (min-width: 720px) {
-        header {
-            padding: 0 20%;
-        }
     }
 </style>

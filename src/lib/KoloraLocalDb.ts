@@ -1,7 +1,7 @@
 import ThemeManager from "./ThemeManager";
 
 export default class KoloraLocalDb {
-    static bandSongs2024rewind = [
+    static bandSongs = [
         // The Jex
         'https://youtu.be/aNlgE6vcbiI?si=F8zA4cdpKtEeYhYJ',
         'https://youtu.be/5F-3pPWINsM?si=tTqJ7CnOBIh-HwCQ',
@@ -19,7 +19,18 @@ export default class KoloraLocalDb {
         'https://youtu.be/tmUzz82wAZ0?si=Pw9cVeSuMqGnPJAF',
         'https://youtu.be/8Mju0CCZemA?si=jbeJeekI-67Uz39f',
         // Nedel'a
+        'https://youtu.be/kDXxczfc9ik?si=klf2zb7hHnnK0u-X',
         'https://youtu.be/uWwkJXTX5rk?si=2Po9ujGyQGMAuhmz',
+        // Waiting Room
+        'https://youtu.be/sk3WEAAOMls?si=ytBouSl9JlU94J09',
+        'https://youtu.be/UW_gjiilXYQ?si=xYs1G5uXYszWQu4h',
+        'https://youtu.be/6__DN31kaXE?si=0mwuskw-t7Vz4p7O',
+        'https://youtu.be/G7CLtL6yLyM?si=rtAGrHIr6_exzqu7',
+        'https://youtu.be/iHcrnqhpH-c?si=l_XSpyP0VZG2ekVv',
+        'https://youtu.be/LMMUJI9eyrg?si=HDerWSI5gb3VuzEY',
+        'https://youtu.be/NMajHHufk54?si=hs8Y9CwjxSOcsyg-',
+        'https://youtu.be/_F-gC_YQ3v8?si=6YQh8l04Ge6qmkGW',
+        'https://youtu.be/ktqHOTsD2m8?si=Dq_XZ2JrVBmnwkGZ',
     ];
 
     static secrets = [

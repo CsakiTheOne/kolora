@@ -75,23 +75,6 @@
         color: var(--on-primary-color);
     }
 
-    main {
-        display: grid;
-        grid-template-columns: [full-start] 16px [main-start] 1fr [main-end] 16px [full-end];
-        gap: var(--spacing);
-        padding: var(--spacing) 0;
-    }
-
-    @media (min-width: 720px) {
-        main {
-            grid-template-columns: [full-start] 20% [main-start] 1fr [main-end] 20% [full-end];
-        }
-    }
-
-    main > * {
-        grid-column: main;
-    }
-
     main > :is(h1, h2, h3, h4, h5, h6) {
         text-align: left;
     }

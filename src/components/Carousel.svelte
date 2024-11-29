@@ -4,11 +4,12 @@
     const { pages, ...rest } = $props();
 
     let carousel: HTMLElement | null = $state(null);
+    let maxPageWidth = $state(0);
 
     onMount(() => {
         function updateWidths() {
             const minPageWidth = 42;
-            const maxPageWidth = (carousel?.clientWidth || 0) * 0.6;
+            maxPageWidth = (carousel?.clientWidth || 0) * 0.6;
             const scrollLeft = carousel?.scrollLeft || 0;
             const pageElements = carousel?.querySelectorAll(".page") || [];
 
@@ -74,7 +75,16 @@
             tabindex="0"
         >
             <div class="page-content">
-                <h4>{page.title}</h4>
+                {#if page.title}
+                    <h4 style="width: calc({maxPageWidth}px - var(--spacing));">
+                        {page.title}
+                    </h4>
+                {/if}
+                {#if page.text}
+                    <p style="width: calc({maxPageWidth}px - var(--spacing));">
+                        {page.text}
+                    </p>
+                {/if}
             </div>
         </div>
     {/each}
@@ -117,6 +127,13 @@
 
     .page-content h4 {
         text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+        white-space: normal;
+    }
+
+    .page-content p {
+        font-size: 0.8rem;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+        white-space: normal;
     }
 
     .spacer {

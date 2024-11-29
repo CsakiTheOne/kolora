@@ -128,13 +128,17 @@ main>* {
     max-width: calc(100vw - var(--spacing) * 2) !important;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
+    .main-container {
+        padding: 0 25%;
+    }
+
     main {
-        grid-template-columns: [full-start] 20% [main-start] 1fr [main-end] 20% [full-end];
+        grid-template-columns: [full-start] 25% [main-start] 1fr [main-end] 25% [full-end];
     }
 
     main>* {
-        max-width: calc(60vw - var(--spacing) * 2) !important;
+        max-width: calc(50vw - var(--spacing) * 2) !important;
     }
 }
 
