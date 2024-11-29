@@ -4,6 +4,7 @@
     import Carousel from "../components/Carousel.svelte";
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
+    import imgWholesomeWareLogo from "$lib/images/wholesomeware-logo.png";
 </script>
 
 <span
@@ -190,34 +191,32 @@
                 ]}
             />
             <h3>További partnereink</h3>
-            <Carousel
-                style="aspect-ratio: 21/9;"
-                pages={[
-                    {
-                        title: "Brotond Productions",
-                        text: "Aki kivágja az unalmas részeket",
-                        background:
-                            "url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/322222919_554215823041860_4998650009849050662_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=smiybflQW7kQ7kNvgHiqBsv&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=A0SgPMiBAk2fMm5dFFG_gKP&oh=00_AYDP6aVWGee0YuU9NU9JoBEcqrP8CJw3PiNO8GYzw57Rdw&oe=674FACDF')",
-                        onclick: () => {
-                            window.open(
-                                "https://www.instagram.com/brotond_productions/",
-                                "_blank",
-                            );
-                        },
-                    },
-                    {
-                        text: "Informatikai támogatás",
-                        background:
-                            "url('https://github.com/WholesomeWare/.github/blob/main/assets/header_title.jpg?raw=true')",
-                        onclick: () => {
-                            window.open(
-                                "https://github.com/WholesomeWare",
-                                "_blank",
-                            );
-                        },
-                    },
-                ]}
-            />
+            <div class="adaptive-col-row">
+                <a
+                    class="profile-display"
+                    href="https://www.instagram.com/brotond_productions/"
+                    target="_blank"
+                >
+                    <img
+                        src="https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/322222919_554215823041860_4998650009849050662_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=smiybflQW7kQ7kNvgHiqBsv&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=A0SgPMiBAk2fMm5dFFG_gKP&oh=00_AYDP6aVWGee0YuU9NU9JoBEcqrP8CJw3PiNO8GYzw57Rdw&oe=674FACDF"
+                        alt=""
+                    />
+                    <h4>Brotond Productions</h4>
+                    <p>Aki kivágja az unalmas részeket</p>
+                </a>
+                <a
+                    class="profile-display"
+                    href="https://github.com/WholesomeWare"
+                    target="_blank"
+                >
+                    <img
+                        src={imgWholesomeWareLogo}
+                        alt=""
+                    />
+                    <h4>WholesomeWare</h4>
+                    <p>Informatikai támogatás</p>
+                </a>
+            </div>
         </main>
         <Footer />
     </div>
