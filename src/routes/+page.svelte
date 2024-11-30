@@ -5,6 +5,7 @@
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
     import imgWholesomeWareLogo from "$lib/images/wholesomeware-logo.png";
+    import ProfileShowcase from "../components/ProfileShowcase.svelte";
 </script>
 
 <span
@@ -78,17 +79,6 @@
                     </p>
                 </div>
             </div>
-            <h3>Hol?</h3>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173512.4889738877!2d18.27644473538632!3d47.19441633333276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f793764a78df%3A0x400c4290c1e11f0!2zU3rDqWtlc2ZlaMOpcnbDoXI!5e0!3m2!1sen!2shu!4v1732642994688!5m2!1sen!2shu"
-                width="100%"
-                height="350"
-                style="border: none; border-radius: var(--corner-radius);"
-                allowfullscreen
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-            <p>Legyen Székesfehérvár tele élettel!</p>
 
             <h2>Barátaink</h2>
             <h3>Bandák, akik koncerteztek nálunk</h3>
@@ -115,6 +105,7 @@
                         },
                     },
                     {
+                        title: "Naez",
                         background:
                             "url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/339993555_1867895933565984_1086912742086473449_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=6O0KWI4wltIQ7kNvgGeuzr9&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=AKJvIywhPTxay71GK8nr1bQ&oh=00_AYCBkVg7LqfIEWoGVHUNwkjF6zmVikkjnkq6ism-yyyzJQ&oe=674F7F5B')",
                         onclick: () => {
@@ -165,56 +156,34 @@
                 </button>
             </p>
             <h3>Kedvenc helyeink</h3>
-            <Carousel
-                style="aspect-ratio: 21/9;"
-                pages={[
-                    {
-                        background:
-                            "url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/306000516_526334832831290_5001274354067863986_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=expRgXJMORsQ7kNvgHPyY8d&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AXxbDFn9LaHpecyedAPGoO7&oh=00_AYCZtxEHda8fuAi09CWW1xNkyQFeemh6mDpfztl66bhPzQ&oe=674F5B63')",
-                        onclick: () => {
-                            window.open(
-                                "https://www.facebook.com/museumcafeszekesfehervar",
-                                "_blank",
-                            );
-                        },
-                    },
-                    {
-                        background:
-                            "url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/301112437_499281555479521_4260646739517752206_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=6AL8q7Q59j4Q7kNvgF6q6-l&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AqrFvYPdToGdVmYGEGqBLp-&oh=00_AYAHBgiV-f6FH7vOW6mbo9ySytgtU_Nvczm0c-nCDgyA7A&oe=674F80C4')",
-                        onclick: () => {
-                            window.open(
-                                "https://www.facebook.com/nyolcasmuhely",
-                                "_blank",
-                            );
-                        },
-                    },
-                ]}
-            />
+            <iframe
+                src="https://www.google.com/maps/d/u/0/embed?mid=1FDeSn_pe5fEnno375EAs5YuQeHz95aA&ehbc=2E312F&noprof=1"
+                width="100%"
+                style="aspect-ratio: 16/9;"
+            ></iframe>
             <h3>További partnereink</h3>
             <div class="adaptive-col-row">
                 <a
-                    class="profile-display"
                     href="https://www.instagram.com/brotond_productions/"
                     target="_blank"
+                    style="flex: 1;"
                 >
-                    <img
-                        src="https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/322222919_554215823041860_4998650009849050662_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=smiybflQW7kQ7kNvgHiqBsv&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=A0SgPMiBAk2fMm5dFFG_gKP&oh=00_AYDP6aVWGee0YuU9NU9JoBEcqrP8CJw3PiNO8GYzw57Rdw&oe=674FACDF"
-                        alt=""
+                    <ProfileShowcase
+                        image="https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/322222919_554215823041860_4998650009849050662_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=smiybflQW7kQ7kNvgHiqBsv&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=A0SgPMiBAk2fMm5dFFG_gKP&oh=00_AYDP6aVWGee0YuU9NU9JoBEcqrP8CJw3PiNO8GYzw57Rdw&oe=674FACDF"
+                        name="Brotond Productions"
+                        title="Aki kivágja az unalmas részeket"
                     />
-                    <h4>Brotond Productions</h4>
-                    <p>Aki kivágja az unalmas részeket</p>
                 </a>
                 <a
-                    class="profile-display"
                     href="https://github.com/WholesomeWare"
                     target="_blank"
+                    style="flex: 1;"
                 >
-                    <img
-                        src={imgWholesomeWareLogo}
-                        alt=""
+                    <ProfileShowcase
+                        image={imgWholesomeWareLogo}
+                        name="WholesomeWare"
+                        title="Informatikai támogatás"
                     />
-                    <h4>WholesomeWare</h4>
-                    <p>Informatikai támogatás</p>
                 </a>
             </div>
         </main>
