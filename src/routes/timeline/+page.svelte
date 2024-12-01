@@ -86,13 +86,11 @@
             Kolora Július 21-én, és megadtuk a módját az ünneplésnek.
         </p>
         <p>
-            <a
-                class="btn"
-                href="https://www.youtube.com/@naez.official"
-                target="_blank"
-            >
-                <span class="mdi mdi-youtube"></span>
-                Næz?
+            <a href="https://www.youtube.com/@naez.official" target="_blank">
+                <button class="btn">
+                    <span class="mdi mdi-youtube"></span>
+                    Næz?
+                </button>
             </a>
         </p>
         <p>//TODO: leírás, képek (Emese pls), stb.</p>
@@ -114,12 +112,13 @@
         ></iframe>
         <p>
             <a
-                class="btn"
                 href="https://youtu.be/p-_4iC-xHoo?si=nStmUZVY8CfajXPy"
                 target="_blank"
             >
-                <span class="mdi mdi-youtube"></span>
-                Ki, vagy mi az a Loophia?
+                <button class="btn">
+                    <span class="mdi mdi-youtube"></span>
+                    Ki, vagy mi az a Loophia?
+                </button>
             </a>
         </p>
     </VerticalTimelineItem>
@@ -137,9 +136,9 @@
             megtekinthetőek az alábbi linken:
         </p>
         <p>
-            <a class="btn" href="/stickers">
-                2024 költészet napi kincsvadászat</a
-            >
+            <a href="/stickers">
+                <button class="btn"> 2024 költészet napi kincsvadászat </button>
+            </a>
         </p>
         <!--p>
             Viszont jövőre is vár a művészetkedvelőkre egy meglepetés. Már
@@ -237,12 +236,13 @@
         </p>
         <p>
             <a
-                class="btn"
                 href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=tzZyj71NrnGVyWnT"
                 target="_blank"
             >
-                <span class="mdi mdi-youtube"></span>
-                Fellépők megtekintése
+                <button class="btn">
+                    <span class="mdi mdi-youtube"></span>
+                    Fellépők megtekintése
+                </button>
             </a>
         </p>
     </VerticalTimelineItem>

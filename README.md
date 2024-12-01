@@ -4,34 +4,41 @@
 
 Tervezett kiadás: 2024. December 20.
 
-- [ ] jogi hülyeségek
-  - [ ] impresszum
-  - [ ] adatvédelmi tájékoztató
-  - [ ] cookie tájékoztató
-  - [x] elérhetőségek
-- [ ] 2024 visszatekintés befejezése
-  - [ ] Dani mixe
-  - [ ] képek Emesétől
-- [ ] "Barátaink" szekció megírása
+- 2024 visszatekintés befejezése
+  - [ ] Kolora teraszok + spontán zene: **Dani** mixe
+  - Múzeumok éjszakája + Kolora szülinap
+    - [ ] Képek **Emesétől**
+    - [ ] Videók **Botitól** (már Csákinál)
+- Jogi hülyeségek
+  - [ ] Impresszum
+  - [ ] Adatvédelmi tájékoztató
+  - [ ] Cookie tájékoztató
+  - [x] Elérhetőségek
+- [x] Főoldal
+  - [x] Splash screen
+  - [x] Rólunk
+  - [x] Barátaink
+- [x] Kódok
 
-A projektben keress rá a `//TODO` kommentekre a hátralévő feladatokért.
+A projektben keress rá a `//TODO` kommentekre további feladatokért.
 
 ## Teendők jövő Áprilisig
 
-- [ ] felhasználó kezelés
+- [ ] Felhasználó kezelés
   - [ ] Firebase auth integráció
   - [ ] UI elemek
+  - [ ] Adatvédelmi tájékoztató frissítése
 - [ ] Slam Jam 2025. Április
-  - [ ] főoldal frissítése a verseny hírével
-  - [ ] verseny oldala (leírás, szabályzat, stb.)
-  - [ ] *choose your own adventure* dokumentáció
-- [ ] művek kezelése
-  - [ ] galéria oldal
-  - [ ] feltöltés (akár eseményhez kötve)
-  - [x] megjelenítés
-  - [ ] kezelés (csak admin és a művek tulajdonosai)
-  - [ ] szavazás (fiók nélkül is)
+  - [ ] Főoldal frissítése a verseny hírével
+  - [ ] Verseny oldala (leírás, szabályzat, stb.)
+  - [ ] *Choose your own adventure* dokumentáció
+- [ ] Művek kezelése
+  - [ ] Galéria oldal
+  - [ ] Feltöltés (akár eseményhez kötve)
+  - [x] Megjelenítés
+  - [ ] Kezelés (csak admin és a művek tulajdonosai)
+  - [ ] Szavazás (fiók nélkül is)
 
 ## Ráérős egyéb teendők
 
-- [ ] régi, 2024-es kincsvadászatnál használt komponensek áthelyezése egy `archive` mappába
+- [ ] Régi, 2024-es kincsvadászatnál használt komponensek áthelyezése egy `archive` mappába

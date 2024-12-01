@@ -84,7 +84,6 @@ a {
     display: inline-block;
     color: var(--primary-color);
     text-decoration: none;
-    border-radius: var(--corner-radius);
 }
 
 a:first-letter {
@@ -152,6 +151,7 @@ main>* {
 }
 
 .btn {
+    display: inline-block;
     appearance: none;
     border: none;
     border-radius: calc(var(--spacing) * 2);
