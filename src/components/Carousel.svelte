@@ -77,12 +77,12 @@
             <div class="page-content">
                 {#if page.title}
                     <h4 style="width: calc({maxPageWidth}px - var(--spacing));">
-                        {page.title}
+                        {@html page.title}
                     </h4>
                 {/if}
                 {#if page.text}
                     <p style="width: calc({maxPageWidth}px - var(--spacing));">
-                        {page.text}
+                        {@html page.text}
                     </p>
                 {/if}
             </div>
@@ -138,6 +138,6 @@
 
     .spacer {
         display: inline-block;
-        width: 50cqw;
+        width: 40cqw;
     }
 </style>

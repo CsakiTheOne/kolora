@@ -114,7 +114,7 @@
             class="outlined-input"
         ></textarea>
 
-        <button class="elevated-button" onclick={saveWork}>
+        <button class="btn" onclick={saveWork}>
             <span class="mdi mdi-content-save"></span>
             Mentés
         </button>

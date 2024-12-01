@@ -22,7 +22,7 @@
         placeholder="Adj meg egy kódot"
     />
     <button
-        class="elevated-button"
+        class="btn"
         onclick={() => {
             KoloraLocalDb.tryCode(code);
             code = "";

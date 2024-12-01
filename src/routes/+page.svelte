@@ -56,6 +56,9 @@
         <Header selectedTab="Főoldal" />
         <main>
             <h2 id="about">Rólunk</h2>
+            <p>
+                //TODO: csoportkép
+            </p>
             <div class="adaptive-col-row" style="align-items: start;">
                 <div>
                     <h3 style="margin-bottom: calc(var(--spacing) / 2);">
@@ -86,6 +89,17 @@
                 style="aspect-ratio: 21/9;"
                 pages={[
                     {
+                        title: "egy5egy",
+                        background:
+                            "url('https://scontent.fbud6-4.fna.fbcdn.net/v/t39.30808-6/443842683_974592858003892_3865728876528380810_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=IrCYmdM8X7wQ7kNvgGMQMaN&_nc_zt=23&_nc_ht=scontent.fbud6-4.fna&_nc_gid=ALFjsaI2ZterBpoqEK0-bw0&oh=00_AYB7mAMo7MkBzfyUI9BBofGp01lrBvg5olBvgsergnYrhw&oe=67522990')",
+                        onclick: () => {
+                            window.open(
+                                "https://www.facebook.com/egy5egyzenekar",
+                                "_blank,",
+                            );
+                        },
+                    },
+                    {
                         title: "The Jex",
                         background:
                             "url('https://ugc.production.linktr.ee/c636f8b7-b0dc-467f-b193-553aa8392781_DSC07364.jpeg?io=true&size=thumbnail-feature-v1_0')",
@@ -105,7 +119,7 @@
                         },
                     },
                     {
-                        title: "Naez",
+                        title: "NÆz",
                         background:
                             "url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/339993555_1867895933565984_1086912742086473449_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=6O0KWI4wltIQ7kNvgGeuzr9&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=AKJvIywhPTxay71GK8nr1bQ&oh=00_AYCBkVg7LqfIEWoGVHUNwkjF6zmVikkjnkq6ism-yyyzJQ&oe=674F7F5B')",
                         onclick: () => {
@@ -141,7 +155,7 @@
             />
             <p style="text-align: center;">
                 <button
-                    class="elevated-button"
+                    class="btn"
                     onclick={() => {
                         const songsCount = KoloraLocalDb.bandSongs.length;
                         const randomSong =
@@ -156,11 +170,48 @@
                 </button>
             </p>
             <h3>Kedvenc helyeink</h3>
-            <iframe
-                src="https://www.google.com/maps/d/u/0/embed?mid=1FDeSn_pe5fEnno375EAs5YuQeHz95aA&ehbc=2E312F&noprof=1"
-                width="100%"
-                style="aspect-ratio: 16/9;"
-            ></iframe>
+            <div class="adaptive-col-row">
+                <div style="flex: 1;">
+                    <ProfileShowcase
+                        image="https://scontent.fbud6-4.fna.fbcdn.net/v/t39.30808-6/306000516_526334832831290_5001274354067863986_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=yvf99FIYx-kQ7kNvgGzNENr&_nc_zt=23&_nc_ht=scontent.fbud6-4.fna&_nc_gid=AAs0slOi0I1IQ_XZx7-P3BI&oh=00_AYCx0xWinj2JA95MwZKlqMVtni6zw_ehln-JL-YSYt4KGA&oe=675236A3"
+                        name="Museum Café"
+                    />
+                    <div style="text-align: center; font-size: 1.2rem;">
+                        <a
+                            href="https://maps.app.goo.gl/nR419Mg19cqQWBeu8"
+                            target="_blank"
+                        >
+                            <span class="mdi mdi-map-marker"></span>
+                        </a>
+                        <a
+                            href="https://facebook.com/museumcafeszekesfehervar"
+                            target="_blank"
+                        >
+                            <span class="mdi mdi-facebook"></span>
+                        </a>
+                    </div>
+                </div>
+                <div style="flex: 1;">
+                    <ProfileShowcase
+                        image="https://scontent.fbud6-4.fna.fbcdn.net/v/t39.30808-6/301112437_499281555479521_4260646739517752206_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=o6gKW6Cy7y8Q7kNvgHeCh3e&_nc_zt=23&_nc_ht=scontent.fbud6-4.fna&_nc_gid=AYX3wgZQ-P2Sm_H3yAWoXq-&oh=00_AYBijgVWaQZx2EusvJ5uAqHbl5-rdL9BDB2wivMNHTc2iA&oe=67525C04"
+                        name="Nyolcas Műhely"
+                    />
+                    <div style="text-align: center; font-size: 1.2rem;">
+                        <a
+                            href="https://maps.app.goo.gl/G797KP5NgJ8qD3Jv9"
+                            target="_blank"
+                        >
+                            <span class="mdi mdi-map-marker"></span>
+                        </a>
+                        <a
+                            href="https://facebook.com/nyolcasmuhely"
+                            target="_blank"
+                        >
+                            <span class="mdi mdi-facebook"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <h3>További partnereink</h3>
             <div class="adaptive-col-row">
                 <a
