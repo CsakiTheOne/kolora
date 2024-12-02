@@ -1,11 +1,11 @@
 <script>
-    const { title = "", children, ...rest } = $props();
+    const { icon = "alert", title = "", children, ...rest } = $props();
 </script>
 
 <div class="alert" {...rest}>
     {#if title}
         <p>
-            <span class="mdi mdi-alert"></span>
+            <span class="mdi mdi-{icon}"></span>
             {title}
         </p>
     {/if}
