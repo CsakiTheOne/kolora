@@ -5,6 +5,7 @@
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
     import imgWholesomeWareLogo from "$lib/images/wholesomeware-logo.png";
+    import imgKoloraGroupPhoto from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/group photo with cake original.jpg";
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
 </script>
 
@@ -56,7 +57,7 @@
         <Header selectedTab="Főoldal" />
         <main>
             <h2 id="about">Rólunk</h2>
-            <p>//TODO: csoportkép</p>
+            <img id="group-photo" src={imgKoloraGroupPhoto} alt="" />
             <div class="adaptive-col-row" style="align-items: start;">
                 <div>
                     <h3 style="margin-bottom: calc(var(--spacing) / 2);">
@@ -260,5 +261,12 @@
     h1 {
         font-size: 3.5rem;
         font-weight: 700;
+    }
+
+    #group-photo {
+        display: block;
+        aspect-ratio: 19/9;
+        object-fit: cover;
+        border-radius: var(--corner-radius);
     }
 </style>
