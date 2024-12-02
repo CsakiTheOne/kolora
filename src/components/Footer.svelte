@@ -22,7 +22,7 @@
         </a>
     </p>
     <p style="text-align: center;">
-        <a href="./impressum">
+        <a href="/impressum">
             Impresszum
         </a>
     </p>
