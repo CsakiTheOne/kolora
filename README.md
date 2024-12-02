@@ -17,7 +17,9 @@ Tervezett kiadás: 2024. December 20.
 - [x] Főoldal
   - [x] Splash screen
   - [x] Rólunk
-  - [x] Barátaink
+  - [ ] Barátaink
+    - [ ] Dani: kép szerzése Emesétől
+    - [ ] .kory (Kornél) @sa_c0ry: engedély kérés, hogy kikerülhet-e az oldalra és milyen képpel
 - [x] Kódok
 
 A projektben keress rá a `//TODO` kommentekre további feladatokért.

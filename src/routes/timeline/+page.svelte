@@ -27,11 +27,10 @@
         subtitle="Egész évben"
     >
         <p>
-            Az évben több alkalommal is megrendezésre került a Kolora terasz a
-            Museum Caféban, és előfordult az is, hogy nagyobb bejelentés nélkül
-            leptük meg az ott italozókat. Ezen események során felléptek a
-            Kolora Egyesület tagjai, barátai, mint például Bodonyi Dani a DJ
-            set-jével és más zenekarok is, mint például a .kory.
+            Az évben több alkalommal is megrendeztük a Kolora teraszt a Museum
+            Caféban, és előfordult az is, hogy nagyobb bejelentés nélkül leptük
+            meg az ott italozókat. Ezen események során Bodonyi Dani és .kory
+            mixei váltották föl a háttérzenét a kávézóban.
         </p>
         //TODO: Dani mix, esetleg képek
     </VerticalTimelineItem>
@@ -82,8 +81,8 @@
             ]}
         />
         <p>
-            Slam, Næz, DJ Bodonyi, fényfestés, italok és torta. Egy éves lett a
-            Kolora Július 21-én, és megadtuk a módját az ünneplésnek.
+            Slam, Næz, Bodonyi Dani, fényfestés, italok és torta. Egy éves lett
+            a Kolora Július 21-én, és megadtuk a módját az ünneplésnek.
         </p>
         <p>
             <a href="https://www.youtube.com/@naez.official" target="_blank">
@@ -139,6 +138,12 @@
             <a href="/stickers">
                 <button class="btn"> 2024 költészet napi kincsvadászat </button>
             </a>
+        </p>
+        <p>
+            Ezt az eseményt a <a
+                href="https://www.facebook.com/groups/570212437568903/"
+                target="_blank">Posztolj verset az utcára!</a
+            > mozgalom ihlette.
         </p>
         <!--p>
             Viszont jövőre is vár a művészetkedvelőkre egy meglepetés. Már
@@ -277,7 +282,7 @@
         </div>
         <p>
             Szvoren Eszter és Völgyesi Toma voltak az irodalom tanáraink idén,
-            akikkel együtt alkottunk, játszottunk a szavakkal és fejlődtünk.
+            akikkel együtt játszottunk a szavakkal, alkottunk és fejlődtünk.
             Ezeket a workshop-okat az évben többször is megtartották
             vasárnaponként a kedvenc kávézónkban.
         </p>

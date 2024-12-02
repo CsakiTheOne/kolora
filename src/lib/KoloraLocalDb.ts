@@ -3,6 +3,10 @@ import ThemeManager from "./ThemeManager";
 export default class KoloraLocalDb {
     static musicians = [
         {
+            name: "Bodonyi Dani",
+            websiteUrl: "https://www.facebook.com/profile.php?id=100079430298985",
+        },
+        {
             name: "egy5egy",
             bannerImageUrl: "https://scontent.fbud6-4.fna.fbcdn.net/v/t39.30808-6/443842683_974592858003892_3865728876528380810_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=IrCYmdM8X7wQ7kNvgGMQMaN&_nc_zt=23&_nc_ht=scontent.fbud6-4.fna&_nc_gid=ALFjsaI2ZterBpoqEK0-bw0&oh=00_AYB7mAMo7MkBzfyUI9BBofGp01lrBvg5olBvgsergnYrhw&oe=67522990",
             websiteUrl: "https://www.facebook.com/egy5egyzenekar",
@@ -15,6 +19,14 @@ export default class KoloraLocalDb {
                 "https://youtu.be/aNlgE6vcbiI?si=F8zA4cdpKtEeYhYJ",
                 "https://youtu.be/5F-3pPWINsM?si=tTqJ7CnOBIh-HwCQ",
             ],
+        },
+        {
+            name: "Kalafatics Imre",
+            bannerImageUrl: "https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420479229_273892205774777_2826171396095097959_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=rfri3rzj8RYQ7kNvgEoCuwL&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AinHepIzhgRXwJKr6PT0ABE&oh=00_AYCJmjaopQB8wJKtr4SgFadq8ju9KtWm2FDElL_EnYrKLw&oe=674EA5AC",
+        },
+        {
+            name: ".kory",
+            webkitURL: "https://www.instagram.com/korymakesmusikk",
         },
         {
             name: "Loophia",
