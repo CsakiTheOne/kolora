@@ -34,7 +34,10 @@
         </p>
     </Alert>
     <h2>Felhasznált szellemi alkotások</h2>
-    <p>A fotókat a Kolora Egyesület tagjai és barátai készítették.</p>
+    <p>
+        A fotókat a Kolora Egyesület tagjai és barátai készítették.
+        Egyéb, az oldalon megjelenő tartalmakra minden jog fenntartva.
+    </p>
     <h3>Technológiák</h3>
     <ul>
         <a href="https://svelte.dev" target="_blank">
