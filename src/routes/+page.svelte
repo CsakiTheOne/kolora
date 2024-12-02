@@ -56,9 +56,7 @@
         <Header selectedTab="Főoldal" />
         <main>
             <h2 id="about">Rólunk</h2>
-            <p>
-                //TODO: csoportkép
-            </p>
+            <p>//TODO: csoportkép</p>
             <div class="adaptive-col-row" style="align-items: start;">
                 <div>
                     <h3 style="margin-bottom: calc(var(--spacing) / 2);">
@@ -87,81 +85,24 @@
             <h3>Bandák, akik koncerteztek nálunk</h3>
             <Carousel
                 style="aspect-ratio: 21/9;"
-                pages={[
-                    {
-                        title: "egy5egy",
-                        background:
-                            "url('https://scontent.fbud6-4.fna.fbcdn.net/v/t39.30808-6/443842683_974592858003892_3865728876528380810_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=IrCYmdM8X7wQ7kNvgGMQMaN&_nc_zt=23&_nc_ht=scontent.fbud6-4.fna&_nc_gid=ALFjsaI2ZterBpoqEK0-bw0&oh=00_AYB7mAMo7MkBzfyUI9BBofGp01lrBvg5olBvgsergnYrhw&oe=67522990')",
-                        onclick: () => {
-                            window.open(
-                                "https://www.facebook.com/egy5egyzenekar",
-                                "_blank,",
-                            );
-                        },
+                pages={KoloraLocalDb.musicians.map((musician) => ({
+                    title: musician.name,
+                    background: `url('${musician.bannerImageUrl}')`,
+                    onclick: () => {
+                        window.open(musician.websiteUrl, "_blank");
                     },
-                    {
-                        title: "The Jex",
-                        background:
-                            "url('https://ugc.production.linktr.ee/c636f8b7-b0dc-467f-b193-553aa8392781_DSC07364.jpeg?io=true&size=thumbnail-feature-v1_0')",
-                        onclick: () => {
-                            window.open(
-                                "https://linktr.ee/thejexofficial",
-                                "_blank",
-                            );
-                        },
-                    },
-                    {
-                        title: "Loophia",
-                        background:
-                            "url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/448202815_7694743990612810_7172244232801033659_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=eOAn1PrGYJ0Q7kNvgEoV-wS&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=AG_Dl8w7NLs5QrIOZBB0vmv&oh=00_AYBZ7tvZartmTGRLWUim3Yq-jQHGoiahp75V681KKmjHlQ&oe=674F6D0F')",
-                        onclick: () => {
-                            window.open("https://linktr.ee/loophia", "_blank");
-                        },
-                    },
-                    {
-                        title: "NÆz",
-                        background:
-                            "url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/339993555_1867895933565984_1086912742086473449_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=6O0KWI4wltIQ7kNvgGeuzr9&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=AKJvIywhPTxay71GK8nr1bQ&oh=00_AYCBkVg7LqfIEWoGVHUNwkjF6zmVikkjnkq6ism-yyyzJQ&oe=674F7F5B')",
-                        onclick: () => {
-                            window.open(
-                                "https://linktr.ee/naez.official",
-                                "_blank",
-                            );
-                        },
-                    },
-                    {
-                        title: "Nedel'a",
-                        background:
-                            "url('https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/449056267_122152105730222063_647686779152558141_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Ldnc5FSPPiUQ7kNvgGoQtTr&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AwxgZD7bmo1ilJb2cK764Dt&oh=00_AYDybf9B_BkOnbtM_vTEDKMQ9zcqjXFljfaDDRA-VqVTyg&oe=674F5026')",
-                        onclick: () => {
-                            window.open(
-                                "https://linktr.ee/nedela_zenekar",
-                                "_blank",
-                            );
-                        },
-                    },
-                    {
-                        title: "Waiting Room",
-                        background:
-                            "url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/466917919_543266368416392_5528035443175376377_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=9tK1AWbsA6kQ7kNvgGMSRzg&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=ACVMhlOpklW4E4iwmAiKwUc&oh=00_AYD-SF0rlLQQoY-sKiprG6RXdThwMBFZv48ntfP8psKFTQ&oe=674F9470')",
-                        onclick: () => {
-                            window.open(
-                                "https://linktr.ee/waiting_room",
-                                "_blank",
-                            );
-                        },
-                    },
-                ]}
+                }))}
             />
             <p style="text-align: center;">
                 <button
                     class="btn"
                     onclick={() => {
-                        const songsCount = KoloraLocalDb.bandSongs.length;
-                        const randomSong =
-                            KoloraLocalDb.bandSongs[
-                                Math.floor(Math.random() * songsCount)
-                            ];
+                        const songsCount = KoloraLocalDb.musicians.flatMap(
+                            (musician) => musician.youtubeSongUrls,
+                        ).length;
+                        const randomSong = KoloraLocalDb.musicians.flatMap(
+                            (musician) => musician.youtubeSongUrls,
+                        )[Math.floor(Math.random() * songsCount)];
                         window.open(randomSong, "_blank");
                     }}
                 >
