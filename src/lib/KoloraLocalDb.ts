@@ -1,4 +1,5 @@
 import ThemeManager from "./ThemeManager";
+import imgMusicianKory from "$lib/images/musicians/kory.jpg";
 
 export default class KoloraLocalDb {
     static musicians = [
@@ -26,6 +27,7 @@ export default class KoloraLocalDb {
         },
         {
             name: ".kory",
+            bannerImageUrl: imgMusicianKory,
             webkitURL: "https://www.instagram.com/korymakesmusikk",
         },
         {
