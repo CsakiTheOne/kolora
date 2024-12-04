@@ -4,6 +4,8 @@
 
 Tervezett kiadás: 2024. December 20.
 
+- Hibák
+  - [ ] Linkelt képek nem jelennek meg, le kell tölteni és $lib-ből kell betölteni
 - 2024 visszatekintés befejezése
   - [ ] Kolora teraszok + spontán zene: **Dani** mixe
   - Múzeumok éjszakája + Kolora szülinap

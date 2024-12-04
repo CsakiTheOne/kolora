@@ -15,7 +15,7 @@
     class="mdi mdi-brightness-6"
 ></span>
 <div class="page-container">
-    <header class="container">
+    <div class="container large-header">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
             <path
                 fill="#fff"
@@ -52,7 +52,7 @@
                 </p>
             </div>
         </div>
-    </header>
+    </div>
     <div class="container">
         <Header selectedTab="Főoldal" />
         <main>
@@ -196,7 +196,7 @@
         z-index: 2;
     }
 
-    header {
+    .large-header {
         background-color: var(--primary-color);
         position: relative;
     }
@@ -215,7 +215,7 @@
         background-color: var(--background-color);
     }
 
-    header > * {
+    .large-header > * {
         position: absolute;
     }
 
@@ -245,7 +245,7 @@
         }
     }
 
-    header > div {
+    .large-header > div {
         left: 0;
         right: 0;
         top: 0;

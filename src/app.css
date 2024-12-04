@@ -133,11 +133,11 @@ main>* {
     }
 
     main {
-        grid-template-columns: [full-start] 25% [main-start] 1fr [main-end] 25% [full-end];
+        grid-template-columns: [full-start] 22% [main-start] 1fr [main-end] 22% [full-end];
     }
 
     main>* {
-        max-width: calc(50vw - var(--spacing) * 2) !important;
+        max-width: calc(56vw - var(--spacing) * 2) !important;
     }
 }
 
