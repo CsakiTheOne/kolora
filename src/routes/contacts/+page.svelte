@@ -1,9 +1,8 @@
 <script>
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
-    import HeaderTabRow from "../../components/HeaderTabRow.svelte";
-    import logoKolora from "$lib/images/kolora-logo.png";
-    import logoWholesomeWare from "$lib/images/wholesomeware-logo.png";
+    import logoKolora from "$lib/images/logos/kolora.png";
+    import logoWholesomeWare from "$lib/images/logos/wholesomeware.png";
 </script>
 
 <Header selectedTab="Elérhetőségek" />

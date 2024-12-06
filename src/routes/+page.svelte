@@ -4,8 +4,11 @@
     import Carousel from "../components/Carousel.svelte";
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
-    import imgWholesomeWareLogo from "$lib/images/wholesomeware-logo.png";
     import imgKoloraGroupPhoto from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/group photo with cake original.jpg";
+    import imgMuseumCafeLogo from "$lib/images/logos/museum-cafe.jpg";
+    import imgNyolcasMuhelyLogo from "$lib/images/logos/nyolcas-muhely.jpg";
+    import imgBrotondProductionsLogo from "$lib/images/logos/brotond-productions.jpg";
+    import imgWholesomeWareLogo from "$lib/images/logos/wholesomeware.png";
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
 </script>
 
@@ -115,7 +118,7 @@
             <div class="adaptive-col-row">
                 <div style="flex: 1;">
                     <ProfileShowcase
-                        image="https://scontent.fbud6-4.fna.fbcdn.net/v/t39.30808-6/306000516_526334832831290_5001274354067863986_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=yvf99FIYx-kQ7kNvgGzNENr&_nc_zt=23&_nc_ht=scontent.fbud6-4.fna&_nc_gid=AAs0slOi0I1IQ_XZx7-P3BI&oh=00_AYCx0xWinj2JA95MwZKlqMVtni6zw_ehln-JL-YSYt4KGA&oe=675236A3"
+                        image={imgMuseumCafeLogo}
                         name="Museum Café"
                     />
                     <div style="text-align: center; font-size: 1.2rem;">
@@ -135,7 +138,7 @@
                 </div>
                 <div style="flex: 1;">
                     <ProfileShowcase
-                        image="https://scontent.fbud6-4.fna.fbcdn.net/v/t39.30808-6/301112437_499281555479521_4260646739517752206_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=o6gKW6Cy7y8Q7kNvgHeCh3e&_nc_zt=23&_nc_ht=scontent.fbud6-4.fna&_nc_gid=AYX3wgZQ-P2Sm_H3yAWoXq-&oh=00_AYBijgVWaQZx2EusvJ5uAqHbl5-rdL9BDB2wivMNHTc2iA&oe=67525C04"
+                        image={imgNyolcasMuhelyLogo}
                         name="Nyolcas Műhely"
                     />
                     <div style="text-align: center; font-size: 1.2rem;">
@@ -162,7 +165,7 @@
                     style="flex: 1;"
                 >
                     <ProfileShowcase
-                        image="https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/322222919_554215823041860_4998650009849050662_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=smiybflQW7kQ7kNvgHiqBsv&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=A0SgPMiBAk2fMm5dFFG_gKP&oh=00_AYDP6aVWGee0YuU9NU9JoBEcqrP8CJw3PiNO8GYzw57Rdw&oe=674FACDF"
+                        image={imgBrotondProductionsLogo}
                         name="Brotond Productions"
                         title="Aki kivágja az unalmas részeket"
                     />

@@ -1,7 +1,7 @@
 <script>
     import ThemeManager from "$lib/ThemeManager";
     import HeaderTabRow from "./HeaderTabRow.svelte";
-    import headerImage from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/group photo with cake.jpg";
+    import headerImage from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/header.jpg";
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
 
     const { selectedTab = "" } = $props();
