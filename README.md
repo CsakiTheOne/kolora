@@ -5,7 +5,7 @@
 Tervezett kiadás: 2024. December 20.
 
 - Hibák
-  - [ ] Linkelt képek nem jelennek meg, le kell tölteni és $lib-ből kell betölteni
+  - [x] Linkelt képek nem jelennek meg, le kell tölteni és $lib-ből kell betölteni
 - 2024 visszatekintés befejezése
   - [ ] Kolora teraszok + spontán zene: **Dani** mixe
   - Múzeumok éjszakája + Kolora szülinap
@@ -19,7 +19,7 @@ Tervezett kiadás: 2024. December 20.
 - [x] Főoldal
   - [ ] Barátaink
     - [ ] Dani: kép szerzése **Emesétől**
-    - [ ] **Imi**: engedély kérés, hogy kikerülhet-e az oldalra és mi történjen rákattintva
+    - [x] **Imi**: engedély kérés, hogy kikerülhet-e az oldalra és mi történjen rákattintva
     - [x] **.kory / Kornél / @sa_c0ry**: engedély kérés, hogy kikerülhet-e az oldalra és milyen képpel
   - [x] Splash screen
   - [x] Rólunk

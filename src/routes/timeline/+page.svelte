@@ -8,6 +8,7 @@
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import imgKoloraBirthdayCake from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/kolora-birthday-cake.jpg";
     import { text } from "@sveltejs/kit";
+    import KoloraLocalDb from "$lib/KoloraLocalDb";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -44,15 +45,15 @@
             pages={[
                 {
                     title: "Waiting Room",
-                    background: `url('https://scontent.fbud7-4.fna.fbcdn.net/v/t39.30808-6/466917919_543266368416392_5528035443175376377_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=9tK1AWbsA6kQ7kNvgGMSRzg&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=ACVMhlOpklW4E4iwmAiKwUc&oh=00_AYD-SF0rlLQQoY-sKiprG6RXdThwMBFZv48ntfP8psKFTQ&oe=674F9470')`,
+                    background: `url('${KoloraLocalDb.getMusician("Waiting Room")?.bannerImageUrl}')`,
                     onclick: () =>
-                        window.open("https://linktr.ee/waiting_room", "_blank"),
+                        window.open(KoloraLocalDb.getMusician("Waiting Room")?.websiteUrl, "_blank"),
                 },
                 {
                     title: "egy5egy",
-                    background: `url('https://scontent.fbud6-4.fna.fbcdn.net/v/t39.30808-6/443842683_974592858003892_3865728876528380810_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=IrCYmdM8X7wQ7kNvgGMQMaN&_nc_zt=23&_nc_ht=scontent.fbud6-4.fna&_nc_gid=ALFjsaI2ZterBpoqEK0-bw0&oh=00_AYB7mAMo7MkBzfyUI9BBofGp01lrBvg5olBvgsergnYrhw&oe=67522990')`,
+                    background: `url('${KoloraLocalDb.getMusician("egy5egy")?.bannerImageUrl}')`,
                     onclick: () =>
-                        window.open("https://linktr.ee/egy5egy", "_blank"),
+                        window.open(KoloraLocalDb.getMusician("egy5egy")?.websiteUrl, "_blank"),
                 },
             ]}
         />
@@ -201,10 +202,10 @@
         subtitle="Március 10."
         instagramLink="https://www.instagram.com/p/C3x3_VxsfWk"
     >
-        <a href="https://linktr.ee/nedela_zenekar" target="_blank">
+        <a href={KoloraLocalDb.getMusician("Nedel'a")?.websiteUrl} target="_blank">
             <img
                 style="width: 100%; max-height: 300px; object-fit: cover;"
-                src="https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/449056267_122152105730222063_647686779152558141_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Ldnc5FSPPiUQ7kNvgGoQtTr&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AwxgZD7bmo1ilJb2cK764Dt&oh=00_AYDybf9B_BkOnbtM_vTEDKMQ9zcqjXFljfaDDRA-VqVTyg&oe=674F5026"
+                src={KoloraLocalDb.getMusician("Nedel'a")?.bannerImageUrl}
                 alt=""
             />
         </a>
@@ -237,10 +238,10 @@
         subtitle="Február 1."
         instagramLink="https://www.instagram.com/p/C2ajW1FMa27"
     >
-        <a href="https://linktr.ee/thejexofficial" target="_blank">
+        <a href={KoloraLocalDb.getMusician("The JEX")?.websiteUrl} target="_blank">
             <img
                 style="width: 100%; max-height: 300px; object-fit: cover;"
-                src="https://ugc.production.linktr.ee/c636f8b7-b0dc-467f-b193-553aa8392781_DSC07364.jpeg?io=true&size=thumbnail-feature-v1_0"
+                src={KoloraLocalDb.getMusician("The JEX")?.bannerImageUrl}
                 alt=""
             />
         </a>
