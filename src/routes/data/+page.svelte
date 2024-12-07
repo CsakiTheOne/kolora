@@ -8,7 +8,7 @@ import Header from "../../components/Header.svelte";
 <main>
     <h2>Adatkezelési irányelvek</h2>
     <p>
-        
+        //TODO: content!!!
     </p>
 </main>
 <Footer />

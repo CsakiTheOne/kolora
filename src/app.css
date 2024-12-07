@@ -83,10 +83,6 @@ p {
 a {
     display: inline-block;
     color: var(--primary-color);
-    text-decoration: none;
-}
-
-a:first-letter {
     text-decoration: underline;
 }
 
@@ -198,7 +194,7 @@ main>* {
     color: #fff;
 }
 
-#kolora-title::first-letter {
+h1, #kolora-title, .tab {
     text-decoration: none;
 }
 

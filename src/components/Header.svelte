@@ -11,7 +11,7 @@
     <div style="background-image: url({headerImage});" class="background"></div>
     <div class="column">
         <p>Művészet? Kultúra? Székesfehérvár?</p>
-        <a href="/"><h1 id="kolora-title">kolora!</h1></a>
+        <a href="/" id="kolora-title"><h1>kolora!</h1></a>
     </div>
     <div class="toolbar">
         <span

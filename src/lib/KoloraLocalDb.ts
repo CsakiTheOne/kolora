@@ -11,6 +11,7 @@ export default class KoloraLocalDb {
     static musicians = [
         {
             name: "Bodonyi Dani",
+            bannerImageUrl: "imgMusicianBodonyiDani",
             websiteUrl: "https://www.facebook.com/profile.php?id=100079430298985",
         },
         {
@@ -29,7 +30,7 @@ export default class KoloraLocalDb {
         },
         {
             name: "Kalafatics Imre",
-            bannerImageUrl: "https://scontent.fbud7-3.fna.fbcdn.net/v/t39.30808-6/420479229_273892205774777_2826171396095097959_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=rfri3rzj8RYQ7kNvgEoCuwL&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=AinHepIzhgRXwJKr6PT0ABE&oh=00_AYCJmjaopQB8wJKtr4SgFadq8ju9KtWm2FDElL_EnYrKLw&oe=674EA5AC",
+            bannerImageUrl: "imgMusicianKalafaticsImre",
         },
         {
             name: ".kory",
@@ -116,7 +117,7 @@ export default class KoloraLocalDb {
             url: "/timeline/kispiros",
         },
         {
-            code: "slamjam250411",
+            code: "jam250411",
             url: "/gallery",
         },
     ];

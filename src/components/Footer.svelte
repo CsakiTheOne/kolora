@@ -25,6 +25,9 @@
         <a href="/impressum">
             Impresszum
         </a>
+        <a href="/data">
+            Adatkezelési irányelvek
+        </a>
     </p>
 </footer>
 
