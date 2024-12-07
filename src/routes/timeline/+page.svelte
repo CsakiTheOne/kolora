@@ -159,6 +159,11 @@
         instagramLink="https://www.instagram.com/p/C5giBg0sakJ"
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=273894045774593&id=100094619973134&ref=embed_post"
     >
+        <img
+            style="width: 100%; max-height: 300px; object-fit: cover;"
+            src={KoloraLocalDb.getMusician("Kalafatics Imre")?.bannerImageUrl}
+            alt=""
+        />
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
             Caféban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig

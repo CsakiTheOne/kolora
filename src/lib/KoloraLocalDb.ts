@@ -1,6 +1,7 @@
 import ThemeManager from "./ThemeManager";
 import imgMusicianEgy5Egy from "$lib/images/musicians/egy5egy-banner.jpg";
 import imgMusicianJex from "$lib/images/musicians/jex-banner.png";
+import imgMusicianKalafaticsImre from "$lib/images/musicians/kalafatics-imre.png";
 import imgMusicianKory from "$lib/images/musicians/kory.jpg";
 import imgMusicianLoophia from "$lib/images/musicians/loophia-banner.jpg";
 import imgMusicianNaez from "$lib/images/musicians/naez-logo.jpg";
@@ -30,7 +31,7 @@ export default class KoloraLocalDb {
         },
         {
             name: "Kalafatics Imre",
-            bannerImageUrl: "imgMusicianKalafaticsImre",
+            bannerImageUrl: imgMusicianKalafaticsImre,
         },
         {
             name: ".kory",

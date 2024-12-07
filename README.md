@@ -20,7 +20,7 @@ Tervezett kiadás: 2024. December 20.
 - [x] Főoldal
   - [ ] Barátaink
     - [ ] Dani: kép szerzése **Emesétől**
-    - [ ] Imi: kép szerzése Imitől vagy Facebook-ról
+    - [x] Imi: kép szerzése Imitől vagy Facebook-ról
     - [x] **Imi**: engedély kérés, hogy kikerülhet-e az oldalra és mi történjen rákattintva
     - [x] **.kory / Kornél / @sa_c0ry**: engedély kérés, hogy kikerülhet-e az oldalra és milyen képpel
   - [x] Splash screen
