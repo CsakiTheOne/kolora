@@ -68,6 +68,11 @@
 <Header selectedTab="Galéria" />
 <main>
     <div class="metadata-editor">
+        <button class="btn" onclick={saveWork}>
+            <span class="mdi mdi-content-save"></span>
+            Mentés
+        </button>
+
         <label for="workTitle">Mű címe</label>
         <input
             type="text"
@@ -98,7 +103,7 @@
             bind:value={work.workType}
             class="outlined-input"
         >
-            <option value="Interaktív költemény">Choose your own adventure</option>
+            <option value="Choose your own adventure">Choose your own adventure</option>
             <option value="Írott mű"
                 >Egyéb írott mű (vers, novella, regény, stb.)</option
             >
@@ -113,11 +118,6 @@
             bind:value={work.description}
             class="outlined-input"
         ></textarea>
-
-        <button class="btn" onclick={saveWork}>
-            <span class="mdi mdi-content-save"></span>
-            Mentés
-        </button>
     </div>
     <div class="content-editor">
         <label for="workContent">Mű tartalma</label>
@@ -138,8 +138,15 @@
 
     main {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: flex-start;
         padding: var(--spacing);
+    }
+
+    @media (min-width: 768px) {
+        main {
+            flex-direction: row;
+        }
     }
 
     main > * {

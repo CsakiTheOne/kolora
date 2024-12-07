@@ -34,6 +34,7 @@
         border-radius: var(--corner-radius);
         user-select: none;
         cursor: pointer;
+        text-decoration: none;
     }
 
     .badges {
