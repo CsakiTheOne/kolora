@@ -1,10 +1,10 @@
 <script>
-    import Card from "../../../components/Card.svelte";
-    import ContentWarning from "../../../components/ContentWarning.svelte";
-    import ExtraContentDivider from "../../../components/ExtraContentDivider.svelte";
-    import FoundByRandomExplanation from "../../../components/FoundByRandomExplanation.svelte";
-    import PoemDisplay from "../../../components/PoemDisplay.svelte";
-    import StickerFoundCallout from "../../../components/StickerFoundCallout.svelte";
+    import Card from "../../../components/legacy/Card.svelte";
+    import ContentWarning from "../../../components/legacy/ContentWarning.svelte";
+    import ExtraContentDivider from "../../../components/legacy/ExtraContentDivider.svelte";
+    import FoundByRandomExplanation from "../../../components/legacy/FoundByRandomExplanation.svelte";
+    import PoemDisplay from "../../../components/legacy/PoemDisplay.svelte";
+    import StickerFoundCallout from "../../../components/legacy/StickerFoundCallout.svelte";
 </script>
 
 <StickerFoundCallout/>

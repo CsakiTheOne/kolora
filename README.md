@@ -6,6 +6,7 @@ Tervezett kiadás: 2024. December 20.
 
 - Hibák
   - [x] Linkelt képek nem jelennek meg, le kell tölteni és $lib-ből kell betölteni
+  - [x] Régi, 2024-es kincsvadászatnál használt komponensek áthelyezése egy `legacy` mappába
 - 2024 visszatekintés befejezése
   - [ ] Kolora teraszok + spontán zene: **Dani** mixe
   - Múzeumok éjszakája + Kolora szülinap
@@ -43,7 +44,3 @@ A projektben keress rá a `//TODO` kommentekre további feladatokért.
   - [x] Megjelenítés
   - [ ] Kezelés (csak admin és a művek tulajdonosai)
   - [ ] Szavazás (fiók nélkül is)
-
-## Ráérős egyéb teendők
-
-- [ ] Régi, 2024-es kincsvadászatnál használt komponensek áthelyezése egy `archive` mappába

@@ -1,6 +1,6 @@
 <script>
     import "../../app.css";
-    import Footer from "../../components/OldFooter.svelte";
+    import Footer from "../../components/legacy/OldFooter.svelte";
 </script>
 
 <div>
