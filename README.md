@@ -17,7 +17,7 @@ Tervezett kiadás: 2024. December 20.
   - [ ] Cookie tájékoztató
   - [x] Elérhetőségek
   - [x] Impresszum
-- [x] Főoldal
+- Főoldal
   - [ ] Barátaink
     - [ ] Dani: kép szerzése **Emesétől**
     - [x] Imi: kép szerzése Imitől vagy Facebook-ról
