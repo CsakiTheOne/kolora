@@ -86,6 +86,15 @@
             a Kolora Július 21-én, és megadtuk a módját az ünneplésnek.
         </p>
         <p>
+            <a
+                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xPDOFOpHZzC-rmqEI-ACJQN&si=WMLuJ5EBUiDaGKmw"
+                target="_blank"
+            >
+                <button class="btn">
+                    <span class="mdi mdi-youtube"></span>
+                    Slam előadások megtekintése
+                </button>
+            </a>
             <a href="https://www.youtube.com/@naez.official" target="_blank">
                 <button class="btn">
                     <span class="mdi mdi-youtube"></span>
@@ -93,7 +102,7 @@
                 </button>
             </a>
         </p>
-        <p>//TODO: leírás, képek (Emese pls), stb.</p>
+        <p>//TODO: képek Emesétől</p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -168,6 +177,17 @@
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
             Caféban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
             elhozta a remek történeteit is.
+        </p>
+        <p>
+            <a
+                href="https://drive.google.com/drive/folders/1eYo9prYNlx-O-QW9c0mNNhwDve-oCsNd?usp=sharing"
+                target="_blank"
+            >
+                <button class="btn">
+                    <span class="mdi mdi-google-drive"></span>
+                    Fotók Tenki Mártontól
+                </button>
+            </a>
         </p>
     </VerticalTimelineItem>
 

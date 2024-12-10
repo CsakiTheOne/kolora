@@ -4,30 +4,27 @@
 
 Tervezett kiadás: 2024. December 20.
 
-- Hibák
-  - [x] Linkelt képek nem jelennek meg, le kell tölteni és $lib-ből kell betölteni
-  - [x] Régi, 2024-es kincsvadászatnál használt komponensek áthelyezése egy `legacy` mappába
-- 2024 visszatekintés befejezése
+- 2024 visszatekintés
   - [ ] Kolora teraszok + spontán zene: **Dani** mixe
   - Múzeumok éjszakája + Kolora szülinap
     - [ ] Képek **Emesétől**
-    - [ ] Videók **Botitól** (már Csákinál)
-- Jogi hülyeségek
-  - [ ] Adatvédelmi tájékoztató
-  - [ ] Cookie tájékoztató
-  - [x] Elérhetőségek
-  - [x] Impresszum
 - Főoldal
   - [ ] Barátaink
     - [ ] Dani: kép szerzése **Emesétől**
-    - [x] Imi: kép szerzése Imitől vagy Facebook-ról
-    - [x] **Imi**: engedély kérés, hogy kikerülhet-e az oldalra és mi történjen rákattintva
-    - [x] **.kory / Kornél / @sa_c0ry**: engedély kérés, hogy kikerülhet-e az oldalra és milyen képpel
-  - [x] Splash screen
-  - [x] Rólunk
-- [x] Kódok
+- Jogi hülyeségek
+  - [ ] Adatvédelmi tájékoztató
+  - [ ] Cookie tájékoztató
 
-A projektben keress rá a `//TODO` kommentekre további feladatokért.
+### Külső teendők, amik érintik a weboldalt és / vagy a 2024 visszatekintést
+
+- Kiadás előtt
+  - [ ] Múzeumok éjszakája slam-ek vágása, feltöltése YouTube-ra (10/14)
+- Kiadás napján
+  - [ ] Weboldal publikálása és linkek kiírása a közösségi profilokra
+    - [ ] YouTube (Csáki intézi)
+    - [ ] Facebook
+    - [ ] Instagram
+  - [ ] Nem listázott YouTube videók és lejátszasi listák nyilvánosra állítása (Csáki intézi)
 
 ## Teendők jövő Áprilisig
 
@@ -45,3 +42,5 @@ A projektben keress rá a `//TODO` kommentekre további feladatokért.
   - [x] Megjelenítés
   - [ ] Kezelés (csak admin és a művek tulajdonosai)
   - [ ] Szavazás (fiók nélkül is)
+
+A projektben keress rá a `//TODO` kommentekre további feladatokért.
