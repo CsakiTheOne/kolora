@@ -14,13 +14,13 @@ Tervezett kiadás: 2024. December 20.
 
 ### Teendők kiadás napján
 
-| Feladat                    | Felelős                   |
-| -------------------------- | ------------------------- |
-| Weboldal befejezése        | Csáki                     |
-| Linkelés YouTube-on        | Csáki                     |
-| Linkelés Facebookon        | Kolora Facebook kezelője  |
-| Linkelés Instagramon       | Kolora Instagram kezelője |
-| YouTube videók publikálása | Csáki                     |
+| Feladat                    | Felelős                  |
+| -------------------------- | ------------------------ |
+| Weboldal befejezése        | Csáki                    |
+| Linkelés YouTube-on        | Csáki                    |
+| Linkelés Facebookon        | Kolora Facebook kezelők  |
+| Linkelés Instagramon       | Kolora Instagram kezelők |
+| YouTube videók publikálása | Csáki                    |
 
 ## Teendők jövő Áprilisig
 
