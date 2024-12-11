@@ -4,27 +4,27 @@
 
 Tervezett kiadás: 2024. December 20.
 
-- 2024 visszatekintés
-  - [ ] Kolora teraszok + spontán zene: **Dani** mixe
-  - Múzeumok éjszakája + Kolora szülinap
-    - [ ] Képek **Emesétől**
-- Főoldal
-  - [ ] Barátaink
-    - [ ] Dani: kép szerzése **Emesétől**
-- Jogi hülyeségek
-  - [ ] Adatvédelmi tájékoztató
-  - [ ] Cookie tájékoztató
+| Hely                      | Feladat                      | Felelős |
+| ------------------------- | ---------------------------- | ------- |
+| Főoldal > Barátaink       | Kép Bodonyi Dani úrnak       | Emese   |
+| Idővonal > Kolora terasz  | Hallgatható, megosztható mix | Dani    |
+| Idővonal > Múzeumok éjsz. | Képek az eseményről          | Emese   |
+| Adatvédelmi tájékoztató   | Megírás                      | Csáki   |
+| Consent dialógus          | Megírás                      | Csáki   |
 
-### Külső teendők, amik érintik a weboldalt és / vagy a 2024 visszatekintést
+### Kiadás teendők
 
-- Kiadás előtt
-  - [ ] Múzeumok éjszakája slam-ek vágása, feltöltése YouTube-ra (10/14)
-- Kiadás napján
-  - [ ] Weboldal publikálása és linkek kiírása a közösségi profilokra
-    - [ ] YouTube (Csáki intézi)
-    - [ ] Facebook
-    - [ ] Instagram
-  - [ ] Nem listázott YouTube videók és lejátszasi listák nyilvánosra állítása (Csáki intézi)
+| Feladat             | Felelős                  |
+| ------------------- | ------------------------ |
+| Weboldal befejezése | Csáki                    |
+| Linkelés YouTube-on | Csáki                    |
+| Linkelés Facebookon | Kolora Facebook kezelője (Levi, Emese, Dani?) |
+
+- [ ] Weboldal publikálása és linkek kiírása a közösségi profilokra
+  - [ ] YouTube (Csáki intézi)
+  - [ ] Facebook
+  - [ ] Instagram
+- [ ] Nem listázott YouTube videók és lejátszasi listák nyilvánosra állítása (Csáki intézi)
 
 ## Teendők jövő Áprilisig
 
