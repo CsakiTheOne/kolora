@@ -9,8 +9,8 @@ Tervezett kiadás: 2024. December 20.
 | Főoldal > Barátaink       | Kép Bodonyi Dani úrnak       | Emese   |
 | Idővonal > Kolora terasz  | Hallgatható, megosztható mix | Dani    |
 | Idővonal > Múzeumok éjsz. | Képek az eseményről          | Emese   |
-| Adatvédelmi tájékoztató   | Megírás                      | Csáki   |
-| Consent dialógus          | Megírás                      | Csáki   |
+| Footer                    | Adatvédelmi táj. megírás     | Csáki   |
+| *                         | Consent dialógus (köszi EU)  | Csáki   |
 
 ### Teendők kiadás napján
 
