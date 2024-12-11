@@ -12,19 +12,15 @@ Tervezett kiadás: 2024. December 20.
 | Adatvédelmi tájékoztató   | Megírás                      | Csáki   |
 | Consent dialógus          | Megírás                      | Csáki   |
 
-### Kiadás teendők
+### Teendők kiadás napján
 
-| Feladat             | Felelős                  |
-| ------------------- | ------------------------ |
-| Weboldal befejezése | Csáki                    |
-| Linkelés YouTube-on | Csáki                    |
-| Linkelés Facebookon | Kolora Facebook kezelője (Levi, Emese, Dani?) |
-
-- [ ] Weboldal publikálása és linkek kiírása a közösségi profilokra
-  - [ ] YouTube (Csáki intézi)
-  - [ ] Facebook
-  - [ ] Instagram
-- [ ] Nem listázott YouTube videók és lejátszasi listák nyilvánosra állítása (Csáki intézi)
+| Feladat                    | Felelős                   |
+| -------------------------- | ------------------------- |
+| Weboldal befejezése        | Csáki                     |
+| Linkelés YouTube-on        | Csáki                     |
+| Linkelés Facebookon        | Kolora Facebook kezelője  |
+| Linkelés Instagramon       | Kolora Instagram kezelője |
+| YouTube videók publikálása | Csáki                     |
 
 ## Teendők jövő Áprilisig
 
