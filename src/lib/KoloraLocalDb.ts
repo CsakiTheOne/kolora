@@ -101,11 +101,6 @@ export default class KoloraLocalDb {
             data: "theme-retro",
         },
         {
-            code: "230621",
-            action: "message",
-            data: "Gratula! Ne mondd el senkinek a kódot vagy, hogy hogyan találtad meg! :D",
-        },
-        {
             code: "ny8lcas.sl24m",
             url: "https://youtu.be/-9d2Bm0v4dk",
         },

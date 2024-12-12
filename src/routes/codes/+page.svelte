@@ -1,5 +1,6 @@
 <script>
     import KoloraLocalDb from "$lib/KoloraLocalDb";
+    import Alert from "../../components/Alert.svelte";
     import Badge from "../../components/Badge.svelte";
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
@@ -30,11 +31,9 @@
     >
         Beváltás
     </button>
-    <p>
-        <Badge>
-            <span class="mdi mdi-test-tube"></span>
-            Kísérleti funkció
-        </Badge>
-    </p>
+    <Alert icon="test-tube" title="Kísérlet">
+        Ez a funkció még kísérleti állapotban van. A jövőben bármi megváltozhat
+        vagy akár az egész funkció el is tűnhet.
+    </Alert>
 </main>
 <Footer />
