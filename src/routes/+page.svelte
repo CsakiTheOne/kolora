@@ -35,11 +35,9 @@
                 <h1 id="kolora-title">kolora!</h1>
             </a>
             <div class="adaptive-col-row">
-                <p>
-                    <a href="#about">
-                        <span class="mdi mdi-information"></span>
-                        Rólunk
-                    </a>
+                <p class="link" onclick={() => document.getElementById("homepage")?.scrollIntoView({ behavior: "smooth" })}>
+                    <span class="mdi mdi-information"></span>
+                    Rólunk
                 </p>
                 <p>
                     <a href="/timeline">
@@ -58,7 +56,7 @@
     </div>
     <div class="container">
         <Header selectedTab="Főoldal" />
-        <main>
+        <main id="homepage">
             <h2 id="about">Rólunk</h2>
             <img id="group-photo" src={imgKoloraGroupPhoto} alt="" />
             <div class="adaptive-col-row" style="align-items: start;">

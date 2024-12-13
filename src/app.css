@@ -80,10 +80,11 @@ p {
     text-align: left;
 }
 
-a {
+a, .link {
     display: inline-block;
     color: var(--primary-color);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 iframe {

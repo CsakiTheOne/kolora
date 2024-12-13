@@ -4,10 +4,10 @@
     import headerImage from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/header.jpg";
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
 
-    const { selectedTab = "" } = $props();
+    const { selectedTab = "", ...rest } = $props();
 </script>
 
-<header>
+<header {...rest}>
     <div style="background-image: url({headerImage});" class="background"></div>
     <div class="column">
         <p>Művészet? Kultúra? Székesfehérvár?</p>
