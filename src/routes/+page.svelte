@@ -239,6 +239,10 @@
             d 2s;
     }
 
+    :global(body.theme-dark) svg > path {
+        fill: var(--background-color);
+    }
+
     @keyframes growFromBottom {
         0% {
             height: 0%;
