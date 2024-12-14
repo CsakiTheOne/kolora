@@ -4,14 +4,14 @@
 
 Tervezett kiadás: 2024. December 20.
 
-| Hely                      | Feladat                      | Felelős | Megjegyzés |
-| ------------------------- | ---------------------------- | ------- | ---------- |
-| Főoldal > Barátaink       | Kép Bodonyi Dani úrnak       | Emese   |            |
-| Idővonal > Kolora terasz  | Hallgatható, megosztható mix | Dani    | Elküldve   |
-| Idővonal > Múzeumok éjsz. | Képek az eseményről          | Emese   |            |
-| Idővonal > Loophia (Ápr.) | Képek az eseményről          | Emese   |            |
-| Footer                    | Adatvédelmi táj. megírás     | Csáki   |            |
-| *                         | Consent dialógus (köszi EU)  | Csáki   |            |
+| Hely                      | Feladat                      | Felelős | Állapot               |
+| ------------------------- | ---------------------------- | ------- | --------------------- |
+| Főoldal > Barátaink       | Kép Bodonyi Dani úrnak       | Emese   | Elküldve              |
+| Idővonal > Kolora terasz  | Hallgatható, megosztható mix | Dani    | Csak 1 zene kell      |
+| Idővonal > Múzeumok éjsz. | Képek az eseményről          | Emese   |                       |
+| Idővonal > Loophia (Ápr.) | Képek az eseményről          | Emese   |                       |
+| Footer                    | Adatvédelmi táj. megírás     | Csáki   | Rosszul vagyok        |
+| *                         | Consent dialógus (köszi EU)  | Csáki   | Nagyon rosszul vagyok |
 
 ### Teendők kiadás napján
 
