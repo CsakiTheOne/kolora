@@ -7,6 +7,7 @@
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import imgKoloraBirthdayCake from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/kolora-birthday-cake.jpg";
+    import imgMusicianKalafaticsImre2 from "$lib/images/musicians/kalafatics-imre-2.png";
     import { text } from "@sveltejs/kit";
     import KoloraLocalDb from "$lib/KoloraLocalDb";
 </script>
@@ -77,6 +78,12 @@
                         ),
                 },
                 {
+                    title: "Næz",
+                    background: `url('${KoloraLocalDb.getMusician("Næz")?.bannerImageUrl}')`,
+                    onclick: () =>
+                        window.open(KoloraLocalDb.getMusician("Næz")?.websiteUrl, "_blank"),
+                },
+                {
                     title: "//TODO: képek ide",
                 },
             ]}
@@ -93,12 +100,6 @@
                 <button class="btn">
                     <span class="mdi mdi-youtube"></span>
                     Slam előadások megtekintése
-                </button>
-            </a>
-            <a href="https://www.youtube.com/@naez.official" target="_blank">
-                <button class="btn">
-                    <span class="mdi mdi-youtube"></span>
-                    Næz?
                 </button>
             </a>
         </p>
@@ -168,26 +169,27 @@
         instagramLink="https://www.instagram.com/p/C5giBg0sakJ"
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=273894045774593&id=100094619973134&ref=embed_post"
     >
-        <img
-            style="width: 100%; max-height: 300px; object-fit: cover;"
-            src={KoloraLocalDb.getMusician("Kalafatics Imre")?.bannerImageUrl}
-            alt=""
+        <Carousel
+            style="aspect-ratio: 21/9;"
+            pages={[
+                {
+                    background: `url('${KoloraLocalDb.getMusician("Kalafatics Imre")?.bannerImageUrl}')`,
+                },
+                {
+                    title: '<span class="mdi mdi-google-drive"></span> Még több fotó Tenki Mártontól',
+                    background: `url('${imgMusicianKalafaticsImre2}')`,
+                    onclick: () =>
+                        window.open(
+                            "https://drive.google.com/drive/folders/1eYo9prYNlx-O-QW9c0mNNhwDve-oCsNd?usp=sharing",
+                            "_blank",
+                        ),
+                },
+            ]}
         />
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
             Caféban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
             elhozta a remek történeteit is.
-        </p>
-        <p>
-            <a
-                href="https://drive.google.com/drive/folders/1eYo9prYNlx-O-QW9c0mNNhwDve-oCsNd?usp=sharing"
-                target="_blank"
-            >
-                <button class="btn">
-                    <span class="mdi mdi-google-drive"></span>
-                    Fotók Tenki Mártontól
-                </button>
-            </a>
         </p>
     </VerticalTimelineItem>
 

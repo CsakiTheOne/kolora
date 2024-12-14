@@ -1,17 +1,52 @@
 <script>
     let isOpen = $state(false);
+    let isLoggedIn = $state(false);
 </script>
 
 <!--span
     class="mdi mdi-account-circle"
     onclick={() => (isOpen = !isOpen)}
+    onkeydown={(e) => e.key === "Enter" && (isOpen = !isOpen)}
     tabindex="0"
     role="button"
 ></span-->
 
 {#if isOpen}
-    <div class="account-dialog-container" onclick={() => isOpen = !isOpen}>
-        <div class="account-dialog">test</div>
+    <div
+        class="account-dialog-container"
+        onclick={() => (isOpen = false)}
+        onkeydown={(e) => e.key === "Enter" && (isOpen = false)}
+        tabindex="0"
+        role="button"
+    >
+        <div
+            class="account-dialog"
+            role="button"
+            onclick={(e) => e.stopPropagation()}
+            onkeydown={(e) => e.key === "Enter" && e.stopPropagation()}
+            tabindex="0"
+        >
+            <ul style="width: 200px;">
+                {#if !isLoggedIn}
+                    <button
+                        onclick={() => {
+                            isLoggedIn = true;
+                        }}
+                    >
+                        Bejelentkezés
+                    </button>
+                {:else}
+                    <button
+                        onclick={() => {
+                            isOpen = false;
+                            isLoggedIn = false;
+                        }}
+                    >
+                        Kijelentkezés
+                    </button>
+                {/if}
+            </ul>
+        </div>
     </div>
 {/if}
 
@@ -32,8 +67,8 @@
         right: calc(var(--spacing) / 2);
         border: none;
         border-radius: var(--corner-radius);
-        background: var(--primary-variant-color);
-        color: var(--on-primary-variant-color);
+        background: var(--primary-color);
+        color: var(--on-primary-color);
         padding: var(--spacing);
         z-index: 101 !important;
     }

@@ -65,12 +65,13 @@
         justify-content: end;
         align-items: center;
         height: 48px;
+        padding: 0 calc(var(--spacing) / 2);
         overflow: hidden;
     }
 
     :global(.toolbar span) {
         font-size: 1.3rem;
-        padding: var(--spacing);
+        padding: calc(var(--spacing) / 2);
         cursor: pointer;
     }
 

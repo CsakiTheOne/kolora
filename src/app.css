@@ -102,12 +102,20 @@ ul > * {
     width: 100%;
 }
 
-ul li {
+ul li, ul > button {
     display: block;
     width: 100%;
     list-style: none;
-    padding: var(--spacing);
+    padding: calc(var(--spacing) / 2);
     border-bottom: 1px solid var(--primary-color);
+}
+
+ul > button {
+    appearance: none;
+    border: none;
+    background-color: var(--primary-variant-color);
+    color: var(--on-primary-variant-color);
+    cursor: pointer;
 }
 
 main {
