@@ -7,7 +7,7 @@ Tervezett kiadás: 2024. December 20.
 | Hely                      | Feladat                      | Felelős | Állapot               |
 | ------------------------- | ---------------------------- | ------- | --------------------- |
 | Főoldal > Barátaink       | Kép Bodonyi Dani úrnak       | Emese   | Elküldve              |
-| Idővonal > Kolora terasz  | Hallgatható, megosztható mix | Dani    | Csak 1 zene kell      |
+| Idővonal > Kolora terasz  | Hallgatható, megosztható mix | Dani    | Már csak 1 zene kell  |
 | Idővonal > Múzeumok éjsz. | Képek az eseményről          | Emese   |                       |
 | Idővonal > Loophia (Ápr.) | Képek az eseményről          | Emese   |                       |
 | Footer                    | Adatvédelmi táj. megírás     | Csáki   | Rosszul vagyok        |
@@ -15,13 +15,13 @@ Tervezett kiadás: 2024. December 20.
 
 ### Teendők kiadás napján
 
-| Feladat                    | Felelős                  |
-| -------------------------- | ------------------------ |
-| Weboldal befejezése        | Csáki                    |
-| Linkelés YouTube-on        | Csáki                    |
-| Linkelés Facebookon        | Kolora Facebook kezelők  |
-| Linkelés Instagramon       | Kolora Instagram kezelők |
-| YouTube videók publikálása | Csáki                    |
+| Feladat                    | Felelős                       |
+| -------------------------- | ----------------------------- |
+| Weboldal befejezése        | Csáki                         |
+| Linkelés YouTube-on        | Csáki                         |
+| Linkelés Facebookon        | Levi vagy bárki hozzáféréssel |
+| Linkelés Instagramon       | Emese                         |
+| YouTube videók publikálása | Csáki                         |
 
 ## Teendők jövő Áprilisig
 
