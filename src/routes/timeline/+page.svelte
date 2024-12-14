@@ -121,6 +121,9 @@
             allowfullscreen
         ></iframe>
         <p>
+            //TODO: képek
+        </p>
+        <p>
             <a
                 href="https://youtu.be/p-_4iC-xHoo?si=nStmUZVY8CfajXPy"
                 target="_blank"
