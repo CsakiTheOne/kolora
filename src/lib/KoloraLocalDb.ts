@@ -8,6 +8,7 @@ import imgMusicianLoophia from "$lib/images/musicians/loophia-banner.jpg";
 import imgMusicianNaez from "$lib/images/musicians/naez-logo.jpg";
 import imgMusicianNedela from "$lib/images/musicians/nedela-banner.jpg";
 import imgMusicianWaitingRoom from "$lib/images/musicians/waiting-room-banner.jpg";
+import { recordEvent } from "./firebase/analytics";
 
 export default class KoloraLocalDb {
     static musicians = [
@@ -121,6 +122,11 @@ export default class KoloraLocalDb {
 
     static tryCode(code: string) {
         const secrets = KoloraLocalDb.secrets.filter(s => s.code === code);
+
+        recordEvent("code_redeem", {
+            code: code,
+            success: secrets.length > 0,
+        });
 
         if (!secrets) {
             return null;

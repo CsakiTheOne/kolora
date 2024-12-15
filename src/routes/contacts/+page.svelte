@@ -3,14 +3,15 @@
     import Header from "../../components/Header.svelte";
     import logoKolora from "$lib/images/logos/kolora.png";
     import logoWholesomeWare from "$lib/images/logos/wholesomeware.png";
+    import ProfileShowcase from "../../components/ProfileShowcase.svelte";
 </script>
 
 <Header selectedTab="Elérhetőségek" />
 <main>
-    <p class="logo-container">
-        <img src={logoKolora} alt="" />
-    </p>
-    <h2>Kolora Egyesület</h2>
+    <ProfileShowcase
+        name="Kolora Egysület"
+        image={logoKolora}
+    />
     <p>
         <a href="mailto:koloraegyesulet@gmail.com" target="_blank">
             <span class="mdi mdi-email"></span>
@@ -48,10 +49,10 @@
         </a>
     </p>
 
-    <p class="logo-container">
-        <img src={logoWholesomeWare} alt="" />
-    </p>
-    <h2>WholesomeWare</h2>
+    <ProfileShowcase
+        name="WholesomeWare"
+        image={logoWholesomeWare}
+    />
     <p>
         Ha bármi probléma vagy kérdés van az oldallal kapcsolatban, ezeken a
         módokon elérhetsz:
@@ -88,28 +89,3 @@
     ></iframe-->
 </main>
 <Footer />
-
-<style>
-    .logo-container {
-        text-align: center;
-    }
-
-    .logo-container > img {
-        max-width: 128px;
-        width: 25%;
-        border-radius: 50%;
-        transition: transform 0.2s;
-    }
-
-    .logo-container > img:hover {
-        transform: scale(1.1);
-    }
-
-    .logo-container > img:active {
-        transform: scale(0.9);
-    }
-
-    h2 {
-        text-align: center;
-    }
-</style>

@@ -67,6 +67,10 @@ h1 {
     font-family: 'Times New Roman', Times, serif;
 }
 
+h2 {
+    padding-top: calc(var(--spacing) / 2);
+}
+
 h2,
 h3,
 h4,
