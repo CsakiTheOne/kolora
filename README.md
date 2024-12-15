@@ -6,7 +6,6 @@ Tervezett kiadás: 2024. December 20.
 
 | Hely                      | Feladat                      | Felelős | Állapot               |
 | ------------------------- | ---------------------------- | ------- | --------------------- |
-| Főoldal > Barátaink       | Kép Bodonyi Dani úrnak       | Emese   | Elküldve              |
 | Idővonal > Kolora terasz  | Hallgatható, megosztható mix | Dani    | Már csak 1 zene kell  |
 | Idővonal > Múzeumok éjsz. | Képek az eseményről          | Emese   |                       |
 | Idővonal > Loophia (Ápr.) | Képek az eseményről          | Emese   |                       |

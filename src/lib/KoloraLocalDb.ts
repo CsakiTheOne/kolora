@@ -1,4 +1,5 @@
 import ThemeManager from "./ThemeManager";
+import imgMusicianBodonyiDani from "$lib/images/musicians/bodonyi-dani-banner.jpg";
 import imgMusicianEgy5Egy from "$lib/images/musicians/egy5egy-banner.jpg";
 import imgMusicianJex from "$lib/images/musicians/jex-banner.png";
 import imgMusicianKalafaticsImre from "$lib/images/musicians/kalafatics-imre.png";
@@ -12,7 +13,7 @@ export default class KoloraLocalDb {
     static musicians = [
         {
             name: "Bodonyi Dani",
-            bannerImageUrl: "imgMusicianBodonyiDani",
+            bannerImageUrl: imgMusicianBodonyiDani,
             websiteUrl: "https://www.facebook.com/profile.php?id=100079430298985",
         },
         {
