@@ -1,4 +1,4 @@
-.fade-in {
+main, .fade-in {
     animation: fadeIn .5s ease-in-out;
 }
 

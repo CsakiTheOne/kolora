@@ -11,7 +11,7 @@
     let thisElement = null;
 </script>
 
-<div class="timeline-item fade-in" bind:this={thisElement}>
+<div class="timeline-item" bind:this={thisElement}>
     <div
         class="indicators"
         onclick={() => {
