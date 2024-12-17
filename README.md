@@ -6,7 +6,6 @@ Tervezett kiadás: 2024. December 22.
 
 | Hely                      | Feladat                     | Felelős | Állapot                                  |
 | ------------------------- | --------------------------- | ------- | ---------------------------------------- |
-| Idővonal > Kolora terasz  | Dani mixének linkelése      | Csáki   | A dal kész, csak az oldalra kell rakni   |
 | Idővonal > Múzeumok éjsz. | Képek az eseményről         | Emese   |                                          |
 | Idővonal > Loophia (Ápr.) | Képek az eseményről         | Emese   |                                          |
 | Footer                    | Adatvédelmi táj. megírás    | Csáki   | Nagyrészt kész, de átnézendő             |

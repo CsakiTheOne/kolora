@@ -10,6 +10,8 @@
     import imgMusicianKalafaticsImre2 from "$lib/images/musicians/kalafatics-imre-2.png";
     import { text } from "@sveltejs/kit";
     import KoloraLocalDb from "$lib/KoloraLocalDb";
+    import ThemeManager from "$lib/ThemeManager";
+    import { browser } from "$app/environment";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -34,7 +36,15 @@
             meg az ott italozókat. Ezen események során Bodonyi Dani és .kory
             mixei váltották föl a háttérzenét a kávézóban.
         </p>
-        //TODO: Dani mix, esetleg képek
+        {#if browser}
+            <iframe
+                title="Bodonyi Dani - Café at Museum Essentials"
+                width="100%"
+                height="120"
+                src={`https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=${ThemeManager.theme === "theme-light" ? "1" : "0"}&hide_artwork=1&feed=%2FDaniel_Bodonyi%2Fbodonyi-dani-caf%25C3%25A9-at-museum-essentials%2F`}
+                frameborder="0"
+            ></iframe>
+        {/if}
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -48,13 +58,20 @@
                     title: "Waiting Room",
                     background: `url('${KoloraLocalDb.getMusician("Waiting Room")?.bannerImageUrl}')`,
                     onclick: () =>
-                        window.open(KoloraLocalDb.getMusician("Waiting Room")?.websiteUrl, "_blank"),
+                        window.open(
+                            KoloraLocalDb.getMusician("Waiting Room")
+                                ?.websiteUrl,
+                            "_blank",
+                        ),
                 },
                 {
                     title: "egy5egy",
                     background: `url('${KoloraLocalDb.getMusician("egy5egy")?.bannerImageUrl}')`,
                     onclick: () =>
-                        window.open(KoloraLocalDb.getMusician("egy5egy")?.websiteUrl, "_blank"),
+                        window.open(
+                            KoloraLocalDb.getMusician("egy5egy")?.websiteUrl,
+                            "_blank",
+                        ),
                 },
             ]}
         />
@@ -81,7 +98,10 @@
                     title: "Næz",
                     background: `url('${KoloraLocalDb.getMusician("Næz")?.bannerImageUrl}')`,
                     onclick: () =>
-                        window.open(KoloraLocalDb.getMusician("Næz")?.websiteUrl, "_blank"),
+                        window.open(
+                            KoloraLocalDb.getMusician("Næz")?.websiteUrl,
+                            "_blank",
+                        ),
                 },
                 {
                     title: "//TODO: képek ide",
@@ -120,9 +140,7 @@
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
         ></iframe>
-        <p>
-            //TODO: képek
-        </p>
+        <p>//TODO: képek</p>
         <p>
             <a
                 href="https://youtu.be/p-_4iC-xHoo?si=nStmUZVY8CfajXPy"
@@ -232,7 +250,10 @@
         subtitle="Március 10."
         instagramLink="https://www.instagram.com/p/C3x3_VxsfWk"
     >
-        <a href={KoloraLocalDb.getMusician("Nedel'a")?.websiteUrl} target="_blank">
+        <a
+            href={KoloraLocalDb.getMusician("Nedel'a")?.websiteUrl}
+            target="_blank"
+        >
             <img
                 style="width: 100%; max-height: 300px; object-fit: cover;"
                 src={KoloraLocalDb.getMusician("Nedel'a")?.bannerImageUrl}
@@ -268,7 +289,10 @@
         subtitle="Február 1."
         instagramLink="https://www.instagram.com/p/C2ajW1FMa27"
     >
-        <a href={KoloraLocalDb.getMusician("The JEX")?.websiteUrl} target="_blank">
+        <a
+            href={KoloraLocalDb.getMusician("The JEX")?.websiteUrl}
+            target="_blank"
+        >
             <img
                 style="width: 100%; max-height: 300px; object-fit: cover;"
                 src={KoloraLocalDb.getMusician("The JEX")?.bannerImageUrl}
