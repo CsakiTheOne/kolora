@@ -14,13 +14,14 @@ Tervezett kiadás: 2024. December 22.
 
 ### Teendők kiadás napján
 
-| Feladat                    | Felelős                       |
-| -------------------------- | ----------------------------- |
-| Weboldal befejezése        | Csáki                         |
-| Linkelés YouTube-on        | Csáki                         |
-| Linkelés Facebookon        | Levi vagy bárki hozzáféréssel |
-| Linkelés Instagramon       | Emese                         |
-| YouTube videók publikálása | Csáki                         |
+| Feladat                                      | Felelős                       |
+| -------------------------------------------- | ----------------------------- |
+| Weboldal befejezése                          | Csáki                         |
+| Linkelés YouTube-on                          | Csáki                         |
+| Linkelés Facebookon                          | Levi vagy bárki hozzáféréssel |
+| Linkelés Instagramon                         | Emese                         |
+| YouTube videók publikálása                   | Csáki                         |
+| Poszt/story/valami, hogy vannak új contentek | Igen                          |
 
 ## Teendők jövő Áprilisig
 
