@@ -6,7 +6,7 @@ Tervezett kiadás: 2024. December 22.
 
 | Hely                      | Feladat                     | Felelős | Állapot                                  |
 | ------------------------- | --------------------------- | ------- | ---------------------------------------- |
-| Idővonal > Múzeumok éjsz. | Képek az eseményről         | Emese   |                                          |
+| Idővonal > Múzeumok éjsz. | Képek az eseményről         | Emese   | Részben Csákinál                         |
 | Idővonal > Loophia (Ápr.) | Képek az eseményről         | Emese   |                                          |
 | Footer                    | Adatvédelmi táj. megírás    | Csáki   | Nagyrészt kész, de átnézendő             |
 | *                         | Consent dialógus (köszi EU) | Csáki   | Kihagyom és imátkozok, hogy nem lesz baj |
