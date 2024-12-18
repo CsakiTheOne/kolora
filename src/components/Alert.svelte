@@ -8,10 +8,17 @@
             <span class="mdi mdi-{icon}"></span>
             {title}
         </p>
+        <div class="content">
+            {@render children()}
+        </div>
+    {:else}
+        <div class="row">
+            <span class="mdi mdi-{icon}" style="display: inline;"></span>
+            <div class="content" style="display: inline;">
+                {@render children()}
+            </div>
+        </div>
     {/if}
-    <div class="content">
-        {@render children()}
-    </div>
 </div>
 
 <style>
@@ -26,7 +33,13 @@
         overflow: hidden;
     }
 
+    .row {
+        display: flex;
+        flex-direction: row;
+        gap: calc(var(--spacing) / 2);
+    }
+
     .content {
-        font-size: .85rem;
+        font-size: 0.85rem;
     }
 </style>
