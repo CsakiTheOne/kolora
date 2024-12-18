@@ -101,6 +101,10 @@ export default class KoloraLocalDb {
 
     static secrets = [
         {
+            code: "csoba",
+            url: "/404",
+        },
+        {
             code: "230621",
             action: "setTheme",
             data: "theme-retro",
