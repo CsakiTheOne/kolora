@@ -10,14 +10,10 @@
 
 <Header selectedTab="Kódok" />
 <main>
-    <Alert icon="information" title="Kódok">
+    <Alert icon="information" title="Kódok" background="transparent">
         Járj Kolorás rendezvényekre, kövesd a Kolorás oldalakat és légy
         figyelmes! Néha kódokra bukkanhatsz, amiket ide tudsz beírni extra
         tartalmakért és meglepetésekért.
-    </Alert>
-    <Alert icon="test-tube">
-        Ez a funkció még kísérleti állapotban van. A jövőben bármi megváltozhat
-        vagy akár az egész funkció el is tűnhet.
     </Alert>
     <div class="adaptive-col-row" style="align-items: stretch;">
         <input
@@ -30,7 +26,7 @@
         <div style="display: flex; align-items: center; justify-content: center;">
             <button
                 class="btn"
-                style="min-width: calc(100% - 2 * var(--spacing));"
+                style="min-width: calc(100% - var(--spacing));"
                 onclick={() => {
                     KoloraLocalDb.tryCode(code);
                     code = "";
@@ -40,5 +36,9 @@
             </button>
         </div>
     </div>
+    <Alert icon="test-tube">
+        Ez a funkció még kísérleti állapotban van. A jövőben bármi megváltozhat
+        vagy akár az egész funkció el is tűnhet.
+    </Alert>
 </main>
 <Footer />

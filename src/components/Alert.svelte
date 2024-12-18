@@ -1,8 +1,8 @@
 <script>
-    const { icon = "alert", title = "", children, ...rest } = $props();
+    const { icon = "alert", title = "", children, background = "var(--primary-variant-color)", ...rest } = $props();
 </script>
 
-<div class="alert" {...rest}>
+<div class="alert" style={`background: ${background}`} {...rest}>
     {#if title}
         <p>
             <span class="mdi mdi-{icon}"></span>
@@ -27,7 +27,6 @@
         flex-direction: column;
         gap: calc(var(--spacing) / 2);
         padding: calc(var(--spacing) / 2);
-        background-color: var(--primary-variant-color);
         color: var(--on-primary-variant-color);
         border-radius: var(--corner-radius);
         overflow: hidden;
