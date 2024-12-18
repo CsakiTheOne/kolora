@@ -35,7 +35,13 @@
                 <h1 id="kolora-title">kolora!</h1>
             </a>
             <div class="adaptive-col-row">
-                <p class="link" onclick={() => document.getElementById("homepage")?.scrollIntoView({ behavior: "smooth" })}>
+                <p
+                    class="link"
+                    onclick={() =>
+                        document
+                            .getElementById("homepage")
+                            ?.scrollIntoView({ behavior: "smooth" })}
+                >
                     <span class="mdi mdi-information"></span>
                     Rólunk
                 </p>
@@ -100,10 +106,10 @@
                     class="btn"
                     onclick={() => {
                         const songsCount = KoloraLocalDb.musicians.flatMap(
-                            (musician) => musician.youtubeSongUrls,
+                            (musician) => musician.songUrls,
                         ).length;
                         const randomSong = KoloraLocalDb.musicians.flatMap(
-                            (musician) => musician.youtubeSongUrls,
+                            (musician) => musician.songUrls,
                         )[Math.floor(Math.random() * songsCount)];
                         window.open(randomSong, "_blank");
                     }}
@@ -127,6 +133,12 @@
                             <span class="mdi mdi-map-marker"></span>
                         </a>
                         <a
+                            href="https://www.instagram.com/museumcafe_szekesfehervar"
+                            target="_blank"
+                        >
+                            <span class="mdi mdi-instagram"></span>
+                        </a>
+                        <a
                             href="https://facebook.com/museumcafeszekesfehervar"
                             target="_blank"
                         >
@@ -145,6 +157,12 @@
                             target="_blank"
                         >
                             <span class="mdi mdi-map-marker"></span>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/nyolcasmuhelyundergroundclub"
+                            target="_blank"
+                        >
+                            <span class="mdi mdi-instagram"></span>
                         </a>
                         <a
                             href="https://facebook.com/nyolcasmuhely"
@@ -273,5 +291,10 @@
         aspect-ratio: 19/9;
         object-fit: cover;
         border-radius: var(--corner-radius);
+    }
+
+    a > span.mdi {
+        padding: calc(var(--spacing) / 4);
+        font-size: 1.3rem;
     }
 </style>

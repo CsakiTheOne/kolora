@@ -51,30 +51,29 @@
         title="Waiting Room + egy5egy félakusztik koncert @ Museum Café"
         subtitle="Augusztus 4."
     >
-        <Carousel
-            style="aspect-ratio: 21/9;"
-            pages={[
-                {
-                    title: "Waiting Room",
-                    background: `url('${KoloraLocalDb.getMusician("Waiting Room")?.bannerImageUrl}')`,
-                    onclick: () =>
-                        window.open(
-                            KoloraLocalDb.getMusician("Waiting Room")
-                                ?.websiteUrl,
-                            "_blank",
-                        ),
-                },
-                {
-                    title: "egy5egy",
-                    background: `url('${KoloraLocalDb.getMusician("egy5egy")?.bannerImageUrl}')`,
-                    onclick: () =>
-                        window.open(
-                            KoloraLocalDb.getMusician("egy5egy")?.websiteUrl,
-                            "_blank",
-                        ),
-                },
-            ]}
-        />
+        <div class="adaptive-col-row">
+            <a
+                href={KoloraLocalDb.getMusician("Waiting Room")?.websiteUrl}
+                target="_blank"
+            >
+                <img
+                    style="width: 100%;"
+                    src={KoloraLocalDb.getMusician("Waiting Room")
+                        ?.bannerImageUrl}
+                    alt=""
+                />
+            </a>
+            <a
+                href={KoloraLocalDb.getMusician("egy5egy")?.websiteUrl}
+                target="_blank"
+            >
+                <img
+                    style="width: 100%;"
+                    src={KoloraLocalDb.getMusician("egy5egy")?.bannerImageUrl}
+                    alt=""
+                />
+            </a>
+        </div>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem

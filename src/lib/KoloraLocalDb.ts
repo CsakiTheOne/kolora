@@ -16,6 +16,9 @@ export default class KoloraLocalDb {
             name: "Bodonyi Dani",
             bannerImageUrl: imgMusicianBodonyiDani,
             websiteUrl: "https://www.facebook.com/profile.php?id=100079430298985",
+            songUrls: [
+                "https://www.mixcloud.com/Daniel_Bodonyi/bodonyi-dani-caf%C3%A9-at-museum-essentials/",
+            ],
         },
         {
             name: "egy5egy",
@@ -26,7 +29,7 @@ export default class KoloraLocalDb {
             name: "The JEX",
             bannerImageUrl: imgMusicianJex,
             websiteUrl: "https://linktr.ee/thejexofficial",
-            youtubeSongUrls: [
+            songUrls: [
                 "https://youtu.be/aNlgE6vcbiI?si=F8zA4cdpKtEeYhYJ",
                 "https://youtu.be/5F-3pPWINsM?si=tTqJ7CnOBIh-HwCQ",
             ],
@@ -44,7 +47,7 @@ export default class KoloraLocalDb {
             name: "Loophia",
             bannerImageUrl: imgMusicianLoophia,
             websiteUrl: "https://linktr.ee/loophia",
-            youtubeSongUrls: [
+            songUrls: [
                 "https://youtu.be/wPRzs-mLwQk?si=bAETfHu-F6keD3w_",
                 "https://youtu.be/AvqETiAWtD8?si=UM5mchuEgeio_1_D",
                 "https://youtu.be/hQgdI4shsOI?si=ADujifbKgXxp81G9",
@@ -54,7 +57,7 @@ export default class KoloraLocalDb {
             name: "Næz",
             bannerImageUrl: imgMusicianNaez,
             websiteUrl: "https://linktr.ee/naez.official",
-            youtubeSongUrls: [
+            songUrls: [
                 "https://youtu.be/Z4HPjjrMgno?si=1PwDwBZaaWyPdVa5",
                 "https://youtu.be/huscK-IdVpU?si=8yCj4So1uXwISXsl",
                 "https://youtu.be/cTKLLtIT80k?si=CohC9hXgwwKOfJRF",
@@ -69,7 +72,7 @@ export default class KoloraLocalDb {
             name: "Nedel'a",
             bannerImageUrl: imgMusicianNedela,
             websiteUrl: "https://linktr.ee/nedela_zenekar",
-            youtubeSongUrls: [
+            songUrls: [
                 "https://youtu.be/kDXxczfc9ik?si=klf2zb7hHnnK0u-X",
                 "https://youtu.be/uWwkJXTX5rk?si=2Po9ujGyQGMAuhmz",
             ],
@@ -78,7 +81,7 @@ export default class KoloraLocalDb {
             name: "Waiting Room",
             bannerImageUrl: imgMusicianWaitingRoom,
             websiteUrl: "https://linktr.ee/waiting_room",
-            youtubeSongUrls: [
+            songUrls: [
                 "https://youtu.be/sk3WEAAOMls?si=ytBouSl9JlU94J09",
                 "https://youtu.be/UW_gjiilXYQ?si=xYs1G5uXYszWQu4h",
                 "https://youtu.be/6__DN31kaXE?si=0mwuskw-t7Vz4p7O",
