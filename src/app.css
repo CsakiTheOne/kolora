@@ -106,7 +106,7 @@ ul > * {
     width: 100%;
 }
 
-ul li, ul > button {
+ul li, ul button {
     display: block;
     width: 100%;
     list-style: none;
@@ -114,7 +114,7 @@ ul li, ul > button {
     border-bottom: 1px solid var(--primary-color);
 }
 
-ul > button {
+ul button {
     appearance: none;
     border: none;
     background-color: var(--primary-variant-color);

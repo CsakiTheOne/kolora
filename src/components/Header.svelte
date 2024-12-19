@@ -69,7 +69,7 @@
         overflow: hidden;
     }
 
-    :global(.toolbar span) {
+    :global(.toolbar > span) {
         font-size: 1.3rem;
         padding: calc(var(--spacing) / 2);
         cursor: pointer;
