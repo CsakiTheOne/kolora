@@ -3,15 +3,16 @@
     import Header from "../../components/Header.svelte";
     import VerticalTimelineItem from "../../components/VerticalTimelineItem.svelte";
     import Carousel from "../../components/Carousel.svelte";
+    import KoloraLocalDb from "$lib/KoloraLocalDb";
+    import ThemeManager from "$lib/ThemeManager";
+    import { browser } from "$app/environment";
     import imgYearOpeningSlam from "$lib/images/gallery/2024-evnyito-slam/event-banner.jpg";
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import imgKoloraBirthdayCake from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/kolora-birthday-cake.jpg";
     import imgMusicianNaez from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/naez-csoportkep.jpg";
     import imgEsztiWithHat from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/eszti-kalap-huzas.jpg";
-    import KoloraLocalDb from "$lib/KoloraLocalDb";
-    import ThemeManager from "$lib/ThemeManager";
-    import { browser } from "$app/environment";
+    import imgNyolcasMuhelyLogo from "$lib/images/logos/nyolcas-muhely.jpg";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -81,6 +82,10 @@
         subtitle="Július 22."
         instagramLink="https://www.instagram.com/p/C8MQxtZsmon"
     >
+        <p>
+            Slam, Næz, Bodonyi Dani, fényfestés, italok és torta. Egy éves lett
+            a Kolora Július 21-én, és megadtuk a módját az ünneplésnek.
+        </p>
         <Carousel
             style="aspect-ratio: 21/9;"
             pages={[
@@ -116,10 +121,6 @@
                 },
             ]}
         />
-        <p>
-            Slam, Næz, Bodonyi Dani, fényfestés, italok és torta. Egy éves lett
-            a Kolora Július 21-én, és megadtuk a módját az ünneplésnek.
-        </p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -174,7 +175,10 @@
         </p>
         <p>
             <a href="/stickers">
-                <button class="btn"> 2024 költészet napi kincsvadászat </button>
+                <button class="btn">
+                    <span class="mdi mdi-map"></span>
+                    2024 költészet napi kincsvadászat
+                </button>
             </a>
         </p>
         <p>
@@ -196,16 +200,16 @@
         instagramLink="https://www.instagram.com/p/C5giBg0sakJ"
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=273894045774593&id=100094619973134&ref=embed_post"
     >
-        <img
-            style="width: 100%; max-height: 300px; object-fit: cover;"
-            src={KoloraLocalDb.getMusician("Kalafatics Imre")?.bannerImageUrl}
-            alt=""
-        />
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
             Caféban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
             elhozta a remek történeteit is.
         </p>
+        <img
+            style="width: 100%; max-height: 300px; object-fit: cover;"
+            src={KoloraLocalDb.getMusician("Kalafatics Imre")?.bannerImageUrl}
+            alt=""
+        />
         <p>
             <a
                 href="https://drive.google.com/drive/folders/1eYo9prYNlx-O-QW9c0mNNhwDve-oCsNd?usp=sharing"
@@ -225,29 +229,36 @@
         instagramLink="https://www.instagram.com/stories/highlights/17871723279011747/"
         facebookLink="https://fb.me/e/5qV6UfabB"
     >
-        <img
-            style="width: 100%; max-height: 300px; object-fit: cover;"
-            src={imgYearOpeningSlam}
-            alt=""
-        />
-        <p>
+        <p style="flex: 1; width: 100%;">
             A Nyolcas Műhely adott otthont a Kolora Egyesület 2024-es évnyitó
             slam versenyének, ahol 18 előadást láthattunk. Köztük volt 6
             tehetséges versenyző és sok új ember, akik először álltak a
             színpadra. Köszönjük a helyet a Nyolcas Műhelynek és a támogatást
             minden fellépőnek és nézőnek!
         </p>
-        <p>
-            <a
-                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=tzZyj71NrnGVyWnT"
-                target="_blank"
-            >
-                <button class="btn">
-                    <span class="mdi mdi-youtube"></span>
-                    Fellépők megtekintése
-                </button>
-            </a>
-        </p>
+        <Carousel
+            style="aspect-ratio: 21/9;"
+            pages={[
+                {
+                    title: "<span class='mdi mdi-youtube'></span> Fellépők",
+                    background: `url('${imgYearOpeningSlam}')`,
+                    onclick: () =>
+                        window.open(
+                            "https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=tzZyj71NrnGVyWnT",
+                            "_blank",
+                        ),
+                },
+                {
+                    title: "Helyszín: Nyolcas Műhely",
+                    background: `url('${imgNyolcasMuhelyLogo}')`,
+                    onclick: () =>
+                        window.open(
+                            "https://www.facebook.com/nyolcasmuhely",
+                            "_blank",
+                        ),
+                }
+            ]}
+        />
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -273,6 +284,12 @@
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=pfbid0GffCQPFqTkqZTbrEXGCiq5wVYXpSksXKvrdz2RmGuQDWytgJowzap5yZrrHYZxnRl&id=100094619973134"
         instagramLink="https://www.instagram.com/p/C4n0kGGsKUc"
     >
+        <p>
+            Szvoren Eszter és Völgyesi Toma voltak az irodalom tanáraink idén,
+            akikkel együtt játszottunk a szavakkal, alkottunk és fejlődtünk.
+            Ezeket a workshop-okat az évben többször is megtartották
+            vasárnaponként a kedvenc kávézónkban.
+        </p>
         <div>
             <img
                 style="width: 100%; max-height: 300px; object-fit: cover;"
@@ -281,12 +298,6 @@
             />
             <span>Fotó: Mészáros Emese</span>
         </div>
-        <p>
-            Szvoren Eszter és Völgyesi Toma voltak az irodalom tanáraink idén,
-            akikkel együtt játszottunk a szavakkal, alkottunk és fejlődtünk.
-            Ezeket a workshop-okat az évben többször is megtartották
-            vasárnaponként a kedvenc kávézónkban.
-        </p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -294,16 +305,19 @@
         subtitle="Február 1."
         instagramLink="https://www.instagram.com/p/C2ajW1FMa27"
     >
-        <a
-            href={KoloraLocalDb.getMusician("The JEX")?.websiteUrl}
-            target="_blank"
-        >
-            <img
-                style="width: 100%; max-height: 300px; object-fit: cover;"
-                src={KoloraLocalDb.getMusician("The JEX")?.bannerImageUrl}
-                alt=""
-            />
-        </a>
+        <p>
+            Ott voltunk a The JEX saját szervezésű koncertjén a Museum Caféban.
+        </p>
+        <iframe
+            width="100%"
+            style="aspect-ratio: 16/9;"
+            src="https://www.youtube.com/embed/R8HhNxtDX48?si=J5ptwc5dubHWzN-S"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem

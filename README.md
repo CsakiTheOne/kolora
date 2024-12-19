@@ -4,11 +4,13 @@
 
 Tervezett kiadás: 2024. December 22.
 
-| Hely                      | Feladat                     | Felelős | Állapot                            |
-| ------------------------- | --------------------------- | ------- | ---------------------------------- |
-| Idővonal > Múzeumok éjsz. | Képek az eseményről         | Emese   | Nagyrészt már Csákinál             |
-| Idővonal > Loophia (Ápr.) | Még több kép (nem kötelező) | Emese   |                                    |
-| *                         | Consent dialógus (köszi EU) | Csáki   | Csak nem lesz gond ha ezt kihagyom |
+| Hely                      | Feladat                     | Felelős        | Állapot                            |
+| ------------------------- | --------------------------- | -------------- | ---------------------------------- |
+| Idővonal > Múzeumok éjsz. | Képek a buliról Drive-ba    | Emese és Csáki | Képek már Csákinál, feltöltendő    |
+| Idővonal > WR+egy5egy     | Kis leírás                  | Csáki          |                                    |
+| Idővonal > Nedel'a        | Kis leírás és képek         | Emese ésCsáki  | Instán megvannak, feltöltendő      |
+| Idővonal > The JEX        | Képek                       | Emese és Csáki | Instán megvannak, feltöltendő      |
+| *                         | Consent dialógus (köszi EU) | Csáki          | Csak nem lesz gond ha ezt kihagyom |
 
 ### Teendők kiadás napján
 
