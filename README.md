@@ -4,23 +4,22 @@
 
 Tervezett kiadás: 2024. December 22.
 
-| Hely                      | Feladat                     | Felelős | Állapot                                  |
-| ------------------------- | --------------------------- | ------- | ---------------------------------------- |
-| Idővonal > Múzeumok éjsz. | Képek az eseményről         | Emese   | Részben Csákinál                         |
-| Idővonal > Loophia (Ápr.) | Képek az eseményről         | Emese   |                                          |
-| Footer                    | Adatvédelmi táj. megírás    | Csáki   | Nagyrészt kész, de átnézendő             |
-| *                         | Consent dialógus (köszi EU) | Csáki   | Kihagyom és imátkozok, hogy nem lesz baj |
+| Hely                      | Feladat                     | Felelős | Állapot                            |
+| ------------------------- | --------------------------- | ------- | ---------------------------------- |
+| Idővonal > Múzeumok éjsz. | Képek az eseményről         | Emese   | Nagyrészt már Csákinál             |
+| Idővonal > Loophia (Ápr.) | Még több kép (nem kötelező) | Emese   |                                    |
+| *                         | Consent dialógus (köszi EU) | Csáki   | Csak nem lesz gond ha ezt kihagyom |
 
 ### Teendők kiadás napján
 
-| Feladat                                      | Felelős                       |
-| -------------------------------------------- | ----------------------------- |
-| Weboldal befejezése                          | Csáki                         |
-| Linkelés YouTube-on                          | Csáki                         |
-| Linkelés Facebookon                          | Levi vagy bárki hozzáféréssel |
-| Linkelés Instagramon                         | Emese                         |
-| YouTube videók publikálása                   | Csáki                         |
-| Poszt/story/valami, hogy vannak új contentek | Igen                          |
+| Feladat                                      | Felelős |
+| -------------------------------------------- | ------- |
+| Weboldal befejezése                          | Csáki   |
+| Linkelés YouTube-on                          | Csáki   |
+| Linkelés Facebookon                          | Levi    |
+| Linkelés Instagramon                         | Emese   |
+| YouTube videók publikálása                   | Csáki   |
+| Poszt/story/valami, hogy vannak új contentek | Igen    |
 
 ## Teendők jövő Áprilisig
 

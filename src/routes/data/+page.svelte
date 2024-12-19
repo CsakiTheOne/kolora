@@ -14,6 +14,25 @@
         figyelmesen olvassa el ezt a Szabályzatot, mielőtt tovább böngészi
         weboldalunkat.
     </p>
+    <p>Milyen adatokat gyűjtünk?</p>
+    <ul>
+        <li>
+            <b>Automatikusan gyűjtött adatok:</b> Amikor weboldalunkat látogatja,
+            automatikusan gyűjtünk bizonyos adatokat. A látogatás időpontját és a
+            látogatott oldalakat.
+        </li>
+        <li>
+            <b>Ön által megadott adatok:</b> Az interakció idejét és egyéb
+            információkat, mikor a <a href="/codes">Kódok oldalon</a> megpróbál beváltani
+            egy kódot. Az adatgyűjtés a beváltás sigerességétől függetlenül történik.
+        </li>
+    </ul>
+    <p>
+        Adatok, amiket NEM gyűjtünk: Az Ön nevét, e-mail címét, telefonszámát,
+        bármilyen egyéb adatot. A weboldalon használt preferált témát és egyéb
+        beállításokat. (Ezek a beállítások a böngészőben tárolódnak az Ön
+        eszközén.)
+    </p>
     <p>
         A gyűjtött személyes adatokat elsősorban a következő célokra használjuk:
     </p>
