@@ -7,8 +7,8 @@
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
     import imgKoloraBirthdayCake from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/kolora-birthday-cake.jpg";
-    import imgMusicianKalafaticsImre2 from "$lib/images/musicians/kalafatics-imre-2.png";
-    import { text } from "@sveltejs/kit";
+    import imgMusicianNaez from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/naez-csoportkep.jpg";
+    import imgEsztiWithHat from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/eszti-kalap-huzas.jpg";
     import KoloraLocalDb from "$lib/KoloraLocalDb";
     import ThemeManager from "$lib/ThemeManager";
     import { browser } from "$app/environment";
@@ -94,8 +94,17 @@
                         ),
                 },
                 {
+                    title: "<span class='mdi mdi-youtube'></span> Slam előadások",
+                    background: `url('${imgEsztiWithHat}')`,
+                    onclick: () =>
+                        window.open(
+                            "https://youtube.com/playlist?list=PLxSO3Z5lw-xPDOFOpHZzC-rmqEI-ACJQN&si=WMLuJ5EBUiDaGKmw",
+                            "_blank",
+                        ),
+                },
+                {
                     title: "Næz",
-                    background: `url('${KoloraLocalDb.getMusician("Næz")?.bannerImageUrl}')`,
+                    background: `url('${imgMusicianNaez}')`,
                     onclick: () =>
                         window.open(
                             KoloraLocalDb.getMusician("Næz")?.websiteUrl,
@@ -103,7 +112,7 @@
                         ),
                 },
                 {
-                    title: "//TODO: képek ide",
+                    title: "<span class='mdi mdi-image-multiple'></span> Képek Mészáros Emesétől //TODO: Drive link ide",
                 },
             ]}
         />
@@ -111,23 +120,13 @@
             Slam, Næz, Bodonyi Dani, fényfestés, italok és torta. Egy éves lett
             a Kolora Július 21-én, és megadtuk a módját az ünneplésnek.
         </p>
-        <p>
-            <a
-                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xPDOFOpHZzC-rmqEI-ACJQN&si=WMLuJ5EBUiDaGKmw"
-                target="_blank"
-            >
-                <button class="btn">
-                    <span class="mdi mdi-youtube"></span>
-                    Slam előadások megtekintése
-                </button>
-            </a>
-        </p>
-        <p>//TODO: képek Emesétől</p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
         title="Loophia koncert a Museum Caféban"
         subtitle="Április 21."
+        instagramLink="https://www.instagram.com/reel/C5yrfY-spoy"
+        facebookLink="https://www.facebook.com/permalink.php?story_fbid=pfbid0VC2b49YoPt5S19JSeRFWTPzmGH1nktiDYBaQZGQJbo71pvPbCLSq4YLecYXbvV1ql&id=100094619973134"
     >
         <iframe
             width="100%"
@@ -139,7 +138,6 @@
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
         ></iframe>
-        <p>//TODO: képek</p>
         <p>
             <a
                 href="https://youtu.be/p-_4iC-xHoo?si=nStmUZVY8CfajXPy"
@@ -148,6 +146,15 @@
                 <button class="btn">
                     <span class="mdi mdi-youtube"></span>
                     Ki, vagy mi az a Loophia?
+                </button>
+            </a>
+            <a
+                href="https://www.facebook.com/permalink.php?story_fbid=pfbid0VC2b49YoPt5S19JSeRFWTPzmGH1nktiDYBaQZGQJbo71pvPbCLSq4YLecYXbvV1ql&id=100094619973134"
+                target="_blank"
+            >
+                <button class="btn">
+                    <span class="mdi mdi-image-multiple"></span>
+                    Fotók Seffer Istvántól
                 </button>
             </a>
         </p>
@@ -189,27 +196,26 @@
         instagramLink="https://www.instagram.com/p/C5giBg0sakJ"
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=273894045774593&id=100094619973134&ref=embed_post"
     >
-        <Carousel
-            style="aspect-ratio: 21/9;"
-            pages={[
-                {
-                    background: `url('${KoloraLocalDb.getMusician("Kalafatics Imre")?.bannerImageUrl}')`,
-                },
-                {
-                    title: '<span class="mdi mdi-google-drive"></span> Még több fotó Tenki Mártontól',
-                    background: `url('${imgMusicianKalafaticsImre2}')`,
-                    onclick: () =>
-                        window.open(
-                            "https://drive.google.com/drive/folders/1eYo9prYNlx-O-QW9c0mNNhwDve-oCsNd?usp=sharing",
-                            "_blank",
-                        ),
-                },
-            ]}
+        <img
+            style="width: 100%; max-height: 300px; object-fit: cover;"
+            src={KoloraLocalDb.getMusician("Kalafatics Imre")?.bannerImageUrl}
+            alt=""
         />
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
             Caféban. Egy vasárnapi este lírával állt ki elénk, a dalokhoz pedig
             elhozta a remek történeteit is.
+        </p>
+        <p>
+            <a
+                href="https://drive.google.com/drive/folders/1eYo9prYNlx-O-QW9c0mNNhwDve-oCsNd?usp=sharing"
+                target="_blank"
+            >
+                <button class="btn">
+                    <span class="mdi mdi-image-multiple"></span>
+                    Még több kép Tenki Mártontól
+                </button>
+            </a>
         </p>
     </VerticalTimelineItem>
 
