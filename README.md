@@ -1,24 +1,19 @@
 # Kolora Egyesület weboldala
 
-## Teendők első kiadásig
+## Kiadás teendők
 
-Tervezett kiadás: 2024. December 22.
+| Feladat                                      | Felelős                                    |
+| -------------------------------------------- | ------------------------------------------ |
+| Weboldal átnézése, hiba esetén javítása      | Csáki és mindenki                          |
+| Linkelés YouTube-on                          | Csáki                                      |
+| Linkelés Facebookon                          | Levi                                       |
+| Linkelés Instagramon                         | Emese                                      |
+| YouTube videók publikálása                   | Csáki                                      |
+| Poszt/story/valami, hogy vannak új contentek | Aki ráér és tud csinálni valami jó posztot |
 
-| Hely                      | Feladat                     | Felelős        | Állapot                            |
-| ------------------------- | --------------------------- | -------------- | ---------------------------------- |
-| Idővonal > Nedel'a        | Kis leírás és képek         | Emese és Csáki | Instán megvannak, feltöltendő      |
-| *                         | Consent dialógus (köszi EU) | Csáki          | Csak nem lesz gond ha ezt kihagyom |
+Kimaradt dolgok:
 
-### Teendők kiadás napján
-
-| Feladat                                      | Felelős |
-| -------------------------------------------- | ------- |
-| Weboldal befejezése                          | Csáki   |
-| Linkelés YouTube-on                          | Csáki   |
-| Linkelés Facebookon                          | Levi    |
-| Linkelés Instagramon                         | Emese   |
-| YouTube videók publikálása                   | Csáki   |
-| Poszt/story/valami, hogy vannak új contentek | Igen    |
+- consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
 
 ## Teendők jövő Áprilisig
 

@@ -142,7 +142,7 @@
                         ),
                 },
                 {
-                    title: "<span class='mdi mdi-image-multiple'></span> Képek Mészáros Emesétől",
+                    title: "<span class='mdi mdi-image-multiple'></span> Képek Emesétől",
                     background: `url('${imgKoloraGroupPhoto}')`,
                     onclick: () =>
                         window.open(
@@ -314,6 +314,17 @@
                 alt=""
             />
         </a>
+        <p>
+            <a
+                href="https://drive.google.com/drive/folders/1CDQVRaAfFphdRu1rksA7nAJYi40Ad9sK?usp=sharing"
+                target="_blank"
+            >
+                <button class="btn">
+                    <span class="mdi mdi-image-multiple"></span>
+                    Képek Emesétől
+                </button>
+            </a>
+        </p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -363,7 +374,7 @@
             >
                 <button class="btn">
                     <span class="mdi mdi-image-multiple"></span>
-                    Képek Mészáros Emesétől
+                    Képek Emesétől
                 </button>
             </a>
         </p>
