@@ -3,24 +3,31 @@
     "dir": "ltr",
     "display": "standalone",
     "name": "Kolora Egyesület",
-    "orientation": "any",
+    "orientation": "natural",
     "scope": "/",
     "short_name": "Kolora",
     "start_url": "/index.html",
     "theme_color": "#89023d",
     "icons": [
-        {
-            "src": "./favicon.png",
-            "type": "image/png",
-            "sizes": "512x512"
-        }
+      {
+        "src": "./favicon.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
     ],
     "id": "kolora",
     "lang": "hu",
     "categories": [
-        "books",
-        "entertainment",
-        "social"
+      "books",
+      "entertainment",
+      "social"
     ],
-    "handle_links": "preferred"
-}
+    "handle_links": "preferred",
+    "shortcuts": [
+      {
+        "name": "Kódok",
+        "url": "/codes",
+        "description": ""
+      }
+    ]
+  }
