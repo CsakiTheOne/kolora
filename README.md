@@ -13,6 +13,7 @@
 
 Kimaradt dolgok:
 
+- link Iminél: a barátaink résznél minden előadónra rá lehet kattintani. Iminél ez hiányos
 - consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
 
 ## Teendők jövő Áprilisig

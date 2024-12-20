@@ -38,7 +38,7 @@
                 </a>
             {/if}
         </div>
-        <h5>{subtitle}</h5>
+        <h4>{subtitle}</h4>
         <div>
             {@render children()}
         </div>
@@ -135,7 +135,7 @@
         margin-bottom: calc(var(--spacing) / 3);
     }
 
-    .content > h5 {
+    .content > h4 {
         margin: 0;
         margin-bottom: var(--spacing);
     }
