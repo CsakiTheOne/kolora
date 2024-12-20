@@ -60,21 +60,21 @@
             style="aspect-ratio: 21/9;"
             pages={[
                 {
+                    title: "egy5egy",
+                    background: `url('${KoloraLocalDb.getMusician("egy5egy")?.bannerImageUrl}')`,
+                    onclick: () =>
+                        window.open(
+                            KoloraLocalDb.getMusician("egy5egy")?.websiteUrl,
+                            "_blank",
+                        ),
+                },
+                {
                     title: "Waiting Room",
                     background: `url('${KoloraLocalDb.getMusician("Waiting Room")?.bannerImageUrl}')`,
                     onclick: () =>
                         window.open(
                             KoloraLocalDb.getMusician("Waiting Room")
                                 ?.websiteUrl,
-                            "_blank",
-                        ),
-                },
-                {
-                    title: "egy5egy",
-                    background: `url('${KoloraLocalDb.getMusician("egy5egy")?.bannerImageUrl}')`,
-                    onclick: () =>
-                        window.open(
-                            KoloraLocalDb.getMusician("egy5egy")?.websiteUrl,
                             "_blank",
                         ),
                 },
@@ -106,6 +106,7 @@
         title="Múzeumok éjszakája a Museum Caféban + 1. Kolora szülinap"
         subtitle="Július 22."
         instagramLink="https://www.instagram.com/p/C8MQxtZsmon"
+        facebookLink="https://fb.me/e/3OIvmblM7"
     >
         <p>
             Slam, Næz, Bodonyi Dani, fényfestés, italok és torta. Egy éves lett
@@ -200,10 +201,10 @@
     >
         <div
             class="adaptive-col-row"
-            style="width: 100%; gap: var(--spacing); align-items: start;"
+            style="width: 100%; gap: var(--spacing); align-items: stretch;"
         >
             <div
-                style="display: flex; flex-direction: column; gap: var(--spacing);"
+                style="display: flex; flex-direction: column; gap: var(--spacing); justify-content: space-evenly;"
             >
                 <p>
                     A magyar költészet napján Csáki egy kincsvadászatot
@@ -226,9 +227,15 @@
                     > mozgalom ihlette.
                 </p>
             </div>
-            <video style="max-width: 40%; max-height: 350px;" controls>
-                <source src={vidKispirosKincsvadaszat} type="video/mp4" />
-            </video>
+            <div style="max-width: 40%;">
+                <video style="max-height: 350px;" controls>
+                    <source src={vidKispirosKincsvadaszat} type="video/mp4" />
+                </video>
+                Story:
+                <a href="https://instagram.com/kispirosboi" target="_blank"
+                    >@kispirosboi</a
+                >
+            </div>
         </div>
     </VerticalTimelineItem>
 
