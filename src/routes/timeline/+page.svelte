@@ -6,6 +6,7 @@
     import KoloraLocalDb from "$lib/KoloraLocalDb";
     import ThemeManager from "$lib/ThemeManager";
     import { browser } from "$app/environment";
+    import imgKoloraGroupPhoto from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/group photo with cake original.jpg";
     import imgYearOpeningSlam from "$lib/images/gallery/2024-evnyito-slam/event-banner.jpg";
     import imgFirstKoloraWorkshopTable from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import imgKoloraSzitakoto from "$lib/images/kolora-szitakoto.png";
@@ -14,6 +15,7 @@
     import imgEsztiWithHat from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/eszti-kalap-huzas.jpg";
     import imgMuseumCafeLogo from "$lib/images/logos/museum-cafe.jpg";
     import imgNyolcasMuhelyLogo from "$lib/images/logos/nyolcas-muhely.jpg";
+    import vidKispirosKincsvadaszat from "$lib/images/gallery/kolteszet-napi-kincsvadaszat/kispiros-km.mp4";
 </script>
 
 <Header selectedTab="Idővonal" />
@@ -140,7 +142,13 @@
                         ),
                 },
                 {
-                    title: "<span class='mdi mdi-image-multiple'></span> Képek Mészáros Emesétől //TODO: Drive link ide",
+                    title: "<span class='mdi mdi-image-multiple'></span> Képek Mészáros Emesétől",
+                    background: `url('${imgKoloraGroupPhoto}')`,
+                    onclick: () =>
+                        window.open(
+                            "https://drive.google.com/drive/folders/1txEiQEVJbBbD2V4J3jetJ9W0yX8NZuhy?usp=sharing",
+                            "_blank",
+                        ),
                 },
             ]}
         />
@@ -190,31 +198,38 @@
         instagramLink="https://www.instagram.com/p/C5jJoSmNd-w"
         facebookLink="https://fb.me/e/1MldHJc9c"
     >
-        <p>
-            A magyar költészet napján Csáki egy kincsvadászatot szervezett, ahol
-            a résztvevőknek Székesfehérvár utcáin kellett keresniük matricákat,
-            amelyeken versek és egyéb jóságok voltak. A matricák tartalmai
-            megtekinthetőek az alábbi linken:
-        </p>
-        <p>
-            <a href="/stickers">
-                <button class="btn">
-                    <span class="mdi mdi-map"></span>
-                    2024 költészet napi kincsvadászat
-                </button>
-            </a>
-        </p>
-        <p>
-            Ezt az eseményt a <a
-                href="https://www.facebook.com/groups/570212437568903/"
-                target="_blank">Posztolj verset az utcára!</a
-            > mozgalom ihlette.
-        </p>
-        <!--p>
-            Viszont jövőre is vár a művészetkedvelőkre egy meglepetés. Már
-            készül a 2025-ös költészet napi program, amely itt lesz elérhető:
-        </p>
-        <p><a class="btn" href="/jam">2025 költészet napja</a></p-->
+        <div
+            class="adaptive-col-row"
+            style="width: 100%; gap: var(--spacing); align-items: start;"
+        >
+            <div
+                style="display: flex; flex-direction: column; gap: var(--spacing);"
+            >
+                <p>
+                    A magyar költészet napján Csáki egy kincsvadászatot
+                    szervezett, ahol a résztvevőknek Székesfehérvár utcáin
+                    kellett keresniük matricákat, amelyeken versek és egyéb
+                    jóságok voltak. A matricák tartalmai megtalálhatók itt:
+                </p>
+                <p>
+                    <a href="/stickers">
+                        <button class="btn">
+                            <span class="mdi mdi-map"></span>
+                            2024 költészet napi kincsvadászat
+                        </button>
+                    </a>
+                </p>
+                <p>
+                    Ezt az eseményt a <a
+                        href="https://www.facebook.com/groups/570212437568903/"
+                        target="_blank">Posztolj verset az utcára!</a
+                    > mozgalom ihlette.
+                </p>
+            </div>
+            <video style="max-width: 40%; max-height: 350px;" controls>
+                <source src={vidKispirosKincsvadaszat} type="video/mp4" />
+            </video>
+        </div>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -341,6 +356,17 @@
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
         ></iframe>
+        <p>
+            <a
+                href="https://drive.google.com/drive/folders/1yeck-4Eu4Rxg58ufvpE3rcbPlpEQn50L?usp=sharing"
+                target="_blank"
+            >
+                <button class="btn">
+                    <span class="mdi mdi-image-multiple"></span>
+                    Képek Mészáros Emesétől
+                </button>
+            </a>
+        </p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
