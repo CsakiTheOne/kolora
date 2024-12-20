@@ -35,8 +35,8 @@
     </Alert>
     <h2>Felhasznált szellemi alkotások</h2>
     <p>
-        A fotókat a Kolora Egyesület tagjai és barátai készítették.
-        Egyéb, az oldalon megjelenő tartalmakra minden jog fenntartva.
+        A fotókat, videókat és egyéb média tartalmakat a Kolora Egyesület tagjai
+        és barátai készítették. E tartalmak a készítők tulajdonát képezik.
     </p>
     <h3>Technológiák</h3>
     <ul>
