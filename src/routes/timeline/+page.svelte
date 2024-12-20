@@ -42,6 +42,7 @@
         </p>
         {#if browser}
             <iframe
+                loading="lazy"
                 title="Bodonyi Dani - Café at Museum Essentials"
                 width="100%"
                 height="120"
@@ -162,6 +163,7 @@
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=pfbid0VC2b49YoPt5S19JSeRFWTPzmGH1nktiDYBaQZGQJbo71pvPbCLSq4YLecYXbvV1ql&id=100094619973134"
     >
         <iframe
+            loading="lazy"
             width="100%"
             style="aspect-ratio: 16/9;"
             src="https://www.youtube.com/embed/Paa2xhP3EVo?si=qy4NsKYvwBuW2VR6"
@@ -365,6 +367,7 @@
             Ott voltunk a The JEX saját szervezésű koncertjén a Museum Caféban.
         </p>
         <iframe
+            loading="lazy"
             width="100%"
             style="aspect-ratio: 16/9;"
             src="https://www.youtube.com/embed/R8HhNxtDX48?si=J5ptwc5dubHWzN-S"

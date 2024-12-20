@@ -2,6 +2,10 @@
 
 ## Kiadás teendők
 
+Kiadás előtt javítandó hibák:
+
+- [ ] Túl nagy képek, gyenge teljesítmény: az idővonal 14MB-ot tölt le, ezért lassú a betöltés. Minden képet konvertálni és kicsinyíteni kell.
+
 | Feladat                                      | Felelős                                    |
 | -------------------------------------------- | ------------------------------------------ |
 | Weboldal átnézése, hiba esetén javítása      | Csáki és mindenki                          |
