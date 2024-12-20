@@ -26,7 +26,7 @@
     </div>
     <div class="content">
         <div class="title-row">
-            <h3>{title}</h3>
+            <h2>{title}</h2>
             {#if facebookLink}
                 <a href={facebookLink} target="_blank">
                     <span class="mdi mdi-facebook"></span>
@@ -58,7 +58,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: calc(var(--spacing) / 2);
+        gap: var(--spacing);
+        translate: 0 6px;
     }
 
     .dot {
@@ -68,7 +69,6 @@
         aspect-ratio: 1;
         background-color: var(--primary-color);
         border-radius: 50%;
-        margin-top: 3px;
         transition: all 0.1s ease-in-out;
     }
 
@@ -105,8 +105,9 @@
         width: 100%;
     }
 
-    h3 {
+    h2 {
         display: inline-block;
+        padding: 0;
         font-weight: bold;
         color: var(--primary-color);
         flex-grow: 1;
