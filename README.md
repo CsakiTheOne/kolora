@@ -6,9 +6,9 @@ Tervezett kiadás: 2024. December 22.
 
 | Hely                      | Feladat                     | Felelős        | Állapot                            |
 | ------------------------- | --------------------------- | -------------- | ---------------------------------- |
-| Idővonal > Múzeumok éjsz. | Képek a buliról Drive-ba    | Emese és Csáki | Képek már Csákinál, feltöltendő    |
-| Idővonal > WR+egy5egy     | Kis leírás                  | Csáki          |                                    |
-| Idővonal > Nedel'a        | Kis leírás és képek         | Emese ésCsáki  | Instán megvannak, feltöltendő      |
+| Idővonal > Múzeumok éjsz. | Képek a buliról Drive-ba    | Emese és Csáki | E-mail-ben vannak, feltöltendő     |
+| Idővonal > Kincsvadászat  | Képek                       | Csáki          |                                    |
+| Idővonal > Nedel'a        | Kis leírás és képek         | Emese és Csáki | Instán megvannak, feltöltendő      |
 | Idővonal > The JEX        | Képek                       | Emese és Csáki | Instán megvannak, feltöltendő      |
 | *                         | Consent dialógus (köszi EU) | Csáki          | Csak nem lesz gond ha ezt kihagyom |
 

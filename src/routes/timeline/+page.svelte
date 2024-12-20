@@ -12,6 +12,7 @@
     import imgKoloraBirthdayCake from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/kolora-birthday-cake.jpg";
     import imgMusicianNaez from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/naez-csoportkep.jpg";
     import imgEsztiWithHat from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/eszti-kalap-huzas.jpg";
+    import imgMuseumCafeLogo from "$lib/images/logos/museum-cafe.jpg";
     import imgNyolcasMuhelyLogo from "$lib/images/logos/nyolcas-muhely.jpg";
 </script>
 
@@ -51,30 +52,52 @@
     <VerticalTimelineItem
         title="Waiting Room + egy5egy félakusztik koncert @ Museum Café"
         subtitle="Augusztus 4."
+        facebookLink="https://fb.me/e/2h0gQUyOj"
     >
-        <div class="adaptive-col-row">
+        <Carousel
+            style="aspect-ratio: 21/9;"
+            pages={[
+                {
+                    title: "Waiting Room",
+                    background: `url('${KoloraLocalDb.getMusician("Waiting Room")?.bannerImageUrl}')`,
+                    onclick: () =>
+                        window.open(
+                            KoloraLocalDb.getMusician("Waiting Room")
+                                ?.websiteUrl,
+                            "_blank",
+                        ),
+                },
+                {
+                    title: "egy5egy",
+                    background: `url('${KoloraLocalDb.getMusician("egy5egy")?.bannerImageUrl}')`,
+                    onclick: () =>
+                        window.open(
+                            KoloraLocalDb.getMusician("egy5egy")?.websiteUrl,
+                            "_blank",
+                        ),
+                },
+                {
+                    title: "Helyszín: Museum Café",
+                    background: `url('${imgMuseumCafeLogo}')`,
+                    onclick: () =>
+                        window.open(
+                            "https://www.facebook.com/museumcafeszekesfehervar",
+                            "_blank",
+                        ),
+                },
+            ]}
+        />
+        <p>
             <a
-                href={KoloraLocalDb.getMusician("Waiting Room")?.websiteUrl}
+                href="https://www.facebook.com/reel/913230383947981"
                 target="_blank"
             >
-                <img
-                    style="width: 100%;"
-                    src={KoloraLocalDb.getMusician("Waiting Room")
-                        ?.bannerImageUrl}
-                    alt=""
-                />
+                <button class="btn">
+                    <span class="mdi mdi-facebook"></span>
+                    A Waiting Room promo videója az eseményről
+                </button>
             </a>
-            <a
-                href={KoloraLocalDb.getMusician("egy5egy")?.websiteUrl}
-                target="_blank"
-            >
-                <img
-                    style="width: 100%;"
-                    src={KoloraLocalDb.getMusician("egy5egy")?.bannerImageUrl}
-                    alt=""
-                />
-            </a>
-        </div>
+        </p>
     </VerticalTimelineItem>
 
     <VerticalTimelineItem
@@ -256,7 +279,7 @@
                             "https://www.facebook.com/nyolcasmuhely",
                             "_blank",
                         ),
-                }
+                },
             ]}
         />
     </VerticalTimelineItem>
