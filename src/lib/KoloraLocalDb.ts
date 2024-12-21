@@ -1,5 +1,6 @@
 import ThemeManager from "./ThemeManager";
 import imgMusicianBodonyiDani from "$lib/images/musicians/bodonyi-dani-banner.jpg";
+import imgMusicianCrescendoSelecta from "$lib/images/musicians/crescendo-selecta-banner.jpg";
 import imgMusicianEgy5Egy from "$lib/images/musicians/egy5egy-banner.jpg";
 import imgMusicianJex from "$lib/images/musicians/jex-banner.png";
 import imgMusicianKalafaticsImre from "$lib/images/musicians/kalafatics-imre.png";
@@ -18,6 +19,30 @@ export default class KoloraLocalDb {
             websiteUrl: "https://www.facebook.com/profile.php?id=100079430298985",
             songUrls: [
                 "https://www.mixcloud.com/Daniel_Bodonyi/bodonyi-dani-caf%C3%A9-at-museum-essentials/",
+            ],
+        },
+        {
+            name: "Crescendo Selecta",
+            bannerImageUrl: imgMusicianCrescendoSelecta,
+            websiteUrl: "https://www.facebook.com/p/Crescendo-Selecta-100071517142995",
+            songUrls: [
+                "https://youtu.be/w9TdMc5JArg?si=kXoW1bthuNWLxity",
+                "https://youtu.be/5yLHwi9SUG8?si=4I92h6tqNfVapmZn",
+                "https://youtu.be/38ieD9Yw7D0?si=3OFwjFG3KOHlTIEw",
+                "https://youtu.be/VYjkM6x83i8?si=u6p6t3WpMJFuaYCH",
+                "https://youtu.be/_11KrFa0BJk?si=6lC3Nw9DcjIr5hgp",
+                "https://youtu.be/fkpM5sKncpI?si=_pUA5sYISlZ0pXfh",
+                "https://youtu.be/5dWEIst98RA?si=esmKxNaUgeEiuwoM",
+                "https://youtu.be/jFrVdi_V6P0?si=gpQx-HXqIoCzQ-YN",
+                "https://youtu.be/IY-gNXCXd-s?si=9tdY9wMxAG51bvRT",
+                "https://youtu.be/XXBmyp9fafo?si=h_269yR_zl4IhbrY",
+                "https://youtu.be/7kX4uoOMLHw?si=83V6cLVyKiidPx3P",
+                "https://youtu.be/INYW5-js7Ek?si=52NZOXEiiE6W3Vjg",
+                "https://youtu.be/i5nyf-SZlXU?si=IcksJIjCGB9xZfTI",
+                "https://youtu.be/uuJRAeQ7cwM?si=W7Mz7mvq_OIGI96i",
+                "https://youtu.be/UAWBkT1z2KY?si=uNy0SmHlDsseZAs_",
+                "https://youtu.be/eJWjwFOz5r4?si=yQx71WlJGFiFW-oA",
+                "https://youtu.be/TYxq9MxAz08?si=KIvPAkZ1XgNBPKJL",
             ],
         },
         {

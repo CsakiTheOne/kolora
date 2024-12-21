@@ -1,12 +1,6 @@
 # Kolora Egyesület weboldala
 
-## Kiadás teendők
-
-| Feladat                                      | Felelős                                    |
-| -------------------------------------------- | ------------------------------------------ |
-| Linkelés Instagramon                         | Emese                                      |
-
-Kimaradt dolgok:
+## TODO
 
 - consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
 
