@@ -7,6 +7,8 @@
 
 ## Teendők jövő Áprilisig
 
+Ezek a teendők csak akkor lesznek aktuálisak, ha a 2025 januári slam workshop-okon pozitív visszajelzések jönnek a choose your own adventure témára.
+
 - [ ] Felhasználó kezelés
   - [ ] Firebase auth integráció
   - [ ] UI elemek
@@ -21,5 +23,3 @@
   - [x] Megjelenítés
   - [ ] Kezelés (csak admin és a művek tulajdonosai)
   - [ ] Szavazás (fiók nélkül is)
-
-A projektben keress rá a `//TODO` kommentekre további feladatokért.
