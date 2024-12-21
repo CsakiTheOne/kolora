@@ -4,12 +4,7 @@
 
 | Feladat                                      | Felelős                                    |
 | -------------------------------------------- | ------------------------------------------ |
-| Weboldal átnézése, hiba esetén javítása      | Csáki és mindenki                          |
-| Linkelés YouTube-on                          | Csáki                                      |
-| Linkelés Facebookon                          | Levi                                       |
 | Linkelés Instagramon                         | Emese                                      |
-| YouTube videók publikálása                   | Csáki                                      |
-| Poszt/story/valami, hogy vannak új contentek | Aki ráér és tud csinálni valami jó posztot |
 
 Kimaradt dolgok:
 
