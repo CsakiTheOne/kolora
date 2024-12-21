@@ -118,7 +118,7 @@
         display: inline-block;
         flex-shrink: 0;
         font-size: 1.3rem;
-        /*padding: calc(var(--spacing) / 4);*/
+        padding: calc(var(--spacing) / 4) 0;
     }
 
     .content {
