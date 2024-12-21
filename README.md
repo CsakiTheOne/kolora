@@ -2,7 +2,8 @@
 
 ## TODO
 
-- consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
+- [ ] Tagok bemutatása (ha van ilyesmire igény és fixálódik, hogy ki mennyire érzi magát Kolorásnak és hogy egyáltalán hogyan működünk)
+- [ ] Consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
 
 ## Teendők jövő Áprilisig
 
