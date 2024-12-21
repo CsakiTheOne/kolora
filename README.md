@@ -2,10 +2,6 @@
 
 ## Kiadás teendők
 
-Kiadás előtt javítandó hibák:
-
-- [ ] Túl nagy képek, gyenge teljesítmény: az idővonal 14MB-ot tölt le, ezért lassú a betöltés. Minden képet konvertálni és kicsinyíteni kell.
-
 | Feladat                                      | Felelős                                    |
 | -------------------------------------------- | ------------------------------------------ |
 | Weboldal átnézése, hiba esetén javítása      | Csáki és mindenki                          |
@@ -17,7 +13,6 @@ Kiadás előtt javítandó hibák:
 
 Kimaradt dolgok:
 
-- link Iminél: a barátaink résznél minden előadónra rá lehet kattintani. Iminél ez hiányos
 - consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
 
 ## Teendők jövő Áprilisig

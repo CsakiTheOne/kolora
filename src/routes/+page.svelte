@@ -120,7 +120,9 @@
                     title: musician.name,
                     background: `url('${musician.bannerImageUrl}')`,
                     onclick: () => {
-                        window.open(musician.websiteUrl, "_blank");
+                        if (musician.websiteUrl) {
+                            window.open(musician.websiteUrl, "_blank");
+                        }
                     },
                 }))}
             />
