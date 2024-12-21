@@ -16,8 +16,8 @@
 
     onMount(() => {
         setInterval(() => {
-            largeHeaderElementsOpacity -= 0.002;
-        }, 200);
+            largeHeaderElementsOpacity -= 0.001;
+        }, 150);
 
         document.addEventListener("scroll", () => {
             largeHeaderElementsOpacity = 1;
