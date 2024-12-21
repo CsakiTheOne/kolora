@@ -169,6 +169,7 @@ main>* {
     color: var(--on-primary-color);
     cursor: pointer;
     user-select: none;
+    vertical-align: middle;
     transition: all .3s ease-out;
 }
 
@@ -178,6 +179,12 @@ main>* {
 
 .btn:active {
     border-radius: calc(var(--spacing) * 2);
+}
+
+.btn > span::before {
+    translate: 2px 0;
+    scale: 1.3;
+    padding-right: 4px;
 }
 
 .outlined-input {
