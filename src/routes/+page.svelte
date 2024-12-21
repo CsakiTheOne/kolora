@@ -10,13 +10,27 @@
     import imgBrotondProductionsLogo from "$lib/images/logos/brotond-productions.jpg";
     import imgWholesomeWareLogo from "$lib/images/logos/wholesomeware.png";
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
+    import { onMount } from "svelte";
+
+    let largeHeaderElementsOpacity = $state(1);
+
+    onMount(() => {
+        setInterval(() => {
+            largeHeaderElementsOpacity -= 0.002;
+        }, 200);
+
+        document.addEventListener("scroll", () => {
+            largeHeaderElementsOpacity = 1;
+        });
+
+        document
+            .getElementsByClassName("large-header")[0]
+            .addEventListener("mousemove", () => {
+                largeHeaderElementsOpacity = 1;
+            });
+    });
 </script>
 
-<span
-    id="theme-toggle-button"
-    onclick={() => ThemeManager.toggleDarkLight()}
-    class="mdi mdi-brightness-6"
-></span>
 <div class="page-container">
     <div class="container large-header">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -34,7 +48,10 @@
             <a href="/">
                 <h1 id="kolora-title">kolora!</h1>
             </a>
-            <div class="adaptive-col-row">
+            <div
+                class="adaptive-col-row"
+                style="opacity: {largeHeaderElementsOpacity}"
+            >
                 <p
                     class="link"
                     onclick={() =>
@@ -49,6 +66,12 @@
                     <a href="/timeline">
                         <span class="mdi mdi-timeline"></span>
                         Idővonal
+                    </a>
+                </p>
+                <p>
+                    <a href="/codes">
+                        <span class="mdi mdi-form-textbox-password"></span>
+                        Kódok
                     </a>
                 </p>
                 <p>
