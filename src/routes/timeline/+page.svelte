@@ -79,15 +79,6 @@
                             "_blank",
                         ),
                 },
-                {
-                    title: "Helyszín: Museum Café",
-                    background: `url('${imgMuseumCafeLogo}')`,
-                    onclick: () =>
-                        window.open(
-                            "https://www.facebook.com/museumcafeszekesfehervar",
-                            "_blank",
-                        ),
-                },
             ]}
         />
         <p>
