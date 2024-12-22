@@ -8,19 +8,20 @@
 
     onMount(() => {
         function updateWidths() {
-            const minPageWidth = 42;
             maxPageWidth = (carousel?.clientWidth || 0) * 0.6;
+            const minPageWidth =
+                (carousel?.clientWidth || 0) - maxPageWidth + 8;
             const scrollLeft = carousel?.scrollLeft || 0;
             const pageElements = carousel?.querySelectorAll(".page") || [];
 
             pageElements.forEach((page: HTMLElement) => {
                 const distanceFromCenter =
-                    page.offsetLeft - scrollLeft - carousel?.offsetLeft;
+                    page.offsetLeft - scrollLeft - (carousel?.offsetLeft || 0);
                 const pageWidth = Math.max(
                     minPageWidth,
                     Math.min(
                         maxPageWidth,
-                        maxPageWidth - distanceFromCenter * 0.6,
+                        maxPageWidth - distanceFromCenter * 0.25,
                     ),
                 );
                 const contentOpacity = Math.max(
@@ -29,7 +30,7 @@
                         1,
                         1 -
                             Math.abs(distanceFromCenter) /
-                                carousel?.clientWidth,
+                                (carousel?.clientWidth || 1),
                     ),
                 );
 
