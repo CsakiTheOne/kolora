@@ -63,33 +63,61 @@
     });
 </script>
 
-<div class="carousel" bind:this={carousel} {...rest}>
-    {#each pages as page}
-        <div
-            class="page"
-            style="background: {page.background}; cursor: {page.onclick
-                ? 'pointer'
-                : 'default'};"
-            onclick={page.onclick ? page.onclick : () => {}}
-            onkeypress={page.onkeypress ? page.onkeypress : () => {}}
-            role="button"
-            tabindex="0"
-        >
-            <div class="page-content">
-                {#if page.title}
-                    <h4 style="width: calc({maxPageWidth}px - var(--spacing));">
-                        {@html page.title}
-                    </h4>
-                {/if}
-                {#if page.text}
-                    <p style="width: calc({maxPageWidth}px - var(--spacing));">
-                        {@html page.text}
-                    </p>
-                {/if}
+<div class="carousel-container">
+    <div class="carousel" bind:this={carousel} {...rest}>
+        {#each pages as page}
+            <div
+                class="page"
+                style="background: {page.background}; cursor: {page.onclick
+                    ? 'pointer'
+                    : 'default'};"
+                onclick={page.onclick ? page.onclick : () => {}}
+                onkeypress={page.onkeypress ? page.onkeypress : () => {}}
+                role="button"
+                tabindex="0"
+            >
+                <div class="page-content">
+                    {#if page.title}
+                        <h4
+                            style="width: calc({maxPageWidth}px - var(--spacing));"
+                        >
+                            {@html page.title}
+                        </h4>
+                    {/if}
+                    {#if page.text}
+                        <p
+                            style="width: calc({maxPageWidth}px - var(--spacing));"
+                        >
+                            {@html page.text}
+                        </p>
+                    {/if}
+                </div>
             </div>
-        </div>
-    {/each}
-    <div class="spacer"></div>
+        {/each}
+        <div class="spacer"></div>
+    </div>
+    <button
+        class="btn prevPage"
+        onclick={() => {
+            carousel.scrollBy({
+                left: -(maxPageWidth + 16),
+                behavior: "smooth",
+            });
+        }}
+    >
+        &lt;
+    </button>
+    <button
+        class="btn nextPage"
+        onclick={() => {
+            carousel.scrollBy({
+                left: maxPageWidth + 16,
+                behavior: "smooth",
+            });
+        }}
+    >
+        &gt;
+    </button>
 </div>
 
 <style>
@@ -99,6 +127,38 @@
         overflow-y: hidden;
         overflow-x: scroll;
         border-radius: calc(var(--corner-radius) * 2);
+    }
+
+    .carousel-container {
+        position: relative;
+    }
+
+    .carousel-container > .btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        color: var(--on-secondary-color);
+        font-size: 1.5rem;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.2s;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .carousel-container:hover > .btn {
+        opacity: 1;
+    }
+
+    .carousel-container > .btn.prevPage {
+        left: var(--spacing);
+    }
+
+    .carousel-container > .btn.nextPage {
+        right: var(--spacing);
     }
 
     .page {
