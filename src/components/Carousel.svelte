@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { browser } from "$app/environment";
     import { onMount } from "svelte";
 
     const { pages, ...rest } = $props();
@@ -10,7 +11,7 @@
         function updateWidths() {
             maxPageWidth = (carousel?.clientWidth || 0) * 0.6;
             const minPageWidth =
-                (carousel?.clientWidth || 0) - maxPageWidth + 8;
+                (carousel?.clientWidth || 0) - (maxPageWidth + 16);
             const scrollLeft = carousel?.scrollLeft || 0;
             const pageElements = carousel?.querySelectorAll(".page") || [];
 
@@ -21,7 +22,7 @@
                     minPageWidth,
                     Math.min(
                         maxPageWidth,
-                        maxPageWidth - distanceFromCenter * 0.25,
+                        maxPageWidth - distanceFromCenter * 0.4,
                     ),
                 );
                 const contentOpacity = Math.max(
@@ -51,7 +52,7 @@
             }
         }
 
-        document.addEventListener("resize", () => {
+        window.addEventListener("resize", () => {
             updateWidths();
         });
 
