@@ -264,7 +264,7 @@
 
     @keyframes growFromBottom {
         0% {
-            height: 0%;
+            height: 40%;
         }
         100% {
             height: 48%;
@@ -294,6 +294,8 @@
         aspect-ratio: 19/9;
         object-fit: cover;
         border-radius: var(--corner-radius);
+        width: 100%;
+        max-height: 100%;
     }
 
     a > span.mdi {
