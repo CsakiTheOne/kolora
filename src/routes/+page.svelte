@@ -10,25 +10,6 @@
     import imgBrotondProductionsLogo from "$lib/images/logos/brotond-productions.jpg";
     import imgWholesomeWareLogo from "$lib/images/logos/wholesomeware.png";
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
-    import { onMount } from "svelte";
-
-    let largeHeaderElementsOpacity = $state(1);
-
-    onMount(() => {
-        setInterval(() => {
-            largeHeaderElementsOpacity -= 0.001;
-        }, 150);
-
-        document.addEventListener("scroll", () => {
-            largeHeaderElementsOpacity = 1;
-        });
-
-        document
-            .getElementsByClassName("large-header")[0]
-            .addEventListener("mousemove", () => {
-                largeHeaderElementsOpacity = 1;
-            });
-    });
 </script>
 
 <div class="page-container">
@@ -48,10 +29,7 @@
             <a href="/">
                 <h1 id="kolora-title">kolora!</h1>
             </a>
-            <div
-                class="adaptive-col-row"
-                style="opacity: {largeHeaderElementsOpacity}"
-            >
+            <div class="adaptive-col-row">
                 <p
                     class="link"
                     onclick={() =>
