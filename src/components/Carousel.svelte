@@ -154,11 +154,11 @@
     }
 
     .carousel-container > .btn.prevPage {
-        left: var(--spacing);
+        left: calc(-40px - var(--spacing));
     }
 
     .carousel-container > .btn.nextPage {
-        right: var(--spacing);
+        right: calc(-40px - var(--spacing));
     }
 
     .page {
