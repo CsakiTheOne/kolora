@@ -126,13 +126,17 @@ export default class KoloraLocalDb {
 
     static secrets = [
         {
+            code: "230621",
+            action: "setTheme",
+            data: "theme-retro",
+        },
+        {
             code: "csobal",
             url: "/404",
         },
         {
-            code: "230621",
-            action: "setTheme",
-            data: "theme-retro",
+            code: "jam250411",
+            url: "/gallery",
         },
         {
             code: "ny8lcas.sl24m",
@@ -141,10 +145,6 @@ export default class KoloraLocalDb {
         {
             code: "pirospultos",
             url: "https://photos.app.goo.gl/MsuistyMjtUpRCu16",
-        },
-        {
-            code: "jam250411",
-            url: "/gallery",
         },
     ];
 

@@ -22,7 +22,7 @@
                     minPageWidth,
                     Math.min(
                         maxPageWidth,
-                        maxPageWidth - distanceFromCenter * 0.4,
+                        maxPageWidth - distanceFromCenter * 0.35,
                     ),
                 );
                 const contentOpacity = Math.max(
@@ -138,12 +138,12 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        aspect-ratio: 1;
         border-radius: 50%;
         background-color: var(--secondary-color);
         color: var(--on-secondary-color);
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         z-index: 1;
         opacity: 0;
         transition: opacity 0.2s;
@@ -151,15 +151,15 @@
     }
 
     .carousel-container:hover > .btn {
-        opacity: 1;
+        opacity: .8;
     }
 
     .carousel-container > .btn.prevPage {
-        left: calc(-40px - var(--spacing));
+        left: var(--spacing);
     }
 
     .carousel-container > .btn.nextPage {
-        right: calc(-40px - var(--spacing));
+        right: var(--spacing);
     }
 
     .page {
