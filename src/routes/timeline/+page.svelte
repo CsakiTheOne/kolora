@@ -96,7 +96,7 @@
 
     <VerticalTimelineItem
         title="Múzeumok éjszakája a Museum Caféban + 1. Kolora szülinap"
-        subtitle="Július 22."
+        subtitle="Június 22."
         instagramLink="https://www.instagram.com/p/C8MQxtZsmon"
         facebookLink="https://fb.me/e/3OIvmblM7"
     >
