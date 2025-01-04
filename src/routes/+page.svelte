@@ -10,6 +10,27 @@
     import imgBrotondProductionsLogo from "$lib/images/logos/brotond-productions.jpg";
     import imgWholesomeWareLogo from "$lib/images/logos/wholesomeware.png";
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
+    import { onMount } from "svelte";
+
+    const slamRegistrationDeadline = new Date("2025-02-14T16:00:00");
+
+    let slamRegistrationCountdown = $state("");
+
+    onMount(() => {
+        setInterval(() => {
+            const now = new Date();
+            const timeLeft = slamRegistrationDeadline - now;
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+                (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+            );
+            const minutes = Math.floor(
+                (timeLeft % (1000 * 60 * 60)) / (1000 * 60),
+            );
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            slamRegistrationCountdown = `határidő: ${days} nap ${hours}:${minutes}:${seconds}`;
+        }, 1000);
+    });
 </script>
 
 <div class="page-container">
@@ -34,7 +55,7 @@
                     class="link"
                     onclick={() =>
                         document
-                            .getElementById("homepage")
+                            .getElementById("about")
                             ?.scrollIntoView({ behavior: "smooth" })}
                 >
                     <span class="mdi mdi-information"></span>
@@ -59,11 +80,51 @@
                     </a>
                 </p>
             </div>
+            <button
+                class="splash-bottom-notification"
+                onclick={() => {
+                    document
+                        ?.getElementById("homepage")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                }}
+            >
+                Slam poetry verseny + open mic<br />
+                <span class="mdi mdi-chevron-double-down"></span>
+            </button>
         </div>
     </div>
     <div class="container">
         <Header selectedTab="Főoldal" />
         <main id="homepage">
+            <h2>Slam poetry verseny + open mic + after</h2>
+            <p>
+                Idő: Február 15. (Szombat)<br />
+                Helyszín:
+                <a href="https://facebook.com/nyolcasmuhely" target="_blank"
+                    >Nyolcas Műhely</a
+                ><br />
+            </p>
+            <p>
+                Az eseményig slam poetry workshopokkal várunk titeket a <a
+                    href="https://www.facebook.com/museumcafeszekesfehervar"
+                    target="_blank">Museum Café</a
+                >-ban.
+            </p>
+            <p>
+                További infók az eseményről és a workshopokról a <a
+                    href="https://www.facebook.com/groups/1307732380629023"
+                    target="_blank"
+                >
+                    fehérvári író-költő-slammerek Facebook csoportban
+                </a>
+            </p>
+            <p>
+                <a href="https://forms.gle/6UZdovqjEf1L7EHS8" target="_blank">
+                    <button class="btn">Jelentkezés</button>
+                </a>
+                {slamRegistrationCountdown}
+            </p>
+
             <h2 id="about">Rólunk</h2>
             <img id="group-photo" src={imgKoloraGroupPhoto} alt="" />
             <div class="adaptive-col-row" style="align-items: start;">
@@ -282,6 +343,23 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
+    }
+
+    .splash-bottom-notification {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: calc(var(--spacing) / 2);
+        border: none;
+        background: none;
+        color: var(--on-primary-variant-color);
+        text-align: center;
+        cursor: pointer;
+    }
+
+    :global(body.theme-dark) .splash-bottom-notification {
+        color: var(--on-background-color);
     }
 
     h1 {
