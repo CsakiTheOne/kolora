@@ -1,7 +1,7 @@
 <script>
     import ThemeManager from "$lib/ThemeManager";
     import HeaderTabRow from "./HeaderTabRow.svelte";
-    import headerImage from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/header.jpg";
+    import headerImage from "$lib/images/gallery/first-kolora-workshop/table.jpg";
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
 
     const { selectedTab = "", ...rest } = $props();
@@ -52,7 +52,7 @@
         right: 0;
         bottom: 0;
         background: var(--primary-color);
-        opacity: .9;
+        opacity: .7;
     }
 
     .toolbar {
