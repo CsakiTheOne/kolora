@@ -26,9 +26,13 @@
             );
             const minutes = Math.floor(
                 (timeLeft % (1000 * 60 * 60)) / (1000 * 60),
-            );
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            slamRegistrationCountdown = `határidő: ${days} nap ${hours}:${minutes}:${seconds}`;
+            )
+                .toString()
+                .padStart(2, "0");
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000)
+                .toString()
+                .padStart(2, "0");
+            slamRegistrationCountdown = `határidő: ${days > 0 ? `${days} nap ` : ""} ${hours}:${minutes}:${seconds}`;
         }, 1000);
     });
 </script>
@@ -88,8 +92,8 @@
                         ?.scrollIntoView({ behavior: "smooth" });
                 }}
             >
-                Slam poetry verseny + open mic<br />
-                <span class="mdi mdi-chevron-double-down"></span>
+                <span class="mdi mdi-chevron-double-down"></span><br />
+                Slam poetry verseny + open mic
             </button>
         </div>
     </div>
