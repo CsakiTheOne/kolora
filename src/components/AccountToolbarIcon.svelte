@@ -1,9 +1,23 @@
-<script>
+<script lang="ts">
     import ThemeManager from "$lib/ThemeManager";
+    import { onMount } from "svelte";
+    import { loginWithGoogle, logout } from "$lib/firebase/auth";
+    import { initializeFirebase } from "$lib/firebase/firebase";
+    import type { User } from "firebase/auth";
+
+    const enableAccountFeatures = false;
 
     let isOpen = $state(false);
-    let isLoggedIn = $state(false);
     let preferredMusicApp = $state("Spotify");
+    let user: User | null = $state(null);
+
+    const { auth } = initializeFirebase();
+
+    onMount(() => {
+        auth.onAuthStateChanged((newUser) => {
+            user = newUser;
+        });
+    });
 
     function changeMusicApp() {
         const supportedApps = ["Spotify", "YouTube Music", "YouTube"];
@@ -13,13 +27,15 @@
     }
 </script>
 
-<!--span
-    class="mdi mdi-account-circle"
-    onclick={() => (isOpen = !isOpen)}
-    onkeydown={(e) => e.key === "Enter" && (isOpen = !isOpen)}
-    tabindex="0"
-    role="button"
-></span-->
+{#if enableAccountFeatures}
+    <span
+        class={"mdi" + (user ? " mdi-account-circle" : " mdi-login")}
+        onclick={() => (isOpen = !isOpen)}
+        onkeydown={(e) => e.key === "Enter" && (isOpen = !isOpen)}
+        tabindex="0"
+        role="button"
+    ></span>
+{/if}
 
 {#if isOpen}
     <div
@@ -38,28 +54,25 @@
         >
             <p>
                 <span class="mdi mdi-account-circle"></span>
-                {#if isLoggedIn}
-                    Helló {"{felhasználónév}"}!
+                {#if user}
+                    Helló, {user.displayName}!
                 {:else}
                     Jelentkezz be!
                 {/if}
             </p>
             <ul>
-                {#if !isLoggedIn}
-                    <button
-                        onclick={() => {
-                            isLoggedIn = true;
-                        }}
-                    >
+                {#if !user}
+                    <button onclick={loginWithGoogle}>
                         <span class="mdi mdi-login"></span>
-                        Bejelentkezés
+                        Bejelentkezés Google fiókkal
                     </button>
                 {/if}
                 <button onclick={() => ThemeManager.toggleDarkLight()}>
                     <span class="mdi mdi-brightness-6"></span>
                     Téma váltás
                 </button>
-                {#if isLoggedIn}
+                {#if user}
+                    <!--
                     <button>
                         <span class="mdi mdi-library-shelves"></span>
                         Műveim
@@ -80,10 +93,11 @@
                             <span class="mdi mdi-help-circle"></span>
                         </button>
                     </div>
+                    -->
                     <button
                         onclick={() => {
                             isOpen = false;
-                            isLoggedIn = false;
+                            logout();
                         }}
                     >
                         <span class="mdi mdi-logout"></span>
