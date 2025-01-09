@@ -4,26 +4,50 @@
     import { loginWithGoogle, logout } from "$lib/firebase/auth";
     import { initializeFirebase } from "$lib/firebase/firebase";
     import type { User } from "firebase/auth";
+    import firestore from "$lib/firebase/firestore";
+    import type KoloraUser from "$lib/model/KoloraUser";
 
-    const enableAccountFeatures = true;
+    const enableAccountFeatures = false;
 
     let isOpen = $state(false);
-    let preferredMusicApp = $state("Spotify");
     let user: User | null = $state(null);
+    let koloraUser: KoloraUser | null = $state(null);
 
     const { auth } = initializeFirebase();
 
     onMount(() => {
-        auth.onAuthStateChanged((newUser) => {
+        let userListener: any = null;
+        const authListener = auth.onAuthStateChanged((newUser) => {
             user = newUser;
+            if (user) {
+                firestore.users
+                    .get(user.uid)
+                    .then((user) => (koloraUser = user));
+                firestore.users.setNameIfNotExists(user.uid, user.displayName);
+                userListener = firestore.users.listen(user.uid, (user) => {
+                    koloraUser = user;
+                });
+            } else {
+                koloraUser = null;
+                if (userListener) {
+                    userListener();
+                    userListener = null;
+                }
+            }
         });
+
+        return () => {
+            authListener();
+        };
     });
 
     function changeMusicApp() {
-        const supportedApps = ["Spotify", "YouTube Music", "YouTube"];
-        const currentIndex = supportedApps.indexOf(preferredMusicApp);
-        preferredMusicApp =
-            supportedApps[(currentIndex + 1) % supportedApps.length];
+        const supportedServices = ["Spotify", "YouTube Music", "YouTube"];
+        const currentIndex =
+            supportedServices.indexOf(koloraUser!!.preferredMusicService) ?? -1;
+        const newService =
+            supportedServices[(currentIndex + 1) % supportedServices.length];
+        firestore.users.set(user!!.uid, { preferredMusicService: newService });
     }
 </script>
 
@@ -54,8 +78,8 @@
         >
             <p>
                 <span class="mdi mdi-account-circle"></span>
-                {#if user}
-                    Helló, {user.displayName}!
+                {#if user && koloraUser}
+                    Helló, {koloraUser.username}!
                 {:else}
                     Jelentkezz be!
                 {/if}
@@ -67,7 +91,7 @@
                         Bejelentkezés Google fiókkal
                     </button>
                 {/if}
-                {#if user}
+                {#if user && koloraUser}
                     <button
                         onclick={() => {
                             isOpen = false;
@@ -77,24 +101,24 @@
                         <span class="mdi mdi-library-shelves"></span>
                         Profil és műveim
                     </button>
-                    <!--
                     <div style="display: flex; flex-wrap: nowrap;">
                         <button style="flex: 1;" onclick={changeMusicApp}>
                             <span class="mdi mdi-music-note"></span>
                             Preferált zene app<br />
-                            {preferredMusicApp}
+                            {koloraUser!!.preferredMusicService ?? "Még nincs"}
                         </button>
                         <button
                             style="flex: 0;"
                             onclick={() => {
-                                alert('A "Hallgassunk random valamit" gomb a te preferált zene appod fogja megnyitni.');
+                                alert(
+                                    'A "Hallgassunk random valamit" gomb a te preferált zene appod fogja megnyitni.',
+                                );
                             }}
                             aria-label="Segítség"
                         >
                             <span class="mdi mdi-help-circle"></span>
                         </button>
                     </div>
-                    -->
                     <button
                         onclick={() => {
                             isOpen = false;
