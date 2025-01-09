@@ -5,7 +5,7 @@
     import { initializeFirebase } from "$lib/firebase/firebase";
     import type { User } from "firebase/auth";
 
-    const enableAccountFeatures = false;
+    const enableAccountFeatures = true;
 
     let isOpen = $state(false);
     let preferredMusicApp = $state("Spotify");
@@ -67,16 +67,17 @@
                         Bejelentkezés Google fiókkal
                     </button>
                 {/if}
-                <button onclick={() => ThemeManager.toggleDarkLight()}>
-                    <span class="mdi mdi-brightness-6"></span>
-                    Téma váltás
-                </button>
                 {#if user}
-                    <!--
-                    <button>
+                    <button
+                        onclick={() => {
+                            isOpen = false;
+                            window.location.href = `/profile/?id=${user!!.uid}`;
+                        }}
+                    >
                         <span class="mdi mdi-library-shelves"></span>
-                        Műveim
+                        Profil és műveim
                     </button>
+                    <!--
                     <div style="display: flex; flex-wrap: nowrap;">
                         <button style="flex: 1;" onclick={changeMusicApp}>
                             <span class="mdi mdi-music-note"></span>
