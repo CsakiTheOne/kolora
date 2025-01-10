@@ -8,7 +8,6 @@ const db = initializeFirebase().firestore;
 const firestore = {
     users: {
         get: (id: string): Promise<KoloraUser> => {
-            console.log(`get`);
             return getDoc(doc(db, "users", id))
                 .then((doc) => {
                     if (!doc.exists()) {

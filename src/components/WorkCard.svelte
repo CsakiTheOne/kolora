@@ -14,20 +14,22 @@
     });
 </script>
 
-<div {...rest}>
-    <a class="work-card" href="/gallery/work/?id={work.id}">
-        <div class="badges">
-            <Badge>{work.workType}</Badge>
-            {#if work.eventId}
-                <Badge>{work.eventId}</Badge>
-            {/if}
-        </div>
-        <h3>{work.title}</h3>
-        <p>{work.description}</p>
-        {#if work.dateUploaded}
-            <p style="font-size: .7rem;">Feltöltve: {work.dateUploaded}</p>
+<div class="work-card" {...rest}>
+    <div class="badges">
+        <Badge style="background: var(--primary-color)">{work.workType}</Badge>
+        {#if work.eventId}
+            <Badge style="background: var(--primary-color)">
+                {work.eventId}
+            </Badge>
         {/if}
+    </div>
+    <a href="/gallery/work/?id={work.id}">
+        <h3>{work.title}</h3>
     </a>
+    <p>{work.description}</p>
+    {#if work.dateUploaded}
+        <p style="font-size: .7rem;">Feltöltve: {work.dateUploaded}</p>
+    {/if}
     <p>
         <strong>Készítette:</strong>
         <a href={`/profile/?id=${work.authorId}`}>{authorName}</a> - {work.dateCreated}
@@ -40,12 +42,14 @@
         flex-direction: column;
         padding: calc(var(--spacing) / 2);
         gap: calc(var(--spacing) / 2);
-        background-color: var(--primary-color);
-        color: var(--on-primary-color);
+        background-color: var(--secondary-color);
+        color: var(--on-secondary-color);
         border-radius: var(--corner-radius);
         user-select: none;
-        cursor: pointer;
-        text-decoration: none;
+    }
+
+    .work-card * {
+        color: var(--on-secondary-color);
     }
 
     .badges {

@@ -1,5 +1,4 @@
 <script lang="ts">
-    import ThemeManager from "$lib/ThemeManager";
     import { onMount } from "svelte";
     import { loginWithGoogle, logout } from "$lib/firebase/auth";
     import { initializeFirebase } from "$lib/firebase/firebase";

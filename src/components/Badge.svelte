@@ -1,8 +1,8 @@
 <script>
-    const { children } = $props();
+    const { children, ...rest } = $props();
 </script>
 
-<span>
+<span {...rest}>
     {@render children()}
 </span>
 
@@ -14,6 +14,5 @@
         border-radius: var(--corner-radius);
         background-color: var(--secondary-color);
         color: var(--on-secondary-color);
-        translate: 0 -2px;
     }
 </style>
