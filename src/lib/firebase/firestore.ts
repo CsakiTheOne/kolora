@@ -1,4 +1,4 @@
-import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query } from "firebase/firestore";
 import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 import Work from "$lib/model/Work";
@@ -76,6 +76,20 @@ const firestore = {
         },
         getAll: (): Promise<Work[]> => {
             return getDocs(collection(db, "works"))
+                .then((querySnapshot) => {
+                    const works: Work[] = [];
+                    querySnapshot.forEach((doc) => {
+                        works.push({ ...new Work(), ...doc.data(), id: doc.id });
+                    });
+                    return works;
+                })
+                .catch((error) => {
+                    console.error("Error getting works: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        getAllByAuthor: (authorId: string): Promise<Work[]> => {
+            return getDocs(query(collection(db, "works"), where("authorId", "==", authorId)))
                 .then((querySnapshot) => {
                     const works: Work[] = [];
                     querySnapshot.forEach((doc) => {

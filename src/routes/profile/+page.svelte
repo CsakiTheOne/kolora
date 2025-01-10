@@ -5,9 +5,12 @@
     import KoloraUser from "$lib/model/KoloraUser";
     import firestore from "$lib/firebase/firestore";
     import { initializeFirebase } from "$lib/firebase/firebase";
+    import type Work from "$lib/model/Work";
+    import WorkCard from "../../components/WorkCard.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
+    let works: Work[] = $state([]);
 
     onMount(() => {
         const params = new URLSearchParams(window.location.search);
@@ -23,12 +26,12 @@
             isOwnerLoggedIn = (user && user.uid === id) === true;
         });
 
-        firestore.users.get(id!!).then((user) => {
-            koloraUser = user;
-        });
-
         const userListener = firestore.users.listen(id!!, (user) => {
             koloraUser = user;
+
+            firestore.works.getAllByAuthor(id!!).then((newWorks) => {
+                works = newWorks;
+            });
         });
 
         return () => {
@@ -67,6 +70,12 @@
         {/if}
     </h2>
     <h3>Művek</h3>
-    <p>Ennek a felhasználónak még nincsenek művei.</p>
+    {#if works.length === 0}
+        <p>Ennek a felhasználónak még nincsenek művei.</p>
+    {:else}
+        {#each works as work}
+            <WorkCard {work} />
+        {/each}
+    {/if}
 </main>
 <Footer />
