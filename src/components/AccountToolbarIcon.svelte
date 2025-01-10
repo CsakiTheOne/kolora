@@ -7,7 +7,7 @@
     import firestore from "$lib/firebase/firestore";
     import type KoloraUser from "$lib/model/KoloraUser";
 
-    const enableAccountFeatures = false;
+    const enableAccountFeatures = true;
 
     let isOpen = $state(false);
     let user: User | null = $state(null);

@@ -1,34 +1,45 @@
 <script>
+    import { onMount } from "svelte";
     import Badge from "./Badge.svelte";
+    import firestore from "$lib/firebase/firestore";
 
     const { work, ...rest } = $props();
+
+    let authorName = $state("");
+
+    onMount(() => {
+        firestore.users.get(work.authorId).then((user) => {
+            authorName = user.username;
+        });
+    });
 </script>
 
-<a
-    class="work-card"
-    href="/gallery/work/?id={work.id}"
-    {...rest}
->
-    <div class="badges">
-        <Badge>{work.workType}</Badge>
-        {#if work.eventId}
-            <Badge>{work.eventId}</Badge>
+<div {...rest}>
+    <a class="work-card" href="/gallery/work/?id={work.id}">
+        <div class="badges">
+            <Badge>{work.workType}</Badge>
+            {#if work.eventId}
+                <Badge>{work.eventId}</Badge>
+            {/if}
+        </div>
+        <h3>{work.title}</h3>
+        <p>{work.description}</p>
+        {#if work.dateUploaded}
+            <p style="font-size: .7rem;">Feltöltve: {work.dateUploaded}</p>
         {/if}
-    </div>
-    <h2>{work.title}</h2>
-    <p>{work.description}</p>
-    <p><strong>Készítette:</strong> {work.author} - {work.dateCreated}</p>
-    {#if work.dateUploaded}
-        <p style="font-size: .7rem;">{work.dateUploaded}</p>
-    {/if}
-</a>
+    </a>
+    <p>
+        <strong>Készítette:</strong>
+        <a href={`/profile/?id=${work.authorId}`}>{authorName}</a> - {work.dateCreated}
+    </p>
+</div>
 
 <style>
     .work-card {
         display: flex;
         flex-direction: column;
-        padding: var(--spacing);
-        gap: var(--spacing);
+        padding: calc(var(--spacing) / 2);
+        gap: calc(var(--spacing) / 2);
         background-color: var(--primary-color);
         color: var(--on-primary-color);
         border-radius: var(--corner-radius);
@@ -39,7 +50,11 @@
 
     .badges {
         display: flex;
-        gap: var(--spacing);
+        gap: calc(var(--spacing) / 2);
+    }
+
+    h3 {
+        padding: 0;
     }
 
     p {

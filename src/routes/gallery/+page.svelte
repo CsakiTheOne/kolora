@@ -13,17 +13,18 @@
         works.filter((work) => {
             return (
                 work.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                work.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                work.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                work.description
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
                 work.workType.toLowerCase().includes(searchQuery.toLowerCase())
             );
-        })
+        }),
     );
 
     onMount(() => {
         const db = initializeFirebase().firestore;
         const worksRef = collection(db, "works");
-
+        
         getDocs(worksRef).then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 works.push({ ...new Work(), ...doc.data() });
@@ -35,7 +36,12 @@
 <Header selectedTab="Galéria" />
 <main>
     <div class="filter-row">
-        <input type="text" class="outlined-input" placeholder="Keresés" bind:value={searchQuery}>
+        <input
+            type="text"
+            class="outlined-input"
+            placeholder="Keresés"
+            bind:value={searchQuery}
+        />
     </div>
     {#if works.length === 0}
         <p>Betöltés...</p>

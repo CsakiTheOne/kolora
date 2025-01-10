@@ -7,8 +7,11 @@
     import Work from "$lib/model/Work";
     import ChooseYourOwnAdventureDisplay from "../../../components/WorkDisplays/ChooseYourOwnAdventureDisplay.svelte";
     import GalleryUtils from "$lib/GalleryUtils";
+    import KoloraUser from "$lib/model/KoloraUser";
+    import firestore from "$lib/firebase/firestore";
 
     let work: Work | null = $state(null);
+    let authorName: string | null = $state(null);
 
     onMount(() => {
         const id = GalleryUtils.workId;
@@ -22,6 +25,10 @@
         getDoc(workRef)
             .then((doc) => {
                 work = { ...new Work(), ...doc.data() };
+                return firestore.users.get(work.authorId);
+            })
+            .then((user: KoloraUser) => {
+                authorName = user.username;
             })
             .catch((err) => {
                 window.history.back();
@@ -32,7 +39,7 @@
 <Header selectedTab="Galéria" />
 <main>
     <p>
-        {work?.author} - {work?.dateCreated}
+        {authorName} - {work?.dateCreated}
     </p>
     <div class="title-row">
         <h2>{work?.title}</h2>

@@ -2,7 +2,7 @@ type WorkStatus = 'draft' | 'published';
 
 export default class Work {
     id: string = '';
-    author: string = '';
+    authorId: string = '';
     title: string = '';
     description: string = '';
     /**

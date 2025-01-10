@@ -15,11 +15,22 @@
     import GalleryUtils from "$lib/GalleryUtils";
 
     let work: Work = $state(new Work());
+    let currentUserUid = $state("");
     let db: Firestore | null = $state(null);
 
     onMount(() => {
+        const firebase = initializeFirebase();
+        const auth = firebase.auth;
+
+        if (!auth.currentUser) {
+            window.location.href = "/login";
+            return;
+        }
+
+        currentUserUid = auth.currentUser.uid;
+
         const id = GalleryUtils.workId;
-        db = initializeFirebase().firestore;
+        db = firebase.firestore;
 
         if (id) {
             const workRef = doc(db, "works", id);
@@ -28,7 +39,8 @@
                 .then((doc) => {
                     work = { ...new Work(), ...doc.data() };
                     // Remove the id from the URL
-                    const newUrl = window.location.origin + window.location.pathname;
+                    const newUrl =
+                        window.location.origin + window.location.pathname;
                     window.history.replaceState({}, document.title, newUrl);
                 })
                 .catch((err) => {
@@ -44,7 +56,7 @@
 
         if (work.id) {
             const workRef = doc(db, "works", work.id);
-            setDoc(workRef, {...work})
+            setDoc(workRef, { ...work, authorId: currentUserUid })
                 .then(() => {
                     alert("Mű mentve!");
                 })
@@ -52,7 +64,7 @@
                     alert("Hiba történt a mentés során.");
                 });
         } else {
-            addDoc(collection(db, "works"), {...work})
+            addDoc(collection(db, "works"), { ...work })
                 .then((e) => {
                     alert("Új mű mentve!");
                     work.id = e.id;
@@ -81,14 +93,6 @@
             class="outlined-input"
         />
 
-        <label for="workAuthor">Mű szerzője</label>
-        <input
-            type="text"
-            name="workAuthor"
-            bind:value={work.author}
-            class="outlined-input"
-        />
-
         <label for="workDateCreated">Keletkezés dátuma</label>
         <input
             type="text"
@@ -103,7 +107,9 @@
             bind:value={work.workType}
             class="outlined-input"
         >
-            <option value="Choose your own adventure">Choose your own adventure</option>
+            <option value="Choose your own adventure"
+                >Choose your own adventure</option
+            >
             <option value="Írott mű"
                 >Egyéb írott mű (vers, novella, regény, stb.)</option
             >

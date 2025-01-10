@@ -7,16 +7,17 @@ const db = initializeFirebase().firestore;
 const firestore = {
     users: {
         get: (id: string): Promise<KoloraUser> => {
+            console.log(`get`);
             return getDoc(doc(db, "users", id))
                 .then((doc) => {
                     if (!doc.exists()) {
-                        console.log("No such user: ", id);
+                        console.error("No such user: ", id);
                         return Promise.reject("No such user: " + id);
                     }
                     return { ...new KoloraUser(), ...doc.data(), id: doc.id };
                 })
                 .catch((error) => {
-                    console.log("Error getting user: ", error);
+                    console.error("Error getting user: ", error);
                     return Promise.reject(error);
                 });
         },
@@ -29,7 +30,7 @@ const firestore = {
                 if (doc.exists()) {
                     callback({ ...new KoloraUser(), ...doc.data(), id: doc.id });
                 } else {
-                    console.log("No such user: ", id);
+                    console.error("No such user: ", id);
                 }
             });
             return unsubscribe;
