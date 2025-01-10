@@ -15,7 +15,7 @@
         const auth = firebase.auth;
 
         if (!auth.currentUser) {
-            window.location.href = "/login";
+            window.history.back();
             return;
         }
 
