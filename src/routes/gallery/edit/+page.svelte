@@ -60,10 +60,20 @@
 <Header selectedTab="Galéria" />
 <main>
     <div class="metadata-editor">
-        <button class="btn" onclick={saveWork}>
-            <span class="mdi mdi-content-save"></span>
-            Mentés
-        </button>
+        <div style="display: flex; gap: var(--spacing);">
+            <button
+                class="btn"
+                onclick={() => window.history.back()}
+                style="flex: 1"
+            >
+                <span class="mdi mdi-arrow-left"></span>
+                Vissza
+            </button>
+            <button class="btn" onclick={saveWork} style="flex: 1">
+                <span class="mdi mdi-content-save"></span>
+                Mentés
+            </button>
+        </div>
 
         <label for="workTitle">Mű címe</label>
         <input
@@ -154,7 +164,8 @@
         gap: var(--spacing);
     }
 
-    .metadata-editor, .content-editor {
+    .metadata-editor,
+    .content-editor {
         background: var(--secondary-color);
         color: var(--on-secondary-color);
         padding: var(--spacing);
