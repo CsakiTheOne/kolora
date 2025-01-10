@@ -69,7 +69,8 @@
         <input
             type="text"
             name="workTitle"
-            bind:value={work.title}
+            value={work.title}
+            oninput={(e) => (work = { ...work, title: e.target.value })}
             class="outlined-input"
         />
 
@@ -77,14 +78,16 @@
         <input
             type="text"
             name="workDateCreated"
-            bind:value={work.dateCreated}
+            value={work.dateCreated}
+            oninput={(e) => (work = { ...work, dateCreated: e.target.value })}
             class="outlined-input"
         />
 
         <label for="workType">Műnem</label>
         <select
             name="workType"
-            bind:value={work.workType}
+            value={work.workType}
+            onchange={(e) => (work = { ...work, workType: e.target.value })}
             class="outlined-input"
         >
             <option value="Choose your own adventure"
@@ -101,16 +104,25 @@
         <label for="workDescription">Mű leírása</label>
         <textarea
             name="workDescription"
-            bind:value={work.description}
+            value={work.description}
+            oninput={(e) => (work = { ...work, description: e.target.value })}
             class="outlined-input"
         ></textarea>
     </div>
     <div class="content-editor">
-        <label for="workContent">Mű tartalma</label>
+        <label for="workContent">
+            {#if work.workType === "Egyéb"}
+                Link a műhöz
+            {:else}
+                Mű tartalma
+            {/if}
+        </label>
         <textarea
             name="workContent"
-            bind:value={work.content}
+            value={work.content}
+            oninput={(e) => (work = { ...work, content: e.target.value })}
             class="outlined-input"
+            style={work.workType !== "Egyéb" && "min-height: 256px;"}
         ></textarea>
     </div>
 </main>
@@ -118,6 +130,7 @@
 
 <style>
     textarea {
+        width: 100%;
         resize: none;
         field-sizing: content;
     }
@@ -139,6 +152,14 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing);
+    }
+
+    .metadata-editor, .content-editor {
+        background: var(--secondary-color);
+        color: var(--on-secondary-color);
+        padding: var(--spacing);
+        border-radius: var(--corner-radius);
+        width: 100%;
     }
 
     .metadata-editor {

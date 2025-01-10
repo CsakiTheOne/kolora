@@ -7,6 +7,7 @@
     import { initializeFirebase } from "$lib/firebase/firebase";
     import type Work from "$lib/model/Work";
     import WorkCard from "../../components/WorkCard.svelte";
+    import GalleryUtils from "$lib/GalleryUtils";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -62,6 +63,7 @@
         {#if isOwnerLoggedIn}
             <span
                 class="mdi mdi-pencil"
+                style="cursor: pointer;"
                 onclick={editUsername}
                 onkeypress={(e) => e.key === "Enter" && editUsername()}
                 role="button"
@@ -76,6 +78,18 @@
         {#each works as work}
             <WorkCard {work} />
         {/each}
+    {/if}
+    {#if isOwnerLoggedIn}
+        <button
+            class="btn"
+            onclick={() => {
+                GalleryUtils.workId = null;
+                window.location.href = "/gallery/edit";
+            }}
+        >
+            <span class="mdi mdi-plus"></span>
+            Új mű
+        </button>
     {/if}
 </main>
 <Footer />

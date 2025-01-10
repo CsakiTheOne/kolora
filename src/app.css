@@ -190,16 +190,15 @@ main>* {
 
 .outlined-input {
     width: 100%;
-    padding: var(--spacing);
-    border: 2px solid var(--primary-variant-color);
+    padding: calc(var(--spacing) / 2);
+    border: 2px solid var(--primary-color);
     border-radius: var(--corner-radius);
-    background-color: transparent;
-    color: var(--on-background-color);
+    background-color: var(--primary-variant-color);
+    color: var(--on-primary-variant-color);
     transition: all 0.1s ease-in-out;
 }
 
 .outlined-input:focus {
-    border-color: var(--primary-color);
     outline: none;
 }
 
