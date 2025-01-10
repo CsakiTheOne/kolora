@@ -19,7 +19,8 @@
             return;
         }
 
-        firestore.works.get(id)
+        firestore.works
+            .get(id)
             .then((fetchedWork) => {
                 work = fetchedWork;
                 return firestore.users.get(work.authorId);
@@ -36,10 +37,36 @@
 <Header selectedTab="Galéria" />
 <main>
     <p>
-        {authorName} - {work?.dateCreated}
+        <a href={`/profile/?id=${work?.authorId}`}>{authorName}</a> - {work?.dateCreated}
     </p>
     <div class="title-row">
+        <span
+            class="mdi mdi-arrow-left"
+            onclick={() => {
+                window.history.back();
+            }}
+            onkeypress={(e) => {
+                if (e.key === "Enter") {
+                    window.history.back();
+                }
+            }}
+            tabindex="0"
+            role="button"
+        ></span>
         <h2>{work?.title}</h2>
+        <span
+            class="mdi mdi-information"
+            onclick={() => {
+                alert(work?.description);
+            }}
+            onkeypress={(e) => {
+                if (e.key === "Enter") {
+                    alert(work?.description);
+                }
+            }}
+            tabindex="0"
+            role="button"
+        ></span>
         <span
             class="mdi mdi-share-variant"
             onclick={() => {
@@ -47,6 +74,15 @@
                     url: window.location.href + "?id=" + work?.id,
                 });
             }}
+            onkeypress={(e) => {
+                if (e.key === "Enter") {
+                    navigator.share({
+                        url: window.location.href + "?id=" + work?.id,
+                    });
+                }
+            }}
+            tabindex="0"
+            role="button"
         ></span>
     </div>
 
@@ -64,13 +100,14 @@
     .title-row {
         display: flex;
         flex-direction: row;
+        gap: var(--spacing);
         justify-content: space-between;
         align-items: center;
     }
 
     .title-row span {
         font-size: 1.3rem;
-        padding: 0 var(--spacing);
         cursor: pointer;
+        translate: 0 4px;
     }
 </style>
