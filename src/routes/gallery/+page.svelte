@@ -6,6 +6,7 @@
     import { collection, doc, getDoc, getDocs } from "firebase/firestore";
     import Work from "$lib/model/Work";
     import WorkCard from "../../components/WorkCard.svelte";
+    import firestore from "$lib/firebase/firestore";
 
     let works: Work[] = $state([]);
     let searchQuery = $state("");
@@ -22,14 +23,10 @@
     );
 
     onMount(() => {
-        const db = initializeFirebase().firestore;
-        const worksRef = collection(db, "works");
-        
-        getDocs(worksRef).then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                works.push({ ...new Work(), ...doc.data() });
+        firestore.works.getAll()
+            .then((fetchedWorks) => {
+                works = fetchedWorks;
             });
-        });
     });
 </script>
 

@@ -3,20 +3,12 @@
     import Footer from "../../../components/Footer.svelte";
     import Header from "../../../components/Header.svelte";
     import { initializeFirebase } from "$lib/firebase/firebase";
-    import {
-        addDoc,
-        collection,
-        doc,
-        Firestore,
-        getDoc,
-        setDoc,
-    } from "firebase/firestore";
+    import firestore from "$lib/firebase/firestore";
     import Work from "$lib/model/Work";
     import GalleryUtils from "$lib/GalleryUtils";
 
     let work: Work = $state(new Work());
     let currentUserUid = $state("");
-    let db: Firestore | null = $state(null);
 
     onMount(() => {
         const firebase = initializeFirebase();
@@ -30,14 +22,11 @@
         currentUserUid = auth.currentUser.uid;
 
         const id = GalleryUtils.workId;
-        db = firebase.firestore;
 
         if (id) {
-            const workRef = doc(db, "works", id);
-
-            getDoc(workRef)
-                .then((doc) => {
-                    work = { ...new Work(), ...doc.data() };
+            firestore.works.get(id)
+                .then((fetchedWork) => {
+                    work = fetchedWork;
                     // Remove the id from the URL
                     const newUrl =
                         window.location.origin + window.location.pathname;
@@ -50,30 +39,15 @@
     });
 
     function saveWork() {
-        if (!db) return;
-
         work.dateUploaded = new Date().toLocaleDateString();
 
-        if (work.id) {
-            const workRef = doc(db, "works", work.id);
-            setDoc(workRef, { ...work, authorId: currentUserUid })
-                .then(() => {
-                    alert("Mű mentve!");
-                })
-                .catch((err) => {
-                    alert("Hiba történt a mentés során.");
-                });
-        } else {
-            addDoc(collection(db, "works"), { ...work })
-                .then((e) => {
-                    alert("Új mű mentve!");
-                    work.id = e.id;
-                    saveWork();
-                })
-                .catch((err) => {
-                    alert("Hiba történt az új mű mentése során.");
-                });
-        }
+        firestore.works.save(work, currentUserUid)
+            .then(() => {
+                alert(work.id ? "Mű mentve!" : "Új mű mentve!");
+            })
+            .catch((err) => {
+                alert("Hiba történt a mentés során.");
+            });
     }
 </script>
 

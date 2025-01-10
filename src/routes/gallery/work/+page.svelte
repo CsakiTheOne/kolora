@@ -3,7 +3,6 @@
     import Footer from "../../../components/Footer.svelte";
     import Header from "../../../components/Header.svelte";
     import { initializeFirebase } from "$lib/firebase/firebase";
-    import { doc, getDoc } from "firebase/firestore";
     import Work from "$lib/model/Work";
     import ChooseYourOwnAdventureDisplay from "../../../components/WorkDisplays/ChooseYourOwnAdventureDisplay.svelte";
     import GalleryUtils from "$lib/GalleryUtils";
@@ -19,12 +18,10 @@
             window.history.back();
             return;
         }
-        const db = initializeFirebase().firestore;
-        const workRef = doc(db, "works", id);
 
-        getDoc(workRef)
-            .then((doc) => {
-                work = { ...new Work(), ...doc.data() };
+        firestore.works.get(id)
+            .then((fetchedWork) => {
+                work = fetchedWork;
                 return firestore.users.get(work.authorId);
             })
             .then((user: KoloraUser) => {
