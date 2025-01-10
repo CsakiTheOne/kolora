@@ -11,20 +11,21 @@
     let currentUserUid = $state("");
 
     onMount(() => {
-        const firebase = initializeFirebase();
-        const auth = firebase.auth;
+        const auth = initializeFirebase().auth;
 
-        if (!auth.currentUser) {
-            window.history.back();
-            return;
-        }
-
-        currentUserUid = auth.currentUser.uid;
+        const authListener = auth.onAuthStateChanged((user) => {
+            if (!user) {
+                window.history.back();
+            } else {
+                currentUserUid = user.uid;
+            }
+        });
 
         const id = GalleryUtils.workId;
 
         if (id) {
-            firestore.works.get(id)
+            firestore.works
+                .get(id)
                 .then((fetchedWork) => {
                     work = fetchedWork;
                     // Remove the id from the URL
@@ -36,12 +37,17 @@
                     window.history.back();
                 });
         }
+
+        return () => {
+            authListener();
+        };
     });
 
     function saveWork() {
         work.dateUploaded = new Date().toLocaleDateString();
 
-        firestore.works.save(work, currentUserUid)
+        firestore.works
+            .save(work, currentUserUid)
             .then(() => {
                 alert(work.id ? "Mű mentve!" : "Új mű mentve!");
             })
