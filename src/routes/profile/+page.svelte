@@ -126,7 +126,7 @@
             </button>
         {/if}
     </div>
-    <h3 style="display: flex; justify-content: space-between;">
+    <h3 style="display: flex; justify-content: space-between; align-items: flex-end;">
         <span>Művek</span>
         {#if isOwnerLoggedIn}
             <button
