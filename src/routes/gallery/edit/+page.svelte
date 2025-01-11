@@ -6,6 +6,7 @@
     import firestore from "$lib/firebase/firestore";
     import Work from "$lib/model/Work";
     import GalleryUtils from "$lib/GalleryUtils";
+    import SmallHeader from "../../../components/SmallHeader.svelte";
 
     let work: Work = $state(new Work());
     let currentUserUid = $state("");
@@ -57,18 +58,16 @@
     }
 </script>
 
-<Header selectedTab="Galéria" />
+<SmallHeader
+    path={[
+        { title: "Galéria", href: "/gallery" },
+        { title: "Profilom", href: `/profile/?id=${work?.authorId}` },
+    ]}
+    currentPage="Szerkesztő"
+/>
 <main>
     <div class="metadata-editor">
         <div style="display: flex; gap: calc(var(--spacing) / 2);">
-            <button
-                class="btn"
-                onclick={() => window.history.back()}
-                style="flex: 1"
-            >
-                <span class="mdi mdi-arrow-left"></span>
-                Vissza
-            </button>
             <button
                 class="btn"
                 onclick={() => {
@@ -78,18 +77,21 @@
                 style="flex: 1"
             >
                 <span class="mdi mdi-content-save"></span>
-                Mentés
+                Mentés piszkozatként
             </button>
             <button
                 class="btn"
                 onclick={() => {
                     work.status = "pending";
                     saveWork();
+                    alert(
+                        "Az alkotásod megjelenik a galériában, amint egy Kolora tag jóváhagyja.",
+                    );
                 }}
                 style="flex: 1"
             >
                 <span class="mdi mdi-publish"></span>
-                Beküldés
+                Mentés és beküldés
             </button>
         </div>
 
@@ -128,6 +130,12 @@
                 >Egyéb nem írott mű (festmény, zene, szobor, stb.)</option
             >
         </select>
+        {#if work.workType === "Choose your own adventure"}
+            <a href="/docs/cyoa/" target="_blank">
+                <span class="mdi mdi-open-in-new"></span>
+                Choose your own adventure dokumentáció megnyitása új lapon
+            </a>
+        {/if}
 
         <label for="workDescription">Mű leírása</label>
         <textarea

@@ -11,6 +11,7 @@
     import Badge from "../../components/Badge.svelte";
     import SvelteMarkdown from "svelte-markdown";
     import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
+    import SmallHeader from "../../components/SmallHeader.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -60,7 +61,10 @@
     }
 </script>
 
-<Header />
+<SmallHeader
+    path={[{ title: "Galéria", href: "/gallery" }]}
+    currentPage="Művész profil"
+/>
 <main>
     <h2>
         <span class="mdi mdi-account-circle"></span>
@@ -89,7 +93,7 @@
             <p>
                 A bemutatkozás támogatja a <a
                     href="https://www.markdownguide.org/cheat-sheet/"
-                    >Markdown formázást</a
+                    target="_blank">Markdown formázást</a
                 >.
             </p>
         {:else}
@@ -126,7 +130,9 @@
             </button>
         {/if}
     </div>
-    <h3 style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <h3
+        style="display: flex; justify-content: space-between; align-items: flex-end;"
+    >
         <span>Művek</span>
         {#if isOwnerLoggedIn}
             <button

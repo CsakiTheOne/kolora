@@ -8,6 +8,7 @@
     import Alert from "../../../components/Alert.svelte";
     import { getCurrentUser } from "$lib/firebase/auth";
     import { ROLES } from "$lib/model/KoloraUser";
+    import SmallHeader from "../../../components/SmallHeader.svelte";
 
     let pendingWorks: Work[] = $state([]);
 
@@ -32,14 +33,8 @@
     });
 </script>
 
-<Header />
+<SmallHeader path={[{ title: "Galéria", href: "/gallery" }]} currentPage="Várakozó művek" />
 <main>
-    <a href="/gallery">
-        <button class="btn">
-            <span class="mdi mdi-arrow-left"></span>
-            Vissza a galériába
-        </button>
-    </a>
     <Alert icon="information">
         <p>
             Itt vannak azok a művek, amiket az emberek meg szeretnének osztani

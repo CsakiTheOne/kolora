@@ -1,0 +1,32 @@
+<script>
+    import Footer from "../../components/Footer.svelte";
+    import SmallHeader from "../../components/SmallHeader.svelte";
+</script>
+
+<SmallHeader currentPage="Dokumentáció" />
+<main>
+    <h2>Dokumentáció</h2>
+    <p>
+        Itt találhatsz leírást és segítséget a webapp technikai részeivel
+        kapcsolatban.
+    </p>
+    <p>
+        Egy bonyolultabb rész a <a href="/docs/cyoa/"
+            >Choose your own adventure</a
+        > műfajú művek írása.
+    </p>
+</main>
+<Footer />
+
+<style>
+    p {
+        text-align: justify;
+    }
+    
+    code {
+        padding: var(--spacing);
+        background-color: #88888840;
+        border-radius: var(--corner-radius);
+        font-family: "Courier New", Courier, monospace;
+    }
+</style>

@@ -9,6 +9,7 @@
     import firestore from "$lib/firebase/firestore";
     import KoloraUser, { ROLES } from "$lib/model/KoloraUser";
     import { getCurrentUser } from "$lib/firebase/auth";
+    import SmallHeader from "../../components/SmallHeader.svelte";
 
     let works: Work[] = $state([]);
     let searchQuery = $state("");
@@ -48,7 +49,7 @@
     });
 </script>
 
-<Header selectedTab="Galéria" />
+<SmallHeader currentPage="Galéria" />
 <main>
     {#if koloraUser && koloraUser.roles.includes(ROLES.KOLORA_MEMBER)}
         <a href="/gallery/pendings">

@@ -8,6 +8,7 @@
     import GalleryUtils from "$lib/GalleryUtils";
     import KoloraUser from "$lib/model/KoloraUser";
     import firestore from "$lib/firebase/firestore";
+    import SmallHeader from "../../../components/SmallHeader.svelte";
 
     let work: Work | null = $state(null);
     let authorName: string | null = $state(null);
@@ -34,25 +35,18 @@
     });
 </script>
 
-<Header selectedTab="Galéria" />
+<SmallHeader
+    path={[
+        { title: "Galéria", href: "/gallery" },
+        { title: authorName, href: `/profile/?id=${work?.authorId}` },
+    ]}
+    currentPage={work?.title}
+/>
 <main>
     <p>
         <a href={`/profile/?id=${work?.authorId}`}>{authorName}</a> - {work?.dateCreated}
     </p>
     <div class="title-row">
-        <span
-            class="mdi mdi-arrow-left"
-            onclick={() => {
-                window.history.back();
-            }}
-            onkeypress={(e) => {
-                if (e.key === "Enter") {
-                    window.history.back();
-                }
-            }}
-            tabindex="0"
-            role="button"
-        ></span>
         <h2 style="flex: 1;">{work?.title}</h2>
         <span
             class="mdi mdi-information"
