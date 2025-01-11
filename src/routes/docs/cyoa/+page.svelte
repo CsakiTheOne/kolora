@@ -19,7 +19,12 @@
         a megadott részek végén az olvasó "lapozz ide ha" utasításokat talál és
         a döntése alapján halad tovább a műben.
     </p>
-    <a href="https://en.wikipedia.org/wiki/Gamebook">Gamebook Wiki oldala</a>
+    <a href="https://en.wikipedia.org/wiki/Gamebook" target="_blank"
+        >Gamebook Wiki oldala</a
+    >
+    <a href="https://www.google.com/search?q=A+Cave+of+Time" target="_blank">
+        A Cave of Time - Edward Packard
+    </a>
     <p>
         A Kolora oldalán is van lehetőség ilyen történeteket írni és olvasni,
         viszont itt egy kicsit máshogy működnek.
@@ -76,6 +81,32 @@
             működik!
         </p>
     </Alert>
+
+    <h3>Egy egyszerű kis kaland</h3>
+    <p>Az alábbi példa egy egyszerű kis kalandot mutat be.</p>
+    <code>
+        ## A barlang<br />
+        <br />
+        Egy sötét barlangban találod magad.<br />
+        A bal oldalon egy sötét folyosó, a jobb oldalon egy másik.<br />
+        <br />
+        [Balra megyek](#kincses-kamra)<br />
+        [Jobbra megyek](#furcsa-kattanás)<br />
+        <br />
+        ## Kincses kamra<br />
+        <br />
+        Egy ládát látsz a sarokban.<br />
+        Kinyitod és tele van arannyal.<br />
+        <br />
+        ## Furcsa kattanás<br />
+        <br />
+        Ahogy beléptél a folyosóra, egy kattanást hallottál.<br />
+        <br />
+        [Visszalépek gyorsan](#elkerült-csapda)<br />
+        [Tovább megyek](#játék-vége)<br />
+        <br />
+        ...
+    </code>
 
     <h3>Feltételek, változók és komplex mechanikák</h3>
     <p>
