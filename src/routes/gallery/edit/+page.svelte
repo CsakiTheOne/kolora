@@ -29,10 +29,6 @@
                 .get(id)
                 .then((fetchedWork) => {
                     work = fetchedWork;
-                    // Remove the id from the URL
-                    const newUrl =
-                        window.location.origin + window.location.pathname;
-                    window.history.replaceState({}, document.title, newUrl);
                 })
                 .catch((err) => {
                     window.history.back();

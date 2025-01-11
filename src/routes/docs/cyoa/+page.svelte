@@ -50,7 +50,7 @@
     <code>
         ## Oldal címe<br />
         <br />
-        Oldal tartalma,<br>
+        Oldal tartalma,<br />
         ami több soros is lehet.
     </code>
     <h4>Hivatkozás</h4>
@@ -76,6 +76,20 @@
             működik!
         </p>
     </Alert>
+
+    <h3>Feltételek, változók és komplex mechanikák</h3>
+    <p>
+        A Kolora oldala bonyolultabb mechanikákat is támogatni fog a CYOA
+        művekben, mint például változók használatát és feltételes ágakat. "Akkor
+        mehetsz tovább ha megtaláltad a kulcsot" és hasonló szituációk. Viszont
+        ezek még készítés alatt vannak és még nem túl megbízhatóak, ezért a
+        használatuk egyelőre nem ajánlott.
+    </p>
+    <p>
+        Ha kíváncsi vagy ezekre a kísérleti újdonságokra, nézd meg <a
+            href="/profile/?id=hi1b98VKT0Pzu8ql8QsUqmVYubl1">Csáki</a
+        > műveit.
+    </p>
 </main>
 <Footer />
 
@@ -83,7 +97,7 @@
     p {
         text-align: justify;
     }
-    
+
     code {
         padding: var(--spacing);
         background-color: #88888840;
