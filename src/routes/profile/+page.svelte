@@ -8,6 +8,7 @@
     import type Work from "$lib/model/Work";
     import WorkCard from "../../components/WorkCard.svelte";
     import GalleryUtils from "$lib/GalleryUtils";
+    import Badge from "../../components/Badge.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -90,6 +91,36 @@
             <span class="mdi mdi-plus"></span>
             Új mű
         </button>
+
+        <details>
+            <summary>
+                <h3 style="display: inline;">
+                    Beállítások
+                    <Badge style="translate: 0 -4px;">Ezt csak te látod</Badge>
+                </h3>
+            </summary>
+            <div style="display: flex; flex-direction: column; padding: var(--spacing) 0; gap: var(--spacing);">
+                <label for="preferredMusicService">Preferált zene app</label>
+                <select
+                    class="outlined-input"
+                    name="preferredMusicService"
+                    value={koloraUser.preferredMusicService}
+                    onchange={(e) => {
+                        firestore.users.set(koloraUser.id, {
+                            preferredMusicService: e.target.value,
+                        });
+                    }}
+                >
+                    <option>Spotify</option>
+                    <option>YouTube</option>
+                    <option>YouTube Music</option>
+                </select>
+                <p style="font-size: .8rem;">
+                    A "Hallgassunk random valamit" gomb a főoldalon a te
+                    preferált zene appod fogja megnyitni.
+                </p>
+            </div>
+        </details>
     {/if}
 </main>
 <Footer />

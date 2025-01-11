@@ -47,15 +47,6 @@
             authListener();
         };
     });
-
-    function changeMusicApp() {
-        const supportedServices = ["Spotify", "YouTube Music", "YouTube"];
-        const currentIndex =
-            supportedServices.indexOf(koloraUser!!.preferredMusicService) ?? -1;
-        const newService =
-            supportedServices[(currentIndex + 1) % supportedServices.length];
-        firestore.users.set(user!!.uid, { preferredMusicService: newService });
-    }
 </script>
 
 {#if enableAccountFeatures}
@@ -108,24 +99,6 @@
                         <span class="mdi mdi-library-shelves"></span>
                         Profil és műveim
                     </button>
-                    <div style="display: flex; flex-wrap: nowrap;">
-                        <button style="flex: 1;" onclick={changeMusicApp}>
-                            <span class="mdi mdi-music-note"></span>
-                            Preferált zene app<br />
-                            {koloraUser!!.preferredMusicService ?? "Még nincs"}
-                        </button>
-                        <button
-                            style="flex: 0;"
-                            onclick={() => {
-                                alert(
-                                    'A "Hallgassunk random valamit" gomb a te preferált zene appod fogja megnyitni.',
-                                );
-                            }}
-                            aria-label="Segítség"
-                        >
-                            <span class="mdi mdi-help-circle"></span>
-                        </button>
-                    </div>
                     <button
                         onclick={() => {
                             isOpen = false;
