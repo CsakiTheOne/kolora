@@ -57,89 +57,118 @@
 <SmallHeader
     path={[
         { title: "Galéria", href: "/gallery" },
-        { title: "Profilom", href: `/profile/?id=${work?.authorId}` },
+        { title: "Profilom", href: `/profile/?id=${currentUserUid}` },
     ]}
     currentPage="Szerkesztő"
 />
 <main>
-    <div class="metadata-editor">
-        <div style="display: flex; gap: calc(var(--spacing) / 2);">
-            <button
-                class="btn"
-                onclick={() => {
-                    work.status = "draft";
-                    saveWork();
-                }}
-                style="flex: 1"
+    <div class="sidebar">
+        <div class="metadata-editor">
+            <div style="display: flex; gap: calc(var(--spacing) / 2);">
+                <button
+                    class="btn"
+                    onclick={() => {
+                        work.status = "draft";
+                        saveWork();
+                    }}
+                    style="flex: 1"
+                >
+                    <span class="mdi mdi-content-save"></span>
+                    Mentés piszkozatként
+                </button>
+                <button
+                    class="btn"
+                    onclick={() => {
+                        work.status = "pending";
+                        saveWork();
+                        alert(
+                            "Az alkotásod megjelenik a galériában, amint egy Kolora tag jóváhagyja.",
+                        );
+                    }}
+                    style="flex: 1"
+                >
+                    <span class="mdi mdi-publish"></span>
+                    Mentés és beküldés
+                </button>
+            </div>
+
+            <label for="workTitle">Mű címe</label>
+            <input
+                type="text"
+                name="workTitle"
+                value={work.title}
+                oninput={(e) => (work = { ...work, title: e.target.value })}
+                class="outlined-input"
+            />
+
+            <label for="workDateCreated">Keletkezés dátuma</label>
+            <input
+                type="text"
+                name="workDateCreated"
+                value={work.dateCreated}
+                oninput={(e) =>
+                    (work = { ...work, dateCreated: e.target.value })}
+                class="outlined-input"
+            />
+
+            <label for="workType">Műnem</label>
+            <select
+                name="workType"
+                value={work.workType}
+                onchange={(e) => (work = { ...work, workType: e.target.value })}
+                class="outlined-input"
             >
-                <span class="mdi mdi-content-save"></span>
-                Mentés piszkozatként
-            </button>
-            <button
-                class="btn"
-                onclick={() => {
-                    work.status = "pending";
-                    saveWork();
-                    alert(
-                        "Az alkotásod megjelenik a galériában, amint egy Kolora tag jóváhagyja.",
-                    );
-                }}
-                style="flex: 1"
-            >
-                <span class="mdi mdi-publish"></span>
-                Mentés és beküldés
-            </button>
+                <option value="Choose your own adventure"
+                    >Choose your own adventure</option
+                >
+                <option value="Írott mű"
+                    >Egyéb írott mű (vers, novella, regény, stb.)</option
+                >
+                <option value="Egyéb"
+                    >Egyéb nem írott mű (festmény, zene, szobor, stb.)</option
+                >
+            </select>
+
+            <label for="workDescription">Mű leírása</label>
+            <textarea
+                name="workDescription"
+                value={work.description}
+                oninput={(e) =>
+                    (work = { ...work, description: e.target.value })}
+                class="outlined-input"
+            ></textarea>
         </div>
-
-        <label for="workTitle">Mű címe</label>
-        <input
-            type="text"
-            name="workTitle"
-            value={work.title}
-            oninput={(e) => (work = { ...work, title: e.target.value })}
-            class="outlined-input"
-        />
-
-        <label for="workDateCreated">Keletkezés dátuma</label>
-        <input
-            type="text"
-            name="workDateCreated"
-            value={work.dateCreated}
-            oninput={(e) => (work = { ...work, dateCreated: e.target.value })}
-            class="outlined-input"
-        />
-
-        <label for="workType">Műnem</label>
-        <select
-            name="workType"
-            value={work.workType}
-            onchange={(e) => (work = { ...work, workType: e.target.value })}
-            class="outlined-input"
-        >
-            <option value="Choose your own adventure"
-                >Choose your own adventure</option
-            >
-            <option value="Írott mű"
-                >Egyéb írott mű (vers, novella, regény, stb.)</option
-            >
-            <option value="Egyéb"
-                >Egyéb nem írott mű (festmény, zene, szobor, stb.)</option
-            >
-        </select>
         {#if work.workType === "Choose your own adventure"}
-            <a href="/docs/cyoa/" target="_blank">
-                <span class="mdi mdi-open-in-new"></span>
-                Choose your own adventure dokumentáció megnyitása új lapon
-            </a>
+            <div class="cyoa-tools">
+                <h3>Choose your own adventure eszközök</h3>
+                <a href="/docs/cyoa/" target="_blank">
+                    <span class="mdi mdi-open-in-new"></span>
+                    Dokumentáció megnyitása új lapon
+                </a>
+                <button
+                    class="btn"
+                    onclick={() => {
+                        work = {
+                            ...work,
+                            content:
+                                `${work.content}\n\n## Új oldal címe\n\nOldal tartalma\n\n[Hivatkozás 1](#hivatkozás-1)\n\n[Hivatkozás 2](#hivatkozás-2)`.trim(),
+                        };
+                        window.scrollTo(0, document.body.scrollHeight);
+                    }}
+                >
+                    <span class="mdi mdi-note-plus"></span>
+                    Új oldal hozzáadása a végére
+                </button>
+                <p>
+                    Oldalak ({work.content.split("## ").length - 1}):
+                </p>
+                <ol style="margin-left: var(--spacing);">
+                    {#each work.content.split("## ").slice(1) as page}
+                        <li>{page.split("\n")[0]}</li>
+                    {/each}
+                </ol>
+            </div>
         {/if}
-
-        <label for="workDescription">Mű leírása</label>
-        <textarea
-            name="workDescription"
-            value={work.description}
-            oninput={(e) => (work = { ...work, description: e.target.value })}
-            class="outlined-input"
-        ></textarea>
     </div>
     <div class="content-editor">
         <label for="workContent">
@@ -180,13 +209,16 @@
         }
     }
 
-    main > * {
+    main > *,
+    .metadata-editor,
+    .cyoa-tools {
         display: flex;
         flex-direction: column;
         gap: var(--spacing);
     }
 
     .metadata-editor,
+    .cyoa-tools,
     .content-editor {
         background: var(--secondary-color);
         color: var(--on-secondary-color);
@@ -195,11 +227,13 @@
         width: 100%;
     }
 
-    .metadata-editor {
+    .sidebar {
         flex: 1;
+        max-width: 450px !important;
     }
 
     .content-editor {
         flex: 2;
+        max-width: none !important;
     }
 </style>
