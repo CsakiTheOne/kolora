@@ -1,4 +1,4 @@
-type WorkStatus = 'draft' | 'published';
+type WorkStatus = 'draft' | 'pending' | 'published';
 
 export default class Work {
     id: string = '';

@@ -1,4 +1,3 @@
-
 export default class KoloraUser {
     id: string = '';
     username: string = '';
@@ -6,4 +5,12 @@ export default class KoloraUser {
     favoriteMusicYoutubeUrl: string = '';
     // E.g. "Spotify", "YouTube Music", etc. Used for the random music feature
     preferredMusicService: string = '';
+    roles: string[] = [];
 }
+
+const ROLES = {
+    ADMIN: 'admin',
+    KOLORA_MEMBER: 'kolora_member',
+}
+
+export { ROLES };

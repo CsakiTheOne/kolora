@@ -3,6 +3,10 @@ import { initializeFirebase } from "./firebase";
 
 const { auth, googleProvider } = initializeFirebase();
 
+export function getCurrentUser() {
+    return auth.currentUser;
+}
+
 export function loginWithGoogle() {
     signInWithPopup(auth, googleProvider).catch((error) => {
         console.error("Google login error:", error);

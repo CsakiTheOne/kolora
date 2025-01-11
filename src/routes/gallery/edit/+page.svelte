@@ -60,7 +60,7 @@
 <Header selectedTab="Galéria" />
 <main>
     <div class="metadata-editor">
-        <div style="display: flex; gap: var(--spacing);">
+        <div style="display: flex; gap: calc(var(--spacing) / 2);">
             <button
                 class="btn"
                 onclick={() => window.history.back()}
@@ -69,9 +69,27 @@
                 <span class="mdi mdi-arrow-left"></span>
                 Vissza
             </button>
-            <button class="btn" onclick={saveWork} style="flex: 1">
+            <button
+                class="btn"
+                onclick={() => {
+                    work.status = "draft";
+                    saveWork();
+                }}
+                style="flex: 1"
+            >
                 <span class="mdi mdi-content-save"></span>
                 Mentés
+            </button>
+            <button
+                class="btn"
+                onclick={() => {
+                    work.status = "pending";
+                    saveWork();
+                }}
+                style="flex: 1"
+            >
+                <span class="mdi mdi-publish"></span>
+                Beküldés
             </button>
         </div>
 
