@@ -9,10 +9,14 @@
     import WorkCard from "../../components/WorkCard.svelte";
     import GalleryUtils from "$lib/GalleryUtils";
     import Badge from "../../components/Badge.svelte";
+    import SvelteMarkdown from "svelte-markdown";
+    import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
     let works: Work[] = $state([]);
+    let isEditingBio = $state(false);
+    let newBio = $state("");
 
     onMount(() => {
         const params = new URLSearchParams(window.location.search);
@@ -72,6 +76,56 @@
             ></span>
         {/if}
     </h2>
+    <div
+        style="background: var(--primary-variant-color); padding: var(--spacing); border-radius: var(--spacing);"
+    >
+        {#if isEditingBio}
+            <textarea
+                class="outlined-input"
+                style="resize: none; field-sizing: content;"
+                bind:value={newBio}
+                maxlength="500"
+            ></textarea>
+            <p>
+                A bemutatkozás támogatja a <a
+                    href="https://www.markdownguide.org/cheat-sheet/"
+                    >Markdown formázást</a
+                >.
+            </p>
+        {:else}
+            <p>
+                <SvelteMarkdown
+                    source={koloraUser.bio ||
+                        "*Ez a felhasználó még nem írt bemutatkozást.*"}
+                    renderers={{ link: MarkdownLink }}
+                />
+            </p>
+        {/if}
+        {#if isOwnerLoggedIn}
+            <button
+                class="btn"
+                style="float: right;"
+                onclick={() => {
+                    isEditingBio = !isEditingBio;
+                    if (isEditingBio) {
+                        newBio = koloraUser.bio;
+                    } else {
+                        firestore.users.set(koloraUser.id, {
+                            bio: newBio,
+                        });
+                    }
+                }}
+            >
+                {#if isEditingBio}
+                    <span class="mdi mdi-check"></span>
+                    Kész
+                {:else}
+                    <span class="mdi mdi-pencil"></span>
+                    Szerkesztés
+                {/if}
+            </button>
+        {/if}
+    </div>
     <h3>Művek</h3>
     {#if works.length === 0}
         <p>Ennek a felhasználónak még nincsenek művei.</p>
@@ -99,7 +153,9 @@
                     <Badge style="translate: 0 -4px;">Ezt csak te látod</Badge>
                 </h3>
             </summary>
-            <div style="display: flex; flex-direction: column; padding: var(--spacing) 0; gap: var(--spacing);">
+            <div
+                style="display: flex; flex-direction: column; padding: var(--spacing) 0; gap: var(--spacing);"
+            >
                 <label for="preferredMusicService">Preferált zene app</label>
                 <select
                     class="outlined-input"
