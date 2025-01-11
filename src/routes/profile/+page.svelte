@@ -148,8 +148,11 @@
             <WorkCard {work} />
             {#if isOwnerLoggedIn}
                 <p
-                    style="display: flex; justify-content: end; gap: var(--spacing);"
+                    style="display: flex; justify-content: end; gap: var(--spacing); align-items: center;"
                 >
+                    <Badge>
+                        Állapot: {work.status}
+                    </Badge>
                     <button
                         class="btn"
                         onclick={() => {
