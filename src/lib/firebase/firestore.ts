@@ -1,4 +1,4 @@
-import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc } from "firebase/firestore";
 import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 import Work from "$lib/model/Work";
@@ -100,6 +100,9 @@ const firestore = {
                     console.error("Error getting works: ", error);
                     return Promise.reject(error);
                 });
+        },
+        delete: (id: string): Promise<void> => {
+            return deleteDoc(doc(db, "works", id));
         },
     },
 };

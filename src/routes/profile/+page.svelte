@@ -126,26 +126,64 @@
             </button>
         {/if}
     </div>
-    <h3>Művek</h3>
+    <h3 style="display: flex; justify-content: space-between;">
+        <span>Művek</span>
+        {#if isOwnerLoggedIn}
+            <button
+                class="btn"
+                onclick={() => {
+                    GalleryUtils.workId = null;
+                    window.location.href = "/gallery/edit";
+                }}
+            >
+                <span class="mdi mdi-plus"></span>
+                Új mű
+            </button>
+        {/if}
+    </h3>
     {#if works.length === 0}
         <p>Ennek a felhasználónak még nincsenek művei.</p>
     {:else}
         {#each works as work}
             <WorkCard {work} />
+            {#if isOwnerLoggedIn}
+                <p
+                    style="display: flex; justify-content: end; gap: var(--spacing);"
+                >
+                    <button
+                        class="btn"
+                        onclick={() => {
+                            const input = prompt(
+                                `Biztosan törölni szeretnéd ezt a művet? Írd be a mű címét (${work.title}) a törlés megerősítéséhez.`,
+                            );
+
+                            if (input === work.title) {
+                                firestore.works
+                                    .delete(work.id)
+                                    .then(() => {
+                                        alert("Mű törölve!");
+                                        window.location.reload();
+                                    })
+                                    .catch(() => {
+                                        alert("Hiba történt a törlés során.");
+                                    });
+                            }
+                        }}
+                    >
+                        <span class="mdi mdi-delete"></span>
+                        Törlés
+                    </button>
+                    <a href={`/gallery/edit/?id=${work.id}`}>
+                        <button class="btn">
+                            <span class="mdi mdi-pencil"></span>
+                            Szerkesztés
+                        </button>
+                    </a>
+                </p>
+            {/if}
         {/each}
     {/if}
     {#if isOwnerLoggedIn}
-        <button
-            class="btn"
-            onclick={() => {
-                GalleryUtils.workId = null;
-                window.location.href = "/gallery/edit";
-            }}
-        >
-            <span class="mdi mdi-plus"></span>
-            Új mű
-        </button>
-
         <details>
             <summary>
                 <h3 style="display: inline;">
