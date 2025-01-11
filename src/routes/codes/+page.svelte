@@ -11,9 +11,11 @@
 <Header selectedTab="Kódok" />
 <main>
     <Alert icon="information" title="Kódok" background="transparent">
-        Járj Kolorás rendezvényekre, kövesd a Kolorás oldalakat és légy
-        figyelmes! Néha kódokra bukkanhatsz, amiket ide tudsz beírni extra
-        tartalmakért és meglepetésekért.
+        <p>
+            Járj Kolorás rendezvényekre, kövesd a Kolorás oldalakat és légy
+            figyelmes! Néha kódokra bukkanhatsz, amiket ide tudsz beírni extra
+            tartalmakért és meglepetésekért.
+        </p>
     </Alert>
     <div class="adaptive-col-row" style="align-items: stretch;">
         <input
@@ -37,8 +39,10 @@
         </div>
     </div>
     <Alert icon="test-tube">
-        Ez a funkció még kísérleti állapotban van. A jövőben bármi megváltozhat
-        vagy akár az egész funkció el is tűnhet.
+        <p>
+            Ez a funkció még kísérleti állapotban van. A jövőben bármi megváltozhat
+            vagy akár az egész funkció el is tűnhet.
+        </p>
     </Alert>
 </main>
 <Footer />

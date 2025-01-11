@@ -11,6 +11,14 @@
 
     let pendingWorks: Work[] = $state([]);
 
+    function updateWorks() {
+        firestore.works.getAll().then((fetchedWorks) => {
+            pendingWorks = fetchedWorks.filter(
+                (work) => work.status === "pending",
+            );
+        });
+    }
+
     onMount(() => {
         if (getCurrentUser()) {
             firestore.users.get(getCurrentUser()!!.uid).then((fetchedUser) => {
@@ -20,11 +28,7 @@
             });
         }
 
-        firestore.works.getAll().then((fetchedWorks) => {
-            pendingWorks = fetchedWorks.filter(
-                (work) => work.status === "pending",
-            );
-        });
+        updateWorks();
     });
 </script>
 
@@ -37,19 +41,45 @@
         </button>
     </a>
     <Alert icon="information">
-        Itt vannak azok a művek, amiket az emberek meg szeretnének osztani és
-        nekünk, a Kolora tagoknak kell jóváhagyni.
+        <p>
+            Itt vannak azok a művek, amiket az emberek meg szeretnének osztani
+            és nekünk, a Kolora tagoknak kell jóváhagyni.
+        </p>
     </Alert>
     {#if pendingWorks.length === 0}
         <p>Jelenleg nincsenek várakozó művek.</p>
     {/if}
     <div class="works-flow">
         {#each pendingWorks as work}
-            <WorkCard {work} />
-            <p style="display: flex; justify-content: end;">
-                <button class="btn">Elfogad</button>
-                <button class="btn">Elutasít</button>
-            </p>
+            <div>
+                <WorkCard {work} />
+                <p
+                    style="display: flex; justify-content: end; padding: var(--spacing); gap: var(--spacing);"
+                >
+                    <button
+                        class="btn"
+                        onclick={() => {
+                            firestore.works.set(work.id, { status: "draft" });
+                            updateWorks();
+                        }}
+                    >
+                        <span class="mdi mdi-close"></span>
+                        Elutasít
+                    </button>
+                    <button
+                        class="btn"
+                        onclick={() => {
+                            firestore.works.set(work.id, {
+                                status: "published",
+                            });
+                            updateWorks();
+                        }}
+                    >
+                        <span class="mdi mdi-check"></span>
+                        Elfogad
+                    </button>
+                </p>
+            </div>
         {/each}
     </div>
 </main>

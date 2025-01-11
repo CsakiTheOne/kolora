@@ -61,6 +61,9 @@ const firestore = {
                     return Promise.reject(error);
                 });
         },
+        set: (id: string, data: object): Promise<void> => {
+            return setDoc(doc(db, "works", id), data, { merge: true });
+        },
         save: (work: Work, authorId: string): Promise<void> => {
             if (work.id) {
                 const workRef = doc(db, "works", work.id);
