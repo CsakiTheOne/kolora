@@ -53,7 +53,7 @@
             tabindex="0"
             role="button"
         ></span>
-        <h2>{work?.title}</h2>
+        <h2 style="flex: 1;">{work?.title}</h2>
         <span
             class="mdi mdi-information"
             onclick={() => {
@@ -90,6 +90,10 @@
 
     {#if work?.workType === "Choose your own adventure"}
         <ChooseYourOwnAdventureDisplay {work} />
+    {:else if work?.workType === "Egyéb"}
+        <a href={work?.content} target="_blank">
+            <button class="btn">Megnyitás</button>
+        </a>
     {:else}
         <p>{work?.content}</p>
     {/if}
