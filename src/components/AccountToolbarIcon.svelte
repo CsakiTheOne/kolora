@@ -6,7 +6,7 @@
     import firestore from "$lib/firebase/firestore";
     import type KoloraUser from "$lib/model/KoloraUser";
 
-    const enableAccountFeatures = true;
+    let enableAccountFeatures = $state(false);
 
     let isOpen = $state(false);
     let user: User | null = $state(null);
@@ -15,10 +15,18 @@
     const { auth } = initializeFirebase();
 
     onMount(() => {
+        //Temp: Enable account features if url has ?accountfeatures=true
+        if (window.location.search.includes("accountfeatures=true")) {
+            enableAccountFeatures = true;
+        }
+
         let userListener: any = null;
         const authListener = auth.onAuthStateChanged((newUser) => {
             user = newUser;
             if (user) {
+                //Temp: Enable account features for logged in users
+                enableAccountFeatures = true;
+
                 firestore.users
                     .get(user.uid)
                     .then((user) => (koloraUser = user));
