@@ -33,11 +33,18 @@
             works = fetchedWorks;
         });
 
-        if (getCurrentUser()) {
-            firestore.users.get(getCurrentUser()!!.uid).then((fetchedUser) => {
+        const auth = initializeFirebase().auth;
+
+        const authListener = auth.onAuthStateChanged((user) => {
+            if (!user) return;
+            firestore.users.get(user.uid).then((fetchedUser) => {
                 koloraUser = fetchedUser;
             });
-        }
+        });
+
+        return () => {
+            authListener();
+        };
     });
 </script>
 
