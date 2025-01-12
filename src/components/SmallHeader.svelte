@@ -36,6 +36,7 @@
         background-color: var(--primary-color);
         color: var(--on-primary-color);
         overflow: hidden;
+        white-space: nowrap;
     }
 
     header > .left {
