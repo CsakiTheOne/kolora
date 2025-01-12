@@ -18,7 +18,7 @@
     <p>
         A Choose your own adventure (CYOA) vagy Gamebook műfajú művek olyan
         interaktív történetek, amelyekben az olvasó dönthet a cselekmény
-        alakulásáról. Ez a műfaj könyvekben is kétezik. Könyv formában általában
+        alakulásáról. Ez a műfaj könyvekben is létezik. Könyv formában általában
         a megadott részek végén az olvasó "lapozz ide ha" utasításokat talál és
         a döntése alapján halad tovább a műben.
     </p>
@@ -53,6 +53,14 @@
         > szabályait követik. A Markdown egy egyszerű szöveg formázási nyelv, amely
         könnyen írható, olvasható és konvertálható HTML, PDF vagy más formátumokba.
     </p>
+    <Alert title="Gyakorlás a tudás anyja">
+        <p>
+            A doksi olvasása közben ajánlott kipróbálni a tanultakat. Nyisd meg
+            a <a href="/gallery/edit" target="_blank">beépített szerkesztőt</a> vagy
+            a te preferált szöveg- vagy Markdown szerkesztődet. (Ha nem itt, az oldalon
+            szeretnéd írni a műved, akkor a VSCode és Obsidian szerkesztőket ajánlom.)
+        </p>
+    </Alert>
     <h4>Oldal</h4>
     <p>Egy oldal hozzáadásához egy 2-es szintű címsort kell használni:</p>
     <code>
