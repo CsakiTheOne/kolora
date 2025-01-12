@@ -6,9 +6,10 @@ export default class Work {
     title: string = '';
     description: string = '';
     /**
-     * The type of work, e.g. "poem", "essay", "music", etc.
+     * The type of work. This is not the same as genre. This only determines how the work is displayed.
      */
     workType: string = '';
+    genre: string = '';
     content: string = '';
     dateCreated: string = '';
     dateUploaded: string = '';

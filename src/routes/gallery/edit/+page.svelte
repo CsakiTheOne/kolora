@@ -7,9 +7,15 @@
     import Work from "$lib/model/Work";
     import GalleryUtils from "$lib/GalleryUtils";
     import SmallHeader from "../../../components/SmallHeader.svelte";
+    import ChooseYourOwnAdventure from "$lib/ChooseYourOwnAdventure.svelte";
 
     let work: Work = $state(new Work());
     let currentUserUid = $state("");
+    let cyoa = $derived(
+        new ChooseYourOwnAdventure(
+            work.workType === "Choose your own adventure" ? work : new Work(),
+        ),
+    );
 
     onMount(() => {
         const auth = initializeFirebase().auth;
@@ -112,6 +118,10 @@
             />
 
             <label for="workType">Műnem</label>
+            <p>
+                Ez nem egyezik meg a műfajjal. Csak a mű megjelenítését
+                határozza meg ez a beállítás.
+            </p>
             <select
                 name="workType"
                 value={work.workType}
@@ -122,12 +132,21 @@
                     >Choose your own adventure</option
                 >
                 <option value="Írott mű"
-                    >Egyéb írott mű (vers, novella, regény, stb.)</option
+                    >Írott mű (vers, novella, regény, stb.)</option
                 >
                 <option value="Egyéb"
-                    >Egyéb nem írott mű (festmény, zene, szobor, stb.)</option
+                    >Nem írott mű (festmény, zene, slam, stb.)</option
                 >
             </select>
+
+            <label for="workGenre">Műfaj</label>
+            <input
+                type="text"
+                name="workGenre"
+                value={work.genre}
+                oninput={(e) => (work = { ...work, genre: e.target.value })}
+                class="outlined-input"
+            />
 
             <label for="workDescription">Mű leírása</label>
             <textarea
@@ -138,6 +157,7 @@
                 class="outlined-input"
             ></textarea>
         </div>
+
         {#if work.workType === "Choose your own adventure"}
             <div class="cyoa-tools">
                 <h3>Choose your own adventure eszközök</h3>
@@ -160,16 +180,24 @@
                     Új oldal hozzáadása a végére
                 </button>
                 <p>
-                    Oldalak ({work.content.split("## ").length - 1}):
+                    Oldalak ({cyoa.pages.length}):
                 </p>
                 <ol style="margin-left: var(--spacing);">
-                    {#each work.content.split("## ").slice(1) as page}
-                        <li>{page.split("\n")[0]}</li>
+                    {#each cyoa.pages as page}
+                        <li style="margin-bottom: calc(var(--spacing) / 2);">
+                            {page.title}<br />
+                            <p style="font-size: .7rem; opacity: .7;">
+                                Linkek: {page.links
+                                    .map((link) => link.page)
+                                    .join(", ")}<br />
+                            </p>
+                        </li>
                     {/each}
                 </ol>
             </div>
         {/if}
     </div>
+
     <div class="content-editor">
         <label for="workContent">
             {#if work.workType === "Egyéb"}

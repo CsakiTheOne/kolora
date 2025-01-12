@@ -23,6 +23,9 @@
                         .includes(searchQuery.toLowerCase()) ||
                     work.workType
                         .toLowerCase()
+                        .includes(searchQuery.toLowerCase()) ||
+                    work.genre
+                        .toLowerCase()
                         .includes(searchQuery.toLowerCase()))
             );
         }),
@@ -62,6 +65,7 @@
         {#if koloraUser && koloraUser.roles.includes(ROLES.KOLORA_MEMBER)}
             <a href="/gallery/pendings">
                 <button class="btn" style="width: 100%;">
+                    <span class="mdi mdi-receipt-clock"></span>
                     Várakozó művek ({works.filter(
                         (work) => work.status === "pending",
                     ).length})
@@ -71,7 +75,7 @@
 
         <h3>Versenyek, pályázatok, események</h3>
         <ul>
-            <a href="/jam"><li>Költészet napi kalandozás</li></a>
+            <a href="/jam"><li>2025. 04. 11. - Költészet napi kalandozás</li></a>
         </ul>
 
         <h3>Dokumentáció</h3>

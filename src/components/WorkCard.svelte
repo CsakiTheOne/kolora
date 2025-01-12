@@ -17,6 +17,11 @@
 <div class="work-card" {...rest}>
     <div class="badges">
         <Badge style="background: var(--primary-color)">{work.workType}</Badge>
+        {#if work.genre}
+            <Badge style="background: var(--primary-color)">
+                {work.genre}
+            </Badge>
+        {/if}
         {#if work.eventId}
             <Badge style="background: var(--primary-color)">
                 {work.eventId}

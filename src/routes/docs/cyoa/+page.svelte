@@ -75,7 +75,11 @@
     <code> [Tovább a sárkány támadására](#a-sárkány-támadása) </code>
     <p>
         Az első részben bármi lehet. Nem feltétlen kell tartalmaznia utalást az
-        oldal címére. Viszont a második résznek pontosnak kell lennie.
+        oldal címére. Viszont a második résznek pontosnak kell lennie. Mivel a
+        hivatkozásban magára az oldal címére kell hivatkozni, ezért nem lehet
+        két azonos című oldal. Ha ez nem megoldható a művedben vagy nem
+        szeretnéd címekkel ellátni az oldalakat, egyszerű számozást is
+        használhatsz.
     </p>
     <Alert title="Teszt, teszt és teszt!">
         <p>
