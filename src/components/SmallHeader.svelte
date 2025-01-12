@@ -31,16 +31,21 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: nowrap;
+        width: 100%;
         background-color: var(--primary-color);
         color: var(--on-primary-color);
         overflow: hidden;
     }
 
     header > .left {
+        flex: 1;
         display: flex;
         justify-content: start;
         align-items: center;
         gap: var(--spacing);
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 
     header .header-logo {
