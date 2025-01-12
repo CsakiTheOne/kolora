@@ -49,6 +49,7 @@
         padding: 0;
         width: 48px;
         aspect-ratio: 1;
+        mix-blend-mode: lighten;
     }
 
     header > .left > a {
