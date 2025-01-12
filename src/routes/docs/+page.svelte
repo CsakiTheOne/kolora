@@ -3,7 +3,10 @@
     import SmallHeader from "../../components/SmallHeader.svelte";
 </script>
 
-<SmallHeader currentPage="Dokumentáció" />
+<SmallHeader
+    path={[{ title: "Galéria", href: "/gallery" }]}
+    currentPage="Dokumentáció"
+/>
 <main>
     <h2>Dokumentáció</h2>
     <p>
@@ -22,7 +25,7 @@
     p {
         text-align: justify;
     }
-    
+
     code {
         padding: var(--spacing);
         background-color: #88888840;

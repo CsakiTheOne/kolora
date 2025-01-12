@@ -51,22 +51,34 @@
 
 <SmallHeader currentPage="Galéria" />
 <main>
-    {#if koloraUser && koloraUser.roles.includes(ROLES.KOLORA_MEMBER)}
-        <a href="/gallery/pendings">
-            <button class="btn" style="width: 100%;">
-                Várakozó művek ({works.filter(
-                    (work) => work.status === "pending",
-                ).length})
-            </button>
-        </a>
-    {/if}
-    <div class="filter-row">
+    <div class="sidebar">
+        <h3>Művek</h3>
         <input
             type="text"
             class="outlined-input"
             placeholder="Keresés"
             bind:value={searchQuery}
         />
+        {#if koloraUser && koloraUser.roles.includes(ROLES.KOLORA_MEMBER)}
+            <a href="/gallery/pendings">
+                <button class="btn" style="width: 100%;">
+                    Várakozó művek ({works.filter(
+                        (work) => work.status === "pending",
+                    ).length})
+                </button>
+            </a>
+        {/if}
+
+        <h3>Versenyek, pályázatok, események</h3>
+        <ul>
+            <a href="/jam"><li>Költészet napi kalandozás</li></a>
+        </ul>
+
+        <h3>Dokumentáció</h3>
+        <ul>
+            <a href="/docs"><li>Főoldal</li></a>
+            <a href="/docs/cyoa"><li>Choose your own adventure</li></a>
+        </ul>
     </div>
     {#if works.length === 0}
         <p>Betöltés...</p>
@@ -80,13 +92,35 @@
 <Footer />
 
 <style>
-    .filter-row {
+    main {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing);
+    }
+
+    @media (min-width: 768px) {
+        main {
+            flex-direction: row;
+        }
+    }
+
+    .sidebar {
+        flex: 1;
+        width: 100%;
+        max-width: 450px !important;
+        display: flex;
+        flex-direction: column;
         gap: var(--spacing);
+        padding: var(--spacing);
+        background-color: var(--secondary-color);
+        color: var(--on-secondary-color);
+        border-radius: var(--corner-radius);
     }
 
     .works-flow {
+        flex: 2;
+        max-width: none !important;
         display: flex;
         flex-direction: row;
         gap: var(--spacing);

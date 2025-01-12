@@ -115,7 +115,7 @@ ul li, ul button {
     border-bottom: 1px solid var(--primary-color);
 }
 
-ul button {
+ul button, ul a {
     appearance: none;
     border: none;
     background-color: var(--primary-variant-color);

@@ -2,10 +2,15 @@
     import SlamJamConfig from "$lib/SlamJamConfig";
     import Countdown from "../../components/Countdown.svelte";
     import Footer from "../../components/Footer.svelte";
+    import SmallHeader from "../../components/SmallHeader.svelte";
 
     let currentEvent = $state(SlamJamConfig.currentEvent);
 </script>
 
+<SmallHeader
+    path={[{ title: "Galéria", href: "/gallery" }]}
+    currentPage="Költészet napi kalandozás"
+/>
 <header>
     {#if currentEvent !== undefined}
         <h1>???</h1>
@@ -23,9 +28,6 @@
     {/if}
 </header>
 <main>
-    <p>
-        <a href="/">&Lt; Vissza a főoldalra</a>
-    </p>
     {#if currentEvent === undefined}
         <p>
             Jelenleg nincs tervezett Slam Jam esemény. Ha szeretnél részt venni
