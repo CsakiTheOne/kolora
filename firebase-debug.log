@@ -1,0 +1,31 @@
+[debug] [2025-01-12T09:03:58.061Z] ----------------------------------------------------------------------
+[debug] [2025-01-12T09:03:58.064Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2025-01-12T09:03:58.065Z] CLI Version:   13.24.2
+[debug] [2025-01-12T09:03:58.065Z] Platform:      darwin
+[debug] [2025-01-12T09:03:58.065Z] Node Version:  v20.14.0
+[debug] [2025-01-12T09:03:58.065Z] Time:          Sun Jan 12 2025 10:03:58 GMT+0100 (Central European Standard Time)
+[debug] [2025-01-12T09:03:58.066Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-12T09:03:58.131Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-12T09:03:58.131Z] > authorizing via signed-in user (jockahun@gmail.com)
+[debug] [2025-01-12T09:03:58.131Z] [iam] checking project kolora for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-01-12T09:03:58.132Z] Checked if tokens are valid: true, expires at: 1736673739463
+[debug] [2025-01-12T09:03:58.132Z] Checked if tokens are valid: true, expires at: 1736673739463
+[debug] [2025-01-12T09:03:58.133Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/kolora:testIamPermissions [none]
+[debug] [2025-01-12T09:03:58.133Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/kolora:testIamPermissions x-goog-quota-user=projects/kolora
+[debug] [2025-01-12T09:03:58.133Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kolora:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-01-12T09:03:58.929Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/kolora:testIamPermissions 200
+[debug] [2025-01-12T09:03:58.929Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kolora:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-01-12T09:03:58.930Z] Checked if tokens are valid: true, expires at: 1736673739463
+[debug] [2025-01-12T09:03:58.930Z] Checked if tokens are valid: true, expires at: 1736673739463
+[debug] [2025-01-12T09:03:58.930Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kolora [none]
+[debug] [2025-01-12T09:03:59.243Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kolora 200
+[debug] [2025-01-12T09:03:59.244Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kolora {"projectId":"kolora","projectNumber":"421028054170","displayName":"kolora","name":"projects/kolora","resources":{"hostingSite":"kolora"},"state":"ACTIVE","etag":"1_8b300ae8-e116-4e34-9c4b-68eb6856751b"}
+[info] 
+[info] === Deploying to 'kolora'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-01-12T09:03:59.248Z] Checked if tokens are valid: true, expires at: 1736673739463
+[debug] [2025-01-12T09:03:59.248Z] Checked if tokens are valid: true, expires at: 1736673739463
+[debug] [2025-01-12T09:03:59.248Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kolora/versions [none]
+[debug] [2025-01-12T09:03:59.248Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kolora/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
