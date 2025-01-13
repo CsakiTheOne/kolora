@@ -81,6 +81,7 @@
         <h3>Dokumentáció</h3>
         <ul>
             <a href="/docs"><li>Főoldal</li></a>
+            <a href="/docs/editor"><li>Szerkesztő használata</li></a>
             <a href="/docs/cyoa"><li>Choose your own adventure</li></a>
         </ul>
     </div>
