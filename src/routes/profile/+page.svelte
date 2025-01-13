@@ -129,55 +129,59 @@
         <p>Ennek a felhasználónak még nincsenek művei.</p>
     {:else}
         {#each works as work}
-            <WorkCard {work} />
-            {#if isOwnerLoggedIn}
-                <p
-                    style="display: flex; justify-content: end; gap: var(--spacing); align-items: center;"
-                >
-                    {#if work.status === "published"}
+            <div>
+                <WorkCard {work} />
+                {#if isOwnerLoggedIn}
+                    <p
+                        style="display: flex; justify-content: end; gap: var(--spacing); align-items: center;"
+                    >
+                        {#if work.status === "published"}
+                            <button
+                                class="text-btn"
+                                onclick={() => {
+                                    confirm(
+                                        "Biztosan visszavonod a mű publikálását?",
+                                    ) &&
+                                        firestore.works.set(work.id, {
+                                            status: "draft",
+                                        });
+                                    updateWorks();
+                                }}
+                            >
+                                <span class="mdi mdi-eye-off"></span>
+                            </button>
+                        {/if}
                         <button
                             class="text-btn"
                             onclick={() => {
-                                confirm(
-                                    "Biztosan visszavonod a mű publikálását?",
-                                ) &&
-                                    firestore.works.set(work.id, {
-                                        status: "draft",
-                                    });
-                                updateWorks();
+                                const input = prompt(
+                                    `Biztosan törölni szeretnéd ezt a művet? Írd be a mű címét (${work.title}) a törlés megerősítéséhez.`,
+                                );
+
+                                if (input === work.title) {
+                                    firestore.works
+                                        .delete(work.id)
+                                        .then(() => {
+                                            updateWorks();
+                                        })
+                                        .catch(() => {
+                                            alert(
+                                                "Hiba történt a törlés során.",
+                                            );
+                                        });
+                                }
                             }}
                         >
-                            <span class="mdi mdi-eye-off"></span>
+                            <span class="mdi mdi-delete"></span>
                         </button>
-                    {/if}
-                    <button
-                        class="text-btn"
-                        onclick={() => {
-                            const input = prompt(
-                                `Biztosan törölni szeretnéd ezt a művet? Írd be a mű címét (${work.title}) a törlés megerősítéséhez.`,
-                            );
-
-                            if (input === work.title) {
-                                firestore.works
-                                    .delete(work.id)
-                                    .then(() => {
-                                        updateWorks();
-                                    })
-                                    .catch(() => {
-                                        alert("Hiba történt a törlés során.");
-                                    });
-                            }
-                        }}
-                    >
-                        <span class="mdi mdi-delete"></span>
-                    </button>
-                    <a href={`/gallery/edit/?id=${work.id}`}>
-                        <button class="text-btn">
-                            <span class="mdi mdi-pencil"></span>
-                        </button>
-                    </a>
-                </p>
-            {/if}
+                        <a href={`/gallery/edit/?id=${work.id}`}>
+                            <button class="text-btn">
+                                <span class="mdi mdi-pencil"></span>
+                            </button>
+                        </a>
+                    </p>
+                {/if}
+            </div>
         {/each}
     {/if}
     {#if isOwnerLoggedIn}
