@@ -15,30 +15,31 @@
 </script>
 
 <div class="work-card" {...rest}>
+    <a href="/gallery/work/?id={work.id}">
+        <h3>{work.title}</h3>
+    </a>
+    <p>
+        <a href={`/profile/?id=${work.authorId}`}>{authorName}</a> - {work.dateCreated}
+    </p>
+    <abbr title="{work.description}">
+        {work.description}
+    </abbr>
+    {#if work.dateUploaded}
+        <p style="font-size: .7rem;">{work.status === "published" ? "Feltöltve" : "Utoljára módosítva"}: {work.dateUploaded}</p>
+    {/if}
     <div class="badges">
-        <Badge style="background: var(--primary-color)">{work.workType}</Badge>
+        <Badge>{work.workType}</Badge>
         {#if work.genre}
-            <Badge style="background: var(--primary-color)">
+            <Badge>
                 {work.genre}
             </Badge>
         {/if}
         {#if work.eventId}
-            <Badge style="background: var(--primary-color)">
+            <Badge>
                 {work.eventId}
             </Badge>
         {/if}
     </div>
-    <a href="/gallery/work/?id={work.id}">
-        <h3>{work.title}</h3>
-    </a>
-    <p>{work.description}</p>
-    {#if work.dateUploaded}
-        <p style="font-size: .7rem;">Feltöltve: {work.dateUploaded}</p>
-    {/if}
-    <p>
-        <strong>Készítette:</strong>
-        <a href={`/profile/?id=${work.authorId}`}>{authorName}</a> - {work.dateCreated}
-    </p>
 </div>
 
 <style>
@@ -53,25 +54,27 @@
         user-select: none;
     }
 
-    .work-card * {
-        color: var(--on-secondary-color);
-    }
-
     .badges {
         display: flex;
         gap: calc(var(--spacing) / 2);
+    }
+
+    :global(.badges > span) {
+        background-color: var(--secondary-variant-color);
+        color: var(--on-secondary-variant-color);
     }
 
     h3 {
         padding: 0;
     }
 
-    p {
+    p, abbr {
         display: -webkit-box;
         line-clamp: 1;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-decoration: none;
     }
 </style>

@@ -47,10 +47,11 @@
     });
 
     function saveWork() {
-        work.dateUploaded = new Date().toLocaleDateString();
-
         firestore.works
-            .save(work, currentUserUid)
+            .save(
+                { ...work, dateUploaded: new Date().toLocaleDateString("hu") },
+                currentUserUid,
+            )
             .then(() => {
                 alert(work.id ? "Mű mentve!" : "Új mű mentve!");
             })
