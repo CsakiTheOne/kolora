@@ -3,8 +3,6 @@ export default class KoloraUser {
     username: string = '';
     bio: string = '';
     favoriteMusicYoutubeUrl: string = '';
-    // E.g. "Spotify", "YouTube Music", etc. Used for the random music feature
-    preferredMusicService: string = '';
     roles: string[] = [];
 }
 

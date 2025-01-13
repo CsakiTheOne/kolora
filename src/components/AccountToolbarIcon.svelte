@@ -74,14 +74,14 @@
             onkeydown={(e) => e.key === "Enter" && e.stopPropagation()}
             tabindex="0"
         >
-            <p>
-                <span class="mdi mdi-account-circle"></span>
+            <span class="mdi mdi-account-circle" style="font-size: 3rem;"></span>
+            <b>
                 {#if user && koloraUser}
                     Helló, {koloraUser.username}!
                 {:else}
                     Jelentkezz be!
                 {/if}
-            </p>
+            </b>
             <ul>
                 {#if !user}
                     <button onclick={loginWithGoogle}>
@@ -96,7 +96,7 @@
                             window.location.href = `/profile/?id=${user!!.uid}`;
                         }}
                     >
-                        <span class="mdi mdi-library-shelves"></span>
+                        <span class="mdi mdi-account-circle"></span>
                         Profil és műveim
                     </button>
                     <button
@@ -129,7 +129,7 @@
         position: fixed;
         top: calc(var(--spacing) / 2);
         right: calc(var(--spacing) / 2);
-        width: 250px;
+        width: 280px;
         border: none;
         border-radius: var(--corner-radius);
 

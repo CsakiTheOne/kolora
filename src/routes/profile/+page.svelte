@@ -17,6 +17,7 @@
     let koloraUser = $state(new KoloraUser());
     let works: Work[] = $state([]);
     let isEditingBio = $state(false);
+    let newUsername = $state("");
     let newBio = $state("");
 
     function updateWorks() {
@@ -50,19 +51,6 @@
             userListener();
         };
     });
-
-    function editUsername() {
-        const newUsername = prompt(
-            "Írd be az új felhasználóneved!",
-            koloraUser.username,
-        );
-
-        if (!newUsername) return;
-
-        firestore.users.set(koloraUser.id, {
-            username: newUsername,
-        });
-    }
 </script>
 
 <SmallHeader
@@ -70,86 +58,72 @@
     currentPage="Művész profil"
 />
 <main>
-    <h2>
-        <span class="mdi mdi-account-circle"></span>
-        {koloraUser.username}
-        {#if isOwnerLoggedIn}
-            <span
-                class="mdi mdi-pencil"
-                style="cursor: pointer;"
-                onclick={editUsername}
-                onkeypress={(e) => e.key === "Enter" && editUsername()}
-                role="button"
-                tabindex="0"
-            ></span>
-        {/if}
-    </h2>
-    <div
-        style="background: var(--primary-variant-color); padding: var(--spacing); border-radius: var(--spacing);"
-    >
-        {#if isEditingBio}
-            <textarea
-                class="outlined-input"
-                style="resize: none; field-sizing: content;"
-                bind:value={newBio}
-                maxlength="500"
-            ></textarea>
-            <p>
-                A bemutatkozás támogatja a <a
-                    href="https://www.markdownguide.org/cheat-sheet/"
-                    target="_blank">Markdown formázást</a
-                >.
-            </p>
-        {:else}
-            <p>
-                <SvelteMarkdown
-                    source={koloraUser.bio ||
-                        "*Ez a felhasználó még nem írt bemutatkozást.*"}
-                    renderers={{ link: MarkdownLink }}
-                />
-            </p>
-        {/if}
-        {#if isOwnerLoggedIn}
-            <button
-                class="btn"
-                style="float: right;"
-                onclick={() => {
-                    isEditingBio = !isEditingBio;
-                    if (isEditingBio) {
-                        newBio = koloraUser.bio;
-                    } else {
-                        firestore.users.set(koloraUser.id, {
-                            bio: newBio,
-                        });
-                    }
-                }}
-            >
-                {#if isEditingBio}
-                    <span class="mdi mdi-check"></span>
-                    Kész
-                {:else}
-                    <span class="mdi mdi-pencil"></span>
-                    Szerkesztés
-                {/if}
-            </button>
-        {/if}
-    </div>
+    {#if isEditingBio}
+        <input
+            type="text"
+            class="outlined-input"
+            bind:value={newUsername}
+            style="font-size: larger;"
+            maxlength="30"
+        />
+        <textarea
+            class="outlined-input"
+            style="resize: none; field-sizing: content; min-height: 100px;"
+            bind:value={newBio}
+            maxlength="500"
+        ></textarea>
+        <p>
+            A bemutatkozás támogatja a <a
+                href="https://www.markdownguide.org/cheat-sheet/"
+                target="_blank">Markdown formázást</a
+            >.
+        </p>
+    {:else}
+        <h2>
+            <span class="mdi mdi-account-circle"></span>
+            {koloraUser.username}
+        </h2>
+        <p>
+            <SvelteMarkdown
+                source={koloraUser.bio ||
+                    "*Ez a felhasználó még nem írt bemutatkozást.*"}
+                renderers={{ link: MarkdownLink }}
+            />
+        </p>
+    {/if}
+    {#if isOwnerLoggedIn}
+        <button
+            class="btn"
+            style="float: right;"
+            onclick={() => {
+                isEditingBio = !isEditingBio;
+                if (isEditingBio) {
+                    newUsername = koloraUser.username;
+                    newBio = koloraUser.bio;
+                } else {
+                    firestore.users.set(koloraUser.id, {
+                        username: newUsername,
+                        bio: newBio,
+                    });
+                }
+            }}
+        >
+            {#if isEditingBio}
+                <span class="mdi mdi-check"></span>
+                Kész
+            {:else}
+                <span class="mdi mdi-pencil"></span>
+                Szerkesztés
+            {/if}
+        </button>
+    {/if}
     <h3
         style="display: flex; justify-content: space-between; align-items: flex-end;"
     >
-        <span>Művek</span>
-        {#if isOwnerLoggedIn}
-            <button
-                class="btn"
-                onclick={() => {
-                    GalleryUtils.workId = null;
-                    window.location.href = "/gallery/edit";
-                }}
-            >
-                <span class="mdi mdi-plus"></span>
-                Új mű
-            </button>
-        {/if}
+        <span>
+            <span class="mdi mdi-library-shelves"></span>
+            Alkotások
+        </span>
     </h3>
     {#if works.length === 0}
         <p>Ennek a felhasználónak még nincsenek művei.</p>
@@ -162,7 +136,7 @@
                 >
                     {#if work.status === "published"}
                         <button
-                            class="btn"
+                            class="text-btn"
                             onclick={() => {
                                 confirm(
                                     "Biztosan visszavonod a mű publikálását?",
@@ -174,11 +148,10 @@
                             }}
                         >
                             <span class="mdi mdi-eye-off"></span>
-                            Visszahívás
                         </button>
                     {/if}
                     <button
-                        class="btn"
+                        class="text-btn"
                         onclick={() => {
                             const input = prompt(
                                 `Biztosan törölni szeretnéd ezt a művet? Írd be a mű címét (${work.title}) a törlés megerősítéséhez.`,
@@ -197,12 +170,10 @@
                         }}
                     >
                         <span class="mdi mdi-delete"></span>
-                        Törlés
                     </button>
                     <a href={`/gallery/edit/?id=${work.id}`}>
-                        <button class="btn">
+                        <button class="text-btn">
                             <span class="mdi mdi-pencil"></span>
-                            Szerkesztés
                         </button>
                     </a>
                 </p>
@@ -210,37 +181,16 @@
         {/each}
     {/if}
     {#if isOwnerLoggedIn}
-        <details>
-            <summary>
-                <h3 style="display: inline;">
-                    Beállítások
-                    <Badge style="translate: 0 -4px;">Ezt csak te látod</Badge>
-                </h3>
-            </summary>
-            <div
-                style="display: flex; flex-direction: column; padding: var(--spacing) 0; gap: var(--spacing);"
-            >
-                <label for="preferredMusicService">Preferált zene app</label>
-                <select
-                    class="outlined-input"
-                    name="preferredMusicService"
-                    value={koloraUser.preferredMusicService}
-                    onchange={(e) => {
-                        firestore.users.set(koloraUser.id, {
-                            preferredMusicService: e.target.value,
-                        });
-                    }}
-                >
-                    <option>Spotify</option>
-                    <option>YouTube</option>
-                    <option>YouTube Music</option>
-                </select>
-                <p style="font-size: .8rem;">
-                    A "Hallgassunk random valamit" gomb a főoldalon a te
-                    preferált zene appod fogja megnyitni.
-                </p>
-            </div>
-        </details>
+        <button
+            class="btn"
+            onclick={() => {
+                GalleryUtils.workId = null;
+                window.location.href = "/gallery/edit";
+            }}
+        >
+            <span class="mdi mdi-plus"></span>
+            Új mű
+        </button>
     {/if}
 </main>
 <Footer />

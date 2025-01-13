@@ -20,13 +20,13 @@
     </a>
     <p>
         <a href={`/profile/?id=${work.authorId}`}>{authorName}</a> - {work.dateCreated}
+        <span style="opacity: .5;">
+            - {work.status === "published" ? "Feltöltve" : "Utoljára módosítva"}: {work.dateUploaded}
+        </span><br>
+        <abbr title={work.description}>
+            {work.description}
+        </abbr>
     </p>
-    <abbr title="{work.description}">
-        {work.description}
-    </abbr>
-    {#if work.dateUploaded}
-        <p style="font-size: .7rem;">{work.status === "published" ? "Feltöltve" : "Utoljára módosítva"}: {work.dateUploaded}</p>
-    {/if}
     <div class="badges">
         <Badge>{work.workType}</Badge>
         {#if work.genre}
@@ -46,17 +46,24 @@
     .work-card {
         display: flex;
         flex-direction: column;
-        padding: calc(var(--spacing) / 2);
-        gap: calc(var(--spacing) / 2);
+        padding: calc(var(--spacing));
+        gap: calc(var(--spacing));
         background-color: var(--secondary-color);
         color: var(--on-secondary-color);
         border-radius: var(--corner-radius);
         user-select: none;
     }
 
+    .work-card a {
+        color: var(--on-secondary-color);
+    }
+
     .badges {
         display: flex;
+        flex-wrap: nowrap;
         gap: calc(var(--spacing) / 2);
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 
     :global(.badges > span) {
@@ -68,7 +75,8 @@
         padding: 0;
     }
 
-    p, abbr {
+    p,
+    abbr {
         display: -webkit-box;
         line-clamp: 1;
         -webkit-line-clamp: 1;
