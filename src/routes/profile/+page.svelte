@@ -19,6 +19,12 @@
     let isEditingBio = $state(false);
     let newBio = $state("");
 
+    function updateWorks() {
+        firestore.works.getAllByAuthor(koloraUser.id).then((newWorks) => {
+            works = newWorks;
+        });
+    }
+
     onMount(() => {
         const params = new URLSearchParams(window.location.search);
         const id = params.get("id");
@@ -36,9 +42,7 @@
         const userListener = firestore.users.listen(id!!, (user) => {
             koloraUser = user;
 
-            firestore.works.getAllByAuthor(id!!).then((newWorks) => {
-                works = newWorks;
-            });
+            updateWorks();
         });
 
         return () => {
@@ -156,9 +160,23 @@
                 <p
                     style="display: flex; justify-content: end; gap: var(--spacing); align-items: center;"
                 >
-                    <Badge>
-                        Állapot: {work.status}
-                    </Badge>
+                    {#if work.status === "published"}
+                        <button
+                            class="btn"
+                            onclick={() => {
+                                confirm(
+                                    "Biztosan visszavonod a mű publikálását?",
+                                ) &&
+                                    firestore.works.set(work.id, {
+                                        status: "draft",
+                                    });
+                                updateWorks();
+                            }}
+                        >
+                            <span class="mdi mdi-eye-off"></span>
+                            Visszahívás
+                        </button>
+                    {/if}
                     <button
                         class="btn"
                         onclick={() => {
@@ -170,8 +188,7 @@
                                 firestore.works
                                     .delete(work.id)
                                     .then(() => {
-                                        alert("Mű törölve!");
-                                        window.location.reload();
+                                        updateWorks();
                                     })
                                     .catch(() => {
                                         alert("Hiba történt a törlés során.");
