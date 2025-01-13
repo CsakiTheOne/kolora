@@ -106,6 +106,7 @@
                 value={work.title}
                 oninput={(e) => (work = { ...work, title: e.target.value })}
                 class="outlined-input"
+                maxlength="100"
             />
 
             <label for="workDateCreated">Keletkezés dátuma</label>
@@ -116,6 +117,7 @@
                 oninput={(e) =>
                     (work = { ...work, dateCreated: e.target.value })}
                 class="outlined-input"
+                maxlength="100"
             />
 
             <label for="workType">Műnem</label>
@@ -147,6 +149,7 @@
                 value={work.genre}
                 oninput={(e) => (work = { ...work, genre: e.target.value })}
                 class="outlined-input"
+                maxlength="100"
             />
 
             <label for="workDescription">Mű leírása</label>
@@ -156,6 +159,7 @@
                 oninput={(e) =>
                     (work = { ...work, description: e.target.value })}
                 class="outlined-input"
+                maxlength="500"
             ></textarea>
         </div>
 
