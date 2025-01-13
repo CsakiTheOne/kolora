@@ -11,13 +11,12 @@
     currentPage="Költészet napi kalandozás"
 />
 <div class="secondary-header">
-    <h1>???</h1>
+    <h1>Költészet napi kalandozás</h1>
     <Countdown
         targetDateTime={dateAnnouncement}
         backgroundColor="var(--on-primary-color)"
         color="var(--primary-color)"
     />
-    <h1>Költészet napi kalandozás</h1>
 </div>
 <main>
     
