@@ -13,11 +13,15 @@
         Itt találhatsz leírást és segítséget a webapp technikai részeivel
         kapcsolatban.
     </p>
-    <p>
-        Egy bonyolultabb rész a <a href="/docs/cyoa/"
-            >Choose your own adventure</a
-        > műfajú művek írása.
-    </p>
+    <h3>Témák</h3>
+    <ul>
+        <a href="/docs/editor">
+            <li>Szerkesztő használata</li>
+        </a>
+        <a href="/docs/cyoa">
+            <li>Choose your own adventure műfajú művek írása</li>
+        </a>
+    </ul>
 </main>
 <Footer />
 
