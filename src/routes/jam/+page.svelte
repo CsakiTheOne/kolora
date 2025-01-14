@@ -19,7 +19,10 @@
     />
 </div>
 <main>
-    
+    <p>
+        Idén egy kalandra invitállak benneteket, ahol a történet írás találkozik
+        a játékokkal.
+    </p>
 </main>
 <Footer />
 
