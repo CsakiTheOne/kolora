@@ -22,13 +22,14 @@
         backgroundColor="var(--on-primary-color)"
         color="var(--primary-color)"
     />
+    <h2>Téma: ???</h2>
 </div>
 <main>
     <p>
         Idén egy kalandra invitállak benneteket, ahol a történet írás találkozik
         a játékokkal. Choose your own adventure műfajú műveket kell írnotok ezen
         a pályázaton. A cél, hogy minél több fiatal művész megismerje ezt a
-        különleges műfajt.
+        különleges és egyedien játékos műfajt.
     </p>
 
     <h3>Mi is az a "choose your own adventure"?</h3>
@@ -43,6 +44,28 @@
         <span class="mdi mdi-open-in-new"></span>
         Több infó a műfajról a dokumentációban
     </a>
+
+    <h3>Írás és leadás módja</h3>
+    <p>
+        Az írásra és a leadásra egy egyszerű, webes szerkesztőt használunk.
+        Ebben tudtok írni, szerkeszteni, és a végén leadni a műveiteket. A
+        szerkesztő használatáról bővebben a dokumentációban olvashattok.
+    </p>
+    <a href="/docs/editor" target="_blank">
+        <span class="mdi mdi-open-in-new"></span>
+        Szerkesztő használata
+    </a>
+    <p>
+        Ha saját szövegszerkesztőt vagy papírt szeretnétek használni, akkor is
+        érdemes elolvasni a dokumentációt, hogy az interaktív elemek tökéletesen
+        működjenek az oldalon.
+    </p>
+    <Alert icon="information">
+        <p>
+            Itt, a Kolora weboldalán játszható játékot csinálunk a
+            történeteitekből! :D
+        </p>
+    </Alert>
 
     <h3>Menetrend</h3>
     <VerticalTimelineItem title="Felkészülési idő" subtitle="Kihírdetéstől">
@@ -75,7 +98,7 @@
         </p>
     </VerticalTimelineItem>
     <VerticalTimelineItem
-        title="Beadási határidő"
+        title="Leadási határidő"
         subtitle="Június 24. - Szent Iván napja"
     >
         <Alert
@@ -87,7 +110,75 @@
                 erők ideje." :D
             </p>
         </Alert>
+        <p>
+            Ekkor kell leadni a műveiteket ezen az oldalon. Amint lejár az idő,
+            nem lesz lehetőség módosítani a műveken, és minden beérkezett
+            alkotás az oldalon publikussá válik (egy rövid ellenőrzés után).
+        </p>
+        <p>
+            A beérkezett műveket bárki megtekintheti, és szavazhat a
+            kedvenceire. Emellett a Kolora Egyesület tagjai is átnézik az
+            alkotásokat. Ők képezik a zsűrit.
+        </p>
     </VerticalTimelineItem>
+    <VerticalTimelineItem title="Eredményhirdetés" isLastItem={true}>
+        <p></p>
+    </VerticalTimelineItem>
+
+    <h3>Ihletek, ötletek, inspirációk</h3>
+    <p>
+        Itt van néhány ötlet, ami segíthet az írásban, vagy csak inspirálhat
+        titeket:
+    </p>
+    <ul>
+        <li>
+            Nem kell minden oldalra továbbhaladási lehetőségeket rakni. A
+            történetednek lehet több vége és zsákutcája. Pozitív, negatív,
+            közömbös befejezések?
+        </li>
+        <li>
+            Egy oldalon hivazkothatsz egy előző oldalra is. Időutazós történet?
+        </li>
+        <li>
+            Nem kell minden oldalon több tovább vezető útnak lennie. Lehet csak
+            1 is. Az olvasók egyszerre csak egy oldalt látnak. Ezt
+            kihasználhatod a történetedben feszültség keltésre, titokzatos
+            hangulat kialakítására, stb.
+        </li>
+        <li>
+            Az olvasókat megkérheted dolgokra. Gurítsanak egy dobókockával,
+            legyen náluk papír és ceruza, amire később fel kell írniuk valamit
+            és csak akkor választhatnak egy utat, ha megoldottak egy rejtvényt.
+            Néhány dologra ezek közül lesz lehetőség az oldalon, de egyelőre
+            ezek az interakciók még kísérleti stádiumban vannak.
+        </li>
+        <li>
+            Nézd meg a példa műveket a Kolora tagjaitól a <a href="/gallery">
+                galériában
+            </a>.
+        </li>
+    </ul>
+    <p>Inspirációk a társas- és videójátékok világából:</p>
+    <iframe
+        width="100%"
+        style="aspect-ratio: 16 / 9;"
+        src="https://www.youtube.com/embed/QD1pbWCJcKQ?si=Snz2GBKBUlY4r5IO"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+    <iframe
+        width="100%"
+        style="aspect-ratio: 16 / 9;"
+        src="https://www.youtube.com/embed/BgvHNlgmKro?si=fEtGAEhBVEs3dyNv"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
 </main>
 <Footer />
 
