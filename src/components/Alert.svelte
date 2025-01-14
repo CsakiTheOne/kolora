@@ -1,12 +1,18 @@
 <script>
-    const { icon = "alert", title = "", children, background = "var(--primary-variant-color)", ...rest } = $props();
+    const {
+        icon = "alert",
+        title = "",
+        children,
+        background = "var(--primary-variant-color)",
+        ...rest
+    } = $props();
 </script>
 
 <div class="alert" style={`background: ${background}`} {...rest}>
     {#if title}
         <p>
             <span class="mdi mdi-{icon}"></span>
-            {title}
+            <b>{title}</b>
         </p>
         <div class="content">
             {@render children()}
