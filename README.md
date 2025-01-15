@@ -28,6 +28,6 @@ Ezek a teendők csak akkor lesznek aktuálisak, ha a 2025 januári slam workshop
 
 Ha nem tudom megcsinálni a költészet napi kalandozás pályázatot, akkor Április 11-én a következők lesznek kiadva:
 
-- Kolora fiókok létrehozásának lehetősége
-- Egy közös galéria, ahol mindenki megmutathatja a műveit a világnak
-- Egy online szerkesztő, ami segít versek, novellák, choose your own adventure történetek és egyéb alkotások írásában
+- [x] Kolora fiókok létrehozásának lehetősége
+- [x] Egy közös galéria, ahol mindenki megmutathatja a műveit a világnak
+- [x] Egy online szerkesztő, ami segít versek, novellák, choose your own adventure történetek és egyéb alkotások írásában
