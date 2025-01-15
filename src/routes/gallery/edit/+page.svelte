@@ -217,7 +217,7 @@
                 {/if}
             </div>
         {:else}
-            <div>
+            <div style="display: flex; flex-direction: column;">
                 <button
                     class="btn"
                     aria-label="Oldalsáv kinyitása"
@@ -225,6 +225,14 @@
                     style="margin: var(--spacing);"
                 >
                     <span class="mdi mdi-page-layout-sidebar-left"></span>
+                </button>
+                <button
+                    class="btn"
+                    aria-label="Mű mentése"
+                    onclick={saveWork}
+                    style="margin: var(--spacing);"
+                >
+                    <span class="mdi mdi-content-save"></span>
                 </button>
             </div>
         {/if}
