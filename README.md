@@ -5,21 +5,29 @@
 - [ ] Tagok bemutatása (ha van ilyesmire igény és fixálódik, hogy ki mennyire érzi magát Kolorásnak és hogy egyáltalán hogyan működünk)
 - [ ] Consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
 
-## Teendők jövő Áprilisig
+## Teendők jövő Februárig
 
 Ezek a teendők csak akkor lesznek aktuálisak, ha a 2025 januári slam workshop-okon pozitív visszajelzések jönnek a choose your own adventure témára.
 
-- [ ] Felhasználó kezelés
-  - [ ] Firebase auth integráció
-  - [ ] UI elemek
+- [x] Felhasználó kezelés
+  - [x] Firebase auth integráció
+  - [x] UI elemek
   - [ ] Adatvédelmi tájékoztató frissítése
-- [ ] Slam Jam 2025. Április
+- [ ] Költészet napi kincskeresés 2025. Április
   - [ ] Főoldal frissítése a verseny hírével
   - [ ] Verseny oldala (leírás, szabályzat, stb.)
   - [ ] *Choose your own adventure* dokumentáció
 - [ ] Művek kezelése
-  - [ ] Galéria oldal
+  - [x] Galéria oldal
   - [ ] Feltöltés (akár eseményhez kötve)
   - [x] Megjelenítés
-  - [ ] Kezelés (csak admin és a művek tulajdonosai)
+  - [ ] Kezelés (csak Kolora tagok és a művek tulajdonosai)
   - [ ] Szavazás (fiók nélkül is)
+
+## B terv
+
+Ha nem tudom megcsinálni a költészet napi kalandozás pályázatot, akkor Április 11-én a következők lesznek kiadva:
+
+- Kolora fiókok létrehozásának lehetősége
+- Egy közös galéria, ahol mindenki megmutathatja a műveit a világnak
+- Egy online szerkesztő, ami segít versek, novellák, choose your own adventure történetek és egyéb alkotások írásában
