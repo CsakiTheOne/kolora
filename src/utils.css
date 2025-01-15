@@ -1,0 +1,15 @@
+.adaptive-col-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: var(--spacing);
+    flex: 1;
+}
+
+@media (min-width: 768px) {
+    .adaptive-col-row {
+        flex-direction: row;
+    }
+}

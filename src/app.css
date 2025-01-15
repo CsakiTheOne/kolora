@@ -1,5 +1,7 @@
 @import url('./kolora.css');
 @import url('./anims.css');
+@import url('./collection-styles.css');
+@import url('./utils.css');
 
 body {
     --primary-color: #89023d;
@@ -96,58 +98,6 @@ a,
 
 iframe {
     border-radius: var(--corner-radius);
-}
-
-ul {
-    border: 2px solid var(--primary-color);
-    border-radius: var(--corner-radius);
-    overflow: hidden;
-}
-
-ul>* {
-    display: block;
-    width: 100%;
-}
-
-ul li,
-ul button {
-    display: block;
-    width: 100%;
-    list-style: none;
-    padding: calc(var(--spacing) / 2);
-    border-bottom: 1px solid var(--primary-color);
-}
-
-ul button,
-ul a {
-    appearance: none;
-    border: none;
-    background-color: var(--primary-variant-color);
-    color: var(--on-primary-variant-color);
-    cursor: pointer;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 2px solid var(--primary-color);
-    border-radius: var(--corner-radius);
-}
-
-table th,
-table td {
-    padding: calc(var(--spacing) / 2);
-    border-bottom: 1px solid var(--primary-color);
-    text-align: left;
-}
-
-table th {
-    background-color: var(--primary-variant-color);
-    color: var(--on-primary-variant-color);
-}
-
-table tr:nth-child(even) {
-    background-color: var(--primary-variant-color);
 }
 
 main {
@@ -256,20 +206,4 @@ h1,
 .tab,
 .large-header * {
     text-decoration: none;
-}
-
-.adaptive-col-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    gap: var(--spacing);
-    flex: 1;
-}
-
-@media (min-width: 768px) {
-    .adaptive-col-row {
-        flex-direction: row;
-    }
 }
