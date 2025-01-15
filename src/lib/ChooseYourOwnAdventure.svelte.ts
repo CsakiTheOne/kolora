@@ -45,26 +45,41 @@ export default class ChooseYourOwnAdventure {
             switch (baseCommand) {
                 case "/set":
                     const [variable, value] = args;
-                    if (value === "0") {
+                    if (value === "null" || value === "0") {
                         delete this.variables[variable];
                     }
                     else {
                         this.variables[variable] = value;
                     }
+                    console.log(`Set ${variable} to ${value}`);
                     break;
                 case "/add":
                     const [variableToAddTo, valueToAdd] = args;
-                    this.variables[variableToAddTo] = (parseInt(this.variables[variableToAddTo]) + parseInt(valueToAdd)).toString();
+                    if (!this.variables[variableToAddTo]) {
+                        this.variables[variableToAddTo] = valueToAdd;
+                    }
+                    else {
+                        this.variables[variableToAddTo] = (parseInt(this.variables[variableToAddTo]) + parseInt(valueToAdd)).toString();
+                    }
+                    console.log(`Added ${valueToAdd} to ${variableToAddTo}. New value: ${this.variables[variableToAddTo]}`);
                     break;
                 case "/subtract":
                     const [variableToSubtractFrom, valueToSubtract] = args;
-                    this.variables[variableToSubtractFrom] = (parseInt(this.variables[variableToSubtractFrom]) - parseInt(valueToSubtract)).toString();
+                    if (!this.variables[variableToSubtractFrom]) {
+                        this.variables[variableToSubtractFrom] = "" + (-valueToSubtract);
+                    }
+                    else {
+                        this.variables[variableToSubtractFrom] = (parseInt(this.variables[variableToSubtractFrom]) - parseInt(valueToSubtract)).toString();
+                    }
+                    console.log(`Subtracted ${valueToSubtract} from ${variableToSubtractFrom}. New value: ${this.variables[variableToSubtractFrom]}`);
                     break;
                 case "/clear":
                     const variableToClear = args[0];
                     delete this.variables[variableToClear];
+                    console.log(`Cleared ${variableToClear}`);
                     break;
                 default:
+                    console.error(`Unknown command: ${baseCommand}`);
                     break;
             }
         });
@@ -85,7 +100,9 @@ export class ChooseYourOwnAdventurePage {
     }
 
     getProcessedContent(poem: ChooseYourOwnAdventure): string {
-        return this.content.replace(/\{(\w+)\}/g, (match, variable) => poem.variables[variable] || match);
+        return this.content
+            .replace(/(?<!\\){(\w+)}/g, (match, variable) => poem.variables[variable] || "0")
+            .replace(/\\{/g, "{");
     }
 }
 
