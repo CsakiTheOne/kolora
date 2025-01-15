@@ -179,6 +179,20 @@
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
     ></iframe>
+    <p>
+        Bár a cyoa irományokban nehéz láthatatlan döntéseket készíteni, GMTK
+        videója a döntésekről is adhat ötleteket:
+    </p>
+    <iframe
+        width="100%"
+        style="aspect-ratio: 16 / 9;"
+        src="https://www.youtube.com/embed/6HZuSzlN2eI?si=LmY6FfzdT7g_ntFn"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
 </main>
 <Footer />
 

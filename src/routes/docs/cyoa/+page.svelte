@@ -123,19 +123,178 @@
         ...
     </code>
 
+    <hr />
+
+    <Alert title="Bonyolultabb témák">
+        <p>
+            Bonyolult témák következnek és az alábbi funkciók nem szükségesek
+            egy egyszerűbb mű elkészítéséhez.
+        </p>
+    </Alert>
+
     <h3>Feltételek, változók és komplex mechanikák</h3>
     <p>
-        A Kolora oldala bonyolultabb mechanikákat is támogatni fog a CYOA
-        művekben, mint például változók használatát és feltételes ágakat. "Akkor
-        mehetsz tovább ha megtaláltad a kulcsot" és hasonló szituációk. Viszont
-        ezek még készítés alatt vannak és még nem túl megbízhatóak, ezért a
-        használatuk egyelőre nem ajánlott.
+        A Kolora oldala bonyolultabb mechanikákat is támogatn a CYOA művekben,
+        mint például változók használatát és feltételes ágakat. "Akkor mehetsz
+        tovább ha megtaláltad a kulcsot" és hasonló szituációk. Viszont ezek még
+        készítés alatt vannak és még nem túl megbízhatóak, ezért a használatuk
+        egyelőre nem ajánlott és az ezt használó alkotások "elromolhatnak".
+    </p>
+    <h4>Változók</h4>
+    <p>
+        A változók kis tárolók, amik értéket tárolnak. Ezeket a változókat tudod
+        módosítani az olvasó döntései alapján és kinyithatsz vagy lezárhatsz
+        utakat a változók értéke alapján.
     </p>
     <p>
-        Ha kíváncsi vagy ezekre a kísérleti újdonságokra, nézd meg <a
-            href="/profile/?id=hi1b98VKT0Pzu8ql8QsUqmVYubl1">Csáki</a
-        > műveit.
+        A változókat egyszerű parancsokkal befolyásolhatod. Ezek a parancsok egy
+        oldal megnyitásakor azonnal lefutnak. Példa:
     </p>
+    <code>
+        ## Gyanús szoba<br />
+        <br />
+        A szoba tele van kacatokkal.<br />
+        <br />
+        [Asztal átkutatása](#semmit-nem-találtál)<br />
+        <br />
+        [Benézés a ládába](#kulcsot-találtál)<br />
+        <br />
+        ## Kulcsot találtál<br />
+        <br />
+        A ládában egy kulcsot találtál.<br />
+        <br />
+        /set kulcs 1<br />
+        <br />
+        [Keresés tovább](#gyanús-szoba)<br />
+        <br />
+        ...
+    </code>
+    <p>
+        A példában a "Kulcsot találtál" oldalon a <code>/set kulcs 1</code> parancs
+        fut le. Ezt az olvasó nem látja, de te tudod már, hogy az olvasó megtalálta
+        a kulcsot.
+    </p>
+    <p>A változók értékeit meg is mutathatod az olvasónak. Példa:</p>
+    <code>
+        ## Táska<br />
+        <br />
+        {"{kulcs}"} kulcsod van.
+    </code>
+    <p>
+        Az olvasó ezt a szöveget látja: "1 kulcsod van." Ha a kulcs értéke 0,
+        akkor a szöveg: "0 kulcsod van." lesz.
+    </p>
+    <h4>Feltételek</h4>
+    <p>
+        A feltételekkel tudod megadni, hogy egy oldal csak akkor legyen
+        elérhető, ha a hozzá tartozó feltétel teljesül. Példa:
+    </p>
+    <code>
+        ## Gyanús szoba<br />
+        <br />
+        A szoba tele van kacatokkal. Egy zárt ajtót is találsz.<br />
+        <br />
+        [Asztal átkutatása](#semmit-nem-találtál)<br />
+        <br />
+        [Benézés a ládába](#kulcsot-találtál)<br />
+        <br />
+        [{"{kulcs}"} > 0 ? Zárt ajtó kinyitása a kulccsal](#ajtó-kinyitva)<br />
+        ...
+    </code>
+    <p>
+        A feltétel nem látszik az olvasónak, csak az eredménye. Ha a kulcs
+        változó nagyobb, mint 0, akkor látszik a gomb az olvasónak. Ha nem,
+        akkor egy szürke gombot lát felirat nélkül, lakat ikonnal.
+    </p>
+    <h4>Parancsok és logikai műveletek</h4>
+    <p>A következő parancsok működnek az oldalon:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Parancs</th>
+                <th>Leírás</th>
+                <th>Példa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{"/set <változó> <érték>"}</td>
+                <td>
+                    A változó értékét beállítja az adott értékre. Ha a változó
+                    nem létezik, létrehozza.
+                </td>
+                <td>{"/set kulcs 1"}</td>
+            </tr>
+            <tr>
+                <td>{"/add <változó> <érték>"}</td>
+                <td>
+                    A változó értékét növeli az adott értékkel. Ha a változó nem
+                    létezik, létrehozza.
+                </td>
+                <td>{"/add pénz 500"}</td>
+            </tr>
+            <tr>
+                <td>{"/subtract <változó> <érték>"}</td>
+                <td>
+                    A változó értékét csökkenti az adott értékkel. Ha a változó
+                    nem létezik, létrehozza.
+                </td>
+                <td>{"/subtract élet 1"}</td>
+            </tr>
+            <tr>
+                <td>{"/clear <változó>"}</td>
+                <td>A változó értékét null-ra / 0-ra állítja.</td>
+                <td>{"/clear kulcs"}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        A logikai műveletek a feltételekben használhatóak. A következő műveletek
+        állnak rendelkezésre:
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Művelet</th>
+                <th>Leírás</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{"=="}</td>
+                <td>Egyenlő</td>
+            </tr>
+            <tr>
+                <td>{"!="}</td>
+                <td>Nem egyenlő</td>
+            </tr>
+            <tr>
+                <td>{"<"}</td>
+                <td>Kisebb mint</td>
+            </tr>
+            <tr>
+                <td>{">"}</td>
+                <td>Nagyobb mint</td>
+            </tr>
+            <tr>
+                <td>{"<="}</td>
+                <td>Kisebb vagy egyenlő</td>
+            </tr>
+            <tr>
+                <td>{">="}</td>
+                <td>Nagyobb vagy egyenlő</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        Ezeket a feltételeket a továbbhaladási lehetőségek szöveg részébe kell
+        írni egy ? elé:
+    </p>
+    <code>
+        [{"<változó> <logikai művelet> <érték> ? Szöveg"}](#oldal címe)<br />
+        <br />
+        [{"{kulcs} > 0 ? Zárt ajtó kinyitása a kulccsal"}](#ajtó-kinyitva)
+    </code>
 </main>
 <Footer />
 
