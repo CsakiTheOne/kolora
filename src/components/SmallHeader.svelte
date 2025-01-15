@@ -3,10 +3,10 @@
     import ThemeManager from "$lib/ThemeManager";
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
 
-    const { path = [], currentPage } = $props();
+    const { path = [], currentPage, ...rest } = $props();
 </script>
 
-<header>
+<header {...rest}>
     <div class="left">
         <a href="/" style="height: 48px;">
             <img class="header-logo" src={koloraLogo} alt="Kolora logó" />

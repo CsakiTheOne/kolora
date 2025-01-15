@@ -16,6 +16,7 @@
             work.workType === "Choose your own adventure" ? work : new Work(),
         ),
     );
+    let isSidebarOpen = $state(true);
 
     onMount(() => {
         const auth = initializeFirebase().auth;
@@ -61,212 +62,222 @@
     }
 </script>
 
-<SmallHeader
-    path={[
-        { title: "Galéria", href: "/gallery" },
-        { title: "Profilom", href: `/profile/?id=${currentUserUid}` },
-    ]}
-    currentPage="Szerkesztő"
-/>
-<main>
-    <div class="sidebar">
-        <div class="metadata-editor">
-            <div style="display: flex; gap: calc(var(--spacing) / 2);">
+<div class="page">
+    <div class="header-container">
+        <SmallHeader
+            path={[
+                { title: "Galéria", href: "/gallery" },
+                { title: "Profilom", href: `/profile/?id=${currentUserUid}` },
+            ]}
+            currentPage="Szerkesztő"
+        />
+    </div>
+    <div class="editor">
+        {#if isSidebarOpen}
+            <div class="sidebar">
                 <button
                     class="btn"
-                    onclick={() => {
-                        work.status = "draft";
-                        saveWork();
-                    }}
-                    style="flex: 1"
+                    aria-label="Oldalsáv összecsukása"
+                    onclick={() => (isSidebarOpen = !isSidebarOpen)}
                 >
-                    <span class="mdi mdi-content-save"></span>
-                    Mentés piszkozatként
+                    <span class="mdi mdi-page-layout-sidebar-left"></span>
                 </button>
-                <button
-                    class="btn"
-                    onclick={() => {
-                        work.status = "pending";
-                        saveWork();
-                        alert(
-                            "Az alkotásod megjelenik a galériában, amint egy Kolora tag jóváhagyja.",
-                        );
-                    }}
-                    style="flex: 1"
+                <div
+                    style="display: flex; gap: calc(var(--spacing) / 2); width: 100%;"
                 >
-                    <span class="mdi mdi-publish"></span>
-                    Mentés és beküldés
-                </button>
-            </div>
+                    <button
+                        class="btn"
+                        onclick={() => {
+                            work.status = "draft";
+                            saveWork();
+                        }}
+                        style="flex: 1"
+                    >
+                        <span class="mdi mdi-content-save"></span>
+                        Mentés piszkozatként
+                    </button>
+                    <button
+                        class="btn"
+                        onclick={() => {
+                            work.status = "pending";
+                            saveWork();
+                            alert(
+                                "Az alkotásod megjelenik a galériában, amint egy Kolora tag jóváhagyja.",
+                            );
+                        }}
+                        style="flex: 1"
+                    >
+                        <span class="mdi mdi-publish"></span>
+                        Mentés és beküldés
+                    </button>
+                </div>
 
-            <label for="workTitle">Mű címe</label>
-            <input
-                type="text"
-                name="workTitle"
-                value={work.title}
-                oninput={(e) => (work = { ...work, title: e.target.value })}
-                class="outlined-input"
-                maxlength="100"
-            />
+                <label for="workTitle">Mű címe</label>
+                <input
+                    type="text"
+                    name="workTitle"
+                    value={work.title}
+                    oninput={(e) => (work = { ...work, title: e.target.value })}
+                    class="outlined-input"
+                    maxlength="100"
+                />
 
-            <label for="workDateCreated">Keletkezés dátuma</label>
-            <input
-                type="text"
-                name="workDateCreated"
-                value={work.dateCreated}
-                oninput={(e) =>
-                    (work = { ...work, dateCreated: e.target.value })}
-                class="outlined-input"
-                maxlength="100"
-            />
+                <label for="workDateCreated">Keletkezés dátuma</label>
+                <input
+                    type="text"
+                    name="workDateCreated"
+                    value={work.dateCreated}
+                    oninput={(e) =>
+                        (work = { ...work, dateCreated: e.target.value })}
+                    class="outlined-input"
+                    maxlength="100"
+                />
 
-            <label for="workType">Műnem</label>
-            <p>
-                Ez nem egyezik meg a műfajjal. Csak a mű megjelenítését
-                határozza meg ez a beállítás.
-            </p>
-            <select
-                name="workType"
-                value={work.workType}
-                onchange={(e) => (work = { ...work, workType: e.target.value })}
-                class="outlined-input"
-            >
-                <option value="Choose your own adventure"
-                    >Choose your own adventure</option
-                >
-                <option value="Írott mű"
-                    >Írott mű (vers, novella, regény, stb.)</option
-                >
-                <option value="Egyéb"
-                    >Nem írott mű (festmény, zene, slam, stb.)</option
-                >
-            </select>
-
-            <label for="workGenre">Műfaj</label>
-            <input
-                type="text"
-                name="workGenre"
-                value={work.genre}
-                oninput={(e) => (work = { ...work, genre: e.target.value })}
-                class="outlined-input"
-                maxlength="100"
-            />
-
-            <label for="workDescription">Mű leírása</label>
-            <textarea
-                name="workDescription"
-                value={work.description}
-                oninput={(e) =>
-                    (work = { ...work, description: e.target.value })}
-                class="outlined-input"
-                maxlength="500"
-            ></textarea>
-        </div>
-
-        {#if work.workType === "Choose your own adventure"}
-            <div class="cyoa-tools">
-                <h3>Choose your own adventure eszközök</h3>
-                <a href="/docs/cyoa/" target="_blank">
-                    <span class="mdi mdi-open-in-new"></span>
-                    Dokumentáció megnyitása új lapon
-                </a>
-                <button
-                    class="btn"
-                    onclick={() => {
-                        work = {
-                            ...work,
-                            content:
-                                `${work.content}\n\n## Új oldal címe\n\nOldal tartalma\n\n[Hivatkozás 1](#hivatkozás-1)\n\n[Hivatkozás 2](#hivatkozás-2)`.trim(),
-                        };
-                        window.scrollTo(0, document.body.scrollHeight);
-                    }}
-                >
-                    <span class="mdi mdi-note-plus"></span>
-                    Új oldal hozzáadása a végére
-                </button>
+                <label for="workType">Műnem</label>
                 <p>
-                    Oldalak ({cyoa.pages.length}):
+                    Ez nem egyezik meg a műfajjal. Csak a mű megjelenítését
+                    határozza meg ez a beállítás.
                 </p>
-                <ol style="margin-left: var(--spacing);">
-                    {#each cyoa.pages as page}
-                        <li style="margin-bottom: calc(var(--spacing) / 2);">
-                            {page.title}<br />
-                            <p style="font-size: .7rem; opacity: .7;">
-                                Linkek: {page.links
-                                    .map((link) => link.page)
-                                    .join(", ")}<br />
-                            </p>
-                        </li>
-                    {/each}
-                </ol>
+                <select
+                    name="workType"
+                    value={work.workType}
+                    onchange={(e) =>
+                        (work = { ...work, workType: e.target.value })}
+                    class="outlined-input"
+                >
+                    <option value="Choose your own adventure"
+                        >Choose your own adventure</option
+                    >
+                    <option value="Írott mű"
+                        >Írott mű (vers, novella, regény, stb.)</option
+                    >
+                    <option value="Egyéb"
+                        >Nem írott mű (festmény, zene, slam, stb.)</option
+                    >
+                </select>
+
+                <label for="workGenre">Műfaj</label>
+                <input
+                    type="text"
+                    name="workGenre"
+                    value={work.genre}
+                    oninput={(e) => (work = { ...work, genre: e.target.value })}
+                    class="outlined-input"
+                    maxlength="100"
+                />
+
+                <label for="workDescription">Mű leírása</label>
+                <textarea
+                    name="workDescription"
+                    value={work.description}
+                    oninput={(e) =>
+                        (work = { ...work, description: e.target.value })}
+                    class="outlined-input"
+                    maxlength="500"
+                    style="min-height: 92px; field-sizing: content !important;"
+                ></textarea>
+
+                {#if work.workType === "Choose your own adventure"}
+                    <h3>Choose your own adventure eszközök</h3>
+                    <a href="/docs/cyoa/" target="_blank">
+                        <span class="mdi mdi-open-in-new"></span>
+                        Dokumentáció megnyitása új lapon
+                    </a>
+                    <button
+                        class="btn"
+                        onclick={() => {
+                            work = {
+                                ...work,
+                                content:
+                                    `${work.content}\n\n## Új oldal címe\n\nOldal tartalma\n\n[Hivatkozás 1](#hivatkozás-1)\n\n[Hivatkozás 2](#hivatkozás-2)`.trim(),
+                            };
+                            window.scrollTo(0, document.body.scrollHeight);
+                        }}
+                    >
+                        <span class="mdi mdi-note-plus"></span>
+                        Új oldal hozzáadása a végére
+                    </button>
+                    <p>
+                        Oldalak ({cyoa.pages.length}):
+                    </p>
+                    <ol style="margin-left: var(--spacing);">
+                        {#each cyoa.pages as page}
+                            <li
+                                style="margin-bottom: calc(var(--spacing) / 2);"
+                            >
+                                {page.title}<br />
+                                <p style="font-size: .7rem; opacity: .7;">
+                                    Linkek: {page.links
+                                        .map((link) => link.page)
+                                        .join(", ")}<br />
+                                </p>
+                            </li>
+                        {/each}
+                    </ol>
+                {/if}
+            </div>
+        {:else}
+            <div>
+                <button
+                    class="btn"
+                    aria-label="Oldalsáv kinyitása"
+                    onclick={() => (isSidebarOpen = !isSidebarOpen)}
+                    style="margin: var(--spacing);"
+                >
+                    <span class="mdi mdi-page-layout-sidebar-left"></span>
+                </button>
             </div>
         {/if}
-    </div>
 
-    <div class="content-editor">
-        <label for="workContent">
-            {#if work.workType === "Egyéb"}
-                Link a műhöz
-            {:else}
-                Mű tartalma
-            {/if}
-        </label>
         <textarea
+            class="outlined-input content-editor"
             name="workContent"
             value={work.content}
             oninput={(e) => (work = { ...work, content: e.target.value })}
-            class="outlined-input"
-            style={work.workType !== "Egyéb" && "min-height: 256px;"}
+            placeholder={work.workType === "Egyéb"
+                ? "A műhöz tartozó linket ide másold be."
+                : "A mű tartalma..."}
+            style={work.workType !== "Egyéb" ? "min-height: 256px;" : ""}
         ></textarea>
     </div>
-</main>
-<Footer />
+</div>
 
 <style>
     textarea {
-        width: 100%;
         resize: none;
-        field-sizing: content;
     }
 
-    main {
+    .page {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        padding: var(--spacing);
+        width: 100%;
+        height: 100dvh;
+        overflow: hidden;
     }
 
-    @media (min-width: 768px) {
-        main {
-            flex-direction: row;
-        }
-    }
-
-    main > *,
-    .metadata-editor,
-    .cyoa-tools {
+    .editor {
+        flex: 1;
         display: flex;
-        flex-direction: column;
-        gap: var(--spacing);
-    }
-
-    .metadata-editor,
-    .cyoa-tools,
-    .content-editor {
-        background: var(--secondary-color);
-        color: var(--on-secondary-color);
-        padding: var(--spacing);
-        border-radius: var(--corner-radius);
+        flex-direction: row;
+        align-items: stretch;
+        min-height: 0;
         width: 100%;
     }
 
     .sidebar {
-        flex: 1;
-        max-width: 450px !important;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--spacing);
+        background: var(--secondary-color);
+        color: var(--on-secondary-color);
+        padding: var(--spacing);
+        text-align: start;
+        overflow: auto;
     }
 
     .content-editor {
-        flex: 2;
-        max-width: none !important;
+        flex: 1;
     }
 </style>
