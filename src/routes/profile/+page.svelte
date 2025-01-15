@@ -22,7 +22,9 @@
 
     function updateWorks() {
         firestore.works.getAllByAuthor(koloraUser.id).then((newWorks) => {
-            works = newWorks;
+            works = newWorks.filter(
+                (work) => work.status === "published" || isOwnerLoggedIn,
+            );
         });
     }
 
