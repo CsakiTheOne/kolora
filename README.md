@@ -1,28 +1,35 @@
 # Kolora Egyesület weboldala
 
-## TODO
+## Egyéb TODO
 
 - [ ] Tagok bemutatása (ha van ilyesmire igény és fixálódik, hogy ki mennyire érzi magát Kolorásnak és hogy egyáltalán hogyan működünk)
 - [ ] Consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
 
-## Teendők jövő Februárig
+## Költészet napi kalandozás
 
-Ezek a teendők csak akkor lesznek aktuálisak, ha a 2025 januári slam workshop-okon pozitív visszajelzések jönnek a choose your own adventure témára.
+Pályázat a WholesomeWare szervezésében.
+
+### Kihírdetéshez szükséges teendők
 
 - [x] Felhasználó kezelés
   - [x] Firebase auth integráció
   - [x] UI elemek
   - [ ] Adatvédelmi tájékoztató frissítése
-- [ ] Költészet napi kincskeresés 2025. Április
-  - [ ] Főoldal frissítése a verseny hírével
-  - [ ] Verseny oldala (leírás, szabályzat, stb.)
-  - [ ] *Choose your own adventure* dokumentáció
-- [ ] Művek kezelése
+- [x] Művek egyszerű kezelése
   - [x] Galéria oldal
-  - [ ] Feltöltés (akár eseményhez kötve)
   - [x] Megjelenítés
-  - [ ] Kezelés (csak Kolora tagok és a művek tulajdonosai)
-  - [ ] Szavazás (fiók nélkül is)
+  - [x] Kezelés tulaj által
+  - [x] Egyszerű feltöltés
+- [ ] Főoldal frissítése a verseny hírével
+- [ ] Verseny oldala (leírás, szabályzat, stb.)
+- [x] *Choose your own adventure* dokumentáció
+
+### Pályázathoz szükséges teendők
+
+- [ ] Művek kezelése
+  - [ ] Feltöltés eseményhez kötve
+  - [ ] Kezelés Kolora tagok által is
+  - [ ] Szavazás fiókkal vagy fiók nélkül
 
 ## B terv
 
