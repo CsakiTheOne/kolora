@@ -73,8 +73,8 @@
         />
     </div>
     <div class="editor">
-        {#if isSidebarOpen}
-            <div class="sidebar">
+        <div class="sidebar" style={isSidebarOpen ? "width: 400px;" : "min-width: 0;"}>
+            {#if isSidebarOpen}
                 <button
                     class="btn"
                     aria-label="Oldalsáv összecsukása"
@@ -215,14 +215,11 @@
                         {/each}
                     </ol>
                 {/if}
-            </div>
-        {:else}
-            <div style="display: flex; flex-direction: column;">
+            {:else}
                 <button
                     class="btn"
                     aria-label="Oldalsáv kinyitása"
                     onclick={() => (isSidebarOpen = !isSidebarOpen)}
-                    style="margin: var(--spacing);"
                 >
                     <span class="mdi mdi-page-layout-sidebar-left"></span>
                 </button>
@@ -230,12 +227,11 @@
                     class="btn"
                     aria-label="Mű mentése"
                     onclick={saveWork}
-                    style="margin: var(--spacing);"
                 >
                     <span class="mdi mdi-content-save"></span>
                 </button>
-            </div>
-        {/if}
+            {/if}
+        </div>
 
         <textarea
             class="outlined-input content-editor"
@@ -273,7 +269,6 @@
     }
 
     .sidebar {
-        width: 400px;
         display: flex;
         flex-direction: column;
         align-items: start;

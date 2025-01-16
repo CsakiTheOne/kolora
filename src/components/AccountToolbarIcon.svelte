@@ -102,6 +102,15 @@
                     <button
                         onclick={() => {
                             isOpen = false;
+                            window.location.href = "/gallery/edit";
+                        }}
+                    >
+                        <span class="mdi mdi-plus"></span>
+                        Új alkotás
+                    </button>
+                    <button
+                        onclick={() => {
+                            isOpen = false;
                             logout();
                         }}
                     >
