@@ -74,7 +74,8 @@
             onkeydown={(e) => e.key === "Enter" && e.stopPropagation()}
             tabindex="0"
         >
-            <span class="mdi mdi-account-circle" style="font-size: 3rem;"></span>
+            <span class="mdi mdi-account-circle" style="font-size: 3rem;"
+            ></span>
             <b>
                 {#if user && koloraUser}
                     Helló, {koloraUser.username}!
@@ -87,6 +88,15 @@
                     <button onclick={loginWithGoogle}>
                         <span class="mdi mdi-login"></span>
                         Bejelentkezés Google fiókkal
+                    </button>
+                    <button
+                        onclick={() => {
+                            isOpen = false;
+                            window.location.href = "/gallery";
+                        }}
+                    >
+                        <span class="mdi mdi-image-multiple"></span>
+                        Galéria
                     </button>
                 {/if}
                 {#if user && koloraUser}
@@ -107,6 +117,15 @@
                     >
                         <span class="mdi mdi-plus"></span>
                         Új alkotás
+                    </button>
+                    <button
+                        onclick={() => {
+                            isOpen = false;
+                            window.location.href = "/gallery";
+                        }}
+                    >
+                        <span class="mdi mdi-image-multiple"></span>
+                        Galéria
                     </button>
                     <button
                         onclick={() => {

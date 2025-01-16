@@ -146,6 +146,10 @@ export default class KoloraLocalDb {
             code: "pirospultos",
             url: "https://photos.app.goo.gl/MsuistyMjtUpRCu16",
         },
+        {
+            code: "uuddlrlrba",
+            url: "/?accountfeatures=true",
+        },
     ];
 
     static tryCode(code: string) {
