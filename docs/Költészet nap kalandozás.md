@@ -57,3 +57,7 @@ Az eredményhírdetésre a bírálat után kerül sor. 1-3. helyezés, közöns�
 Díj ötletek:
 
 - Könyvutalvány (pl. Libri van Fehérvár központjában)
+
+## Gemini javaslatai
+
+- Túl szűk a határidő, minimom néhány nap, de lehetőleg pár hét kellene még a tervezetthez képest.
