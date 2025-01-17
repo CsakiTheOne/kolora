@@ -20,6 +20,10 @@ Pályázat a WholesomeWare szervezésében.
   - [x] Megjelenítés
   - [x] Kezelés tulaj által
   - [x] Egyszerű feltöltés
+- [ ] Esemény rendszer
+  - [ ] Esemény model és adatbázis
+  - [ ] Esemény kezelés Kolora tagok számára
+  - [ ] Feltöltés eseményhez kötve
 - [ ] Főoldal frissítése a verseny hírével
 - [ ] Verseny oldala (leírás, szabályzat, stb.)
 - [x] *Choose your own adventure* dokumentáció
@@ -27,7 +31,6 @@ Pályázat a WholesomeWare szervezésében.
 ### Pályázathoz szükséges teendők
 
 - [ ] Művek kezelése
-  - [ ] Feltöltés eseményhez kötve
   - [ ] Kezelés Kolora tagok által is
   - [ ] Szavazás fiókkal vagy fiók nélkül
 
