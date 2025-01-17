@@ -2,6 +2,7 @@ import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, qu
 import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 import Work from "$lib/model/Work";
+import KoloraEvent from "$lib/model/KoloraEvent";
 
 const db = initializeFirebase().firestore;
 
@@ -108,6 +109,39 @@ const firestore = {
             return deleteDoc(doc(db, "works", id));
         },
     },
+    events: {
+        get: (id: string): Promise<KoloraEvent> => {
+            return getDoc(doc(db, "events", id))
+                .then((doc) => {
+                    if (!doc.exists()) {
+                        console.error("No such event: ", id);
+                        return Promise.reject("No such event: " + id);
+                    }
+                    return { ...new KoloraEvent(), ...doc.data(), id: doc.id };
+                })
+                .catch((error) => {
+                    console.error("Error getting event: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        set: (id: string, data: object): Promise<void> => {
+            return setDoc(doc(db, "events", id), data, { merge: true });
+        },
+        getAll: (): Promise<KoloraEvent[]> => {
+            return getDocs(collection(db, "events"))
+                .then((querySnapshot) => {
+                    const events: KoloraEvent[] = [];
+                    querySnapshot.forEach((doc) => {
+                        events.push({ ...new KoloraEvent(), ...doc.data(), id: doc.id });
+                    });
+                    return events;
+                })
+                .catch((error) => {
+                    console.error("Error getting events: ", error);
+                    return Promise.reject(error);
+                });
+        },
+    }
 };
 
 export default firestore;

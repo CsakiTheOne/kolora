@@ -10,6 +10,7 @@
     import KoloraUser, { ROLES } from "$lib/model/KoloraUser";
     import { getCurrentUser } from "$lib/firebase/auth";
     import SmallHeader from "../../components/SmallHeader.svelte";
+    import type KoloraEvent from "$lib/model/KoloraEvent";
 
     let works: Work[] = $state([]);
     let searchQuery = $state("");
@@ -31,6 +32,7 @@
         }),
     );
     let koloraUser = $state(new KoloraUser());
+    let events: KoloraEvent[] = $state([]);
 
     onMount(() => {
         firestore.works.getAll().then((fetchedWorks) => {
@@ -44,6 +46,10 @@
             firestore.users.get(user.uid).then((fetchedUser) => {
                 koloraUser = fetchedUser;
             });
+        });
+
+        firestore.events.getAll().then((fetchedEvents) => {
+            events = fetchedEvents;
         });
 
         return () => {
@@ -73,10 +79,14 @@
             </a>
         {/if}
 
-        <h3>Versenyek, pályázatok, események</h3>
-        <ul>
-            <a href="/jam"><li>2025. 04. 11. - Költészet napi kalandozás</li></a>
-        </ul>
+        {#if events.length > 0}
+            <h3>Versenyek, pályázatok, események</h3>
+            <ul>
+                {#each events as koloraEvent}
+                    <a href={koloraEvent.url}><li>{koloraEvent.title}</li></a>
+                {/each}
+            </ul>
+        {/if}
 
         <h3>Dokumentáció</h3>
         <ul>

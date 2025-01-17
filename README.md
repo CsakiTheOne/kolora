@@ -21,7 +21,7 @@ Pályázat a WholesomeWare szervezésében.
   - [x] Kezelés tulaj által
   - [x] Egyszerű feltöltés
 - [ ] Esemény rendszer
-  - [ ] Esemény model és adatbázis
+  - [x] Esemény modell és adatbázis
   - [ ] Esemény kezelés Kolora tagok számára
   - [ ] Feltöltés eseményhez kötve
 - [ ] Főoldal frissítése a verseny hírével
