@@ -26,6 +26,10 @@
             információkat, mikor a <a href="/codes">Kódok oldalon</a> megpróbál beváltani
             egy kódot. Az adatgyűjtés a beváltás sigerességétől függetlenül történik.
         </li>
+        <li>
+            <b>Google fiókkal történő bejelentkezés:</b> Ha Google fiókkal jelentkezik
+            be, gyűjtjük az Ön nevét, e-mail címét és profilképét.
+        </li>
     </ul>
     <p>
         Adatok, amiket NEM gyűjtünk: Az Ön nevét, e-mail címét, telefonszámát,
@@ -48,6 +52,10 @@
         <li>
             <b>Testreszabás:</b> A weboldal tartalmának és funkcióinak személyre
             szabása az Ön preferenciái alapján.
+        </li>
+        <li>
+            <b>Felhasználói azonosítás:</b> Az Ön nevének megjelenítése a weboldalon,
+            ha Google fiókkal jelentkezik be.
         </li>
     </ul>
     <p>

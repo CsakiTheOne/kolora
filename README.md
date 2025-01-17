@@ -14,7 +14,7 @@ Pályázat a WholesomeWare szervezésében.
 - [x] Felhasználó kezelés
   - [x] Firebase auth integráció
   - [x] UI elemek
-  - [ ] Adatvédelmi tájékoztató frissítése
+  - [x] Adatvédelmi tájékoztató frissítése
 - [x] Művek egyszerű kezelése
   - [x] Galéria oldal
   - [x] Megjelenítés
