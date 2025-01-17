@@ -122,7 +122,9 @@
         </p>
     </VerticalTimelineItem>
     <VerticalTimelineItem title="Eredményhirdetés" isLastItem={true}>
-        <p></p>
+        <p>
+            //TODO: Eredményhirdetés időpontja és díjak, stb.
+        </p>
     </VerticalTimelineItem>
 
     <h3>Ihletek, ötletek, inspirációk</h3>
