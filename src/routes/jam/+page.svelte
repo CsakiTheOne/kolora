@@ -149,8 +149,9 @@
             Az olvasókat megkérheted dolgokra. Gurítsanak egy dobókockával,
             legyen náluk papír és ceruza, amire később fel kell írniuk valamit
             és csak akkor választhatnak egy utat, ha megoldottak egy rejtvényt.
-            Néhány dologra ezek közül lesz lehetőség az oldalon, de egyelőre
-            ezek az interakciók még kísérleti stádiumban vannak.
+            Néhány bonyolultabb interakcióval is feldobhatod a történetedet.
+            Olvasd el a dokumentációt, hogy megtudd, hogyan tudod ezeket
+            megvalósítani.
         </li>
         <li>
             Nézd meg a példa műveket a Kolora tagjaitól a <a href="/gallery">
