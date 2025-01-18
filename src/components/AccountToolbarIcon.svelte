@@ -5,9 +5,9 @@
     import type { User } from "firebase/auth";
     import firestore from "$lib/firebase/firestore";
     import type KoloraUser from "$lib/model/KoloraUser";
+    import Backdrop from "./Backdrop.svelte";
 
     let enableAccountFeatures = $state(false);
-
     let isOpen = $state(false);
     let user: User | null = $state(null);
     let koloraUser: KoloraUser | null = $state(null);
@@ -60,22 +60,9 @@
 {/if}
 
 {#if isOpen}
-    <div
-        class="account-dialog-container"
-        onclick={() => (isOpen = false)}
-        onkeydown={(e) => e.key === "Enter" && (isOpen = false)}
-        tabindex="0"
-        role="button"
-    >
-        <div
-            class="account-dialog"
-            role="button"
-            onclick={(e) => e.stopPropagation()}
-            onkeydown={(e) => e.key === "Enter" && e.stopPropagation()}
-            tabindex="0"
-        >
-            <span class="mdi mdi-account-circle" style="font-size: 3rem;"
-            ></span>
+    <Backdrop close={() => (isOpen = false)}>
+        <div class="account-dialog">
+            <span class="mdi mdi-account-circle" style="font-size: 3rem;"></span>
             <b>
                 {#if user && koloraUser}
                     Helló, {koloraUser.username}!
@@ -139,21 +126,10 @@
                 {/if}
             </ul>
         </div>
-    </div>
+    </Backdrop>
 {/if}
 
 <style>
-    .account-dialog-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.2);
-        z-index: 100 !important;
-        backdrop-filter: blur(2px);
-    }
-
     .account-dialog {
         position: fixed;
         top: calc(var(--spacing) / 2);
@@ -161,15 +137,12 @@
         width: 280px;
         border: none;
         border-radius: var(--corner-radius);
-
         display: flex;
         flex-direction: column;
         background: var(--primary-color);
         color: var(--on-primary-color);
         padding: var(--spacing);
         gap: calc(var(--spacing) / 2);
-
-        z-index: 101 !important;
     }
 
     ul {

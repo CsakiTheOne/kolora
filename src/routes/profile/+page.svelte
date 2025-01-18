@@ -190,7 +190,6 @@
         <button
             class="btn"
             onclick={() => {
-                GalleryUtils.workId = null;
                 window.location.href = "/gallery/edit";
             }}
         >

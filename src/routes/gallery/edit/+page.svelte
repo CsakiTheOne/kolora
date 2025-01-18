@@ -4,10 +4,12 @@
     import Header from "../../../components/Header.svelte";
     import { initializeFirebase } from "$lib/firebase/firebase";
     import firestore from "$lib/firebase/firestore";
-    import Work from "$lib/model/Work";
+    import Work, { WORK_TYPES } from "$lib/model/Work";
     import GalleryUtils from "$lib/GalleryUtils";
     import SmallHeader from "../../../components/SmallHeader.svelte";
     import ChooseYourOwnAdventure from "$lib/ChooseYourOwnAdventure.svelte";
+    import Backdrop from "../../../components/Backdrop.svelte";
+    import type KoloraEvent from "$lib/model/KoloraEvent";
 
     let work: Work = $state(new Work());
     let currentUserUid = $state("");
@@ -16,6 +18,8 @@
             work.workType === "Choose your own adventure" ? work : new Work(),
         ),
     );
+    let isSetupRequired = $state(false);
+    let events: KoloraEvent[] = $state([]);
     let isSidebarOpen = $state(true);
 
     onMount(() => {
@@ -40,7 +44,13 @@
                 .catch((err) => {
                     window.history.back();
                 });
+        } else {
+            isSetupRequired = true;
         }
+
+        firestore.events.getAllLinkable().then((fetchedEvents) => {
+            events = fetchedEvents;
+        });
 
         return () => {
             authListener();
@@ -63,6 +73,72 @@
 </script>
 
 <div class="page">
+    {#if isSetupRequired}
+        <Backdrop close={() => {}}>
+            <div class="setup-dialog">
+                <h2>Új mű beállítása</h2>
+                <label for="workType">Mű típusa</label>
+                <p>
+                    Válassz egy mű típust, hogy a megfelelő eszközök és
+                    beállítások jelenjenek meg.
+                </p>
+                <select
+                    name="workType"
+                    value={work.workType}
+                    onchange={(e) =>
+                        (work = { ...work, workType: e.target.value })}
+                    class="outlined-input"
+                >
+                    {#each Object.entries(WORK_TYPES).map((r) => r[1]) as workType}
+                        <option value={workType.label}>
+                            {workType.description}
+                        </option>
+                    {/each}
+                </select>
+                <label for="linkedEvent">Kapcsolódó esemény</label>
+                {#if events.length === 0}
+                    <p>
+                        Jelenleg nincs elérhető esemény. De ettől még nyugodtan
+                        megoszthatod velünk az alkotásod! :D
+                    </p>
+                {:else}
+                    <p>
+                        Ha a műved egy eseményhez kapcsolódik, válaszd ki az
+                        eseményt.
+                    </p>
+                    <select
+                        name="linkedEvent"
+                        value={work.eventId}
+                        onchange={(e) =>
+                            (work = { ...work, eventId: e.target.value })}
+                        class="outlined-input"
+                    >
+                        <option value="">Nincs kapcsolódó esemény</option>
+                        {#each events as event}
+                            <option value={event.id}>
+                                {event.title}
+                            </option>
+                        {/each}
+                    </select>
+                {/if}
+                <p>Később bármikor módosíthatod ezeket az adatokat.</p>
+                <a href="/profile/?id={currentUserUid}" style="width: 100%;">
+                    <button class="text-btn" style="width: 100%;">
+                        <span class="mdi mdi-arrow-left"></span>
+                        Vissza a profilra
+                    </button>
+                </a>
+                <button
+                    class="btn"
+                    onclick={() => (isSetupRequired = false)}
+                    style="width: 100%;"
+                >
+                    Szerkesztés folytatása
+                </button>
+            </div>
+        </Backdrop>
+    {/if}
+
     <div class="header-container">
         <SmallHeader
             path={[
@@ -73,7 +149,10 @@
         />
     </div>
     <div class="editor">
-        <div class="sidebar" style={isSidebarOpen ? "width: 400px;" : "min-width: 0;"}>
+        <div
+            class="sidebar"
+            style={isSidebarOpen ? "width: 400px;" : "min-width: 0;"}
+        >
             {#if isSidebarOpen}
                 <button
                     class="btn"
@@ -112,6 +191,15 @@
                     </button>
                 </div>
 
+                <button
+                    class="btn"
+                    onclick={() => (isSetupRequired = true)}
+                    style="width: 100%;"
+                >
+                    <span class="mdi mdi-cog"></span>
+                    Alapbeállítások
+                </button>
+
                 <label for="workTitle">Mű címe</label>
                 <input
                     type="text"
@@ -132,29 +220,6 @@
                     class="outlined-input"
                     maxlength="100"
                 />
-
-                <label for="workType">Műnem</label>
-                <p>
-                    Ez nem egyezik meg a műfajjal. Csak a mű megjelenítését
-                    határozza meg ez a beállítás.
-                </p>
-                <select
-                    name="workType"
-                    value={work.workType}
-                    onchange={(e) =>
-                        (work = { ...work, workType: e.target.value })}
-                    class="outlined-input"
-                >
-                    <option value="Choose your own adventure"
-                        >Choose your own adventure</option
-                    >
-                    <option value="Írott mű"
-                        >Írott mű (vers, novella, regény, stb.)</option
-                    >
-                    <option value="Egyéb"
-                        >Nem írott mű (festmény, zene, slam, stb.)</option
-                    >
-                </select>
 
                 <label for="workGenre">Műfaj</label>
                 <input
@@ -223,11 +288,7 @@
                 >
                     <span class="mdi mdi-page-layout-sidebar-left"></span>
                 </button>
-                <button
-                    class="btn"
-                    aria-label="Mű mentése"
-                    onclick={saveWork}
-                >
+                <button class="btn" aria-label="Mű mentése" onclick={saveWork}>
                     <span class="mdi mdi-content-save"></span>
                 </button>
             {/if}
@@ -247,6 +308,20 @@
 </div>
 
 <style>
+    .setup-dialog {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing);
+        align-items: start;
+        background: var(--secondary-color);
+        color: var(--on-secondary-color);
+        padding: var(--spacing);
+        border-radius: var(--spacing);
+        width: 100%;
+        max-width: 400px;
+        margin: var(--spacing) auto;
+    }
+
     textarea {
         resize: none;
     }

@@ -141,6 +141,20 @@ const firestore = {
                     return Promise.reject(error);
                 });
         },
+        getAllLinkable: (): Promise<KoloraEvent[]> => {
+            return getDocs(query(collection(db, "events"), where("allowWorkLinking", "==", true)))
+                .then((querySnapshot) => {
+                    const events: KoloraEvent[] = [];
+                    querySnapshot.forEach((doc) => {
+                        events.push({ ...new KoloraEvent(), ...doc.data(), id: doc.id });
+                    });
+                    return events;
+                })
+                .catch((error) => {
+                    console.error("Error getting events: ", error);
+                    return Promise.reject(error);
+                });
+        },
     }
 };
 
