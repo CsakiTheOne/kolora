@@ -114,6 +114,17 @@
                         <span class="mdi mdi-image-multiple"></span>
                         Galéria
                     </button>
+                    {#if koloraUser.roles.includes("admin") || koloraUser.roles.includes("kolora_member")}
+                        <button
+                            onclick={() => {
+                                isOpen = false;
+                                window.location.href = "/dashboard";
+                            }}
+                        >
+                            <span class="mdi mdi-shield-account"></span>
+                            Dashboard
+                        </button>
+                    {/if}
                     <button
                         onclick={() => {
                             isOpen = false;
