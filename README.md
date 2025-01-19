@@ -1,5 +1,12 @@
 # Kolora Egyesület weboldala
 
+## Galéria ötletek
+
+- [ ] Anoním megosztás
+- [ ] Mű elutasítás indoklás
+- [ ] Elutasítás és elfogadás több emberen múljon
+- [ ] Szabályok a megosztható művekkel kapcsolatban (2-3 ember minimum)
+
 ## Egyéb TODO
 
 - [ ] Tagok bemutatása (ha van ilyesmire igény és fixálódik, hogy ki mennyire érzi magát Kolorásnak és hogy egyáltalán hogyan működünk)

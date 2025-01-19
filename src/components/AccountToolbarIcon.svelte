@@ -62,14 +62,17 @@
 {#if isOpen}
     <Backdrop close={() => (isOpen = false)}>
         <div class="account-dialog">
-            <span class="mdi mdi-account-circle" style="font-size: 3rem;"></span>
-            <b>
-                {#if user && koloraUser}
-                    Helló, {koloraUser.username}!
-                {:else}
-                    Jelentkezz be!
-                {/if}
-            </b>
+            <span class="mdi mdi-account-circle" style="font-size: 3rem;">
+            </span>
+            <p style="word-wrap: normal;">
+                <b>
+                    {#if user && koloraUser}
+                        Helló, {koloraUser.username}!
+                    {:else}
+                        Jelentkezz be!
+                    {/if}
+                </b>
+            </p>
             <ul>
                 {#if !user}
                     <button onclick={loginWithGoogle}>
