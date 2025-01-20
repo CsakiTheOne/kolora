@@ -12,6 +12,7 @@
     import SvelteMarkdown from "svelte-markdown";
     import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
     import SmallHeader from "../../components/SmallHeader.svelte";
+    import MarkdownHtml from "../../components/markdown-renderers/MarkdownHtml.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -78,7 +79,7 @@
             A bemutatkozás támogatja a <a
                 href="https://www.markdownguide.org/cheat-sheet/"
                 target="_blank">Markdown formázást</a
-            >.
+            > és a beágyazott YouTube videókat.
         </p>
     {:else}
         <h2>
@@ -89,7 +90,7 @@
             <SvelteMarkdown
                 source={koloraUser.bio ||
                     "*Ez a felhasználó még nem írt bemutatkozást.*"}
-                renderers={{ link: MarkdownLink }}
+                renderers={{ link: MarkdownLink, html: MarkdownHtml }}
             />
         </p>
     {/if}
