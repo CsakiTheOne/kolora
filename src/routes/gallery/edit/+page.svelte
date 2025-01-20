@@ -52,6 +52,10 @@
             events = fetchedEvents;
         });
 
+        window.onbeforeunload = () => {
+            return "Az alkotásod mentetlen változásokat tartalmaz. Biztosan elhagyod az oldalt?";
+        };
+
         return () => {
             authListener();
         };
