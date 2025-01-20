@@ -58,6 +58,7 @@
 
         return () => {
             authListener();
+            window.onbeforeunload = null;
         };
     });
 
