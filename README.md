@@ -1,6 +1,6 @@
 # Kolora Egyesület weboldala
 
-## Galéria ötletek
+## Teendők Április 11-ig
 
 - [ ] Anoním megosztás
 - [ ] Mű elutasítás indoklás
@@ -8,10 +8,10 @@
 - [ ] Szabályok a megosztható művekkel kapcsolatban
 - [x] Profil bio-kban XSS védelem
 
-## Egyéb TODO
+## Későbbi teendők
 
-- [ ] Tagok bemutatása (ha van ilyesmire igény és fixálódik, hogy ki mennyire érzi magát Kolorásnak és hogy egyáltalán hogyan működünk)
-- [ ] Consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond ezzel)
+- [ ] Tagok bemutatása (ha van ilyesmire igény és fixálódik, hogy ki kicsoda)
+- [ ] Consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond)
 
 ## Költészet napi kalandozás
 
