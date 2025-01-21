@@ -12,7 +12,7 @@
     import SvelteMarkdown from "svelte-markdown";
     import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
     import SmallHeader from "../../components/SmallHeader.svelte";
-    import MarkdownHtml from "../../components/markdown-renderers/MarkdownHtml.svelte";
+    import MarkdownStrictHtml from "../../components/markdown-renderers/MarkdownStrictHtml.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -90,7 +90,7 @@
             <SvelteMarkdown
                 source={koloraUser.bio ||
                     "*Ez a felhasználó még nem írt bemutatkozást.*"}
-                renderers={{ link: MarkdownLink, html: MarkdownHtml }}
+                renderers={{ link: MarkdownLink, html: MarkdownStrictHtml }}
             />
         </p>
     {/if}

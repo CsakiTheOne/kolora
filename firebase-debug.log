@@ -1,0 +1,21 @@
+[debug] [2025-01-21T22:32:24.235Z] ----------------------------------------------------------------------
+[debug] [2025-01-21T22:32:24.238Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2025-01-21T22:32:24.238Z] CLI Version:   13.24.2
+[debug] [2025-01-21T22:32:24.238Z] Platform:      darwin
+[debug] [2025-01-21T22:32:24.238Z] Node Version:  v20.14.0
+[debug] [2025-01-21T22:32:24.238Z] Time:          Tue Jan 21 2025 23:32:24 GMT+0100 (Central European Standard Time)
+[debug] [2025-01-21T22:32:24.239Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-21T22:32:24.301Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-21T22:32:24.301Z] > authorizing via signed-in user (jockahun@gmail.com)
+[debug] [2025-01-21T22:32:24.301Z] [iam] checking project kolora for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-01-21T22:32:24.302Z] Checked if tokens are valid: false, expires at: 1737418406866
+[debug] [2025-01-21T22:32:24.302Z] Checked if tokens are valid: false, expires at: 1737418406866
+[debug] [2025-01-21T22:32:24.303Z] > refreshing access token with scopes: []
+[debug] [2025-01-21T22:32:24.304Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-01-21T22:32:24.304Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-01-21T22:32:24.518Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-01-21T22:32:24.518Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-01-21T22:32:24.530Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/kolora:testIamPermissions [none]
+[debug] [2025-01-21T22:32:24.530Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/kolora:testIamPermissions x-goog-quota-user=projects/kolora
+[debug] [2025-01-21T22:32:24.530Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kolora:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}

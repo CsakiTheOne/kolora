@@ -10,6 +10,7 @@
     import ChooseYourOwnAdventure from "$lib/ChooseYourOwnAdventure.svelte";
     import Backdrop from "../../../components/Backdrop.svelte";
     import type KoloraEvent from "$lib/model/KoloraEvent";
+    import { json } from "@sveltejs/kit";
 
     let work: Work = $state(new Work());
     let currentUserUid = $state("");
@@ -21,6 +22,7 @@
     let isSetupRequired = $state(false);
     let events: KoloraEvent[] = $state([]);
     let isSidebarOpen = $state(true);
+    let selection = $state({ start: 0, end: 0 });
 
     onMount(() => {
         const auth = initializeFirebase().auth;
@@ -249,24 +251,7 @@
 
                 {#if work.workType === "Choose your own adventure"}
                     <h3>Choose your own adventure eszközök</h3>
-                    <a href="/docs/cyoa/" target="_blank">
-                        <span class="mdi mdi-open-in-new"></span>
-                        Dokumentáció megnyitása új lapon
-                    </a>
-                    <button
-                        class="btn"
-                        onclick={() => {
-                            work = {
-                                ...work,
-                                content:
-                                    `${work.content}\n\n## Új oldal címe\n\nOldal tartalma\n\n[Hivatkozás 1](#hivatkozás-1)\n\n[Hivatkozás 2](#hivatkozás-2)`.trim(),
-                            };
-                            window.scrollTo(0, document.body.scrollHeight);
-                        }}
-                    >
-                        <span class="mdi mdi-note-plus"></span>
-                        Új oldal hozzáadása a végére
-                    </button>
+
                     <p>
                         Oldalak ({cyoa.pages.length}):
                     </p>
@@ -299,16 +284,53 @@
             {/if}
         </div>
 
-        <textarea
-            class="outlined-input content-editor"
-            name="workContent"
-            value={work.content}
-            oninput={(e) => (work = { ...work, content: e.target.value })}
-            placeholder={work.workType === "Egyéb"
-                ? "A műhöz tartozó linket ide másold be."
-                : "A mű tartalma..."}
-            style={work.workType !== "Egyéb" ? "min-height: 256px;" : ""}
-        ></textarea>
+        <div class="content-editor">
+            <div class="editor-toolbar">
+                {#if work?.workType === "Choose your own adventure"}
+                    <button
+                        class="btn"
+                        onclick={() => {
+                            work = {
+                                ...work,
+                                content:
+                                    `${work.content}\n\n## Új oldal címe\n\nOldal tartalma\n\n[Hivatkozás 1](#hivatkozás-1)\n\n[Hivatkozás 2](#hivatkozás-2)`.trim(),
+                            };
+                            window.scrollTo(0, document.body.scrollHeight);
+                        }}
+                    >
+                        <span class="mdi mdi-note-plus"></span>
+                        Új oldal a végére
+                    </button>
+                    <a href="/docs/cyoa/" target="_blank">
+                        <span class="mdi mdi-open-in-new"></span>
+                        CYOA dokumentáció
+                    </a>
+                {:else if work?.workType === "Írott mű"}
+                    <span>
+                        Az írott művek támogatják a <a
+                            href="https://www.markdownguide.org/cheat-sheet/"
+                            target="_blank">Markdown formázást</a
+                        >.
+                    </span>
+                {/if}
+            </div>
+            <textarea
+                class="outlined-input"
+                name="workContent"
+                value={work.content}
+                oninput={(e) => (work = { ...work, content: e.target.value })}
+                onselectionchange={(e) => {
+                    selection = {
+                        start: e.target.selectionStart,
+                        end: e.target.selectionEnd,
+                    };
+                }}
+                placeholder={work.workType === "Egyéb"
+                    ? "A műhöz tartozó linket ide másold be."
+                    : "A mű tartalma..."}
+                style={work.workType !== "Egyéb" ? "min-height: 256px;" : ""}
+            ></textarea>
+        </div>
     </div>
 </div>
 
@@ -362,5 +384,26 @@
 
     .content-editor {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--primary-variant-color);
+        color: var(--on-primary-variant-color);
+        overflow: hidden;
+    }
+
+    .content-editor > textarea {
+        width: 100%;
+        height: 100%;
+    }
+
+    .editor-toolbar {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: var(--spacing);
+        padding: calc(var(--spacing) / 2);
+        align-items: center;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
     }
 </style>

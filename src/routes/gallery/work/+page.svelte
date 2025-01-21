@@ -9,6 +9,8 @@
     import KoloraUser from "$lib/model/KoloraUser";
     import firestore from "$lib/firebase/firestore";
     import SmallHeader from "../../../components/SmallHeader.svelte";
+    import SvelteMarkdown from "svelte-markdown";
+    import MarkdownBlockedHtml from "../../../components/markdown-renderers/MarkdownBlockedHtml.svelte";
 
     let work: Work | null = $state(null);
     let authorName: string | null = $state(null);
@@ -89,7 +91,10 @@
             <button class="btn">Megnyitás</button>
         </a>
     {:else}
-        <p>{work?.content}</p>
+        <SvelteMarkdown
+            source={work?.content}
+            renderers={{ html: MarkdownBlockedHtml }}
+        />
     {/if}
 </main>
 <Footer />
