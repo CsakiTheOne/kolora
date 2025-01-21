@@ -58,10 +58,16 @@ Ha bármi más furcsaságot észlelsz, ami nem a fenti kategóriákba tartozik, 
 
 ## Jelenleg ezeken dolgozom, ezek vannak tervben
 
-- [ ] Anoním megosztás
-- [ ] Mű elutasítás indoklás
-- [ ] Elutasítás és elfogadás több emberen múljon (2-3 ember minimum)
-- [ ] Szabályok a megosztható művekkel kapcsolatban
-- [ ] Szöveg formázás az írott mű típusoknál
-- [ ] Felhasználó és mű jelentése
-- [x] Profil bio-kban XSS védelem
+- Hibák
+  - [ ] Új művek mentése mindig új művet hoz létre
+  - [ ] /work oldalon mindig látszik a leírás megtekintó info gomb. Még akkor is ha nincs leírás.
+  - [ ] /work oldalon a megosztás gomb nem működik helyesen
+  - [ ] Írott műveknél szigorú markdown sortörés van érvényben
+- Funkciók
+  - [ ] Anoním megosztás
+  - [ ] Mű elutasítás indoklás
+  - [ ] Elutasítás és elfogadás több emberen múljon (2-3 ember minimum)
+  - [ ] Szabályok a megosztható művekkel kapcsolatban
+  - [ ] Felhasználó és mű jelentése
+  - [x] Szöveg formázás az írott mű típusoknál
+  - [x] Profil bio-kban XSS védelem
