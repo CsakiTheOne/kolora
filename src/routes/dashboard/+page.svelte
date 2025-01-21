@@ -15,12 +15,18 @@
         let userListener: (() => void) | null = null;
         const authListener = auth.onAuthStateChanged((user) => {
             if (user) {
-                userListener = firestore.users.listen(user.uid, (newKoloraUser) => {
-                    koloraUser = newKoloraUser;
-                    if (!koloraUser.roles.includes(ROLES.ADMIN) || !koloraUser.roles.includes(ROLES.KOLORA_MEMBER)) {
-                        window.history.back();
-                    }
-                });
+                userListener = firestore.users.listen(
+                    user.uid,
+                    (newKoloraUser) => {
+                        koloraUser = newKoloraUser;
+                        if (
+                            !koloraUser.roles.includes(ROLES.ADMIN) ||
+                            !koloraUser.roles.includes(ROLES.KOLORA_MEMBER)
+                        ) {
+                            window.history.back();
+                        }
+                    },
+                );
             } else {
                 koloraUser = new KoloraUser();
                 if (userListener) {
@@ -38,6 +44,10 @@
 
 <SmallHeader currentPage="Dashboard" />
 <main>
-    
+    <h2>Készítés alatt 🚧</h2>
+    <p>
+        Itt lesz minden eszköz, amire a Kolora tagoknak szükségük lehet az oldal
+        moderálásához, kezeléséhez, stb.
+    </p>
 </main>
 <Footer />
