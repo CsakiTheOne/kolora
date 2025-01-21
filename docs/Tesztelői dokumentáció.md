@@ -46,9 +46,15 @@ A weboldalon sok helyen vannak szövegdobozok. Mű szerkesztésnél a mű adatai
 
 A művek szerkesztője egy új funkció, ami nem a legegyszerűbb. Próbálgasd, alkoss valamit és nézd meg, hogy a szerkesztő hogyan viselkedik. Ha valami nem működik, nem egyértelmű, vagy csak furcsa, írj!
 
+### Vizsgálatok
+
+Előfordulhatnak az oldalon hibák, amiket nem sikerült pontosan megfejtenem. Hatalmas segítség, ha az itt felsorolt hibákkal kapcsolatban tudsz valami infót adni.
+
+- [ ] Az oldal néha elfelejti a beállított felhasználónevet és visszaállítja az alapértelmezettre.
+
 ### Egyebek
 
-Ha bármi más furcsaságot észlelsz, ami nem a fenti kategóriákba tartozik, írj róla!
+Ha bármi más furcsaságot észlelsz, ami nem a fenti kategóriákba tartozik, vagy van bármi ötleted írj róla!
 
 ## Jelenleg ezeken dolgozom
 
