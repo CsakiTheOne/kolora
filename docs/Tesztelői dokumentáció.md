@@ -56,11 +56,12 @@ Előfordulhatnak az oldalon hibák, amiket nem sikerült pontosan megfejtenem. H
 
 Ha bármi más furcsaságot észlelsz, ami nem a fenti kategóriákba tartozik, vagy van bármi ötleted írj róla!
 
-## Jelenleg ezeken dolgozom
+## Jelenleg ezeken dolgozom, ezek vannak tervben
 
 - [ ] Anoním megosztás
 - [ ] Mű elutasítás indoklás
 - [ ] Elutasítás és elfogadás több emberen múljon (2-3 ember minimum)
 - [ ] Szabályok a megosztható művekkel kapcsolatban
 - [ ] Szöveg formázás az írott mű típusoknál
+- [ ] Felhasználó és mű jelentése
 - [x] Profil bio-kban XSS védelem
