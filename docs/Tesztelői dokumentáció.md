@@ -49,3 +49,12 @@ A művek szerkesztője egy új funkció, ami nem a legegyszerűbb. Próbálgasd,
 ### Egyebek
 
 Ha bármi más furcsaságot észlelsz, ami nem a fenti kategóriákba tartozik, írj róla!
+
+## Jelenleg ezeken dolgozom
+
+- [ ] Anoním megosztás
+- [ ] Mű elutasítás indoklás
+- [ ] Elutasítás és elfogadás több emberen múljon (2-3 ember minimum)
+- [ ] Szabályok a megosztható művekkel kapcsolatban
+- [ ] Szöveg formázás az írott mű típusoknál
+- [x] Profil bio-kban XSS védelem
