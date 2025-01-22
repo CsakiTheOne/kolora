@@ -59,9 +59,9 @@ Ha bármi más furcsaságot észlelsz, ami nem a fenti kategóriákba tartozik, 
 ## Jelenleg ezeken dolgozom, ezek vannak tervben
 
 - Hibák
-  - [ ] /work oldalon mindig látszik a leírás megtekintó info gomb. Még akkor is ha nincs leírás.
-  - [ ] /work oldalon a megosztás gomb nem működik helyesen
   - [ ] Írott műveknél szigorú markdown sortörés van érvényben
+  - [x] /work oldalon mindig látszik a leírás megtekintó info gomb. Még akkor is ha nincs leírás.
+  - [x] /work oldalon a megosztás gomb nem működik helyesen
   - [x] Új művek mentése mindig új művet hoz létre
 - Funkciók
   - [ ] Anoním megosztás

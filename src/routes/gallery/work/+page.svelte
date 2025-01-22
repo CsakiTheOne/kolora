@@ -11,6 +11,7 @@
     import SmallHeader from "../../../components/SmallHeader.svelte";
     import SvelteMarkdown from "svelte-markdown";
     import MarkdownBlockedHtml from "../../../components/markdown-renderers/MarkdownBlockedHtml.svelte";
+    import MarkdownLink from "../../../components/markdown-renderers/MarkdownLink.svelte";
 
     let work: Work | null = $state(null);
     let authorName: string | null = $state(null);
@@ -50,31 +51,29 @@
     </p>
     <div class="title-row">
         <h2 style="flex: 1;">{work?.title}</h2>
-        <span
-            class="mdi mdi-information"
-            onclick={() => {
-                alert(work?.description);
-            }}
-            onkeypress={(e) => {
-                if (e.key === "Enter") {
+        {#if work?.description}
+            <span
+                class="mdi mdi-information"
+                onclick={() => {
                     alert(work?.description);
-                }
-            }}
-            tabindex="0"
-            role="button"
-        ></span>
+                }}
+                onkeypress={(e) => {
+                    if (e.key === "Enter") {
+                        alert(work?.description);
+                    }
+                }}
+                tabindex="0"
+                role="button"
+            ></span>
+        {/if}
         <span
             class="mdi mdi-share-variant"
             onclick={() => {
-                navigator.share({
-                    url: window.location.href + "?id=" + work?.id,
-                });
+                navigator.share({ url: window.location.href });
             }}
             onkeypress={(e) => {
                 if (e.key === "Enter") {
-                    navigator.share({
-                        url: window.location.href + "?id=" + work?.id,
-                    });
+                    navigator.share({ url: window.location.href });
                 }
             }}
             tabindex="0"
@@ -93,7 +92,7 @@
     {:else}
         <SvelteMarkdown
             source={work?.content}
-            renderers={{ html: MarkdownBlockedHtml }}
+            renderers={{ link: MarkdownLink, html: MarkdownBlockedHtml }}
         />
     {/if}
 </main>
