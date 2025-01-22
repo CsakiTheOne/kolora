@@ -65,15 +65,14 @@ const firestore = {
         set: (id: string, data: object): Promise<void> => {
             return setDoc(doc(db, "works", id), data, { merge: true });
         },
-        save: (work: Work, authorId: string): Promise<void> => {
+        save: (work: Work, authorId: string, onIdReceived: (id: string) => void = () => { }): Promise<void> => {
             if (work.id) {
                 const workRef = doc(db, "works", work.id);
                 return setDoc(workRef, { ...work, authorId }, { merge: true });
             } else {
                 return addDoc(collection(db, "works"), { ...work, authorId })
                     .then((docRef) => {
-                        work.id = docRef.id;
-                        return firestore.works.save(work, authorId);
+                        onIdReceived(docRef.id);
                     });
             }
         },
