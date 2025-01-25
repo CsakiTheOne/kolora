@@ -69,10 +69,6 @@
             .save(
                 { ...work, dateUploaded: new Date().toLocaleDateString("hu") },
                 currentUserUid,
-                (newId) => {
-                    work = { ...work, id: newId };
-                    firestore.works.set(newId, work);
-                },
             )
             .then(() => {
                 alert(work.id ? "Mű mentve!" : "Új mű mentve!");

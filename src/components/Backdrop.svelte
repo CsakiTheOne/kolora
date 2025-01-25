@@ -29,7 +29,7 @@
         bottom: 0;
         background: rgba(0, 0, 0, 0.2);
         z-index: 100 !important;
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(1px);
     }
 
     .backdrop-content {

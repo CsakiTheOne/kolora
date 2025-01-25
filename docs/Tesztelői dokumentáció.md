@@ -51,6 +51,7 @@ A művek szerkesztője egy új funkció, ami nem a legegyszerűbb. Próbálgasd,
 Előfordulhatnak az oldalon hibák, amiket nem sikerült pontosan megfejtenem. Hatalmas segítség, ha az itt felsorolt hibákkal kapcsolatban tudsz valami infót adni.
 
 - [ ] Az oldal néha elfelejti a beállított felhasználónevet és visszaállítja az alapértelmezettre.
+- [x] Új művek mentése mindig új művet hoz létre
 
 ### Egyebek
 
@@ -60,9 +61,6 @@ Ha bármi más furcsaságot észlelsz, ami nem a fenti kategóriákba tartozik, 
 
 - Hibák
   - [ ] Írott műveknél szigorú markdown sortörés van érvényben
-  - [x] /work oldalon mindig látszik a leírás megtekintó info gomb. Még akkor is ha nincs leírás.
-  - [x] /work oldalon a megosztás gomb nem működik helyesen
-  - [x] Új művek mentése mindig új művet hoz létre
 - Funkciók
   - [ ] Anoním megosztás
   - [ ] Mű elutasítás indoklás
