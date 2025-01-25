@@ -43,7 +43,6 @@ const firestore = {
                 }
             }).catch((error) => {
                 console.log("Error setting name if not exists: ", error);
-                return firestore.users.set(id, { username: name });
             });
         },
     },
