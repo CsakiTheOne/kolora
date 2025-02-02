@@ -21,6 +21,12 @@
         setInterval(() => {
             const now = new Date();
             const timeLeft = slamRegistrationDeadline - now;
+
+            if (timeLeft < 0) {
+                slamRegistrationCountdown = "A jelentkezési határidő lejárt.";
+                return;
+            }
+
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor(
                 (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
@@ -126,9 +132,25 @@
                 </a>
             </p>
             <p>
-                <a href="https://forms.gle/6UZdovqjEf1L7EHS8" target="_blank">
-                    <button class="btn">Jelentkezés</button>
-                </a>
+                <button
+                    class="btn"
+                    disabled={slamRegistrationCountdown ===
+                        "A jelentkezési határidő lejárt."}
+                    onclick={() => {
+                        if (
+                            slamRegistrationCountdown ===
+                            "A jelentkezési határidő lejárt."
+                        ) {
+                            return;
+                        }
+                        window.open(
+                            "https://forms.gle/6UZdovqjEf1L7EHS8",
+                            "_blank",
+                        );
+                    }}
+                >
+                    Jelentkezés
+                </button>
                 {slamRegistrationCountdown}
             </p>
 
