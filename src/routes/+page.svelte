@@ -12,6 +12,7 @@
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
     import { onMount } from "svelte";
 
+    const enableHeroSection = false;
     const slamRegistrationDeadline = new Date("2025-02-14T16:00:00");
 
     let slamRegistrationCountdown = $state("");
@@ -38,65 +39,67 @@
 </script>
 
 <div class="page-container">
-    <div class="container large-header">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path
-                fill="#fff"
-                d="M0 0C16 0 26 10 37 10 48 10 59 3 70 3s23 3 30 7v90H0V0Z"
-            />
-        </svg>
-        <div>
-            <div class="adaptive-col-row">
-                <p>Művészet?</p>
-                <p>Kultúra?</p>
-                <p>Székesfehérvár?</p>
-            </div>
-            <a href="/">
-                <h1 id="kolora-title">kolora!</h1>
-            </a>
-            <div class="adaptive-col-row">
-                <p
-                    class="link"
-                    onclick={() =>
+    {#if enableHeroSection}
+        <div class="container large-header">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path
+                    fill="#fff"
+                    d="M0 0C16 0 26 10 37 10 48 10 59 3 70 3s23 3 30 7v90H0V0Z"
+                />
+            </svg>
+            <div>
+                <div class="adaptive-col-row">
+                    <p>Művészet?</p>
+                    <p>Kultúra?</p>
+                    <p>Székesfehérvár?</p>
+                </div>
+                <a href="/">
+                    <h1 id="kolora-title">kolora!</h1>
+                </a>
+                <div class="adaptive-col-row">
+                    <p
+                        class="link"
+                        onclick={() =>
+                            document
+                                .getElementById("about")
+                                ?.scrollIntoView({ behavior: "smooth" })}
+                    >
+                        <span class="mdi mdi-information"></span>
+                        Rólunk
+                    </p>
+                    <p>
+                        <a href="/timeline">
+                            <span class="mdi mdi-timeline"></span>
+                            Idővonal
+                        </a>
+                    </p>
+                    <p>
+                        <a href="/codes">
+                            <span class="mdi mdi-form-textbox-password"></span>
+                            Kódok
+                        </a>
+                    </p>
+                    <p>
+                        <a href="/contacts">
+                            <span class="mdi mdi-at"></span>
+                            Elérhetőségek
+                        </a>
+                    </p>
+                </div>
+                <button
+                    class="splash-bottom-notification"
+                    onclick={() => {
                         document
-                            .getElementById("about")
-                            ?.scrollIntoView({ behavior: "smooth" })}
+                            ?.getElementById("homepage")
+                            ?.scrollIntoView({ behavior: "smooth" });
+                    }}
                 >
-                    <span class="mdi mdi-information"></span>
-                    Rólunk
-                </p>
-                <p>
-                    <a href="/timeline">
-                        <span class="mdi mdi-timeline"></span>
-                        Idővonal
-                    </a>
-                </p>
-                <p>
-                    <a href="/codes">
-                        <span class="mdi mdi-form-textbox-password"></span>
-                        Kódok
-                    </a>
-                </p>
-                <p>
-                    <a href="/contacts">
-                        <span class="mdi mdi-at"></span>
-                        Elérhetőségek
-                    </a>
-                </p>
+                    <span class="mdi mdi-chevron-double-down"></span><br />
+                    Slam poetry verseny + open mic
+                </button>
             </div>
-            <button
-                class="splash-bottom-notification"
-                onclick={() => {
-                    document
-                        ?.getElementById("homepage")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                }}
-            >
-                <span class="mdi mdi-chevron-double-down"></span><br />
-                Slam poetry verseny + open mic
-            </button>
         </div>
-    </div>
+    {/if}
     <div class="container">
         <Header selectedTab="Főoldal" />
         <main id="homepage">
