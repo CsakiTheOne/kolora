@@ -12,6 +12,7 @@
     import SvelteMarkdown from "svelte-markdown";
     import MarkdownBlockedHtml from "../../../components/markdown-renderers/MarkdownBlockedHtml.svelte";
     import MarkdownLink from "../../../components/markdown-renderers/MarkdownLink.svelte";
+    import MarkdownLinebreakParagraph from "../../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
 
     let work: Work | null = $state(null);
     let authorName: string | null = $state(null);
@@ -92,7 +93,7 @@
     {:else}
         <SvelteMarkdown
             source={work?.content}
-            renderers={{ link: MarkdownLink, html: MarkdownBlockedHtml }}
+            renderers={{ link: MarkdownLink, html: MarkdownBlockedHtml, paragraph: MarkdownLinebreakParagraph }}
         />
     {/if}
 </main>

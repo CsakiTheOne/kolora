@@ -60,7 +60,7 @@ Ha bármi más furcsaságot észlelsz, ami nem a fenti kategóriákba tartozik, 
 ## Jelenleg ezeken dolgozom, ezek vannak tervben
 
 - Hibák
-  - [ ] Írott műveknél szigorú markdown sortörés van érvényben
+  - [x] Írott műveknél szigorú markdown sortörés van érvényben
 - Funkciók
   - [ ] Anoním megosztás
   - [ ] Mű elutasítás indoklás
