@@ -13,35 +13,6 @@
     import { onMount } from "svelte";
 
     const enableHeroSection = false;
-    const slamRegistrationDeadline = new Date("2025-02-14T16:00:00");
-
-    let slamRegistrationCountdown = $state("");
-
-    onMount(() => {
-        setInterval(() => {
-            const now = new Date();
-            const timeLeft = slamRegistrationDeadline - now;
-
-            if (timeLeft < 0) {
-                slamRegistrationCountdown = "A jelentkezési határidő lejárt.";
-                return;
-            }
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(
-                (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-            );
-            const minutes = Math.floor(
-                (timeLeft % (1000 * 60 * 60)) / (1000 * 60),
-            )
-                .toString()
-                .padStart(2, "0");
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000)
-                .toString()
-                .padStart(2, "0");
-            slamRegistrationCountdown = `határidő: ${days > 0 ? `${days} nap ` : ""} ${hours}:${minutes}:${seconds}`;
-        }, 1000);
-    });
 </script>
 
 <div class="page-container">
@@ -92,7 +63,7 @@
                         </a>
                     </p>
                 </div>
-                <button
+                <!--button
                     class="splash-bottom-notification"
                     onclick={() => {
                         document
@@ -102,58 +73,13 @@
                 >
                     <span class="mdi mdi-chevron-double-down"></span><br />
                     Slam poetry verseny + open mic
-                </button>
+                </button-->
             </div>
         </div>
     {/if}
     <div class="container">
         <Header selectedTab="Főoldal" />
         <main id="homepage">
-            <h2>Slam poetry verseny + open mic + after</h2>
-            <p>
-                Idő: Február 15. (Szombat)<br />
-                Helyszín:
-                <a href="https://facebook.com/nyolcasmuhely" target="_blank"
-                    >Nyolcas Műhely</a
-                ><br />
-            </p>
-            <p>
-                Az eseményig slam poetry workshopokkal várunk titeket a <a
-                    href="https://www.facebook.com/museumcafeszekesfehervar"
-                    target="_blank">Museum Café</a
-                >-ban.
-            </p>
-            <p>
-                További infók az eseményről és a workshopokról a <a
-                    href="https://www.facebook.com/groups/1307732380629023"
-                    target="_blank"
-                >
-                    fehérvári író-költő-slammerek Facebook csoportban
-                </a>
-            </p>
-            <p>
-                <button
-                    class="btn"
-                    disabled={slamRegistrationCountdown ===
-                        "A jelentkezési határidő lejárt."}
-                    onclick={() => {
-                        if (
-                            slamRegistrationCountdown ===
-                            "A jelentkezési határidő lejárt."
-                        ) {
-                            return;
-                        }
-                        window.open(
-                            "https://forms.gle/6UZdovqjEf1L7EHS8",
-                            "_blank",
-                        );
-                    }}
-                >
-                    Jelentkezés
-                </button>
-                {slamRegistrationCountdown}
-            </p>
-
             <h2 id="about">Rólunk</h2>
             <img id="group-photo" src={imgKoloraGroupPhoto} alt="" />
             <div class="adaptive-col-row" style="align-items: start;">
