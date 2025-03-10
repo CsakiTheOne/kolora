@@ -3,6 +3,7 @@ import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 import Work from "$lib/model/Work";
 import KoloraEvent from "$lib/model/KoloraEvent";
+import POI from "$lib/model/POI";
 
 const db = initializeFirebase().firestore;
 
@@ -45,6 +46,49 @@ const firestore = {
                 console.log("Error setting name if not exists: ", error);
             });
         },
+    },
+    pois: {
+        get: (id: string): Promise<POI> => {
+            return getDoc(doc(db, "pois", id))
+                .then((doc) => {
+                    if (!doc.exists()) {
+                        console.error("No such POI: ", id);
+                        return Promise.reject("No such POI: " + id);
+                    }
+                    return { ...new POI(), ...doc.data(), id: doc.id };
+                })
+                .catch((error) => {
+                    console.error("Error getting POI: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        getAll: (): Promise<POI[]> => {
+            return getDocs(collection(db, "pois"))
+                .then((querySnapshot) => {
+                    const pois: POI[] = [];
+                    querySnapshot.forEach((doc) => {
+                        pois.push({ ...new POI(), ...doc.data(), id: doc.id });
+                    });
+                    return pois;
+                })
+                .catch((error) => {
+                    console.error("Error getting POIs: ", error);
+                    return Promise.reject(error);
+                }
+                );
+        },
+        set: (id: string, data: POI): Promise<void> => {
+            return setDoc(doc(db, "pois", id), data, { merge: true });
+        },
+        add: (data: POI): Promise<string> => {
+            return addDoc(collection(db, "pois"), {...data})
+                .then((docRef) => {
+                    return docRef.id;
+                });
+        },
+        delete: (id: string): Promise<void> => {
+            return deleteDoc(doc(db, "pois", id));
+        }
     },
     works: {
         get: (id: string): Promise<Work> => {
