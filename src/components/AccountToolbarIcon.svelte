@@ -108,15 +108,6 @@
                         <span class="mdi mdi-plus"></span>
                         Új alkotás
                     </button>
-                    <button
-                        onclick={() => {
-                            isOpen = false;
-                            window.location.href = "/gallery";
-                        }}
-                    >
-                        <span class="mdi mdi-image-multiple"></span>
-                        Galéria
-                    </button>
                     {#if koloraUser.roles.includes("admin") || koloraUser.roles.includes("kolora_member")}
                         <button
                             onclick={() => {
