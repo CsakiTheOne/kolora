@@ -151,6 +151,11 @@ main>* {
     transition: all .1s ease-out;
 }
 
+.btn:disabled, .btn:hover:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
 .text-btn {
     display: inline-block;
     appearance: none;

@@ -36,6 +36,15 @@
         }
     }
 
+    /*function updateSelectedPlace() {
+        if (!selectedPlaceId || !selectedPlace) {
+            return;
+        }
+        firestore.pois
+            .set(selectedPlaceId, selectedPlace)
+            .then(() => getTabData());
+    }*/
+
     onMount(() => {
         const auth = initializeFirebase().auth;
         let userListener: (() => void) | null = null;
@@ -73,142 +82,184 @@
         getTabData();
         selectedTab;
     });
-
-    $effect(() => {
-        if (!selectedPlaceId || !selectedPlace) return;
-        firestore.pois.set(selectedPlaceId, selectedPlace);
-    });
 </script>
 
 <SmallHeader currentPage="Dashboard" />
-<main>
-    <div class="tabs-row">
+<div class="dashboard">
+    <nav>
         <button
             class={`btn ${selectedTab !== "places" && "text-btn"}`}
             onclick={() => (selectedTab = "places")}
         >
+            <span class="mdi mdi-map-marker"></span>
             Helyek
         </button>
-    </div>
-    <div class="tabs-row">
-        {#each places as place}
-            <button
-                class={`btn ${selectedPlaceId !== place.id && "text-btn"}`}
-                onclick={() => (selectedPlaceId = place.id)}
+        {#if selectedTab === "places"}
+            <select
+                class="outlined-input"
+                value={selectedPlaceId}
+                oninput={(e) => {
+                    selectedPlaceId = e.target?.value;
+                }}
             >
-                {place.name.length > 0 ? place.name : "Névtelen"}
+                {#each places as place}
+                    <option value={place.id}>
+                        {place.name.length > 0 ? place.name : "Névtelen"}
+                    </option>
+                {/each}
+            </select>
+            <button
+                class="btn text-btn"
+                onclick={() => {
+                    firestore.pois.add(new POI()).then((newPlaceId) => {
+                        getTabData();
+                        selectedPlaceId = newPlaceId;
+                    });
+                }}
+            >
+                <span class="mdi mdi-plus"></span>
+                Új hely hozzáadása
             </button>
-        {/each}
-        <button
-            class={`btn ${selectedPlaceId !== null && "text-btn"}`}
-            onclick={() => {
-                firestore.pois.add(new POI()).then((newPlaceId) => {
-                    getTabData();
-                });
-            }}
-        >
-            <span class="mdi mdi-plus"></span>
-        </button>
-    </div>
-    {#if selectedTab === "places" && selectedPlaceId && selectedPlace}
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Név"
-            value={selectedPlace.name}
-            oninput={(e) => {
-                firestore.pois
-                    .set(selectedPlaceId!, {
-                        ...selectedPlace,
-                        name: e.target?.value,
-                    })
-                    .then(() => getTabData());
-            }}
-        />
-
-        <textarea
-            class="outlined-input"
-            style="resize: none;"
-            placeholder="Leírás"
-            value={selectedPlace.description}
-            oninput={(e) => {
-                firestore.pois.set(selectedPlaceId!, {
-                    ...selectedPlace,
-                    description: e.target?.value,
-                });
-            }}
-        ></textarea>
-
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Pozíció"
-            value={`${selectedPlace.latitude}, ${selectedPlace.longitude}`}
-            oninput={(e) => {
-                firestore.pois
-                    .set(selectedPlaceId!, {
-                        ...selectedPlace,
-                        latitude: parseFloat(e.target?.value.split(",")[0]),
-                        longitude: parseFloat(e.target?.value.split(",")[1]),
-                    })
-                    .then(() => getTabData());
-            }}
-        />
-
-        <a
-            href="https://www.google.com/maps/search/?api=1&query={selectedPlace.latitude},{selectedPlace.longitude}"
-            target="_blank"
-        >
-            <button class="btn" style="width: 100%;">
-                <span class="mdi mdi-map-marker"></span>
-                Megnyitás Google Térképen
-            </button>
-        </a>
-
-        <div>
+        {/if}
+    </nav>
+    <main>
+        {#if selectedTab === "places" && selectedPlaceId && selectedPlace}
             <input
-                type="checkbox"
-                name="allowPosting"
-                checked={selectedPlace.allowPosting}
+                type="text"
+                class="outlined-input"
+                placeholder="Név"
+                value={selectedPlace.name}
+                oninput={(e) => {
+                    firestore.pois
+                        .set(selectedPlaceId!, {
+                            ...selectedPlace,
+                            name: e.target?.value,
+                        })
+                        .then(() => getTabData());
+                }}
+            />
+
+            <textarea
+                class="outlined-input"
+                style="resize: none;"
+                placeholder="Leírás"
+                value={selectedPlace.description}
+                onchange={(e) => {
+                    firestore.pois.set(selectedPlaceId!, {
+                        ...selectedPlace,
+                        description: e.target?.value,
+                    });
+                }}
+            ></textarea>
+
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Google Térkép link"
+                value={selectedPlace.googleMapsLink}
                 oninput={(e) => {
                     firestore.pois.set(selectedPlaceId!, {
                         ...selectedPlace,
-                        allowPosting: e.target?.checked,
+                        googleMapsLink: e.target?.value,
                     });
                 }}
             />
-            <label for="allowPosting">Bejegyzések engedélyezése</label>
-        </div>
 
-        <button
-            class="btn"
-            onclick={() => {
-                const res = prompt(
-                    "Biztos törölni szeretnéd ezt a helyet? Ha igen, írd be a hely nevét!",
-                );
-                if (res === selectedPlace?.name) {
-                    firestore.pois.delete(selectedPlaceId!).then(() => {
-                        getTabData();
-                    });
-                }
-            }}
-        >
-            <span class="mdi mdi-delete"></span>
-            Törlés
-        </button>
-    {/if}
-</main>
-<Footer />
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Pozíció"
+                value={`${selectedPlace.latitude}, ${selectedPlace.longitude}`}
+                oninput={(e) => {
+                    firestore.pois
+                        .set(selectedPlaceId!, {
+                            ...selectedPlace,
+                            latitude: parseFloat(e.target?.value.split(",")[0]),
+                            longitude: parseFloat(
+                                e.target?.value.split(",")[1],
+                            ),
+                        })
+                        .then(() => getTabData());
+                }}
+            />
+
+            <div>
+                <input
+                    type="checkbox"
+                    name="allowPosting"
+                    checked={selectedPlace.allowPosting}
+                    oninput={(e) => {
+                        firestore.pois.set(selectedPlaceId!, {
+                            ...selectedPlace,
+                            allowPosting: e.target?.checked,
+                        });
+                    }}
+                />
+                <label for="allowPosting">Bejegyzések engedélyezése</label>
+            </div>
+
+            <a
+                href={`/poi?id=${selectedPlaceId}&ignoreLocation=1`}
+                target="_blank"
+            >
+                <button class="btn" style="width: 100%;">
+                    <span class="mdi mdi-open-in-new"></span>
+                    Megnyitás új lapon
+                </button>
+            </a>
+
+            <button
+                class="btn"
+                onclick={() => {
+                    navigator.clipboard.writeText(
+                        `${window.location.origin}/poi?id=${selectedPlaceId}`,
+                    );
+                }}
+            >
+                <span class="mdi mdi-content-copy"></span>
+                Link másolása NFC íráshoz
+            </button>
+
+            <button
+                class="btn"
+                onclick={() => {
+                    const res = prompt(
+                        "Biztos törölni szeretnéd ezt a helyet? Ha igen, írd be a hely nevét!",
+                    );
+                    if (res === selectedPlace?.name) {
+                        firestore.pois.delete(selectedPlaceId!).then(() => {
+                            getTabData();
+                        });
+                    }
+                }}
+            >
+                <span class="mdi mdi-delete"></span>
+                Törlés
+            </button>
+        {/if}
+    </main>
+</div>
 
 <style>
-    .tabs-row {
+    .dashboard {
         display: flex;
-        gap: var(--spacing);
+        flex-direction: row;
         flex-wrap: nowrap;
-        min-width: 100%;
-        overflow-x: auto;
-        padding: calc(var(--spacing) / 2);
+        flex-grow: 1;
+        align-items: center;
+    }
+
+    .dashboard > nav {
+        align-self: stretch;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing);
+        padding: var(--spacing);
         background-color: var(--secondary-color);
-        border-radius: var(--corner-radius);
+    }
+
+    .dashboard > main {
+        flex-grow: 1;
     }
 </style>

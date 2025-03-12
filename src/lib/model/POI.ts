@@ -6,6 +6,7 @@ export default class POI {
     id: string = '';
     name: string = '';
     description: string = '';
+    googleMapsLink: string = '';
     latitude: number = 0;
     longitude: number = 0;
     allowPosting: boolean = false;

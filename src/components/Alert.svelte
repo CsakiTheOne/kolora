@@ -4,11 +4,12 @@
         title = "",
         children,
         background = "var(--primary-variant-color)",
+        style = "",
         ...rest
     } = $props();
 </script>
 
-<div class="alert" style={`background: ${background}`} {...rest}>
+<div class="alert" style={`background: ${background}; ${style}`} {...rest}>
     {#if title}
         <p>
             <span class="mdi mdi-{icon}"></span>
