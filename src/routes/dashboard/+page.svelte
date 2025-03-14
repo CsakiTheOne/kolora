@@ -10,6 +10,7 @@
     import POI from "$lib/model/POI";
 
     let koloraUser = $state(new KoloraUser());
+    let loading = $state(true);
     let selectedTab = $state("places");
     let places: POI[] = $state([]);
     let selectedPlaceId: string | null = $state(null);
@@ -19,6 +20,7 @@
 
     function getTabData() {
         if (selectedTab === "places") {
+            loading = true;
             firestore.pois.getAll().then((newItems) => {
                 places = newItems.sort((a, b) => {
                     if (a.name < b.name) {
@@ -32,6 +34,7 @@
                 if (places.length > 0 && !selectedPlace) {
                     selectedPlaceId = places[0].id;
                 }
+                loading = false;
             });
         }
     }
@@ -70,6 +73,7 @@
                     userListener();
                     userListener = null;
                 }
+                window.open("/", "_self");
             }
         });
 
@@ -97,6 +101,7 @@
         {#if selectedTab === "places"}
             <select
                 class="outlined-input"
+                disabled={loading}
                 value={selectedPlaceId}
                 oninput={(e) => {
                     selectedPlaceId = e.target?.value;
@@ -110,6 +115,7 @@
             </select>
             <button
                 class="btn text-btn"
+                disabled={loading}
                 onclick={() => {
                     firestore.pois.add(new POI()).then((newPlaceId) => {
                         getTabData();
@@ -126,6 +132,7 @@
         {#if selectedTab === "places" && selectedPlaceId && selectedPlace}
             <input
                 type="text"
+                disabled={loading}
                 class="outlined-input"
                 placeholder="Név"
                 value={selectedPlace.name}
@@ -140,6 +147,7 @@
             />
 
             <textarea
+                disabled={loading}
                 class="outlined-input"
                 style="resize: none;"
                 placeholder="Leírás"
@@ -154,6 +162,7 @@
 
             <input
                 type="text"
+                disabled={loading}
                 class="outlined-input"
                 placeholder="Google Térkép link"
                 value={selectedPlace.googleMapsLink}
@@ -167,10 +176,28 @@
 
             <input
                 type="text"
+                disabled={loading}
                 class="outlined-input"
                 placeholder="Pozíció"
-                value={`${selectedPlace.latitude}, ${selectedPlace.longitude}`}
+                value={`${selectedPlace.latitude},${selectedPlace.longitude}`}
                 oninput={(e) => {
+                    const newValue: string = e.target?.value;
+                    if (newValue.includes("google.com/maps/")) {
+                        const lat = parseFloat(
+                            newValue.split("@")[1].split(",")[0],
+                        );
+                        const lon = parseFloat(
+                            newValue.split("@")[1].split(",")[1],
+                        );
+                        firestore.pois
+                            .set(selectedPlaceId!, {
+                                ...selectedPlace,
+                                latitude: lat,
+                                longitude: lon,
+                            })
+                            .then(() => getTabData());
+                        return;
+                    }
                     firestore.pois
                         .set(selectedPlaceId!, {
                             ...selectedPlace,
@@ -186,6 +213,7 @@
             <div>
                 <input
                     type="checkbox"
+                    disabled={loading}
                     name="allowPosting"
                     checked={selectedPlace.allowPosting}
                     oninput={(e) => {

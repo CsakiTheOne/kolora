@@ -9,7 +9,6 @@
     import SmallHeader from "../../../components/SmallHeader.svelte";
     import ChooseYourOwnAdventure from "$lib/ChooseYourOwnAdventure.svelte";
     import Backdrop from "../../../components/Backdrop.svelte";
-    import type KoloraEvent from "$lib/model/KoloraEvent";
     import { json } from "@sveltejs/kit";
 
     let work: Work = $state(new Work());
@@ -20,7 +19,6 @@
         ),
     );
     let isSetupRequired = $state(false);
-    let events: KoloraEvent[] = $state([]);
     let isSidebarOpen = $state(true);
     let selection = $state({ start: 0, end: 0 });
 
@@ -50,10 +48,6 @@
             isSetupRequired = true;
         }
 
-        firestore.events.getAllLinkable().then((fetchedEvents) => {
-            events = fetchedEvents;
-        });
-
         window.onbeforeunload = () => {
             return "Az alkotásod mentetlen változásokat tartalmaz. Biztosan elhagyod az oldalt?";
         };
@@ -66,10 +60,7 @@
 
     function saveWork() {
         firestore.works
-            .save(
-                { ...work, dateUploaded: new Date().toLocaleDateString("hu") },
-                currentUserUid,
-            )
+            .save({ ...work }, currentUserUid)
             .then(() => {
                 alert(work.id ? "Mű mentve!" : "Új mű mentve!");
             })
@@ -102,32 +93,6 @@
                         </option>
                     {/each}
                 </select>
-                <label for="linkedEvent">Kapcsolódó esemény</label>
-                {#if events.length === 0}
-                    <p>
-                        Jelenleg nincs elérhető esemény. De ettől még nyugodtan
-                        megoszthatod velünk az alkotásod! :D
-                    </p>
-                {:else}
-                    <p>
-                        Ha a műved egy eseményhez kapcsolódik, válaszd ki az
-                        eseményt.
-                    </p>
-                    <select
-                        name="linkedEvent"
-                        value={work.eventId}
-                        onchange={(e) =>
-                            (work = { ...work, eventId: e.target.value })}
-                        class="outlined-input"
-                    >
-                        <option value="">Nincs kapcsolódó esemény</option>
-                        {#each events as event}
-                            <option value={event.id}>
-                                {event.title}
-                            </option>
-                        {/each}
-                    </select>
-                {/if}
                 <p>Később bármikor módosíthatod ezeket az adatokat.</p>
                 <a href="/profile/?id={currentUserUid}" style="width: 100%;">
                     <button class="text-btn" style="width: 100%;">

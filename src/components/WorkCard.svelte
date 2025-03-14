@@ -6,18 +6,11 @@
     const { work, ...rest } = $props();
 
     let authorName = $state("");
-    let eventTitle = $state("");
 
     onMount(() => {
         firestore.users.get(work.authorId).then((user) => {
             authorName = user.username;
         });
-
-        if (work.eventId) {
-            firestore.events.get(work.eventId).then((event) => {
-                eventTitle = event.title;
-            });
-        }
     });
 </script>
 
@@ -41,11 +34,6 @@
         {#if work.genre}
             <Badge>
                 {work.genre}
-            </Badge>
-        {/if}
-        {#if work.eventId}
-            <Badge>
-                {eventTitle}
             </Badge>
         {/if}
     </div>

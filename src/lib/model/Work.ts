@@ -1,5 +1,3 @@
-type WorkStatus = "draft" | "pending" | "published";
-
 export default class Work {
     id: string = "";
     authorId: string = "";
@@ -12,12 +10,6 @@ export default class Work {
     genre: string = "";
     content: string = "";
     dateCreated: string = "";
-    dateUploaded: string = "";
-    /**
-     * The event that this work is associated with.
-     */
-    eventId: string = "";
-    status: WorkStatus = "draft";
     tags: string[] = [];
 }
 
