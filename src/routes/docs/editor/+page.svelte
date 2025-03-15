@@ -5,10 +5,7 @@
 </script>
 
 <SmallHeader
-    path={[
-        { title: "Galéria", href: "/gallery" },
-        { title: "Dokumentáció", href: "/docs" },
-    ]}
+    path={[{ title: "Dokumentáció", href: "/docs" }]}
     currentPage="Szerkesztő használata"
 />
 <main>

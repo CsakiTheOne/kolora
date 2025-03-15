@@ -15,7 +15,7 @@
 </script>
 
 <div class="work-card" {...rest}>
-    <a href="/gallery/work/?id={work.id}">
+    <a href="/work/?id={work.id}">
         <h3>{work.title}</h3>
     </a>
     <p>

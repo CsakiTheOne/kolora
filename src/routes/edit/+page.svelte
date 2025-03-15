@@ -1,15 +1,12 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import Footer from "../../../components/Footer.svelte";
-    import Header from "../../../components/Header.svelte";
     import { initializeFirebase } from "$lib/firebase/firebase";
     import firestore from "$lib/firebase/firestore";
     import Work, { WORK_TYPES } from "$lib/model/Work";
     import GalleryUtils from "$lib/GalleryUtils";
-    import SmallHeader from "../../../components/SmallHeader.svelte";
+    import SmallHeader from "../../components/SmallHeader.svelte";
     import ChooseYourOwnAdventure from "$lib/ChooseYourOwnAdventure.svelte";
-    import Backdrop from "../../../components/Backdrop.svelte";
-    import { json } from "@sveltejs/kit";
+    import Backdrop from "../../components/Backdrop.svelte";
 
     let work: Work = $state(new Work());
     let currentUserUid = $state("");
@@ -114,7 +111,6 @@
     <div class="header-container">
         <SmallHeader
             path={[
-                { title: "Galéria", href: "/gallery" },
                 { title: "Profilom", href: `/profile/?id=${currentUserUid}` },
             ]}
             currentPage="Szerkesztő"
@@ -139,27 +135,12 @@
                     <button
                         class="btn"
                         onclick={() => {
-                            work.status = "draft";
                             saveWork();
                         }}
                         style="flex: 1"
                     >
                         <span class="mdi mdi-content-save"></span>
-                        Mentés piszkozatként
-                    </button>
-                    <button
-                        class="btn"
-                        onclick={() => {
-                            work.status = "pending";
-                            saveWork();
-                            alert(
-                                "Az alkotásod megjelenik a galériában, amint egy Kolora tag jóváhagyja.",
-                            );
-                        }}
-                        style="flex: 1"
-                    >
-                        <span class="mdi mdi-publish"></span>
-                        Mentés és beküldés
+                        Mentés
                     </button>
                 </div>
 
@@ -171,6 +152,21 @@
                     <span class="mdi mdi-cog"></span>
                     Alapbeállítások
                 </button>
+
+                <label for="workVisible">Láthatóság</label>
+                <select
+                    name="workVisible"
+                    value={work.visible.toString()}
+                    onchange={(e) =>
+                        (work = {
+                            ...work,
+                            visible: e.target.value === "true",
+                        })}
+                    class="outlined-input"
+                >
+                    <option value="false">Privát</option>
+                    <option value="true">Nyilvános</option>
+                </select>
 
                 <label for="workTitle">Mű címe</label>
                 <input

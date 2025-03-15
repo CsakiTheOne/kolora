@@ -79,15 +79,6 @@
                         <span class="mdi mdi-login"></span>
                         Bejelentkezés Google fiókkal
                     </button>
-                    <button
-                        onclick={() => {
-                            isOpen = false;
-                            window.location.href = "/gallery";
-                        }}
-                    >
-                        <span class="mdi mdi-image-multiple"></span>
-                        Galéria
-                    </button>
                 {/if}
                 {#if user && koloraUser}
                     <button
@@ -102,7 +93,7 @@
                     <button
                         onclick={() => {
                             isOpen = false;
-                            window.location.href = "/gallery/edit";
+                            window.location.href = "/edit";
                         }}
                     >
                         <span class="mdi mdi-plus"></span>

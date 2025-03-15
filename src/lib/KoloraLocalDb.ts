@@ -135,10 +135,6 @@ export default class KoloraLocalDb {
             url: "/404",
         },
         {
-            code: "jam250411",
-            url: "/gallery",
-        },
-        {
             code: "ny8lcas.sl24m",
             url: "https://youtu.be/-9d2Bm0v4dk",
         },

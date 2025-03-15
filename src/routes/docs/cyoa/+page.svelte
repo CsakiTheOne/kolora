@@ -5,10 +5,7 @@
 </script>
 
 <SmallHeader
-    path={[
-        { title: "Galéria", href: "/gallery" },
-        { title: "Dokumentáció", href: "/docs" },
-    ]}
+    path={[{ title: "Dokumentáció", href: "/docs" }]}
     currentPage="Choose your own adventure"
 />
 <main>
@@ -56,8 +53,8 @@
     <Alert title="Gyakorlás a tudás anyja">
         <p>
             A doksi olvasása közben ajánlott kipróbálni a tanultakat. Nyisd meg
-            a <a href="/gallery/edit" target="_blank">beépített szerkesztőt</a> vagy
-            a te preferált szöveg- vagy Markdown szerkesztődet. (Ha nem itt, az oldalon
+            a <a href="/edit" target="_blank">beépített szerkesztőt</a> vagy a te
+            preferált szöveg- vagy Markdown szerkesztődet. (Ha nem itt, az oldalon
             szeretnéd írni a műved, akkor a VSCode és Obsidian szerkesztőket ajánlom.)
         </p>
     </Alert>

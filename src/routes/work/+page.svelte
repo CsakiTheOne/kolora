@@ -1,18 +1,18 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import Footer from "../../../components/Footer.svelte";
-    import Header from "../../../components/Header.svelte";
+    import Footer from "../../components/Footer.svelte";
+    import Header from "../../components/Header.svelte";
     import { initializeFirebase } from "$lib/firebase/firebase";
     import Work from "$lib/model/Work";
-    import ChooseYourOwnAdventureDisplay from "../../../components/WorkDisplays/ChooseYourOwnAdventureDisplay.svelte";
+    import ChooseYourOwnAdventureDisplay from "../../components/WorkDisplays/ChooseYourOwnAdventureDisplay.svelte";
     import GalleryUtils from "$lib/GalleryUtils";
     import KoloraUser from "$lib/model/KoloraUser";
     import firestore from "$lib/firebase/firestore";
-    import SmallHeader from "../../../components/SmallHeader.svelte";
+    import SmallHeader from "../../components/SmallHeader.svelte";
     import SvelteMarkdown from "svelte-markdown";
-    import MarkdownBlockedHtml from "../../../components/markdown-renderers/MarkdownBlockedHtml.svelte";
-    import MarkdownLink from "../../../components/markdown-renderers/MarkdownLink.svelte";
-    import MarkdownLinebreakParagraph from "../../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
+    import MarkdownBlockedHtml from "../../components/markdown-renderers/MarkdownBlockedHtml.svelte";
+    import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
+    import MarkdownLinebreakParagraph from "../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
 
     let work: Work | null = $state(null);
     let authorName: string | null = $state(null);
@@ -40,10 +40,7 @@
 </script>
 
 <SmallHeader
-    path={[
-        { title: "Galéria", href: "/gallery" },
-        { title: authorName, href: `/profile/?id=${work?.authorId}` },
-    ]}
+    path={[{ title: authorName, href: `/profile/?id=${work?.authorId}` }]}
     currentPage={work?.title}
 />
 <main>
@@ -93,7 +90,11 @@
     {:else}
         <SvelteMarkdown
             source={work?.content}
-            renderers={{ link: MarkdownLink, html: MarkdownBlockedHtml, paragraph: MarkdownLinebreakParagraph }}
+            renderers={{
+                link: MarkdownLink,
+                html: MarkdownBlockedHtml,
+                paragraph: MarkdownLinebreakParagraph,
+            }}
         />
     {/if}
 </main>

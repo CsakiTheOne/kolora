@@ -3,10 +3,7 @@
     import SmallHeader from "../../components/SmallHeader.svelte";
 </script>
 
-<SmallHeader
-    path={[{ title: "Galéria", href: "/gallery" }]}
-    currentPage="Dokumentáció"
-/>
+<SmallHeader currentPage="Dokumentáció" />
 <main>
     <h2>Dokumentáció</h2>
     <p>

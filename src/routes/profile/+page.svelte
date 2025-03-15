@@ -24,7 +24,7 @@
     function updateWorks() {
         firestore.works.getAllByAuthor(koloraUser.id).then((newWorks) => {
             works = newWorks.filter(
-                (work) => work.status === "published" || isOwnerLoggedIn,
+                (work) => work.visible || isOwnerLoggedIn,
             );
         });
     }
@@ -56,10 +56,7 @@
     });
 </script>
 
-<SmallHeader
-    path={[{ title: "Galéria", href: "/gallery" }]}
-    currentPage="Művész profil"
-/>
+<SmallHeader currentPage="Művész profil" />
 <main>
     {#if isEditingBio}
         <input
@@ -138,7 +135,7 @@
                     <p
                         style="display: flex; justify-content: end; gap: var(--spacing); align-items: center;"
                     >
-                        {#if work.status === "published"}
+                        {#if work.visible}
                             <button
                                 class="text-btn"
                                 onclick={() => {
@@ -146,10 +143,11 @@
                                         "Biztosan visszavonod a mű publikálását?",
                                     ) &&
                                         firestore.works.set(work.id, {
-                                            status: "draft",
+                                            visible: false,
                                         });
                                     updateWorks();
                                 }}
+                                aria-label="Publikálás visszavonása"
                             >
                                 <span class="mdi mdi-eye-off"></span>
                             </button>
@@ -174,11 +172,12 @@
                                         });
                                 }
                             }}
+                            aria-label="Mű törlése"
                         >
                             <span class="mdi mdi-delete"></span>
                         </button>
-                        <a href={`/gallery/edit/?id=${work.id}`}>
-                            <button class="text-btn">
+                        <a href={`/edit/?id=${work.id}`} aria-label="Mű szerkesztése">
+                            <button class="text-btn" aria-label="Mű szerkesztése">
                                 <span class="mdi mdi-pencil"></span>
                             </button>
                         </a>
@@ -191,7 +190,7 @@
         <button
             class="btn"
             onclick={() => {
-                window.location.href = "/gallery/edit";
+                window.location.href = "/edit";
             }}
         >
             <span class="mdi mdi-plus"></span>

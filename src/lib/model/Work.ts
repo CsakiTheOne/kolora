@@ -10,6 +10,7 @@ export default class Work {
     genre: string = "";
     content: string = "";
     dateCreated: string = "";
+    visible: boolean = false;
     tags: string[] = [];
 }
 
