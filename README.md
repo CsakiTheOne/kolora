@@ -5,6 +5,9 @@
 - [ ] Tagok bemutatása (ha van ilyesmire igény és fixálódik, hogy ki kicsoda)
 - [ ] Consent dialógus (elvileg EU-ban kéne, de írtam egy cuki adatkezelési tájékoztatót, szóval csak nem lesz gond)
 
-## Költészet napi kalandozás
+## Költészet napi kincsvadászat 2
 
-Pályázat a WholesomeWare szervezésében. Elhalasztva határozatlan időre.
+- [ ] Poszt írás
+- [ ] Posztok megtekintése
+- [ ] Művek csatolása posztokhoz
+- [ ] Jogi dolgok (adatkezelési tájékoztató, stb.) frissítése

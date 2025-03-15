@@ -11,7 +11,9 @@
         <button
             class="btn"
             onclick={() => {
-                alert("");
+                alert(
+                    "Egy helyhez kötött üzenőfal, ahová bárki posztolhat és olvashat verseket, történeteket, vagy bármi egyéb gondolatot.",
+                );
             }}
         >
             <span class="mdi mdi-help-circle"></span>
