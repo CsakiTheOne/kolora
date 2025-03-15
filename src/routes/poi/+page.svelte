@@ -9,6 +9,8 @@
     import type { User } from "firebase/auth";
     import type KoloraUser from "$lib/model/KoloraUser";
     import { initializeFirebase } from "$lib/firebase/firebase";
+    import Post from "$lib/model/Post";
+    import { text } from "@sveltejs/kit";
 
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
@@ -21,7 +23,7 @@
     let user: User | null = $state(null);
     let koloraUser: KoloraUser | null = $state(null);
 
-    let postText = $state("");
+    let postDraft: Post = $state(new Post());
 
     onMount(() => {
         const params = new URLSearchParams(window.location.search);
@@ -30,7 +32,7 @@
         isNearby = ignoreLocation;
 
         if (!poiId) {
-            window.history.back();
+            window.open("/", "_self");
             return;
         }
 
@@ -38,12 +40,20 @@
             .get(poiId)
             .then((res) => {
                 if (!res) {
-                    window.history.back();
+                    window.open("/", "_self");
                     return;
                 }
 
                 poi = res;
 
+                isLoadingLocation = true;
+
+                if (ignoreLocation) {
+                    isNearby = true;
+                    isLoadingLocation = false;
+                    return;
+                }
+                
                 isLoadingLocation = true;
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
@@ -127,6 +137,12 @@
             </button>
         </a>
     {:else}
+        <a href={poi.googleMapsLink} target="_blank">
+            <button class="btn" style="width: 100%;">
+                <span class="mdi mdi-map-marker"></span>
+                Google Térkép megnyitása
+            </button>
+        </a>
         {#if poi.description}
             <Alert
                 icon="information"
@@ -141,21 +157,18 @@
                 />
             </Alert>
         {/if}
-        <a href={poi.googleMapsLink} target="_blank">
-            <button class="btn" style="width: 100%;">
-                <span class="mdi mdi-map-marker"></span>
-                Google Térkép megnyitása
-            </button>
-        </a>
         {#if poi.allowPosting}
             <div class="post-input-container">
                 <textarea
                     class="outlined-input"
                     style="resize: none;"
                     placeholder="Mi jár a fejedben?"
-                    value={postText}
+                    value={postDraft.content}
                     onchange={(e) => {
-                        postText = e.target?.value;
+                        postDraft = {
+                            ...postDraft,
+                            content: text(e.target?.value),
+                        };
                     }}
                 ></textarea>
                 <div class="post-input-actions">
@@ -173,13 +186,13 @@
                     </button>
                     <button
                         class="btn"
-                        disabled={!postText}
+                        disabled={!postDraft.content}
                         onclick={() => {
                             if (!koloraUser) {
                                 alert("Poszt küldéséhez be kell jelentkezned.");
                                 return;
                             }
-                            if (!postText) {
+                            if (!postDraft.content) {
                                 alert("Nem lehet üres a poszt szövege.");
                                 return;
                             }
