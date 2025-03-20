@@ -12,6 +12,8 @@
     import Post from "$lib/model/Post";
     import { text } from "@sveltejs/kit";
     import PostDisplay from "../../components/PostDisplay.svelte";
+    import Backdrop from "../../components/Backdrop.svelte";
+    import type Work from "$lib/model/Work";
 
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
@@ -23,11 +25,13 @@
 
     let user: User | null = $state(null);
     let koloraUser: KoloraUser | null = $state(null);
+    let publicWorks: Work[] = $state([]);
 
     let isLoadingPosts = $state(false);
     let posts: Post[] = $state([]);
 
     let postDraft: Post = $state(new Post());
+    let isWorkSelectorDialogOpen = $state(false);
 
     function loadPosts() {
         if (!poi) {
@@ -145,6 +149,57 @@
     });
 </script>
 
+{#if isWorkSelectorDialogOpen}
+    <Backdrop close={() => (isWorkSelectorDialogOpen = false)}>
+        <div class="dialog">
+            <h2>Mű csatolása</h2>
+            <p>Válassz egy művet, amit csatolni szeretnél a poszthoz.</p>
+            {#if publicWorks.length === 0}
+                <p>...</p>
+            {:else}
+                <select
+                    class="outlined-input"
+                    value={postDraft.attachmentWorkId}
+                    oninput={(e: any) => {
+                        postDraft = {
+                            ...postDraft,
+                            attachmentWorkId: e.target?.value,
+                        };
+                    }}
+                >
+                    <option value="">Válassz egy művet...</option>
+                    {#each publicWorks as work}
+                        <option value={work.id}>{work.title}</option>
+                    {/each}
+                </select>
+            {/if}
+            <div class="dialog-actions">
+                <button
+                    class="btn"
+                    onclick={() => {
+                        postDraft = {
+                            ...postDraft,
+                            attachmentWorkId: "",
+                        };
+                        isWorkSelectorDialogOpen = false;
+                    }}
+                >
+                    Mégse
+                </button>
+                <button
+                    class="btn"
+                    disabled={!postDraft.attachmentWorkId}
+                    onclick={() => {
+                        isWorkSelectorDialogOpen = false;
+                    }}
+                >
+                    Csatolás
+                </button>
+            </div>
+        </div>
+    </Backdrop>
+{/if}
+
 <PoiHeader {poi} />
 <main>
     {#if !poi}
@@ -175,6 +230,15 @@
                 Google Térkép megnyitása
             </button>
         </a>
+        {#if ignoreLocation}
+            <Alert icon="crosshairs-off" title="Pozíció figyelmen kívül hagyva">
+                <p>
+                    A pozíciód figyelmen kívül lett hagyva az oldal
+                    betöltésekor, így bárhonnan megtekintheted a posztokat. Ne
+                    oszd meg ennek az oldalnak a linkjét senkivel!
+                </p>
+            </Alert>
+        {/if}
         {#if poi.description}
             <Alert
                 icon="information"
@@ -196,7 +260,7 @@
                     style="resize: none;"
                     placeholder="Mi jár a fejedben?"
                     value={postDraft.content}
-                    oninput={(e) => {
+                    oninput={(e: any) => {
                         postDraft = {
                             ...postDraft,
                             content: e.target?.value,
@@ -204,6 +268,21 @@
                     }}
                     maxlength="500"
                 ></textarea>
+                {#if postDraft.attachmentWorkId}
+                    <p
+                        onclick={() => {
+                            window.open(
+                                `/work?id=${postDraft.attachmentWorkId}`,
+                                "_blank",
+                            );
+                        }}
+                        style="background: var(--secondary-color); color: var(--on-secondary-color); padding: calc(var(--spacing) / 2); border-radius: var(--corner-radius);"
+                    >
+                        {publicWorks.find(
+                            (w) => w.id === postDraft.attachmentWorkId,
+                        )?.title}
+                    </p>
+                {/if}
                 <div class="post-input-actions">
                     <button
                         class="btn"
@@ -216,8 +295,14 @@
                                 alert("Poszt írásához be kell jelentkezned.");
                                 return;
                             }
-                            alert("Mű csatolása még nem elérhető.");
-                            //TODO: Implement attachment
+                            firestore.works
+                                .getAllByAuthor(koloraUser.id)
+                                .then((works) => {
+                                    publicWorks = works.filter(
+                                        (work) => work.visible,
+                                    );
+                                });
+                            isWorkSelectorDialogOpen = true;
                         }}
                     >
                         <span class="mdi mdi-attachment"></span>
@@ -270,6 +355,28 @@
 <style>
     :global(body) {
         display: block;
+    }
+
+    .dialog {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing);
+        align-items: start;
+        background: var(--secondary-color);
+        color: var(--on-secondary-color);
+        padding: var(--spacing);
+        border-radius: var(--spacing);
+        width: 100%;
+        max-width: 400px;
+        margin: var(--spacing) auto;
+    }
+
+    .dialog-actions {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing);
+        justify-content: flex-end;
     }
 
     .post-input-container {
