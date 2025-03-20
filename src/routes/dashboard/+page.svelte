@@ -103,7 +103,7 @@
                 class="outlined-input"
                 disabled={loading}
                 value={selectedPlaceId}
-                oninput={(e) => {
+                oninput={(e: any) => {
                     selectedPlaceId = e.target?.value;
                 }}
             >
@@ -136,13 +136,23 @@
                 class="outlined-input"
                 placeholder="Név"
                 value={selectedPlace.name}
-                oninput={(e) => {
+                oninput={(e: any) => {
                     firestore.pois
                         .set(selectedPlaceId!, {
                             ...selectedPlace,
                             name: e.target?.value,
                         })
-                        .then(() => getTabData());
+                        .then(() => {
+                            places = places.map((p) => {
+                                if (p.id === selectedPlaceId) {
+                                    return {
+                                        ...p,
+                                        name: e.target?.value,
+                                    };
+                                }
+                                return p;
+                            });
+                        });
                 }}
             />
 
@@ -152,7 +162,7 @@
                 style="resize: none;"
                 placeholder="Leírás"
                 value={selectedPlace.description}
-                onchange={(e) => {
+                onchange={(e: any) => {
                     firestore.pois.set(selectedPlaceId!, {
                         ...selectedPlace,
                         description: e.target?.value,
@@ -166,7 +176,7 @@
                 class="outlined-input"
                 placeholder="Google Térkép link"
                 value={selectedPlace.googleMapsLink}
-                oninput={(e) => {
+                oninput={(e: any) => {
                     firestore.pois.set(selectedPlaceId!, {
                         ...selectedPlace,
                         googleMapsLink: e.target?.value,
@@ -180,7 +190,7 @@
                 class="outlined-input"
                 placeholder="Pozíció"
                 value={`${selectedPlace.latitude},${selectedPlace.longitude}`}
-                oninput={(e) => {
+                oninput={(e: any) => {
                     const newValue: string = e.target?.value;
                     if (newValue.includes("google.com/maps/")) {
                         const lat = parseFloat(
@@ -216,7 +226,7 @@
                     disabled={loading}
                     name="allowPosting"
                     checked={selectedPlace.allowPosting}
-                    oninput={(e) => {
+                    oninput={(e: any) => {
                         firestore.pois.set(selectedPlaceId!, {
                             ...selectedPlace,
                             allowPosting: e.target?.checked,
@@ -224,6 +234,24 @@
                     }}
                 />
                 <label for="allowPosting">Bejegyzések engedélyezése</label>
+            </div>
+
+            <div>
+                <input
+                    type="checkbox"
+                    disabled={loading}
+                    name="showSoonScreen"
+                    checked={selectedPlace.showSoonScreen}
+                    oninput={(e: any) => {
+                        firestore.pois.set(selectedPlaceId!, {
+                            ...selectedPlace,
+                            showSoonScreen: e.target?.checked,
+                        });
+                    }}
+                />
+                <label for="showSoonScreen">
+                    "Hamarosan" képernyő mutatása
+                </label>
             </div>
 
             <a

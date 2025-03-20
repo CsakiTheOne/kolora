@@ -4,5 +4,5 @@ export default class Post {
     authorId: string = "";
     content: string = "";
     attachmentWorkId: string = "";
-    createdAt: string = "";
+    createdAt: number = 0;
 }

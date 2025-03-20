@@ -10,4 +10,5 @@ export default class POI {
     latitude: number = 0;
     longitude: number = 0;
     allowPosting: boolean = false;
+    showSoonScreen: boolean = false;
 }

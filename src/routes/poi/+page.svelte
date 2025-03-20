@@ -6,11 +6,12 @@
     import SvelteMarkdown from "svelte-markdown";
     import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
     import PoiHeader from "../../components/poi/PoiHeader.svelte";
-    import type { User } from "firebase/auth";
+    import { reload, type User } from "firebase/auth";
     import type KoloraUser from "$lib/model/KoloraUser";
     import { initializeFirebase } from "$lib/firebase/firebase";
     import Post from "$lib/model/Post";
     import { text } from "@sveltejs/kit";
+    import PostDisplay from "../../components/PostDisplay.svelte";
 
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
@@ -23,7 +24,29 @@
     let user: User | null = $state(null);
     let koloraUser: KoloraUser | null = $state(null);
 
+    let isLoadingPosts = $state(false);
+    let posts: Post[] = $state([]);
+
     let postDraft: Post = $state(new Post());
+
+    function loadPosts() {
+        if (!poi) {
+            return;
+        }
+
+        isLoadingPosts = true;
+        firestore.posts
+            .getAllByPoi(poi.id)
+            .then((newPosts) => {
+                newPosts.sort((a, b) => b.createdAt - a.createdAt);
+                posts = newPosts;
+                isLoadingPosts = false;
+            })
+            .catch(() => {
+                isLoadingPosts = false;
+                alert("Nem sikerült betölteni a posztokat.");
+            });
+    }
 
     onMount(() => {
         const params = new URLSearchParams(window.location.search);
@@ -44,6 +67,11 @@
                     return;
                 }
 
+                if (res.showSoonScreen) {
+                    window.open(`/poi/soon`, "_self");
+                    return;
+                }
+
                 poi = res;
 
                 isLoadingLocation = true;
@@ -51,9 +79,10 @@
                 if (ignoreLocation) {
                     isNearby = true;
                     isLoadingLocation = false;
+                    loadPosts();
                     return;
                 }
-                
+
                 isLoadingLocation = true;
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
@@ -71,6 +100,9 @@
 
                         isNearby = ignoreLocation || distance < 0.005;
                         isLoadingLocation = false;
+                        if (isNearby) {
+                            loadPosts();
+                        }
                     },
                     () => {
                         isNearby = false;
@@ -164,21 +196,28 @@
                     style="resize: none;"
                     placeholder="Mi jár a fejedben?"
                     value={postDraft.content}
-                    onchange={(e) => {
+                    oninput={(e) => {
                         postDraft = {
                             ...postDraft,
-                            content: text(e.target?.value),
+                            content: e.target?.value,
                         };
                     }}
+                    maxlength="500"
                 ></textarea>
                 <div class="post-input-actions">
                     <button
                         class="btn"
                         onclick={() => {
+                            if (!poi) {
+                                alert("Nem sikerült betölteni a helyet.");
+                                return;
+                            }
                             if (!koloraUser) {
                                 alert("Poszt írásához be kell jelentkezned.");
                                 return;
                             }
+                            alert("Mű csatolása még nem elérhető.");
+                            //TODO: Implement attachment
                         }}
                     >
                         <span class="mdi mdi-attachment"></span>
@@ -188,6 +227,10 @@
                         class="btn"
                         disabled={!postDraft.content}
                         onclick={() => {
+                            if (!poi) {
+                                alert("Nem sikerült betölteni a helyet.");
+                                return;
+                            }
                             if (!koloraUser) {
                                 alert("Poszt küldéséhez be kell jelentkezned.");
                                 return;
@@ -196,6 +239,17 @@
                                 alert("Nem lehet üres a poszt szövege.");
                                 return;
                             }
+                            firestore.posts
+                                .add({
+                                    ...postDraft,
+                                    poiId: poi.id,
+                                    authorId: koloraUser.id,
+                                    createdAt: Date.now(),
+                                })
+                                .then(() => {
+                                    loadPosts();
+                                    postDraft = new Post();
+                                });
                         }}
                     >
                         <span class="mdi mdi-send"></span>
@@ -204,6 +258,12 @@
                 </div>
             </div>
         {/if}
+        {#if isLoadingPosts}
+            <p>Posztok betöltése...</p>
+        {/if}
+        {#each posts as post}
+            <PostDisplay {post} />
+        {/each}
     {/if}
 </main>
 

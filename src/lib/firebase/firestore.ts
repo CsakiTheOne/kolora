@@ -3,6 +3,7 @@ import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 import Work from "$lib/model/Work";
 import POI from "$lib/model/POI";
+import Post from "$lib/model/Post";
 
 const db = initializeFirebase().firestore;
 
@@ -80,7 +81,7 @@ const firestore = {
             return setDoc(doc(db, "pois", id), data, { merge: true });
         },
         add: (data: POI): Promise<string> => {
-            return addDoc(collection(db, "pois"), {...data})
+            return addDoc(collection(db, "pois"), { ...data })
                 .then((docRef) => {
                     return docRef.id;
                 });
@@ -90,7 +91,40 @@ const firestore = {
         }
     },
     posts: {
-        
+        getAllByAuthor: (authorId: string): Promise<Post[]> => {
+            return getDocs(query(collection(db, "posts"), where("authorId", "==", authorId)))
+                .then((querySnapshot) => {
+                    const posts: Post[] = [];
+                    querySnapshot.forEach((doc) => {
+                        posts.push({ ...new Post(), ...doc.data(), id: doc.id });
+                    });
+                    return posts;
+                })
+                .catch((error) => {
+                    console.error("Error getting posts: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        getAllByPoi: (poiId: string): Promise<Post[]> => {
+            return getDocs(query(collection(db, "posts"), where("poiId", "==", poiId)))
+                .then((querySnapshot) => {
+                    const posts: Post[] = [];
+                    querySnapshot.forEach((doc) => {
+                        posts.push({ ...new Post(), ...doc.data(), id: doc.id });
+                    });
+                    return posts;
+                })
+                .catch((error) => {
+                    console.error("Error getting posts: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        add: (post: Post): Promise<string> => {
+            return addDoc(collection(db, "posts"), { ...post })
+                .then((docRef) => {
+                    return docRef.id;
+                });
+        },
     },
     works: {
         get: (id: string): Promise<Work> => {
