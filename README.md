@@ -7,7 +7,7 @@
 
 ## Költészet napi kincsvadászat 2
 
-- [ ] Poszt írás
-- [ ] Posztok megtekintése
-- [ ] Művek csatolása posztokhoz
 - [ ] Jogi dolgok (adatkezelési tájékoztató, stb.) frissítése
+- [ ] Jelentés
+- [ ] Jelentések áttekintése
+- [ ] Felhasználók tiltása
