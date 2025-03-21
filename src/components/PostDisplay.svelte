@@ -66,7 +66,7 @@
     {#if post.attachmentWorkId && work && work.visible}
         <a class="work-link" href={`/work?id=${work!.id}`} target="_blank">
             <span class="mdi mdi-fountain-pen-tip"></span>
-            {work.title}
+            {work.title} - {work.dateCreated}
         </a>
     {/if}
     <div class="row">
