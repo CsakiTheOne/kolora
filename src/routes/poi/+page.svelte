@@ -15,6 +15,8 @@
     import Backdrop from "../../components/Backdrop.svelte";
     import type Work from "$lib/model/Work";
 
+    const POST_CONTENT_LENGTH_LIMIT = 1000;
+
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
 
@@ -30,7 +32,7 @@
     let isLoadingPosts = $state(false);
     let posts: Post[] = $state([]);
 
-    let postDraft: Post = $state(new Post());
+    let postDraft: Post = $state({ ...new Post() });
     let isWorkSelectorDialogOpen = $state(false);
 
     function loadPosts() {
@@ -253,21 +255,26 @@
                 />
             </Alert>
         {/if}
-        {#if poi.allowPosting}
+        {#if poi.allowPosting && koloraUser && !koloraUser.isBanned}
             <div class="post-input-container">
-                <textarea
-                    class="outlined-input"
-                    style="resize: none;"
-                    placeholder="Mi jár a fejedben?"
-                    value={postDraft.content}
-                    oninput={(e: any) => {
-                        postDraft = {
-                            ...postDraft,
-                            content: e.target?.value,
-                        };
-                    }}
-                    maxlength="500"
-                ></textarea>
+                <div>
+                    <textarea
+                        class="outlined-input"
+                        style="resize: none;"
+                        placeholder="Mi jár a fejedben?"
+                        value={postDraft.content}
+                        oninput={(e: any) => {
+                            postDraft = {
+                                ...postDraft,
+                                content: e.target?.value ?? "",
+                            };
+                        }}
+                        maxlength={POST_CONTENT_LENGTH_LIMIT}
+                    ></textarea>
+                    <p style="text-align: right; font-size: 0.7rem;">
+                        {postDraft.content.length}/{POST_CONTENT_LENGTH_LIMIT}
+                    </p>
+                </div>
                 {#if postDraft.attachmentWorkId}
                     <p
                         onclick={() => {

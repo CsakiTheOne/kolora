@@ -125,6 +125,9 @@ const firestore = {
                     return docRef.id;
                 });
         },
+        delete: (id: string): Promise<void> => {
+            return deleteDoc(doc(db, "posts", id));
+        },
     },
     works: {
         get: (id: string): Promise<Work> => {

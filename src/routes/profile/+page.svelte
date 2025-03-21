@@ -23,9 +23,7 @@
 
     function updateWorks() {
         firestore.works.getAllByAuthor(koloraUser.id).then((newWorks) => {
-            works = newWorks.filter(
-                (work) => work.visible || isOwnerLoggedIn,
-            );
+            works = newWorks.filter((work) => work.visible || isOwnerLoggedIn);
         });
     }
 
@@ -176,17 +174,25 @@
                         >
                             <span class="mdi mdi-delete"></span>
                         </button>
-                        <a href={`/edit/?id=${work.id}`} aria-label="Mű szerkesztése">
-                            <button class="text-btn" aria-label="Mű szerkesztése">
-                                <span class="mdi mdi-pencil"></span>
-                            </button>
-                        </a>
+                        {#if !koloraUser.isBanned}
+                            <a
+                                href={`/edit/?id=${work.id}`}
+                                aria-label="Mű szerkesztése"
+                            >
+                                <button
+                                    class="text-btn"
+                                    aria-label="Mű szerkesztése"
+                                >
+                                    <span class="mdi mdi-pencil"></span>
+                                </button>
+                            </a>
+                        {/if}
                     </p>
                 {/if}
             </div>
         {/each}
     {/if}
-    {#if isOwnerLoggedIn}
+    {#if isOwnerLoggedIn && !koloraUser.isBanned}
         <button
             class="btn"
             onclick={() => {

@@ -4,6 +4,7 @@ export default class KoloraUser {
     bio: string = '';
     favoriteMusicYoutubeUrl: string = '';
     roles: string[] = [];
+    isBanned: boolean = false;
 }
 
 const ROLES = {

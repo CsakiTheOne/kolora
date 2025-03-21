@@ -13,6 +13,7 @@
     import MarkdownBlockedHtml from "../../components/markdown-renderers/MarkdownBlockedHtml.svelte";
     import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
     import MarkdownLinebreakParagraph from "../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
+    import { getCurrentUser } from "$lib/firebase/auth";
 
     let work: Work | null = $state(null);
     let authorName: string | null = $state(null);
@@ -28,9 +29,16 @@
             .get(id)
             .then((fetchedWork) => {
                 work = fetchedWork;
+                if (getCurrentUser()?.uid !== work?.authorId) {
+                    window.open(`/profile?id=${work?.authorId}`, "_self");
+                    return Promise.reject("Not authorized");
+                }
                 return firestore.users.get(work.authorId);
             })
             .then((user: KoloraUser) => {
+                if (user.isBanned) {
+                    window.open(`/profile?id=${work?.authorId}`, "_self");
+                }
                 authorName = user.username;
             })
             .catch((err) => {
