@@ -26,7 +26,7 @@
 </script>
 
 <div class="post-card" {...rest}>
-    <div class="top-row">
+    <div class="row">
         <a
             href={`/profile/?id=${post.authorId}`}
             style="font-size: .8rem; text-decoration: none;"
@@ -69,6 +69,11 @@
             {work.title}
         </a>
     {/if}
+    <div class="row">
+        <p style="font-size: .7rem; color: var(--secondary-variant-color);">
+            {new Date(post.createdAt).toLocaleDateString("hu-HU")}
+        </p>
+    </div>
 </div>
 
 <style>
@@ -83,7 +88,7 @@
         user-select: none;
     }
 
-    .top-row {
+    .row {
         display: flex;
         justify-content: space-between;
         align-items: center;
