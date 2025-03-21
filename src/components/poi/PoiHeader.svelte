@@ -19,6 +19,9 @@
             <span class="mdi mdi-help-circle"></span>
             Mi ez?
         </button>
+        <a href={poi?.googleMapsLink} target="_blank" aria-label="Térkép">
+            <span class="mdi mdi-map-marker"></span>
+        </a>
         <span
             onclick={() => ThemeManager.toggleDarkLight()}
             class="mdi mdi-brightness-6"
@@ -59,9 +62,10 @@
         overflow: hidden;
     }
 
-    :global(.toolbar > span) {
+    :global(.toolbar span) {
         font-size: 1.3rem;
         cursor: pointer;
         padding: calc(var(--spacing) / 2);
+        color: var(--on-primary-color);
     }
 </style>

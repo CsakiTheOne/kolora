@@ -75,7 +75,7 @@
         </p>
         <div class="action-buttons">
             {#if isOwnerLoggedIn}
-                <span>Kedvelések: {likes}</span>
+                <span style="font-size: .7rem;">Kedvelések: {likes}</span>
                 <span
                     class="mdi mdi-delete"
                     onclick={() => {
@@ -113,7 +113,7 @@
                         aria-label="Kedvelés"
                         onkeypress={(e) => {}}
                     ></span>
-                    {likes}
+                    <span style="font-size: .7rem;">{likes}</span>
                 </div>
             {/if}
             <span
@@ -163,6 +163,10 @@
         cursor: pointer;
         text-decoration: none;
         font-size: 0.9rem;
+    }
+
+    .work-link span.mdi {
+        color: inherit;
     }
 
     .action-buttons {

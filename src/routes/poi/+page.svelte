@@ -14,6 +14,7 @@
     import PostDisplay from "../../components/PostDisplay.svelte";
     import Backdrop from "../../components/Backdrop.svelte";
     import type Work from "$lib/model/Work";
+    import Footer from "../../components/Footer.svelte";
 
     const POST_CONTENT_LENGTH_LIMIT = 1000;
 
@@ -226,12 +227,6 @@
             </button>
         </a>
     {:else}
-        <a href={poi.googleMapsLink} target="_blank">
-            <button class="btn" style="width: 100%;">
-                <span class="mdi mdi-map-marker"></span>
-                Google Térkép megnyitása
-            </button>
-        </a>
         {#if ignoreLocation}
             <Alert icon="crosshairs-off" title="Pozíció figyelmen kívül hagyva">
                 <p>
@@ -276,19 +271,15 @@
                     </p>
                 </div>
                 {#if postDraft.attachmentWorkId}
-                    <p
-                        onclick={() => {
-                            window.open(
-                                `/work?id=${postDraft.attachmentWorkId}`,
-                                "_blank",
-                            );
-                        }}
+                    <a
+                        href="/work?id={postDraft.attachmentWorkId}"
+                        target="_blank"
                         style="background: var(--secondary-color); color: var(--on-secondary-color); padding: calc(var(--spacing) / 2); border-radius: var(--corner-radius);"
                     >
                         {publicWorks.find(
                             (w) => w.id === postDraft.attachmentWorkId,
                         )?.title}
-                    </p>
+                    </a>
                 {/if}
                 <div class="post-input-actions">
                     <button
@@ -358,6 +349,7 @@
         {/each}
     {/if}
 </main>
+<Footer />
 
 <style>
     :global(body) {
