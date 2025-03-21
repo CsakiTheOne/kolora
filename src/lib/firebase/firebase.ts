@@ -1,13 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 export function initializeFirebase() {
     const firebaseConfig = {
         apiKey: "AIzaSyDuQVyLeoNnoV_wZSD_DN0kVFUPYHULJSU",
         authDomain: "kolora.firebaseapp.com",
+        databaseURL: "https://kolora-default-rtdb.europe-west1.firebasedatabase.app",
         projectId: "kolora",
-        storageBucket: "kolora.appspot.com",
+        storageBucket: "kolora.firebasestorage.app",
         messagingSenderId: "421028054170",
         appId: "1:421028054170:web:7cc766131bb9e131e10b23",
         measurementId: "G-M6YRY1BZF5"
@@ -19,8 +21,9 @@ export function initializeFirebase() {
 
     return {
         app: app,
-        firestore: getFirestore(app),
         auth: auth,
-        googleProvider: googleProvider
+        googleProvider: googleProvider,
+        firestore: getFirestore(app),
+        database: getDatabase(app),
     };
 }

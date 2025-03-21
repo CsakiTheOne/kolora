@@ -260,7 +260,7 @@
                 <div>
                     <textarea
                         class="outlined-input"
-                        style="resize: none;"
+                        style="resize: none; min-height: 80px;"
                         placeholder="Mi jár a fejedben?"
                         value={postDraft.content}
                         oninput={(e: any) => {

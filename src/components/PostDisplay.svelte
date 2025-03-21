@@ -3,17 +3,35 @@
     import firestore from "$lib/firebase/firestore";
     import Post from "$lib/model/Post";
     import Work from "$lib/model/Work";
-    import { reload } from "firebase/auth";
     import { onMount } from "svelte";
+    import SvelteMarkdown from "svelte-markdown";
+    import MarkdownLink from "./markdown-renderers/MarkdownLink.svelte";
+    import MarkdownStrictHtml from "./markdown-renderers/MarkdownStrictHtml.svelte";
+    import MarkdownLinebreakParagraph from "./markdown-renderers/MarkdownLinebreakParagraph.svelte";
+    import rtdb from "$lib/firebase/rtdb";
 
     const { post, ...rest } = $props();
 
-    const isOwnerLoggedIn = getCurrentUser()?.uid === post?.authorId;
-
+    let isOwnerLoggedIn = $state(false);
     let authorName = $state("");
     let work: Work | null = $state(null);
+    let likes = $state(0);
+    let isLiked = $state(false);
 
-    onMount(() => {
+    function refreshLikes() {
+        rtdb.posts.likes.getCount(post.id).then((count) => {
+            likes = count;
+        });
+        rtdb.posts.likes
+            .getUser(post.id, getCurrentUser()?.uid)
+            .then((like) => {
+                isLiked = !!like;
+            });
+    }
+
+    $effect(() => {
+        isOwnerLoggedIn = getCurrentUser()?.uid === post?.authorId;
+
         firestore.users.get(post.authorId).then((user) => {
             authorName = user.username;
         });
@@ -22,6 +40,8 @@
                 work = w;
             });
         }
+
+        refreshLikes();
     });
 </script>
 
@@ -29,13 +49,20 @@
     <div class="row">
         <a
             href={`/profile/?id=${post.authorId}`}
-            style="font-size: .8rem; text-decoration: none;"
+            style="font-size: .9rem; text-decoration: none;"
         >
             <span class="mdi mdi-account-circle"></span>
             {authorName}
         </a>
     </div>
-    <p>{post.content}</p>
+    <SvelteMarkdown
+        source={post.content}
+        renderers={{
+            link: MarkdownLink,
+            html: MarkdownStrictHtml,
+            paragraph: MarkdownLinebreakParagraph,
+        }}
+    />
     {#if post.attachmentWorkId && work && work.visible}
         <a class="work-link" href={`/work?id=${work!.id}`} target="_blank">
             <span class="mdi mdi-fountain-pen-tip"></span>
@@ -48,6 +75,7 @@
         </p>
         <div class="action-buttons">
             {#if isOwnerLoggedIn}
+                <span>Kedvelések: {likes}</span>
                 <span
                     class="mdi mdi-delete"
                     onclick={() => {
@@ -64,20 +92,30 @@
                     aria-label="Törlés"
                     onkeypress={(e) => {}}
                 ></span>
-                <span class={`mdi mdi-heart`}></span>
             {:else}
-                <span
-                    class={`mdi mdi-heart${"-outline"}`}
-                    onclick={() => {
-                        //TODO: Implement liking
-                    }}
-                    tabindex="0"
-                    role="button"
-                    aria-label="Kedvelés"
-                    onkeypress={(e) => {}}
-                ></span>
+                <div style="display: flex; align-items: center;">
+                    <span
+                        class={`mdi mdi-heart${isLiked ? "" : "-outline"}`}
+                        style="padding-right: calc(var(--spacing) / 4);"
+                        onclick={() => {
+                            if (!isLiked) {
+                                rtdb.posts.likes
+                                    .like(post.id, getCurrentUser()?.uid)
+                                    .then(() => refreshLikes());
+                            } else {
+                                rtdb.posts.likes
+                                    .unlike(post.id, getCurrentUser()?.uid)
+                                    .then(() => refreshLikes());
+                            }
+                        }}
+                        tabindex="0"
+                        role="button"
+                        aria-label="Kedvelés"
+                        onkeypress={(e) => {}}
+                    ></span>
+                    {likes}
+                </div>
             {/if}
-            <span>TODO: implement like counter</span>
             <span
                 class="mdi mdi-message-alert"
                 onclick={() => {
@@ -129,9 +167,11 @@
 
     .action-buttons {
         display: flex;
+        flex-direction: row;
+        align-items: center;
         gap: calc(var(--spacing) / 2);
     }
-    
+
     .action-buttons span.mdi {
         font-size: 1.3rem;
     }
