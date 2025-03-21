@@ -34,33 +34,6 @@
             <span class="mdi mdi-account-circle"></span>
             {authorName}
         </a>
-        {#if isOwnerLoggedIn}
-            <span
-                class="mdi mdi-delete"
-                style="cursor: pointer; color: var(--primary-color);"
-                onclick={() => {
-                    if (confirm("Biztos törölni szeretnéd ezt a posztot?")) {
-                        firestore.posts
-                            .delete(post.id)
-                            .then(() => window.location.reload());
-                    }
-                }}
-                tabindex="0"
-                role="button"
-                aria-label="Törlés"
-                onkeypress={(e) => {
-                    if (e.key === "Enter") {
-                        if (
-                            confirm("Biztos törölni szeretnéd ezt a posztot?")
-                        ) {
-                            firestore.posts
-                                .delete(post.id)
-                                .then(() => window.location.reload());
-                        }
-                    }
-                }}
-            ></span>
-        {/if}
     </div>
     <p>{post.content}</p>
     {#if post.attachmentWorkId && work && work.visible}
@@ -73,10 +46,60 @@
         <p style="font-size: .7rem; color: var(--secondary-variant-color);">
             {new Date(post.createdAt).toLocaleDateString("hu-HU")}
         </p>
+        <div class="action-buttons">
+            {#if isOwnerLoggedIn}
+                <span
+                    class="mdi mdi-delete"
+                    onclick={() => {
+                        if (
+                            confirm("Biztos törölni szeretnéd ezt a posztot?")
+                        ) {
+                            firestore.posts
+                                .delete(post.id)
+                                .then(() => window.location.reload());
+                        }
+                    }}
+                    tabindex="0"
+                    role="button"
+                    aria-label="Törlés"
+                    onkeypress={(e) => {}}
+                ></span>
+                <span class={`mdi mdi-heart`}></span>
+            {:else}
+                <span
+                    class={`mdi mdi-heart${"-outline"}`}
+                    onclick={() => {
+                        //TODO: Implement liking
+                    }}
+                    tabindex="0"
+                    role="button"
+                    aria-label="Kedvelés"
+                    onkeypress={(e) => {}}
+                ></span>
+            {/if}
+            <span>TODO: implement like counter</span>
+            <span
+                class="mdi mdi-message-alert"
+                onclick={() => {
+                    if (confirm("Jelenteni szeretnéd ezt a posztot?")) {
+                        //TODO: Implement reporting
+                    }
+                }}
+                tabindex="0"
+                role="button"
+                aria-label="Jelentés"
+                onkeypress={(e) => {}}
+            ></span>
+        </div>
     </div>
 </div>
 
 <style>
+    span.mdi {
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+
     .post-card {
         display: flex;
         flex-direction: column;
@@ -102,5 +125,14 @@
         cursor: pointer;
         text-decoration: none;
         font-size: 0.9rem;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: calc(var(--spacing) / 2);
+    }
+    
+    .action-buttons span.mdi {
+        font-size: 1.3rem;
     }
 </style>
