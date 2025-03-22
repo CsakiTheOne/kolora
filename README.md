@@ -8,6 +8,6 @@
 ## Költészet napi kincsvadászat 2
 
 - [ ] Jogi dolgok (adatkezelési tájékoztató, stb.) frissítése
-- [ ] Jelentés
+- [x] Jelentés
 - [ ] Jelentések áttekintése
 - [ ] Felhasználók tiltása

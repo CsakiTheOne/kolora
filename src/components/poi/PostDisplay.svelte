@@ -5,9 +5,9 @@
     import Work from "$lib/model/Work";
     import { onMount } from "svelte";
     import SvelteMarkdown from "svelte-markdown";
-    import MarkdownLink from "./markdown-renderers/MarkdownLink.svelte";
-    import MarkdownStrictHtml from "./markdown-renderers/MarkdownStrictHtml.svelte";
-    import MarkdownLinebreakParagraph from "./markdown-renderers/MarkdownLinebreakParagraph.svelte";
+    import MarkdownLink from "../markdown-renderers/MarkdownLink.svelte";
+    import MarkdownStrictHtml from "../markdown-renderers/MarkdownStrictHtml.svelte";
+    import MarkdownLinebreakParagraph from "../markdown-renderers/MarkdownLinebreakParagraph.svelte";
     import rtdb from "$lib/firebase/rtdb";
 
     const { post, ...rest } = $props();
@@ -82,9 +82,11 @@
                         if (
                             confirm("Biztos törölni szeretnéd ezt a posztot?")
                         ) {
-                            firestore.posts
-                                .delete(post.id)
-                                .then(() => window.location.reload());
+                            firestore.posts.delete(post.id).then(() => {
+                                rtdb.reports.posts
+                                    .deleteReports(post.id)
+                                    .then(() => window.location.reload());
+                            });
                         }
                     }}
                     tabindex="0"
@@ -119,8 +121,13 @@
             <span
                 class="mdi mdi-message-alert"
                 onclick={() => {
-                    if (confirm("Jelenteni szeretnéd ezt a posztot?")) {
-                        //TODO: Implement reporting
+                    const reason = prompt(
+                        "Miért szeretnéd jelenteni ezt a posztot?",
+                    );
+                    if (reason) {
+                        rtdb.reports.posts
+                            .reportPost(post.id, getCurrentUser()?.uid, reason)
+                            .then(() => alert("A posztot jelentetted!"));
                     }
                 }}
                 tabindex="0"

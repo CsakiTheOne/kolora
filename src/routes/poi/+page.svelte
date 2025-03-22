@@ -11,7 +11,7 @@
     import { initializeFirebase } from "$lib/firebase/firebase";
     import Post from "$lib/model/Post";
     import { text } from "@sveltejs/kit";
-    import PostDisplay from "../../components/PostDisplay.svelte";
+    import PostDisplay from "../../components/poi/PostDisplay.svelte";
     import Backdrop from "../../components/Backdrop.svelte";
     import type Work from "$lib/model/Work";
     import Footer from "../../components/Footer.svelte";
