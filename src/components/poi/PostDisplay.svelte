@@ -140,9 +140,13 @@
 </div>
 
 <style>
-    span.mdi {
-        color: var(--primary-color);
+    span.mdi, a {
+        color: var(--primary-variant-color);
         cursor: pointer;
+    }
+
+    :global(body.theme-dark :is(span.mdi, a)) {
+        color: var(--primary-color);
     }
 
     .post-card {
@@ -164,7 +168,7 @@
 
     .work-link {
         background: var(--primary-color);
-        color: var(--on-primary-color);
+        color: var(--on-primary-color) !important;
         padding: calc(var(--spacing) / 2);
         border-radius: var(--corner-radius);
         cursor: pointer;
