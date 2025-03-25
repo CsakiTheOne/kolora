@@ -8,15 +8,22 @@
     import SmallHeader from "../../components/SmallHeader.svelte";
     import Footer from "../../components/Footer.svelte";
     import POI from "$lib/model/POI";
+    import type Report from "$lib/model/Report";
+    import type { ReportContentType } from "$lib/model/Report";
 
     let koloraUser = $state(new KoloraUser());
+
     let loading = $state(true);
     let selectedTab = $state("places");
+
     let places: POI[] = $state([]);
     let selectedPlaceId: string | null = $state(null);
     const selectedPlace = $derived(
         places.find((p) => p.id === selectedPlaceId),
     );
+
+    let reports: Report[] = $state([]);
+    let selectedReportContentType: ReportContentType = $state("post");
 
     function getTabData() {
         if (selectedTab === "places") {
@@ -36,17 +43,14 @@
                 }
                 loading = false;
             });
+        } else if (selectedTab === "reports") {
+            loading = true;
+            firestore.reports.getAll().then((newItems) => {
+                reports = newItems;
+                loading = false;
+            });
         }
     }
-
-    /*function updateSelectedPlace() {
-        if (!selectedPlaceId || !selectedPlace) {
-            return;
-        }
-        firestore.pois
-            .set(selectedPlaceId, selectedPlace)
-            .then(() => getTabData());
-    }*/
 
     onMount(() => {
         const auth = initializeFirebase().auth;
@@ -126,6 +130,27 @@
                 <span class="mdi mdi-plus"></span>
                 Új hely hozzáadása
             </button>
+        {/if}
+        <button
+            class={`btn ${selectedTab !== "reports" && "text-btn"}`}
+            onclick={() => (selectedTab = "reports")}
+        >
+            <span class="mdi mdi-flag"></span>
+            Jelentések
+        </button>
+        {#if selectedTab === "reports"}
+            <select
+                class="outlined-input"
+                disabled={loading}
+                value={selectedReportContentType}
+                oninput={(e: any) => {
+                    selectedReportContentType = e.target?.value;
+                }}
+            >
+                <option value="post">Posztok</option>
+                <option value="user">Felhasználók</option>
+                <option value="work">Művek</option>
+            </select>
         {/if}
     </nav>
     <main>
@@ -292,6 +317,10 @@
                 <span class="mdi mdi-delete"></span>
                 Törlés
             </button>
+        {:else if selectedTab === "reports"}
+            {#each reports.filter((r) => r.contentType === selectedReportContentType && r.contentId) as report}
+                //TODO: Implement report handling
+            {/each}
         {/if}
     </main>
 </div>

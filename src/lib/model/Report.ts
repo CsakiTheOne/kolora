@@ -1,4 +1,4 @@
-type ReportContentType = "post" | "user" | "work";
+export type ReportContentType = "post" | "user" | "work";
 
 export default class Report {
     id: string = "";
