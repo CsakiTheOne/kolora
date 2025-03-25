@@ -9,6 +9,7 @@
     import MarkdownStrictHtml from "../markdown-renderers/MarkdownStrictHtml.svelte";
     import MarkdownLinebreakParagraph from "../markdown-renderers/MarkdownLinebreakParagraph.svelte";
     import rtdb from "$lib/firebase/rtdb";
+    import Report from "$lib/model/Report";
 
     const { post, ...rest } = $props();
 
@@ -83,9 +84,7 @@
                             confirm("Biztos törölni szeretnéd ezt a posztot?")
                         ) {
                             firestore.posts.delete(post.id).then(() => {
-                                rtdb.reports.posts
-                                    .deleteReports(post.id)
-                                    .then(() => window.location.reload());
+                                window.location.reload();
                             });
                         }
                     }}
@@ -125,9 +124,20 @@
                         "Miért szeretnéd jelenteni ezt a posztot?",
                     );
                     if (reason) {
-                        rtdb.reports.posts
-                            .reportPost(post.id, getCurrentUser()?.uid, reason)
-                            .then(() => alert("A posztot jelentetted!"));
+                        firestore.reports
+                            .send({
+                                ...new Report(),
+                                userId: getCurrentUser()?.uid || "",
+                                contentType: "post",
+                                contentId: post.id,
+                                reason: reason,
+                            })
+                            .then(() => {
+                                alert("A posztot sikeresen jelentetted!");
+                            })
+                            .catch(() => {
+                                alert("Hiba történt a jelentés során.");
+                            });
                     }
                 }}
                 tabindex="0"
@@ -140,12 +150,13 @@
 </div>
 
 <style>
-    span.mdi, a {
+    span.mdi,
+    a {
         color: var(--primary-variant-color);
         cursor: pointer;
     }
 
-    :global(body.theme-dark :is(span.mdi, a)) {
+    :global(body.theme-dark .post-card :is(span.mdi, a)) {
         color: var(--primary-color);
     }
 
@@ -177,7 +188,7 @@
     }
 
     .work-link span.mdi {
-        color: inherit;
+        color: inherit !important;
     }
 
     .action-buttons {

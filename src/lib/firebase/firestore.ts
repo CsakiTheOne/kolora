@@ -4,6 +4,7 @@ import KoloraUser from "$lib/model/KoloraUser";
 import Work from "$lib/model/Work";
 import POI from "$lib/model/POI";
 import Post from "$lib/model/Post";
+import Report from "$lib/model/Report";
 
 const db = initializeFirebase().firestore;
 
@@ -188,6 +189,31 @@ const firestore = {
         },
         delete: (id: string): Promise<void> => {
             return deleteDoc(doc(db, "works", id));
+        },
+    },
+    reports: {
+        send: (report: Report): Promise<string> => {
+            return addDoc(collection(db, "reports"), { ...report })
+                .then((docRef) => {
+                    return docRef.id;
+                });
+        },
+        getAll: (): Promise<Report[]> => {
+            return getDocs(collection(db, "reports"))
+                .then((querySnapshot) => {
+                    const reports: Report[] = [];
+                    querySnapshot.forEach((doc) => {
+                        reports.push({ ...new Report(), ...doc.data(), id: doc.id });
+                    });
+                    return reports;
+                })
+                .catch((error) => {
+                    console.error("Error getting reports: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        delete: (id: string): Promise<void> => {
+            return deleteDoc(doc(db, "reports", id));
         },
     },
 };

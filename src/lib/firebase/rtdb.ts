@@ -33,37 +33,6 @@ const rtdb = {
             },
         },
     },
-    reports: {
-        users: {
-            getAll: (userId: string): Promise<string[]> => {
-                return get(ref(db, `reports/users/${userId}`)).then((snapshot) => {
-                    return snapshot.val() || [];
-                });
-            },
-            reportUser: (userId: string, reporterId: string | undefined, reason: string): Promise<void> => {
-                if (!reporterId) {
-                    return Promise.reject("No reporter ID provided");
-                }
-                return set(ref(db, `reports/users/${userId}/${reporterId}`), reason);
-            },
-        },
-        posts: {
-            getAll: (postId: string): Promise<string[]> => {
-                return get(ref(db, `reports/posts/${postId}`)).then((snapshot) => {
-                    return snapshot.val() || [];
-                });
-            },
-            reportPost: (postId: string, reporterId: string | undefined, reason: string): Promise<void> => {
-                if (!reporterId) {
-                    return Promise.reject("No reporter ID provided");
-                }
-                return set(ref(db, `reports/posts/${postId}/${reporterId}`), reason);
-            },
-            deleteReports: (postId: string): Promise<void> => {
-                return remove(ref(db, `reports/posts/${postId}`));
-            },
-        },
-    },
 };
 
 export default rtdb;
