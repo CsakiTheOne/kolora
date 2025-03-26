@@ -92,6 +92,20 @@ const firestore = {
         }
     },
     posts: {
+        get: (id: string): Promise<Post> => {
+            return getDoc(doc(db, "posts", id))
+                .then((doc) => {
+                    if (!doc.exists()) {
+                        console.error("No such post: ", id);
+                        return Promise.reject("No such post: " + id);
+                    }
+                    return { ...new Post(), ...doc.data(), id: doc.id };
+                })
+                .catch((error) => {
+                    console.error("Error getting post: ", error);
+                    return Promise.reject(error);
+                });
+        },
         getAllByAuthor: (authorId: string): Promise<Post[]> => {
             return getDocs(query(collection(db, "posts"), where("authorId", "==", authorId)))
                 .then((querySnapshot) => {

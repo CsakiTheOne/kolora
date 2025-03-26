@@ -9,5 +9,5 @@
 
 - [ ] Jogi dolgok (adatkezelési tájékoztató, stb.) frissítése
 - [x] Jelentés
-- [ ] Jelentések áttekintése
+- [x] Jelentések áttekintése
 - [ ] Felhasználók tiltása

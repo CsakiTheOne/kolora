@@ -319,7 +319,57 @@
             </button>
         {:else if selectedTab === "reports"}
             {#each reports.filter((r) => r.contentType === selectedReportContentType && r.contentId) as report}
-                //TODO: Implement report handling
+                <div class="card">
+                    <button
+                        class="btn"
+                        style="margin-bottom: var(--spacing); width: 100%;"
+                        onclick={() => {
+                            if (selectedReportContentType === "post") {
+                                firestore.posts
+                                    .get(report.contentId)
+                                    .then((post) => {
+                                        alert(`CONTENT:\n${post?.content}`);
+                                        confirm(
+                                            "Megnyitod a felhasználó profilját?",
+                                        ) &&
+                                            window.open(
+                                                `/profile?id=${post?.authorId}`,
+                                                "_blank",
+                                            );
+                                        if (post?.attachmentWorkId) {
+                                            confirm(
+                                                "Megnyitod a poszthoz csatolt művet?",
+                                            ) &&
+                                                window.open(
+                                                    `/work?id=${post?.attachmentWorkId}`,
+                                                    "_blank",
+                                                );
+                                        }
+                                    });
+                            } else if (selectedReportContentType === "user") {
+                                window.open(
+                                    `/profile?id=${report.contentId}`,
+                                    "_blank",
+                                );
+                            } else if (selectedReportContentType === "work") {
+                                window.open(
+                                    `/work?id=${report.contentId}`,
+                                    "_blank",
+                                );
+                            }
+                        }}
+                    >
+                        {report.contentId}
+                    </button>
+                    <p>
+                        Jelentő: <a
+                            href="/profile?id={report.userId}"
+                            target="_blank">{report.userId}</a
+                        >
+                    </p>
+                    <p>Indok: {report.reason}</p>
+                    <p>{report.createdAt}</p>
+                </div>
             {/each}
         {/if}
     </main>
@@ -346,5 +396,11 @@
 
     .dashboard > main {
         flex-grow: 1;
+    }
+
+    .card {
+        padding: var(--spacing);
+        background-color: var(--secondary-color);
+        border-radius: var(--corner-radius);
     }
 </style>
