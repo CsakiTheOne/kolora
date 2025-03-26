@@ -80,6 +80,11 @@
     <div class="container">
         <Header selectedTab="Főoldal" />
         <main id="homepage">
+            <h2>Költészet napi kincsvadászat 2025</h2>
+            <p>
+                Idén is versek kerülnek az utcákra és Csáki is kitesz pár
+                apróságot. További infók hamarosan.
+            </p>
             <h2 id="about">Rólunk</h2>
             <img id="group-photo" src={imgKoloraGroupPhoto} alt="" />
             <div class="adaptive-col-row" style="align-items: start;">
