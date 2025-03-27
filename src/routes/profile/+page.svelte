@@ -13,6 +13,7 @@
     import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
     import SmallHeader from "../../components/SmallHeader.svelte";
     import MarkdownStrictHtml from "../../components/markdown-renderers/MarkdownStrictHtml.svelte";
+    import Alert from "../../components/Alert.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -136,22 +137,26 @@
                 Szerkesztés
             {/if}
         </button>
-    {/if}
-    <h3
-        style="display: flex; justify-content: space-between; align-items: flex-end;"
-    >
-        <span>
-            <span class="mdi mdi-library-shelves"></span>
-            Alkotások
-        </span>
-    </h3>
-    {#if works.length === 0}
-        <p>Ennek a felhasználónak még nincsenek művei.</p>
-    {:else}
-        {#each works as work}
-            <div>
-                <WorkCard {work} />
-                {#if isOwnerLoggedIn}
+        <h3
+            style="display: flex; justify-content: space-between; align-items: flex-end;"
+        >
+            <span>
+                <span class="mdi mdi-library-shelves"></span>
+                Alkotások
+            </span>
+        </h3>
+        <Alert>
+            <p>
+                Ezt csak te látod. Mások csak azokat a műveket látják, amiket
+                megosztottál valahol egy posztban.
+            </p>
+        </Alert>
+        {#if works.length === 0}
+            <p>Még nincsenek műveid.</p>
+        {:else}
+            {#each works as work}
+                <div>
+                    <WorkCard {work} />
                     <p
                         style="display: flex; justify-content: end; gap: var(--spacing); align-items: center;"
                     >
@@ -210,20 +215,20 @@
                             </a>
                         {/if}
                     </p>
-                {/if}
-            </div>
-        {/each}
-    {/if}
-    {#if isOwnerLoggedIn && !koloraUser.isBanned}
-        <button
-            class="btn"
-            onclick={() => {
-                window.location.href = "/edit";
-            }}
-        >
-            <span class="mdi mdi-plus"></span>
-            Új mű
-        </button>
+                </div>
+            {/each}
+        {/if}
+        {#if !koloraUser.isBanned}
+            <button
+                class="btn"
+                onclick={() => {
+                    window.location.href = "/edit";
+                }}
+            >
+                <span class="mdi mdi-plus"></span>
+                Új mű
+            </button>
+        {/if}
     {/if}
 </main>
 <Footer />
