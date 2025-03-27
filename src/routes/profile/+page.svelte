@@ -104,7 +104,7 @@
                 </Badge>
             {/if}
         </div>
-        <p style="max-width: 100%; overflow-x: hidden;">
+        <p class="outlined-card" style="max-width: 100%; overflow-x: hidden;">
             <SvelteMarkdown
                 source={koloraUser.bio ||
                     "*Ez a felhasználó még nem írt bemutatkozást.*"}
@@ -137,14 +137,27 @@
                 Szerkesztés
             {/if}
         </button>
-        <h3
-            style="display: flex; justify-content: space-between; align-items: flex-end;"
-        >
-            <span>
-                <span class="mdi mdi-library-shelves"></span>
-                Alkotások
-            </span>
-        </h3>
+    {/if}
+    <h3
+        style="display: flex; justify-content: space-between; align-items: flex-end;"
+    >
+        <span>
+            <span class="mdi mdi-library-shelves"></span>
+            Alkotások
+        </span>
+    </h3>
+    {#if !isOwnerLoggedIn}
+        <Alert icon="library-shelves">
+            <p>
+                {#if works.length === 0}
+                    Ez a felhasználó még nem osztott meg műveket.
+                {:else}
+                    Ennek a felhasználónak {works.length} műve van. Találd meg ezeket
+                    a matricázott helyeken.
+                {/if}
+            </p>
+        </Alert>
+    {:else}
         <Alert>
             <p>
                 Ezt csak te látod. Mások csak azokat a műveket látják, amiket
@@ -232,3 +245,17 @@
     {/if}
 </main>
 <Footer />
+
+<style>
+    .outlined-card {
+        padding: var(--spacing);
+        border: 2px solid var(--primary-color);
+        border-radius: var(--corner-radius);
+        background-color: var(--primary-variant-color);
+        color: var(--on-primary-variant-color);
+    }
+
+    :global(.outlined-card a) {
+        color: var(--on-primary-variant-color) !important;
+    }
+</style>
