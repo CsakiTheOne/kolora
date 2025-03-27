@@ -20,11 +20,7 @@
     </a>
     <p>
         <a href={`/profile/?id=${work.authorId}`}>{authorName}</a> - {work.dateCreated}
-        <span style="opacity: .5;">
-            - {work.status === "published"
-                ? "Feltöltve"
-                : "Utoljára módosítva"}: {work.dateUploaded}
-        </span><br />
+        <br />
         <abbr title={work.description}>
             {work.description}
         </abbr>

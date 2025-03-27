@@ -14,6 +14,7 @@
     import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
     import MarkdownLinebreakParagraph from "../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
     import { getCurrentUser } from "$lib/firebase/auth";
+    import MarkdownStrictHtml from "../../components/markdown-renderers/MarkdownStrictHtml.svelte";
 
     let work: Work | null = $state(null);
     let authorName: string | null = $state(null);
@@ -100,7 +101,7 @@
             source={work?.content}
             renderers={{
                 link: MarkdownLink,
-                html: MarkdownBlockedHtml,
+                html: MarkdownStrictHtml,
                 paragraph: MarkdownLinebreakParagraph,
             }}
         />

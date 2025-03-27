@@ -9,6 +9,7 @@ export default class KoloraUser {
 
 const ROLES = {
     ADMIN: 'admin',
+    EARLY_TESTER: 'early_tester',
     KOLORA_MEMBER: 'kolora_member',
 }
 

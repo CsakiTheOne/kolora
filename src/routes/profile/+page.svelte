@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
-    import KoloraUser from "$lib/model/KoloraUser";
+    import KoloraUser, { ROLES } from "$lib/model/KoloraUser";
     import firestore from "$lib/firebase/firestore";
     import { initializeFirebase } from "$lib/firebase/firebase";
     import type Work from "$lib/model/Work";
@@ -68,12 +68,12 @@
             class="outlined-input"
             style="resize: none; field-sizing: content; min-height: 100px;"
             bind:value={newBio}
-            maxlength="500"
+            maxlength="1000"
         ></textarea>
         <p>
-            A bemutatkozás támogatja a <a
-                href="https://www.markdownguide.org/cheat-sheet/"
-                target="_blank">Markdown formázást</a
+            {newBio.length} / 1000 - A bemutatkozás támogatja a
+            <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank"
+                >Markdown formázást</a
             > és a beágyazott YouTube videókat.
         </p>
     {:else}
@@ -81,7 +81,29 @@
             <span class="mdi mdi-account-circle"></span>
             {koloraUser.username}
         </h2>
-        <p>
+        <div class="badges">
+            {#if koloraUser.isBanned}
+                <Badge>
+                    <span class="mdi mdi-gavel"></span> Bannolva
+                </Badge>
+            {/if}
+            {#if koloraUser.roles.includes(ROLES.ADMIN)}
+                <Badge>
+                    <span class="mdi mdi-shield-account"></span> Admin
+                </Badge>
+            {/if}
+            {#if koloraUser.roles.includes(ROLES.KOLORA_MEMBER)}
+                <Badge>
+                    <span class="mdi mdi-account-star"></span> Kolora tag
+                </Badge>
+            {/if}
+            {#if koloraUser.roles.includes(ROLES.EARLY_TESTER)}
+                <Badge>
+                    <span class="mdi mdi-test-tube"></span> Korai tesztelő
+                </Badge>
+            {/if}
+        </div>
+        <p style="max-width: 100%; overflow-x: hidden;">
             <SvelteMarkdown
                 source={koloraUser.bio ||
                     "*Ez a felhasználó még nem írt bemutatkozást.*"}
