@@ -2,12 +2,12 @@
     const { children, ...rest } = $props();
 </script>
 
-<span {...rest}>
+<span class="badge" {...rest}>
     {@render children()}
 </span>
 
 <style>
-    span {
+    span.badge {
         display: inline-block;
         font-size: 0.7rem;
         padding: calc(var(--spacing) / 4);

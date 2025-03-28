@@ -59,9 +59,9 @@
         overflow-y: hidden;
     }
 
-    :global(.badges > span) {
-        background-color: var(--secondary-variant-color);
-        color: var(--on-secondary-variant-color);
+    :global(.work-card > .badges > span.badge) {
+        background-color: var(--secondary-variant-color) !important;
+        color: var(--on-secondary-variant-color) !important;
     }
 
     h3 {
