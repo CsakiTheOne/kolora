@@ -47,6 +47,9 @@ const firestore = {
                 console.log("Error setting name if not exists: ", error);
             });
         },
+        delete: (id: string): Promise<void> => {
+            return deleteDoc(doc(db, "users", id));
+        }
     },
     pois: {
         get: (id: string): Promise<POI> => {
@@ -143,6 +146,34 @@ const firestore = {
         delete: (id: string): Promise<void> => {
             return deleteDoc(doc(db, "posts", id));
         },
+        deleteAllByUser: (userId: string): Promise<void[]> => {
+            return getDocs(query(collection(db, "posts"), where("authorId", "==", userId)))
+                .then((querySnapshot) => {
+                    const deletePromises: Promise<void>[] = [];
+                    querySnapshot.forEach((doc) => {
+                        deletePromises.push(deleteDoc(doc.ref));
+                    });
+                    return Promise.all(deletePromises);
+                })
+                .catch((error) => {
+                    console.error("Error deleting posts: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        deleteAllByPoi: (poiId: string): Promise<void[]> => {
+            return getDocs(query(collection(db, "posts"), where("poiId", "==", poiId)))
+                .then((querySnapshot) => {
+                    const deletePromises: Promise<void>[] = [];
+                    querySnapshot.forEach((doc) => {
+                        deletePromises.push(deleteDoc(doc.ref));
+                    });
+                    return Promise.all(deletePromises);
+                })
+                .catch((error) => {
+                    console.error("Error deleting posts: ", error);
+                    return Promise.reject(error);
+                });
+        },
     },
     works: {
         get: (id: string): Promise<Work> => {
@@ -187,7 +218,7 @@ const firestore = {
                     return Promise.reject(error);
                 });
         },
-        getAllByAuthor: (authorId: string): Promise<Work[]> => {
+        getAllByUser: (authorId: string): Promise<Work[]> => {
             return getDocs(query(collection(db, "works"), where("authorId", "==", authorId)))
                 .then((querySnapshot) => {
                     const works: Work[] = [];
@@ -203,6 +234,20 @@ const firestore = {
         },
         delete: (id: string): Promise<void> => {
             return deleteDoc(doc(db, "works", id));
+        },
+        deleteAllByUser: (userId: string): Promise<void[]> => {
+            return getDocs(query(collection(db, "works"), where("authorId", "==", userId)))
+                .then((querySnapshot) => {
+                    const deletePromises: Promise<void>[] = [];
+                    querySnapshot.forEach((doc) => {
+                        deletePromises.push(deleteDoc(doc.ref));
+                    });
+                    return Promise.all(deletePromises);
+                })
+                .catch((error) => {
+                    console.error("Error deleting works: ", error);
+                    return Promise.reject(error);
+                });
         },
     },
     reports: {

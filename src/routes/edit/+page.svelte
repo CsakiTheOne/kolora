@@ -153,20 +153,10 @@
                     Alapbeállítások
                 </button>
 
-                <label for="workVisible">Láthatóság</label>
-                <select
-                    name="workVisible"
-                    value={work.visible.toString()}
-                    onchange={(e) =>
-                        (work = {
-                            ...work,
-                            visible: e.target.value === "true",
-                        })}
-                    class="outlined-input"
-                >
-                    <option value="false">Privát</option>
-                    <option value="true">Nyilvános</option>
-                </select>
+                <p>
+                    Láthatóság: A műved csak akkor látható ha egy posztban
+                    megosztod.
+                </p>
 
                 <label for="workTitle">Mű címe</label>
                 <input

@@ -294,11 +294,9 @@
                                 return;
                             }
                             firestore.works
-                                .getAllByAuthor(koloraUser.id)
+                                .getAllByUser(koloraUser.id)
                                 .then((works) => {
-                                    publicWorks = works.filter(
-                                        (work) => work.visible,
-                                    );
+                                    publicWorks = works;
                                 });
                             isWorkSelectorDialogOpen = true;
                         }}

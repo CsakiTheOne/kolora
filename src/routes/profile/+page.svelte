@@ -14,6 +14,7 @@
     import SmallHeader from "../../components/SmallHeader.svelte";
     import MarkdownStrictHtml from "../../components/markdown-renderers/MarkdownStrictHtml.svelte";
     import Alert from "../../components/Alert.svelte";
+    import { deleteAccount, getCurrentUser } from "$lib/firebase/auth";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -23,8 +24,13 @@
     let newBio = $state("");
 
     function updateWorks() {
-        firestore.works.getAllByAuthor(koloraUser.id).then((newWorks) => {
-            works = newWorks.filter((work) => work.visible || isOwnerLoggedIn);
+        if (!isOwnerLoggedIn) {
+            works = [];
+            return;
+        }
+
+        firestore.works.getAllByUser(koloraUser.id).then((newWorks) => {
+            works = newWorks;
         });
     }
 
@@ -173,23 +179,6 @@
                     <p
                         style="display: flex; justify-content: end; gap: var(--spacing); align-items: center;"
                     >
-                        {#if work.visible}
-                            <button
-                                class="text-btn"
-                                onclick={() => {
-                                    confirm(
-                                        "Biztosan visszavonod a mű publikálását?",
-                                    ) &&
-                                        firestore.works.set(work.id, {
-                                            visible: false,
-                                        });
-                                    updateWorks();
-                                }}
-                                aria-label="Publikálás visszavonása"
-                            >
-                                <span class="mdi mdi-eye-off"></span>
-                            </button>
-                        {/if}
                         <button
                             class="text-btn"
                             onclick={() => {
@@ -242,6 +231,50 @@
                 Új mű
             </button>
         {/if}
+
+        <div class="outlined-card danger-zone">
+            <h3>Veszély zóna</h3>
+            <p>
+                Itt tudod törölni a műveidet, posztjaid, profilod és fiókod. A
+                kedvelt posztoknál továbbra is be lesz számolva a kedvelésed, de
+                nem lehet hozzád kötni azt.
+            </p>
+            <button
+                class="btn"
+                onclick={() => {
+                    const input = prompt(
+                        "Biztosan törölni szeretnéd a fiókodat? Írd be a felhasználónevedet a törlés megerősítéséhez.",
+                    );
+                    const uid = getCurrentUser()?.uid;
+
+                    if (input !== koloraUser.username || !uid) {
+                        alert(
+                            "A felhasználónév nem egyezik. A fiók törlése megszakítva.",
+                        );
+                        return;
+                    }
+
+                    Promise.all([
+                        firestore.posts.deleteAllByUser(uid),
+                        firestore.works.deleteAllByUser(uid),
+                        firestore.users.delete(uid),
+                        deleteAccount(),
+                    ])
+                        .then(() => {
+                            alert("A fiókod törölve lett.");
+                            window.location.href = "/";
+                        })
+                        .catch(() => {
+                            alert(
+                                "Hiba történt a fiók törlése során. Kérlek próbáld újra később.",
+                            );
+                        });
+                }}
+            >
+                <span class="mdi mdi-delete-forever"></span>
+                Fiók törlése
+            </button>
+        </div>
     {/if}
 </main>
 <Footer />
@@ -257,5 +290,17 @@
 
     :global(.outlined-card a) {
         color: var(--on-primary-variant-color) !important;
+    }
+
+    .danger-zone {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing);
+        border-color: red;
+    }
+
+    .danger-zone .btn {
+        background-color: red;
+        color: white;
     }
 </style>

@@ -18,3 +18,14 @@ export function logout() {
         console.error("Logout error:", error);
     });
 }
+
+export function deleteAccount() {
+    const user = getCurrentUser();
+    
+    if (!user) {
+        console.error("No user is currently signed in.");
+        return;
+    }
+
+    return user.delete();
+}
