@@ -14,7 +14,21 @@
     let koloraUser = $state(new KoloraUser());
 
     let loading = $state(true);
-    let selectedTab = $state("places");
+    let selectedTab = $state("users");
+
+    let users: KoloraUser[] = $state([]);
+    let userQuery = $state("");
+    let filteredUsers: KoloraUser[] = $derived(
+        users.filter((user) => {
+            return (
+                user.username.toLowerCase().includes(userQuery.toLowerCase()) ||
+                user.id.toLowerCase().includes(userQuery.toLowerCase()) ||
+                user.roles
+                    .map((role) => role.toLowerCase())
+                    .includes(userQuery.toLowerCase())
+            );
+        }),
+    );
 
     let places: POI[] = $state([]);
     let selectedPlaceId: string | null = $state(null);
@@ -26,7 +40,13 @@
     let selectedReportContentType: ReportContentType = $state("post");
 
     function getTabData() {
-        if (selectedTab === "places") {
+        if (selectedTab === "users") {
+            loading = true;
+            firestore.users.getAll().then((newItems) => {
+                users = newItems;
+                loading = false;
+            });
+        } else if (selectedTab === "places") {
             loading = true;
             firestore.pois.getAll().then((newItems) => {
                 places = newItems.sort((a, b) => {
@@ -96,6 +116,13 @@
 <div class="dashboard">
     <nav>
         <button
+            class={`btn ${selectedTab !== "users" && "text-btn"}`}
+            onclick={() => (selectedTab = "users")}
+        >
+            <span class="mdi mdi-account"></span>
+            Felhasználók
+        </button>
+        <button
             class={`btn ${selectedTab !== "places" && "text-btn"}`}
             onclick={() => (selectedTab = "places")}
         >
@@ -154,7 +181,59 @@
         {/if}
     </nav>
     <main>
-        {#if selectedTab === "places" && selectedPlaceId && selectedPlace}
+        {#if selectedTab === "users"}
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Keresés"
+                value={userQuery}
+                oninput={(e: any) => {
+                    userQuery = e.target?.value;
+                }}
+            />
+            {#each filteredUsers as user}
+                <div class="card">
+                    <button
+                        class="btn"
+                        onclick={() => {
+                            window.open(`/profile?id=${user.id}`, "_blank");
+                        }}
+                    >
+                        {user.username}
+                    </button>
+                    <p>Id: {user.id}</p>
+                    <p>Regisztráció dátuma: {user.createdAt}</p>
+                    <p>Szerepkörök:</p>
+                    <input
+                        type="text"
+                        class="outlined-input"
+                        placeholder="Szerepkörök"
+                        value={user.roles.join(", ")}
+                        oninput={(e: any) => {
+                            const newRoles = e.target?.value.split(", ");
+                            firestore.users.set(user.id, {
+                                ...user,
+                                roles: newRoles,
+                            });
+                        }}
+                    />
+                    <p>
+                        <input
+                            type="checkbox"
+                            name="isBanned"
+                            checked={user.isBanned}
+                            oninput={(e: any) => {
+                                firestore.users.set(user.id, {
+                                    ...user,
+                                    isBanned: e.target?.checked,
+                                });
+                            }}
+                        />
+                        <label for="isBanned">Tiltás</label>
+                    </p>
+                </div>
+            {/each}
+        {:else if selectedTab === "places" && selectedPlaceId && selectedPlace}
             <input
                 type="text"
                 disabled={loading}
@@ -322,7 +401,6 @@
                 <div class="card">
                     <button
                         class="btn"
-                        style="margin-bottom: var(--spacing); width: 100%;"
                         onclick={() => {
                             if (selectedReportContentType === "post") {
                                 firestore.posts
@@ -369,6 +447,24 @@
                     </p>
                     <p>Indok: {report.reason}</p>
                     <p>{report.createdAt}</p>
+                    <button
+                        class="btn"
+                        style="width: 100%;"
+                        onclick={() => {
+                            if (
+                                confirm(
+                                    "Biztos törölni szeretnéd ezt a jelentést?",
+                                )
+                            ) {
+                                firestore.reports.delete(report.id).then(() => {
+                                    getTabData();
+                                });
+                            }
+                        }}
+                    >
+                        <span class="mdi mdi-delete"></span>
+                        Törlés
+                    </button>
                 </div>
             {/each}
         {/if}
@@ -399,6 +495,9 @@
     }
 
     .card {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing) / 2);
         padding: var(--spacing);
         background-color: var(--secondary-color);
         border-radius: var(--corner-radius);

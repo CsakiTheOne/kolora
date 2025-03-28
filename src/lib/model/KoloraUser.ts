@@ -2,7 +2,7 @@ export default class KoloraUser {
     id: string = '';
     username: string = '';
     bio: string = '';
-    favoriteMusicYoutubeUrl: string = '';
+    createdAt: string = '';
     roles: string[] = [];
     isBanned: boolean = false;
 }

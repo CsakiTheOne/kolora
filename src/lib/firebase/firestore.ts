@@ -10,6 +10,20 @@ const db = initializeFirebase().firestore;
 
 const firestore = {
     users: {
+        getAll: (): Promise<KoloraUser[]> => {
+            return getDocs(collection(db, "users"))
+                .then((querySnapshot) => {
+                    const users: KoloraUser[] = [];
+                    querySnapshot.forEach((doc) => {
+                        users.push({ ...new KoloraUser(), ...doc.data(), id: doc.id });
+                    });
+                    return users;
+                })
+                .catch((error) => {
+                    console.error("Error getting users: ", error);
+                    return Promise.reject(error);
+                });
+        },
         get: (id: string): Promise<KoloraUser> => {
             return getDoc(doc(db, "users", id))
                 .then((doc) => {
@@ -38,11 +52,16 @@ const firestore = {
             });
             return unsubscribe;
         },
-        setNameIfNotExists: (id: string, name: string | null): Promise<void> => {
+        setDefaultsIfNeeded: (id: string, name: string | null): Promise<void> => {
             return firestore.users.get(id).then((user) => {
+                let newUserData = { ...user };
                 if (!user.username && name) {
-                    return firestore.users.set(id, { username: name });
+                    newUserData.username = name;
                 }
+                if (!user.createdAt) {
+                    newUserData.createdAt = new Date().toLocaleString("hu-HU");
+                }
+                return firestore.users.set(id, newUserData);
             }).catch((error) => {
                 console.log("Error setting name if not exists: ", error);
             });

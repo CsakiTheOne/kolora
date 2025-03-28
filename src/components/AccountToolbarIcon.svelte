@@ -21,7 +21,7 @@
                 firestore.users
                     .get(user.uid)
                     .then((user) => (koloraUser = user));
-                firestore.users.setNameIfNotExists(user.uid, user.displayName);
+                firestore.users.setDefaultsIfNeeded(user.uid, user.displayName);
                 userListener = firestore.users.listen(user.uid, (user) => {
                     koloraUser = user;
                 });
