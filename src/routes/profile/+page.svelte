@@ -18,6 +18,7 @@
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
+    let badges: { icon: string; text: string }[] = $state([]);
     let works: Work[] = $state([]);
     let isEditingBio = $state(false);
     let newUsername = $state("");
@@ -52,6 +53,43 @@
             koloraUser = user;
 
             updateWorks();
+
+            if (user.isBanned) {
+                badges = [
+                    ...badges,
+                    {
+                        icon: "gavel",
+                        text: "Bannolva",
+                    },
+                ];
+            }
+            if (user.roles.includes(ROLES.ADMIN)) {
+                badges = [
+                    ...badges,
+                    {
+                        icon: "shield-account",
+                        text: "Admin",
+                    },
+                ];
+            }
+            if (user.roles.includes(ROLES.KOLORA_MEMBER)) {
+                badges = [
+                    ...badges,
+                    {
+                        icon: "account-star",
+                        text: "Kolora tag",
+                    },
+                ];
+            }
+            if (user.roles.includes(ROLES.EARLY_TESTER)) {
+                badges = [
+                    ...badges,
+                    {
+                        icon: "test-tube",
+                        text: "Korai tesztelő",
+                    },
+                ];
+            }
         });
 
         return () => {
@@ -88,28 +126,16 @@
             <span class="mdi mdi-account-circle"></span>
             {koloraUser.username}
         </h2>
-        <div class="badges">
-            {#if koloraUser.isBanned}
-                <Badge>
-                    <span class="mdi mdi-gavel"></span> Bannolva
-                </Badge>
-            {/if}
-            {#if koloraUser.roles.includes(ROLES.ADMIN)}
-                <Badge>
-                    <span class="mdi mdi-shield-account"></span> Admin
-                </Badge>
-            {/if}
-            {#if koloraUser.roles.includes(ROLES.KOLORA_MEMBER)}
-                <Badge>
-                    <span class="mdi mdi-account-star"></span> Kolora tag
-                </Badge>
-            {/if}
-            {#if koloraUser.roles.includes(ROLES.EARLY_TESTER)}
-                <Badge>
-                    <span class="mdi mdi-test-tube"></span> Korai tesztelő
-                </Badge>
-            {/if}
-        </div>
+        {#if badges.length > 0}
+            <div class="badges">
+                {#each badges as badge}
+                    <Badge>
+                        <span class="mdi mdi-{badge.icon}"></span>
+                        {badge.text}
+                    </Badge>
+                {/each}
+            </div>
+        {/if}
         <p class="outlined-card" style="max-width: 100%; overflow-x: hidden;">
             <SvelteMarkdown
                 source={koloraUser.bio ||
@@ -280,6 +306,14 @@
 <Footer />
 
 <style>
+    .badges {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: var(--spacing);
+        overflow-x: auto;
+    }
+
     .outlined-card {
         padding: var(--spacing);
         border: 2px solid var(--primary-color);
