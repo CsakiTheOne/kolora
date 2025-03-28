@@ -116,35 +116,35 @@
                     ></span>
                     <span style="font-size: .7rem;">{likes}</span>
                 </div>
+                <span
+                    class="mdi mdi-message-alert"
+                    onclick={() => {
+                        const reason = prompt(
+                            "Miért szeretnéd jelenteni ezt a posztot?",
+                        );
+                        if (reason) {
+                            firestore.reports
+                                .send({
+                                    ...new Report(),
+                                    userId: getCurrentUser()?.uid || "",
+                                    contentType: "post",
+                                    contentId: post.id,
+                                    reason: reason,
+                                })
+                                .then(() => {
+                                    alert("A posztot sikeresen jelentetted!");
+                                })
+                                .catch(() => {
+                                    alert("Hiba történt a jelentés során.");
+                                });
+                        }
+                    }}
+                    tabindex="0"
+                    role="button"
+                    aria-label="Jelentés"
+                    onkeypress={(e) => {}}
+                ></span>
             {/if}
-            <span
-                class="mdi mdi-message-alert"
-                onclick={() => {
-                    const reason = prompt(
-                        "Miért szeretnéd jelenteni ezt a posztot?",
-                    );
-                    if (reason) {
-                        firestore.reports
-                            .send({
-                                ...new Report(),
-                                userId: getCurrentUser()?.uid || "",
-                                contentType: "post",
-                                contentId: post.id,
-                                reason: reason,
-                            })
-                            .then(() => {
-                                alert("A posztot sikeresen jelentetted!");
-                            })
-                            .catch(() => {
-                                alert("Hiba történt a jelentés során.");
-                            });
-                    }
-                }}
-                tabindex="0"
-                role="button"
-                aria-label="Jelentés"
-                onkeypress={(e) => {}}
-            ></span>
         </div>
     </div>
 </div>
