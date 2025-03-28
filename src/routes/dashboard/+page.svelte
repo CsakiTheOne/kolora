@@ -10,6 +10,7 @@
     import POI from "$lib/model/POI";
     import type Report from "$lib/model/Report";
     import type { ReportContentType } from "$lib/model/Report";
+    import Alert from "../../components/Alert.svelte";
 
     let koloraUser = $state(new KoloraUser());
 
@@ -40,6 +41,15 @@
     let selectedReportContentType: ReportContentType = $state("post");
 
     function getTabData() {
+        if (
+            !(
+                koloraUser.roles.includes(ROLES.ADMIN) ||
+                koloraUser.roles.includes(ROLES.KOLORA_MEMBER)
+            )
+        ) {
+            return;
+        }
+
         if (selectedTab === "users") {
             loading = true;
             firestore.users.getAll().then((newItems) => {
@@ -82,8 +92,10 @@
                     (newKoloraUser) => {
                         koloraUser = newKoloraUser;
                         if (
-                            !koloraUser.roles.includes(ROLES.ADMIN) ||
-                            !koloraUser.roles.includes(ROLES.KOLORA_MEMBER)
+                            !(
+                                koloraUser.roles.includes(ROLES.ADMIN) ||
+                                koloraUser.roles.includes(ROLES.KOLORA_MEMBER)
+                            )
                         ) {
                             window.history.back();
                         } else {
@@ -115,6 +127,14 @@
 <SmallHeader currentPage="Dashboard" />
 <div class="dashboard">
     <nav>
+        <button
+            class="btn"
+            disabled={loading}
+            onclick={() => getTabData()}
+        >
+            <span class="mdi mdi-refresh"></span>
+            Frissítés
+        </button>
         <button
             class={`btn ${selectedTab !== "users" && "text-btn"}`}
             onclick={() => (selectedTab = "users")}
@@ -191,6 +211,12 @@
                     userQuery = e.target?.value;
                 }}
             />
+            <Alert>
+                <p>
+                    Kiosztható szerepkörök:<br />
+                    {Object.values(ROLES).join(", ")}
+                </p>
+            </Alert>
             {#each filteredUsers as user}
                 <div class="card">
                     <button
@@ -223,10 +249,12 @@
                             name="isBanned"
                             checked={user.isBanned}
                             oninput={(e: any) => {
-                                firestore.users.set(user.id, {
-                                    ...user,
-                                    isBanned: e.target?.checked,
-                                });
+                                firestore.users
+                                    .set(user.id, {
+                                        ...user,
+                                        isBanned: e.target?.checked,
+                                    })
+                                    .then(() => getTabData());
                             }}
                         />
                         <label for="isBanned">Tiltás</label>
