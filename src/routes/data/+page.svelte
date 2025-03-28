@@ -24,11 +24,16 @@
         <li>
             <b>Ön által megadott adatok:</b> Az interakció idejét és egyéb
             információkat, mikor a <a href="/codes">Kódok oldalon</a> megpróbál beváltani
-            egy kódot. Az adatgyűjtés a beváltás sigerességétől függetlenül történik.
+            egy kódot. Az adatgyűjtés a beváltás sikerességétől függetlenül történik.
         </li>
         <li>
             <b>Google fiókkal történő bejelentkezés:</b> Ha Google fiókkal jelentkezik
             be, gyűjtjük az Ön nevét, e-mail címét és profilképét.
+        </li>
+        <li>
+            <b>Pozícióadatok:</b> Bizonyos funkciók használatához szükség lehet az Ön
+            földrajzi pozíciójára. Ezeket az adatokat csak az adott funkció
+            működéséhez használjuk, és egyáltalán nem tároljuk rövid távon sem.
         </li>
     </ul>
     <p>
@@ -57,6 +62,10 @@
             <b>Felhasználói azonosítás:</b> Az Ön nevének megjelenítése a weboldalon,
             ha Google fiókkal jelentkezik be.
         </li>
+        <li>
+            <b>Pozícióalapú funkciók:</b> Az Ön földrajzi pozíciójának felhasználása
+            bizonyos funkciók működéséhez.
+        </li>
     </ul>
     <p>
         Az Ön személyes adatainak védelme érdekében megfelelő technikai és
@@ -68,6 +77,10 @@
     <p>
         Az adatokat egyetlen harmadik félnek sem adjuk át semmilyen körülmények
         között.
+    </p>
+    <p>
+        Önnek jogában áll bármikor törölni a fiókját, amely során minden Önről
+        tárolt adatot véglegesen törlünk rendszerünkből.
     </p>
     <p>
         Fenntartjuk a jogot, hogy jelen Szabályzatot bármikor módosítsuk. A
