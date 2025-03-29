@@ -15,16 +15,21 @@
     import MarkdownStrictHtml from "../../components/markdown-renderers/MarkdownStrictHtml.svelte";
     import Alert from "../../components/Alert.svelte";
     import { deleteAccount, getCurrentUser } from "$lib/firebase/auth";
+    import type Post from "$lib/model/Post";
+    import PostDisplay from "../../components/poi/PostDisplay.svelte";
+    import type POI from "$lib/model/POI";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
     let badges: { icon: string; text: string }[] = $state([]);
     let works: Work[] = $state([]);
+    let posts: Post[] = $state([]);
+    let pois: POI[] = $state([]);
     let isEditingBio = $state(false);
     let newUsername = $state("");
     let newBio = $state("");
 
-    function updateWorks() {
+    function updateContent() {
         if (!isOwnerLoggedIn) {
             works = [];
             return;
@@ -32,6 +37,12 @@
 
         firestore.works.getAllByUser(koloraUser.id).then((newWorks) => {
             works = newWorks;
+        });
+        firestore.posts.getAllByAuthor(koloraUser.id).then((newPosts) => {
+            posts = newPosts;
+            firestore.pois.getAll().then((newPois) => {
+                pois = newPois;
+            });
         });
     }
 
@@ -53,7 +64,7 @@
             koloraUser = user;
             badges = [];
 
-            updateWorks();
+            updateContent();
 
             if (user.isBanned) {
                 badges = [
@@ -186,7 +197,7 @@
                     Ez a felhasználó még nem osztott meg műveket.
                 {:else}
                     Ennek a felhasználónak {works.length} műve van. Találd meg ezeket
-                    a matricázott helyeken.
+                    az üzenőfalakon.
                 {/if}
             </p>
         </Alert>
@@ -217,7 +228,7 @@
                                     firestore.works
                                         .delete(work.id)
                                         .then(() => {
-                                            updateWorks();
+                                            updateContent();
                                         })
                                         .catch(() => {
                                             alert(
@@ -258,7 +269,40 @@
                 Új mű
             </button>
         {/if}
-
+    {/if}
+    <h3
+        style="display: flex; justify-content: space-between; align-items: flex-end;"
+    >
+        <span>
+            <span class="mdi mdi-post"></span>
+            Posztok
+        </span>
+    </h3>
+    {#if !isOwnerLoggedIn}
+        <Alert icon="post">
+            <p>
+                {#if posts.length === 0}
+                    Ez a felhasználó még nem osztott meg posztokat.
+                {:else}
+                    Ennek a felhasználónak {posts.length} posztja van. Találd meg
+                    ezeket az üzenőfalakon.
+                {/if}
+            </p>
+        </Alert>
+    {:else}
+        <Alert>
+            <p>
+                Ezt csak te látod. Mások csak azokat a posztokat látják, amiket
+                megosztottál valahol egy üzenőfalon.
+            </p>
+        </Alert>
+        {#each posts as post}
+            <div>
+                <span>{pois.find((p) => p.id === post.poiId)?.name}</span>
+                <PostDisplay {post} />
+            </div>
+        {/each}
+        <hr />
         <div class="outlined-card danger-zone">
             <h3>Veszély zóna</h3>
             <p>
