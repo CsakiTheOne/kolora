@@ -401,16 +401,6 @@
             Kolora születése: 2023.06.21.
         </p>
     </VerticalTimelineItem>
-
-    <hr />
-
-    <h2>Mi lesz az idővonallal 2024 után?</h2>
-    <p>Marad emléknek amíg az kedves számunkra.</p>
-    <p>
-        Na jó, egy kicsit megváltozik. Ez az "Idővonal" oldal mellékszereplő
-        lesz és más tartalmaknak ad helyt. Milyen tartalmaknak? Majd
-        meglátjátok!
-    </p>
 </main>
 <Footer />
 
