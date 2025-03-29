@@ -7,6 +7,7 @@
     import Header from "../../components/Header.svelte";
     import firestore from "$lib/firebase/firestore";
     import POI from "$lib/model/POI";
+    import PoiUtils from "$lib/PoiUtils";
 
     let places: POI[] = $state([]);
     let nearestPlace: POI | null = $state(null);
@@ -76,7 +77,7 @@
             <span class="mdi mdi-crosshairs-gps"></span>
             Pozíció meghatározása...
         </p>
-    {:else if nearestPlace && distance < 0.002}
+    {:else if nearestPlace && distance < PoiUtils.DISTANCE_TO_OPEN}
         <div class="card">
             <p>Legközelebbi üzenőfal: {nearestPlace.name}</p>
             <a href="/poi?id={nearestPlace.id}">

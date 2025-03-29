@@ -15,6 +15,7 @@
     import Backdrop from "../../components/Backdrop.svelte";
     import type Work from "$lib/model/Work";
     import Footer from "../../components/Footer.svelte";
+    import PoiUtils from "$lib/PoiUtils";
 
     const POST_CONTENT_LENGTH_LIMIT = 1000;
 
@@ -105,7 +106,7 @@
                         );
                         debugDistance = distance;
 
-                        isNearby = ignoreLocation || distance < 0.005;
+                        isNearby = ignoreLocation || distance < PoiUtils.DISTANCE_TO_VIEW;
                         isLoadingLocation = false;
                         if (isNearby) {
                             loadPosts();
