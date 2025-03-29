@@ -76,7 +76,7 @@
             <span class="mdi mdi-crosshairs-gps"></span>
             Pozíció meghatározása...
         </p>
-    {:else if nearestPlace && distance < 0.003}
+    {:else if nearestPlace && distance < 0.002}
         <div class="card">
             <p>Legközelebbi üzenőfal: {nearestPlace.name}</p>
             <a href="/poi?id={nearestPlace.id}">
@@ -86,7 +86,7 @@
     {:else if nearestPlace}
         <Alert>
             <p>Legközelebbi üzenőfal: {nearestPlace.name}</p>
-            <p>Menj közelebb a megttekintéséhez!</p>
+            <p>Menj közelebb a megtekintéshez!</p>
         </Alert>
     {:else}
         <Alert>
