@@ -51,6 +51,7 @@
 
         const userListener = firestore.users.listen(id!!, (user) => {
             koloraUser = user;
+            badges = [];
 
             updateWorks();
 
