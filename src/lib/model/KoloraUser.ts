@@ -5,6 +5,7 @@ export default class KoloraUser {
     createdAt: string = '';
     roles: string[] = [];
     isBanned: boolean = false;
+    visitedPlaces: string[] = [];
 }
 
 const ROLES = {

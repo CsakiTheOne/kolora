@@ -29,6 +29,7 @@
 
     let user: User | null = $state(null);
     let koloraUser: KoloraUser | null = $state(null);
+    let isVisitSent = $state(false);
     let publicWorks: Work[] = $state([]);
 
     let isLoadingPosts = $state(false);
@@ -106,7 +107,9 @@
                         );
                         debugDistance = distance;
 
-                        isNearby = ignoreLocation || distance < PoiUtils.DISTANCE_TO_VIEW;
+                        isNearby =
+                            ignoreLocation ||
+                            distance < PoiUtils.DISTANCE_TO_VIEW;
                         isLoadingLocation = false;
                         if (isNearby) {
                             loadPosts();
@@ -150,6 +153,13 @@
         return () => {
             authListener();
         };
+    });
+
+    $effect(() => {
+        if (koloraUser && poi && isNearby && !ignoreLocation && !isVisitSent) {
+            firestore.users.visitPlace(koloraUser.id, poi.id);
+            isVisitSent = true;
+        }
     });
 </script>
 

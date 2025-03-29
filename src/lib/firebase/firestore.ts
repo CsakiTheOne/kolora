@@ -1,4 +1,4 @@
-import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 import Work from "$lib/model/Work";
@@ -40,6 +40,11 @@ const firestore = {
         },
         set: (id: string, data: object): Promise<void> => {
             return setDoc(doc(db, "users", id), data, { merge: true });
+        },
+        visitPlace: (userId: string, poiId: string): Promise<void> => {
+            return updateDoc(doc(db, "users", userId), {
+                visitedPlaces: arrayUnion(poiId),
+            });
         },
         listen: (id: string, callback: (user: KoloraUser) => void): () => void => {
             const docRef = doc(db, "users", id);
