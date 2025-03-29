@@ -111,10 +111,24 @@
         Nem találod a matricát az egyik helyen? Tudod, hogy hol kellene lennie,
         de eltűnt onnan? Ott van, de valamiért nem műkdöik?
     </p>
+    <p>Írj Csákinak, hogy pontosan hol és mi történt.</p>
     <p>
-        Írj Csákinak, hogy pontosan hol és mi történt. Az elérhetőségeit <a
-            href="/contacts">itt találod</a
-        >.
+        <a href="mailto:jockahun@gmail.com" target="_blank">
+            <span class="mdi mdi-email"></span>
+            Email: jockahun@gmail.com
+        </a>
+    </p>
+    <p>
+        <a href="https://instagram.com/wholesomewarestuff" target="_blank">
+            <span class="mdi mdi-instagram"></span>
+            Instagram: @wholesomewarestuff
+        </a>
+    </p>
+    <p>
+        <a href="https://m.me/CsakiTheOne" target="_blank">
+            <span class="mdi mdi-facebook-messenger"></span>
+            Messenger: Csáki
+        </a>
     </p>
 </main>
 <Footer />
