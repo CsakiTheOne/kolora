@@ -136,6 +136,19 @@
                     </p>
                 </div>
             </div>
+            <div>
+                <h3 style="margin-bottom: calc(var(--spacing) / 2);">
+                    Miket csináltunk eddig?
+                </h3>
+                <p>
+                    <a href="/timeline">
+                        <button class="btn">
+                            <span class="mdi mdi-timeline"></span>
+                            2024 visszatekintés
+                        </button>
+                    </a>
+                </p>
+            </div>
 
             <h2>Barátaink</h2>
             <h3>Bandák, zenészek, akik koncerteztek nálunk</h3>

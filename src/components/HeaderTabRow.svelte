@@ -10,7 +10,6 @@
 
     let tabs = [
         { icon: "home", title: "Főoldal", url: "/" },
-        { icon: "timeline", title: "Idővonal", url: "/timeline" },
         {
             icon: "form-textbox-password",
             title: "Kódok",

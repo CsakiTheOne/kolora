@@ -18,7 +18,7 @@
     import vidKispirosKincsvadaszat from "$lib/images/gallery/kolteszet-napi-kincsvadaszat/kispiros-km.mp4";
 </script>
 
-<Header selectedTab="Idővonal" />
+<Header selectedTab="Főoldal" />
 <main>
     <VerticalTimelineItem title="2024 visszatekintés">
         <p>

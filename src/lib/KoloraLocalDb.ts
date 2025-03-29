@@ -143,8 +143,8 @@ export default class KoloraLocalDb {
             url: "https://photos.app.goo.gl/MsuistyMjtUpRCu16",
         },
         {
-            code: "uuddlrlrba",
-            url: "/?accountfeatures=true",
+            code: "0220",
+            url: "/poi/?id=q0q6nRgyI6Sf8eRsZqqp&ignoreLocation=1",
         },
     ];
 
