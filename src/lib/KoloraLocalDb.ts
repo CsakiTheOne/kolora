@@ -126,6 +126,12 @@ export default class KoloraLocalDb {
 
     static secrets = [
         {
+            code: "summer2025",
+            action: "message",
+            data: "A Kolora egy nyári eseményéhez kapsz egy kis előretekintést! Ne add tovább senkinek!",
+            url: "https://youtu.be/xvFZjo5PgG0?si=PcA0vjTsDwMeEUfN",
+        },
+        {
             code: "230621",
             action: "setTheme",
             data: "theme-retro",
@@ -160,15 +166,6 @@ export default class KoloraLocalDb {
             return null;
         }
 
-        if (secrets.some(s => s.url)) {
-            const secretUrl = secrets.find(s => s.url)?.url;
-            if (secretUrl?.startsWith("/")) {
-                window.location.href = secretUrl;
-                return;
-            }
-            window.open(secretUrl, "_blank");
-        }
-
         if (secrets.some(s => s.action)) {
             const secretActions = secrets.filter(s => s.action);
 
@@ -182,6 +179,15 @@ export default class KoloraLocalDb {
                         break;
                 }
             });
+        }
+
+        if (secrets.some(s => s.url)) {
+            const secretUrl = secrets.find(s => s.url)?.url;
+            if (secretUrl?.startsWith("/")) {
+                window.location.href = secretUrl;
+                return;
+            }
+            window.open(secretUrl, "_blank");
         }
     }
 }
