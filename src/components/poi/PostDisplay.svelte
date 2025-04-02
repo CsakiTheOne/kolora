@@ -71,9 +71,22 @@
         </a>
     {/if}
     <div class="row">
-        <p style="font-size: .7rem; color: var(--secondary-variant-color);">
-            {new Date(post.createdAt).toLocaleDateString("hu-HU")}
-        </p>
+        <div style="display: flex; align-items: center;">
+            {#if post.poiId === "_global"}
+                <span
+                    class="mdi mdi-earth"
+                    style="margin-right: 4px;"
+                    onclick={() => alert("Ez a poszt minden helyen látható.")}
+                    tabindex="0"
+                    role="button"
+                    aria-label="Globális poszt"
+                    onkeypress={(e) => {}}
+                ></span>
+            {/if}
+            <span style="font-size: .7rem; color: var(--secondary-variant-color);">
+                {new Date(post.createdAt).toLocaleDateString("hu-HU")}
+            </span>
+        </div>
         <div class="action-buttons">
             {#if isOwnerLoggedIn}
                 <span style="font-size: .7rem;">Kedvelések: {likes}</span>

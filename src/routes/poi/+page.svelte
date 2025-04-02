@@ -46,10 +46,26 @@
         isLoadingPosts = true;
         firestore.posts
             .getAllByPoi(poi.id)
-            .then((newPosts) => {
-                newPosts.sort((a, b) => b.createdAt - a.createdAt);
-                posts = newPosts;
-                isLoadingPosts = false;
+            .then((nearPosts) => {
+                firestore.posts
+                    .getGlobalPosts()
+                    .then((globalPosts) => {
+                        const newPosts = [
+                            ...new Map(
+                                [...globalPosts, ...nearPosts].map((post) => [
+                                    post.id,
+                                    post,
+                                ]),
+                            ).values(),
+                        ];
+                        newPosts.sort((a, b) => b.createdAt - a.createdAt);
+                        posts = newPosts;
+                        isLoadingPosts = false;
+                    })
+                    .catch(() => {
+                        isLoadingPosts = false;
+                        alert("Nem sikerült betölteni a posztokat.");
+                    });
             })
             .catch(() => {
                 isLoadingPosts = false;

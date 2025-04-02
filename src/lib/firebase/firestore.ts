@@ -161,6 +161,9 @@ const firestore = {
                     return Promise.reject(error);
                 });
         },
+        getGlobalPosts: (): Promise<Post[]> => {
+            return firestore.posts.getAllByPoi("_global");
+        },
         add: (post: Post): Promise<string> => {
             return addDoc(collection(db, "posts"), { ...post })
                 .then((docRef) => {
