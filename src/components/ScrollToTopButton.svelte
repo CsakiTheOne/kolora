@@ -5,12 +5,12 @@
         document.addEventListener("scroll", () => {
             const button = document.querySelector("button");
             if (button) {
-                if (window.scrollY > 150) {
+                if (window.scrollY > 350) {
                     button.style.display = "block";
                 } else {
                     button.style.display = "none";
                 }
-                button.style.opacity = '' + (window.scrollY / 1000);
+                button.style.opacity = '' + (window.scrollY / 2000);
             }
         });
     });
