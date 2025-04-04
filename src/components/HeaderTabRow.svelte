@@ -10,6 +10,11 @@
 
     let tabs = [
         { icon: "home", title: "Főoldal", url: "/" },
+        /*{TODO: Uncomment on release
+            icon: "comment-quote",
+            title: "Üzenőfalak",
+            url: "/feeds",
+        },*/
         {
             icon: "form-textbox-password",
             title: "Kódok",

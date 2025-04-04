@@ -69,6 +69,10 @@
 <Header selectedTab="Üzenőfalak" />
 <main>
     <h2>Üzenőfalak</h2>
+    <p>
+        A Kolora oldalán helyhez kötött üzenőfalak vannak, amiket
+        meglátogathatsz és üzeneteket hagyhatsz rajtuk.
+    </p>
 
     <h3>Közelben</h3>
     <button class="btn" onclick={getNearestPoi}>
@@ -85,7 +89,9 @@
     {:else if nearestPlace}
         <div class="card">
             <p>Legközelebbi üzenőfal: {nearestPlace.name}</p>
-            <div style="display: flex; gap: calc(var(--spacing) / 2); flex-wrap: nowrap;">
+            <div
+                style="display: flex; gap: calc(var(--spacing) / 2); flex-wrap: nowrap;"
+            >
                 <button class="btn" style="flex-grow: 1;">Segítség #1</button>
                 <button class="btn" style="flex-grow: 1;">Segítség #2</button>
             </div>
@@ -103,7 +109,10 @@
         </div>
     {:else}
         <Alert>
-            <p>Nem sikerült meghatározni a pozíciót.</p>
+            <p>
+                Nem sikerült meghatározni a pozíciót. Ellenőrizd a hely
+                engedélyeket a telefon és böngésző beállításokban.
+            </p>
         </Alert>
     {/if}
 
@@ -116,7 +125,14 @@
         src="https://www.google.com/maps/d/u/0/embed?mid=1wvVqV8uNIfDM3JdUyhJUrnkxLt-Mgk4&ehbc=2E312F&noprof=1"
     ></iframe>
 
-    <h3>Hibajelentés</h3>
+    <h3>Technikai részletek és hibajelentés</h3>
+    <p>
+        Ha találtál egy matricát, győződj meg róla, hogy a telefonodon be van
+        kapcsolva az NFC, és közelítsd a matricához a telefonod hátulját.
+        iPhone-okban általában följebb van az NFC antenna, más telefonoknál
+        általában középen. Ha nem működik, próbáld levenni a telefon tokját vagy
+        próbáld többször elvenni és odaérinteni a telefont kicsit más helyre.
+    </p>
     <p>
         Nem találod a matricát az egyik helyen? Tudod, hogy hol kellene lennie,
         de eltűnt onnan? Ott van, de valamiért nem műkdöik?
