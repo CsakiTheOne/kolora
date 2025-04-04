@@ -69,7 +69,12 @@
 <Header selectedTab="Üzenőfalak" />
 <main>
     <h2>Üzenőfalak</h2>
+
     <h3>Közelben</h3>
+    <button class="btn" onclick={getNearestPoi}>
+        <span class="mdi mdi-refresh"></span>
+        Frissítés
+    </button>
     {#if isLoadingPlaces}
         <p>Helyek betöltése...</p>
     {:else if isLoadingLocation}
@@ -77,27 +82,31 @@
             <span class="mdi mdi-crosshairs-gps"></span>
             Pozíció meghatározása...
         </p>
-    {:else if nearestPlace && distance < PoiUtils.DISTANCE_TO_OPEN}
+    {:else if nearestPlace}
         <div class="card">
             <p>Legközelebbi üzenőfal: {nearestPlace.name}</p>
-            <a href="/poi?id={nearestPlace.id}">
-                <button class="btn"> Megnyitás </button>
-            </a>
+            <div style="display: flex; gap: var(--spacing); flex-wrap: nowrap;">
+                <button class="btn" style="flex-grow: 1;">Segítség #1</button>
+                <button class="btn" style="flex-grow: 1;">Segítség #2</button>
+            </div>
+            {#if distance < PoiUtils.DISTANCE_TO_OPEN}
+                <p>
+                    Még mindig nincs meg a matrica? Már nagyon közel vagy,
+                    szóval ha nem találod, itt megnyithatod:
+                </p>
+                <a href="/poi?id={nearestPlace.id}">
+                    <button class="btn">Megnyitás</button>
+                </a>
+            {:else}
+                <p>Menj közelebb a megtekintéshez!</p>
+            {/if}
         </div>
-    {:else if nearestPlace}
-        <Alert>
-            <p>Legközelebbi üzenőfal: {nearestPlace.name}</p>
-            <p>Menj közelebb a megtekintéshez!</p>
-        </Alert>
     {:else}
         <Alert>
             <p>Nem sikerült meghatározni a pozíciót.</p>
         </Alert>
     {/if}
-    <button class="btn" onclick={getNearestPoi}>
-        <span class="mdi mdi-refresh"></span>
-        Frissítés
-    </button>
+
     <h3>Térkép</h3>
     <iframe
         width="100%"
@@ -106,6 +115,7 @@
         frameborder="0"
         src="https://www.google.com/maps/d/u/0/embed?mid=1wvVqV8uNIfDM3JdUyhJUrnkxLt-Mgk4&ehbc=2E312F&noprof=1"
     ></iframe>
+
     <h3>Hibajelentés</h3>
     <p>
         Nem találod a matricát az egyik helyen? Tudod, hogy hol kellene lennie,
