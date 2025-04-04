@@ -16,6 +16,8 @@
     import type Work from "$lib/model/Work";
     import Footer from "../../components/Footer.svelte";
     import PoiUtils from "$lib/PoiUtils";
+    import UserManager from "$lib/UserManager.svelte";
+    import { loginWithGoogle } from "$lib/firebase/auth";
 
     const POST_CONTENT_LENGTH_LIMIT = 1000;
 
@@ -27,8 +29,6 @@
     let ignoreLocation = $state(false);
     let debugDistance = $state(0);
 
-    let user: User | null = $state(null);
-    let koloraUser: KoloraUser | null = $state(null);
     let isVisitSent = $state(false);
     let publicWorks: Work[] = $state([]);
 
@@ -143,37 +143,20 @@
             .catch(() => {
                 window.history.back();
             });
-
-        const { auth } = initializeFirebase();
-
-        let userListener: (() => void) | null = null;
-        const authListener = auth.onAuthStateChanged((newUser) => {
-            user = newUser;
-            if (user) {
-                firestore.users
-                    .get(user.uid)
-                    .then((user) => (koloraUser = user));
-                firestore.users.setDefaultsIfNeeded(user.uid, user.displayName);
-                userListener = firestore.users.listen(user.uid, (user) => {
-                    koloraUser = user;
-                });
-            } else {
-                koloraUser = null;
-                if (userListener) {
-                    userListener();
-                    userListener = null;
-                }
-            }
-        });
-
-        return () => {
-            authListener();
-        };
     });
 
     $effect(() => {
-        if (koloraUser && poi && isNearby && !ignoreLocation && !isVisitSent) {
-            firestore.users.visitPlace(koloraUser.id, poi.id);
+        if (
+            UserManager.instance.isLoggedIn &&
+            poi &&
+            isNearby &&
+            !ignoreLocation &&
+            !isVisitSent
+        ) {
+            firestore.users.visitPlace(
+                UserManager.instance.firebaseUser!!.uid,
+                poi.id,
+            );
             isVisitSent = true;
         }
     });
@@ -277,94 +260,113 @@
                 />
             </Alert>
         {/if}
-        {#if poi.allowPosting && koloraUser && !koloraUser.isBanned}
-            <div class="post-input-container">
-                <div>
-                    <textarea
-                        class="outlined-input"
-                        style="resize: none; min-height: 80px;"
-                        placeholder="Mi jár a fejedben?"
-                        value={postDraft.content}
-                        oninput={(e: any) => {
-                            postDraft = {
-                                ...postDraft,
-                                content: e.target?.value ?? "",
-                            };
-                        }}
-                        maxlength={POST_CONTENT_LENGTH_LIMIT}
-                    ></textarea>
-                    <p style="text-align: right; font-size: 0.7rem;">
-                        {postDraft.content.length}/{POST_CONTENT_LENGTH_LIMIT}
-                    </p>
-                </div>
-                {#if postDraft.attachmentWorkId}
-                    <a
-                        href="/work?id={postDraft.attachmentWorkId}"
-                        target="_blank"
-                        style="background: var(--secondary-color); color: var(--on-secondary-color); padding: calc(var(--spacing) / 2); border-radius: var(--corner-radius);"
-                    >
-                        {publicWorks.find(
-                            (w) => w.id === postDraft.attachmentWorkId,
-                        )?.title}
-                    </a>
-                {/if}
-                <div class="post-input-actions">
-                    <button
-                        class="btn"
-                        onclick={() => {
-                            if (!poi) {
-                                alert("Nem sikerült betölteni a helyet.");
-                                return;
-                            }
-                            if (!koloraUser) {
-                                alert("Poszt írásához be kell jelentkezned.");
-                                return;
-                            }
-                            firestore.works
-                                .getAllByUser(koloraUser.id)
-                                .then((works) => {
-                                    publicWorks = works;
-                                });
-                            isWorkSelectorDialogOpen = true;
-                        }}
-                    >
-                        <span class="mdi mdi-attachment"></span>
-                        Mű csatolása
-                    </button>
-                    <button
-                        class="btn"
-                        disabled={!postDraft.content}
-                        onclick={() => {
-                            if (!poi) {
-                                alert("Nem sikerült betölteni a helyet.");
-                                return;
-                            }
-                            if (!koloraUser) {
-                                alert("Poszt küldéséhez be kell jelentkezned.");
-                                return;
-                            }
-                            if (!postDraft.content) {
-                                alert("Nem lehet üres a poszt szövege.");
-                                return;
-                            }
-                            firestore.posts
-                                .add({
+        {#if poi.allowPosting}
+            {#if UserManager.instance.koloraUser && !UserManager.instance.koloraUser.isBanned}
+                <div class="post-input-container">
+                    <div>
+                        <textarea
+                            class="outlined-input"
+                            style="resize: none; min-height: 80px;"
+                            placeholder="Mi jár a fejedben?"
+                            value={postDraft.content}
+                            oninput={(e: any) => {
+                                postDraft = {
                                     ...postDraft,
-                                    poiId: poi.id,
-                                    authorId: koloraUser.id,
-                                    createdAt: Date.now(),
-                                })
-                                .then(() => {
-                                    loadPosts();
-                                    postDraft = new Post();
-                                });
-                        }}
-                    >
-                        <span class="mdi mdi-send"></span>
-                        Küldés
+                                    content: e.target?.value ?? "",
+                                };
+                            }}
+                            maxlength={POST_CONTENT_LENGTH_LIMIT}
+                        ></textarea>
+                        <p style="text-align: right; font-size: 0.7rem;">
+                            {postDraft.content
+                                .length}/{POST_CONTENT_LENGTH_LIMIT}
+                        </p>
+                    </div>
+                    {#if postDraft.attachmentWorkId}
+                        <a
+                            href="/work?id={postDraft.attachmentWorkId}"
+                            target="_blank"
+                            style="background: var(--secondary-color); color: var(--on-secondary-color); padding: calc(var(--spacing) / 2); border-radius: var(--corner-radius);"
+                        >
+                            {publicWorks.find(
+                                (w) => w.id === postDraft.attachmentWorkId,
+                            )?.title}
+                        </a>
+                    {/if}
+                    <div class="post-input-actions">
+                        <button
+                            class="btn"
+                            onclick={() => {
+                                if (!poi) {
+                                    alert("Nem sikerült betölteni a helyet.");
+                                    return;
+                                }
+                                if (!UserManager.instance.isLoggedIn) {
+                                    alert(
+                                        "Poszt írásához be kell jelentkezned.",
+                                    );
+                                    return;
+                                }
+                                firestore.works
+                                    .getAllByUser(
+                                        UserManager.instance.firebaseUser!!.uid,
+                                    )
+                                    .then((works) => {
+                                        publicWorks = works;
+                                    });
+                                isWorkSelectorDialogOpen = true;
+                            }}
+                        >
+                            <span class="mdi mdi-attachment"></span>
+                            Mű csatolása
+                        </button>
+                        <button
+                            class="btn"
+                            disabled={!postDraft.content}
+                            onclick={() => {
+                                if (!poi) {
+                                    alert("Nem sikerült betölteni a helyet.");
+                                    return;
+                                }
+                                if (!UserManager.instance.isLoggedIn) {
+                                    alert(
+                                        "Poszt küldéséhez be kell jelentkezned.",
+                                    );
+                                    return;
+                                }
+                                if (!postDraft.content) {
+                                    alert("Nem lehet üres a poszt szövege.");
+                                    return;
+                                }
+                                firestore.posts
+                                    .add({
+                                        ...postDraft,
+                                        poiId: poi.id,
+                                        authorId:
+                                            UserManager.instance.firebaseUser!!
+                                                .uid,
+                                        createdAt: Date.now(),
+                                    })
+                                    .then(() => {
+                                        loadPosts();
+                                        postDraft = new Post();
+                                    });
+                            }}
+                        >
+                            <span class="mdi mdi-send"></span>
+                            Küldés
+                        </button>
+                    </div>
+                </div>
+            {:else}
+                <div class="post-input-container">
+                    <b>Szeretnél írni valamit erre a helyre? Jelentkezz be!</b>
+                    <button class="btn" onclick={loginWithGoogle}>
+                        <span class="mdi mdi-login"></span>
+                        Bejelentkezés Google fiókkal
                     </button>
                 </div>
-            </div>
+            {/if}
         {/if}
         {#if isLoadingPosts}
             <p>Posztok betöltése...</p>

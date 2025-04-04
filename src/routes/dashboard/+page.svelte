@@ -2,7 +2,6 @@
     import { initializeFirebase } from "$lib/firebase/firebase";
     import firestore from "$lib/firebase/firestore";
     import KoloraUser, { ROLES } from "$lib/model/KoloraUser";
-    import { onAuthStateChanged } from "firebase/auth";
     import firebase from "firebase/compat/app";
     import { onMount } from "svelte";
     import SmallHeader from "../../components/SmallHeader.svelte";
@@ -11,8 +10,7 @@
     import type Report from "$lib/model/Report";
     import type { ReportContentType } from "$lib/model/Report";
     import Alert from "../../components/Alert.svelte";
-
-    let koloraUser = $state(new KoloraUser());
+    import UserManager from "$lib/UserManager.svelte";
 
     let loading = $state(true);
     let selectedTab = $state("users");
@@ -42,11 +40,13 @@
 
     function getTabData() {
         if (
+            !UserManager.instance.isLoggedIn ||
             !(
-                koloraUser.roles.includes(ROLES.ADMIN) ||
-                koloraUser.roles.includes(ROLES.KOLORA_MEMBER)
+                UserManager.instance.koloraUser!!.roles.includes(ROLES.ADMIN) ||
+                UserManager.instance.koloraUser!!.roles.includes(ROLES.KOLORA_MEMBER)
             )
         ) {
+            window.location.href = "/";
             return;
         }
 
@@ -82,44 +82,10 @@
         }
     }
 
-    onMount(() => {
-        const auth = initializeFirebase().auth;
-        let userListener: (() => void) | null = null;
-        const authListener = auth.onAuthStateChanged((user) => {
-            if (user) {
-                userListener = firestore.users.listen(
-                    user.uid,
-                    (newKoloraUser) => {
-                        koloraUser = newKoloraUser;
-                        if (
-                            !(
-                                koloraUser.roles.includes(ROLES.ADMIN) ||
-                                koloraUser.roles.includes(ROLES.KOLORA_MEMBER)
-                            )
-                        ) {
-                            window.history.back();
-                        } else {
-                            getTabData();
-                        }
-                    },
-                );
-            } else {
-                koloraUser = new KoloraUser();
-                if (userListener) {
-                    userListener();
-                    userListener = null;
-                }
-                window.open("/", "_self");
-            }
-        });
-
-        return () => {
-            authListener();
-        };
-    });
-
     $effect(() => {
-        getTabData();
+        if (UserManager.instance.isLoaded) {
+            getTabData();
+        }
         selectedTab;
     });
 </script>

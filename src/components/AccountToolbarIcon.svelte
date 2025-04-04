@@ -6,42 +6,16 @@
     import firestore from "$lib/firebase/firestore";
     import type KoloraUser from "$lib/model/KoloraUser";
     import Backdrop from "./Backdrop.svelte";
+    import UserManager from "$lib/UserManager.svelte";
 
     let isOpen = $state(false);
-    let user: User | null = $state(null);
-    let koloraUser: KoloraUser | null = $state(null);
-
-    const { auth } = initializeFirebase();
-
-    onMount(() => {
-        let userListener: any = null;
-        const authListener = auth.onAuthStateChanged((newUser) => {
-            user = newUser;
-            if (user) {
-                firestore.users
-                    .get(user.uid)
-                    .then((user) => (koloraUser = user));
-                firestore.users.setDefaultsIfNeeded(user.uid, user.displayName);
-                userListener = firestore.users.listen(user.uid, (user) => {
-                    koloraUser = user;
-                });
-            } else {
-                koloraUser = null;
-                if (userListener) {
-                    userListener();
-                    userListener = null;
-                }
-            }
-        });
-
-        return () => {
-            authListener();
-        };
-    });
 </script>
 
 <span
-    class={"mdi" + (user ? " mdi-account-circle" : " mdi-login")}
+    class={"mdi" +
+        (UserManager.instance.isLoggedIn
+            ? " mdi-account-circle"
+            : " mdi-login")}
     onclick={() => (isOpen = !isOpen)}
     onkeydown={(e) => e.key === "Enter" && (isOpen = !isOpen)}
     tabindex="0"
@@ -55,25 +29,25 @@
             </span>
             <p style="word-wrap: normal;">
                 <b>
-                    {#if user && koloraUser}
-                        Helló, {koloraUser.username}!
+                    {#if UserManager.instance.isLoggedIn}
+                        Helló, {UserManager.instance.koloraUser!!.username}!
                     {:else}
                         Jelentkezz be!
                     {/if}
                 </b>
             </p>
             <ul>
-                {#if !user}
+                {#if !UserManager.instance.firebaseUser}
                     <button onclick={loginWithGoogle}>
                         <span class="mdi mdi-login"></span>
                         Bejelentkezés Google fiókkal
                     </button>
                 {/if}
-                {#if user && koloraUser}
+                {#if UserManager.instance.isLoggedIn}
                     <button
                         onclick={() => {
                             isOpen = false;
-                            window.location.href = `/profile/?id=${user!!.uid}`;
+                            window.location.href = `/profile/?id=${UserManager.instance.firebaseUser!!.uid}`;
                         }}
                     >
                         <span class="mdi mdi-account-circle"></span>
@@ -88,7 +62,7 @@
                         <span class="mdi mdi-plus"></span>
                         Új alkotás
                     </button>
-                    {#if koloraUser.roles.includes("admin") || koloraUser.roles.includes("kolora_member")}
+                    {#if UserManager.instance.koloraUser.roles.includes("admin") || UserManager.instance.koloraUser.roles.includes("kolora_member")}
                         <button
                             onclick={() => {
                                 isOpen = false;

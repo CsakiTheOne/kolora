@@ -7,6 +7,7 @@
     import SmallHeader from "../../components/SmallHeader.svelte";
     import ChooseYourOwnAdventure from "$lib/ChooseYourOwnAdventure.svelte";
     import Backdrop from "../../components/Backdrop.svelte";
+    import UserManager from "$lib/UserManager.svelte";
 
     let work: Work = $state(new Work());
     let currentUserUid = $state("");
@@ -19,17 +20,7 @@
     let isSidebarOpen = $state(true);
     let selection = $state({ start: 0, end: 0 });
 
-    onMount(() => {
-        const auth = initializeFirebase().auth;
-
-        const authListener = auth.onAuthStateChanged((user) => {
-            if (!user) {
-                window.history.back();
-            } else {
-                currentUserUid = user.uid;
-            }
-        });
-
+    function loadWork() {
         const id = GalleryUtils.workId;
 
         if (id) {
@@ -44,13 +35,25 @@
         } else {
             isSetupRequired = true;
         }
+    }
 
+    $effect(() => {
+        if (UserManager.instance.isLoaded) {
+            if (UserManager.instance.isLoggedIn) {
+                currentUserUid = UserManager.instance.firebaseUser!!.uid;
+                loadWork();
+            } else {
+                window.location.href = "/";
+            }
+        }
+    });
+
+    onMount(() => {
         window.onbeforeunload = () => {
-            return "Az alkotásod mentetlen változásokat tartalmaz. Biztosan elhagyod az oldalt?";
+            return "Az alkotásod mentetlen változásokat tartalmazhat. Biztosan elhagyod az oldalt?";
         };
 
         return () => {
-            authListener();
             window.onbeforeunload = null;
         };
     });
@@ -80,7 +83,7 @@
                 <select
                     name="workType"
                     value={work.workType}
-                    onchange={(e) =>
+                    onchange={(e: any) =>
                         (work = { ...work, workType: e.target.value })}
                     class="outlined-input"
                 >
@@ -163,7 +166,8 @@
                     type="text"
                     name="workTitle"
                     value={work.title}
-                    oninput={(e) => (work = { ...work, title: e.target.value })}
+                    oninput={(e: any) =>
+                        (work = { ...work, title: e.target.value })}
                     class="outlined-input"
                     maxlength="100"
                 />
@@ -173,7 +177,7 @@
                     type="text"
                     name="workDateCreated"
                     value={work.dateCreated}
-                    oninput={(e) =>
+                    oninput={(e: any) =>
                         (work = { ...work, dateCreated: e.target.value })}
                     class="outlined-input"
                     maxlength="100"
@@ -184,7 +188,8 @@
                     type="text"
                     name="workGenre"
                     value={work.genre}
-                    oninput={(e) => (work = { ...work, genre: e.target.value })}
+                    oninput={(e: any) =>
+                        (work = { ...work, genre: e.target.value })}
                     class="outlined-input"
                     maxlength="100"
                 />
@@ -193,7 +198,7 @@
                 <textarea
                     name="workDescription"
                     value={work.description}
-                    oninput={(e) =>
+                    oninput={(e: any) =>
                         (work = { ...work, description: e.target.value })}
                     class="outlined-input"
                     maxlength="500"
@@ -269,8 +274,9 @@
                 class="outlined-input"
                 name="workContent"
                 value={work.content}
-                oninput={(e) => (work = { ...work, content: e.target.value })}
-                onselectionchange={(e) => {
+                oninput={(e: any) =>
+                    (work = { ...work, content: e.target.value })}
+                onselectionchange={(e: any) => {
                     selection = {
                         start: e.target.selectionStart,
                         end: e.target.selectionEnd,
