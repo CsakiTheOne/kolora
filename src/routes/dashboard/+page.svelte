@@ -43,7 +43,9 @@
             !UserManager.instance.isLoggedIn ||
             !(
                 UserManager.instance.koloraUser!!.roles.includes(ROLES.ADMIN) ||
-                UserManager.instance.koloraUser!!.roles.includes(ROLES.KOLORA_MEMBER)
+                UserManager.instance.koloraUser!!.roles.includes(
+                    ROLES.KOLORA_MEMBER,
+                )
             )
         ) {
             window.location.replace("/");
@@ -333,6 +335,48 @@
                     <label for="showSoonScreen">
                         "Hamarosan" képernyő mutatása
                     </label>
+                </div>
+
+                <div>
+                    <input
+                        type="text"
+                        class="outlined-input"
+                        disabled={loading}
+                        value={selectedPlace.hint1Url}
+                        placeholder="1. segítség linkje"
+                        oninput={(e: any) => {
+                            firestore.pois.set(selectedPlaceId!, {
+                                ...selectedPlace,
+                                hint1Url: e.target?.value,
+                            });
+                        }}
+                    />
+                    <img
+                        style="width: 30%;"
+                        src={selectedPlace.hint1Url}
+                        alt="Hint 1"
+                    />
+                </div>
+
+                <div>
+                    <input
+                        type="text"
+                        class="outlined-input"
+                        disabled={loading}
+                        value={selectedPlace.hint2Url}
+                        placeholder="2. segítség linkje"
+                        oninput={(e: any) => {
+                            firestore.pois.set(selectedPlaceId!, {
+                                ...selectedPlace,
+                                hint2Url: e.target?.value,
+                            });
+                        }}
+                    />
+                    <img
+                        style="width: 30%;"
+                        src={selectedPlace.hint2Url}
+                        alt="Hint 2"
+                    />
                 </div>
 
                 <a

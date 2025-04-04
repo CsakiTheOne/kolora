@@ -11,4 +11,6 @@ export default class POI {
     longitude: number = 0;
     allowPosting: boolean = false;
     showSoonScreen: boolean = false;
+    hint1Url: string = '';
+    hint2Url: string = '';
 }
