@@ -46,7 +46,7 @@
                 UserManager.instance.koloraUser!!.roles.includes(ROLES.KOLORA_MEMBER)
             )
         ) {
-            window.location.href = "/";
+            window.location.replace("/");
             return;
         }
 

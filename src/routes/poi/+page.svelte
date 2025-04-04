@@ -80,7 +80,7 @@
         isNearby = ignoreLocation;
 
         if (!poiId) {
-            window.open("/", "_self");
+            window.location.replace("/");
             return;
         }
 
@@ -88,12 +88,12 @@
             .get(poiId)
             .then((res) => {
                 if (!res) {
-                    window.open("/", "_self");
+                    window.location.replace("/");
                     return;
                 }
 
                 if (res.showSoonScreen) {
-                    window.open(`/poi/soon`, "_self");
+                    window.location.replace("/poi/soon");
                     return;
                 }
 

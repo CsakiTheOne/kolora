@@ -43,7 +43,7 @@
                 currentUserUid = UserManager.instance.firebaseUser!!.uid;
                 loadWork();
             } else {
-                window.location.href = "/";
+                window.location.replace("/");
             }
         }
     });

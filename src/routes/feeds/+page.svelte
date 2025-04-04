@@ -85,7 +85,7 @@
     {:else if nearestPlace}
         <div class="card">
             <p>Legközelebbi üzenőfal: {nearestPlace.name}</p>
-            <div style="display: flex; gap: var(--spacing); flex-wrap: nowrap;">
+            <div style="display: flex; gap: calc(var(--spacing) / 2); flex-wrap: nowrap;">
                 <button class="btn" style="flex-grow: 1;">Segítség #1</button>
                 <button class="btn" style="flex-grow: 1;">Segítség #2</button>
             </div>
@@ -95,7 +95,7 @@
                     szóval ha nem találod, itt megnyithatod:
                 </p>
                 <a href="/poi?id={nearestPlace.id}">
-                    <button class="btn">Megnyitás</button>
+                    <button class="btn" style="width: 100%">Megnyitás</button>
                 </a>
             {:else}
                 <p>Menj közelebb a megtekintéshez!</p>
