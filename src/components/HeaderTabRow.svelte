@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Badge from "./Badge.svelte";
 
     const {
@@ -8,7 +8,12 @@
         ...rest
     } = $props();
 
-    let tabs = [
+    let tabs: {
+        icon: string,
+        title: string,
+        url?: string,
+        badge?: string,
+    }[] = [
         { icon: "home", title: "Főoldal", url: "/" },
         /*{TODO: Uncomment on release
             icon: "comment-quote",
