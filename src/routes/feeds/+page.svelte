@@ -8,12 +8,14 @@
     import firestore from "$lib/firebase/firestore";
     import POI from "$lib/model/POI";
     import PoiUtils from "$lib/PoiUtils";
+    import Backdrop from "../../components/Backdrop.svelte";
 
     let places: POI[] = $state([]);
     let nearestPlace: POI | null = $state(null);
     let distance: number = $state(0);
     let isLoadingPlaces = $state(false);
     let isLoadingLocation = $state(false);
+    let openedHintId: number | null = $state(null);
 
     function getNearestPoi() {
         isLoadingLocation = true;
@@ -66,6 +68,21 @@
     });
 </script>
 
+{#if nearestPlace && openedHintId}
+    <Backdrop close={() => (openedHintId = null)}>
+        <img
+            src={openedHintId === 1
+                ? nearestPlace.hint1Url
+                : nearestPlace.hint2Url}
+            alt="hint"
+            style="margin: calc(var(--spacing) * 2); max-width: 80vw; max-height: 80svh; object-fit: contain;"
+            onclick={() => (openedHintId = null)}
+            onkeydown={(e) => e.key === "Enter" && (openedHintId = null)}
+            tabindex="0"
+            role="button"
+        />
+    </Backdrop>
+{/if}
 <Header selectedTab="Üzenőfalak" />
 <main>
     <h2>Üzenőfalak</h2>
@@ -74,11 +91,15 @@
         meglátogathatsz és üzeneteket hagyhatsz rajtuk.
     </p>
 
-    <h3>Közelben</h3>
-    <button class="btn" onclick={getNearestPoi}>
-        <span class="mdi mdi-refresh"></span>
-        Frissítés
-    </button>
+    <div
+        style="display: flex; gap: var(--spacing); flex-wrap: wrap; align-items: center; justify-content: space-between;"
+    >
+        <h3>Közelben</h3>
+        <button class="btn" onclick={getNearestPoi}>
+            <span class="mdi mdi-refresh"></span>
+            Frissítés
+        </button>
+    </div>
     {#if isLoadingPlaces}
         <p>Helyek betöltése...</p>
     {:else if isLoadingLocation}
@@ -92,8 +113,24 @@
             <div
                 style="display: flex; gap: calc(var(--spacing) / 2); flex-wrap: nowrap;"
             >
-                <button class="btn" style="flex-grow: 1;">Segítség #1</button>
-                <button class="btn" style="flex-grow: 1;">Segítség #2</button>
+                {#if nearestPlace.hint1Url}
+                    <button
+                        class="btn"
+                        style="flex-grow: 1;"
+                        onclick={() => (openedHintId = 1)}
+                    >
+                        Segítség #1
+                    </button>
+                {/if}
+                {#if nearestPlace.hint2Url}
+                    <button
+                        class="btn"
+                        style="flex-grow: 1;"
+                        onclick={() => (openedHintId = 2)}
+                    >
+                        Segítség #2
+                    </button>
+                {/if}
             </div>
             {#if distance < PoiUtils.DISTANCE_TO_OPEN}
                 <p>
