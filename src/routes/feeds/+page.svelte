@@ -165,6 +165,7 @@
     ></iframe>
 
     <h3>Technikai részletek és hibajelentés</h3>
+    <h4>Matrica beolvasása</h4>
     <p>
         Ha találtál egy matricát, győződj meg róla, hogy a telefonodon be van
         kapcsolva az NFC, és közelítsd a matricához a telefonod hátulját.
@@ -172,6 +173,14 @@
         általában középen. Ha nem működik, próbáld levenni a telefon tokját vagy
         próbáld többször elvenni és odaérinteni a telefont kicsit más helyre.
     </p>
+    <h4>Hely hozzáférés</h4>
+    <p>
+        Ha a matrica beolvasása után nem tudod megnyitni az üzenőfalat, akkor
+        ellenőrizd a hely hozzáférés beállításait a telefonodon és a
+        böngésződben. A helyhez kötött üzenőfalak csak akkor működnek, ha tudjuk
+        ellenőrizni, hogy tényleg a közelben vagy.
+    </p>
+    <h4>Hibajelentés</h4>
     <p>
         Nem találod a matricát az egyik helyen? Tudod, hogy hol kellene lennie,
         de eltűnt onnan? Ott van, de valamiért nem műkdöik?
