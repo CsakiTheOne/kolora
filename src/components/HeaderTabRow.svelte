@@ -15,6 +15,10 @@
         badge?: string,
     }[] = [
         { icon: "home", title: "Főoldal", url: "/" },
+        {
+            icon: "lock",
+            title: "Április 11."
+        },
         /*{//TODO: Uncomment on release
             icon: "comment-quote",
             title: "Üzenőfalak",
