@@ -25,6 +25,11 @@
     "handle_links": "preferred",
     "shortcuts": [
       {
+        "name": "Üzenőfalak",
+        "url": "/feeds",
+        "description": "Helyhez kötött üzenőfalak országszerte."
+      },
+      {
         "name": "Kódok",
         "url": "/codes",
         "description": "Járj Kolorás rendezvényekre, kövesd a közösségi profiljainkat és légy figyelmes!"

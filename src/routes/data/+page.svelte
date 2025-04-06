@@ -31,9 +31,10 @@
             be, gyűjtjük az Ön nevét, e-mail címét és profilképét.
         </li>
         <li>
-            <b>Pozícióadatok:</b> Bizonyos funkciók használatához szükség lehet az Ön
-            földrajzi pozíciójára. Ezeket az adatokat csak az adott funkció
-            működéséhez használjuk, és egyáltalán nem tároljuk rövid távon sem.
+            <b>Pozícióadatok:</b> Bizonyos funkciók használatához szükség lehet az
+            Ön földrajzi pozíciójára. Ezeket az adatokat csak az adott funkció működéséhez
+            használjuk, és csak egy körülbelüli helyet tárolunk el, amit kérésre
+            vagy fiók törlés esetén eltávolítunk.
         </li>
     </ul>
     <p>
@@ -63,8 +64,7 @@
             ha Google fiókkal jelentkezik be.
         </li>
         <li>
-            <b>Pozícióalapú funkciók:</b> Az Ön földrajzi pozíciójának felhasználása
-            bizonyos funkciók működéséhez.
+            <b>Pozícióalapú funkciók:</b> Helyhez kötött üzenőfalak.
         </li>
     </ul>
     <p>

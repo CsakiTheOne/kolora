@@ -15,7 +15,7 @@
         badge?: string,
     }[] = [
         { icon: "home", title: "Főoldal", url: "/" },
-        /*{TODO: Uncomment on release
+        /*{//TODO: Uncomment on release
             icon: "comment-quote",
             title: "Üzenőfalak",
             url: "/feeds",

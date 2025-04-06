@@ -124,7 +124,12 @@ export default class KoloraLocalDb {
         return KoloraLocalDb.musicians.find(m => m.name === name);
     }
 
-    static secrets = [
+    static secrets: {
+        code: string;
+        action?: "message" | "setTheme";
+        data?: string;
+        url?: string;
+    }[] = [
         {
             code: "summer2025",
             action: "message",

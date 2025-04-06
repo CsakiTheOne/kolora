@@ -24,6 +24,7 @@
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
 
+    let locationInterval: number | null = $state(null);
     let isLoadingLocation = $state(false);
     let isNearby = $state(false);
     let ignoreLocation = $state(false);
@@ -37,6 +38,30 @@
 
     let postDraft: Post = $state({ ...new Post() });
     let isWorkSelectorDialogOpen = $state(false);
+
+    function checkLocationSilent() {
+        if (!poi) {
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const distance = Math.sqrt(
+                    Math.pow(poi!!.latitude - position.coords.latitude, 2) +
+                        Math.pow(
+                            poi!!.longitude - position.coords.longitude,
+                            2,
+                        ),
+                );
+                debugDistance = distance;
+                isNearby =
+                    ignoreLocation || distance < PoiUtils.DISTANCE_TO_VIEW;
+            },
+            () => {
+                isNearby = ignoreLocation;
+            },
+        );
+    }
 
     function loadPosts() {
         if (!poi) {

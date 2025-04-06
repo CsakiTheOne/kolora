@@ -121,6 +121,8 @@
                     >
                         Segítség #1
                     </button>
+                {:else}
+                    <p>Nem érhető el segítség a matrica megtalálásához.</p>
                 {/if}
                 {#if nearestPlace.hint2Url}
                     <button
