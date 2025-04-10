@@ -84,6 +84,12 @@
                     </button>
                 {/if}
             </ul>
+            <a
+                href="/tos"
+                style="color: var(--on-primary-color); font-size: .8rem;"
+            >
+                Felhasználói feltételek
+            </a>
         </div>
     </Backdrop>
 {/if}

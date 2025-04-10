@@ -1,7 +1,5 @@
 <script>
-    const {
-        ...rest
-    } = $props();
+    const { ...rest } = $props();
 </script>
 
 <footer {...rest}>
@@ -12,7 +10,7 @@
         >
             <span class="mdi mdi-facebook"></span>
         </a>
-        
+
         <a href="https://www.instagram.com/koloraegyesulet/" target="_blank">
             <span class="mdi mdi-instagram"></span>
         </a>
@@ -22,12 +20,9 @@
         </a>
     </p>
     <p style="text-align: center;">
-        <a href="/impressum">
-            Impresszum
-        </a>
-        <a href="/data">
-            Adatkezelési irányelvek
-        </a>
+        <a href="/impressum"> Impresszum </a>
+        <a href="/data"> Adatkezelési irányelvek </a>
+        <a href="/tos"> TOS </a>
     </p>
 </footer>
 
