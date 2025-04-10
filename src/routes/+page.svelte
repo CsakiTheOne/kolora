@@ -80,11 +80,13 @@
     <div class="container">
         <Header selectedTab="Főoldal" />
         <main id="homepage">
-            <h2>Költészet napi kincsvadászat 2025</h2>
+            <h2>Magyar Költészet Napja 2025</h2>
             <p>
                 Idén is versek kerülnek az utcákra és Csáki is kitesz pár
-                apróságot. Üzenőfalakat, ahol verseket és egyéb gondolatokat
-                hagyhattok. Nézzetek rá az új <a href="/feeds">Üzenőfalak</a> oldalra.
+                apróságot. Üzenőfalakat, ahol saját költeményeket és egyéb
+                gondolatokat hagyhattok. Nézzetek rá az új <a href="/feeds"
+                    >Üzenőfalak</a
+                > oldalra.
             </p>
             <p>
                 A költészet napi kincsvadászatot a <a
