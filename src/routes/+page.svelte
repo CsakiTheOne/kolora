@@ -83,33 +83,14 @@
             <h2>Költészet napi kincsvadászat 2025</h2>
             <p>
                 Idén is versek kerülnek az utcákra és Csáki is kitesz pár
-                apróságot.
+                apróságot. Üzenőfalakat, ahol verseket és egyéb gondolatokat
+                hagyhattok. Nézzetek rá az új <a href="/feeds">Üzenőfalak</a> oldalra.
             </p>
             <p>
                 A költészet napi kincsvadászatot a <a
                     href="https://www.facebook.com/groups/570212437568903/"
                     target="_blank">Posztolj verset az utcára!</a
                 > mozgalom ihlette.
-            </p>
-            <h3>Hogyan készülhetek fel?</h3>
-            <p>
-                Tavaly matricákat kellett keresnetek Székesfehérváron, amik
-                verseket és egyéb jóságokat rejtettek. Idén viszont Ti is
-                rakhattok a matricákra tartalmat másoknak! Ehhez egy Kolora
-                fiókra lesz szükségetek. Jobb felső sarokban pár kattintással
-                meg is lehet csinálni.
-            </p>
-            <p>
-                Megosztani műveket és gondolatokat akkor tudtok, amikor
-                megtaláltok egy matricát. Tehát közel kell lenni a matricához,
-                ezért ellenőrizzétek, hogy a telefonon és a böngészőben be van-e
-                kapcsolva a helyhozzáférés.
-            </p>
-            <p>
-                Hogy miként, s hogyan kezeljük a hely- és egyéb adataitokat,
-                arról olvashattok a <a href="/data" target="_blank"
-                    >weboldalunk adatkezelési irányelveiben</a
-                >.
             </p>
             <h2 id="about">Rólunk</h2>
             <img id="group-photo" src={imgKoloraGroupPhoto} alt="" />

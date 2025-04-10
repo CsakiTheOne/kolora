@@ -4,6 +4,7 @@
 
     const { pages, ...rest } = $props();
 
+    const spacing = 20;
     let carousel: HTMLElement | null = $state(null);
     let maxPageWidth = $state(0);
 
@@ -11,7 +12,7 @@
         function updateWidths() {
             maxPageWidth = (carousel?.clientWidth || 0) * 0.6;
             const minPageWidth =
-                (carousel?.clientWidth || 0) - (maxPageWidth + 16);
+                (carousel?.clientWidth || 0) - (maxPageWidth + spacing);
             const scrollLeft = carousel?.scrollLeft || 0;
             const pageElements = carousel?.querySelectorAll(".page") || [];
 
@@ -101,7 +102,7 @@
         class="btn prevPage"
         onclick={() => {
             carousel.scrollBy({
-                left: -(maxPageWidth + 16),
+                left: -(maxPageWidth + spacing),
                 behavior: "smooth",
             });
         }}
@@ -112,7 +113,7 @@
         class="btn nextPage"
         onclick={() => {
             carousel.scrollBy({
-                left: maxPageWidth + 16,
+                left: maxPageWidth + spacing,
                 behavior: "smooth",
             });
         }}

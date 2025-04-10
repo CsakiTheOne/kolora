@@ -105,6 +105,22 @@ const firestore = {
                 }
                 );
         },
+        getAvailable: (): Promise<POI[]> => {
+            return getDocs(query(collection(db, "pois"), where("allowPosting", "==", true)))
+                .then((querySnapshot) => {
+                    const pois: POI[] = [];
+                    querySnapshot.forEach((doc) => {
+                        pois.push({ ...new POI(), ...doc.data(), id: doc.id });
+                    });
+                    return pois;
+                }
+                )
+                .catch((error) => {
+                    console.error("Error getting POIs: ", error);
+                    return Promise.reject(error);
+                }
+                );
+        },
         set: (id: string, data: POI): Promise<void> => {
             return setDoc(doc(db, "pois", id), data, { merge: true });
         },

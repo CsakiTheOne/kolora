@@ -60,7 +60,7 @@
 
     onMount(() => {
         isLoadingPlaces = true;
-        firestore.pois.getAll().then((pois) => {
+        firestore.pois.getAvailable().then((pois) => {
             places = pois;
             isLoadingPlaces = false;
             getNearestPoi();
@@ -90,6 +90,15 @@
         A Kolora oldalán helyhez kötött üzenőfalak vannak, amiket
         meglátogathatsz és üzeneteket hagyhatsz rajtuk.
     </p>
+
+    <Alert title="Közérdekű közlemény">
+        <p>
+            Kedves művészek! A magyar költészet napjára 5 üzenőfalat terveztem
+            elhelyezni, de betegség miatt ez részben valósult meg. Ezen kívül
+            1-2 funkció is hiányzik. A következő hetekben ezeket pótolni fogom.
+            Megértéseteket köszönöm!
+        </p>
+    </Alert>
 
     <div
         style="display: flex; gap: var(--spacing); flex-wrap: wrap; align-items: center; justify-content: space-between;"
@@ -179,6 +188,12 @@
         ellenőrizd a hely hozzáférés beállításait a telefonodon és a
         böngésződben. A helyhez kötött üzenőfalak csak akkor működnek, ha tudjuk
         ellenőrizni, hogy tényleg a közelben vagy.
+    </p>
+    <p>
+        Hogy miként, s hogyan kezeljük a hely- és egyéb adataitokat, arról
+        olvashattok a <a href="/data" target="_blank"
+            >weboldalunk adatkezelési irányelveiben</a
+        >.
     </p>
     <h4>Hibajelentés</h4>
     <p>
