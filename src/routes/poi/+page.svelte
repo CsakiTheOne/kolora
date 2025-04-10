@@ -39,11 +39,21 @@
     let postDraft: Post = $state({ ...new Post() });
     let isWorkSelectorDialogOpen = $state(false);
 
-    function checkLocationSilent() {
+    function checkLocation(callback: () => void = () => {}) {
         if (!poi) {
             return;
         }
 
+        isLoadingLocation = true;
+
+        if (ignoreLocation) {
+            isNearby = true;
+            isLoadingLocation = false;
+            loadPosts();
+            return;
+        }
+
+        isLoadingLocation = true;
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 const distance = Math.sqrt(
@@ -54,11 +64,16 @@
                         ),
                 );
                 debugDistance = distance;
+
                 isNearby =
                     ignoreLocation || distance < PoiUtils.DISTANCE_TO_VIEW;
+                isLoadingLocation = false;
+                callback();
             },
             () => {
-                isNearby = ignoreLocation;
+                isNearby = false;
+                isLoadingLocation = false;
+                callback();
             },
         );
     }
@@ -124,50 +139,30 @@
 
                 poi = res;
 
-                isLoadingLocation = true;
-
-                if (ignoreLocation) {
-                    isNearby = true;
-                    isLoadingLocation = false;
-                    loadPosts();
-                    return;
-                }
-
-                isLoadingLocation = true;
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const distance = Math.sqrt(
-                            Math.pow(
-                                res.latitude - position.coords.latitude,
-                                2,
-                            ) +
-                                Math.pow(
-                                    res.longitude - position.coords.longitude,
-                                    2,
-                                ),
-                        );
-                        debugDistance = distance;
-
-                        isNearby =
-                            ignoreLocation ||
-                            distance < PoiUtils.DISTANCE_TO_VIEW;
-                        isLoadingLocation = false;
-                        if (isNearby) {
-                            loadPosts();
-                        }
-                    },
-                    () => {
-                        isNearby = false;
-                        isLoadingLocation = false;
+                checkLocation(() => {
+                    if (isNearby) {
+                        loadPosts();
+                    } else {
                         alert(
                             "Nem sikerült meghatározni a jelenlegi pozíciódat, ezért nem tudjuk betölteni a posztokat ezen a helyen.",
                         );
-                    },
-                );
+                    }
+                });
             })
             .catch(() => {
                 window.history.back();
             });
+
+        let locationInterval: NodeJS.Timeout | null = setInterval(() => {
+            checkLocation();
+        }, 60_000);
+
+        return () => {
+            if (locationInterval) {
+                clearInterval(locationInterval);
+                locationInterval = null;
+            }
+        };
     });
 
     $effect(() => {
@@ -242,25 +237,27 @@
 <main>
     {#if !poi}
         <p>Betöltés...</p>
-    {:else if isLoadingLocation}
-        <p>
-            <span class="mdi mdi-crosshairs-gps"></span>
-            Pozíció meghatározása...
-        </p>
     {:else if !isNearby}
-        <Alert icon="crosshairs-question">
+        {#if isLoadingLocation}
             <p>
-                Nem sikerült meghatározni a jelenlegi pozíciódat vagy túl messze
-                vagy a helytől, ezért nem tudjuk betölteni az itteni posztokat.
-                Ellenőrizd a hely engedélyeket és próbáld újra.
+                <span class="mdi mdi-crosshairs-gps"></span>
+                Pozíció meghatározása...
             </p>
-        </Alert>
-        <a href={poi.googleMapsLink} target="_blank">
-            <button class="btn" style="width: 100%;">
-                <span class="mdi mdi-navigation"></span>
-                Hová kell mennem, hogy lássam a posztokat?
-            </button>
-        </a>
+        {:else}
+            <Alert icon="crosshairs-question">
+                <p>
+                    Nem sikerült meghatározni a jelenlegi pozíciódat vagy túl
+                    messze vagy a helytől, ezért nem tudjuk betölteni az itteni
+                    posztokat. Ellenőrizd a hely engedélyeket és próbáld újra.
+                </p>
+            </Alert>
+            <a href={poi.googleMapsLink} target="_blank">
+                <button class="btn" style="width: 100%;">
+                    <span class="mdi mdi-navigation"></span>
+                    Hová kell mennem, hogy lássam a posztokat?
+                </button>
+            </a>
+        {/if}
     {:else}
         {#if ignoreLocation}
             <Alert icon="crosshairs-off" title="Pozíció figyelmen kívül hagyva">

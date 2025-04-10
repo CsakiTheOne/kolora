@@ -94,9 +94,8 @@
     <Alert title="Közérdekű közlemény">
         <p>
             Kedves művészek! A magyar költészet napjára 5 üzenőfalat terveztem
-            elhelyezni, de betegség miatt ez részben valósult meg. Ezen kívül
-            1-2 funkció is hiányzik. A következő hetekben ezeket pótolni fogom.
-            Megértéseteket köszönöm!
+            elhelyezni, de betegség miatt ez részben valósult meg. A következő
+            hetekben ezeket pótolni fogom. Megértéseteket köszönöm!
         </p>
     </Alert>
 
