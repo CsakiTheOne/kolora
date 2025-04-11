@@ -125,7 +125,12 @@
                     <button
                         class="btn"
                         style="flex-grow: 1;"
-                        onclick={() => (openedHintId = 1)}
+                        onclick={() => {
+                            window.open(
+                                nearestPlace!!.hint1Url,
+                                "_blank",
+                            );
+                        }}
                     >
                         Segítség #1
                     </button>
@@ -136,7 +141,12 @@
                     <button
                         class="btn"
                         style="flex-grow: 1;"
-                        onclick={() => (openedHintId = 2)}
+                        onclick={() => {
+                            window.open(
+                                nearestPlace!!.hint2Url,
+                                "_blank",
+                            );
+                        }}
                     >
                         Segítség #2
                     </button>

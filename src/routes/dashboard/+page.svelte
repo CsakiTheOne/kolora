@@ -345,16 +345,13 @@
                         value={selectedPlace.hint1Url}
                         placeholder="1. segítség linkje"
                         oninput={(e: any) => {
-                            firestore.pois.set(selectedPlaceId!, {
-                                ...selectedPlace,
-                                hint1Url: e.target?.value,
-                            });
+                            firestore.pois
+                                .set(selectedPlaceId!, {
+                                    ...selectedPlace,
+                                    hint1Url: e.target?.value,
+                                })
+                                .then(() => getTabData());
                         }}
-                    />
-                    <img
-                        style="width: 30%;"
-                        src={selectedPlace.hint1Url}
-                        alt="Hint 1"
                     />
                 </div>
 
@@ -366,16 +363,13 @@
                         value={selectedPlace.hint2Url}
                         placeholder="2. segítség linkje"
                         oninput={(e: any) => {
-                            firestore.pois.set(selectedPlaceId!, {
-                                ...selectedPlace,
-                                hint2Url: e.target?.value,
-                            });
+                            firestore.pois
+                                .set(selectedPlaceId!, {
+                                    ...selectedPlace,
+                                    hint2Url: e.target?.value,
+                                })
+                                .then(() => getTabData());
                         }}
-                    />
-                    <img
-                        style="width: 30%;"
-                        src={selectedPlace.hint2Url}
-                        alt="Hint 2"
                     />
                 </div>
 
