@@ -30,11 +30,6 @@
     let newBio = $state("");
 
     function updateContent() {
-        if (!isOwnerLoggedIn) {
-            works = [];
-            return;
-        }
-
         firestore.works.getAllByUser(koloraUser.id).then((newWorks) => {
             works = newWorks;
         });
