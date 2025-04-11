@@ -58,17 +58,26 @@ const firestore = {
             return unsubscribe;
         },
         setDefaultsIfNeeded: (id: string, name: string | null): Promise<void> => {
+            let newUserData = { ...new KoloraUser(), id: id };
             return firestore.users.get(id).then((user) => {
-                let newUserData = { ...user };
+                newUserData = { ...newUserData, ...user };
                 if (!user.username && name) {
                     newUserData.username = name;
                 }
                 if (!user.createdAt) {
                     newUserData.createdAt = new Date().toLocaleString("hu-HU");
                 }
-                return firestore.users.set(id, newUserData);
+                if (newUserData === user) {
+                    return Promise.resolve();
+                } else {
+                    return firestore.users.set(id, newUserData);
+                }
             }).catch((error) => {
-                console.log("Error setting name if not exists: ", error);
+                if (name) {
+                    newUserData.username = name;
+                }
+                newUserData.createdAt = new Date().toLocaleString("hu-HU");
+                return firestore.users.set(id, newUserData);
             });
         },
         delete: (id: string): Promise<void> => {

@@ -37,10 +37,15 @@ export default class UserManager {
         const authListener = onAuthStateChanged(auth, (user) => {
             this.firebaseUser = user;
             if (user) {
-                userListener = firestore.users.listen(user.uid, (userData) => {
-                    this.koloraUser = userData;
-                    this.isLoaded = true;
-                });
+                firestore.users.setDefaultsIfNeeded(user.uid, user.displayName)
+                    .then(() => {
+                        userListener = firestore.users.listen(user.uid, (userData) => {
+                            if (userData.createdAt) {
+                                this.koloraUser = userData;
+                                this.isLoaded = true;
+                            }
+                        });
+                    });
             } else {
                 if (userListener) {
                     userListener();

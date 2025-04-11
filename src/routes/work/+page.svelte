@@ -34,9 +34,11 @@
                     window.open(`/profile?id=${work?.authorId}`, "_self");
                     return Promise.reject("Not authorized");
                 }
+                console.log("authorId", work.authorId);
                 return firestore.users.get(work.authorId);
             })
             .then((user: KoloraUser) => {
+                console.log("user", user);
                 if (user.isBanned) {
                     window.open(`/profile?id=${work?.authorId}`, "_self");
                 }
