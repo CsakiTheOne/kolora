@@ -19,7 +19,7 @@
     import UserManager from "$lib/UserManager.svelte";
     import { loginWithGoogle } from "$lib/firebase/auth";
 
-    const POST_CONTENT_LENGTH_LIMIT = 1000;
+    
 
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
@@ -288,7 +288,7 @@
                     <div>
                         <textarea
                             class="outlined-input"
-                            style="resize: none; min-height: 80px;"
+                            style="resize: vertical; min-height: 80px;"
                             placeholder="Mi jár a fejedben?"
                             value={postDraft.content}
                             oninput={(e: any) => {
@@ -297,11 +297,11 @@
                                     content: e.target?.value ?? "",
                                 };
                             }}
-                            maxlength={POST_CONTENT_LENGTH_LIMIT}
+                            maxlength={PoiUtils.POST_CONTENT_LENGTH_LIMIT}
                         ></textarea>
                         <p style="text-align: right; font-size: 0.7rem;">
                             {postDraft.content
-                                .length}/{POST_CONTENT_LENGTH_LIMIT}
+                                .length}/{PoiUtils.POST_CONTENT_LENGTH_LIMIT}
                         </p>
                     </div>
                     {#if postDraft.attachmentWorkId}

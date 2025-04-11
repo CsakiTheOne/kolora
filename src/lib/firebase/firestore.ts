@@ -189,6 +189,9 @@ const firestore = {
         getGlobalPosts: (): Promise<Post[]> => {
             return firestore.posts.getAllByPoi("_global");
         },
+        set: (id: string, data: object): Promise<void> => {
+            return setDoc(doc(db, "posts", id), data, { merge: true });
+        },
         add: (post: Post): Promise<string> => {
             return addDoc(collection(db, "posts"), { ...post })
                 .then((docRef) => {

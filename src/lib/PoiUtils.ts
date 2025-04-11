@@ -9,4 +9,5 @@ export default class PoiUtils {
      * If the user goes out of this distance, the poi page can still be viewed, but not opened with a button.
      */
     static DISTANCE_TO_OPEN = 0.001;
+    static POST_CONTENT_LENGTH_LIMIT = 2000;
 }

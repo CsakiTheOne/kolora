@@ -10,14 +10,22 @@
     import MarkdownLinebreakParagraph from "../markdown-renderers/MarkdownLinebreakParagraph.svelte";
     import rtdb from "$lib/firebase/rtdb";
     import Report from "$lib/model/Report";
+    import UserManager from "$lib/UserManager.svelte";
+    import { ROLES } from "$lib/model/KoloraUser";
+    import PoiUtils from "$lib/PoiUtils";
 
     const { post, ...rest } = $props();
 
     let isOwnerLoggedIn = $state(false);
+    let isAdminLoggedIn = $state(false);
     let authorName = $state("");
+
     let work: Work | null = $state(null);
+
     let likes = $state(0);
     let isLiked = $state(false);
+
+    let isEditing = $state(false);
 
     function refreshLikes() {
         rtdb.posts.likes.getCount(post.id).then((count) => {
@@ -32,6 +40,9 @@
 
     $effect(() => {
         isOwnerLoggedIn = getCurrentUser()?.uid === post?.authorId;
+        isAdminLoggedIn =
+            UserManager.instance.koloraUser?.roles.includes(ROLES.ADMIN) ===
+            true;
 
         firestore.users.get(post.authorId).then((user) => {
             authorName = user.username;
@@ -56,14 +67,39 @@
             {authorName}
         </a>
     </div>
-    <SvelteMarkdown
-        source={post.content}
-        renderers={{
-            link: MarkdownLink,
-            html: MarkdownStrictHtml,
-            paragraph: MarkdownLinebreakParagraph,
-        }}
-    />
+    {#if isEditing}
+        <textarea
+            class="outlined-input"
+            style="resize: vertical; min-height: 80px;"
+            bind:value={post.content}
+            maxlength={PoiUtils.POST_CONTENT_LENGTH_LIMIT}
+        ></textarea>
+        <p style="text-align: right; font-size: 0.7rem;">
+            {post.content.length}/{PoiUtils.POST_CONTENT_LENGTH_LIMIT}
+        </p>
+        <button
+            class="btn"
+            onclick={() => {
+                firestore.posts
+                    .set(post.id, { content: post.content })
+                    .then(() => {
+                        window.location.reload();
+                        isEditing = false;
+                    });
+            }}
+        >
+            Mentés
+        </button>
+    {:else}
+        <SvelteMarkdown
+            source={post.content}
+            renderers={{
+                link: MarkdownLink,
+                html: MarkdownStrictHtml,
+                paragraph: MarkdownLinebreakParagraph,
+            }}
+        />
+    {/if}
     {#if post.attachmentWorkId && work}
         <a class="work-link" href={`/work?id=${work!.id}`} target="_blank">
             <span class="mdi mdi-fountain-pen-tip"></span>
@@ -83,13 +119,29 @@
                     onkeypress={(e) => {}}
                 ></span>
             {/if}
-            <span style="font-size: .7rem; color: var(--secondary-variant-color);">
+            <span
+                style="font-size: .7rem; color: var(--secondary-variant-color);"
+            >
                 {new Date(post.createdAt).toLocaleDateString("hu-HU")}
             </span>
         </div>
         <div class="action-buttons">
-            {#if isOwnerLoggedIn}
+            {#if isOwnerLoggedIn || isAdminLoggedIn}
                 <span style="font-size: .7rem;">Kedvelések: {likes}</span>
+                <span
+                    class="mdi mdi-pencil"
+                    onclick={() => {
+                        if (isEditing) {
+                            isEditing = false;
+                        } else {
+                            isEditing = isOwnerLoggedIn || isAdminLoggedIn;
+                        }
+                    }}
+                    tabindex="0"
+                    role="button"
+                    aria-label="Szerkesztés"
+                    onkeypress={(e) => {}}
+                ></span>
                 <span
                     class="mdi mdi-delete"
                     onclick={() => {
@@ -106,7 +158,8 @@
                     aria-label="Törlés"
                     onkeypress={(e) => {}}
                 ></span>
-            {:else}
+            {/if}
+            {#if !isOwnerLoggedIn}
                 <div style="display: flex; align-items: center;">
                     <span
                         class={`mdi mdi-heart${isLiked ? "" : "-outline"}`}
