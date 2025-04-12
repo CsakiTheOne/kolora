@@ -157,7 +157,9 @@
                         placeholder="Szerepkörök"
                         value={user.roles.join(", ")}
                         oninput={(e: any) => {
-                            const newRoles = e.target?.value.split(", ");
+                            const newRoles = e.target?.value
+                                .split(",")
+                                .map((r: string) => r.trim());
                             firestore.users.set(user.id, {
                                 ...user,
                                 roles: newRoles,
@@ -308,7 +310,8 @@
                         type="checkbox"
                         disabled={loading}
                         name="allowPosting"
-                        checked={selectedPlace.allowPosting}
+                        checked={(selectedPlaceId &&
+                            selectedPlace.allowPosting) === true}
                         oninput={(e: any) => {
                             firestore.pois.set(selectedPlaceId!, {
                                 ...selectedPlace,
@@ -324,7 +327,8 @@
                         type="checkbox"
                         disabled={loading}
                         name="showSoonScreen"
-                        checked={selectedPlace.showSoonScreen}
+                        checked={(selectedPlaceId &&
+                            selectedPlace.showSoonScreen) === true}
                         oninput={(e: any) => {
                             firestore.pois.set(selectedPlaceId!, {
                                 ...selectedPlace,
@@ -333,7 +337,9 @@
                         }}
                     />
                     <label for="showSoonScreen">
-                        "Hamarosan" képernyő mutatása
+                        <a href="/poi/soon" target="_blank"
+                            >"Hamarosan" képernyő</a
+                        > mutatása
                     </label>
                 </div>
 
