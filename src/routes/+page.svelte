@@ -89,7 +89,7 @@
                 > oldalra.
             </p>
             <p>
-                A költészet napi kincsvadászatot a <a
+                Az üzenőfalakat <a
                     href="https://www.facebook.com/groups/570212437568903/"
                     target="_blank">Posztolj verset az utcára!</a
                 > mozgalom ihlette.
