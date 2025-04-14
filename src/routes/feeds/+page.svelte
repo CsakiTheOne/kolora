@@ -91,14 +91,6 @@
         meglátogathatsz és üzeneteket hagyhatsz rajtuk.
     </p>
 
-    <Alert title="Közérdekű közlemény">
-        <p>
-            Kedves művészek! A magyar költészet napjára 5 üzenőfalat terveztem
-            elhelyezni, de betegség miatt ez részben valósult meg. A következő
-            hetekben ezeket pótolni fogom. Megértéseteket köszönöm!
-        </p>
-    </Alert>
-
     <div
         style="display: flex; gap: var(--spacing); flex-wrap: wrap; align-items: center; justify-content: space-between;"
     >

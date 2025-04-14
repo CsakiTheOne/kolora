@@ -73,11 +73,7 @@ const firestore = {
                     return firestore.users.set(id, newUserData);
                 }
             }).catch((error) => {
-                if (name) {
-                    newUserData.username = name;
-                }
-                newUserData.createdAt = new Date().toLocaleString("hu-HU");
-                return firestore.users.set(id, newUserData);
+                console.error("Error getting user: ", error);
             });
         },
         delete: (id: string): Promise<void> => {
