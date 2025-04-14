@@ -1,4 +1,4 @@
-import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion, getCountFromServer } from "firebase/firestore";
 import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 import Work from "$lib/model/Work";
@@ -179,6 +179,16 @@ const firestore = {
                 })
                 .catch((error) => {
                     console.error("Error getting posts: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        getCountByPoi: (poiId: string): Promise<number> => {
+            return getCountFromServer(query(collection(db, "posts"), where("poiId", "==", poiId)))
+                .then((snapshot) => {
+                    return snapshot.data().count;
+                })
+                .catch((error) => {
+                    console.error("Error getting posts count: ", error);
                     return Promise.reject(error);
                 });
         },

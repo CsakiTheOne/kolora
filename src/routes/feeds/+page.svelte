@@ -12,6 +12,7 @@
 
     let places: POI[] = $state([]);
     let nearestPlace: POI | null = $state(null);
+    let nearestPlacePostCount: number = $state(0);
     let distance: number = $state(0);
     let isLoadingPlaces = $state(false);
     let isLoadingLocation = $state(false);
@@ -39,6 +40,9 @@
                     return distanceA - distanceB;
                 });
                 nearestPlace = places[0];
+                firestore.posts.getCountByPoi(nearestPlace.id).then((count) => {
+                    nearestPlacePostCount = count;
+                });
                 distance = Math.sqrt(
                     Math.pow(
                         nearestPlace.latitude - position.coords.latitude,
@@ -53,6 +57,7 @@
             },
             () => {
                 nearestPlace = null;
+                nearestPlacePostCount = 0;
                 isLoadingLocation = false;
             },
         );
@@ -109,7 +114,21 @@
         </p>
     {:else if nearestPlace}
         <div class="card">
-            <p>Legközelebbi üzenőfal: {nearestPlace.name}</p>
+            <p>
+                Legközelebbi üzenőfal: {nearestPlace.name}
+                {#if nearestPlacePostCount > 0}
+                    <abbr
+                        title="Ebbe nincsenek beleszámolva a mindenhol látszódó posztok"
+                        onclick={() => {
+                            alert(
+                                "Ebbe nincsenek beleszámolva a mindenhol látszódó posztok",
+                            );
+                        }}
+                    >
+                        ({nearestPlacePostCount} poszt)
+                    </abbr>
+                {/if}
+            </p>
             <div
                 style="display: flex; gap: calc(var(--spacing) / 2); flex-wrap: nowrap;"
             >
@@ -118,10 +137,7 @@
                         class="btn"
                         style="flex-grow: 1;"
                         onclick={() => {
-                            window.open(
-                                nearestPlace!!.hint1Url,
-                                "_blank",
-                            );
+                            window.open(nearestPlace!!.hint1Url, "_blank");
                         }}
                     >
                         Segítség #1
@@ -134,10 +150,7 @@
                         class="btn"
                         style="flex-grow: 1;"
                         onclick={() => {
-                            window.open(
-                                nearestPlace!!.hint2Url,
-                                "_blank",
-                            );
+                            window.open(nearestPlace!!.hint2Url, "_blank");
                         }}
                     >
                         Segítség #2
