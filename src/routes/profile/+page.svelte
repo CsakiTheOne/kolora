@@ -18,6 +18,7 @@
     import type Post from "$lib/model/Post";
     import PostDisplay from "../../components/poi/PostDisplay.svelte";
     import type POI from "$lib/model/POI";
+    import MarkdownLinebreakParagraph from "../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -28,6 +29,14 @@
     let isEditingBio = $state(false);
     let newUsername = $state("");
     let newBio = $state("");
+    const compiledBio = $derived(
+        koloraUser.bio
+            .replaceAll("{createdAt}", koloraUser.createdAt)
+            .replaceAll(
+                "{visitedPlaces}",
+                "" + koloraUser.visitedPlaces.length,
+            ),
+    );
 
     function updateContent() {
         firestore.works.getAllByUser(koloraUser.id).then((newWorks) => {
@@ -126,8 +135,20 @@
             {newBio.length} / 1000 - A bemutatkozás támogatja a
             <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank"
                 >Markdown formázást</a
-            > és a beágyazott YouTube videókat.
+            >, a beágyazott YouTube videókat és a következő változókat:
         </p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>{"{createdAt}"}</td>
+                    <td>Regisztrálás dátuma</td>
+                </tr>
+                <tr>
+                    <td>{"{visitedPlaces}"}</td>
+                    <td>Látogatott helyek száma</td>
+                </tr>
+            </tbody>
+        </table>
     {:else}
         <h2>
             <span class="mdi mdi-account-circle"></span>
@@ -143,18 +164,21 @@
                 {/each}
             </div>
         {/if}
-        <p class="outlined-card" style="max-width: 100%; overflow-x: hidden;">
+        <div class="outlined-card" style="max-width: 100%; overflow-x: hidden;">
             <SvelteMarkdown
-                source={koloraUser.bio ||
+                source={compiledBio ||
                     "*Ez a felhasználó még nem írt bemutatkozást.*"}
-                renderers={{ link: MarkdownLink, html: MarkdownStrictHtml }}
+                renderers={{
+                    link: MarkdownLink,
+                    html: MarkdownStrictHtml,
+                }}
             />
-        </p>
+        </div>
     {/if}
     {#if isOwnerLoggedIn}
         <button
             class="btn"
-            style="float: right;"
+            style="align-self: flex-end;"
             onclick={() => {
                 isEditingBio = !isEditingBio;
                 if (isEditingBio) {
@@ -173,10 +197,11 @@
                 Kész
             {:else}
                 <span class="mdi mdi-pencil"></span>
-                Szerkesztés
+                Név és bemutatkozás szerkesztése
             {/if}
         </button>
     {/if}
+
     <h3
         style="display: flex; justify-content: space-between; align-items: flex-end;"
     >
@@ -346,6 +371,10 @@
 <Footer />
 
 <style>
+    hr {
+        border: 1px solid var(--primary-color);
+    }
+
     .badges {
         display: flex;
         flex-direction: row;
