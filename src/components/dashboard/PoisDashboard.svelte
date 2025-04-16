@@ -44,7 +44,7 @@
                     }}
                 >
                     <td>
-                        <span class="mdi mdi-map-marker"></span>
+                        <span class={`mdi mdi-${!place.latitude && !place.longitude ? "null" : "map-marker"}`}></span>
                     </td>
                     <td>
                         {place.name.length > 0 ? place.name : "Névtelen"}
@@ -72,7 +72,7 @@
                 <td>
                     <span class="mdi mdi-plus"></span>
                 </td>
-                <td colspan=3> Új hely hozzáadása </td>
+                <td colspan="3"> Új hely hozzáadása </td>
             </tr>
         </tbody>
     </table>
