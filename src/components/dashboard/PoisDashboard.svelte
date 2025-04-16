@@ -17,9 +17,6 @@
             places = newPlaces.sort((a, b) => {
                 return a.name.localeCompare(b.name);
             });
-            if (!selectedPlaceId) {
-                selectedPlaceId = places[0]?.id || null;
-            }
             loading = false;
         });
     }
@@ -29,34 +26,61 @@
     });
 </script>
 
-<select
-    class="outlined-input"
-    disabled={loading}
-    value={selectedPlaceId}
-    oninput={(e: any) => {
-        selectedPlaceId = e.target?.value;
-    }}
->
-    {#each places as place}
-        <option value={place.id}>
-            {place.name.length > 0 ? place.name : "Névtelen"}
-        </option>
-    {/each}
-</select>
-<button
-    class="btn text-btn"
-    disabled={loading}
-    onclick={() => {
-        firestore.pois.add(new POI()).then((newPlaceId) => {
-            loadPlaces();
-            selectedPlaceId = newPlaceId;
-        });
-    }}
->
-    <span class="mdi mdi-plus"></span>
-    Új hely hozzáadása
-</button>
-{#if selectedPlaceId && selectedPlace}
+{#if !selectedPlaceId || !selectedPlace}
+    <table class="places-list">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Hely neve</th>
+                <th>Engedélyezve</th>
+                <th>"Hamarosan"</th>
+            </tr>
+        </thead>
+        <tbody>
+            {#each places as place}
+                <tr
+                    onclick={() => {
+                        selectedPlaceId = place.id;
+                    }}
+                >
+                    <td>
+                        <span class="mdi mdi-map-marker"></span>
+                    </td>
+                    <td>
+                        {place.name.length > 0 ? place.name : "Névtelen"}
+                    </td>
+                    <td>
+                        <span
+                            class={`mdi mdi-${place.allowPosting ? "check" : "close"}`}
+                        ></span>
+                    </td>
+                    <td>
+                        <span
+                            class={`mdi mdi-${place.showSoonScreen ? "check" : "close"}`}
+                        ></span>
+                    </td>
+                </tr>
+            {/each}
+            <tr
+                onclick={() => {
+                    firestore.pois.add(new POI()).then((newPlaceId) => {
+                        loadPlaces();
+                        selectedPlaceId = newPlaceId;
+                    });
+                }}
+            >
+                <td>
+                    <span class="mdi mdi-plus"></span>
+                </td>
+                <td colspan=3> Új hely hozzáadása </td>
+            </tr>
+        </tbody>
+    </table>
+{:else}
+    <button class="btn" onclick={() => (selectedPlaceId = null)}>
+        <span class="mdi mdi-arrow-left"></span>
+        Vissza a helyekhez
+    </button>
     <input
         type="text"
         disabled={loading}
@@ -247,3 +271,18 @@
         Törlés
     </button>
 {/if}
+
+<style>
+    .places-list tr:has(td) {
+        cursor: pointer;
+    }
+
+    .places-list tr:has(td):hover {
+        background-color: var(--primary-color);
+        color: var(--on-primary-color);
+    }
+
+    .places-list td:has(span) {
+        text-align: center;
+    }
+</style>
