@@ -107,6 +107,7 @@
         gap: calc(var(--spacing) / 2);
         padding: var(--spacing);
         background-color: var(--secondary-color);
+        color: var(--on-secondary-color);
         border-radius: var(--corner-radius);
     }
 </style>

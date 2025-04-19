@@ -21,8 +21,9 @@
         });
     }
 
-    onMount(() => {
+    $effect(() => {
         loadPlaces();
+        selectedPlaceId;
     });
 </script>
 
