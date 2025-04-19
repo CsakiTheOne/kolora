@@ -19,6 +19,8 @@
     import PostDisplay from "../../components/poi/PostDisplay.svelte";
     import type POI from "$lib/model/POI";
     import MarkdownLinebreakParagraph from "../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
+    import AchievementTree from "../../components/AchievementTree.svelte";
+    import { achievements } from "$lib/model/Achievement";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -201,6 +203,19 @@
             {/if}
         </button>
     {/if}
+
+    <!--h3
+        style="display: flex; justify-content: space-between; align-items: flex-end;"
+    >
+        <span>
+            <span class="mdi mdi-star"></span>
+            Teljesítmények
+        </span>
+    </h3>
+    <AchievementTree
+        rootAchievement={achievements[0]}
+        visitedPlaces={koloraUser.visitedPlaces}
+    /-->
 
     <h3
         style="display: flex; justify-content: space-between; align-items: flex-end;"
