@@ -12,13 +12,26 @@
 <div class="achievement-display">
     <div
         class={`achievement ${rootAchievement.predicate(visitedPlaces) && "unlocked"}`}
-        data-tooltip={`${rootAchievement.name} - ${rootAchievement.description}`}
+        onclick={() => {
+            alert(`${rootAchievement.name}\n\n${rootAchievement.description}`);
+        }}
+        tabindex="0"
+        role="button"
+        aria-label={rootAchievement.name}
     >
         <span class={`mdi mdi-${rootAchievement.icon}`}></span>
     </div>
     {#if children.length > 0}
-        <div style="display: flex; align-items: center; color: var(--primary-color);">
-            <p>-</p>
+        <div
+            style="display: flex; align-items: center; color: var(--primary-color);"
+        >
+            <p style="font-size: 2.5rem;">
+                {#if children.length > 1}
+                    &lt;
+                {:else}
+                    -
+                {/if}
+            </p>
         </div>
         <div class="children">
             {#each children as child}
@@ -33,38 +46,26 @@
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
-        align-items: stretch;
-        gap: var(--spacing);
+        align-items: center;
         overflow-x: auto;
-        overflow-y: visible;
     }
 
     .achievement {
         display: flex;
-        position: relative;
         justify-content: flex-start;
         align-items: center;
         color: var(--primary-color);
         border: 2px solid var(--primary-color);
         border-radius: var(--corner-radius);
-        padding: var(--spacing);
+        padding: calc(var(--spacing) / 2);
+        overflow: visible;
+        font-size: 1.2rem;
+        cursor: pointer;
     }
 
     .achievement.unlocked {
         background: var(--primary-color);
         color: var(--on-primary-color);
-    }
-
-    .achievement:hover::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        translate: 0 var(--spacing);
-        background: var(--on-primary-color);
-        color: var(--primary-color);
-        padding: calc(var(--spacing) / 2);
-        border-radius: var(--corner-radius);
-        white-space: nowrap;
-        z-index: 1;
     }
 
     .children {

@@ -4,7 +4,7 @@ A felhasználók az oldalon teljesítményeket érhetnek el, aamelyeket az üzen
 
 | Kategória | Név                     | Leírás / Feltétel                          | Jutalom           |
 | --------- | ----------------------- | ------------------------------------------ | ----------------- |
-| Helyek    |                         | Találj meg egy üzenőfalat                  |                   |
+| Helyek    | Kirándulás              | Találj meg egy üzenőfalat                  |                   |
 | Helyek    | Inga                    | Látogass meg két üzenőfalat                |                   |
 | Helyek    | Kincskereső             | Látogass meg három üzenőfalat              | Cím: Kincskereső  |
 | Helyek    | Még a falu végén is túl | Látogass meg négy üzenőfalat               | Cím: Vándor       |

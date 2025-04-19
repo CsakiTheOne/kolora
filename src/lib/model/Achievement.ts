@@ -10,6 +10,7 @@ export default class Achievement {
 const achievements: Achievement[] = [
     {
         id: "visit_poi_1",
+        name: "Kirándulás",
         description: "Találj egy üzenőfalat",
         predicate: (visitedPlaces: string[]) => visitedPlaces.length > 0,
     },
@@ -49,6 +50,16 @@ const achievements: Achievement[] = [
     {
         id: "post_1",
         icon: "pencil",
+        name: "Posztolj verset!",
+        description: "Tedd ki az első posztod egy üzenőfalra",
+        parentId: "visit_poi_1",
+    },
+    {
+        id: "post_2",
+        icon: "pencil",
+        name: "Itt és ott",
+        description: "Posztolj két különböző helyre",
+        parentId: "post_1",
     }
 ].map(acObj => {
     return { ...new Achievement(), ...acObj };
