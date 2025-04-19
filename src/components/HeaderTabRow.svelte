@@ -25,6 +25,11 @@
             title: "Kódok",
             url: "/codes",
         },
+        /*{
+            icon: "account-group",
+            title: "Tagok",
+            url: "/members",
+        },*/
         { icon: "at", title: "Elérhetőségek", url: "/contacts" },
     ];
 
