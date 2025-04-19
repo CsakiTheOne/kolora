@@ -23,12 +23,7 @@
         }
         if (
             !UserManager.instance.isLoggedIn ||
-            !(
-                UserManager.instance.koloraUser!!.roles.includes(ROLES.ADMIN) ||
-                UserManager.instance.koloraUser!!.roles.includes(
-                    ROLES.KOLORA_MEMBER,
-                )
-            )
+            !UserManager.instance.koloraUser!!.roles.includes(ROLES.ADMIN)
         ) {
             window.location.replace("/");
         }
