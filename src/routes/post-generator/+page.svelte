@@ -41,6 +41,7 @@
     let fullBackground = $state(false);
 
     let location = $state("Museum Café");
+    let locationDisplaySzfv = $state(true);
     let dateLine1 = $state("03/14");
     let dateLine2 = $state("19:00");
     let body1Title = $state("");
@@ -70,7 +71,7 @@
         const w = canvas.width;
         const h = canvas.height;
         const shapeDecorationSize = 32;
-        const headerHeight = fullBackground ? h - shapeDecorationSize : 256;
+        const headerHeight = fullBackground ? h - shapeDecorationSize : 264;
         const padding = 48;
 
         c.fillStyle = fullBackground ? theme.colorSecondary : "white";
@@ -146,20 +147,31 @@
         c.fillText(theme.name.toUpperCase(), padding, padding + 144);
 
         // Location
-        c.fillStyle = theme.colorSecondary;
-        c.beginPath();
-        c.arc(padding + 10, padding + 186 - 16, 10, 0, Math.PI, true);
-        c.lineTo(padding + 10, padding + 186 + 6);
-        c.closePath();
-        c.fill();
-        c.fillStyle = theme.colorPrimary;
-        c.beginPath();
-        c.arc(padding + 10, padding + 186 - 16, 3, 0, Math.PI * 2, true);
-        c.closePath();
-        c.fill();
-        c.fillStyle = "white";
-        c.font = "30px sans-serif";
-        c.fillText(location, padding + 32, padding + 186);
+        if (location) {
+            c.fillStyle = theme.colorSecondary;
+            c.beginPath();
+            c.arc(padding + 10, padding + 192 - 16, 10, 0, Math.PI, true);
+            c.lineTo(padding + 10, padding + 192 + 6);
+            c.closePath();
+            c.fill();
+            c.fillStyle = theme.colorPrimary;
+            c.beginPath();
+            c.arc(padding + 10, padding + 192 - 16, 3, 0, Math.PI * 2, true);
+            c.closePath();
+            c.fill();
+            c.fillStyle = "white";
+            c.font = "30px sans-serif";
+            c.fillText(location, padding + 40, padding + 192);
+            const locationWidth = c.measureText(location).width;
+            if (locationDisplaySzfv) {
+                c.fillStyle = theme.colorSecondary;
+                c.fillText(
+                    "Székesfehérvár",
+                    padding + 52 + locationWidth,
+                    padding + 192,
+                );
+            }
+        }
 
         // Date
         c.fillStyle = "white";
@@ -170,16 +182,25 @@
         c.fillText(dateLine2, w - padding - dateLine2Width, padding + 144);
 
         // Body
+        const bodySectionsCount = [body1Title, body2Title, body3Title].filter(
+            Boolean,
+        ).length;
 
         // Footer
-        c.fillStyle = theme.colorPrimary;
+        c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
         c.font = "bold 40px sans-serif";
-        c.fillText(footerText, padding, h - padding);
+        c.fillText(
+            footerText,
+            padding,
+            h - padding - (fullBackground ? shapeDecorationSize : 0),
+        );
     });
 </script>
 
 <SmallHeader currentPage="Poszt készítő" />
 <main>
+    <h2>Poszt készítő</h2>
+
     <h3>Téma</h3>
     <div class="input-row">
         <select class="outlined-input" bind:value={theme}>
@@ -201,6 +222,7 @@
     <canvas width="1080" height="1080" bind:this={canvas}></canvas>
 
     <h3>Tartalom</h3>
+    <h4>Helyszín és idő</h4>
     <div class="input-row">
         <input
             type="text"
@@ -208,6 +230,8 @@
             placeholder="Helyszín"
             bind:value={location}
         />
+        <input type="checkbox" bind:checked={locationDisplaySzfv} />
+        <span>Székesfehérvár felirat halványan</span>
     </div>
     <div class="input-row">
         <input
@@ -296,6 +320,33 @@
             tökéletes Instagram poszthoz.
         </p>
     </Alert>
+
+    <h2>DIY sarok</h2>
+    <p>
+        Ha szeretnél valami egyedibbet készíteni, amihez nem elég ez az eszköz,
+        itt van pár resource és segítség.
+    </p>
+    <h3>Színek</h3>
+    <table class="color-table">
+        <tbody>
+            <tr>
+                <td style="background: #313b72;">#313b72</td>
+                <td style="background: #86bbd8;">#86bbd8</td>
+            </tr>
+            <tr>
+                <td style="background: #531253;">#531253</td>
+                <td style="background: #b68cf0;">#b68cf0</td>
+            </tr>
+            <tr>
+                <td style="background: #931621;">#931621</td>
+                <td style="background: #dc7f9b;">#dc7f9b</td>
+            </tr>
+            <tr>
+                <td style="background: #dda448;">#dda448</td>
+                <td style="background: #554640;">#554640</td>
+            </tr>
+        </tbody>
+    </table>
 </main>
 <Footer />
 
@@ -303,6 +354,7 @@
     canvas {
         width: 100%;
         aspect-ratio: 1 / 1;
+        box-shadow: 0 2px 6px black;
     }
 
     .input-row {
@@ -310,5 +362,10 @@
         flex-direction: row;
         flex-wrap: nowrap;
         gap: var(--spacing);
+    }
+
+    .color-table, .color-table td {
+        border: none;
+        color: white;
     }
 </style>
