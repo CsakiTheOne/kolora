@@ -114,7 +114,7 @@
         >.
     </p>
 
-    <h3>Tipográfia</h3>
+    <h3>Tipográfia és hangnem</h3>
     <p>//TODO</p>
 
     <h3>Méretezés és térközök</h3>
