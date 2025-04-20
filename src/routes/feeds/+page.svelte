@@ -233,6 +233,11 @@
             Messenger: Csáki
         </a>
     </p>
+    <h4>Megjegyzés a helyekről</h4>
+    <p>
+        Ahol szükséges volt, ott a helyek tulajdonosaitól engedélyt kértünk az
+        üzenőfal elhelyezésére. Köszönjük a támogatásukat!
+    </p>
 </main>
 <Footer />
 
