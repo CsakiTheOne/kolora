@@ -1,10 +1,5 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import { loginWithGoogle, logout } from "$lib/firebase/auth";
-    import { initializeFirebase } from "$lib/firebase/firebase";
-    import type { User } from "firebase/auth";
-    import firestore from "$lib/firebase/firestore";
-    import type KoloraUser from "$lib/model/KoloraUser";
     import Backdrop from "./Backdrop.svelte";
     import UserManager from "$lib/UserManager.svelte";
     import { ROLES } from "$lib/model/KoloraUser";
@@ -63,6 +58,17 @@
                         <span class="mdi mdi-plus"></span>
                         Új alkotás
                     </button>
+                    {#if UserManager.instance.koloraUser?.roles.includes(ROLES.KOLORA_MEMBER)}
+                        <button
+                            onclick={() => {
+                                isOpen = false;
+                                window.location.href = "/member-tools";
+                            }}
+                        >
+                            <span class="mdi mdi-tools"></span>
+                            Eszközök és resource-ok
+                        </button>
+                    {/if}
                     {#if UserManager.instance.koloraUser?.roles.includes(ROLES.ADMIN)}
                         <button
                             onclick={() => {

@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import Footer from "../../components/Footer.svelte";
-    import SmallHeader from "../../components/SmallHeader.svelte";
-    import Alert from "../../components/Alert.svelte";
+    import Footer from "../../../components/Footer.svelte";
+    import SmallHeader from "../../../components/SmallHeader.svelte";
+    import Alert from "../../../components/Alert.svelte";
 
     const shapes = ["rect", "circle", "arc", "line"];
     const postThemes = [
@@ -71,7 +71,11 @@
         const w = canvas.width;
         const h = canvas.height;
         const shapeDecorationSize = 32;
-        const headerHeight = fullBackground ? h - shapeDecorationSize : 264;
+        const headerHeight = fullBackground
+            ? h - shapeDecorationSize
+            : location
+              ? 272
+              : 256;
         const padding = 48;
 
         c.fillStyle = fullBackground ? theme.colorSecondary : "white";
@@ -161,7 +165,7 @@
             c.fill();
             c.fillStyle = "white";
             c.font = "30px sans-serif";
-            c.fillText(location, padding + 40, padding + 192);
+            c.fillText(location, padding + 36, padding + 192);
             const locationWidth = c.measureText(location).width;
             if (locationDisplaySzfv) {
                 c.fillStyle = theme.colorSecondary;
@@ -185,6 +189,41 @@
         const bodySectionsCount = [body1Title, body2Title, body3Title].filter(
             Boolean,
         ).length;
+        const bodySectionHeight = (h - headerHeight - 72) / 2 - ((bodySectionsCount - 1) * 92)
+        const firstBodySectionY = headerHeight + bodySectionHeight;
+        c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
+        c.font = "bold 72px sans-serif";
+        c.fillText(
+            body1Title,
+            padding * 2,
+            firstBodySectionY,
+        );
+        c.fillText(
+            body2Title,
+            padding * 2,
+            firstBodySectionY + bodySectionHeight,
+        );
+        c.fillText(
+            body3Title,
+            padding * 2,
+            firstBodySectionY + bodySectionHeight * 2,
+        );
+        c.font = "72px sans-serif";
+        c.fillText(
+            body1Side,
+            w - 2 * padding - c.measureText(body1Side).width,
+            firstBodySectionY,
+        );
+        c.fillText(
+            body2Side,
+            w - 2 * padding - c.measureText(body2Side).width,
+            firstBodySectionY + bodySectionHeight,
+        );
+        c.fillText(
+            body3Side,
+            w - 2 * padding - c.measureText(body3Side).width,
+            firstBodySectionY + bodySectionHeight * 2,
+        );
 
         // Footer
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
@@ -197,7 +236,10 @@
     });
 </script>
 
-<SmallHeader currentPage="Poszt készítő" />
+<SmallHeader
+    path={[{ title: "Eszközök", href: "/member-tools" }]}
+    currentPage="Poszt készítő"
+/>
 <main>
     <h2>Poszt készítő</h2>
 
@@ -314,39 +356,8 @@
     <input type="text" class="outlined-input" bind:value={footerText} />
 
     <Alert icon="download">
-        <p>
-            Ha készen vagy, egyeszűen töltsd le a képet. Gépen jobb klikk,
-            mobilon hosszú nyomás. A kép felbontása 1080x1080 pixel, ami
-            tökéletes Instagram poszthoz.
-        </p>
+        <p>A kép letöltése csak gépen működik, mobilon nem.</p>
     </Alert>
-
-    <h2>DIY sarok</h2>
-    <p>
-        Ha szeretnél valami egyedibbet készíteni, amihez nem elég ez az eszköz,
-        itt van pár resource és segítség.
-    </p>
-    <h3>Színek</h3>
-    <table class="color-table">
-        <tbody>
-            <tr>
-                <td style="background: #313b72;">#313b72</td>
-                <td style="background: #86bbd8;">#86bbd8</td>
-            </tr>
-            <tr>
-                <td style="background: #531253;">#531253</td>
-                <td style="background: #b68cf0;">#b68cf0</td>
-            </tr>
-            <tr>
-                <td style="background: #931621;">#931621</td>
-                <td style="background: #dc7f9b;">#dc7f9b</td>
-            </tr>
-            <tr>
-                <td style="background: #dda448;">#dda448</td>
-                <td style="background: #554640;">#554640</td>
-            </tr>
-        </tbody>
-    </table>
 </main>
 <Footer />
 
@@ -362,10 +373,5 @@
         flex-direction: row;
         flex-wrap: nowrap;
         gap: var(--spacing);
-    }
-
-    .color-table, .color-table td {
-        border: none;
-        color: white;
     }
 </style>
