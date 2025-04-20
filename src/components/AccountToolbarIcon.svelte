@@ -7,6 +7,7 @@
     import type KoloraUser from "$lib/model/KoloraUser";
     import Backdrop from "./Backdrop.svelte";
     import UserManager from "$lib/UserManager.svelte";
+    import { ROLES } from "$lib/model/KoloraUser";
 
     let isOpen = $state(false);
 </script>
@@ -62,7 +63,7 @@
                         <span class="mdi mdi-plus"></span>
                         Új alkotás
                     </button>
-                    {#if UserManager.instance.koloraUser.roles.includes("admin") || UserManager.instance.koloraUser.roles.includes("kolora_member")}
+                    {#if UserManager.instance.koloraUser?.roles.includes(ROLES.ADMIN)}
                         <button
                             onclick={() => {
                                 isOpen = false;
