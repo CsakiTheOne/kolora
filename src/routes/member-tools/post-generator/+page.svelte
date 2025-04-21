@@ -84,10 +84,23 @@
     let body3Desctiption = $state("");
     let footerText = $state("");
 
+    let headerHeight = $state(0);
+    let animatedHeaderHeight = $state(0);
+
     onMount(() => {
         if (canvas) {
             c = canvas.getContext("2d");
         }
+
+        const animator = setInterval(() => {
+            if (!canvas || !c) return;
+
+            animatedHeaderHeight += (headerHeight - animatedHeaderHeight) * 0.1;
+        }, 1000 / 60);
+
+        return () => {
+            clearInterval(animator);
+        };
     });
 
     $effect(() => {
@@ -106,7 +119,7 @@
         const headerContentHeight =
             (isHeaderEmpty ? 0 : fullBackground ? 156 : location ? 248 : 200) +
             form.vPadding;
-        const headerHeight = fullBackground
+        headerHeight = fullBackground
             ? h - shapeDecorationSize
             : headerContentHeight;
 
@@ -114,26 +127,26 @@
         c.fillRect(0, 0, w, h);
 
         c.fillStyle = theme.colorPrimary;
-        c.fillRect(0, 0, w, headerHeight);
+        c.fillRect(0, 0, w, animatedHeaderHeight);
 
         switch (shape) {
             case "edgy":
                 c.beginPath();
                 const zigzagHeight = shapeDecorationSize;
                 const zigzagWidth = shapeDecorationSize;
-                let y = headerHeight;
+                let y = animatedHeaderHeight;
                 c.moveTo(0, y);
 
                 for (let x = 0; x <= w + zigzagWidth; x += zigzagWidth) {
                     c.lineTo(x, y);
                     y =
-                        y === headerHeight
-                            ? headerHeight + zigzagHeight
-                            : headerHeight;
+                        y === animatedHeaderHeight
+                            ? animatedHeaderHeight + zigzagHeight
+                            : animatedHeaderHeight;
                 }
 
-                c.lineTo(w, headerHeight);
-                c.lineTo(0, headerHeight);
+                c.lineTo(w, animatedHeaderHeight);
+                c.lineTo(0, animatedHeaderHeight);
                 c.closePath();
                 c.fill();
                 break;
@@ -141,7 +154,7 @@
                 c.beginPath();
                 const amplitude = shapeDecorationSize / 2; // Height of the sine wave
                 const frequency = w / shapeDecorationSize / Math.PI; // Number of sine waves across the width
-                const yOffset = headerHeight + amplitude; // Offset to center the wave vertically
+                const yOffset = animatedHeaderHeight + amplitude; // Offset to center the wave vertically
 
                 for (let x = 0; x <= w; x++) {
                     const y =
@@ -150,8 +163,8 @@
                     x === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
                 }
 
-                c.lineTo(w, headerHeight);
-                c.lineTo(0, headerHeight);
+                c.lineTo(w, animatedHeaderHeight);
+                c.lineTo(0, animatedHeaderHeight);
                 c.closePath();
                 c.fill();
                 break;
@@ -161,12 +174,12 @@
                 let x = 0;
 
                 while (x < w) {
-                    c.arc(x + radius, headerHeight, radius, Math.PI, 0, true); // Draw half-circle
+                    c.arc(x + radius, animatedHeaderHeight, radius, Math.PI, 0, true); // Draw half-circle
                     x += radius * 2; // Move to the next position
                 }
 
-                c.lineTo(w, headerHeight);
-                c.lineTo(0, headerHeight);
+                c.lineTo(w, animatedHeaderHeight);
+                c.lineTo(0, animatedHeaderHeight);
                 c.closePath();
                 c.fill();
                 break;
