@@ -10,21 +10,24 @@
             name: "Instagram poszt",
             width: 1080,
             height: 1080,
-            padding: 32,
+            hPadding: 32,
+            vPadding: 32,
         },
         {
             id: "insta-story",
             name: "Instagram story",
             width: 1080,
             height: 1920,
-            padding: 92,
+            hPadding: 64,
+            vPadding: 256,
         },
         {
             id: "fb-event-cover",
             name: "Facebook esemény borítókép",
             width: 1920,
             height: 1080,
-            padding: 64,
+            hPadding: 64,
+            vPadding: 64,
         },
     ];
     const shapes = ["edgy", "wave", "arc", "line"];
@@ -64,6 +67,8 @@
     let shape = $state(initialTheme.initialShape);
     let fullBackground = $state(false);
 
+    let titleLine1 = $state("KOLORA");
+    let titleLine2 = $state("");
     let location = $state("Museum Café");
     let locationDisplaySzfv = $state(true);
     let dateLine1 = $state("03/14");
@@ -87,6 +92,7 @@
 
     $effect(() => {
         shape = theme.initialShape;
+        titleLine2 = theme.name.toUpperCase();
     });
 
     $effect(() => {
@@ -95,9 +101,14 @@
         const w = canvas.width;
         const h = canvas.height;
         const shapeDecorationSize = 32;
+        const isHeaderEmpty =
+            !titleLine1 && !titleLine2 && !location && !dateLine1 && !dateLine2;
+        const headerContentHeight =
+            (isHeaderEmpty ? 0 : fullBackground ? 156 : location ? 248 : 200) +
+            form.vPadding;
         const headerHeight = fullBackground
             ? h - shapeDecorationSize
-            : (location ? 248 : 200) + form.padding;
+            : headerContentHeight;
 
         c.fillStyle = fullBackground ? theme.colorSecondary : "white";
         c.fillRect(0, 0, w, h);
@@ -166,31 +177,31 @@
         // Title
         c.fillStyle = "white";
         c.font = "72px sans-serif";
-        c.fillText("KOLORA", form.padding, form.padding + 72);
+        c.fillText(titleLine1, form.hPadding, form.vPadding + 72);
         c.fillStyle = theme.colorSecondary;
         c.font = "bold 72px sans-serif";
-        c.fillText(theme.name.toUpperCase(), form.padding, form.padding + 144);
+        c.fillText(titleLine2, form.hPadding, form.vPadding + 144);
 
         // Location
         if (location) {
             c.fillStyle = theme.colorSecondary;
             c.beginPath();
             c.arc(
-                form.padding + 10,
-                form.padding + 192 - 16,
+                form.hPadding + 10,
+                form.vPadding + 192 - 16,
                 10,
                 0,
                 Math.PI,
                 true,
             );
-            c.lineTo(form.padding + 10, form.padding + 192 + 6);
+            c.lineTo(form.hPadding + 10, form.vPadding + 192 + 6);
             c.closePath();
             c.fill();
             c.fillStyle = theme.colorPrimary;
             c.beginPath();
             c.arc(
-                form.padding + 10,
-                form.padding + 192 - 16,
+                form.hPadding + 10,
+                form.vPadding + 192 - 16,
                 3,
                 0,
                 Math.PI * 2,
@@ -200,14 +211,14 @@
             c.fill();
             c.fillStyle = "white";
             c.font = "30px sans-serif";
-            c.fillText(location, form.padding + 36, form.padding + 192);
+            c.fillText(location, form.hPadding + 36, form.vPadding + 192);
             const locationWidth = c.measureText(location).width;
             if (locationDisplaySzfv) {
                 c.fillStyle = theme.colorSecondary;
                 c.fillText(
                     "Székesfehérvár",
-                    form.padding + 52 + locationWidth,
-                    form.padding + 192,
+                    form.hPadding + 52 + locationWidth,
+                    form.vPadding + 192,
                 );
             }
         }
@@ -219,24 +230,70 @@
         const dateLine2Width = c.measureText(dateLine2).width;
         c.fillText(
             dateLine1,
-            w - form.padding - dateLine1Width,
-            form.padding + 72,
+            w - form.hPadding - dateLine1Width,
+            form.vPadding + 72,
         );
         c.fillText(
             dateLine2,
-            w - form.padding - dateLine2Width,
-            form.padding + 144,
+            w - form.hPadding - dateLine2Width,
+            form.vPadding + 144,
         );
 
         // Body
+        const bodySectionsCount = [body1Title, body2Title, body3Title].filter(
+            Boolean,
+        ).length;
+        const bodyPadding = 64;
+        const bodyTop = headerContentHeight + shapeDecorationSize + bodyPadding;
+        const bodySectionHeight =
+            (h -
+                headerContentHeight -
+                shapeDecorationSize -
+                40 -
+                form.vPadding -
+                bodyPadding * 3) /
+            bodySectionsCount;
+        c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
+        c.font = "bold 64px sans-serif";
+        c.fillText(
+            body1Title,
+            form.hPadding * 2,
+            bodyTop + bodySectionHeight / 2,
+        );
+        c.fillText(
+            body2Title,
+            form.hPadding * 2,
+            bodyTop + bodySectionHeight * 2 - bodySectionHeight / 2,
+        );
+        c.fillText(
+            body3Title,
+            form.hPadding * 2,
+            bodyTop + bodySectionHeight * 3 - bodySectionHeight / 2,
+        );
+        c.font = "64px sans-serif";
+        c.fillText(
+            body1Side,
+            w - form.hPadding * 2 - c.measureText(body1Side).width,
+            bodyTop + bodySectionHeight / 2,
+        );
+        c.fillText(
+            body2Side,
+            w - form.hPadding * 2 - c.measureText(body2Side).width,
+            bodyTop + bodySectionHeight * 2 - bodySectionHeight / 2,
+        );
+        c.fillText(
+            body3Side,
+            w - form.hPadding * 2 - c.measureText(body3Side).width,
+            bodyTop + bodySectionHeight * 3 - bodySectionHeight / 2,
+        );
 
         // Footer
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
         c.font = "bold 40px sans-serif";
         c.fillText(
             footerText,
-            form.padding,
-            h - form.padding - (fullBackground ? shapeDecorationSize : 0),
+            form.hPadding,
+            h - form.vPadding - (fullBackground ? shapeDecorationSize : 0),
         );
     });
 </script>
@@ -290,6 +347,20 @@
     </button>
 
     <h3>Tartalom</h3>
+    <div class="input-row">
+        <input
+            type="text"
+            class="outlined-input"
+            placeholder="Cím első sora"
+            bind:value={titleLine1}
+        />
+        <input
+            type="text"
+            class="outlined-input"
+            placeholder="Cím második sora"
+            bind:value={titleLine2}
+        />
+    </div>
     <h4>Helyszín és idő</h4>
     <div class="input-row">
         <input
