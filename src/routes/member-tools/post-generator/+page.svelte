@@ -69,10 +69,10 @@
 
     let titleLine1 = $state("KOLORA");
     let titleLine2 = $state("");
-    let location = $state("Museum Café");
+    let location = $state("");
     let locationDisplaySzfv = $state(true);
-    let dateLine1 = $state("03/14");
-    let dateLine2 = $state("19:00");
+    let dateLine1 = $state("");
+    let dateLine2 = $state("");
     let body1Title = $state("");
     let body1Side = $state("");
     let body1Desctiption = $state("");
@@ -82,7 +82,7 @@
     let body3Title = $state("");
     let body3Side = $state("");
     let body3Desctiption = $state("");
-    let footerText = $state("A belépés ingyenes.");
+    let footerText = $state("");
 
     onMount(() => {
         if (canvas) {
@@ -286,6 +286,23 @@
             w - form.hPadding * 2 - c.measureText(body3Side).width,
             bodyTop + bodySectionHeight * 3 - bodySectionHeight / 2,
         );
+        c.fillStyle = theme.colorSecondary;
+        c.font = "40px sans-serif";
+        c.fillText(
+            body1Desctiption,
+            form.hPadding * 2,
+            bodyTop + bodySectionHeight / 2 + 64,
+        );
+        c.fillText(
+            body2Desctiption,
+            form.hPadding * 2,
+            bodyTop + bodySectionHeight * 2 - bodySectionHeight / 2 + 64,
+        );
+        c.fillText(
+            body3Desctiption,
+            form.hPadding * 2,
+            bodyTop + bodySectionHeight * 3 - bodySectionHeight / 2 + 64,
+        );
 
         // Footer
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
@@ -366,7 +383,7 @@
         <input
             type="text"
             class="outlined-input"
-            placeholder="Helyszín"
+            placeholder="Helyszín pl. Museum Café"
             bind:value={location}
         />
         <input type="checkbox" bind:checked={locationDisplaySzfv} />
@@ -376,13 +393,13 @@
         <input
             type="text"
             class="outlined-input"
-            placeholder="Dátum első sora"
+            placeholder="Dátum első sora pl. 03/14"
             bind:value={dateLine1}
         />
         <input
             type="text"
             class="outlined-input"
-            placeholder="Dátum második sora"
+            placeholder="Dátum második sora pl. 17:00"
             bind:value={dateLine2}
         />
     </div>
@@ -391,13 +408,13 @@
         <input
             type="text"
             class="outlined-input"
-            placeholder="Cím"
+            placeholder="Cím pl. program neve"
             bind:value={body1Title}
         />
         <input
             type="text"
             class="outlined-input"
-            placeholder="Oldalsó szöveg"
+            placeholder="Oldalsó szöveg pl. program ideje"
             bind:value={body1Side}
         />
     </div>
@@ -450,7 +467,12 @@
         bind:value={body3Desctiption}
     />
     <h4>Lábléc</h4>
-    <input type="text" class="outlined-input" bind:value={footerText} />
+    <input
+        type="text"
+        class="outlined-input"
+        placeholder="pl. A belépés ingyenes. vagy Belépő: 1500Ft"
+        bind:value={footerText}
+    />
 </main>
 <Footer />
 
