@@ -83,6 +83,7 @@
     let body3Side = $state("");
     let body3Desctiption = $state("");
     let footerText = $state("");
+    let isPagableIndicatorVisible = $state(false);
 
     let headerHeight = $state(0);
     let animatedHeaderHeight = $state(0);
@@ -174,7 +175,14 @@
                 let x = 0;
 
                 while (x < w) {
-                    c.arc(x + radius, animatedHeaderHeight, radius, Math.PI, 0, true); // Draw half-circle
+                    c.arc(
+                        x + radius,
+                        animatedHeaderHeight,
+                        radius,
+                        Math.PI,
+                        0,
+                        true,
+                    ); // Draw half-circle
                     x += radius * 2; // Move to the next position
                 }
 
@@ -321,12 +329,29 @@
 
         // Footer
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
-        c.font = "bold 40px sans-serif";
+        c.font = "40px sans-serif";
         c.fillText(
             footerText,
             form.hPadding,
             h - form.vPadding - (fullBackground ? shapeDecorationSize : 0),
         );
+        // Pagable indicator
+        if (isPagableIndicatorVisible) {
+            const pBottomRight = {
+                x: w - form.hPadding - 16,
+                y:
+                    h -
+                    form.vPadding -
+                    (fullBackground ? shapeDecorationSize : 0),
+            };
+            const span = document.createElement("span");
+            span.className = "mdi mdi-chevron-right";
+            c.fill(
+                new Path2D(
+                    `m${pBottomRight.x} ${pBottomRight.y - 16}-12 12v-8c-8 0-17.5 5-20 11 0-13.5 9.5-19 20-19v-8z`,
+                ),
+            );
+        }
     });
 </script>
 
@@ -491,6 +516,10 @@
             placeholder="pl. A belépés ingyenes. vagy Belépő: 1500Ft"
             bind:value={footerText}
         />
+        <div>
+            <input type="checkbox" bind:checked={isPagableIndicatorVisible} />
+            <span>Jelző ikon lapozható posztokhoz</span>
+        </div>
     </div>
 </main>
 <Footer />
