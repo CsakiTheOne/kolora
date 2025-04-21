@@ -1,19 +1,35 @@
 class AnimatableNumber {
     private currentValue: number = $state(0);
     private targetValue: number;
-    private animator: NodeJS.Timeout;
+    private frameRate: number;
+    private duration: number;
+    private animator: NodeJS.Timeout | null = null;
 
     constructor(initialValue: number, frameRate: number = 60, duration: number = 500) {
         this.currentValue = initialValue;
         this.targetValue = initialValue;
+        this.frameRate = frameRate;
+        this.duration = duration;
+        this.startAnimation();
+    }
+
+    private startAnimation() {
+        if (this.animator) {
+            return;
+        }
+
         this.animator = setInterval(() => {
             const difference = this.targetValue - this.currentValue;
-            if (Math.abs(difference) < 0.01) {
+            if (Math.abs(difference) < 0.05) {
                 this.currentValue = this.targetValue;
+                if (this.animator) {
+                    clearInterval(this.animator);
+                    this.animator = null;
+                }
                 return;
             }
-            this.currentValue += difference / (duration * (1000 / frameRate) / 1000);
-        }, 1000 / frameRate);
+            this.currentValue += difference / (this.duration * (1000 / this.frameRate) / 1000);
+        }, 1000 / this.frameRate);
     }
 
     get value() {
@@ -22,6 +38,7 @@ class AnimatableNumber {
 
     set value(newValue: number) {
         this.targetValue = newValue;
+        this.startAnimation();
     }
 }
 

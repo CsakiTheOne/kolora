@@ -260,7 +260,8 @@
             body3Title + body3Side + body3Desctiption,
         ].filter(Boolean).length;
         const bodyPadding = 64;
-        const bodyTop = headerContentHeight.value + shapeDecorationSize + bodyPadding;
+        const bodyTop =
+            headerContentHeight.value + shapeDecorationSize + bodyPadding;
         const bodySectionHeight =
             (h -
                 headerContentHeight.value -
@@ -369,7 +370,7 @@
     </div>
 
     <div style="flex: 3;">
-        <h3>Téma</h3>
+        <h3>Megjelenés</h3>
         <div class="input-row">
             <select class="outlined-input" bind:value={form}>
                 {#each forms as f}
@@ -392,7 +393,7 @@
             <span>Egy háttérszínű kártya</span>
         </div>
 
-        <h3>Tartalom</h3>
+        <h4>Fejléc</h4>
         <div class="input-row">
             <input
                 type="text"
@@ -434,7 +435,7 @@
                 bind:value={dateLine2}
             />
         </div>
-        <h4>Első pont</h4>
+        <h4>Törzs - Első pont</h4>
         <div class="input-row">
             <input
                 type="text"
@@ -456,7 +457,7 @@
             bind:value={body1Desctiption}
         />
         {#if bodySectionsCount.value > 0}
-            <h4>Második pont</h4>
+            <h5>Második pont</h5>
             <div class="input-row">
                 <input
                     type="text"
@@ -481,7 +482,7 @@
             <p>Második pont elrejtve, amíg az első üres.</p>
         {/if}
         {#if bodySectionsCount.value > 1}
-            <h4>Harmadik pont</h4>
+            <h5>Harmadik pont</h5>
             <div class="input-row">
                 <input
                     type="text"
@@ -506,12 +507,28 @@
             <p>Harmadik pont elrejtve, amíg a második üres.</p>
         {/if}
         <h4>Lábléc</h4>
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="pl. A belépés ingyenes. vagy Belépő: 1500Ft"
-            bind:value={footerText}
-        />
+        <div class="input-row">
+            <span class="mdi mdi-page-layout-footer"></span>
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="pl. A belépés ingyenes. vagy Belépő: 1500Ft"
+                bind:value={footerText}
+            />
+            <button
+                class="btn"
+                style="white-space: nowrap;"
+                onclick={() => {
+                    const price = prompt(
+                        "Belépő ára (egyszerűen írd be a számot):",
+                    );
+                    if (price === "0") footerText = "A belépés ingyenes."
+                    else if (price) footerText = `Belépő: ${price}Ft`;
+                }}
+            >
+                Belépő ár megadása
+            </button>
+        </div>
         <div>
             <input type="checkbox" bind:checked={isPagableIndicatorVisible} />
             <span>Jelző ikon lapozható posztokhoz</span>
