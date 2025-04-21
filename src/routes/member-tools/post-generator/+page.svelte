@@ -344,8 +344,6 @@
                     form.vPadding -
                     (fullBackground ? shapeDecorationSize : 0),
             };
-            const span = document.createElement("span");
-            span.className = "mdi mdi-chevron-right";
             c.fill(
                 new Path2D(
                     `m${pBottomRight.x} ${pBottomRight.y - 16}-12 12v-8c-8 0-17.5 5-20 11 0-13.5 9.5-19 20-19v-8z`,
