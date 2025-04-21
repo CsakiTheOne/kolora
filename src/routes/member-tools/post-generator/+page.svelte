@@ -3,11 +3,12 @@
     import Footer from "../../../components/Footer.svelte";
     import SmallHeader from "../../../components/SmallHeader.svelte";
     import Alert from "../../../components/Alert.svelte";
+    import { animateNumberAsState } from "$lib/utils.svelte";
 
     const forms = [
         {
             id: "insta-post",
-            name: "Instagram poszt",
+            name: "Insta poszt",
             width: 1080,
             height: 1080,
             hPadding: 32,
@@ -15,7 +16,7 @@
         },
         {
             id: "insta-story",
-            name: "Instagram story",
+            name: "Insta story",
             width: 1080,
             height: 1920,
             hPadding: 64,
@@ -23,7 +24,7 @@
         },
         {
             id: "fb-event-cover",
-            name: "Facebook esemény borítókép",
+            name: "Fb esemény borítókép",
             width: 1920,
             height: 1080,
             hPadding: 64,
@@ -85,23 +86,15 @@
     let footerText = $state("");
     let isPagableIndicatorVisible = $state(false);
 
-    let headerHeight = $state(0);
-    let animatedHeaderHeight = $state(0);
+    let bodySectionsCount = animateNumberAsState(0);
+    let headerContentHeight = animateNumberAsState(0);
+    let headerHeight = animateNumberAsState(0);
+    let footerBottomPadding = animateNumberAsState(0);
 
     onMount(() => {
         if (canvas) {
             c = canvas.getContext("2d");
         }
-
-        const animator = setInterval(() => {
-            if (!canvas || !c) return;
-
-            animatedHeaderHeight += (headerHeight - animatedHeaderHeight) * 0.1;
-        }, 1000 / 60);
-
-        return () => {
-            clearInterval(animator);
-        };
     });
 
     $effect(() => {
@@ -117,37 +110,37 @@
         const shapeDecorationSize = 32;
         const isHeaderEmpty =
             !titleLine1 && !titleLine2 && !location && !dateLine1 && !dateLine2;
-        const headerContentHeight =
+        headerContentHeight.value =
             (isHeaderEmpty ? 0 : fullBackground ? 156 : location ? 248 : 200) +
             form.vPadding;
-        headerHeight = fullBackground
+        headerHeight.value = fullBackground
             ? h - shapeDecorationSize
-            : headerContentHeight;
+            : headerContentHeight.value;
 
         c.fillStyle = fullBackground ? theme.colorSecondary : "white";
         c.fillRect(0, 0, w, h);
 
         c.fillStyle = theme.colorPrimary;
-        c.fillRect(0, 0, w, animatedHeaderHeight);
+        c.fillRect(0, 0, w, headerHeight.value);
 
         switch (shape) {
             case "edgy":
                 c.beginPath();
                 const zigzagHeight = shapeDecorationSize;
                 const zigzagWidth = shapeDecorationSize;
-                let y = animatedHeaderHeight;
+                let y = headerHeight.value;
                 c.moveTo(0, y);
 
                 for (let x = 0; x <= w + zigzagWidth; x += zigzagWidth) {
                     c.lineTo(x, y);
                     y =
-                        y === animatedHeaderHeight
-                            ? animatedHeaderHeight + zigzagHeight
-                            : animatedHeaderHeight;
+                        y === headerHeight.value
+                            ? headerHeight.value + zigzagHeight
+                            : headerHeight.value;
                 }
 
-                c.lineTo(w, animatedHeaderHeight);
-                c.lineTo(0, animatedHeaderHeight);
+                c.lineTo(w, headerHeight.value);
+                c.lineTo(0, headerHeight.value);
                 c.closePath();
                 c.fill();
                 break;
@@ -155,7 +148,7 @@
                 c.beginPath();
                 const amplitude = shapeDecorationSize / 2; // Height of the sine wave
                 const frequency = w / shapeDecorationSize / Math.PI; // Number of sine waves across the width
-                const yOffset = animatedHeaderHeight + amplitude; // Offset to center the wave vertically
+                const yOffset = headerHeight.value + amplitude; // Offset to center the wave vertically
 
                 for (let x = 0; x <= w; x++) {
                     const y =
@@ -164,8 +157,8 @@
                     x === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
                 }
 
-                c.lineTo(w, animatedHeaderHeight);
-                c.lineTo(0, animatedHeaderHeight);
+                c.lineTo(w, headerHeight.value);
+                c.lineTo(0, headerHeight.value);
                 c.closePath();
                 c.fill();
                 break;
@@ -177,7 +170,7 @@
                 while (x < w) {
                     c.arc(
                         x + radius,
-                        animatedHeaderHeight,
+                        headerHeight.value,
                         radius,
                         Math.PI,
                         0,
@@ -186,8 +179,8 @@
                     x += radius * 2; // Move to the next position
                 }
 
-                c.lineTo(w, animatedHeaderHeight);
-                c.lineTo(0, animatedHeaderHeight);
+                c.lineTo(w, headerHeight.value);
+                c.lineTo(0, headerHeight.value);
                 c.closePath();
                 c.fill();
                 break;
@@ -261,21 +254,21 @@
         );
 
         // Body
-        const bodySectionsCount = [
-            body1Title + body1Desctiption,
-            body2Title + body2Desctiption,
-            body3Title + body3Desctiption,
+        bodySectionsCount.value = [
+            body1Title + body1Side + body1Desctiption,
+            body2Title + body2Side + body2Desctiption,
+            body3Title + body3Side + body3Desctiption,
         ].filter(Boolean).length;
         const bodyPadding = 64;
-        const bodyTop = headerContentHeight + shapeDecorationSize + bodyPadding;
+        const bodyTop = headerContentHeight.value + shapeDecorationSize + bodyPadding;
         const bodySectionHeight =
             (h -
-                headerContentHeight -
+                headerContentHeight.value -
                 shapeDecorationSize -
                 40 -
                 form.vPadding -
                 bodyPadding * 3) /
-            bodySectionsCount;
+            bodySectionsCount.value;
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
         c.font = "bold 64px sans-serif";
         c.fillText(
@@ -328,21 +321,16 @@
         );
 
         // Footer
+        footerBottomPadding.value =
+            h - form.vPadding - (fullBackground ? shapeDecorationSize : 0);
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
         c.font = "40px sans-serif";
-        c.fillText(
-            footerText,
-            form.hPadding,
-            h - form.vPadding - (fullBackground ? shapeDecorationSize : 0),
-        );
+        c.fillText(footerText, form.hPadding, footerBottomPadding.value);
         // Pagable indicator
         if (isPagableIndicatorVisible) {
             const pBottomRight = {
                 x: w - form.hPadding - 16,
-                y:
-                    h -
-                    form.vPadding -
-                    (fullBackground ? shapeDecorationSize : 0),
+                y: footerBottomPadding.value,
             };
             c.fill(
                 new Path2D(
@@ -419,8 +407,8 @@
                 bind:value={titleLine2}
             />
         </div>
-        <h4>Helyszín és idő</h4>
         <div class="input-row">
+            <span class="mdi mdi-map-marker"></span>
             <input
                 type="text"
                 class="outlined-input"
@@ -431,16 +419,18 @@
             <span>Székesfehérvár felirat halványan</span>
         </div>
         <div class="input-row">
+            <span class="mdi mdi-calendar"></span>
             <input
                 type="text"
                 class="outlined-input"
-                placeholder="Dátum első sora pl. 03/14"
+                placeholder="Dátum pl. 03/14"
                 bind:value={dateLine1}
             />
+            <span class="mdi mdi-clock"></span>
             <input
                 type="text"
                 class="outlined-input"
-                placeholder="Dátum második sora pl. 17:00"
+                placeholder="Idő pl. 17:00"
                 bind:value={dateLine2}
             />
         </div>
@@ -465,48 +455,56 @@
             placeholder="Leírás"
             bind:value={body1Desctiption}
         />
-        <h4>Második pont</h4>
-        <div class="input-row">
+        {#if bodySectionsCount.value > 0}
+            <h4>Második pont</h4>
+            <div class="input-row">
+                <input
+                    type="text"
+                    class="outlined-input"
+                    placeholder="Cím"
+                    bind:value={body2Title}
+                />
+                <input
+                    type="text"
+                    class="outlined-input"
+                    placeholder="Oldalsó szöveg"
+                    bind:value={body2Side}
+                />
+            </div>
             <input
                 type="text"
                 class="outlined-input"
-                placeholder="Cím"
-                bind:value={body2Title}
+                placeholder="Leírás"
+                bind:value={body2Desctiption}
             />
+        {:else}
+            <p>Második pont elrejtve, amíg az első üres.</p>
+        {/if}
+        {#if bodySectionsCount.value > 1}
+            <h4>Harmadik pont</h4>
+            <div class="input-row">
+                <input
+                    type="text"
+                    class="outlined-input"
+                    placeholder="Cím"
+                    bind:value={body3Title}
+                />
+                <input
+                    type="text"
+                    class="outlined-input"
+                    placeholder="Oldalsó szöveg"
+                    bind:value={body3Side}
+                />
+            </div>
             <input
                 type="text"
                 class="outlined-input"
-                placeholder="Oldalsó szöveg"
-                bind:value={body2Side}
+                placeholder="Leírás"
+                bind:value={body3Desctiption}
             />
-        </div>
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Leírás"
-            bind:value={body2Desctiption}
-        />
-        <h4>Harmadik pont</h4>
-        <div class="input-row">
-            <input
-                type="text"
-                class="outlined-input"
-                placeholder="Cím"
-                bind:value={body3Title}
-            />
-            <input
-                type="text"
-                class="outlined-input"
-                placeholder="Oldalsó szöveg"
-                bind:value={body3Side}
-            />
-        </div>
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Leírás"
-            bind:value={body3Desctiption}
-        />
+        {:else}
+            <p>Harmadik pont elrejtve, amíg a második üres.</p>
+        {/if}
         <h4>Lábléc</h4>
         <input
             type="text"
@@ -546,5 +544,6 @@
         flex-direction: row;
         flex-wrap: nowrap;
         gap: var(--spacing);
+        align-items: center;
     }
 </style>
