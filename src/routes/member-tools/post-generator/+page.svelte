@@ -240,9 +240,11 @@
         );
 
         // Body
-        const bodySectionsCount = [body1Title, body2Title, body3Title].filter(
-            Boolean,
-        ).length;
+        const bodySectionsCount = [
+            body1Title + body1Desctiption,
+            body2Title + body2Desctiption,
+            body3Title + body3Desctiption,
+        ].filter(Boolean).length;
         const bodyPadding = 64;
         const bodyTop = headerContentHeight + shapeDecorationSize + bodyPadding;
         const bodySectionHeight =
