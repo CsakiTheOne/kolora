@@ -321,167 +321,184 @@
     path={[{ title: "Eszközök", href: "/member-tools" }]}
     currentPage="Poszt készítő"
 />
-<main>
-    <h2>Poszt készítő</h2>
-
-    <h3>Téma</h3>
-    <div class="input-row">
-        <select class="outlined-input" bind:value={form}>
-            {#each forms as f}
-                <option value={f}>{f.name}</option>
-            {/each}
-        </select>
-        <select class="outlined-input" bind:value={theme}>
-            {#each postThemes as t}
-                <option value={t}>{t.name}</option>
-            {/each}
-        </select>
-        <select class="outlined-input" bind:value={shape}>
-            {#each shapes as s}
-                <option value={s}>{s}</option>
-            {/each}
-        </select>
-    </div>
-    <div>
-        <input type="checkbox" bind:checked={fullBackground} />
-        <span>Egy háttérszínű kártya</span>
+<main class="adaptive-col-row">
+    <div style="flex: 1;">
+        <h2>Poszt készítő</h2>
+        <canvas width={form.width} height={form.height} bind:this={canvas}
+        ></canvas>
+        <button
+            class="btn"
+            onclick={() => {
+                if (!canvas) return;
+                const dataUrl = canvas.toDataURL("image/png");
+                const a = document.createElement("a");
+                a.href = dataUrl;
+                a.download = `${form.id}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }}
+        >
+            <span class="mdi mdi-download"></span>
+            Letöltés
+        </button>
     </div>
 
-    <canvas width={form.width} height={form.height} bind:this={canvas}></canvas>
-    <button
-        class="btn"
-        onclick={() => {
-            if (!canvas) return;
-            const dataUrl = canvas.toDataURL("image/png");
-            const a = document.createElement("a");
-            a.href = dataUrl;
-            a.download = `${form.id}.png`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }}
-    >
-        <span class="mdi mdi-download"></span>
-        Letöltés
-    </button>
+    <div style="flex: 3;">
+        <h3>Téma</h3>
+        <div class="input-row">
+            <select class="outlined-input" bind:value={form}>
+                {#each forms as f}
+                    <option value={f}>{f.name}</option>
+                {/each}
+            </select>
+            <select class="outlined-input" bind:value={theme}>
+                {#each postThemes as t}
+                    <option value={t}>{t.name}</option>
+                {/each}
+            </select>
+            <select class="outlined-input" bind:value={shape}>
+                {#each shapes as s}
+                    <option value={s}>{s}</option>
+                {/each}
+            </select>
+        </div>
+        <div>
+            <input type="checkbox" bind:checked={fullBackground} />
+            <span>Egy háttérszínű kártya</span>
+        </div>
 
-    <h3>Tartalom</h3>
-    <div class="input-row">
+        <h3>Tartalom</h3>
+        <div class="input-row">
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Cím első sora"
+                bind:value={titleLine1}
+            />
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Cím második sora"
+                bind:value={titleLine2}
+            />
+        </div>
+        <h4>Helyszín és idő</h4>
+        <div class="input-row">
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Helyszín pl. Museum Café"
+                bind:value={location}
+            />
+            <input type="checkbox" bind:checked={locationDisplaySzfv} />
+            <span>Székesfehérvár felirat halványan</span>
+        </div>
+        <div class="input-row">
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Dátum első sora pl. 03/14"
+                bind:value={dateLine1}
+            />
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Dátum második sora pl. 17:00"
+                bind:value={dateLine2}
+            />
+        </div>
+        <h4>Első pont</h4>
+        <div class="input-row">
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Cím pl. program neve"
+                bind:value={body1Title}
+            />
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Oldalsó szöveg pl. program ideje"
+                bind:value={body1Side}
+            />
+        </div>
         <input
             type="text"
             class="outlined-input"
-            placeholder="Cím első sora"
-            bind:value={titleLine1}
+            placeholder="Leírás"
+            bind:value={body1Desctiption}
         />
+        <h4>Második pont</h4>
+        <div class="input-row">
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Cím"
+                bind:value={body2Title}
+            />
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Oldalsó szöveg"
+                bind:value={body2Side}
+            />
+        </div>
         <input
             type="text"
             class="outlined-input"
-            placeholder="Cím második sora"
-            bind:value={titleLine2}
+            placeholder="Leírás"
+            bind:value={body2Desctiption}
+        />
+        <h4>Harmadik pont</h4>
+        <div class="input-row">
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Cím"
+                bind:value={body3Title}
+            />
+            <input
+                type="text"
+                class="outlined-input"
+                placeholder="Oldalsó szöveg"
+                bind:value={body3Side}
+            />
+        </div>
+        <input
+            type="text"
+            class="outlined-input"
+            placeholder="Leírás"
+            bind:value={body3Desctiption}
+        />
+        <h4>Lábléc</h4>
+        <input
+            type="text"
+            class="outlined-input"
+            placeholder="pl. A belépés ingyenes. vagy Belépő: 1500Ft"
+            bind:value={footerText}
         />
     </div>
-    <h4>Helyszín és idő</h4>
-    <div class="input-row">
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Helyszín pl. Museum Café"
-            bind:value={location}
-        />
-        <input type="checkbox" bind:checked={locationDisplaySzfv} />
-        <span>Székesfehérvár felirat halványan</span>
-    </div>
-    <div class="input-row">
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Dátum első sora pl. 03/14"
-            bind:value={dateLine1}
-        />
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Dátum második sora pl. 17:00"
-            bind:value={dateLine2}
-        />
-    </div>
-    <h4>Első pont</h4>
-    <div class="input-row">
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Cím pl. program neve"
-            bind:value={body1Title}
-        />
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Oldalsó szöveg pl. program ideje"
-            bind:value={body1Side}
-        />
-    </div>
-    <input
-        type="text"
-        class="outlined-input"
-        placeholder="Leírás"
-        bind:value={body1Desctiption}
-    />
-    <h4>Második pont</h4>
-    <div class="input-row">
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Cím"
-            bind:value={body2Title}
-        />
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Oldalsó szöveg"
-            bind:value={body2Side}
-        />
-    </div>
-    <input
-        type="text"
-        class="outlined-input"
-        placeholder="Leírás"
-        bind:value={body2Desctiption}
-    />
-    <h4>Harmadik pont</h4>
-    <div class="input-row">
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Cím"
-            bind:value={body3Title}
-        />
-        <input
-            type="text"
-            class="outlined-input"
-            placeholder="Oldalsó szöveg"
-            bind:value={body3Side}
-        />
-    </div>
-    <input
-        type="text"
-        class="outlined-input"
-        placeholder="Leírás"
-        bind:value={body3Desctiption}
-    />
-    <h4>Lábléc</h4>
-    <input
-        type="text"
-        class="outlined-input"
-        placeholder="pl. A belépés ingyenes. vagy Belépő: 1500Ft"
-        bind:value={footerText}
-    />
 </main>
 <Footer />
 
 <style>
+    main {
+        padding: var(--spacing);
+        align-items: stretch;
+    }
+
+    main > * {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing);
+    }
+
     canvas {
-        width: 100%;
+        max-width: 100%;
+        max-height: 72svh;
         box-shadow: 0 2px 6px black;
+        align-self: center;
     }
 
     .input-row {
