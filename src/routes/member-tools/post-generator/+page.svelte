@@ -4,19 +4,42 @@
     import SmallHeader from "../../../components/SmallHeader.svelte";
     import Alert from "../../../components/Alert.svelte";
 
-    const shapes = ["rect", "circle", "arc", "line"];
+    const forms = [
+        {
+            id: "insta-post",
+            name: "Instagram poszt",
+            width: 1080,
+            height: 1080,
+            padding: 32,
+        },
+        {
+            id: "insta-story",
+            name: "Instagram story",
+            width: 1080,
+            height: 1920,
+            padding: 92,
+        },
+        {
+            id: "fb-event-cover",
+            name: "Facebook esemény borítókép",
+            width: 1920,
+            height: 1080,
+            padding: 64,
+        },
+    ];
+    const shapes = ["edgy", "wave", "arc", "line"];
     const postThemes = [
         {
             name: "Terasz",
             colorPrimary: "#313b72",
             colorSecondary: "#86bbd8",
-            initialShape: "rect",
+            initialShape: "edgy",
         },
         {
             name: "Akusztik",
             colorPrimary: "#531253",
             colorSecondary: "#b68cf0",
-            initialShape: "circle",
+            initialShape: "wave",
         },
         {
             name: "Slam",
@@ -36,6 +59,7 @@
     let c: CanvasRenderingContext2D | null = null;
     const initialTheme = postThemes[2];
 
+    let form = $state(forms[0]);
     let theme = $state(initialTheme);
     let shape = $state(initialTheme.initialShape);
     let fullBackground = $state(false);
@@ -73,10 +97,7 @@
         const shapeDecorationSize = 32;
         const headerHeight = fullBackground
             ? h - shapeDecorationSize
-            : location
-              ? 272
-              : 256;
-        const padding = 48;
+            : (location ? 248 : 200) + form.padding;
 
         c.fillStyle = fullBackground ? theme.colorSecondary : "white";
         c.fillRect(0, 0, w, h);
@@ -85,7 +106,7 @@
         c.fillRect(0, 0, w, headerHeight);
 
         switch (shape) {
-            case "rect":
+            case "edgy":
                 c.beginPath();
                 const zigzagHeight = shapeDecorationSize;
                 const zigzagWidth = shapeDecorationSize;
@@ -105,10 +126,10 @@
                 c.closePath();
                 c.fill();
                 break;
-            case "circle":
+            case "wave":
                 c.beginPath();
                 const amplitude = shapeDecorationSize / 2; // Height of the sine wave
-                const frequency = (w / shapeDecorationSize / Math.PI) * 1.2; // Number of sine waves across the width
+                const frequency = w / shapeDecorationSize / Math.PI; // Number of sine waves across the width
                 const yOffset = headerHeight + amplitude; // Offset to center the wave vertically
 
                 for (let x = 0; x <= w; x++) {
@@ -145,34 +166,48 @@
         // Title
         c.fillStyle = "white";
         c.font = "72px sans-serif";
-        c.fillText("KOLORA", padding, padding + 72);
+        c.fillText("KOLORA", form.padding, form.padding + 72);
         c.fillStyle = theme.colorSecondary;
         c.font = "bold 72px sans-serif";
-        c.fillText(theme.name.toUpperCase(), padding, padding + 144);
+        c.fillText(theme.name.toUpperCase(), form.padding, form.padding + 144);
 
         // Location
         if (location) {
             c.fillStyle = theme.colorSecondary;
             c.beginPath();
-            c.arc(padding + 10, padding + 192 - 16, 10, 0, Math.PI, true);
-            c.lineTo(padding + 10, padding + 192 + 6);
+            c.arc(
+                form.padding + 10,
+                form.padding + 192 - 16,
+                10,
+                0,
+                Math.PI,
+                true,
+            );
+            c.lineTo(form.padding + 10, form.padding + 192 + 6);
             c.closePath();
             c.fill();
             c.fillStyle = theme.colorPrimary;
             c.beginPath();
-            c.arc(padding + 10, padding + 192 - 16, 3, 0, Math.PI * 2, true);
+            c.arc(
+                form.padding + 10,
+                form.padding + 192 - 16,
+                3,
+                0,
+                Math.PI * 2,
+                true,
+            );
             c.closePath();
             c.fill();
             c.fillStyle = "white";
             c.font = "30px sans-serif";
-            c.fillText(location, padding + 36, padding + 192);
+            c.fillText(location, form.padding + 36, form.padding + 192);
             const locationWidth = c.measureText(location).width;
             if (locationDisplaySzfv) {
                 c.fillStyle = theme.colorSecondary;
                 c.fillText(
                     "Székesfehérvár",
-                    padding + 52 + locationWidth,
-                    padding + 192,
+                    form.padding + 52 + locationWidth,
+                    form.padding + 192,
                 );
             }
         }
@@ -182,56 +217,26 @@
         c.font = "72px sans-serif";
         const dateLine1Width = c.measureText(dateLine1).width;
         const dateLine2Width = c.measureText(dateLine2).width;
-        c.fillText(dateLine1, w - padding - dateLine1Width, padding + 72);
-        c.fillText(dateLine2, w - padding - dateLine2Width, padding + 144);
+        c.fillText(
+            dateLine1,
+            w - form.padding - dateLine1Width,
+            form.padding + 72,
+        );
+        c.fillText(
+            dateLine2,
+            w - form.padding - dateLine2Width,
+            form.padding + 144,
+        );
 
         // Body
-        const bodySectionsCount = [body1Title, body2Title, body3Title].filter(
-            Boolean,
-        ).length;
-        const bodySectionHeight = (h - headerHeight - 72) / 2 - ((bodySectionsCount - 1) * 92)
-        const firstBodySectionY = headerHeight + bodySectionHeight;
-        c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
-        c.font = "bold 72px sans-serif";
-        c.fillText(
-            body1Title,
-            padding * 2,
-            firstBodySectionY,
-        );
-        c.fillText(
-            body2Title,
-            padding * 2,
-            firstBodySectionY + bodySectionHeight,
-        );
-        c.fillText(
-            body3Title,
-            padding * 2,
-            firstBodySectionY + bodySectionHeight * 2,
-        );
-        c.font = "72px sans-serif";
-        c.fillText(
-            body1Side,
-            w - 2 * padding - c.measureText(body1Side).width,
-            firstBodySectionY,
-        );
-        c.fillText(
-            body2Side,
-            w - 2 * padding - c.measureText(body2Side).width,
-            firstBodySectionY + bodySectionHeight,
-        );
-        c.fillText(
-            body3Side,
-            w - 2 * padding - c.measureText(body3Side).width,
-            firstBodySectionY + bodySectionHeight * 2,
-        );
 
         // Footer
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
         c.font = "bold 40px sans-serif";
         c.fillText(
             footerText,
-            padding,
-            h - padding - (fullBackground ? shapeDecorationSize : 0),
+            form.padding,
+            h - form.padding - (fullBackground ? shapeDecorationSize : 0),
         );
     });
 </script>
@@ -245,6 +250,11 @@
 
     <h3>Téma</h3>
     <div class="input-row">
+        <select class="outlined-input" bind:value={form}>
+            {#each forms as f}
+                <option value={f}>{f.name}</option>
+            {/each}
+        </select>
         <select class="outlined-input" bind:value={theme}>
             {#each postThemes as t}
                 <option value={t}>{t.name}</option>
@@ -261,7 +271,23 @@
         <span>Egy háttérszínű kártya</span>
     </div>
 
-    <canvas width="1080" height="1080" bind:this={canvas}></canvas>
+    <canvas width={form.width} height={form.height} bind:this={canvas}></canvas>
+    <button
+        class="btn"
+        onclick={() => {
+            if (!canvas) return;
+            const dataUrl = canvas.toDataURL("image/png");
+            const a = document.createElement("a");
+            a.href = dataUrl;
+            a.download = `${form.id}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }}
+    >
+        <span class="mdi mdi-download"></span>
+        Letöltés
+    </button>
 
     <h3>Tartalom</h3>
     <h4>Helyszín és idő</h4>
@@ -354,17 +380,12 @@
     />
     <h4>Lábléc</h4>
     <input type="text" class="outlined-input" bind:value={footerText} />
-
-    <Alert icon="download">
-        <p>A kép letöltése csak gépen működik, mobilon nem.</p>
-    </Alert>
 </main>
 <Footer />
 
 <style>
     canvas {
         width: 100%;
-        aspect-ratio: 1 / 1;
         box-shadow: 0 2px 6px black;
     }
 
