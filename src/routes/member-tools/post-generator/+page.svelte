@@ -13,6 +13,7 @@
             height: 1080,
             hPadding: 32,
             vPadding: 32,
+            decorationSize: 32,
         },
         {
             id: "insta-story",
@@ -21,6 +22,7 @@
             height: 1920,
             hPadding: 64,
             vPadding: 256,
+            decorationSize: 64,
         },
         {
             id: "fb-event-cover",
@@ -29,6 +31,7 @@
             height: 1080,
             hPadding: 64,
             vPadding: 64,
+            decorationSize: 64,
         },
     ];
     const shapes = ["edgy", "wave", "arc", "line"];
@@ -107,14 +110,13 @@
 
         const w = canvas.width;
         const h = canvas.height;
-        const shapeDecorationSize = 32;
         const isHeaderEmpty =
             !titleLine1 && !titleLine2 && !location && !dateLine1 && !dateLine2;
         headerContentHeight.value =
             (isHeaderEmpty ? 0 : fullBackground ? 156 : location ? 248 : 200) +
-            form.vPadding;
+            form.vPadding + (fullBackground ? 0 : form.decorationSize);
         headerHeight.value = fullBackground
-            ? h - shapeDecorationSize
+            ? h - form.decorationSize
             : headerContentHeight.value;
 
         c.fillStyle = fullBackground ? theme.colorSecondary : "white";
@@ -126,8 +128,8 @@
         switch (shape) {
             case "edgy":
                 c.beginPath();
-                const zigzagHeight = shapeDecorationSize;
-                const zigzagWidth = shapeDecorationSize;
+                const zigzagHeight = form.decorationSize;
+                const zigzagWidth = form.decorationSize;
                 let y = headerHeight.value;
                 c.moveTo(0, y);
 
@@ -146,8 +148,8 @@
                 break;
             case "wave":
                 c.beginPath();
-                const amplitude = shapeDecorationSize / 2; // Height of the sine wave
-                const frequency = w / shapeDecorationSize / Math.PI; // Number of sine waves across the width
+                const amplitude = form.decorationSize / 2; // Height of the sine wave
+                const frequency = w / form.decorationSize / Math.PI; // Number of sine waves across the width
                 const yOffset = headerHeight.value + amplitude; // Offset to center the wave vertically
 
                 for (let x = 0; x <= w; x++) {
@@ -164,7 +166,7 @@
                 break;
             case "arc":
                 c.beginPath();
-                const radius = shapeDecorationSize; // Radius of the half circles
+                const radius = form.decorationSize; // Radius of the half circles
                 let x = 0;
 
                 while (x < w) {
@@ -261,11 +263,11 @@
         ].filter(Boolean).length;
         const bodyPadding = 64;
         const bodyTop =
-            headerContentHeight.value + shapeDecorationSize + bodyPadding;
+            headerContentHeight.value + form.decorationSize + bodyPadding;
         const bodySectionHeight =
             (h -
                 headerContentHeight.value -
-                shapeDecorationSize -
+                form.decorationSize -
                 40 -
                 form.vPadding -
                 bodyPadding * 3) /
@@ -329,7 +331,7 @@
 
         // Footer
         footerBottomPadding.value =
-            h - form.vPadding - (fullBackground ? shapeDecorationSize : 0);
+            h - form.vPadding - (fullBackground ? form.decorationSize : 0);
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
         c.font = "40px sans-serif";
         c.fillText(
