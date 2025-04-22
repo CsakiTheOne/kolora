@@ -45,7 +45,9 @@
                     }}
                 >
                     <td>
-                        <span class={`mdi mdi-${!place.latitude && !place.longitude ? "null" : "map-marker"}`}></span>
+                        <span
+                            class={`mdi mdi-${!place.latitude && !place.longitude ? "null" : "map-marker"}`}
+                        ></span>
                     </td>
                     <td>
                         {place.name.length > 0 ? place.name : "Névtelen"}
@@ -169,6 +171,7 @@
     <div>
         <input
             type="checkbox"
+            class="outlined-input"
             disabled={loading}
             name="allowPosting"
             bind:checked={selectedPlace.allowPosting}
@@ -185,6 +188,7 @@
     <div>
         <input
             type="checkbox"
+            class="outlined-input"
             disabled={loading}
             name="showSoonScreen"
             bind:checked={selectedPlace.showSoonScreen}

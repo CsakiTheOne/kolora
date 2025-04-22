@@ -84,6 +84,7 @@
         <p>
             <input
                 type="checkbox"
+                class="outlined-input"
                 name="isBanned"
                 bind:checked={user.isBanned}
                 oninput={(e: any) => {

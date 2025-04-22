@@ -114,7 +114,8 @@
             !titleLine1 && !titleLine2 && !location && !dateLine1 && !dateLine2;
         headerContentHeight.value =
             (isHeaderEmpty ? 0 : fullBackground ? 156 : location ? 248 : 200) +
-            form.vPadding + (fullBackground ? 0 : form.decorationSize);
+            form.vPadding +
+            (fullBackground ? 0 : form.decorationSize);
         headerHeight.value = fullBackground
             ? h - form.decorationSize
             : headerContentHeight.value;
@@ -402,7 +403,11 @@
             </select>
         </div>
         <div>
-            <input type="checkbox" bind:checked={fullBackground} />
+            <input
+                type="checkbox"
+                class="outlined-input"
+                bind:checked={fullBackground}
+            />
             <span>Egy háttérszínű kártya</span>
         </div>
 
@@ -434,7 +439,11 @@
                 <option value="Museum Café" />
                 <option value="Nyolcas Műhely" />
             </datalist>
-            <input type="checkbox" bind:checked={locationDisplaySzfv} />
+            <input
+                type="checkbox"
+                class="outlined-input"
+                bind:checked={locationDisplaySzfv}
+            />
             <span>Székesfehérvár felirat halványan</span>
         </div>
         <div class="input-row">
@@ -548,7 +557,11 @@
             </button>
         </div>
         <div>
-            <input type="checkbox" bind:checked={isPagableIndicatorVisible} />
+            <input
+                type="checkbox"
+                class="outlined-input"
+                bind:checked={isPagableIndicatorVisible}
+            />
             <span>Jelző ikon lapozható posztokhoz</span>
         </div>
     </div>

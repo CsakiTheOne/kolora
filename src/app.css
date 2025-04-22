@@ -195,6 +195,28 @@ main>* {
     outline: none;
 }
 
+input[type="checkbox"].outlined-input {
+    appearance: none;
+    width: 24px;
+    aspect-ratio: 1;
+    translate: 0 6px;
+}
+
+input[type="checkbox"].outlined-input:checked {
+    background-color: var(--primary-color);
+    color: var(--on-primary-color);
+}
+
+input[type="checkbox"].outlined-input:checked::after {
+    content: "J";
+    position: absolute;
+    rotate: 35deg;
+    top: 0;
+    left: 25%;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
 .secret-input {
     text-security: disc;
     -webkit-text-security: disc;
