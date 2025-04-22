@@ -24,7 +24,7 @@
     </p>
     <p>
         Az események könnyű megkülönböztetése és konzisztencia érdekében, a
-        színek a következő színeket megadott esemény típusokhoz asszociáljuk:
+        következő színeket megadott esemény típusokhoz asszociáljuk:
     </p>
     <table class="color-table">
         <thead>
@@ -63,9 +63,9 @@
 
     <h3>Formák és alakzatok</h3>
     <p>
-        A legfőbb célközönségünk a fehérvári és környékbeli fiatalok, ezért
-        kerüljük az unalmas, rácsos elrendezéseket. A Facebook posztokban már
-        szerepeltek hullámok. Ennek a továbbgondolását ajánlom.
+        A legfőbb célközönségünk a fehérvári és környékbeli <b>fiatalok</b>,
+        ezért kerüljük az unalmas, rácsos elrendezéseket. A Facebook posztokban
+        már szerepeltek hullámok. Ennek a továbbgondolását ajánlom.
     </p>
     <p>
         A színekhez hasonlóan a különböző formákat is lehetne esemény típusokhoz
