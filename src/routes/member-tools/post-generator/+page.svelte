@@ -139,8 +139,8 @@
                             : headerHeight.value;
                 }
 
-                c.lineTo(w, headerHeight.value);
-                c.lineTo(0, headerHeight.value);
+                c.lineTo(w, headerHeight.value - 1);
+                c.lineTo(0, headerHeight.value - 1);
                 c.closePath();
                 c.fill();
                 break;
@@ -157,8 +157,8 @@
                     x === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
                 }
 
-                c.lineTo(w, headerHeight.value);
-                c.lineTo(0, headerHeight.value);
+                c.lineTo(w, headerHeight.value - 1);
+                c.lineTo(0, headerHeight.value - 1);
                 c.closePath();
                 c.fill();
                 break;
@@ -179,8 +179,8 @@
                     x += radius * 2; // Move to the next position
                 }
 
-                c.lineTo(w, headerHeight.value);
-                c.lineTo(0, headerHeight.value);
+                c.lineTo(w, headerHeight.value - 1);
+                c.lineTo(0, headerHeight.value - 1);
                 c.closePath();
                 c.fill();
                 break;
@@ -276,16 +276,19 @@
             body1Title,
             form.hPadding * 2,
             bodyTop + bodySectionHeight / 2,
+            w - form.hPadding * 4 - c.measureText(body1Side).width,
         );
         c.fillText(
             body2Title,
             form.hPadding * 2,
             bodyTop + bodySectionHeight * 2 - bodySectionHeight / 2,
+            w - form.hPadding * 4 - c.measureText(body2Side).width,
         );
         c.fillText(
             body3Title,
             form.hPadding * 2,
             bodyTop + bodySectionHeight * 3 - bodySectionHeight / 2,
+            w - form.hPadding * 4 - c.measureText(body3Side).width,
         );
         c.font = "64px sans-serif";
         c.fillText(
@@ -309,16 +312,19 @@
             body1Desctiption,
             form.hPadding * 2,
             bodyTop + bodySectionHeight / 2 + 64,
+            w - form.hPadding * 4,
         );
         c.fillText(
             body2Desctiption,
             form.hPadding * 2,
             bodyTop + bodySectionHeight * 2 - bodySectionHeight / 2 + 64,
+            w - form.hPadding * 4,
         );
         c.fillText(
             body3Desctiption,
             form.hPadding * 2,
             bodyTop + bodySectionHeight * 3 - bodySectionHeight / 2 + 64,
+            w - form.hPadding * 4,
         );
 
         // Footer
@@ -326,7 +332,12 @@
             h - form.vPadding - (fullBackground ? shapeDecorationSize : 0);
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
         c.font = "40px sans-serif";
-        c.fillText(footerText, form.hPadding, footerBottomPadding.value);
+        c.fillText(
+            footerText,
+            form.hPadding,
+            footerBottomPadding.value,
+            w - form.hPadding * 2 - 64,
+        );
         // Pagable indicator
         if (isPagableIndicatorVisible) {
             const pBottomRight = {
@@ -413,9 +424,14 @@
             <input
                 type="text"
                 class="outlined-input"
+                list="data-locations"
                 placeholder="Helyszín pl. Museum Café"
                 bind:value={location}
             />
+            <datalist id="data-locations">
+                <option value="Museum Café" />
+                <option value="Nyolcas Műhely" />
+            </datalist>
             <input type="checkbox" bind:checked={locationDisplaySzfv} />
             <span>Székesfehérvár felirat halványan</span>
         </div>
@@ -522,7 +538,7 @@
                     const price = prompt(
                         "Belépő ára (egyszerűen írd be a számot):",
                     );
-                    if (price === "0") footerText = "A belépés ingyenes."
+                    if (price === "0") footerText = "A belépés ingyenes.";
                     else if (price) footerText = `Belépő: ${price}Ft`;
                 }}
             >
