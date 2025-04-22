@@ -9,6 +9,7 @@
     import POI from "$lib/model/POI";
     import PoiUtils from "$lib/PoiUtils";
     import Backdrop from "../../components/Backdrop.svelte";
+    import LocationIndicator from "../../components/poi/LocationIndicator.svelte";
 
     let places: POI[] = $state([]);
     let nearestPlace: POI | null = $state(null);
@@ -109,7 +110,7 @@
         <p>Helyek betöltése...</p>
     {:else if isLoadingLocation}
         <p>
-            <span class="mdi mdi-crosshairs-gps"></span>
+            <LocationIndicator />
             Pozíció meghatározása...
         </p>
     {:else if nearestPlace}

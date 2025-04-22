@@ -18,6 +18,7 @@
     import PoiUtils from "$lib/PoiUtils";
     import UserManager from "$lib/UserManager.svelte";
     import { loginWithGoogle } from "$lib/firebase/auth";
+    import LocationIndicator from "../../components/poi/LocationIndicator.svelte";
 
     
 
@@ -240,7 +241,7 @@
     {:else if !isNearby}
         {#if isLoadingLocation}
             <p>
-                <span class="mdi mdi-crosshairs-gps"></span>
+                <LocationIndicator />
                 Pozíció meghatározása...
             </p>
         {:else}
