@@ -34,19 +34,19 @@
             decorationSize: 64,
         },
     ];
-    const shapes = ["edgy", "wave", "arc", "line"];
+    const shapes = ["zigzag", "sine", "arc", "line"];
     const postThemes = [
         {
             name: "Terasz",
             colorPrimary: "#313b72",
             colorSecondary: "#86bbd8",
-            initialShape: "edgy",
+            initialShape: "zigzag",
         },
         {
             name: "Akusztik",
             colorPrimary: "#531253",
             colorSecondary: "#b68cf0",
-            initialShape: "wave",
+            initialShape: "sine",
         },
         {
             name: "Slam",
@@ -127,7 +127,7 @@
         c.fillRect(0, 0, w, headerHeight.value);
 
         switch (shape) {
-            case "edgy":
+            case "zigzag":
                 c.beginPath();
                 const zigzagHeight = form.decorationSize;
                 const zigzagWidth = form.decorationSize;
@@ -147,7 +147,7 @@
                 c.closePath();
                 c.fill();
                 break;
-            case "wave":
+            case "sine":
                 c.beginPath();
                 const amplitude = form.decorationSize / 2; // Height of the sine wave
                 const frequency = w / form.decorationSize / Math.PI; // Number of sine waves across the width
