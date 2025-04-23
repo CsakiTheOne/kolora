@@ -22,7 +22,7 @@
             height: 1920,
             hPadding: 64,
             vPadding: 256,
-            decorationSize: 64,
+            decorationSize: 92,
         },
         {
             id: "fb-event-cover",
@@ -77,15 +77,15 @@
     let locationDisplaySzfv = $state(true);
     let dateLine1 = $state("");
     let dateLine2 = $state("");
-    let body1Title = $state("");
+    let body1Title = $state("Első program");
     let body1Side = $state("");
-    let body1Desctiption = $state("");
-    let body2Title = $state("");
+    let body1Desctiption = $state("Első leírás");
+    let body2Title = $state("Második program");
     let body2Side = $state("");
-    let body2Desctiption = $state("");
-    let body3Title = $state("");
+    let body2Desctiption = $state("Második leírás");
+    let body3Title = $state("Harmadik program");
     let body3Side = $state("");
-    let body3Desctiption = $state("");
+    let body3Desctiption = $state("Harmadik leírás");
     let footerText = $state("");
     let isPagableIndicatorVisible = $state(false);
 
@@ -113,7 +113,7 @@
         const isHeaderEmpty =
             !titleLine1 && !titleLine2 && !location && !dateLine1 && !dateLine2;
         headerContentHeight.value =
-            (isHeaderEmpty ? 0 : fullBackground ? 156 : location ? 248 : 200) +
+            (isHeaderEmpty ? 0 : fullBackground ? 156 : location ? 208 : 164) +
             form.vPadding +
             (fullBackground ? 0 : form.decorationSize);
         headerHeight.value = fullBackground
@@ -262,7 +262,7 @@
             body2Title + body2Side + body2Desctiption,
             body3Title + body3Side + body3Desctiption,
         ].filter(Boolean).length;
-        const bodyPadding = 64;
+        const bodyPadding = 32;
         const bodyTop =
             headerContentHeight.value + form.decorationSize + bodyPadding;
         const bodySectionHeight =
@@ -271,7 +271,7 @@
                 form.decorationSize -
                 40 -
                 form.vPadding -
-                bodyPadding * 3) /
+                bodyPadding * 2) /
             bodySectionsCount.value;
         c.fillStyle = fullBackground ? "white" : theme.colorPrimary;
         c.font = "bold 64px sans-serif";
@@ -314,19 +314,19 @@
         c.fillText(
             body1Desctiption,
             form.hPadding * 2,
-            bodyTop + bodySectionHeight / 2 + 64,
+            bodyTop + bodySectionHeight / 2 + 56,
             w - form.hPadding * 4,
         );
         c.fillText(
             body2Desctiption,
             form.hPadding * 2,
-            bodyTop + bodySectionHeight * 2 - bodySectionHeight / 2 + 64,
+            bodyTop + bodySectionHeight * 2 - bodySectionHeight / 2 + 56,
             w - form.hPadding * 4,
         );
         c.fillText(
             body3Desctiption,
             form.hPadding * 2,
-            bodyTop + bodySectionHeight * 3 - bodySectionHeight / 2 + 64,
+            bodyTop + bodySectionHeight * 3 - bodySectionHeight / 2 + 56,
             w - form.hPadding * 4,
         );
 
