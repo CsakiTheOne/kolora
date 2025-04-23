@@ -21,6 +21,7 @@
     import MarkdownLinebreakParagraph from "../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
     import AchievementTree from "../../components/AchievementTree.svelte";
     import { achievements } from "$lib/model/Achievement";
+    import Divider from "../../components/Divider.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());
@@ -337,7 +338,7 @@
                 <PostDisplay {post} />
             </div>
         {/each}
-        <hr />
+        <Divider shape="" />
         <div class="outlined-card danger-zone">
             <h3>Veszély zóna</h3>
             <p>
