@@ -9,6 +9,10 @@ export default class POI {
     googleMapsLink: string = '';
     latitude: number = 0;
     longitude: number = 0;
+    /**
+     * If this is true, the POI shows up in the /feeds page as a nearby location.
+     */
+    isDiscoverable: boolean = false;
     allowPosting: boolean = false;
     showSoonScreen: boolean = false;
     hint1Url: string = '';

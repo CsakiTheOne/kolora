@@ -110,8 +110,8 @@ const firestore = {
                 }
                 );
         },
-        getAvailable: (): Promise<POI[]> => {
-            return getDocs(query(collection(db, "pois"), where("allowPosting", "==", true)))
+        getDiscoverable: (): Promise<POI[]> => {
+            return getDocs(query(collection(db, "pois"), where("isDiscoverable", "==", true)))
                 .then((querySnapshot) => {
                     const pois: POI[] = [];
                     querySnapshot.forEach((doc) => {

@@ -66,7 +66,7 @@
 
     onMount(() => {
         isLoadingPlaces = true;
-        firestore.pois.getAvailable().then((pois) => {
+        firestore.pois.getDiscoverable().then((pois) => {
             places = pois;
             isLoadingPlaces = false;
             getNearestPoi();

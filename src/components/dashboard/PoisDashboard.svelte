@@ -33,8 +33,7 @@
             <tr>
                 <th></th>
                 <th>Hely neve</th>
-                <th>Engedélyezve</th>
-                <th>"Hamarosan"</th>
+                <th>Felfedezhető</th>
             </tr>
         </thead>
         <tbody>
@@ -54,12 +53,7 @@
                     </td>
                     <td>
                         <span
-                            class={`mdi mdi-${place.allowPosting ? "check" : "close"}`}
-                        ></span>
-                    </td>
-                    <td>
-                        <span
-                            class={`mdi mdi-${place.showSoonScreen ? "check" : "close"}`}
+                            class={`mdi mdi-${place.isDiscoverable ? "check" : "close"}`}
                         ></span>
                     </td>
                 </tr>
@@ -173,6 +167,23 @@
             type="checkbox"
             class="outlined-input"
             disabled={loading}
+            name="isDiscoverable"
+            bind:checked={selectedPlace.isDiscoverable}
+            oninput={(e: any) => {
+                firestore.pois.set(selectedPlaceId!, {
+                    ...selectedPlace,
+                    isDiscoverable: e.target?.checked,
+                });
+            }}
+        />
+        Felfedezhető (ha igen, akkor a hely megjelenhet az Üzenőfalak oldalon)
+    </div>
+
+    <div>
+        <input
+            type="checkbox"
+            class="outlined-input"
+            disabled={loading}
             name="allowPosting"
             bind:checked={selectedPlace.allowPosting}
             oninput={(e: any) => {
@@ -182,7 +193,7 @@
                 });
             }}
         />
-        <label for="allowPosting">Bejegyzések engedélyezése</label>
+        Bejegyzések engedélyezése
     </div>
 
     <div>
@@ -199,9 +210,7 @@
                 });
             }}
         />
-        <label for="showSoonScreen">
-            <a href="/poi/soon" target="_blank">"Hamarosan" képernyő</a> mutatása
-        </label>
+        <a href="/poi/soon" target="_blank">"Hamarosan" képernyő</a> mutatása
     </div>
 
     <div>
