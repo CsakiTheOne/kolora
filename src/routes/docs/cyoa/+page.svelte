@@ -1,6 +1,5 @@
 <script>
     import Alert from "../../../components/Alert.svelte";
-    import Divider from "../../../components/Divider.svelte";
     import Footer from "../../../components/Footer.svelte";
     import SmallHeader from "../../../components/SmallHeader.svelte";
 </script>
@@ -121,7 +120,7 @@
         ...
     </code>
 
-    <Divider />
+    <hr />
 
     <Alert title="Bonyolultabb témák">
         <p>
