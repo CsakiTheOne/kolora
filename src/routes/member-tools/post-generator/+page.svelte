@@ -77,15 +77,15 @@
     let locationDisplaySzfv = $state(true);
     let dateLine1 = $state("");
     let dateLine2 = $state("");
-    let body1Title = $state("Első program");
+    let body1Title = $state("");
     let body1Side = $state("");
-    let body1Desctiption = $state("Első leírás");
-    let body2Title = $state("Második program");
+    let body1Desctiption = $state("");
+    let body2Title = $state("");
     let body2Side = $state("");
-    let body2Desctiption = $state("Második leírás");
-    let body3Title = $state("Harmadik program");
+    let body2Desctiption = $state("");
+    let body3Title = $state("");
     let body3Side = $state("");
-    let body3Desctiption = $state("Harmadik leírás");
+    let body3Desctiption = $state("");
     let footerText = $state("");
     let isPagableIndicatorVisible = $state(false);
 
