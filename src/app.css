@@ -1,6 +1,7 @@
 @import url('./kolora.css');
 @import url('./anims.css');
 @import url('./collection-styles.css');
+@import url('./input.css');
 @import url('./utils.css');
 
 body {
@@ -126,112 +127,6 @@ main>* {
     main>* {
         max-width: calc(56vw - var(--spacing) * 2) !important;
     }
-}
-
-.icon-button {
-    background-color: transparent;
-    color: var(--primary-color);
-    border-radius: 50%;
-    font-size: 1.2rem;
-    padding: calc(var(--spacing) / 2);
-    transition: all 0.1s ease-in-out;
-}
-
-.btn {
-    display: inline-block;
-    appearance: none;
-    border: none;
-    border-radius: calc(var(--spacing) * 2);
-    padding: calc(var(--spacing) / 2);
-    background-color: var(--primary-color);
-    color: var(--on-primary-color);
-    cursor: pointer;
-    user-select: none;
-    vertical-align: middle;
-    transition: all .1s ease-out;
-}
-
-.btn:disabled, .btn:hover:disabled {
-    opacity: .5;
-    cursor: not-allowed;
-}
-
-.text-btn {
-    display: inline-block;
-    appearance: none;
-    border: none;
-    border-radius: calc(var(--spacing) * 2);
-    padding: calc(var(--spacing) / 2);
-    background-color: transparent;
-    color: var(--primary-color);
-    cursor: pointer;
-    user-select: none;
-    vertical-align: middle;
-    transition: all .1s ease-out;
-}
-
-.btn:hover, .text-btn:hover {
-    opacity: .9;
-}
-
-.btn>span::before,
-.text-btn>span::before {
-    translate: 2px 0;
-    scale: 1.3;
-    padding-right: 4px;
-}
-
-.outlined-input {
-    width: 100%;
-    padding: calc(var(--spacing) / 2);
-    border: 2px solid var(--primary-color);
-    border-radius: var(--corner-radius);
-    background-color: var(--primary-variant-color);
-    color: var(--on-primary-variant-color);
-    transition: all 0.1s ease-in-out;
-}
-
-.outlined-input:focus {
-    outline: none;
-}
-
-input[type="checkbox"].outlined-input {
-    appearance: none;
-    width: 24px;
-    aspect-ratio: 1;
-    translate: 0 6px;
-    color: var(--primary-variant-color);
-}
-
-input[type="checkbox"].outlined-input::after {
-    content: "J";
-    position: absolute;
-    rotate: 0deg;
-    top: 5%;
-    left: 35%;
-    transition: all 0.1s ease-in-out;
-}
-
-input[type="checkbox"].outlined-input:checked {
-    background-color: var(--primary-color);
-    color: var(--on-primary-color);
-}
-
-input[type="checkbox"].outlined-input:checked::after {
-    content: "J";
-    position: absolute;
-    rotate: 35deg;
-    top: 0;
-    left: 25%;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.secret-input {
-    text-security: disc;
-    -webkit-text-security: disc;
-    -moz-text-security: disc;
-    input-security: dics;
 }
 
 #kolora-title {
