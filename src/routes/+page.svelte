@@ -83,18 +83,19 @@
         <main id="homepage">
             <h2>Magyar Költészet Napja 2025</h2>
             <p>
-                Idén is versek kerülnek az utcákra és Csáki is kitesz pár
-                apróságot. Üzenőfalakat, ahol saját költeményeket és egyéb
-                gondolatokat hagyhattok. Nézzetek rá az új <a href="/feeds"
-                    >Üzenőfalak</a
+                Idén is versek kerülnek az utcákra és Csáki is kitett pár
+                apróságot: Üzenőfalakat, ahol saját költeményeket és egyéb
+                gondolatokat hagyhattok egymásnak. Nézzetek rá az új <a
+                    href="/feeds">Üzenőfalak</a
                 > oldalra.
             </p>
             <p>
-                Az üzenőfalakat <a
+                Ihlette a <a
                     href="https://www.facebook.com/groups/570212437568903/"
                     target="_blank">Posztolj verset az utcára!</a
-                > mozgalom ihlette.
+                > mozgalom.
             </p>
+            <Divider />
             <h2 id="about">Rólunk</h2>
             <img id="group-photo" src={imgKoloraGroupPhoto} alt="" />
             <div class="adaptive-col-row" style="align-items: start;">
@@ -133,7 +134,7 @@
                     </a>
                 </p>
             </div>
-
+            <Divider />
             <h2>Barátaink</h2>
             <h3>Bandák, zenészek, akik koncerteztek nálunk</h3>
             <Carousel
@@ -163,6 +164,54 @@
                 >
                     <span class="mdi mdi-music-note"></span>
                     Hallgassunk random valamit
+                </button>
+            </p>
+            <h3>Slammer-ek, akik szavaltak a színpadainkon</h3>
+            <ul>
+                <a
+                    href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=ZgSwslL_bq3PGCae"
+                    target="_blank"
+                >
+                    <li>2025 Februárban a Nyolcas Műhelyben</li>
+                </a>
+                <a
+                    href="https://youtube.com/playlist?list=PLxSO3Z5lw-xPDOFOpHZzC-rmqEI-ACJQN&si=TqNCBi9R7jrkTCA6"
+                    target="_blank"
+                >
+                    <li>
+                        A Múzeumok éjszakáján és egyben Kolora első szülinapján
+                        a Museum Caféban
+                    </li>
+                </a>
+                <a
+                    href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=29xPCtemxvLsO1Xb"
+                    target="_blank"
+                >
+                    <li>2024 Márciusban a Nyolcas Műhelyben</li>
+                </a>
+                <a
+                    href="https://youtu.be/zbqaZEAduWE?si=Ktoj_Yxrbc9rw6yV"
+                    target="_blank"
+                >
+                    <li>
+                        2023-ban, az első rendezvényünkön, az Akusztikus esten
+                    </li>
+                </a>
+            </ul>
+            <p style="text-align: center;">
+                <button
+                    class="btn"
+                    onclick={() => {
+                        const videosCount = KoloraLocalDb.slamPerformances.length;
+                        const randomVideo =
+                            KoloraLocalDb.slamPerformances[
+                                Math.floor(Math.random() * videosCount)
+                            ];
+                        window.open(randomVideo, "_blank");
+                    }}
+                >
+                    <span class="mdi mdi-dice-3"></span>
+                    Slam roulette
                 </button>
             </p>
             <h3>Kedvenc helyeink</h3>

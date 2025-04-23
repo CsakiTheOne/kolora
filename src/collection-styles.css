@@ -25,6 +25,7 @@ ul a {
     background-color: var(--primary-variant-color);
     color: var(--on-primary-variant-color);
     cursor: pointer;
+    text-decoration: underline 1px;
 }
 
 table {
