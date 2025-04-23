@@ -165,7 +165,7 @@
     <div>
         <input
             type="checkbox"
-            class="outlined-input"
+            class="switch"
             disabled={loading}
             name="isDiscoverable"
             bind:checked={selectedPlace.isDiscoverable}
@@ -182,7 +182,7 @@
     <div>
         <input
             type="checkbox"
-            class="outlined-input"
+            class="switch"
             disabled={loading}
             name="allowPosting"
             bind:checked={selectedPlace.allowPosting}
@@ -199,7 +199,7 @@
     <div>
         <input
             type="checkbox"
-            class="outlined-input"
+            class="switch"
             disabled={loading}
             name="showSoonScreen"
             bind:checked={selectedPlace.showSoonScreen}
