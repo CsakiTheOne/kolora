@@ -11,6 +11,7 @@
     import imgWholesomeWareLogo from "$lib/images/logos/wholesomeware.png";
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
     import { onMount } from "svelte";
+    import Divider from "../components/Divider.svelte";
 
     const enableHeroSection = false;
 </script>

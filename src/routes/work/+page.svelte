@@ -15,6 +15,7 @@
     import MarkdownLinebreakParagraph from "../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
     import { getCurrentUser } from "$lib/firebase/auth";
     import MarkdownStrictHtml from "../../components/markdown-renderers/MarkdownStrictHtml.svelte";
+    import Divider from "../../components/Divider.svelte";
 
     let work: Work | null = $state(null);
     let authorName: string | null = $state(null);
@@ -90,7 +91,7 @@
         ></span>
     </div>
 
-    <hr />
+    <Divider />
 
     {#if work?.workType === "Choose your own adventure"}
         <ChooseYourOwnAdventureDisplay {work} />

@@ -4,6 +4,7 @@
     import logoKolora from "$lib/images/logos/kolora.png";
     import logoWholesomeWare from "$lib/images/logos/wholesomeware.png";
     import ProfileShowcase from "../../components/ProfileShowcase.svelte";
+    import Divider from "../../components/Divider.svelte";
 </script>
 
 <Header selectedTab="Elérhetőségek" />
@@ -48,6 +49,8 @@
             fehérvári író-költő-slammerek Facebook csoport
         </a>
     </p>
+
+    <Divider />
 
     <ProfileShowcase
         name="WholesomeWare"
