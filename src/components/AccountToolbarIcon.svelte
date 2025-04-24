@@ -83,6 +83,15 @@
                     <button
                         onclick={() => {
                             isOpen = false;
+                            window.location.href = "/codes";
+                        }}
+                    >
+                        <span class="mdi mdi-gift"></span>
+                        Kód beváltása
+                    </button>
+                    <button
+                        onclick={() => {
+                            isOpen = false;
                             logout();
                         }}
                     >

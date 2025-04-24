@@ -15,21 +15,16 @@
         badge?: string,
     }[] = [
         { icon: "home", title: "Főoldal", url: "/" },
-        {
-            icon: "comment-quote",
-            title: "Üzenőfalak",
-            url: "/feeds",
-        },
-        {
-            icon: "form-textbox-password",
-            title: "Kódok",
-            url: "/codes",
-        },
         /*{
             icon: "account-group",
             title: "Tagok",
             url: "/members",
         },*/
+        {
+            icon: "comment-quote",
+            title: "Üzenőfalak",
+            url: "/feeds",
+        },
         { icon: "at", title: "Elérhetőségek", url: "/contacts" },
     ];
 
