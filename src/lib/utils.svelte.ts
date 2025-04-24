@@ -49,3 +49,9 @@ export function animateNumberAsState(
 ): AnimatableNumber {
     return new AnimatableNumber(initialValue, frameRate, duration);
 }
+
+export function hapticFeedback() {
+    if (navigator.vibrate) {
+        navigator.vibrate(5);
+    }
+}

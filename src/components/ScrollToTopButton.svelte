@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { hapticFeedback } from "$lib/utils.svelte";
     import { onMount } from "svelte";
 
     let scrollY = $state(0);
@@ -46,6 +47,7 @@
     width="64"
     height="64"
     onclick={() => {
+        hapticFeedback();
         window.scrollTo({
             top: 0,
             behavior: "smooth",

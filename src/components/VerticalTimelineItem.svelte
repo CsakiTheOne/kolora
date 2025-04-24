@@ -1,4 +1,6 @@
 <script>
+    import { hapticFeedback } from "$lib/utils.svelte";
+
     const {
         title = "",
         subtitle = "",
@@ -16,8 +18,10 @@
         class="indicators"
         onclick={() => {
             thisElement.scrollIntoView({ behavior: "smooth" });
-            navigator.vibrate(5);
+            hapticFeedback();
         }}
+        role="button"
+        aria-label="Scroll to this item"
     >
         <div class="dot"></div>
         {#if !isLastItem}
