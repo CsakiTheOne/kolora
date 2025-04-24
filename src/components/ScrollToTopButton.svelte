@@ -1,28 +1,36 @@
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
 
+    let btn: HTMLButtonElement | null = null;
+
     onMount(() => {
-        document.addEventListener("scroll", () => {
-            const button = document.querySelector("button");
-            if (button) {
-                if (window.scrollY > 350) {
-                    button.style.display = "block";
-                } else {
-                    button.style.display = "none";
-                }
-                button.style.opacity = '' + (window.scrollY / 2000);
+        function scrollListener() {
+            if (!btn) return;
+            if (window.scrollY > 350) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
             }
-        });
+            btn.style.opacity = "" + window.scrollY / 2000;
+        }
+
+        document.addEventListener("scroll", scrollListener);
+
+        return () => {
+            document.removeEventListener("scroll", scrollListener);
+        };
     });
 </script>
 
 <button
+    bind:this={btn}
     onclick={() => {
         window.scrollTo({
             top: 0,
             behavior: "smooth",
         });
     }}
+    aria-label="Scroll to top"
 >
     <span class="mdi mdi-format-vertical-align-top"></span>
 </button>
