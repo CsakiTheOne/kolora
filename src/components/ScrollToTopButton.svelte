@@ -37,7 +37,8 @@
         } else {
             btn.style.display = "none";
         }
-        btn.style.opacity = "" + scrollY / 2000;
+        btn.style.opacity = "" + Math.min(1, scrollY / 1000);
+        btn.style.scale = "" + Math.min(1, scrollY / 1500);
     });
 </script>
 
