@@ -1,7 +1,7 @@
 <script>
     import ThemeManager from "$lib/ThemeManager";
     import HeaderTabRow from "./HeaderTabRow.svelte";
-    import headerImage from "$lib/images/gallery/first-kolora-workshop/table.jpg";
+    import headerImage from "$lib/images/header.png";
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
 
     const { selectedTab = "", ...rest } = $props();
