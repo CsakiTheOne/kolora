@@ -59,11 +59,12 @@
 <style>
     canvas {
         position: fixed;
-        right: calc(var(--spacing) * 2);
-        bottom: calc(var(--spacing) * 2);
+        right: calc(var(--spacing) * 1.5);
+        bottom: calc(var(--spacing) * 1.5);
         width: 64px;
         height: 64px;
         color: var(--primary-color);
         cursor: pointer;
+        z-index: 9999;
     }
 </style>
