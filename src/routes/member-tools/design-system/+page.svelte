@@ -146,16 +146,18 @@
                 title: "Google Fotók",
                 text: "A Google Fotók alkalmazásban is megtalálható ez az elem Androidon.",
                 onclick: () => {
-                    window.open(
-                        "https://photos.google.com/",
-                        "_blank",
-                    );
+                    window.open("https://photos.google.com/", "_blank");
                 },
-            }
+            },
         ]}
     />
     <h4>Divider</h4>
     <Divider />
+    <h4>Virág FAB</h4>
+    <p>
+        A "vissza az oldal tetejére" gomb egy virág formájú FAB, ami a jobb alsó
+        sarokban látható.
+    </p>
 
     <h3>Tipográfia és hangnem</h3>
     <p>//TODO</p>
