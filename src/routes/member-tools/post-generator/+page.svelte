@@ -13,7 +13,7 @@
             height: 1080,
             hPadding: 32,
             vPadding: 32,
-            decorationSize: 32,
+            decorationSize: 30,
         },
         {
             id: "insta-story",
@@ -22,7 +22,7 @@
             height: 1920,
             hPadding: 64,
             vPadding: 256,
-            decorationSize: 92,
+            decorationSize: 60,
         },
         {
             id: "fb-event-cover",
@@ -31,7 +31,7 @@
             height: 1080,
             hPadding: 64,
             vPadding: 64,
-            decorationSize: 64,
+            decorationSize: 40,
         },
     ];
     const shapes = ["zigzag", "sine", "arc", "line"];
