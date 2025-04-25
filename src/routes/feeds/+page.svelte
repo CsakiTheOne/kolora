@@ -120,8 +120,8 @@
         </p>
     {:else if nearestPlace}
         <div class="card">
-            <p>
-                Legközelebbi üzenőfal: {nearestPlace.name}
+            <h4>
+                {nearestPlace.name}
                 {#if nearestPlacePostCount > 0}
                     <abbr
                         title="Ebbe nincsenek beleszámolva a mindenhol látszódó posztok"
@@ -134,7 +134,7 @@
                         ({nearestPlacePostCount} poszt)
                     </abbr>
                 {/if}
-            </p>
+            </h4>
             <div
                 style="display: flex; gap: calc(var(--spacing) / 2); flex-wrap: nowrap;"
             >
