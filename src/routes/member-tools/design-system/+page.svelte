@@ -1,4 +1,6 @@
 <script>
+    import Carousel from "../../../components/Carousel.svelte";
+    import Divider from "../../../components/Divider.svelte";
     import Footer from "../../../components/Footer.svelte";
     import SmallHeader from "../../../components/SmallHeader.svelte";
 </script>
@@ -68,6 +70,11 @@
         már szerepeltek hullámok. Ennek a továbbgondolását ajánlom.
     </p>
     <p>
+        Egy jó irány a Google által fejlesztett <a href="https://m3.material.io"
+            >Material 3</a
+        >.
+    </p>
+    <p>
         A színekhez hasonlóan a különböző formákat is lehetne esemény típusokhoz
         rendelni.
     </p>
@@ -113,6 +120,42 @@
             >poszt készítőt</a
         >.
     </p>
+
+    <h3>Komponensek</h3>
+    <p>
+        Néhány egyedi komponens, amit a weboldalon használunk. Mindegyik követi
+        a játékos, színes és fiatalos stílust.
+    </p>
+    <h4>Carousel</h4>
+    <Carousel
+        style="aspect-ratio: 21/9;"
+        pages={[
+            {
+                title: "Carousel",
+            },
+            {
+                title: "Material 3 carousel alapján",
+                onclick: () => {
+                    window.open(
+                        "https://m3.material.io/components/carousel/overview",
+                        "_blank",
+                    );
+                },
+            },
+            {
+                title: "Google Fotók",
+                text: "A Google Fotók alkalmazásban is megtalálható ez az elem Androidon.",
+                onclick: () => {
+                    window.open(
+                        "https://photos.google.com/",
+                        "_blank",
+                    );
+                },
+            }
+        ]}
+    />
+    <h4>Divider</h4>
+    <Divider />
 
     <h3>Tipográfia és hangnem</h3>
     <p>//TODO</p>
