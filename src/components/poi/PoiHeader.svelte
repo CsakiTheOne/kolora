@@ -45,6 +45,12 @@
         white-space: nowrap;
     }
 
+    h3 {
+        max-width: 100%;
+        text-align: start;
+        text-wrap-mode: wrap;
+    }
+
     .title {
         position: absolute;
         bottom: 0;
