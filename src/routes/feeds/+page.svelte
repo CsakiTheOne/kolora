@@ -96,6 +96,11 @@
         A Kolora oldalán helyhez kötött üzenőfalak vannak, amiket
         meglátogathatsz és üzeneteket hagyhatsz rajtuk.
     </p>
+    <p style="font-size: .8rem; opacity: 0.8">
+        Ezeket a matricákat kis NFC matricákon keresztül tudod elérni. Ha
+        megtalálsz egy ilyen ezüst, 50Ft-os méretű matricát, csak érintsd oda a
+        telefonod és már posztolhatsz is!
+    </p>
 
     <div
         style="display: flex; gap: var(--spacing); flex-wrap: wrap; align-items: center; justify-content: space-between;"
@@ -243,6 +248,10 @@
 <Footer />
 
 <style>
+    main > p {
+        text-align: justify;
+    }
+
     .card {
         display: flex;
         flex-direction: column;
