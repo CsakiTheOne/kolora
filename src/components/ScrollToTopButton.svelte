@@ -32,13 +32,13 @@
             ),
         );
 
-        if (scrollY > 350) {
+        if (scrollY > 200) {
             btn.style.display = "block";
         } else {
             btn.style.display = "none";
         }
-        btn.style.opacity = "" + Math.min(1, scrollY / 1000);
-        btn.style.scale = "" + Math.min(1, scrollY / 1500);
+        btn.style.opacity = "" + Math.min(1, scrollY / (window.innerHeight / 2));
+        btn.style.scale = "" + Math.min(1, scrollY / window.innerHeight);
     });
 </script>
 
