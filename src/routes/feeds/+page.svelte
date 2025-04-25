@@ -97,7 +97,7 @@
         meglátogathatsz és üzeneteket hagyhatsz rajtuk.
     </p>
     <p style="font-size: .8rem; opacity: 0.8">
-        Ezeket a matricákat kis NFC matricákon keresztül tudod elérni. Ha
+        Ezeket az üzenőfalakat kis NFC matricákon keresztül tudod elérni. Ha
         megtalálsz egy ilyen ezüst, 50Ft-os méretű matricát, csak érintsd oda a
         telefonod és már posztolhatsz is!
     </p>
