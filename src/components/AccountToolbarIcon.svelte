@@ -3,6 +3,7 @@
     import Backdrop from "./Backdrop.svelte";
     import UserManager from "$lib/UserManager.svelte";
     import { ROLES } from "$lib/model/KoloraUser";
+    import { scale } from "svelte/transition";
 
     let isOpen = $state(false);
 </script>
@@ -20,7 +21,10 @@
 
 {#if isOpen}
     <Backdrop close={() => (isOpen = false)}>
-        <div class="account-dialog">
+        <div
+            class="account-dialog"
+            transition:scale={{ duration: 200, start: 0.8 }}
+        >
             <span class="mdi mdi-account-circle" style="font-size: 3rem;">
             </span>
             <p style="word-wrap: normal;">

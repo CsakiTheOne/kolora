@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { fade } from "svelte/transition";
+
     export let close: () => void;
 </script>
 
@@ -8,6 +10,7 @@
     onkeydown={(e) => e.key === "Enter" && close()}
     tabindex="0"
     role="button"
+    transition:fade={{ duration: 200 }}
 >
     <div
         class="backdrop-content"
