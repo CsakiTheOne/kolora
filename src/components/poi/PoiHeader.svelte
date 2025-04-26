@@ -1,4 +1,5 @@
 <script lang="ts">
+    import koloraLogo from "$lib/images/logos/kolora.png";
     import ThemeManager from "$lib/ThemeManager";
     import AccountToolbarIcon from "../AccountToolbarIcon.svelte";
 
@@ -6,6 +7,9 @@
 </script>
 
 <header>
+    <a href="/" style="height: 48px; position: absolute; top: 0; left: 0;">
+        <img class="header-logo" src={koloraLogo} alt="Kolora logó" />
+    </a>
     <h3 class="title">{poi?.name ?? "Betöltés..."}</h3>
     <div class="toolbar">
         <button
@@ -63,9 +67,18 @@
         top: 0;
         right: 0;
         display: flex;
-        padding: calc(var(--spacing) / 2);
+        padding: 0 calc(var(--spacing) / 2);
         align-items: center;
         overflow: hidden;
+    }
+
+    header .header-logo {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        width: 48px;
+        aspect-ratio: 1;
+        mix-blend-mode: lighten;
     }
 
     :global(.toolbar > span.mdi, .toolbar > a > span.mdi) {
