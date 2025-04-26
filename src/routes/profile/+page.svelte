@@ -138,20 +138,10 @@
             {newBio.length} / 1000 - A bemutatkozás támogatja a
             <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank"
                 >Markdown formázást</a
-            >, a beágyazott YouTube videókat és a következő változókat:
+            >, a beágyazott YouTube videókat és a következő változókat: <br />
+            - {"{createdAt}"}: Regisztrálás dátuma<br />
+            - {"{visitedPlaces}"}: Látogatott helyek száma
         </p>
-        <table>
-            <tbody>
-                <tr>
-                    <td>{"{createdAt}"}</td>
-                    <td>Regisztrálás dátuma</td>
-                </tr>
-                <tr>
-                    <td>{"{visitedPlaces}"}</td>
-                    <td>Látogatott helyek száma</td>
-                </tr>
-            </tbody>
-        </table>
     {:else}
         <h2>
             <span class="mdi mdi-account-circle"></span>
@@ -205,6 +195,18 @@
         </button>
     {/if}
 
+    <Divider />
+
+    {#if isOwnerLoggedIn}
+        <Alert icon="eye-off">
+            <p>
+                A művek és posztok a profilodon csak neked látszódnak és mások
+                nem látják ezeket. A többi felhasználó csak úgy láthatja az
+                alkotásaid, ha megtalálják egy üzenőfalon.
+            </p>
+        </Alert>
+    {/if}
+
     <!--h3
         style="display: flex; justify-content: space-between; align-items: flex-end;"
     >
@@ -227,23 +229,14 @@
         </span>
     </h3>
     {#if !isOwnerLoggedIn}
-        <Alert icon="library-shelves">
-            <p>
-                {#if works.length === 0}
-                    Ez a felhasználó még nem osztott meg műveket.
-                {:else}
-                    Ennek a felhasználónak {works.length} műve van. Találd meg ezeket
-                    az üzenőfalakon.
-                {/if}
-            </p>
-        </Alert>
+        <p>
+            {#if works.length === 0}
+                Ez a felhasználó még nem osztott meg műveket.
+            {:else}
+                Ennek a felhasználónak {works.length} műve van. Találd meg az üzenőfalakon.
+            {/if}
+        </p>
     {:else}
-        <Alert>
-            <p>
-                Ezt csak te látod. Mások csak azokat a műveket látják, amiket
-                megosztottál valahol egy posztban.
-            </p>
-        </Alert>
         {#if works.length === 0}
             <p>Még nincsenek műveid.</p>
         {:else}
@@ -315,23 +308,15 @@
         </span>
     </h3>
     {#if !isOwnerLoggedIn}
-        <Alert icon="post">
-            <p>
-                {#if posts.length === 0}
-                    Ez a felhasználó még nem osztott meg posztokat.
-                {:else}
-                    Ennek a felhasználónak {posts.length} posztja van. Találd meg
-                    ezeket az üzenőfalakon.
-                {/if}
-            </p>
-        </Alert>
+        <p>
+            {#if posts.length === 0}
+                Ez a felhasználó még nem osztott meg posztokat.
+            {:else}
+                Ennek a felhasználónak {posts.length} posztja van. Találd meg az
+                üzenőfalakon.
+            {/if}
+        </p>
     {:else}
-        <Alert>
-            <p>
-                Ezt csak te látod. Mások csak azokat a posztokat látják, amiket
-                megosztottál valahol egy üzenőfalon.
-            </p>
-        </Alert>
         {#each posts as post}
             <div>
                 <span>{pois.find((p) => p.id === post.poiId)?.name}</span>
@@ -340,7 +325,10 @@
         {/each}
         <Divider />
         <div class="outlined-card danger-zone">
-            <h3>Veszély zóna</h3>
+            <h3>
+                <span class="mdi mdi-alert"></span>
+                Veszély zóna
+            </h3>
             <p>
                 Itt tudod törölni a műveidet, posztjaid, profilod és fiókod. A
                 kedvelt posztoknál továbbra is be lesz számolva a kedvelésed, de
@@ -379,7 +367,7 @@
                 }}
             >
                 <span class="mdi mdi-delete-forever"></span>
-                Fiók törlése
+                Fiók és minden adat törlése
             </button>
         </div>
     {/if}
