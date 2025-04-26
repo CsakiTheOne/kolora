@@ -5,8 +5,8 @@
 @import url('./utils.css');
 
 body {
-    --primary-color: #89023d;
-    --primary-variant-color: #cc6d8b;
+    --primary-color: #931621;
+    --primary-variant-color: #dc7f9b;
     --secondary-color: #313a71;
     --secondary-variant-color: #6ea6c4;
     --background-color: #fff;
@@ -20,11 +20,11 @@ body {
 }
 
 body.theme-dark {
-    --primary-color: #a42e4a;
-    --primary-variant-color: #58192b;
-    --secondary-color: #31354f;
-    --secondary-variant-color: #7d98c2;
-    --background-color: #211313;
+    --primary-color: #ac3c46;
+    --primary-variant-color: #5b1b21;
+    --secondary-color: #33385b;
+    --secondary-variant-color: #7d9ec2;
+    --background-color: #130008;
     --on-primary-color: #fdd;
     --on-primary-variant-color: #fdd;
     --on-secondary-color: #ddf;
