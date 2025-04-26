@@ -28,6 +28,12 @@ ul a {
     text-decoration: none;
 }
 
+ul button:hover,
+ul a:hover {
+    background-color: var(--primary-color);
+    color: var(--on-primary-color);
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
