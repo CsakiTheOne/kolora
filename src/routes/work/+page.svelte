@@ -31,11 +31,6 @@
             .get(id)
             .then((fetchedWork) => {
                 work = fetchedWork;
-                if (getCurrentUser()?.uid !== work?.authorId) {
-                    window.open(`/profile?id=${work?.authorId}`, "_self");
-                    return Promise.reject("Not authorized");
-                }
-                console.log("authorId", work.authorId);
                 return firestore.users.get(work.authorId);
             })
             .then((user: KoloraUser) => {
