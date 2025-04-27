@@ -19,6 +19,24 @@
             Poszt készítő
         </button>
     </a>
+    <Alert icon="account" title="Kolora fiók létrehozás egyszerűen">
+        <p>
+            Ha valakinek szeretnél segíteni a Kolora fiók létrehozásában, akkor
+            csak küldj neki egy linket, ami automatikusan bejelentkezteti a
+            Google fiókjával.
+        </p>
+        <button
+            class="btn"
+            onclick={() => {
+                navigator.clipboard.writeText(
+                    `${window.location.origin}/member-tools/auto-login`,
+                );
+            }}
+        >
+            <span class="mdi mdi-content-copy"></span>
+            Link másolása
+        </button>
+    </Alert>
     <h3>Linkek</h3>
     <a href="https://studio.youtube.com/" target="_blank">
         <button class="btn">
