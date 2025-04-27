@@ -70,7 +70,7 @@
                             }}
                         >
                             <span class="mdi mdi-tools"></span>
-                            Eszközök és resource-ok
+                            Eszközök és források
                         </button>
                     {/if}
                     {#if UserManager.instance.koloraUser?.roles.includes(ROLES.ADMIN)}
