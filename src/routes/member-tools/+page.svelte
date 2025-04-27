@@ -32,9 +32,8 @@
         </a>
         <Alert icon="account" title="Kolora fiók létrehozás egyszerűen">
             <p>
-                Ha valakinek szeretnél segíteni a Kolora fiók létrehozásában,
-                akkor csak küldj neki egy linket, ami automatikusan
-                bejelentkezteti a Google fiókjával.
+                Ha valakinek szeretnél segíteni a Kolora fiók létrehozásban,
+                akkor csak küldd el neki ezt a linket:
             </p>
             <button
                 class="btn"
