@@ -8,6 +8,7 @@ import imgMusicianKory from "$lib/images/musicians/kory.jpg";
 import imgMusicianLoophia from "$lib/images/musicians/loophia-banner.jpg";
 import imgMusicianNaez from "$lib/images/musicians/naez-logo.jpg";
 import imgMusicianNedela from "$lib/images/musicians/nedela-banner.jpg";
+import imgMusicianSzer from "$lib/images/musicians/szer-banner.jpg";
 import imgMusicianWaitingRoom from "$lib/images/musicians/waiting-room-banner.jpg";
 import { recordEvent } from "./firebase/analytics";
 
@@ -77,6 +78,11 @@ export default class KoloraLocalDb {
                 "https://youtu.be/kDXxczfc9ik?si=klf2zb7hHnnK0u-X",
                 "https://youtu.be/uWwkJXTX5rk?si=2Po9ujGyQGMAuhmz",
             ],
+        },
+        {
+            name: "SZER",
+            bannerImageUrl: imgMusicianSzer,
+            websiteUrl: "https://www.instagram.com/szer_zenekar/",
         },
         {
             name: "Waiting Room",
