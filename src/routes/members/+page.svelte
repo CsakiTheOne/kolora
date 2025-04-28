@@ -57,11 +57,15 @@
     <KoloraMemberDisplay
         name="Csáktornyai Ádám - Csáki"
         tags={["Infós", "Táncos"]}
-        bio="Mindenki csak Csákiként ismer. A srác, aki furcsa módokon kombinálja az informatikát a művészettel. Slam-elek, programozok, táncolok, egyszóval alkotok. Ezt a weboldalt és a költészet napján a kincsvadászat eseményeket raktam össze. Ha érdekelnek az ilyesmi dolgok, zaklass nyugodtan! :D"
+        bio="Mindenki csak Csákiként ismer. A srác, aki furcsa módokon kombinálja az informatikát a művészettel. Slam-elek, programozok, táncolok. Ezt a weboldalt és a költészet napján a kincsvadászat eseményeket raktam össze. Ha érdekelnek az ilyesmi dolgok, zaklass nyugodtan! :D"
         links={[
             {
                 name: "WholesameWare, a saját márkám",
                 url: "https://github.com/WholesomeWare",
+            },
+            {
+                name: "Alkalmazásaim a Play Áruházban",
+                url: "https://play.google.com/store/apps/dev?id=8177011913013516936",
             },
         ]}
     />
