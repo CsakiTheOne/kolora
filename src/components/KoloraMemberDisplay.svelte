@@ -13,11 +13,15 @@
 </script>
 
 <div class="member">
-    <img
-        src={profilePictureUrl}
-        alt="Kolora tag képe"
-        style="background: var(--primary-variant-color);"
-    />
+    {#if profilePictureUrl}
+        <img
+            src={profilePictureUrl}
+            alt="Kolora tag képe"
+            style="background: var(--primary-variant-color);"
+        />
+    {:else}
+        <span class="mdi mdi-account-circle" style="font-size: 4rem;"></span>
+    {/if}
     <div class="member-info">
         <div>
             <h3>{name}</h3>
@@ -57,10 +61,11 @@
         gap: var(--spacing);
     }
 
-    .member > img {
+    .member > img, .member > span.mdi.mdi-account-circle {
         width: 64px;
         height: 64px;
         border-radius: 50%;
+        overflow: hidden;
     }
 
     .member-info {
