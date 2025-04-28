@@ -25,9 +25,7 @@
         <div>
             <h3>{name}</h3>
             {#if tags}
-                <div
-                    style="display: flex; flex-direction: row; gap: calc(var(--spacing) / 2); padding-top: calc(var(--spacing) / 4);"
-                >
+                <div class="tags">
                     {#each tags as tag}
                         <Badge
                             style="background: {['Elnök', 'Alelnök'].includes(
@@ -73,9 +71,19 @@
     }
 
     .member-info {
-        flex: 1;
+        width: calc(100% - 64px - var(--spacing));
         display: flex;
         flex-direction: column;
         gap: calc(var(--spacing) / 2);
+    }
+
+    .tags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: calc(var(--spacing) / 2);
+        padding-top: calc(var(--spacing) / 4);
+        overflow-x: auto;
+        white-space: nowrap;
     }
 </style>
