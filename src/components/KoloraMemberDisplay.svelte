@@ -29,20 +29,22 @@
                     style="display: flex; flex-direction: row; gap: calc(var(--spacing) / 2); padding-top: calc(var(--spacing) / 4);"
                 >
                     {#each tags as tag}
-                        <Badge style="background: {["Elnök", "Alelnök"].includes(tag) && "var(--primary-color)"}; color: white;">
+                        <Badge
+                            style="background: {['Elnök', 'Alelnök'].includes(
+                                tag,
+                            ) && 'var(--primary-color)'}; color: white;"
+                        >
                             {tag}
                         </Badge>
                     {/each}
                 </div>
             {/if}
         </div>
-        <p>
-            {#if children}
+        {#if children}
+            <div>
                 {@render children()}
-            {:else}
-                -
-            {/if}
-        </p>
+            </div>
+        {/if}
         {#if links.length > 0}
             <ul>
                 {#each links as link}
