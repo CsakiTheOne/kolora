@@ -6,8 +6,7 @@
         profilePictureUrl = "",
         name,
         tags = [],
-        tagsColor = null,
-        bio = "",
+        children = null,
         links = [],
     } = $props();
 </script>
@@ -17,7 +16,7 @@
         <img
             src={profilePictureUrl}
             alt="Kolora tag képe"
-            style="background: var(--primary-variant-color);"
+            style="background: var(--primary-variant-color); object-fit: cover;"
         />
     {:else}
         <span class="mdi mdi-account-circle" style="font-size: 4rem;"></span>
@@ -25,19 +24,21 @@
     <div class="member-info">
         <div>
             <h3>{name}</h3>
-            <div
-                style="display: flex; flex-direction: row; gap: calc(var(--spacing) / 2); padding-top: calc(var(--spacing) / 4);"
-            >
-                {#each tags as tag}
-                    <Badge style="background: {tagsColor}; color: white;">
-                        {tag}
-                    </Badge>
-                {/each}
-            </div>
+            {#if tags}
+                <div
+                    style="display: flex; flex-direction: row; gap: calc(var(--spacing) / 2); padding-top: calc(var(--spacing) / 4);"
+                >
+                    {#each tags as tag}
+                        <Badge style="background: {["Elnök", "Alelnök"].includes(tag) && "var(--primary-color)"}; color: white;">
+                            {tag}
+                        </Badge>
+                    {/each}
+                </div>
+            {/if}
         </div>
         <p>
-            {#if bio.length > 0}
-                {bio}
+            {#if children}
+                {@render children()}
             {:else}
                 -
             {/if}
@@ -61,7 +62,8 @@
         gap: var(--spacing);
     }
 
-    .member > img, .member > span.mdi.mdi-account-circle {
+    .member > img,
+    .member > span.mdi.mdi-account-circle {
         width: 64px;
         height: 64px;
         border-radius: 50%;
