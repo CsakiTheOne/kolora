@@ -8,7 +8,12 @@
 
 <SmallHeader currentPage="Eszközök" />
 <main>
-    {#if !UserManager.instance.koloraUser?.roles?.includes(ROLES.KOLORA_MEMBER)}
+    {#if !UserManager.instance.isLoaded}
+        <p>
+            <span class="mdi mdi-loading mdi-spin"></span>
+            Betöltés...
+        </p>
+    {:else if !UserManager.instance.koloraUser?.roles?.includes(ROLES.KOLORA_MEMBER)}
         <Alert title="Sajnos ehhez az oldalhoz nincs hozzáférésed">
             <p>Ez az oldal csak Kolora tagoknak érhető el.</p>
             <p>
