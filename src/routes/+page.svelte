@@ -97,7 +97,7 @@
         </button>
     </p>
     <h3>Slammer-ek, akik szavaltak a színpadainkon</h3>
-    <ul>
+    <ul class="outlined-list">
         <a
             href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=ZgSwslL_bq3PGCae"
             target="_blank"

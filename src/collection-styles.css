@@ -1,16 +1,25 @@
-ul {
+ul:not(.outlined-list)>* {
+    margin-left: var(--spacing);
+    line-height: 1.5;
+}
+
+ul:not(.outlined-list)>a {
+    display: list-item;
+}
+
+ul.outlined-list {
     border: 2px solid var(--primary-color);
     border-radius: var(--corner-radius);
     overflow: hidden;
 }
 
-ul>* {
+ul.outlined-list>* {
     display: block;
     width: 100%;
 }
 
-ul li,
-ul button {
+ul.outlined-list li,
+ul.outlined-list button {
     display: block;
     width: 100%;
     list-style: none;
@@ -18,8 +27,8 @@ ul button {
     border-bottom: 1px solid var(--primary-color);
 }
 
-ul button,
-ul a {
+ul.outlined-list button,
+ul.outlined-list a {
     appearance: none;
     border: none;
     background-color: var(--primary-variant-color);
@@ -28,8 +37,8 @@ ul a {
     text-decoration: none;
 }
 
-ul button:hover,
-ul a:hover {
+ul.outlined-list button:hover,
+ul.outlined-list a:hover {
     background-color: var(--primary-color);
     color: var(--on-primary-color);
 }

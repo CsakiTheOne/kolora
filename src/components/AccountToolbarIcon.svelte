@@ -66,7 +66,7 @@
                     {/if}
                 </b>
             </p>
-            <ul>
+            <ul class="outlined-list">
                 {#if !UserManager.instance.firebaseUser}
                     <button onclick={loginWithGoogle}>
                         <span class="mdi mdi-login"></span>

@@ -11,7 +11,7 @@
         kapcsolatban.
     </p>
     <h3>Témák</h3>
-    <ul>
+    <ul class="outlined-list">
         <a href="/docs/editor">
             <li>Szerkesztő használata</li>
         </a>
