@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { enableMultiTabIndexedDbPersistence } from "firebase/firestore";
     import Badge from "./Badge.svelte";
+    import flowerShape from "$lib/images/utils/flower-shape.png";
 
     const {
         profilePictureUrl = "",
@@ -12,15 +12,19 @@
 </script>
 
 <div class="member">
-    {#if profilePictureUrl}
-        <img
-            src={profilePictureUrl}
-            alt="Kolora tag képe"
-            style="background: var(--primary-variant-color); object-fit: cover;"
-        />
-    {:else}
-        <span class="mdi mdi-account-circle" style="font-size: 4rem;"></span>
-    {/if}
+    <div class="pfp-container">
+        {#if profilePictureUrl}
+            <img
+                class="picture"
+                src={profilePictureUrl}
+                alt="Kolora tag képe"
+                style="mask-image: url('{flowerShape}');"
+            />
+        {:else}
+            <div class="tint" style="mask-image: url('{flowerShape}');"></div>
+            <span class="mdi mdi-account-circle"></span>
+        {/if}
+    </div>
     <div class="member-info">
         <div>
             <h3>{name}</h3>
@@ -62,16 +66,39 @@
         gap: var(--spacing);
     }
 
-    .member > img,
-    .member > span.mdi.mdi-account-circle {
-        width: 64px;
-        height: 64px;
+    .pfp-container {
+        width: 72px;
+        height: 72px;
+        position: relative;
         border-radius: 50%;
         overflow: hidden;
+        scale: 1.2;
+    }
+
+    .pfp-container > img,
+    .pfp-container > .tint {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        mask-size: cover;
+        mask-position: center;
+    }
+
+    .pfp-container > .tint {
+        background: var(--secondary-color);
+    }
+
+    .pfp-container > .mdi-account-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        font-size: 2rem;
+        color: var(--on-secondary-color);
     }
 
     .member-info {
-        width: calc(100% - 64px - var(--spacing));
+        width: calc(100% - 72px - var(--spacing));
         display: flex;
         flex-direction: column;
         gap: calc(var(--spacing) / 2);
