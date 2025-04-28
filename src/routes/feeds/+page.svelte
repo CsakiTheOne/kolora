@@ -248,10 +248,6 @@
 <Footer />
 
 <style>
-    main > p {
-        text-align: justify;
-    }
-
     .card {
         display: flex;
         flex-direction: column;

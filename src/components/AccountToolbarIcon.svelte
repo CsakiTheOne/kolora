@@ -6,6 +6,36 @@
     import { scale } from "svelte/transition";
 
     let isOpen = $state(false);
+    let greeting = $state("Helló!");
+
+    $effect(() => {
+        if (!UserManager.instance.isLoggedIn) return;
+        const username = UserManager.instance.koloraUser?.username;
+        if (!username) return;
+
+        const hourOfDay = new Date().getHours();
+        if (hourOfDay < 9) {
+            greeting = `Jó reggelt, ${username}!`;
+            return;
+        }
+        if (hourOfDay > 17) {
+            greeting = `Szép estét, ${username}!`;
+            return;
+        }
+
+        const dayOfWeek = new Date().getDay();
+        const isWeekend = [0, 6].includes(dayOfWeek);
+        if (isWeekend) {
+            greeting = `Jó hétvégét, ${username}!`;
+            return;
+        }
+        if (dayOfWeek === 1) {
+            greeting = `Kitartást, ${username}!`;
+            return;
+        }
+
+        greeting = `Helló, ${username}!`;
+    });
 </script>
 
 <span
@@ -30,7 +60,7 @@
             <p style="word-wrap: normal;">
                 <b>
                     {#if UserManager.instance.isLoggedIn}
-                        Helló, {UserManager.instance.koloraUser!!.username}!
+                        {greeting}
                     {:else}
                         Jelentkezz be!
                     {/if}
