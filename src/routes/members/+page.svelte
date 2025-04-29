@@ -64,7 +64,7 @@
         <!-- Tagok -->
         <KoloraMemberDisplay
             name="Gergely Emma (wip)"
-            tags={["Festő", "Táncos", "Fehérvári Elissa Steamer"]}
+            tags={["Táncos", "Fehérvári Elissa Steamer"]}
             links={[{
                 name: "@gizdasiheder DIY-os Insta",
                 url: "https://www.instagram.com/gizdasiheder/",
