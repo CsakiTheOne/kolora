@@ -10,12 +10,12 @@
 
     let isLoading = $state(true);
 
+    //TODO: Remove this when the page is ready
+    // This is a temporary solution to hide the page until it's ready.
     $effect(() => {
-        const isReady = UserManager.instance.isLoaded;
-        const isLoggedIn = UserManager.instance.isLoggedIn;
         const isMember =
-            isReady &&
-            isLoggedIn &&
+            UserManager.instance.isLoaded &&
+            UserManager.instance.isLoggedIn &&
             UserManager.instance.koloraUser!!.roles.includes(
                 ROLES.KOLORA_MEMBER,
             );
@@ -36,7 +36,10 @@
         </p>
     {:else}
         <!-- Elnökség -->
-        <KoloraMemberDisplay name="Völgyesi Tamás - Toma (wip)" tags={["Elnök"]} />
+        <KoloraMemberDisplay
+            name="Völgyesi Tamás - Toma (wip)"
+            tags={["Elnök"]}
+        />
         <KoloraMemberDisplay
             profilePictureUrl={pfpTothNikolett}
             name="Tóth Nikolett - Niki"
@@ -66,10 +69,12 @@
         <KoloraMemberDisplay
             name="Gergely Emma (wip)"
             tags={["Táncos", "Fehérvári Elissa Steamer"]}
-            links={[{
-                name: "@gizdasiheder DIY-os Insta",
-                url: "https://www.instagram.com/gizdasiheder/",
-            }]}
+            links={[
+                {
+                    name: "@gizdasiheder DIY-os Insta",
+                    url: "https://www.instagram.com/gizdasiheder/",
+                },
+            ]}
         />
         <KoloraMemberDisplay
             profilePictureUrl={pfpMeszarosEmese}
