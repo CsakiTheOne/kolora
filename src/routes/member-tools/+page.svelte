@@ -52,6 +52,19 @@
                 Link másolása
             </button>
         </Alert>
+
+        <h3>Építkezési terület</h3>
+        <p>
+            Itt vannak a weboldal azon részei, amelyek nincsenek készen, ezért
+            még nem publikusak.
+        </p>
+        <a href="/members">
+            <button class="btn">
+                <span class="mdi mdi-account-group"></span>
+                Tagok oldala
+            </button>
+        </a>
+
         <h3>Linkek</h3>
         <a
             href="https://drive.google.com/drive/folders/1akxU9BGE1xXlYTHlrtUMhzKm8Cl8E2bu?usp=sharing"
@@ -68,6 +81,7 @@
                 YouTube Studio
             </button>
         </a>
+
         <Alert icon="help">
             <p>
                 Hiányzik innen valami? Ha van olyan eszköz, link, vagy bármi,
