@@ -7,6 +7,7 @@
     import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
     import UserManager from "$lib/UserManager.svelte";
     import { ROLES } from "$lib/model/KoloraUser";
+    import Alert from "../../components/Alert.svelte";
 
     let isLoading = $state(true);
 
@@ -35,10 +36,19 @@
             vagy-e jelentkezve. Ha így sem működik, szólj Csákinak.
         </p>
     {:else}
+        <Alert icon="alert">
+            <p>
+                Ez az oldal még nincs kész, ezért csak kolora tagok láthatják.
+                Akinél a WIP feliratot látod, ő még nem küldött nekem
+                bemutatkozást. Náluk ideiglenesen én pótoltam pár dolgot, hogy
+                jobban lássam hogyan fog egyben kinézni az oldal.
+            </p>
+        </Alert>
+
         <!-- Elnökség -->
         <KoloraMemberDisplay
             name="Völgyesi Tamás - Toma (wip)"
-            tags={["Elnök"]}
+            tags={["Elnök", "Nem öreg, de már fiatal sem"]}
         />
         <KoloraMemberDisplay
             profilePictureUrl={pfpTothNikolett}
@@ -57,14 +67,23 @@
         </KoloraMemberDisplay>
         <KoloraMemberDisplay
             name="Bodonyi Dániel (wip)"
-            tags={["Alelnök", "DJ"]}
+            tags={["Alelnök", "DJ", "Műsorvezető"]}
             links={[
                 {
                     name: "Café at Museum Essentials mix",
                     url: "https://www.mixcloud.com/Daniel_Bodonyi/bodonyi-dani-caf%C3%A9-at-museum-essentials/",
                 },
+                {
+                    name: "Vörösmarty Rádió",
+                    url: "https://vorosmartyradio.hu/",
+                },
             ]}
-        />
+        >
+            <p>
+                Az életemben fontos a zene, a zene és a zene. Ja és ne felejtsük
+                ki a zenét sem!
+            </p>
+        </KoloraMemberDisplay>
         <!-- Tagok -->
         <KoloraMemberDisplay
             name="Gergely Emma (wip)"
@@ -112,6 +131,7 @@
         />
         <KoloraMemberDisplay
             name="Szvoren Eszter (wip)"
+            tags={["író-költő-slammer"]}
             links={[
                 {
                     name: "Irodalmi mémek a @krudy_froccs Instán",
@@ -123,7 +143,7 @@
         <KoloraMemberDisplay
             profilePictureUrl={pfpCsaktornyaiAdam}
             name="Csáktornyai Ádám - Csáki"
-            tags={["Infós", "Táncos"]}
+            tags={["Szoftvermérnök", "Táncos"]}
             links={[
                 {
                     name: "WholesameWare, a saját márkám",
@@ -138,9 +158,8 @@
             <p>
                 Mindenki csak Csákiként ismer. A srác, aki furcsa módokon
                 kombinálja az informatikát a művészettel. Verselek, programozok,
-                táncolok. Ezt a weboldalt és a költészet napján a kincsvadászat
-                eseményeket raktam össze. Ha érdekelnek az ilyesmi dolgok,
-                zaklass nyugodtan! :D
+                táncolok és ezt a weboldalt csinálgatom. Ha bármiben segítség
+                kell, zaklass nyugodtan! :D
             </p>
         </KoloraMemberDisplay>
     {/if}
