@@ -13,6 +13,7 @@
 
 <div class="member">
     <div class="pfp-container">
+        <div class="tint" style="mask-image: url('{flowerShape}'); scale: 1.03;"></div>
         {#if profilePictureUrl}
             <img
                 class="picture"
@@ -21,7 +22,6 @@
                 style="mask-image: url('{flowerShape}');"
             />
         {:else}
-            <div class="tint" style="mask-image: url('{flowerShape}');"></div>
             <span class="mdi mdi-account-circle"></span>
         {/if}
     </div>
@@ -77,6 +77,7 @@
 
     .pfp-container > img,
     .pfp-container > .tint {
+        position: absolute;
         width: 100%;
         height: 100%;
         object-fit: cover;
