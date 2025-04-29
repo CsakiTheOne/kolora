@@ -4,6 +4,7 @@
     import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
     import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
     import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
+    import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
     import UserManager from "$lib/UserManager.svelte";
     import { ROLES } from "$lib/model/KoloraUser";
 
@@ -115,6 +116,7 @@
         />
         <KoloraMemberDisplay name="Tolnai Zsófi (wip)" />
         <KoloraMemberDisplay
+            profilePictureUrl={pfpCsaktornyaiAdam}
             name="Csáktornyai Ádám - Csáki"
             tags={["Infós", "Táncos"]}
             links={[
