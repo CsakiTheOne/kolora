@@ -96,7 +96,7 @@
         A Kolora oldalán helyhez kötött üzenőfalak vannak, amiket
         meglátogathatsz és üzeneteket hagyhatsz rajtuk.
     </p>
-    <p style="font-size: .8rem; opacity: 0.8">
+    <p class="text-small">
         Ezeket az üzenőfalakat kis NFC matricákon keresztül tudod elérni. Ha
         megtalálsz egy ilyen ezüst, 50Ft-os méretű matricát, csak érintsd oda a
         telefonod és már posztolhatsz is!

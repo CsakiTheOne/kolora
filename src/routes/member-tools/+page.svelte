@@ -23,64 +23,70 @@
         </Alert>
     {:else}
         <h2>Eszközök és források</h2>
-        <a href="./design-system">
-            <button class="btn">
-                <span class="mdi mdi-palette"></span>
-                Design rendszer
-            </button>
-        </a>
-        <a href="./post-generator">
-            <button class="btn">
-                <span class="mdi mdi-post"></span>
-                Poszt készítő
-            </button>
-        </a>
-        <Alert icon="account" title="Kolora fiók létrehozás egyszerűen">
-            <p>
-                Ha valakinek szeretnél segíteni a Kolora fiók létrehozásban,
-                akkor csak küldd el neki ezt a linket:
-            </p>
+        <ul class="outlined-list">
+            <a href="./design-system">
+                <li>
+                    <span class="mdi mdi-palette"></span>
+                    Design rendszer
+                </li>
+            </a>
+            <a href="./post-generator">
+                <li>
+                    <span class="mdi mdi-post"></span>
+                    Poszt készítő
+                </li>
+            </a>
             <button
-                class="btn"
                 onclick={() => {
                     navigator.clipboard.writeText(
                         `${window.location.origin}/member-tools/auto-login`,
                     );
                 }}
             >
-                <span class="mdi mdi-content-copy"></span>
-                Link másolása
+                <p>
+                    <span class="mdi mdi-account"></span>
+                    Kolora fiók létrehozás egyszerűen
+                </p>
+                <p class="text-small">
+                    Ha valakinek szeretnél segíteni a Kolora fiók létrehozásban,
+                    akkor csak küldd el neki a linket, amit ide kattintva
+                    kimásolhatsz.
+                </p>
             </button>
-        </Alert>
+        </ul>
 
         <h3>Építkezési terület</h3>
         <p>
             Itt vannak a weboldal azon részei, amelyek nincsenek készen, ezért
             még nem publikusak.
         </p>
-        <a href="/members">
-            <button class="btn">
-                <span class="mdi mdi-account-group"></span>
-                Tagok oldala
-            </button>
-        </a>
+        <ul class="outlined-list">
+            <a href="/members">
+                <li>
+                    <span class="mdi mdi-account-group"></span>
+                    Tagok oldala
+                </li>
+            </a>
+        </ul>
 
         <h3>Linkek</h3>
-        <a
-            href="https://drive.google.com/drive/folders/1akxU9BGE1xXlYTHlrtUMhzKm8Cl8E2bu?usp=sharing"
-            target="_blank"
-        >
-            <button class="btn">
-                <span class="mdi mdi-google-drive"></span>
-                Csáki Kolorás Drive mappája
-            </button>
-        </a>
-        <a href="https://studio.youtube.com/" target="_blank">
-            <button class="btn">
-                <span class="mdi mdi-youtube-studio"></span>
-                YouTube Studio
-            </button>
-        </a>
+        <ul class="outlined-list">
+            <a
+                href="https://drive.google.com/drive/folders/1akxU9BGE1xXlYTHlrtUMhzKm8Cl8E2bu?usp=sharing"
+                target="_blank"
+            >
+                <li>
+                    <span class="mdi mdi-google-drive"></span>
+                    Csáki Kolorás Drive mappája
+                </li>
+            </a>
+            <a href="https://studio.youtube.com/" target="_blank">
+                <li>
+                    <span class="mdi mdi-youtube-studio"></span>
+                    YouTube Studio
+                </li>
+            </a>
+        </ul>
 
         <Alert icon="help">
             <p>

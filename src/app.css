@@ -85,7 +85,6 @@ h6 {
 }
 
 p {
-    font-size: .9rem;
     line-height: 1.5;
     text-align: left;
 }
@@ -130,7 +129,7 @@ main>* {
     }
 }
 
-main > p {
+main>p {
     text-align: justify;
 }
 
@@ -143,4 +142,9 @@ h1,
 .tab,
 .large-header * {
     text-decoration: none;
+}
+
+.text-small {
+    font-size: .8rem;
+    opacity: .7;
 }
