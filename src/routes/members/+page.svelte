@@ -35,7 +35,7 @@
         </p>
     {:else}
         <!-- Elnökség -->
-        <KoloraMemberDisplay name="Völgyesi Tamás - Toma" tags={["Elnök"]} />
+        <KoloraMemberDisplay name="Völgyesi Tamás - Toma (wip)" tags={["Elnök"]} />
         <KoloraMemberDisplay
             profilePictureUrl={pfpTothNikolett}
             name="Tóth Nikolett - Niki"
@@ -52,7 +52,7 @@
             </p>
         </KoloraMemberDisplay>
         <KoloraMemberDisplay
-            name="Bodonyi Dániel"
+            name="Bodonyi Dániel (wip)"
             tags={["Alelnök", "DJ"]}
             links={[
                 {
@@ -63,7 +63,7 @@
         />
         <!-- Tagok -->
         <KoloraMemberDisplay
-            name="Gergely Emma"
+            name="Gergely Emma (wip)"
             tags={["Festő", "Táncos", "Fehérvári Elissa Steamer"]}
             links={[{
                 name: "@gizdasiheder DIY-os Insta",
@@ -95,7 +95,7 @@
             </p>
         </KoloraMemberDisplay>
         <KoloraMemberDisplay
-            name="Reszegi Ramóna"
+            name="Reszegi Ramóna (wip)"
             tags={["Énekes"]}
             links={[
                 {
@@ -105,7 +105,7 @@
             ]}
         />
         <KoloraMemberDisplay
-            name="Szvoren Eszter"
+            name="Szvoren Eszter (wip)"
             links={[
                 {
                     name: "Irodalmi mémek a @krudy_froccs Instán",
@@ -113,7 +113,7 @@
                 },
             ]}
         />
-        <KoloraMemberDisplay name="Tolnai Zsófi" />
+        <KoloraMemberDisplay name="Tolnai Zsófi (wip)" />
         <KoloraMemberDisplay
             name="Csáktornyai Ádám - Csáki"
             tags={["Infós", "Táncos"]}
