@@ -53,7 +53,7 @@
         </KoloraMemberDisplay>
         <KoloraMemberDisplay
             name="Bodonyi Dániel"
-            tags={["Alelnök"]}
+            tags={["Alelnök", "DJ"]}
             links={[
                 {
                     name: "Café at Museum Essentials mix",
@@ -62,7 +62,14 @@
             ]}
         />
         <!-- Tagok -->
-        <KoloraMemberDisplay name="Gergely Emma" tags={["Táncos"]} />
+        <KoloraMemberDisplay
+            name="Gergely Emma"
+            tags={["Festő", "Táncos", "Fehérvári Elissa Steamer"]}
+            links={[{
+                name: "@gizdasiheder DIY-os Insta",
+                url: "https://www.instagram.com/gizdasiheder/",
+            }]}
+        />
         <KoloraMemberDisplay
             profilePictureUrl={pfpMeszarosEmese}
             name="Mészáros Emese"
@@ -101,7 +108,7 @@
             name="Szvoren Eszter"
             links={[
                 {
-                    name: "Irodalmi mémek a @krudy_froccs Instagramon",
+                    name: "Irodalmi mémek a @krudy_froccs Instán",
                     url: "https://www.instagram.com/krudy_froccs/",
                 },
             ]}
