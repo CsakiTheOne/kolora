@@ -37,6 +37,7 @@
                 </li>
             </a>
             <button
+                style="text-align: left;"
                 onclick={() => {
                     navigator.clipboard.writeText(
                         `${window.location.origin}/member-tools/auto-login`,

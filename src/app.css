@@ -43,7 +43,7 @@ body.theme-retro {
     --on-secondary-color: #ebf79a;
     --on-secondary-variant-color: #110;
     --on-background-color: #467edb;
-    --corner-radius: 2px;
+    --corner-radius: 3px;
 }
 
 * {
@@ -51,6 +51,10 @@ body.theme-retro {
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+:not(h1, h2, h3, h4, h5, h6) {
+    font-size: .95rem;
 }
 
 html {
@@ -86,7 +90,6 @@ h6 {
 
 p {
     line-height: 1.5;
-    text-align: left;
 }
 
 a,
