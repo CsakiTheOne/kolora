@@ -2,7 +2,7 @@
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
     import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
-    import pfpTothNikolett from "$lib/images/members/toth-nikolett.webp";
+    import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
     import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
     import UserManager from "$lib/UserManager.svelte";
     import { ROLES } from "$lib/model/KoloraUser";
