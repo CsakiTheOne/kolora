@@ -20,8 +20,6 @@
     import { loginWithGoogle } from "$lib/firebase/auth";
     import LocationIndicator from "../../components/poi/LocationIndicator.svelte";
 
-    
-
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
 
@@ -143,10 +141,6 @@
                 checkLocation(() => {
                     if (isNearby) {
                         loadPosts();
-                    } else {
-                        alert(
-                            "Nem sikerült meghatározni a jelenlegi pozíciódat, ezért nem tudjuk betölteni a posztokat ezen a helyen.",
-                        );
                     }
                 });
             })
@@ -391,7 +385,7 @@
                 </div>
             {/if}
         {/if}
-        {#if isLoadingPosts}
+        {#if isLoadingPosts && posts.length === 0}
             <p>Posztok betöltése...</p>
         {/if}
         {#each posts as post}

@@ -12,6 +12,7 @@
     import LocationIndicator from "../../components/poi/LocationIndicator.svelte";
 
     let places: POI[] = $state([]);
+    let locationPermissionInfoText: string = $state("");
     let nearestPlace: POI | null = $state(null);
     let nearestPlacePostCount: number = $state(0);
     let distance: number = $state(0);
@@ -19,49 +20,46 @@
     let isLoadingLocation = $state(false);
     let openedHintId: number | null = $state(null);
 
-    function getNearestPoi() {
+    function startWatchingLocation() {
         isLoadingLocation = true;
-        navigator.geolocation.getCurrentPosition(
+        return navigator.geolocation.watchPosition(
             (position) => {
-                places.sort((a, b) => {
-                    const distanceA = Math.sqrt(
-                        Math.pow(a.latitude - position.coords.latitude, 2) +
-                            Math.pow(
-                                a.longitude - position.coords.longitude,
-                                2,
-                            ),
-                    );
-                    const distanceB = Math.sqrt(
-                        Math.pow(b.latitude - position.coords.latitude, 2) +
-                            Math.pow(
-                                b.longitude - position.coords.longitude,
-                                2,
-                            ),
-                    );
-                    return distanceA - distanceB;
-                });
-                nearestPlace = places[0];
-                firestore.posts.getCountByPoi(nearestPlace.id).then((count) => {
-                    nearestPlacePostCount = count;
-                });
-                distance = Math.sqrt(
-                    Math.pow(
-                        nearestPlace.latitude - position.coords.latitude,
-                        2,
-                    ) +
-                        Math.pow(
-                            nearestPlace.longitude - position.coords.longitude,
-                            2,
-                        ),
-                );
+                getNearestPoi(position);
                 isLoadingLocation = false;
             },
-            () => {
+            (error) => {
                 nearestPlace = null;
                 nearestPlacePostCount = 0;
                 isLoadingLocation = false;
             },
+            {
+                enableHighAccuracy: true,
+                maximumAge: 60,
+            },
         );
+    }
+
+    function getNearestPoi(position: GeolocationPosition) {
+        places.sort((a, b) => {
+            const distanceA = Math.sqrt(
+                Math.pow(a.latitude - position.coords.latitude, 2) +
+                    Math.pow(a.longitude - position.coords.longitude, 2),
+            );
+            const distanceB = Math.sqrt(
+                Math.pow(b.latitude - position.coords.latitude, 2) +
+                    Math.pow(b.longitude - position.coords.longitude, 2),
+            );
+            return distanceA - distanceB;
+        });
+        nearestPlace = places[0];
+        firestore.posts.getCountByPoi(nearestPlace.id).then((count) => {
+            nearestPlacePostCount = count;
+        });
+        distance = Math.sqrt(
+            Math.pow(nearestPlace.latitude - position.coords.latitude, 2) +
+                Math.pow(nearestPlace.longitude - position.coords.longitude, 2),
+        );
+        isLoadingLocation = false;
     }
 
     onMount(() => {
@@ -69,7 +67,31 @@
         firestore.pois.getDiscoverable().then((pois) => {
             places = pois;
             isLoadingPlaces = false;
-            getNearestPoi();
+        });
+        const locationWatcher = startWatchingLocation();
+
+        return () => {
+            navigator.geolocation.clearWatch(locationWatcher);
+        };
+    });
+
+    $effect(() => {
+        nearestPlace;
+        navigator.permissions.query({ name: "geolocation" }).then((result) => {
+            switch (result.state) {
+                case "granted":
+                    locationPermissionInfoText =
+                        "Hely hozzáférés engedélyezve.";
+                    break;
+                case "denied":
+                    locationPermissionInfoText =
+                        "Nincs hely hozzáférés! Ellenőrizd a böngésző és a telefon beállításait.";
+                    break;
+                default:
+                    locationPermissionInfoText =
+                        "Hely hozzáférés kérés alatt. Ha már adtál engedélyt, frissítsd az oldalt.";
+                    break;
+            }
         });
     });
 </script>
@@ -102,14 +124,9 @@
         telefonod és már posztolhatsz is!
     </p>
 
-    <div
-        style="display: flex; gap: var(--spacing); flex-wrap: wrap; align-items: center; justify-content: space-between;"
-    >
+    <div>
         <h3>Közelben</h3>
-        <button class="btn" onclick={getNearestPoi}>
-            <span class="mdi mdi-refresh"></span>
-            Frissítés
-        </button>
+        <p class="text-small">{locationPermissionInfoText}</p>
     </div>
     {#if isLoadingPlaces}
         <p>Helyek betöltése...</p>
