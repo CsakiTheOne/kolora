@@ -22,7 +22,10 @@
             </p>
         </Alert>
     {:else}
-        <h2>Eszközök és források</h2>
+        <h2>
+            <span class="mdi mdi-tools"></span>
+            Eszközök és források
+        </h2>
         <ul class="outlined-list">
             <a href="./design-system">
                 <li>
@@ -56,7 +59,10 @@
             </button>
         </ul>
 
-        <h3>Építkezési terület</h3>
+        <h2>
+            <span class="mdi mdi-progress-wrench"></span>
+            Építkezési terület
+        </h2>
         <p>
             Itt vannak a weboldal azon részei, amelyek nincsenek készen, ezért
             még nem publikusak.
@@ -70,7 +76,10 @@
             </a>
         </ul>
 
-        <h3>Linkek</h3>
+        <h2>
+            <span class="mdi mdi-link"></span>
+            Linkek
+        </h2>
         <ul class="outlined-list">
             <a
                 href="https://drive.google.com/drive/folders/1akxU9BGE1xXlYTHlrtUMhzKm8Cl8E2bu?usp=sharing"
@@ -87,15 +96,20 @@
                     YouTube Studio
                 </li>
             </a>
+            <a href="https://m.me/CsakiTheOne" target="_blank">
+                <li>
+                    <p>
+                        <span class="mdi mdi-help"></span>
+                        Hiányzik valami?
+                    </p>
+                    <p class="text-small">
+                        Ha van olyan eszköz, link, vagy bármi, ami szerinted
+                        hasznos lehet a Kolora tagoknak, szólj Csákinak és
+                        iderakja.
+                    </p>
+                </li>
+            </a>
         </ul>
-
-        <Alert icon="help">
-            <p>
-                Hiányzik innen valami? Ha van olyan eszköz, link, vagy bármi,
-                ami szerinted hasznos lehet a Kolora tagoknak, szólj Csákinak és
-                iderakja.
-            </p>
-        </Alert>
     {/if}
 </main>
 <Footer />
