@@ -4,6 +4,8 @@
     import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
     import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
     import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
+    import pfpGergelyEmma from "$lib/images/members/gergely-emma.jpg";
+    import pfpSzvorenEszter from "$lib/images/members/szvoren-eszter.jpg";
     import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
     import UserManager from "$lib/UserManager.svelte";
     import { ROLES } from "$lib/model/KoloraUser";
@@ -86,15 +88,18 @@
         </KoloraMemberDisplay>
         <!-- Tagok -->
         <KoloraMemberDisplay
-            name="Gergely Emma (wip)"
-            tags={["Táncos", "Fehérvári Elissa Steamer"]}
+            profilePictureUrl={pfpGergelyEmma}
+            name="Gergely Emma"
+            tags={["Táncos", "Fehérvári Elissa Steamer", "Plakáttervező"]}
             links={[
                 {
                     name: "@gizdasiheder DIY-os Insta",
                     url: "https://www.instagram.com/gizdasiheder/",
                 },
             ]}
-        />
+        >
+            <p>//TODO: később küldi Emma</p>
+        </KoloraMemberDisplay>
         <KoloraMemberDisplay
             profilePictureUrl={pfpMeszarosEmese}
             name="Mészáros Emese"
@@ -130,15 +135,27 @@
             ]}
         />
         <KoloraMemberDisplay
-            name="Szvoren Eszter (wip)"
-            tags={["író-költő-slammer"]}
+            profilePictureUrl={pfpSzvorenEszter}
+            name="Szvoren Eszter"
             links={[
+                {
+                    name: "Szvoren Eszti - XII. Slam Poetry Országos Bajnokság - Döntő - áldozati bárány",
+                    url: "https://youtu.be/L44IuZaY-ek?si=gu4J4WxUiAmGzfDH",
+                },
                 {
                     name: "Irodalmi mémek a @krudy_froccs Instán",
                     url: "https://www.instagram.com/krudy_froccs/",
                 },
             ]}
-        />
+        >
+            <p>
+                Írok (főleg próza, slam, műfordítás), zenélek, festek, rajzolok,
+                meg minden, ami művészet, asszem, de ne ezt olvasgasd, hanem az <a
+                    href="https://www.facebook.com/profile.php?id=100094619973134&sk=events"
+                    target="_blank">eseménynaptárat</a
+                >, vagy minimum hazai kortársat, na szevasz.
+            </p>
+        </KoloraMemberDisplay>
         <KoloraMemberDisplay name="Tolnai Zsófi (wip)" />
         <KoloraMemberDisplay
             profilePictureUrl={pfpCsaktornyaiAdam}
