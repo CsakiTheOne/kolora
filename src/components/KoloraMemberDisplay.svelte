@@ -13,7 +13,7 @@
 
 <div class="member">
     <div class="pfp-container">
-        <div class="tint" style="mask-image: url('{flowerShape}'); scale: 1.03;"></div>
+        <div class="tint" style="mask-image: url('{flowerShape}'); scale: 1.05;"></div>
         {#if profilePictureUrl}
             <img
                 class="picture"
@@ -86,7 +86,7 @@
     }
 
     .pfp-container > .tint {
-        background: var(--secondary-color);
+        background: var(--primary-color);
     }
 
     .pfp-container > .mdi-account-circle {
@@ -95,7 +95,7 @@
         left: 50%;
         translate: -50% -50%;
         font-size: 2rem;
-        color: var(--on-secondary-color);
+        color: var(--on-primary-color);
     }
 
     .member-info {

@@ -179,6 +179,13 @@
                 kell, zaklass nyugodtan! :D
             </p>
         </KoloraMemberDisplay>
+
+        <Alert icon="information" title="De várj, ez még nem minden!">
+            <p>
+                Ezen az oldalon nem minden tagunk szerepel. Az ő bemutatkozásaik
+                később fognak megjelenni.
+            </p>
+        </Alert>
     {/if}
 </main>
 <Footer />
