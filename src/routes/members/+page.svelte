@@ -89,7 +89,7 @@
         <!-- Tagok -->
         <KoloraMemberDisplay
             profilePictureUrl={pfpGergelyEmma}
-            name="Gergely Emma"
+            name="Gergely Emma - Tacskó"
             tags={["Táncos", "Fehérvári Elissa Steamer", "Plakáttervező"]}
             links={[
                 {
