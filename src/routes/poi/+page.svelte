@@ -23,11 +23,10 @@
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
 
-    let locationInterval: number | null = $state(null);
     let isLoadingLocation = $state(false);
+    let distanceMeters = $state(0);
     let isNearby = $state(false);
     let ignoreLocation = $state(false);
-    let debugDistance = $state(0);
 
     let isVisitSent = $state(false);
     let publicWorks: Work[] = $state([]);
@@ -38,13 +37,7 @@
     let postDraft: Post = $state({ ...new Post() });
     let isWorkSelectorDialogOpen = $state(false);
 
-    function checkLocation(callback: () => void = () => {}) {
-        if (!poi) {
-            return;
-        }
-
-        isLoadingLocation = true;
-
+    function startWatchingLocation() {
         if (ignoreLocation) {
             isNearby = true;
             isLoadingLocation = false;
@@ -53,26 +46,29 @@
         }
 
         isLoadingLocation = true;
-        navigator.geolocation.getCurrentPosition(
+        return navigator.geolocation.watchPosition(
             (position) => {
-                const distance = Math.sqrt(
-                    Math.pow(poi!!.latitude - position.coords.latitude, 2) +
-                        Math.pow(
-                            poi!!.longitude - position.coords.longitude,
-                            2,
-                        ),
+                distanceMeters = PoiUtils.measureDistance(
+                    poi!!.latitude,
+                    poi!!.longitude,
+                    position.coords.latitude,
+                    position.coords.longitude,
                 );
-                debugDistance = distance;
 
-                isNearby =
-                    ignoreLocation || distance < PoiUtils.DISTANCE_TO_VIEW;
+                isNearby = distanceMeters < PoiUtils.DISTANCE_TO_VIEW;
+
+                if (isNearby && posts.length === 0) {
+                    loadPosts();
+                }
                 isLoadingLocation = false;
-                callback();
             },
-            () => {
+            (error) => {
                 isNearby = false;
                 isLoadingLocation = false;
-                callback();
+            },
+            {
+                enableHighAccuracy: true,
+                maximumAge: 120,
             },
         );
     }
@@ -119,7 +115,7 @@
         isNearby = ignoreLocation;
 
         if (!poiId) {
-            window.location.replace("/");
+            window.location.replace("/feeds");
             return;
         }
 
@@ -137,25 +133,16 @@
                 }
 
                 poi = res;
-
-                checkLocation(() => {
-                    if (isNearby) {
-                        loadPosts();
-                    }
-                });
             })
             .catch(() => {
                 window.history.back();
             });
 
-        let locationInterval: NodeJS.Timeout | null = setInterval(() => {
-            checkLocation();
-        }, 60_000);
+        let locationWatcher = startWatchingLocation();
 
         return () => {
-            if (locationInterval) {
-                clearInterval(locationInterval);
-                locationInterval = null;
+            if (locationWatcher) {
+                navigator.geolocation.clearWatch(locationWatcher);
             }
         };
     });

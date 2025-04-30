@@ -15,7 +15,6 @@
     let locationPermissionInfoText: string = $state("");
     let nearestPlace: POI | null = $state(null);
     let nearestPlacePostCount: number = $state(0);
-    let distance: number = $state(0);
     let distanceMeters: number = $state(0);
     let isLoadingPlaces = $state(false);
     let isLoadingLocation = $state(false);
@@ -64,10 +63,6 @@
         firestore.posts.getCountByPoi(nearestPlace.id).then((count) => {
             nearestPlacePostCount = count;
         });
-        distance = Math.sqrt(
-            Math.pow(nearestPlace.latitude - position.coords.latitude, 2) +
-                Math.pow(nearestPlace.longitude - position.coords.longitude, 2),
-        );
         isLoadingLocation = false;
     }
 
@@ -189,7 +184,7 @@
                     </button>
                 {/if}
             </div>
-            {#if distance < PoiUtils.DISTANCE_TO_OPEN}
+            {#if distanceMeters < PoiUtils.DISTANCE_TO_OPEN}
                 <p>
                     Még mindig nincs meg a matrica? Már nagyon közel vagy,
                     szóval ha nem találod, itt megnyithatod:
