@@ -98,7 +98,7 @@
                 },
             ]}
         >
-            <p>//TODO: később küldi Emma</p>
+            <p>//TODO: soon</p>
         </KoloraMemberDisplay>
         <KoloraMemberDisplay
             profilePictureUrl={pfpMeszarosEmese}
