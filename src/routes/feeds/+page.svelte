@@ -16,6 +16,7 @@
     let nearestPlace: POI | null = $state(null);
     let nearestPlacePostCount: number = $state(0);
     let distance: number = $state(0);
+    let distanceMeters: number = $state(0);
     let isLoadingPlaces = $state(false);
     let isLoadingLocation = $state(false);
     let openedHintId: number | null = $state(null);
@@ -52,6 +53,14 @@
             return distanceA - distanceB;
         });
         nearestPlace = places[0];
+
+        distanceMeters = PoiUtils.measureDistance(
+            position.coords.latitude,
+            position.coords.longitude,
+            nearestPlace.latitude,
+            nearestPlace.longitude,
+        );
+
         firestore.posts.getCountByPoi(nearestPlace.id).then((count) => {
             nearestPlacePostCount = count;
         });
@@ -189,7 +198,9 @@
                     <button class="btn" style="width: 100%">Megnyitás</button>
                 </a>
             {:else}
-                <p>Menj közelebb a megtekintéshez!</p>
+                <p>
+                    Menj közelebb a megtekintéshez! Távolság: {distanceMeters}m
+                </p>
             {/if}
         </div>
     {:else}
