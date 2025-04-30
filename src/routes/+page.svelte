@@ -204,17 +204,6 @@
                 title="Aki kivágja az unalmas részeket"
             />
         </a>
-        <a
-            href="https://github.com/WholesomeWare"
-            target="_blank"
-            style="flex: 1;"
-        >
-            <ProfileShowcase
-                image={imgWholesomeWareLogo}
-                name="WholesomeWare"
-                title="Informatikai támogatás"
-            />
-        </a>
     </div>
 </main>
 <Footer />

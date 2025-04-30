@@ -104,6 +104,10 @@ a,
     cursor: pointer;
 }
 
+body.theme-dark :is(a, .link) {
+    color: var(--on-primary-color);
+}
+
 iframe {
     border-radius: var(--corner-radius);
 }
