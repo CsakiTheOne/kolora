@@ -10,9 +10,11 @@
     import PoiUtils from "$lib/PoiUtils";
     import Backdrop from "../../components/Backdrop.svelte";
     import LocationIndicator from "../../components/poi/LocationIndicator.svelte";
+    import LeafletMap from "../../components/poi/LeafletMap.svelte";
 
     let places: POI[] = $state([]);
     let locationPermissionInfoText: string = $state("");
+    let userLocation = $state([0, 0]);
     let nearestPlace: POI | null = $state(null);
     let nearestPlacePostCount: number = $state(0);
     let distanceMeters: number = $state(0);
@@ -24,6 +26,10 @@
         isLoadingLocation = true;
         return navigator.geolocation.watchPosition(
             (position) => {
+                userLocation = [
+                    position.coords.latitude,
+                    position.coords.longitude,
+                ];
                 getNearestPoi(position);
                 isLoadingLocation = false;
             },
@@ -208,13 +214,14 @@
     {/if}
 
     <h3>Térkép</h3>
-    <iframe
+    <LeafletMap {userLocation} pois={places} style="width: 100%; aspect-ratio: 5 / 3;" />
+    <!--iframe
         width="100%"
         style="aspect-ratio: 5/4;"
         title="Google Maps"
         frameborder="0"
         src="https://www.google.com/maps/d/u/0/embed?mid=1wvVqV8uNIfDM3JdUyhJUrnkxLt-Mgk4&ehbc=2E312F&noprof=1"
-    ></iframe>
+    ></iframe-->
 
     <h3>Technikai részletek és hibajelentés</h3>
     <h4>Matrica beolvasása</h4>
