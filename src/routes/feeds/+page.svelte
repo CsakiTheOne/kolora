@@ -13,7 +13,7 @@
     import LeafletMap from "../../components/poi/LeafletMap.svelte";
 
     let places: POI[] = $state([]);
-    let locationPermissionInfoText: string = $state("");
+    let locationPermissionInfoText: string = $state("...");
     let userLocation = $state([0, 0]);
     let nearestPlace: POI | null = $state(null);
     let nearestPlacePostCount: number = $state(0);
@@ -73,15 +73,19 @@
     }
 
     onMount(() => {
+        let locationWatcher: number | null = null;
+
         isLoadingPlaces = true;
         firestore.pois.getDiscoverable().then((pois) => {
             places = pois;
             isLoadingPlaces = false;
+            locationWatcher = startWatchingLocation();
         });
-        const locationWatcher = startWatchingLocation();
 
         return () => {
-            navigator.geolocation.clearWatch(locationWatcher);
+            if (locationWatcher) {
+                navigator.geolocation.clearWatch(locationWatcher);
+            }
         };
     });
 
@@ -214,7 +218,11 @@
     {/if}
 
     <h3>Térkép</h3>
-    <LeafletMap {userLocation} pois={places} style="width: 100%; aspect-ratio: 5 / 3;" />
+    <LeafletMap
+        {userLocation}
+        pois={places}
+        style="width: 100%; aspect-ratio: 5 / 4;"
+    />
     <!--iframe
         width="100%"
         style="aspect-ratio: 5/4;"
