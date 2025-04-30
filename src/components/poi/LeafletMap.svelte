@@ -1,6 +1,9 @@
 <script lang="ts">
-    import type POI from "$lib/model/POI";
     import { onMount } from "svelte";
+    import POI from "$lib/model/POI";
+    import mapIconUser from "$lib/images/map/user.png";
+    import mapIconPoi from "$lib/images/map/poi.png";
+    import PoiUtils from "$lib/PoiUtils";
 
     const { userLocation, pois, ...rest } = $props();
 
@@ -24,6 +27,11 @@
 
     $effect(() => {
         const map = L.map("map").setView([47, 19], 7);
+        const primaryColor = document
+            .getElementById("map-style-helper")
+            ?.computedStyleMap()
+            ?.get("color")
+            ?.toString();
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
             maxZoom: 19,
             attribution:
@@ -36,17 +44,34 @@
             });
             L.marker([poi.latitude, poi.longitude], {
                 title: poi.name,
+                icon: L.icon({
+                    iconUrl: mapIconPoi,
+                    iconSize: [16, 16],
+                    iconAnchor: [8, 8],
+                }),
             })
                 .addTo(map)
                 .bindPopup(popup);
+            L.circle([poi.latitude, poi.longitude], {
+                radius: PoiUtils.DISTANCE_TO_OPEN,
+                color: primaryColor,
+                fillColor: primaryColor,
+            }).addTo(map);
         });
 
         if (userLocation) {
-            L.marker(userLocation).addTo(map);
+            L.marker(userLocation, {
+                icon: L.icon({
+                    iconUrl: mapIconUser,
+                    iconSize: [16, 16],
+                    iconAnchor: [8, 8],
+                }),
+            }).addTo(map);
         }
     });
 </script>
 
+<div id="map-style-helper" style="color: var(--primary-color);"></div>
 <div {...rest} id="map"></div>
 
 <style>
