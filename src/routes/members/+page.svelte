@@ -159,6 +159,11 @@
             Ezen az oldalon nem minden tagunk szerepel. Az ő bemutatkozásaik
             később fognak megjelenni.
         </p>
+        <p>
+            Akár a tiéd is! Ha szeretnél csatlakozni hozzánk, keress a <a
+                href="/contacts">megadott elérhetőségeinken</a
+            > (vagy ha épp ott iszogatunk, a Museum Caféban).
+        </p>
     </Alert>
 </main>
 <Footer />
