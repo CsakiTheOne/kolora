@@ -7,9 +7,6 @@
 
     const { userLocation, pois, ...rest } = $props();
 
-    let isMounted = $state(false);
-    let map = $state();
-
     onMount(() => {
         const leafletCssElement = document.createElement("link");
         leafletCssElement.rel = "stylesheet";
@@ -26,18 +23,10 @@
             "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=";
         leafletJsElement.crossOrigin = "";
         document.body.appendChild(leafletJsElement);
-
-        leafletJsElement.onload = () => {
-            isMounted = true;
-        };
     });
 
     $effect(() => {
-        if (!isMounted) return;
-
-        if (!map) {
-            map = L.map("map").setView([46.8, 18.5], 7);
-        }
+        const map = L.map("map").setView([47, 19], 7);
         const primaryColor = document
             .getElementById("map-style-helper")
             ?.computedStyleMap()
