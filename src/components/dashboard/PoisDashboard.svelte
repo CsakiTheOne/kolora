@@ -125,10 +125,12 @@
         placeholder="Google Térkép link"
         value={selectedPlace.googleMapsLink}
         oninput={(e: any) => {
-            firestore.pois.set(selectedPlaceId!, {
-                ...selectedPlace,
-                googleMapsLink: e.target?.value,
-            });
+            firestore.pois
+                .set(selectedPlaceId!, {
+                    ...selectedPlace,
+                    googleMapsLink: e.target?.value,
+                })
+                .then(() => loadPlaces());
         }}
     />
 
