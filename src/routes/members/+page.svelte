@@ -17,8 +17,8 @@
     <Alert icon="alert">
         <p>
             Ez az oldal még nincs kész, ezért csak kolora tagok és a linkkel
-            rendelkező emberek láthatják. Akinél a WIP feliratot látod, ő még
-            nem küldött nekem bemutatkozást. Náluk ideiglenesen én pótoltam pár
+            rendelkező emberek láthatják. Akinél a WIP feliratot látod, neki még
+            nincs kész a bemutatkozása. Náluk ideiglenesen én pótoltam pár
             dolgot, hogy jobban lássam hogyan fog egyben kinézni az oldal.
         </p>
     </Alert>
@@ -27,7 +27,9 @@
     <KoloraMemberDisplay
         name="Völgyesi Tamás - Toma (wip)"
         tags={["Elnök", "Nem öreg, de már fiatal sem"]}
-    />
+    >
+        <p>//TODO: hamarosan</p>
+    </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpTothNikolett}
         name="Tóth Nikolett - Niki"
@@ -58,7 +60,7 @@
     >
         <p>
             Az életemben fontos a zene, a zene és a zene. Ja és ne felejtsük ki
-            a zenét sem!
+            a zenét sem! //TODO: befejezni
         </p>
     </KoloraMemberDisplay>
     <!-- Tagok -->
@@ -73,7 +75,7 @@
             },
         ]}
     >
-        <p>//TODO: soon</p>
+        <p>//TODO: befejezni</p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpMeszarosEmese}
@@ -98,7 +100,7 @@
             me anytime, tárt karokkal várok mindenkit &lt;&lt;3
         </p>
     </KoloraMemberDisplay>
-    <KoloraMemberDisplay
+    <!--KoloraMemberDisplay
         name="Reszegi Ramóna (wip)"
         tags={["Énekes"]}
         links={[
@@ -107,7 +109,7 @@
                 url: "https://linktr.ee/nedela_zenekar",
             },
         ]}
-    />
+    /-->
     <KoloraMemberDisplay
         profilePictureUrl={pfpSzvorenEszter}
         name="Szvoren Eszter"
@@ -130,7 +132,8 @@
             >, vagy minimum hazai kortársat, na szevasz.
         </p>
     </KoloraMemberDisplay>
-    <KoloraMemberDisplay name="Tolnai Zsófi (wip)" />
+    <!--KoloraMemberDisplay name="Tolnai Zsófi (wip)" /-->
+    <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
     <KoloraMemberDisplay
         profilePictureUrl={pfpCsaktornyaiAdam}
         name="Csáktornyai Ádám - Csáki"
@@ -162,7 +165,7 @@
         <p>
             Akár a tiéd is! Ha szeretnél csatlakozni hozzánk, keress a <a
                 href="/contacts">megadott elérhetőségeinken</a
-            > (vagy ha épp ott iszogatunk, a Museum Caféban).
+            > (vagy ha épp ott iszogatunk, akkor a Museum Caféban).
         </p>
     </Alert>
 </main>
