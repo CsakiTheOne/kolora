@@ -2,6 +2,10 @@ main, .fade-in {
     animation: fadeIn .5s ease-in-out;
 }
 
+.fade-in-2s {
+    animation: fadeIn 2s ease-in-out;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

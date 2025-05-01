@@ -14,7 +14,7 @@
     import { ROLES } from "$lib/model/KoloraUser";
     import PoiUtils from "$lib/PoiUtils";
 
-    const { post, ...rest } = $props();
+    const { post, onReloadRequest, ...rest } = $props();
 
     let isOwnerLoggedIn = $state(false);
     let isAdminLoggedIn = $state(false);
@@ -83,7 +83,7 @@
                 firestore.posts
                     .set(post.id, { content: post.content })
                     .then(() => {
-                        window.location.reload();
+                        onReloadRequest();
                         isEditing = false;
                     });
             }}
@@ -149,7 +149,7 @@
                             confirm("Biztos törölni szeretnéd ezt a posztot?")
                         ) {
                             firestore.posts.delete(post.id).then(() => {
-                                window.location.reload();
+                                onReloadRequest();
                             });
                         }
                     }}

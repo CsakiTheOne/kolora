@@ -12,17 +12,6 @@
     </a>
     <h3 class="title">{poi?.name ?? "Betöltés..."}</h3>
     <div class="toolbar">
-        <button
-            class="btn"
-            onclick={() => {
-                alert(
-                    "Egy helyhez kötött üzenőfal, ahová bárki posztolhat és olvashat verseket, történeteket, vagy bármi egyéb gondolatot.",
-                );
-            }}
-        >
-            <span class="mdi mdi-help-circle"></span>
-            Mi ez?
-        </button>
         <a href={poi?.googleMapsLink} target="_blank" aria-label="Térkép">
             <span class="mdi mdi-map-marker"></span>
         </a>
