@@ -43,12 +43,32 @@
                         }}
                     />
                     <sveaflet.Popup>
-                        <p>
-                            {poi.name} <br />
+                        <h4>{poi.name}</h4>
+                        <br />
+                        <ul class="outlined-list">
                             <a href={poi.googleMapsLink} target="_blank">
-                                Megnyitás Google Térképen
+                                <li>
+                                    <span class="mdi mdi-map"></span>
+                                    Megnyitás Google Térképen
+                                </li>
                             </a>
-                        </p>
+                            {#if poi.hint1Url}
+                                <a href={poi.hint1Url} target="_blank">
+                                    <li>
+                                        <span class="mdi mdi-help"></span>
+                                        Segítség #1
+                                    </li>
+                                </a>
+                            {/if}
+                            {#if poi.hint2Url}
+                                <a href={poi.hint2Url} target="_blank">
+                                    <li>
+                                        <span class="mdi mdi-help"></span>
+                                        Segítség #2
+                                    </li>
+                                </a>
+                            {/if}
+                        </ul>
                     </sveaflet.Popup>
                 </sveaflet.Marker>
                 <sveaflet.Circle
@@ -114,12 +134,14 @@
 
 <style>
     :global(.leaflet-popup-content-wrapper, .leaflet-popup-tip) {
-        background-color: var(--primary-variant-color) !important;
-        color: var(--on-primary-variant-color) !important;
+        background-color: var(--background-color) !important;
+        color: var(--on-background-color) !important;
+        border-radius: var(--corner-radius) !important;
     }
 
     :global(.leaflet-popup-close-button) {
         color: var(--on-primary-variant-color) !important;
+        scale: 1.5;
     }
 
     .button-row {
