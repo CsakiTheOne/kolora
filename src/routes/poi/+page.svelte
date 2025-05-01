@@ -38,16 +38,18 @@
     let isWorkSelectorDialogOpen = $state(false);
 
     function startWatchingLocation() {
-        if (ignoreLocation) {
-            isNearby = true;
-            isLoadingLocation = false;
-            loadPosts();
-            return;
-        }
-
         isLoadingLocation = true;
         return navigator.geolocation.watchPosition(
             (position) => {
+                if (ignoreLocation) {
+                    isNearby = true;
+                    isLoadingLocation = false;
+                    if (posts.length === 0) {
+                        loadPosts();
+                    }
+                    return;
+                }
+
                 distanceMeters = PoiUtils.measureDistance(
                     poi!!.latitude,
                     poi!!.longitude,
