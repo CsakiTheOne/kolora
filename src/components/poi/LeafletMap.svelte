@@ -4,7 +4,6 @@
     import mapIconPoi from "$lib/images/map/poi.png";
     import POI from "$lib/model/POI";
     import PoiUtils from "$lib/PoiUtils";
-    import { Polyline } from "sveaflet";
 
     let sveaflet: any = $state(null);
 
@@ -89,25 +88,6 @@
                         radius: PoiUtils.DISTANCE_TO_VIEW,
                     }}
                 />
-                <!--sveaflet.Polyline
-                        latLngs={[
-                            [userLocation[0], userLocation[1]],
-                            [poi.latitude, poi.longitude],
-                        ]}
-                        options={{
-                            color: "#931621",
-                            weight:
-                                15 -
-                                PoiUtils.measureDistance(
-                                    userLocation[0],
-                                    userLocation[1],
-                                    poi.latitude,
-                                    poi.longitude,
-                                ) /
-                                    180,
-                            opacity: 0.5,
-                        }}
-                    /-->
             {/each}
             <sveaflet.Marker latLng={userLocation}>
                 <sveaflet.Icon
@@ -116,6 +96,28 @@
                         iconSize: [16, 16],
                     }}
                 />
+                <sveaflet.Popup>
+                    <h4>Itt vagy most</h4>
+                    <br />
+                    <ul class="outlined-list">
+                        <button
+                            onclick={() => {
+                                map.setView(userLocation, 15);
+                            }}
+                        >
+                            <li>
+                                <span class="mdi mdi-crosshairs-gps"></span>
+                                Középre állítás
+                            </li>
+                        </button>
+                        <a href="https://maps.google.com" target="_blank">
+                            <li>
+                                <span class="mdi mdi-map"></span>
+                                Google Térkép megnyitása
+                            </li>
+                        </a>
+                    </ul>
+                </sveaflet.Popup>
             </sveaflet.Marker>
         </sveaflet.Map>
         <div class="button-row">
@@ -151,7 +153,7 @@
         gap: var(--spacing);
     }
 
-    button {
+    .button-row button {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         border-bottom-left-radius: var(--corner-radius);

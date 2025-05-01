@@ -18,18 +18,17 @@ ul.outlined-list>* {
     width: 100%;
 }
 
-ul.outlined-list li,
-ul.outlined-list button {
+ul.outlined-list>* {
     display: block;
     width: 100%;
     list-style: none;
     padding: calc(var(--spacing) / 2);
-    border-bottom: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color) !important;
     font-size: inherit;
+    text-align: inherit;
 }
 
-ul.outlined-list button,
-ul.outlined-list a {
+ul.outlined-list :is(a, button) {
     appearance: none;
     border: none;
     background-color: var(--primary-variant-color);
@@ -38,8 +37,7 @@ ul.outlined-list a {
     text-decoration: none;
 }
 
-ul.outlined-list button:hover,
-ul.outlined-list a:hover {
+ul.outlined-list :is(a, button):hover {
     background-color: var(--primary-color);
     color: var(--on-primary-color);
 }
