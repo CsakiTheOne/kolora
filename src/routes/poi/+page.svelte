@@ -224,8 +224,10 @@
             <h2>Üdv a Kolora helyi üzenőfalán</h2>
             <h3>
                 {#if poi}
-                    <span class="mdi mdi-map-marker"></span>
-                    {poi.name}
+                    <a href={poi.googleMapsLink} target="_blank">
+                        <span class="mdi mdi-map-marker"></span>
+                        {poi.name}
+                    </a>
                 {:else}
                     Betöltés...
                 {/if}
