@@ -3,11 +3,15 @@
     import ThemeManager from "$lib/ThemeManager";
     import AccountToolbarIcon from "../AccountToolbarIcon.svelte";
 
-    let { poi } = $props();
+    let { poi, onWelcomeRequest } = $props();
 </script>
 
 <header>
-    <a href="/" style="height: 48px; position: absolute; top: 0; left: 0;">
+    <a
+        href="#"
+        style="height: 48px; position: absolute; top: 0; left: 0;"
+        onclick={onWelcomeRequest}
+    >
         <img class="header-logo" src={koloraLogo} alt="Kolora logó" />
     </a>
     <h3 class="title">{poi?.name ?? "Betöltés..."}</h3>

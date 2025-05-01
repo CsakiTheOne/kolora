@@ -22,6 +22,7 @@
 
     let isWelcomeScreenOpen = $state(true);
     let welcomeScreenBackground: HTMLCanvasElement | null = $state(null);
+    let elapsedTime = $state(0);
 
     let isLoadingLocation = $state(false);
     let distanceMeters = $state(0);
@@ -121,24 +122,24 @@
             return;
         }
 
-        let elapsedTime = 0;
-        const wctx = welcomeScreenBackground?.getContext("2d");
-        if (!welcomeScreenBackground || !wctx) return;
-        welcomeScreenBackground.width =
-            welcomeScreenBackground.parentElement!!.clientWidth;
-        welcomeScreenBackground.height =
-            welcomeScreenBackground.parentElement!!.clientHeight;
         const welcomeAnimationInterval = setInterval(() => {
+            if (!welcomeScreenBackground) return;
+            welcomeScreenBackground.width =
+                welcomeScreenBackground.parentElement!!.clientWidth;
+            welcomeScreenBackground.height =
+                welcomeScreenBackground.parentElement!!.clientHeight;
+            const wctx = welcomeScreenBackground?.getContext("2d");
+            if (!wctx) return;
+
             const scale = Math.max(
                 1,
-                welcomeScreenBackground!!.height * 1.2 - elapsedTime,
+                welcomeScreenBackground.height * 1.2 - elapsedTime,
             );
-            elapsedTime += 1000 / 60;
             wctx.clearRect(
                 0,
                 0,
-                welcomeScreenBackground!!.width,
-                welcomeScreenBackground!!.height,
+                welcomeScreenBackground.width,
+                welcomeScreenBackground.height,
             );
             wctx.beginPath();
             const offset = -elapsedTime / 500;
@@ -148,7 +149,7 @@
                 wctx.lineTo(
                     64 +
                         radius * Math.cos(i) +
-                        welcomeScreenBackground!!.width / 2 -
+                        welcomeScreenBackground.width / 2 -
                         64,
                     64 + radius * Math.sin(i) + 64,
                 );
@@ -156,6 +157,7 @@
             wctx.closePath();
             wctx.fillStyle = "#89013f";
             wctx.fill();
+            elapsedTime += 1000 / 60;
         }, 1000 / 60);
 
         firestore.pois
@@ -314,7 +316,13 @@
         </Backdrop>
     {/if}
 
-    <PoiHeader {poi} />
+    <PoiHeader
+        {poi}
+        onWelcomeRequest={() => {
+            elapsedTime = 0;
+            isWelcomeScreenOpen = true;
+        }}
+    />
     <main>
         {#if !poi}
             <p>Betöltés...</p>
