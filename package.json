@@ -31,6 +31,7 @@
 		"@mdi/font": "^7.4.47",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"firebase": "^11.1.0",
+		"sveaflet": "^0.1.4",
 		"svelte-markdown": "^0.4.1"
 	}
 }
