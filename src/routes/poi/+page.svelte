@@ -236,16 +236,10 @@
                 Ez egy helyhez kötött üzenőfal, ahol verseket, kis történeteket
                 és egyéb gondolatokat hagyhatsz másoknak.
             </p>
-            <a href="/">
-                <button class="btn">
-                    Kik vagyunk? Mi az a Kolora Egyesület?
-                </button>
-            </a>
+            <a href="/"> Kik vagyunk? Mi az a Kolora Egyesület? </a>
             <a href="/feeds">
-                <button class="btn">
-                    <span class="mdi mdi-map"></span>
-                    Hol vannak még ilyenek?
-                </button>
+                <span class="mdi mdi-map"></span>
+                Hol vannak még ilyenek?
             </a>
             <button
                 class="btn"
@@ -525,7 +519,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        padding: var(--spacing);
+        padding: calc(var(--spacing) * 2);
         padding-top: 92px;
         padding-bottom: 64px;
         z-index: 1;
