@@ -4,13 +4,9 @@
     import mapIconPoi from "$lib/images/map/poi.png";
     import POI from "$lib/model/POI";
     import PoiUtils from "$lib/PoiUtils";
+    import { Polyline } from "sveaflet";
 
-    let Map: any = $state(null);
-    let TileLayer: any = $state(null);
-    let Marker: any = $state(null);
-    let Icon: any = $state(null);
-    let Circle: any = $state(null);
-    let Popup: any = $state(null);
+    let sveaflet: any = $state(null);
 
     const { userLocation = [0, 0], pois = [], ...rest } = $props();
 
@@ -18,13 +14,7 @@
     let map: any = $state(null);
 
     onMount(async () => {
-        const mod = await import("sveaflet");
-        Map = mod.Map;
-        TileLayer = mod.TileLayer;
-        Marker = mod.Marker;
-        Icon = mod.Icon;
-        Circle = mod.Circle;
-        Popup = mod.Popup;
+        sveaflet = await import("sveaflet");
 
         isLoaded = true;
     });
@@ -34,34 +24,34 @@
     <div class="loading">Loading...</div>
 {:else}
     <div {...rest}>
-        <Map
+        <sveaflet.Map
             options={{
                 center: [46.9, 18.3],
                 zoom: 7,
             }}
             bind:instance={map}
         >
-            <TileLayer
+            <sveaflet.TileLayer
                 url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
             />
             {#each pois as poi: POI}
-                <Marker latLng={[poi.latitude, poi.longitude]}>
-                    <Icon
+                <sveaflet.Marker latLng={[poi.latitude, poi.longitude]}>
+                    <sveaflet.Icon
                         options={{
                             iconUrl: mapIconPoi,
                             iconSize: [24, 24],
                         }}
                     />
-                    <Popup>
+                    <sveaflet.Popup>
                         <p>
                             {poi.name} <br />
                             <a href={poi.googleMapsLink} target="_blank">
                                 Megnyitás Google Térképen
                             </a>
                         </p>
-                    </Popup>
-                </Marker>
-                <Circle
+                    </sveaflet.Popup>
+                </sveaflet.Marker>
+                <sveaflet.Circle
                     latLng={[poi.latitude, poi.longitude]}
                     options={{
                         color: "#931621",
@@ -70,7 +60,7 @@
                         radius: PoiUtils.DISTANCE_TO_OPEN,
                     }}
                 />
-                <Circle
+                <sveaflet.Circle
                     latLng={[poi.latitude, poi.longitude]}
                     options={{
                         color: "transparent",
@@ -79,16 +69,35 @@
                         radius: PoiUtils.DISTANCE_TO_VIEW,
                     }}
                 />
+                <!--sveaflet.Polyline
+                        latLngs={[
+                            [userLocation[0], userLocation[1]],
+                            [poi.latitude, poi.longitude],
+                        ]}
+                        options={{
+                            color: "#931621",
+                            weight:
+                                15 -
+                                PoiUtils.measureDistance(
+                                    userLocation[0],
+                                    userLocation[1],
+                                    poi.latitude,
+                                    poi.longitude,
+                                ) /
+                                    180,
+                            opacity: 0.5,
+                        }}
+                    /-->
             {/each}
-            <Marker latLng={userLocation}>
-                <Icon
+            <sveaflet.Marker latLng={userLocation}>
+                <sveaflet.Icon
                     options={{
                         iconUrl: mapIconUser,
                         iconSize: [16, 16],
                     }}
                 />
-            </Marker>
-        </Map>
+            </sveaflet.Marker>
+        </sveaflet.Map>
         <div class="button-row">
             <button
                 class="btn"
