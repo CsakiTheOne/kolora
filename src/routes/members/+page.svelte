@@ -7,6 +7,7 @@
     import pfpGergelyEmma from "$lib/images/members/gergely-emma.jpg";
     import pfpReszegiRamona from "$lib/images/members/reszegi-ramona.jpg";
     import pfpSzvorenEszter from "$lib/images/members/szvoren-eszter.jpg";
+    import pfpKissBalint from "$lib/images/members/kiss-balint.webp";
     import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
     import Alert from "../../components/Alert.svelte";
 </script>
@@ -142,7 +143,6 @@
         </p>
     </KoloraMemberDisplay>
     <!--KoloraMemberDisplay name="Tolnai Zsófi (wip)" /-->
-    <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
     <KoloraMemberDisplay
         profilePictureUrl={pfpCsaktornyaiAdam}
         name="Csáktornyai Ádám - Csáki"
@@ -165,6 +165,24 @@
             nyugodtan! :D
         </p>
     </KoloraMemberDisplay>
+    <KoloraMemberDisplay
+        profilePictureUrl={pfpKissBalint}
+        name="Kiss Bálint - Piros"
+        tags={["Szervező", "Piros"]}
+        links={[
+            {
+                name: "Member of Insanity Crew",
+                url: "https://www.instagram.com/insanitycrew_events",
+            },
+        ]}
+    >
+        <p>
+            Hali! Amikor éppen nem sört csapolok vagy az ország egy random
+            pontján épitek egy színpadot, szeretek programokat szervezn és
+            kapcsolatokat épiteni csodálatos emberekkel.
+        </p>
+    </KoloraMemberDisplay>
+    <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
 
     <Alert icon="information" title="De várj, ez még nem minden!">
         <p>

@@ -34,7 +34,7 @@
                         <Badge
                             style="background: {['Elnök', 'Alelnök'].includes(
                                 tag,
-                            ) && 'var(--primary-color)'}; color: white;"
+                            ) && 'var(--primary-color)' || tag === "Piros" && "#dd0000e0"}; color: white;"
                         >
                             {tag}
                         </Badge>
