@@ -4,6 +4,7 @@
     import mapIconPoi from "$lib/images/map/poi.png";
     import POI from "$lib/model/POI";
     import PoiUtils from "$lib/PoiUtils";
+    import firestore from "$lib/firebase/firestore";
 
     let sveaflet: any = $state(null);
 
@@ -11,6 +12,8 @@
 
     let isLoaded = $state(false);
     let map: any = $state(null);
+    let selectedPoi: POI | null = $state(null);
+    let selectedPoiPostsCount: number = $state(0);
 
     onMount(async () => {
         sveaflet = await import("sveaflet");
@@ -35,7 +38,18 @@
                     url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
                 />
                 {#each pois as poi: POI}
-                    <sveaflet.Marker latLng={[poi.latitude, poi.longitude]}>
+                    <sveaflet.Marker
+                        latLng={[poi.latitude, poi.longitude]}
+                        onclick={() => {
+                            selectedPoi = poi;
+                            selectedPoiPostsCount = 0;
+                            firestore.posts
+                                .getCountByPoi(poi.id)
+                                .then((count) => {
+                                    selectedPoiPostsCount = count;
+                                });
+                        }}
+                    >
                         <sveaflet.Icon
                             options={{
                                 iconUrl: mapIconPoi,
@@ -43,23 +57,39 @@
                             }}
                         />
                         <sveaflet.Popup>
-                            <h4>{poi.name}</h4>
+                            <h4>
+                                <a href={poi.googleMapsLink} target="_blank">
+                                    <span class="mdi mdi-map-marker"></span>
+                                    {poi.name}
+                                </a>
+                            </h4>
                             <br />
                             <ul class="outlined-list">
-                                <a href={poi.googleMapsLink} target="_blank">
+                                {#if selectedPoiPostsCount > 0}
                                     <li>
-                                        <span class="mdi mdi-map"></span>
-                                        Megnyitás Google Térképen
+                                        <span class="mdi mdi-comment-text"
+                                        ></span>
+                                        {selectedPoiPostsCount} poszt
                                     </li>
-                                </a>
-                                <li style="display: flex; flex-direction: row; padding: 0;">
+                                {/if}
+                                <li
+                                    style="display: flex; flex-direction: row; padding: 0;"
+                                >
                                     {#if poi.hint1Url}
-                                        <a href={poi.hint1Url} target="_blank" style="width: 100%; padding: calc(var(--spacing) / 2);">
+                                        <a
+                                            href={poi.hint1Url}
+                                            target="_blank"
+                                            style="width: 100%; padding: calc(var(--spacing) / 2);"
+                                        >
                                             Segítség #1
                                         </a>
                                     {/if}
                                     {#if poi.hint2Url}
-                                        <a href={poi.hint2Url} target="_blank" style="width: 100%; padding: calc(var(--spacing) / 2);">
+                                        <a
+                                            href={poi.hint2Url}
+                                            target="_blank"
+                                            style="width: 100%; padding: calc(var(--spacing) / 2);"
+                                        >
                                             Segítség #2
                                         </a>
                                     {/if}
