@@ -5,6 +5,7 @@
     import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
     import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
     import pfpGergelyEmma from "$lib/images/members/gergely-emma.jpg";
+    import pfpReszegiRamona from "$lib/images/members/reszegi-ramona.jpg";
     import pfpSzvorenEszter from "$lib/images/members/szvoren-eszter.jpg";
     import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
     import Alert from "../../components/Alert.svelte";
@@ -100,16 +101,24 @@
             me anytime, tárt karokkal várok mindenkit &lt;&lt;3
         </p>
     </KoloraMemberDisplay>
-    <!--KoloraMemberDisplay
-        name="Reszegi Ramóna (wip)"
+    <KoloraMemberDisplay
+        profilePictureUrl={pfpReszegiRamona}
+        name="Reszegi Ramóna - Rami"
         tags={["Énekes"]}
         links={[
             {
-                name: "Nedel'a zenekar",
-                url: "https://linktr.ee/nedela_zenekar",
+                name: "Nedel'a zenekar Insta",
+                url: "https://www.instagram.com/nedela_zenekar",
             },
         ]}
-    /-->
+    >
+        <p>
+            Egy életvidám pörgős arc vagyok szeretek szervezni, segíteni ahol
+            kell. A spontaneitásnak is megvan a maga pikantériája no de a
+            tervezés sem árt néha;) Az én asztalom a koncertek körülötti
+            intézkedés ezzel is szeretnék nagyban foglalkozni, keress bátran!
+        </p>
+    </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpSzvorenEszter}
         name="Szvoren Eszter"
