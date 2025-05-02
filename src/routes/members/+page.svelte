@@ -2,6 +2,7 @@
     import Footer from "../../components/Footer.svelte";
     import Header from "../../components/Header.svelte";
     import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
+    import pfpVolgyesiTamas from "$lib/images/members/volgyesi-tamas.jpg";
     import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
     import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
     import pfpGergelyEmma from "$lib/images/members/gergely-emma.jpg";
@@ -16,21 +17,19 @@
 <main>
     <h2>Tagok</h2>
 
-    <Alert icon="alert">
-        <p>
-            Ez az oldal még nincs kész, ezért csak kolora tagok és a linkkel
-            rendelkező emberek láthatják. Akinél a WIP feliratot látod, neki még
-            nincs kész a bemutatkozása. Náluk ideiglenesen én pótoltam pár
-            dolgot, hogy jobban lássam hogyan fog egyben kinézni az oldal.
-        </p>
-    </Alert>
-
     <!-- Elnökség -->
     <KoloraMemberDisplay
-        name="Völgyesi Tamás - Toma (wip)"
-        tags={["Elnök", "Nem öreg, de már fiatal sem"]}
+        profilePictureUrl={pfpVolgyesiTamas}
+        name="Völgyesi Tamás - Toma"
+        tags={["Elnök", "Fehérvár. Hardcore. Röviden."]}
     >
-        <p>//TODO: hamarosan</p>
+        <p>
+            10+ év rendezvénytechnika.<br />
+            10+ év vendéglátás.<br />
+            20+ év rendezvényszervezés.<br />
+            30+ év rajongás a művészetért.<br />
+            30+ év lokálpatriotizmus.<br />
+        </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
         name="Bodonyi Dániel (wip)"
@@ -68,7 +67,7 @@
     <!-- Tagok -->
     <KoloraMemberDisplay
         profilePictureUrl={pfpCsaktornyaiAdam}
-        name="Csáktornyai Ádám - Csáki"
+        name="Csáki"
         tags={["Szoftvermérnök", "Táncos"]}
         links={[
             {
@@ -103,7 +102,7 @@
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpKissBalint}
-        name="Kiss Bálint - Piros"
+        name="Piros"
         tags={["Szervező", "Piros"]}
         links={[
             {
@@ -114,7 +113,7 @@
     >
         <p>
             Hali! Amikor éppen nem sört csapolok vagy az ország egy random
-            pontján épitek egy színpadot, szeretek programokat szervezn és
+            pontján épitek egy színpadot, szeretek programokat szervezni és
             kapcsolatokat épiteni csodálatos emberekkel.
         </p>
     </KoloraMemberDisplay>
@@ -144,8 +143,8 @@
     <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
     <KoloraMemberDisplay
         profilePictureUrl={pfpReszegiRamona}
-        name="Reszegi Ramóna - Rami"
-        tags={["Énekes"]}
+        name="Rami"
+        tags={["Feltörekvő énekes"]}
         links={[
             {
                 name: "Nedel'a zenekar Insta",
