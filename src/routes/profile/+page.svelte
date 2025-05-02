@@ -20,7 +20,7 @@
     import type POI from "$lib/model/POI";
     import MarkdownLinebreakParagraph from "../../components/markdown-renderers/MarkdownLinebreakParagraph.svelte";
     import AchievementTree from "../../components/AchievementTree.svelte";
-    import { achievements } from "$lib/model/Achievement";
+    import { achievements, getRewardsByUser } from "$lib/model/Achievement";
     import Divider from "../../components/Divider.svelte";
 
     let isOwnerLoggedIn = $state(false);
@@ -128,20 +128,29 @@
             style="font-size: larger;"
             maxlength="30"
         />
-        <textarea
-            class="outlined-input"
-            style="resize: none; field-sizing: content; min-height: 100px;"
-            bind:value={newBio}
-            maxlength="1000"
-        ></textarea>
-        <p>
-            {newBio.length} / 1000 - A bemutatkozás támogatja a
-            <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank"
-                >Markdown formázást</a
-            >, a beágyazott YouTube videókat és a következő változókat: <br />
-            - {"{createdAt}"}: Regisztrálás dátuma<br />
-            - {"{visitedPlaces}"}: Látogatott helyek száma
-        </p>
+        {#if getRewardsByUser(koloraUser).includes("profile.bio.edit")}
+            <textarea
+                class="outlined-input"
+                style="resize: none; field-sizing: content; min-height: 100px;"
+                bind:value={newBio}
+                maxlength="1000"
+            ></textarea>
+            <p>
+                {newBio.length} / 1000 - A bemutatkozás támogatja a
+                <a
+                    href="https://www.markdownguide.org/cheat-sheet/"
+                    target="_blank">Markdown formázást</a
+                >, a beágyazott YouTube videókat és a következő változókat:
+                <br />
+                - {"{createdAt}"}: Regisztrálás dátuma<br />
+                - {"{visitedPlaces}"}: Látogatott helyek száma
+            </p>
+        {:else}
+            <p>
+                A bemutatkozás szerkesztéséhez látogass meg legalább egy
+                üzenőfalat.
+            </p>
+        {/if}
     {:else}
         <h2>
             <span class="mdi mdi-account-circle"></span>
