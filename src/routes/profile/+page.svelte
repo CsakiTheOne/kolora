@@ -46,7 +46,7 @@
             works = newWorks;
         });
         firestore.posts.getAllByAuthor(koloraUser.id).then((newPosts) => {
-            posts = newPosts;
+            posts = newPosts.sort((a, b) => b.createdAt - a.createdAt);
             firestore.pois.getAll().then((newPois) => {
                 pois = newPois;
             });
