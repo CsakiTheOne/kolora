@@ -5,7 +5,7 @@
 @import url('./utils.css');
 
 body {
-    --primary-color: #931621;
+    --primary-color: #87243f;
     --primary-variant-color: #dc7f9b;
     --secondary-color: #313a71;
     --secondary-variant-color: #6ea6c4;
@@ -20,8 +20,8 @@ body {
 }
 
 body.theme-dark {
-    --primary-color: #b04a4a;
-    --primary-variant-color: #5b1b21;
+    --primary-color: #b04a5e;
+    --primary-variant-color: #87243f;
     --secondary-color: #33385b;
     --secondary-variant-color: #7d9ec2;
     --background-color: #100002;
