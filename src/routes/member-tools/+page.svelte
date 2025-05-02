@@ -2,7 +2,9 @@
     import { ROLES } from "$lib/model/KoloraUser";
     import UserManager from "$lib/UserManager.svelte";
     import Alert from "../../components/Alert.svelte";
+    import Countdown from "../../components/Countdown.svelte";
     import Footer from "../../components/Footer.svelte";
+    import Kiseger from "../../components/Kiseger.svelte";
     import SmallHeader from "../../components/SmallHeader.svelte";
 </script>
 
@@ -110,6 +112,23 @@
                 </li>
             </a>
         </ul>
+
+        <h2>Nem használt elemek</h2>
+        <p>
+            "Ezeket a komponensek egyszer elkészültek, de végül nem igazán
+            kerültek publikusan az oldalra. Ha már vannak, gondoltam iderakom."
+            - Csáki
+        </p>
+        <Countdown
+            targetDateTime={new Date(
+                new Date().getFullYear() + 1,
+                2,
+                20,
+                5,
+                30,
+            )}
+        />
+        <Kiseger />
     {/if}
 </main>
 <Footer />
