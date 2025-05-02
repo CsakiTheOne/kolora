@@ -81,10 +81,9 @@
         ]}
     >
         <p>
-            Mindenki csak Csákiként ismer. A srác, aki furcsa módokon kombinálja
-            az informatikát a művészettel. Verselek, programozok, táncolok és
-            ezt a weboldalt csinálgatom. Ha bármiben segítség kell, zaklass
-            nyugodtan! :D
+            Csá! -ki. A srác, aki furcsa módokon kombinálja az informatikát a
+            művészettel. Verselek, programozok, táncolok és ezt a weboldalt
+            csinálgatom. Ha bármiben segítség kell, zaklass nyugodtan! :D
         </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
@@ -99,23 +98,6 @@
         ]}
     >
         <p>//TODO: befejezni</p>
-    </KoloraMemberDisplay>
-    <KoloraMemberDisplay
-        profilePictureUrl={pfpKissBalint}
-        name="Piros"
-        tags={["Szervező", "Piros"]}
-        links={[
-            {
-                name: "Member of Insanity Crew",
-                url: "https://www.instagram.com/insanitycrew_events",
-            },
-        ]}
-    >
-        <p>
-            Hali! Amikor éppen nem sört csapolok vagy az ország egy random
-            pontján épitek egy színpadot, szeretek programokat szervezni és
-            kapcsolatokat épiteni csodálatos emberekkel.
-        </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpMeszarosEmese}
@@ -141,6 +123,23 @@
         </p>
     </KoloraMemberDisplay>
     <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
+    <KoloraMemberDisplay
+        profilePictureUrl={pfpKissBalint}
+        name="Piros"
+        tags={["Szervező", "Piros"]}
+        links={[
+            {
+                name: "Member of Insanity Crew",
+                url: "https://www.instagram.com/insanitycrew_events",
+            },
+        ]}
+    >
+        <p>
+            Hali! Amikor éppen nem sört csapolok vagy az ország egy random
+            pontján épitek egy színpadot, szeretek programokat szervezni és
+            kapcsolatokat épiteni csodálatos emberekkel.
+        </p>
+    </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpReszegiRamona}
         name="Reszegi Ramóna"
