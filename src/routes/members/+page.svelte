@@ -33,20 +33,6 @@
         <p>//TODO: hamarosan</p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
-        profilePictureUrl={pfpTothNikolett}
-        name="Tóth Nikolett - Niki"
-        tags={["Alelnök", "Író", "Felderítő"]}
-    >
-        <p>
-            Csókok bókok! Én lennék az egyik alelnöke ennek a csoda csapatnak.
-            Ha kell bármit kiderítek bárkiről/bármiről. Ha elkap az ihlet írni
-            szoktam, novellákat vagy monológokat. Bármikor vevő vagyok egy
-            bulira vagy csak egy beszélgetésre is. Tárt karokkal és egy hatalmas
-            öleléssel várok mindenkit ebbe a különleges kis társaságba. Légy
-            bármilyen különc itt otthonodra fogsz találni. &lt;3
-        </p>
-    </KoloraMemberDisplay>
-    <KoloraMemberDisplay
         name="Bodonyi Dániel (wip)"
         tags={["Alelnök", "DJ", "Műsorvezető"]}
         links={[
@@ -65,7 +51,43 @@
             a zenét sem! //TODO: befejezni
         </p>
     </KoloraMemberDisplay>
+    <KoloraMemberDisplay
+        profilePictureUrl={pfpTothNikolett}
+        name="Tóth Nikolett - Niki"
+        tags={["Alelnök", "Író", "Felderítő"]}
+    >
+        <p>
+            Csókok bókok! Én lennék az egyik alelnöke ennek a csoda csapatnak.
+            Ha kell bármit kiderítek bárkiről/bármiről. Ha elkap az ihlet írni
+            szoktam, novellákat vagy monológokat. Bármikor vevő vagyok egy
+            bulira vagy csak egy beszélgetésre is. Tárt karokkal és egy hatalmas
+            öleléssel várok mindenkit ebbe a különleges kis társaságba. Légy
+            bármilyen különc itt otthonodra fogsz találni. &lt;3
+        </p>
+    </KoloraMemberDisplay>
     <!-- Tagok -->
+    <KoloraMemberDisplay
+        profilePictureUrl={pfpCsaktornyaiAdam}
+        name="Csáktornyai Ádám - Csáki"
+        tags={["Szoftvermérnök", "Táncos"]}
+        links={[
+            {
+                name: "WholesameWare, a saját márkám",
+                url: "https://github.com/WholesomeWare",
+            },
+            {
+                name: "Alkalmazásaim a Play Áruházban",
+                url: "https://play.google.com/store/apps/dev?id=8177011913013516936",
+            },
+        ]}
+    >
+        <p>
+            Mindenki csak Csákiként ismer. A srác, aki furcsa módokon kombinálja
+            az informatikát a művészettel. Verselek, programozok, táncolok és
+            ezt a weboldalt csinálgatom. Ha bármiben segítség kell, zaklass
+            nyugodtan! :D
+        </p>
+    </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpGergelyEmma}
         name="Gergely Emma - Tacskó"
@@ -78,6 +100,23 @@
         ]}
     >
         <p>//TODO: befejezni</p>
+    </KoloraMemberDisplay>
+    <KoloraMemberDisplay
+        profilePictureUrl={pfpKissBalint}
+        name="Kiss Bálint - Piros"
+        tags={["Szervező", "Piros"]}
+        links={[
+            {
+                name: "Member of Insanity Crew",
+                url: "https://www.instagram.com/insanitycrew_events",
+            },
+        ]}
+    >
+        <p>
+            Hali! Amikor éppen nem sört csapolok vagy az ország egy random
+            pontján épitek egy színpadot, szeretek programokat szervezn és
+            kapcsolatokat épiteni csodálatos emberekkel.
+        </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpMeszarosEmese}
@@ -102,6 +141,7 @@
             me anytime, tárt karokkal várok mindenkit &lt;&lt;3
         </p>
     </KoloraMemberDisplay>
+    <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
     <KoloraMemberDisplay
         profilePictureUrl={pfpReszegiRamona}
         name="Reszegi Ramóna - Rami"
@@ -143,46 +183,6 @@
         </p>
     </KoloraMemberDisplay>
     <!--KoloraMemberDisplay name="Tolnai Zsófi (wip)" /-->
-    <KoloraMemberDisplay
-        profilePictureUrl={pfpCsaktornyaiAdam}
-        name="Csáktornyai Ádám - Csáki"
-        tags={["Szoftvermérnök", "Táncos"]}
-        links={[
-            {
-                name: "WholesameWare, a saját márkám",
-                url: "https://github.com/WholesomeWare",
-            },
-            {
-                name: "Alkalmazásaim a Play Áruházban",
-                url: "https://play.google.com/store/apps/dev?id=8177011913013516936",
-            },
-        ]}
-    >
-        <p>
-            Mindenki csak Csákiként ismer. A srác, aki furcsa módokon kombinálja
-            az informatikát a művészettel. Verselek, programozok, táncolok és
-            ezt a weboldalt csinálgatom. Ha bármiben segítség kell, zaklass
-            nyugodtan! :D
-        </p>
-    </KoloraMemberDisplay>
-    <KoloraMemberDisplay
-        profilePictureUrl={pfpKissBalint}
-        name="Kiss Bálint - Piros"
-        tags={["Szervező", "Piros"]}
-        links={[
-            {
-                name: "Member of Insanity Crew",
-                url: "https://www.instagram.com/insanitycrew_events",
-            },
-        ]}
-    >
-        <p>
-            Hali! Amikor éppen nem sört csapolok vagy az ország egy random
-            pontján épitek egy színpadot, szeretek programokat szervezn és
-            kapcsolatokat épiteni csodálatos emberekkel.
-        </p>
-    </KoloraMemberDisplay>
-    <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
 
     <Alert icon="information" title="De várj, ez még nem minden!">
         <p>
