@@ -52,22 +52,18 @@
                                         Megnyitás Google Térképen
                                     </li>
                                 </a>
-                                {#if poi.hint1Url}
-                                    <a href={poi.hint1Url} target="_blank">
-                                        <li>
-                                            <span class="mdi mdi-help"></span>
+                                <li style="display: flex; flex-direction: row; padding: 0;">
+                                    {#if poi.hint1Url}
+                                        <a href={poi.hint1Url} target="_blank" style="width: 100%; padding: calc(var(--spacing) / 2);">
                                             Segítség #1
-                                        </li>
-                                    </a>
-                                {/if}
-                                {#if poi.hint2Url}
-                                    <a href={poi.hint2Url} target="_blank">
-                                        <li>
-                                            <span class="mdi mdi-help"></span>
+                                        </a>
+                                    {/if}
+                                    {#if poi.hint2Url}
+                                        <a href={poi.hint2Url} target="_blank" style="width: 100%; padding: calc(var(--spacing) / 2);">
                                             Segítség #2
-                                        </li>
-                                    </a>
-                                {/if}
+                                        </a>
+                                    {/if}
+                                </li>
                             </ul>
                         </sveaflet.Popup>
                     </sveaflet.Marker>
@@ -101,16 +97,6 @@
                         <h4>Itt vagy most</h4>
                         <br />
                         <ul class="outlined-list">
-                            <button
-                                onclick={() => {
-                                    map.setView(userLocation, 15);
-                                }}
-                            >
-                                <li>
-                                    <span class="mdi mdi-crosshairs-gps"></span>
-                                    Középre állítás
-                                </li>
-                            </button>
                             <a href="https://maps.google.com" target="_blank">
                                 <li>
                                     <span class="mdi mdi-map"></span>
@@ -140,6 +126,10 @@
     .leaflet-map-container {
         border-radius: var(--corner-radius);
         overflow: hidden;
+    }
+
+    :global(.leaflet-popup-content-wrapper) {
+        max-width: 75vw;
     }
 
     :global(.leaflet-popup-content-wrapper, .leaflet-popup-tip) {
