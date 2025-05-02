@@ -143,7 +143,7 @@
     <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
     <KoloraMemberDisplay
         profilePictureUrl={pfpReszegiRamona}
-        name="Rami"
+        name="Reszegi Ramóna"
         tags={["Feltörekvő énekes"]}
         links={[
             {
