@@ -97,7 +97,12 @@
             },
         ]}
     >
-        <p>//TODO: befejezni</p>
+        <p>
+            Rajzolok, írok, festek, plakátokat tervezek - ha valamit ki lehet
+            találni és meg lehet valósítani, én ott vagyok. A kreativitás a
+            kedvenc játékszerem! És ha hirtelen elsuhan valaki deszkán a
+            környéken? Ne aggódj, csak én voltam - épp ihletet kergettem.
+        </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpMeszarosEmese}
