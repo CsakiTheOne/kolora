@@ -115,7 +115,7 @@
 
         <h2>Nem használt elemek</h2>
         <p>
-            "Ezeket a komponensek egyszer elkészültek, de végül nem igazán
+            "Ezek a komponensek egyszer elkészültek, de végül nem igazán
             kerültek publikusan az oldalra. Ha már vannak, gondoltam iderakom."
             - Csáki
         </p>
