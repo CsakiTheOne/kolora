@@ -50,7 +50,7 @@
         if (distanceMeters <= PoiUtils.DISTANCE_TO_VIEW) {
             window.location.replace(`/poi?id=${nearestPlace.id}`);
         } else {
-            errorMessage = "Nincs üzenőfal a közelben.";
+            window.location.replace("/");
         }
     }
 
