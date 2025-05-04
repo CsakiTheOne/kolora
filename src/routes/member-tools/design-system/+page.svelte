@@ -3,6 +3,7 @@
     import Divider from "../../../components/Divider.svelte";
     import Footer from "../../../components/Footer.svelte";
     import SmallHeader from "../../../components/SmallHeader.svelte";
+    import imgOldDesignSystem from "$lib/images/utils/kolora-design-language.png";
 </script>
 
 <SmallHeader
@@ -17,6 +18,12 @@
         jól láthatónak és könnyen érthetőnek kell lennünk. A design-unk is ezt
         hivatott tükrözni.
     </p>
+    <h3>Régi, Levi által alkotott design rendszer</h3>
+    <img
+        src={imgOldDesignSystem}
+        style="background: #888; width: 100%;"
+        alt="Old design system"
+    />
 
     <h3>Színek</h3>
     <p>
@@ -48,7 +55,7 @@
                 <td style="background: #b68cf0;">#b68cf0</td>
             </tr>
             <tr style="background: #931621;">
-                <td>Slam<sup>*</sup></td>
+                <td>Slam</td>
                 <td>#931621</td>
                 <td style="background: #dc7f9b;">#dc7f9b</td>
             </tr>
@@ -59,9 +66,29 @@
             </tr>
         </tbody>
     </table>
-    <p>
-        <sup>*</sup> = Ez a Kolora Egyesület elsődleges színe.
-    </p>
+    <h4>Egyéb színek</h4>
+    <table class="color-table">
+        <thead>
+            <tr>
+                <th style="width: 33%">Szín</th>
+                <th style="width: 66%">Hex kód(ok)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #89003e;">
+                <td>Logó színek</td>
+                <td style="background: linear-gradient(90deg, #89003e, #ffffff);">
+                    #89003e - #ffffff
+                </td>
+            </tr>
+            <tr style="background: #ff3030;">
+                <td>Előző logó színek</td>
+                <td style="background: linear-gradient(90deg, #ff3030, #ffffff);">
+                    #ff3030 - #ffffff
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     <h3>Formák és alakzatok</h3>
     <p>
@@ -121,7 +148,7 @@
         >.
     </p>
 
-    <h3>Komponensek</h3>
+    <h3>Frontend komponensek</h3>
     <p>
         Néhány egyedi komponens, amit a weboldalon használunk. Mindegyik követi
         a játékos, színes és fiatalos stílust.
