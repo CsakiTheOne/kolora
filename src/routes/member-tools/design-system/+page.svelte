@@ -77,13 +77,17 @@
         <tbody>
             <tr style="background: #89003e;">
                 <td>Logó színek</td>
-                <td style="background: linear-gradient(90deg, #89003e, #ffffff);">
+                <td
+                    style="background: linear-gradient(90deg, #89003e, #ffffff);"
+                >
                     #89003e - #ffffff
                 </td>
             </tr>
             <tr style="background: #ff3030;">
                 <td>Előző logó színek</td>
-                <td style="background: linear-gradient(90deg, #ff3030, #ffffff);">
+                <td
+                    style="background: linear-gradient(90deg, #ff3030, #ffffff);"
+                >
                     #ff3030 - #ffffff
                 </td>
             </tr>
@@ -147,6 +151,29 @@
             >poszt készítőt</a
         >.
     </p>
+    <h4>Média tartalom felbontások</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Platform és tartalom típus</th>
+                <th>Ajánlott felbontás</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Facebook esemény borító</td>
+                <td>1200x628 px</td>
+            </tr>
+            <tr>
+                <td>Instagram poszt</td>
+                <td>1080x1080 px</td>
+            </tr>
+            <tr>
+                <td>Instagram történet</td>
+                <td>1080x1920 px</td>
+            </tr>
+        </tbody>
+    </table>
 
     <h3>Frontend komponensek</h3>
     <p>

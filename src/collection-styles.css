@@ -44,7 +44,8 @@ ul.outlined-list :is(a, button):hover {
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-spacing: 0;
+    border-collapse: separate;
     border: 2px solid var(--primary-color);
     border-radius: var(--corner-radius);
 }
