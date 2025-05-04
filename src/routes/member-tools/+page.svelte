@@ -60,6 +60,30 @@
                 </p>
             </button>
         </ul>
+        <ul class="outlined-list">
+            <a href="/poi/nearby">
+                <li>
+                    <p>
+                        <span class="mdi mdi-map-marker"></span>
+                        Legközelebbi üzenőfal megnyitása
+                    </p>
+                    <p class="text-small">
+                        Mindig a hozzád legközelebb lévő üzenőfalra vezet. Ez
+                        megkönnyíti a QR kódok használatát.
+                    </p>
+                </li>
+            </a>
+            <button
+                onclick={() => {
+                    navigator.clipboard.writeText(
+                        `${window.location.origin}/poi/nearby`,
+                    );
+                }}
+            >
+                <span class="mdi mdi-content-copy"></span>
+                Legközelebbi üzenőfal link másolása
+            </button>
+        </ul>
 
         <h2>
             <span class="mdi mdi-progress-wrench"></span>
