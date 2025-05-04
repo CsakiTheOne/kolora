@@ -160,6 +160,7 @@
             elapsedTime += 1000 / 60;
         }, 1000 / 60);
 
+        let locationWatcher: number | null;
         firestore.pois
             .get(poiId)
             .then((res) => {
@@ -173,13 +174,13 @@
                     return;
                 }
 
+                locationWatcher = startWatchingLocation();
+
                 poi = res;
             })
             .catch(() => {
                 window.history.back();
             });
-
-        let locationWatcher = startWatchingLocation();
 
         return () => {
             if (welcomeAnimationInterval) {

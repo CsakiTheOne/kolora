@@ -55,7 +55,7 @@
     }
 
     onMount(() => {
-        let locationWatcher: number | null = null;
+        let locationWatcher: number | null;
         firestore.pois.getAll().then((pois) => {
             places = pois;
             if (places.length === 0) {

@@ -46,6 +46,8 @@
     }
 
     function getNearestPoi(position: GeolocationPosition) {
+        if (!places) return;
+
         places.sort((a, b) => {
             const distanceA = Math.sqrt(
                 Math.pow(a.latitude - position.coords.latitude, 2) +
@@ -74,14 +76,17 @@
 
     onMount(() => {
         isLoadingPlaces = true;
+        let locationWatcher: number | null;
         firestore.pois.getDiscoverable().then((pois) => {
             places = pois;
+            locationWatcher = startWatchingLocation();
             isLoadingPlaces = false;
         });
-        const locationWatcher = startWatchingLocation();
 
         return () => {
-            navigator.geolocation.clearWatch(locationWatcher);
+            if (locationWatcher) {
+                navigator.geolocation.clearWatch(locationWatcher);
+            }
         };
     });
 
