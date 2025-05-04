@@ -69,7 +69,8 @@
                     </p>
                     <p class="text-small">
                         Mindig a hozzád legközelebb lévő üzenőfalra vezet. Ez
-                        megkönnyíti a QR kódok használatát.
+                        megkönnyíti a QR kódok használatát. Ha nincs a környéken
+                        üzenőfal, akkor simán a főoldalra visz.
                     </p>
                 </li>
             </a>
