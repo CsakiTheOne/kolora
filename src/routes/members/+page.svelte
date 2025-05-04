@@ -72,7 +72,7 @@
         links={[
             {
                 name: "WholesameWare, a saját márkám",
-                url: "https://github.com/WholesomeWare",
+                url: "https://instagram.com/WholesomeWareStuff",
             },
             {
                 name: "Alkalmazásaim a Play Áruházban",
