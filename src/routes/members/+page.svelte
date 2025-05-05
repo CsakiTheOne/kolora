@@ -32,22 +32,17 @@
         </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
-        name="Bodonyi Dániel (wip)"
+        name="Bodonyi Dani"
         tags={["Alelnök", "DJ", "Műsorvezető"]}
-        links={[
-            {
-                name: "Café at Museum Essentials mix",
-                url: "https://www.mixcloud.com/Daniel_Bodonyi/bodonyi-dani-caf%C3%A9-at-museum-essentials/",
-            },
-            {
-                name: "Vörösmarty Rádió",
-                url: "https://vorosmartyradio.hu/",
-            },
-        ]}
     >
         <p>
-            Az életemben fontos a zene, a zene és a zene. Ja és ne felejtsük ki
-            a zenét sem! //TODO: befejezni
+            Az életem a zene, a zene és a zene. Ja és ne felejtsük ki a zenét
+            sem. Rádiós zenei szerkesztőként állandóan követem a könnyűzene
+            jelenét és így látom csak igazán, hogy mennyi rejtett erőtartalék
+            van a pop zenei felszín alatt. Célom az egyesületben, hogy minél
+            többféle zenével és zenésszel ismertessem meg a közönséget,
+            elősegítve egy olyan jövőt, ahol nem csak mai sláger meg mai sláger
+            között válogathat az ember.
         </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
