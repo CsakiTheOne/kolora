@@ -24,6 +24,15 @@
         style="background: #888; width: 100%;"
         alt="Old design system"
     />
+    <a
+        href="https://www.figma.com/design/fQXueseuUZJlGYchKmx8CN/Kolora-design-system-2024-25?m=auto&t=jGZMg3CFBvGBdLDc-6"
+        target="_blank"
+    >
+        <button class="btn" style="width: 100%;">
+            <span class="mdi mdi-figma"></span>
+            Figma
+        </button>
+    </a>
 
     <h3>Színek</h3>
     <p>
