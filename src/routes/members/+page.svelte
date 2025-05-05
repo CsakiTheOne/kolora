@@ -3,6 +3,7 @@
     import Header from "../../components/Header.svelte";
     import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
     import pfpVolgyesiTamas from "$lib/images/members/volgyesi-tamas.jpg";
+    import pfpBodonyiDaniel from "$lib/images/members/bodonyi-daniel.jpg";
     import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
     import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
     import pfpGergelyEmma from "$lib/images/members/gergely-emma.jpg";
@@ -32,6 +33,7 @@
         </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
+        profilePictureUrl={pfpBodonyiDaniel}
         name="Bodonyi Dani"
         tags={["Alelnök", "DJ", "Műsorvezető"]}
     >
