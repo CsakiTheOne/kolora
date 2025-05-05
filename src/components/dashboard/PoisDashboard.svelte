@@ -2,6 +2,8 @@
     import firestore from "$lib/firebase/firestore";
     import POI from "$lib/model/POI";
     import { onMount } from "svelte";
+    import LeafletMap from "../poi/LeafletMap.svelte";
+    import rtdb from "$lib/firebase/rtdb";
 
     let loading = $state(true);
 
@@ -11,6 +13,9 @@
         places.find((p) => p.id === selectedPlaceId),
     );
 
+    let distanceToOpen = $state(0);
+    let distanceToView = $state(0);
+
     function loadPlaces() {
         loading = true;
         firestore.pois.getAll().then((newPlaces) => {
@@ -18,6 +23,13 @@
                 return a.name.localeCompare(b.name);
             });
             loading = false;
+        });
+
+        rtdb.config.feeds.getDistanceToOpen().then((d) => {
+            distanceToOpen = d;
+        });
+        rtdb.config.feeds.getDistanceToView().then((d) => {
+            distanceToView = d;
         });
     }
 
@@ -73,6 +85,36 @@
             </tr>
         </tbody>
     </table>
+
+    <LeafletMap
+        pois={places}
+        style="aspect-ratio: 5 / 4;"
+        overrideDistanceToOpen={distanceToOpen}
+        overrideDistanceToView={distanceToView}
+    />
+
+    <p>Távolság megnyitáshoz (kis kör, megnyitás gomb)</p>
+    <input
+        type="number"
+        class="outlined-input"
+        value={distanceToOpen}
+        oninput={(e: any) => {
+            rtdb.config.feeds.setDistanceToOpen(e.target?.value).then(() => {
+                distanceToOpen = e.target?.value;
+            });
+        }}
+    />
+    <p>Távolság megtekintéshez (/poi/nearby link, megtekintési jog)</p>
+    <input
+        type="number"
+        class="outlined-input"
+        value={distanceToView}
+        oninput={(e: any) => {
+            rtdb.config.feeds.setDistanceToView(e.target?.value).then(() => {
+                distanceToView = e.target?.value;
+            });
+        }}
+    />
 {:else}
     <button class="btn" onclick={() => (selectedPlaceId = null)}>
         <span class="mdi mdi-arrow-left"></span>

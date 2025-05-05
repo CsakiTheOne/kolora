@@ -4,9 +4,12 @@
     import PoiUtils from "$lib/PoiUtils";
     import { onMount } from "svelte";
     import Alert from "../../../components/Alert.svelte";
+    import rtdb from "$lib/firebase/rtdb";
 
     let errorMessage = $state("");
     let places: POI[] = $state([]);
+
+    let distanceToView = $state(0);
 
     function startWatchingLocation() {
         return navigator.geolocation.watchPosition(
@@ -47,7 +50,7 @@
             nearestPlace.longitude,
         );
 
-        if (distanceMeters <= PoiUtils.DISTANCE_TO_VIEW) {
+        if (distanceMeters <= distanceToView) {
             window.location.replace(`/poi?id=${nearestPlace.id}`);
         } else {
             window.location.replace("/");
@@ -56,6 +59,11 @@
 
     onMount(() => {
         let locationWatcher: number | null;
+
+        rtdb.config.feeds.getDistanceToView().then((d) => {
+            distanceToView = d;
+        });
+
         firestore.pois.getAll().then((pois) => {
             places = pois;
             if (places.length === 0) {

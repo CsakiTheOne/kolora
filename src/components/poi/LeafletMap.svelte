@@ -5,18 +5,35 @@
     import POI from "$lib/model/POI";
     import PoiUtils from "$lib/PoiUtils";
     import firestore from "$lib/firebase/firestore";
+    import rtdb from "$lib/firebase/rtdb";
 
     let sveaflet: any = $state(null);
 
-    const { userLocation = [0, 0], pois = [], ...rest } = $props();
+    const {
+        userLocation = [0, 0],
+        pois = [],
+        overrideDistanceToOpen = 0,
+        overrideDistanceToView = 0,
+        ...rest
+    } = $props();
 
     let isLoaded = $state(false);
     let map: any = $state(null);
     let selectedPoi: POI | null = $state(null);
     let selectedPoiPostsCount: number = $state(0);
 
+    let distanceToOpen = $state(0);
+    let distanceToView = $state(0);
+
     onMount(async () => {
         sveaflet = await import("sveaflet");
+
+        rtdb.config.feeds.getDistanceToOpen().then((d) => {
+            distanceToOpen = d;
+        });
+        rtdb.config.feeds.getDistanceToView().then((d) => {
+            distanceToView = d;
+        });
 
         isLoaded = true;
     });
@@ -103,7 +120,7 @@
                             color: "#931621",
                             fillColor: "#931621",
                             fillOpacity: 0.4,
-                            radius: PoiUtils.DISTANCE_TO_OPEN,
+                            radius: overrideDistanceToOpen > 0 ? overrideDistanceToOpen : distanceToOpen,
                         }}
                     />
                     <sveaflet.Circle
@@ -112,7 +129,7 @@
                             color: "transparent",
                             fillColor: "#931621",
                             fillOpacity: 0.1,
-                            radius: PoiUtils.DISTANCE_TO_VIEW,
+                            radius: overrideDistanceToView > 0 ? overrideDistanceToView : distanceToView,
                         }}
                     />
                 {/each}

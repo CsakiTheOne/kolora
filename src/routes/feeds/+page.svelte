@@ -11,6 +11,7 @@
     import Backdrop from "../../components/Backdrop.svelte";
     import LocationIndicator from "../../components/poi/LocationIndicator.svelte";
     import LeafletMap from "../../components/poi/LeafletMap.svelte";
+    import rtdb from "$lib/firebase/rtdb";
 
     let places: POI[] = $state([]);
     let locationPermissionInfoText: string = $state("");
@@ -21,6 +22,8 @@
     let isLoadingPlaces = $state(false);
     let isLoadingLocation = $state(false);
     let openedHintId: number | null = $state(null);
+
+    let distanceToOpen = $state(0);
 
     function startWatchingLocation() {
         isLoadingLocation = true;
@@ -81,6 +84,10 @@
             places = pois;
             locationWatcher = startWatchingLocation();
             isLoadingPlaces = false;
+        });
+
+        rtdb.config.feeds.getDistanceToOpen().then((d) => {
+            distanceToOpen = d;
         });
 
         return () => {
@@ -195,7 +202,7 @@
                     </button>
                 {/if}
             </div>
-            {#if distanceMeters < PoiUtils.DISTANCE_TO_OPEN}
+            {#if distanceMeters < distanceToOpen}
                 <p>
                     Még mindig nincs meg a matrica? Már nagyon közel vagy,
                     szóval ha nem találod, itt megnyithatod:

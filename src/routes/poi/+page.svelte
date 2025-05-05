@@ -16,6 +16,7 @@
     import { loginWithGoogle } from "$lib/firebase/auth";
     import LocationIndicator from "../../components/poi/LocationIndicator.svelte";
     import koloraLogo from "$lib/images/logos/kolora.png";
+    import rtdb from "$lib/firebase/rtdb";
 
     let poiId: string | null = $state(null);
     let poi: POI | null = $state(null);
@@ -38,6 +39,8 @@
     let postDraft: Post = $state({ ...new Post() });
     let isWorkSelectorDialogOpen = $state(false);
 
+    let distanceToView = $state(0);
+
     function startWatchingLocation() {
         isLoadingLocation = true;
         return navigator.geolocation.watchPosition(
@@ -58,7 +61,7 @@
                     position.coords.longitude,
                 );
 
-                isNearby = distanceMeters < PoiUtils.DISTANCE_TO_VIEW;
+                isNearby = distanceMeters < distanceToView;
 
                 if (isNearby && posts.length === 0) {
                     loadPosts();
@@ -121,6 +124,10 @@
             window.location.replace("/feeds");
             return;
         }
+
+        rtdb.config.feeds.getDistanceToView().then((d) => {
+            distanceToView = d;
+        });
 
         const welcomeAnimationInterval = setInterval(() => {
             if (!welcomeScreenBackground) return;
