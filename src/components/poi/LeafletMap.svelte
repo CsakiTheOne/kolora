@@ -14,6 +14,7 @@
         pois = [],
         overrideDistanceToOpen = 0,
         overrideDistanceToView = 0,
+        enableDebugFeatures = false,
         ...rest
     } = $props();
 
@@ -48,6 +49,11 @@
                 options={{
                     center: [46.9, 18.3],
                     zoom: 7,
+                }}
+                onclick={(e) => {
+                    if (enableDebugFeatures) {
+                        console.log("Map clicked", e);
+                    }
                 }}
                 bind:instance={map}
             >
@@ -120,7 +126,10 @@
                             color: "#931621",
                             fillColor: "#931621",
                             fillOpacity: 0.4,
-                            radius: overrideDistanceToOpen > 0 ? overrideDistanceToOpen : distanceToOpen,
+                            radius:
+                                overrideDistanceToOpen > 0
+                                    ? overrideDistanceToOpen
+                                    : distanceToOpen,
                         }}
                     />
                     <sveaflet.Circle
@@ -129,7 +138,10 @@
                             color: "transparent",
                             fillColor: "#931621",
                             fillOpacity: 0.1,
-                            radius: overrideDistanceToView > 0 ? overrideDistanceToView : distanceToView,
+                            radius:
+                                overrideDistanceToView > 0
+                                    ? overrideDistanceToView
+                                    : distanceToView,
                         }}
                     />
                 {/each}

@@ -91,6 +91,7 @@
         style="aspect-ratio: 5 / 4;"
         overrideDistanceToOpen={distanceToOpen}
         overrideDistanceToView={distanceToView}
+        enableDebugFeatures={true}
     />
 
     <p>Távolság megnyitáshoz (kis kör, megnyitás gomb)</p>
