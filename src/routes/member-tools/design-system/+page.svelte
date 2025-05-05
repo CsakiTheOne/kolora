@@ -29,7 +29,6 @@
         target="_blank"
     >
         <button class="btn" style="width: 100%;">
-            <span class="mdi mdi-figma"></span>
             Figma
         </button>
     </a>
