@@ -11,6 +11,16 @@
 
     let distanceToView = $state(0);
 
+    function openFallbackUrl() {
+        rtdb.config.feeds.getQrCodeFallbackUrl().then((url) => {
+            if (url) {
+                window.location.replace(url);
+            } else {
+                errorMessage = "Nem sikerült megnyitni a QR kódot.";
+            }
+        });
+    }
+
     function startWatchingLocation() {
         return navigator.geolocation.watchPosition(
             (position) => {
@@ -53,7 +63,7 @@
         if (distanceMeters <= distanceToView) {
             window.location.replace(`/poi?id=${nearestPlace.id}`);
         } else {
-            window.location.replace("/");
+            openFallbackUrl();
         }
     }
 
@@ -67,7 +77,7 @@
         firestore.pois.getAll().then((pois) => {
             places = pois;
             if (places.length === 0) {
-                errorMessage = "Nem sikerült lekérni az üzenőfalak helyét.";
+                openFallbackUrl();
                 return;
             }
             locationWatcher = startWatchingLocation();

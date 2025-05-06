@@ -30,6 +30,17 @@ const rtdb = {
             setDistanceToView: (distance: number): Promise<void> => {
                 return set(ref(db, "config/feeds/distance_to_view"), distance);
             },
+            /**
+             * The url to open when the qr code is scanned and there is no poi nearby.
+             */
+            getQrCodeFallbackUrl: (): Promise<string> => {
+                return get(ref(db, "config/feeds/qr_code_fallback_url")).then((snapshot) => {
+                    return snapshot.exists() ? snapshot.val() : "https://example.com";
+                });
+            },
+            setQrCodeFallbackUrl: (url: string): Promise<void> => {
+                return set(ref(db, "config/feeds/qr_code_fallback_url"), url);
+            },
         },
     },
     posts: {

@@ -1,11 +1,25 @@
-<script>
+<script lang="ts">
     import { ROLES } from "$lib/model/KoloraUser";
     import UserManager from "$lib/UserManager.svelte";
+    import { onMount } from "svelte";
     import Alert from "../../components/Alert.svelte";
     import Countdown from "../../components/Countdown.svelte";
     import Footer from "../../components/Footer.svelte";
     import Kiseger from "../../components/Kiseger.svelte";
     import SmallHeader from "../../components/SmallHeader.svelte";
+    import rtdb from "$lib/firebase/rtdb";
+
+    let qrFallbackUrl = $state("");
+
+    onMount(() => {
+        rtdb.config.feeds.getQrCodeFallbackUrl().then((url) => {
+            if (url) {
+                qrFallbackUrl = url;
+            } else {
+                qrFallbackUrl = "/";
+            }
+        });
+    });
 </script>
 
 <SmallHeader currentPage="Eszközök" />
@@ -66,6 +80,26 @@
                 <span class="mdi mdi-content-copy"></span>
                 Legközelebbi üzenőfal link másolása
             </button>
+            <li>
+                <p>
+                    Mi történjen ha valaki beolvassa a QR kódot, de nincs
+                    üzenőfal a közelben?
+                </p>
+                <input
+                    type="text"
+                    class="outlined-input"
+                    value={qrFallbackUrl}
+                    oninput={(e: any) => {
+                        qrFallbackUrl = e.target.value;
+                        rtdb.config.feeds.setQrCodeFallbackUrl(qrFallbackUrl);
+                    }}
+                />
+                <p class="text-small">
+                    Írj be egy sima / jelet a főoldal megnyitásához vagy másolj
+                    be bármilyen linket. pl.:
+                    https://instagram.com/koloraegyesulet
+                </p>
+            </li>
         </ul>
         <ul class="outlined-list">
             <button
