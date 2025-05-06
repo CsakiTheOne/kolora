@@ -10,7 +10,7 @@
     import PoiUtils from "$lib/PoiUtils";
     import Backdrop from "../../components/Backdrop.svelte";
     import LocationIndicator from "../../components/poi/LocationIndicator.svelte";
-    import LeafletMap from "../../components/poi/LeafletMap.svelte";
+    import FeedsMap from "../../components/poi/FeedsMap.svelte";
     import rtdb from "$lib/firebase/rtdb";
 
     let places: POI[] = $state([]);
@@ -226,7 +226,7 @@
     {/if}
 
     <h3>Térkép</h3>
-    <LeafletMap
+    <FeedsMap
         style="width: 100%; aspect-ratio: 5/4;"
         {userLocation}
         pois={places}

@@ -47,8 +47,8 @@
         <div {...rest} class="leaflet-map-container">
             <sveaflet.Map
                 options={{
-                    center: [46.9, 18.3],
-                    zoom: 7,
+                    center: [47.25, 18.45],
+                    zoom: 8,
                 }}
                 onclick={(e) => {
                     if (enableDebugFeatures) {

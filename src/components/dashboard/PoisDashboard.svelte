@@ -2,7 +2,7 @@
     import firestore from "$lib/firebase/firestore";
     import POI from "$lib/model/POI";
     import { onMount } from "svelte";
-    import LeafletMap from "../poi/LeafletMap.svelte";
+    import FeedsMap from "../poi/FeedsMap.svelte";
     import rtdb from "$lib/firebase/rtdb";
 
     let loading = $state(true);
@@ -86,7 +86,7 @@
         </tbody>
     </table>
 
-    <LeafletMap
+    <FeedsMap
         pois={places}
         style="aspect-ratio: 5 / 4;"
         overrideDistanceToOpen={distanceToOpen}
