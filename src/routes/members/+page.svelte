@@ -186,13 +186,9 @@
 
     <Alert icon="information" title="De várj, ez még nem minden!">
         <p>
-            Ezen az oldalon nem minden tagunk szerepel. Az ő bemutatkozásaik
-            később fognak megjelenni.
-        </p>
-        <p>
-            Akár a tiéd is! Ha szeretnél csatlakozni hozzánk, keress a <a
-                href="/contacts">megadott elérhetőségeinken</a
-            > (vagy ha épp ott iszogatunk, akkor a Museum Caféban).
+            Akár a te bemutatkozásod is itt lehet! Ha szeretnél csatlakozni
+            hozzánk, keress a <a href="/contacts">megadott elérhetőségeinken</a>
+            (vagy ha épp ott iszogatunk, akkor a Museum Caféban).
         </p>
     </Alert>
 </main>
