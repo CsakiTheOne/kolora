@@ -41,24 +41,6 @@
                     Poszt készítő
                 </li>
             </a>
-            <button
-                style="text-align: left;"
-                onclick={() => {
-                    navigator.clipboard.writeText(
-                        `${window.location.origin}/member-tools/auto-login`,
-                    );
-                }}
-            >
-                <p>
-                    <span class="mdi mdi-account"></span>
-                    Kolora fiók létrehozás egyszerűen
-                </p>
-                <p class="text-small">
-                    Ha valakinek szeretnél segíteni a Kolora fiók létrehozásban,
-                    akkor csak küldd el neki a linket, amit ide kattintva
-                    kimásolhatsz.
-                </p>
-            </button>
         </ul>
         <ul class="outlined-list">
             <a href="/poi/nearby">
@@ -83,6 +65,26 @@
             >
                 <span class="mdi mdi-content-copy"></span>
                 Legközelebbi üzenőfal link másolása
+            </button>
+        </ul>
+        <ul class="outlined-list">
+            <button
+                style="text-align: left;"
+                onclick={() => {
+                    navigator.clipboard.writeText(
+                        `${window.location.origin}/member-tools/auto-login`,
+                    );
+                }}
+            >
+                <p>
+                    <span class="mdi mdi-account"></span>
+                    Kolora fiók létrehozás egyszerűen
+                </p>
+                <p class="text-small">
+                    Ha valakinek szeretnél segíteni a Kolora fiók létrehozásban,
+                    akkor csak küldd el neki a linket, amit ide kattintva
+                    kimásolhatsz.
+                </p>
             </button>
         </ul>
 
