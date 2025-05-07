@@ -131,9 +131,16 @@
     </p>
     <h3>Kedvenc helyeink</h3>
     <div class="adaptive-col-row">
-        <div style="flex: 1;">
-            <ProfileShowcase image={imgMuseumCafeLogo} name="Museum Café" />
-            <div style="text-align: center; font-size: 1.2rem;">
+        <div style="flex: 1; text-align: center;">
+            <img
+                src={imgMuseumCafeLogo}
+                alt="Museum Café"
+                style="width: 100%; max-width: 300px; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--corner-radius);"
+            />
+            <h4 style="padding: calc(var(--spacing) / 2);">
+                Museum Café
+            </h4>
+            <div style="font-size: 1.2rem;">
                 <a
                     href="https://maps.app.goo.gl/nR419Mg19cqQWBeu8"
                     target="_blank"
@@ -154,12 +161,16 @@
                 </a>
             </div>
         </div>
-        <div style="flex: 1;">
-            <ProfileShowcase
-                image={imgNyolcasMuhelyLogo}
-                name="Nyolcas Műhely"
+        <div style="flex: 1; text-align: center;">
+            <img
+                src={imgNyolcasMuhelyLogo}
+                alt="Nyolcas Műhely"
+                style="width: 100%; max-width: 300px; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--corner-radius);"
             />
-            <div style="text-align: center; font-size: 1.2rem;">
+            <h4 style="padding: calc(var(--spacing) / 2);">
+                Nyolcas Műhely
+            </h4>
+            <div style="font-size: 1.2rem;">
                 <a
                     href="https://maps.app.goo.gl/G797KP5NgJ8qD3Jv9"
                     target="_blank"
