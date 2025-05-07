@@ -12,12 +12,50 @@
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
     import { onMount } from "svelte";
     import Divider from "../components/Divider.svelte";
+    import imgKoloraLogo from "$lib/images/logos/kolora.png";
+    import pfpVolgyesiTamas from "$lib/images/members/volgyesi-tamas.jpg";
+    import pfpBodonyiDaniel from "$lib/images/members/bodonyi-daniel.jpg";
+    import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
+    import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
+    import pfpGergelyEmma from "$lib/images/members/gergely-emma.jpg";
+    import pfpReszegiRamona from "$lib/images/members/reszegi-ramona.jpg";
+    import pfpSzvorenEszter from "$lib/images/members/szvoren-eszter.jpg";
+    import pfpKissBalint from "$lib/images/members/kiss-balint.webp";
+    import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
+    import FlowerImage from "../components/FlowerImage.svelte";
+
+    let windowWidth = $state(0);
+    let groupPhotoDeltaX = $state(0);
+    let groupPhotoDeltaY = $state(0);
+
+    $effect(() => {
+        windowWidth;
+        const groupPhotoW = document.getElementById("group-photo")?.clientWidth;
+        if (groupPhotoW) {
+            groupPhotoDeltaX = groupPhotoW / 100 * 13;
+            groupPhotoDeltaY = groupPhotoW / 100 * 10;
+        }
+    });
 </script>
+
+<svelte:window bind:innerWidth={windowWidth} />
 
 <Header selectedTab="Főoldal" />
 <main>
     <h2 id="about">Rólunk</h2>
-    <img id="group-photo" src={imgKoloraGroupPhoto} alt="" />
+    <div id="group-photo">
+        <FlowerImage src={imgKoloraLogo}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px * 3); top: calc(50% - {groupPhotoDeltaY}px);" />
+        <FlowerImage src={pfpVolgyesiTamas} outlineWidth={3} style="left: 50%; top: 50%;" />
+        <FlowerImage src={pfpBodonyiDaniel}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px); top: calc(50% - {groupPhotoDeltaY}px);" />
+        <FlowerImage src={pfpTothNikolett}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px); top: calc(50% - {groupPhotoDeltaY}px);" />
+        <FlowerImage src={pfpMeszarosEmese}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px); top: calc(50% + {groupPhotoDeltaY}px);" />
+        <FlowerImage src={pfpKissBalint}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px); top: calc(50% + {groupPhotoDeltaY}px);" />
+        <FlowerImage src={pfpSzvorenEszter}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% - {groupPhotoDeltaY}px);" />
+        <FlowerImage src={pfpGergelyEmma}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px * 2); top: calc(50%);" />
+        <FlowerImage src={pfpReszegiRamona}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 2); top: calc(50%);" />
+        <FlowerImage src={pfpCsaktornyaiAdam}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);" />
+        <FlowerImage src={imgKoloraLogo}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);" />
+    </div>
     <div class="adaptive-col-row" style="align-items: start;">
         <div>
             <h3 style="margin-bottom: calc(var(--spacing) / 2);">
@@ -208,12 +246,21 @@
 
 <style>
     #group-photo {
-        display: block;
-        aspect-ratio: 19/9;
-        object-fit: cover;
-        border-radius: var(--corner-radius);
+        position: relative;
         width: 100%;
-        max-height: 100%;
+        aspect-ratio: 2/1;
+    }
+
+    :global(#group-photo .flower) {
+        position: absolute;
+        width: calc(100% / 5);
+        translate: -50% -50%;
+        transition: all .2s ease-out;
+    }
+
+    :global(#group-photo .flower:hover) {
+        scale: 1.05;
+        z-index: 2;
     }
 
     a > span.mdi {

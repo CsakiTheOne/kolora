@@ -14,13 +14,10 @@
 
 <div class="member">
     <div class="pfp-container">
-        <div
-            class="tint"
-            style="mask-image: url('{flowerShape}'); scale: 1.02;"
-        ></div>
         {#if profilePictureUrl}
-            <FlowerImage src={profilePictureUrl} alt={name} />
+            <FlowerImage src={profilePictureUrl} outlineWidth={2} alt={name} />
         {:else}
+            <div class="tint" style="mask-image: url('{flowerShape}');"></div>
             <span class="mdi mdi-account-circle"></span>
         {/if}
     </div>
