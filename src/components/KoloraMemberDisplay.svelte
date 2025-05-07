@@ -1,6 +1,7 @@
 <script lang="ts">
     import Badge from "./Badge.svelte";
     import flowerShape from "$lib/images/utils/flower-shape.png";
+    import FlowerImage from "./FlowerImage.svelte";
 
     const {
         profilePictureUrl = "",
@@ -13,14 +14,12 @@
 
 <div class="member">
     <div class="pfp-container">
-        <div class="tint" style="mask-image: url('{flowerShape}'); scale: 1.02;"></div>
+        <div
+            class="tint"
+            style="mask-image: url('{flowerShape}'); scale: 1.02;"
+        ></div>
         {#if profilePictureUrl}
-            <img
-                class="picture"
-                src={profilePictureUrl}
-                alt="Kolora tag képe"
-                style="mask-image: url('{flowerShape}');"
-            />
+            <FlowerImage src={profilePictureUrl} alt={name} />
         {:else}
             <span class="mdi mdi-account-circle"></span>
         {/if}
@@ -32,9 +31,12 @@
                 <div class="tags">
                     {#each tags as tag}
                         <Badge
-                            style="background: {['Elnök', 'Alelnök'].includes(
+                            style="background: {(['Elnök', 'Alelnök'].includes(
                                 tag,
-                            ) && 'var(--primary-color)' || tag === "Piros" && "#dd0000e0"}; color: white;"
+                            ) &&
+                                'var(--primary-color)') ||
+                                (tag === 'Piros' &&
+                                    '#dd0000e0')}; color: white;"
                         >
                             {tag}
                         </Badge>
@@ -75,7 +77,7 @@
         scale: 1.2;
     }
 
-    .pfp-container > img,
+    :global(.pfp-container > img),
     .pfp-container > .tint {
         position: absolute;
         width: 100%;
