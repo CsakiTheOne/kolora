@@ -168,15 +168,17 @@
             </sveaflet.Map>
         </div>
         <div class="button-row">
-            <button
-                class="btn"
-                onclick={() => {
-                    map.setView(userLocation, 15);
-                }}
-            >
-                <span class="mdi mdi-crosshairs-gps"></span>
-                Hol vagyok?
-            </button>
+            {#if userLocation[0] !== 0 && userLocation[1] !== 0}
+                <button
+                    class="btn"
+                    onclick={() => {
+                        map.setView(userLocation, 15);
+                    }}
+                >
+                    <span class="mdi mdi-crosshairs-gps"></span>
+                    Hol vagyok?
+                </button>
+            {/if}
         </div>
     </div>
 {/if}
