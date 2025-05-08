@@ -50,9 +50,9 @@
         <FlowerImage src={pfpTothNikolett}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px); top: calc(50% - {groupPhotoDeltaY}px);" />
         <FlowerImage src={pfpMeszarosEmese}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px); top: calc(50% + {groupPhotoDeltaY}px);" />
         <FlowerImage src={pfpKissBalint}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px); top: calc(50% + {groupPhotoDeltaY}px);" />
-        <FlowerImage src={pfpSzvorenEszter}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% - {groupPhotoDeltaY}px);" />
+        <FlowerImage src={pfpReszegiRamona}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% - {groupPhotoDeltaY}px);" />
         <FlowerImage src={pfpGergelyEmma}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px * 2); top: calc(50%);" />
-        <FlowerImage src={pfpReszegiRamona}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 2); top: calc(50%);" />
+        <FlowerImage src={pfpSzvorenEszter}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 2); top: calc(50%);" />
         <FlowerImage src={pfpCsaktornyaiAdam}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);" />
         <FlowerImage src={imgKoloraLogo}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);" />
     </div>
