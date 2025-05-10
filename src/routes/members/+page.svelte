@@ -11,6 +11,7 @@
     import pfpSzvorenEszter from "$lib/images/members/szvoren-eszter.jpg";
     import pfpKissBalint from "$lib/images/members/kiss-balint.webp";
     import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
+    import pfpTolnaiZsofi from "$lib/images/members/tolnai-zsofi.jpg";
     import Alert from "../../components/Alert.svelte";
 </script>
 
@@ -182,8 +183,16 @@
             >, vagy minimum hazai kortársat, na szevasz.
         </p>
     </KoloraMemberDisplay>
-    <KoloraMemberDisplay name="Tolnai Zsófi">
-        <p></p>
+    <KoloraMemberDisplay
+    profilePictureUrl={pfpTolnaiZsofi}
+    name="Tolnai Zsófi"
+    >
+        <p>
+            Szevasz! Zsófi vagyok. Horgolva néha verset írok, vagy kerámián
+            éppen túrázok de egy kávéra mindig nyitott vagyok. Bodajktól a
+            Balatonig mindenhol megtaláltok, fél életemben vonatokra várok, és
+            most indulnom is kell, bármi van az üzeneted várom! :))
+        </p>
     </KoloraMemberDisplay>
 
     <Alert icon="information" title="De várj, ez még nem minden!">
