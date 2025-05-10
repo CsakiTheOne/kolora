@@ -15,11 +15,11 @@
         badge?: string,
     }[] = [
         { icon: "home", title: "Főoldal", url: "/" },
-        /*{
+        {
             icon: "account-group",
             title: "Tagok",
             url: "/members",
-        },*/
+        },
         {
             icon: "comment-quote",
             title: "Üzenőfalak",

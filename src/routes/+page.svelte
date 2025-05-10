@@ -32,8 +32,8 @@
         windowWidth;
         const groupPhotoW = document.getElementById("group-photo")?.clientWidth;
         if (groupPhotoW) {
-            groupPhotoDeltaX = groupPhotoW / 100 * 13;
-            groupPhotoDeltaY = groupPhotoW / 100 * 10;
+            groupPhotoDeltaX = (groupPhotoW / 100) * 13;
+            groupPhotoDeltaY = (groupPhotoW / 100) * 10;
         }
     });
 </script>
@@ -44,17 +44,61 @@
 <main>
     <h2 id="about">Rólunk</h2>
     <div id="group-photo">
-        <FlowerImage src={imgKoloraLogo}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px * 3); top: calc(50% - {groupPhotoDeltaY}px);" />
-        <FlowerImage src={pfpVolgyesiTamas} outlineWidth={3} style="left: 50%; top: 50%;" />
-        <FlowerImage src={pfpBodonyiDaniel}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px); top: calc(50% - {groupPhotoDeltaY}px);" />
-        <FlowerImage src={pfpTothNikolett}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px); top: calc(50% - {groupPhotoDeltaY}px);" />
-        <FlowerImage src={pfpMeszarosEmese}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px); top: calc(50% + {groupPhotoDeltaY}px);" />
-        <FlowerImage src={pfpKissBalint}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px); top: calc(50% + {groupPhotoDeltaY}px);" />
-        <FlowerImage src={pfpReszegiRamona}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% - {groupPhotoDeltaY}px);" />
-        <FlowerImage src={pfpGergelyEmma}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px * 2); top: calc(50%);" />
-        <FlowerImage src={pfpSzvorenEszter}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 2); top: calc(50%);" />
-        <FlowerImage src={pfpCsaktornyaiAdam}  outlineWidth={3} style="left: calc(50% - {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);" />
-        <FlowerImage src={imgKoloraLogo}  outlineWidth={3} style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);" />
+        <FlowerImage
+            src={imgKoloraLogo}
+            outlineWidth={3}
+            style="left: calc(50% - {groupPhotoDeltaX}px * 3); top: calc(50% - {groupPhotoDeltaY}px);"
+        />
+        <FlowerImage
+            src={pfpVolgyesiTamas}
+            outlineWidth={3}
+            style="left: 50%; top: 50%;"
+        />
+        <FlowerImage
+            src={pfpBodonyiDaniel}
+            outlineWidth={3}
+            style="left: calc(50% - {groupPhotoDeltaX}px); top: calc(50% - {groupPhotoDeltaY}px);"
+        />
+        <FlowerImage
+            src={pfpTothNikolett}
+            outlineWidth={3}
+            style="left: calc(50% + {groupPhotoDeltaX}px); top: calc(50% - {groupPhotoDeltaY}px);"
+        />
+        <FlowerImage
+            src={pfpMeszarosEmese}
+            outlineWidth={3}
+            style="left: calc(50% - {groupPhotoDeltaX}px); top: calc(50% + {groupPhotoDeltaY}px);"
+        />
+        <FlowerImage
+            src={pfpKissBalint}
+            outlineWidth={3}
+            style="left: calc(50% + {groupPhotoDeltaX}px); top: calc(50% + {groupPhotoDeltaY}px);"
+        />
+        <FlowerImage
+            src={pfpReszegiRamona}
+            outlineWidth={3}
+            style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% - {groupPhotoDeltaY}px);"
+        />
+        <FlowerImage
+            src={pfpGergelyEmma}
+            outlineWidth={3}
+            style="left: calc(50% - {groupPhotoDeltaX}px * 2); top: calc(50%);"
+        />
+        <FlowerImage
+            src={pfpSzvorenEszter}
+            outlineWidth={3}
+            style="left: calc(50% + {groupPhotoDeltaX}px * 2); top: calc(50%);"
+        />
+        <FlowerImage
+            src={pfpCsaktornyaiAdam}
+            outlineWidth={3}
+            style="left: calc(50% - {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);"
+        />
+        <FlowerImage
+            src={imgKoloraLogo}
+            outlineWidth={3}
+            style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);"
+        />
     </div>
     <div class="adaptive-col-row" style="align-items: start;">
         <div>
@@ -62,9 +106,10 @@
                 Ki, és mit?
             </h3>
             <p>
-                Fehérvári kötődésű fiatalokból álló szervezőcsapatunk célja a
-                művészetek népszerűsítése és a kulturális közélet fejlesztése a
-                fiatalság körében.
+                <a href="/members"
+                    >Fehérvári kötődésű fiatalokból álló szervezőcsapatunk</a
+                > célja a művészetek népszerűsítése és a kulturális közélet fejlesztése
+                a fiatalság körében.
             </p>
         </div>
         <div>
@@ -175,9 +220,7 @@
                 alt="Museum Café"
                 style="width: 100%; max-width: 300px; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--corner-radius);"
             />
-            <h4 style="padding: calc(var(--spacing) / 2);">
-                Museum Café
-            </h4>
+            <h4 style="padding: calc(var(--spacing) / 2);">Museum Café</h4>
             <div style="font-size: 1.2rem;">
                 <a
                     href="https://maps.app.goo.gl/nR419Mg19cqQWBeu8"
@@ -205,9 +248,7 @@
                 alt="Nyolcas Műhely"
                 style="width: 100%; max-width: 300px; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--corner-radius);"
             />
-            <h4 style="padding: calc(var(--spacing) / 2);">
-                Nyolcas Műhely
-            </h4>
+            <h4 style="padding: calc(var(--spacing) / 2);">Nyolcas Műhely</h4>
             <div style="font-size: 1.2rem;">
                 <a
                     href="https://maps.app.goo.gl/G797KP5NgJ8qD3Jv9"
@@ -255,7 +296,7 @@
         position: absolute;
         width: calc(100% / 5);
         translate: -50% -50%;
-        transition: all .2s ease-out;
+        transition: all 0.2s ease-out;
     }
 
     :global(#group-photo .flower:hover) {
