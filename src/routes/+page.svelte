@@ -22,6 +22,7 @@
     import pfpSzvorenEszter from "$lib/images/members/szvoren-eszter.jpg";
     import pfpKissBalint from "$lib/images/members/kiss-balint.webp";
     import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
+    import pfpTolnaiZsofi from "$lib/images/members/tolnai-zsofi.jpg";
     import FlowerImage from "../components/FlowerImage.svelte";
 
     let windowWidth = $state(0);
@@ -95,7 +96,7 @@
             style="left: calc(50% - {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);"
         />
         <FlowerImage
-            src={imgKoloraLogo}
+            src={pfpTolnaiZsofi}
             outlineWidth={3}
             style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);"
         />
