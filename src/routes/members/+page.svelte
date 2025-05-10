@@ -80,7 +80,7 @@
         <p>
             Csá! -ki. A srác, aki furcsa módokon kombinálja az informatikát a
             művészettel. Verselek, programozok, táncolok és ezt a weboldalt
-            csinálgatom. Ha bármiben segítség kell, zaklass nyugodtan! :D
+            szépítgetem. Ha bármiben segítség kell, zaklass nyugodtan! :D
         </p>
     </KoloraMemberDisplay>
     <KoloraMemberDisplay
@@ -182,7 +182,9 @@
             >, vagy minimum hazai kortársat, na szevasz.
         </p>
     </KoloraMemberDisplay>
-    <!--KoloraMemberDisplay name="Tolnai Zsófi (wip)" /-->
+    <KoloraMemberDisplay name="Tolnai Zsófi">
+        <p></p>
+    </KoloraMemberDisplay>
 
     <Alert icon="information" title="De várj, ez még nem minden!">
         <p>
