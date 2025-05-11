@@ -131,12 +131,7 @@
             még nem publikusak.
         </p>
         <ul class="outlined-list">
-            <a href="/members">
-                <li>
-                    <span class="mdi mdi-account-group"></span>
-                    Tagok oldala
-                </li>
-            </a>
+            <li>Jelenleg nincs fejlesztés alatt álló oldal</li>
         </ul>
 
         <h2>
