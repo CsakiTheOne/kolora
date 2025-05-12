@@ -159,16 +159,4 @@
         padding: var(--spacing);
         gap: calc(var(--spacing) / 2);
     }
-
-    ul {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        border-radius: var(--corner-radius);
-        overflow: hidden;
-    }
-
-    button {
-        border-radius: 0;
-    }
 </style>

@@ -1,8 +1,8 @@
 <script>
-    import ThemeManager from "$lib/ThemeManager";
     import HeaderTabRow from "./HeaderTabRow.svelte";
     import headerImage from "$lib/images/header.webp";
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
+    import ThemeToolbarIcon from "./ThemeToolbarIcon.svelte";
 
     const { selectedTab = "", ...rest } = $props();
 </script>
@@ -14,10 +14,7 @@
         <a href="/" id="kolora-title"><h1>kolora!</h1></a>
     </div>
     <div class="toolbar">
-        <span
-            onclick={() => ThemeManager.toggleDarkLight()}
-            class="mdi mdi-brightness-6"
-        ></span>
+        <ThemeToolbarIcon />
         <AccountToolbarIcon />
     </div>
 
@@ -52,7 +49,7 @@
         right: 0;
         bottom: 0;
         background: var(--primary-color);
-        opacity: .7;
+        opacity: 0.7;
     }
 
     .toolbar {
@@ -85,6 +82,6 @@
     }
 
     header a {
-        color: var(--on-primary-color);
+        color: var(--on-primary-color) !important;
     }
 </style>

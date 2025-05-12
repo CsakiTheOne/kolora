@@ -1,7 +1,7 @@
 <script lang="ts">
     import koloraLogo from "$lib/images/logos/kolora.png";
-    import ThemeManager from "$lib/ThemeManager";
     import AccountToolbarIcon from "../AccountToolbarIcon.svelte";
+    import ThemeToolbarIcon from "../ThemeToolbarIcon.svelte";
 
     let { poi, onWelcomeRequest } = $props();
 </script>
@@ -19,10 +19,7 @@
         <a href={poi?.googleMapsLink} target="_blank" aria-label="Térkép">
             <span class="mdi mdi-map-marker"></span>
         </a>
-        <span
-            onclick={() => ThemeManager.toggleDarkLight()}
-            class="mdi mdi-brightness-6"
-        ></span>
+        <ThemeToolbarIcon />
         <AccountToolbarIcon />
     </div>
 </header>

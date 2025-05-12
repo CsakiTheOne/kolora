@@ -32,14 +32,14 @@ ul.outlined-list :is(a, button) {
     appearance: none;
     border: none;
     background-color: var(--primary-variant-color);
-    color: var(--on-primary-variant-color);
+    color: var(--on-primary-variant-color) !important;
     cursor: pointer;
     text-decoration: none;
 }
 
 ul.outlined-list :is(a, button):hover {
     background-color: var(--primary-color);
-    color: var(--on-primary-color);
+    color: var(--on-primary-color) !important;
 }
 
 table {

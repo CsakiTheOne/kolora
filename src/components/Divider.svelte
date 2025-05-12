@@ -1,13 +1,13 @@
 <script lang="ts">
+    import ThemeManager from "$lib/ThemeManager";
+
     let canvas: HTMLCanvasElement | null = $state(null);
     let ctx: CanvasRenderingContext2D | null = $state(null);
-    let color: string = $state("#000000");
     let scrollY: number = $state(0);
 
     $effect(() => {
         if (!canvas) return;
         ctx = canvas.getContext("2d");
-        color = canvas.computedStyleMap().get("color")!.toString();
     });
 
     $effect(() => {
@@ -17,7 +17,7 @@
         canvas.height = 30;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = color;
+        ctx.strokeStyle = ThemeManager.getThemeColor("--primary-color");
         ctx.lineWidth = Math.min(10, window.innerWidth / 100);
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
@@ -33,4 +33,4 @@
 </script>
 
 <svelte:window bind:scrollY />
-<canvas bind:this={canvas} style="color: var(--primary-color);"></canvas>
+<canvas bind:this={canvas}></canvas>

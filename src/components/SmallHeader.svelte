@@ -1,7 +1,7 @@
 <script>
     import koloraLogo from "$lib/images/logos/kolora.png";
-    import ThemeManager from "$lib/ThemeManager";
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
+    import ThemeToolbarIcon from "./ThemeToolbarIcon.svelte";
 
     const { path = [], currentPage, ...rest } = $props();
 </script>
@@ -18,10 +18,7 @@
         <span>{currentPage}</span>
     </div>
     <div class="toolbar">
-        <span
-            onclick={() => ThemeManager.toggleDarkLight()}
-            class="mdi mdi-brightness-6"
-        ></span>
+        <ThemeToolbarIcon />
         <AccountToolbarIcon />
     </div>
 </header>
