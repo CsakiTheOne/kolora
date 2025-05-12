@@ -141,9 +141,8 @@
         meglátogathatsz és üzeneteket hagyhatsz rajtuk.
     </p>
     <p class="text-small">
-        Ezeket az üzenőfalakat kis NFC matricákon keresztül tudod elérni. Ha
-        megtalálsz egy ilyen ezüst, 50Ft-os méretű matricát, csak érintsd oda a
-        telefonod és már posztolhatsz is!
+        Ezeket az üzenőfalakat kis NFC vagy QR kódos matricákon keresztül tudod
+        elérni.
     </p>
 
     <div>
@@ -240,7 +239,7 @@
     ></iframe-->
 
     <h3>Technikai részletek és hibajelentés</h3>
-    <h4>Matrica beolvasása</h4>
+    <h4>Matrica beolvasása (NFC esetén)</h4>
     <p>
         Ha találtál egy matricát, győződj meg róla, hogy a telefonodon be van
         kapcsolva az NFC, és közelítsd a matricához a telefonod hátulját.
