@@ -1,11 +1,22 @@
 <script lang="ts">
     import flowerShape from "$lib/images/utils/flower-shape.png";
 
-    const { src, alt = "", style = "", outlineWidth = 0, ...rest } = $props();
+    const {
+        src,
+        alt = "",
+        style = "",
+        outlineWidth = 0,
+        outlineColor = "var(--primary-color)",
+        ...rest
+    } = $props();
 </script>
 
 <div class="flower" {style} {...rest}>
-    <div class="tint" style="width: calc(100% + {outlineWidth * 2}px); mask-image: url('{flowerShape}'); top: -{outlineWidth}px; left: -{outlineWidth}px;"></div>
+    <div
+        class="tint"
+        style="width: calc(100% + {outlineWidth *
+            2}px); mask-image: url('{flowerShape}'); top: -{outlineWidth}px; left: -{outlineWidth}px; background-color: {outlineColor};"
+    ></div>
     <img
         class="picture"
         {src}
@@ -18,7 +29,6 @@
     .tint {
         position: absolute;
         aspect-ratio: 1/1;
-        background-color: var(--primary-color);
         mask-size: cover;
         mask-position: center;
     }
