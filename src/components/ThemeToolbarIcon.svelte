@@ -1,9 +1,14 @@
 <script lang="ts">
     import ThemeManager from "$lib/ThemeManager";
+    import { onMount } from "svelte";
     import Backdrop from "./Backdrop.svelte";
 
     let isOpen = $state(false);
-    let selectedColor = $state(ThemeManager.color);
+    let selectedColor = $state("");
+
+    onMount(() => {
+        selectedColor = ThemeManager.color;
+    });
 
     function setColor(color: string) {
         ThemeManager.color = color;
