@@ -73,7 +73,7 @@
         aspect-ratio: 1;
         background-color: var(--primary-color);
         border-radius: 50%;
-        transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-out;
     }
 
     .timeline-item:hover .dot {
@@ -90,7 +90,7 @@
         height: 100%;
         flex: 1;
         background-color: var(--primary-color);
-        transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-out;
     }
 
     .indicators:hover .line {

@@ -99,7 +99,7 @@
         color: var(--on-background-color);
         translate: 0 2px;
         cursor: pointer;
-        transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-out;
         max-lines: 1;
         text-wrap: nowrap;
     }

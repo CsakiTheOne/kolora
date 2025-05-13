@@ -8,6 +8,8 @@ ul:not(.outlined-list)>a {
 }
 
 ul.outlined-list {
+    background-color: var(--primary-color);
+    color: var(--on-primary-color);
     border: 2px solid var(--primary-color);
     border-radius: var(--corner-radius);
     overflow: hidden;
@@ -35,11 +37,11 @@ ul.outlined-list :is(a, button) {
     color: var(--on-primary-variant-color) !important;
     cursor: pointer;
     text-decoration: none;
+    transition: all .1s ease-out;
 }
 
 ul.outlined-list :is(a, button):hover {
-    background-color: var(--primary-color);
-    color: var(--on-primary-color) !important;
+    opacity: .6;
 }
 
 table {

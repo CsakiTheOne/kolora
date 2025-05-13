@@ -3,6 +3,12 @@
     import Backdrop from "./Backdrop.svelte";
 
     let isOpen = $state(false);
+    let selectedColor = $state(ThemeManager.color);
+
+    function setColor(color: string) {
+        ThemeManager.color = color;
+        selectedColor = color;
+    }
 </script>
 
 <span
@@ -21,31 +27,32 @@
                     <span class="mdi mdi-brightness-6"></span>
                     Váltás világos / sötét módra
                 </button>
-                <li>Színsémák:</li>
-                <button onclick={() => (ThemeManager.color = "color-default")}>
+            </ul>
+            <ul class="outlined-list">
+                <button onclick={() => (setColor("color-default"))}>
                     <div
-                        class="color-preview"
+                        class="color-preview {!selectedColor || selectedColor === 'color-default' ? 'selected' : ''}"
                         style="background: var(--kolora-color-red);"
                     ></div>
                     Slam
                 </button>
-                <button onclick={() => (ThemeManager.color = "color-blue")}>
+                <button onclick={() => (setColor("color-blue"))}>
                     <div
-                        class="color-preview"
+                        class="color-preview {selectedColor === 'color-blue' ? 'selected' : ''}"
                         style="background: var(--kolora-color-blue);"
                     ></div>
                     Terasz
                 </button>
-                <button onclick={() => (ThemeManager.color = "color-purple")}>
+                <button onclick={() => (setColor("color-purple"))}>
                     <div
-                        class="color-preview"
+                        class="color-preview {selectedColor === 'color-purple' ? 'selected' : ''}"
                         style="background: var(--kolora-color-purple);"
                     ></div>
                     Akusztik
                 </button>
-                <button onclick={() => (ThemeManager.color = "color-yellow")}>
+                <button onclick={() => (setColor("color-yellow"))}>
                     <div
-                        class="color-preview"
+                        class="color-preview {selectedColor === 'color-yellow' ? 'selected' : ''}"
                         style="background: var(--kolora-color-yellow);"
                     ></div>
                     Extra
@@ -81,9 +88,14 @@
 
     .color-preview {
         display: inline-block;
-        width: 24px;
+        width: 20px;
         aspect-ratio: 1;
         border-radius: var(--corner-radius);
         border: 2px solid black;
+        transition: all .2s ease-out;
+    }
+
+    .color-preview.selected {
+        border-radius: calc(var(--corner-radius) / 2);
     }
 </style>

@@ -77,7 +77,7 @@
         padding: 0.5rem;
         text-align: center;
         overflow: hidden;
-        transition: all .1s ease-in-out;
+        transition: all .1s ease-out;
     }
     
     .section::after {

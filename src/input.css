@@ -5,7 +5,7 @@
     border-radius: 50%;
     font-size: 1.2rem;
     padding: calc(var(--spacing) / 2);
-    transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-out;
 }
 
 .btn {
@@ -60,7 +60,7 @@
     border-radius: var(--corner-radius);
     background-color: var(--primary-variant-color);
     color: var(--on-primary-variant-color);
-    transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-out;
 }
 
 .outlined-input:focus {
@@ -94,7 +94,7 @@ input[type="checkbox"].outlined-input::after {
     rotate: 0deg;
     top: 5%;
     left: 35%;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-out;
 }
 
 input[type="checkbox"].outlined-input:checked {
@@ -131,7 +131,7 @@ input[type="checkbox"].switch::after {
     aspect-ratio: 1;
     background: var(--primary-color);
     border-radius: 50%;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-out;
 }
 
 input[type="checkbox"].switch:checked {
