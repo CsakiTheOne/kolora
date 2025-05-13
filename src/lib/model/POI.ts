@@ -17,4 +17,6 @@ export default class POI {
     showSoonScreen: boolean = false;
     hint1Url: string = '';
     hint2Url: string = '';
+    isNfcAvailable: boolean = false;
+    isQrAvailable: boolean = false;
 }

@@ -141,8 +141,9 @@
         meglátogathatsz és üzeneteket hagyhatsz rajtuk.
     </p>
     <p class="text-small">
-        Ezeket az üzenőfalakat kis NFC vagy QR kódos matricákon keresztül tudod
-        elérni.
+        Ezeket az üzenőfalakat kis <span class="mdi mdi-nfc-variant"></span> NFC
+        és / vagy <span class="mdi mdi-qrcode"></span> QR kódos matricákon keresztül
+        tudod elérni.
     </p>
 
     <div>

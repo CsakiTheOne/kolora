@@ -6,6 +6,7 @@
     import PoiUtils from "$lib/PoiUtils";
     import firestore from "$lib/firebase/firestore";
     import rtdb from "$lib/firebase/rtdb";
+    import Badge from "../Badge.svelte";
 
     let sveaflet: any = $state(null);
 
@@ -81,43 +82,52 @@
                         />
                         <sveaflet.Popup>
                             <h4>
-                                <a href={poi.googleMapsLink} target="_blank">
+                                <a href={poi.googleMapsLink} target="_blank" style="color: var(--on-secondary-color);">
                                     <span class="mdi mdi-map-marker"></span>
                                     {poi.name}
                                 </a>
                             </h4>
-                            <br />
-                            <ul class="outlined-list">
+                            <p style="margin: calc(var(--spacing) / 2) 0;">
                                 {#if selectedPoiPostsCount > 0}
-                                    <li>
-                                        <span class="mdi mdi-comment-text"
-                                        ></span>
-                                        {selectedPoiPostsCount} poszt
-                                    </li>
+                                    <span class="mdi mdi-comment-text"></span>
+                                    {selectedPoiPostsCount} poszt <br />
                                 {/if}
-                                <li
-                                    style="display: flex; flex-direction: row; padding: 0;"
-                                >
-                                    {#if poi.hint1Url}
+                                Elérhetőség:
+                                {#if poi.isNfcAvailable}
+                                    <span class="mdi mdi-nfc-variant"></span>
+                                {/if}
+                                {#if poi.isQrAvailable}
+                                    <span class="mdi mdi-qrcode"></span>
+                                {/if}
+                            </p>
+                            <div>
+                                {#if poi.hint1Url}
+                                    <Badge
+                                        style="background-color: var(--primary-color); color: var(--on-primary-color);"
+                                    >
                                         <a
                                             href={poi.hint1Url}
                                             target="_blank"
-                                            style="width: 100%; padding: calc(var(--spacing) / 2);"
+                                            style="text-decoration: none; color: inherit;"
                                         >
                                             Segítség #1
                                         </a>
-                                    {/if}
-                                    {#if poi.hint2Url}
+                                    </Badge>
+                                {/if}
+                                {#if poi.hint2Url}
+                                    <Badge
+                                        style="background-color: var(--primary-color); color: var(--on-primary-color);"
+                                    >
                                         <a
                                             href={poi.hint2Url}
                                             target="_blank"
-                                            style="width: 100%; padding: calc(var(--spacing) / 2);"
+                                            style="text-decoration: none; color: inherit;"
                                         >
                                             Segítség #2
                                         </a>
-                                    {/if}
-                                </li>
-                            </ul>
+                                    </Badge>
+                                {/if}
+                            </div>
                         </sveaflet.Popup>
                     </sveaflet.Marker>
                     <sveaflet.Circle
@@ -190,7 +200,7 @@
     }
 
     :global(.leaflet-popup-content-wrapper) {
-        max-width: 75vw;
+        max-width: 60vw;
     }
 
     :global(.leaflet-popup-content-wrapper, .leaflet-popup-tip) {

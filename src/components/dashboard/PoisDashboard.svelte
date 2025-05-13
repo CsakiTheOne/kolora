@@ -67,6 +67,12 @@
                         <span
                             class={`mdi mdi-${place.isDiscoverable ? "check" : "close"}`}
                         ></span>
+                        {#if place.isNfcAvailable}
+                            <span class="mdi mdi-nfc-variant"></span>
+                        {/if}
+                        {#if place.isQrAvailable}
+                            <span class="mdi mdi-qrcode"></span>
+                        {/if}
                     </td>
                 </tr>
             {/each}
@@ -222,6 +228,34 @@
             }}
         />
         Felfedezhető (ha igen, akkor a hely megjelenhet az Üzenőfalak oldalon)
+        <input
+            type="checkbox"
+            class="switch"
+            disabled={loading}
+            name="isNfcAvailable"
+            bind:checked={selectedPlace.isNfcAvailable}
+            oninput={(e: any) => {
+                firestore.pois.set(selectedPlaceId!, {
+                    ...selectedPlace,
+                    isNfcAvailable: e.target?.checked,
+                });
+            }}
+        />
+        <span class="mdi mdi-nfc-variant"></span>
+        <input
+            type="checkbox"
+            class="switch"
+            disabled={loading}
+            name="isQrAvailable"
+            bind:checked={selectedPlace.isQrAvailable}
+            oninput={(e: any) => {
+                firestore.pois.set(selectedPlaceId!, {
+                    ...selectedPlace,
+                    isQrAvailable: e.target?.checked,
+                });
+            }}
+        />
+        <span class="mdi mdi-qrcode"></span>
     </div>
 
     <div>
