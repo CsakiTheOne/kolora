@@ -28,8 +28,7 @@ const firestore = {
             return getDoc(doc(db, "users", id))
                 .then((doc) => {
                     if (!doc.exists()) {
-                        console.error("No such user: ", id);
-                        return Promise.reject("No such user: " + id);
+                        return { ...new KoloraUser(), id: id };
                     }
                     return { ...new KoloraUser(), ...doc.data(), id: doc.id };
                 })
