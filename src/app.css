@@ -179,6 +179,16 @@ body.theme-dark.color-yellow :is(a, .link) {
     color: var(--primary-color);
 }
 
+@media (prefers-color-scheme: dark) {
+    body.theme-system :is(a, .link) {
+        color: var(--on-primary-color);
+    }
+
+    body.theme-system.color-yellow :is(a, .link) {
+        color: var(--primary-color);
+    }
+}
+
 iframe {
     border-radius: var(--corner-radius);
 }
