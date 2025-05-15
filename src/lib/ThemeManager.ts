@@ -15,6 +15,7 @@ export default class ThemeManager {
             document.body.classList.add(this.theme);
             document.body.classList.remove(...this.themeColors);
             document.body.classList.add(this.color);
+            document.head.querySelector("meta[name=theme-color]")?.setAttribute("content", this.getThemeColor("--primary-color"));
         }
     }
 
@@ -38,6 +39,7 @@ export default class ThemeManager {
         if (browser) {
             document.body.classList.remove(...this.themes);
             document.body.classList.add(value);
+            document.head.querySelector("meta[name=theme-color]")?.setAttribute("content", this.getThemeColor("--primary-color"));
         }
     }
 
