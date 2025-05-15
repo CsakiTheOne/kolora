@@ -32,6 +32,36 @@ body.theme-dark {
     --on-background-color: #fff;
 }
 
+@media (prefers-color-scheme: light) {
+    body.theme-system {
+        --primary-color: #87243f;
+        --primary-variant-color: #dc7f9b;
+        --secondary-color: #313a71;
+        --secondary-variant-color: #6ea6c4;
+        --background-color: #eee;
+        --on-primary-color: #fcc;
+        --on-primary-variant-color: #100;
+        --on-secondary-color: #d2dfe5;
+        --on-secondary-variant-color: #000;
+        --on-background-color: #000;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body.theme-system {
+        --primary-color: #b04a5e;
+        --primary-variant-color: #87243f;
+        --secondary-color: #33385b;
+        --secondary-variant-color: #7d9ec2;
+        --background-color: #111;
+        --on-primary-color: #fdd;
+        --on-primary-variant-color: #fdd;
+        --on-secondary-color: #ddf;
+        --on-secondary-variant-color: #000;
+        --on-background-color: #fff;
+    }
+}
+
 body.theme-retro {
     --primary-color: #e9458e;
     --primary-variant-color: #f5a3c7;
@@ -136,12 +166,15 @@ a,
     text-decoration: underline;
     cursor: pointer;
 }
+
 body.theme-dark :is(a, .link) {
     color: var(--on-primary-color);
 }
+
 body.color-yellow :is(a, .link) {
     color: var(--primary-variant-color);
 }
+
 body.theme-dark.color-yellow :is(a, .link) {
     color: var(--primary-color);
 }

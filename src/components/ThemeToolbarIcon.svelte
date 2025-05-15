@@ -4,11 +4,18 @@
     import Backdrop from "./Backdrop.svelte";
 
     let isOpen = $state(false);
+    let selectedTheme = $state("");
     let selectedColor = $state("");
 
     onMount(() => {
+        selectedTheme = ThemeManager.theme;
         selectedColor = ThemeManager.color;
     });
+
+    function setTheme(theme: string) {
+        ThemeManager.theme = theme;
+        selectedTheme = theme;
+    }
 
     function setColor(color: string) {
         ThemeManager.color = color;
@@ -27,37 +34,69 @@
 {#if isOpen}
     <Backdrop close={() => (isOpen = false)}>
         <div class="theme-dialog">
-            <ul class="outlined-list">
-                <button onclick={() => ThemeManager.toggleDarkLight()}>
-                    <span class="mdi mdi-brightness-6"></span>
-                    Váltás világos / sötét módra
+            <div class="theme-toggle">
+                <button
+                    class="btn {selectedTheme === 'theme-light'
+                        ? 'selected'
+                        : ''}"
+                    style="flex: 1; border: 2px solid var(--primary-variant-color);"
+                    onclick={() => setTheme("theme-light")}
+                >
+                    <span class="mdi mdi-brightness-7"></span>
+                    Világos
                 </button>
-            </ul>
+                <button
+                    class="btn {selectedTheme === 'theme-dark'
+                        ? 'selected'
+                        : ''}"
+                    style="flex: 1; border: 2px solid var(--primary-variant-color);"
+                    onclick={() => setTheme("theme-dark")}
+                >
+                    <span class="mdi mdi-brightness-5"></span>
+                    Sötét
+                </button>
+            </div>
+            <button
+                class="btn {selectedTheme === 'theme-system' ? 'selected' : ''}"
+                onclick={() => setTheme("theme-system")}
+            >
+                <span class="mdi mdi-brightness-auto"></span>
+                Rendszer téma követése
+            </button>
             <ul class="outlined-list">
-                <button onclick={() => (setColor("color-default"))}>
+                <button onclick={() => setColor("color-default")}>
                     <div
-                        class="color-preview {!selectedColor || selectedColor === 'color-default' ? 'selected' : ''}"
+                        class="color-preview {!selectedColor ||
+                        selectedColor === 'color-default'
+                            ? 'selected'
+                            : ''}"
                         style="background: var(--kolora-color-red);"
                     ></div>
                     Slam
                 </button>
-                <button onclick={() => (setColor("color-blue"))}>
+                <button onclick={() => setColor("color-blue")}>
                     <div
-                        class="color-preview {selectedColor === 'color-blue' ? 'selected' : ''}"
+                        class="color-preview {selectedColor === 'color-blue'
+                            ? 'selected'
+                            : ''}"
                         style="background: var(--kolora-color-blue);"
                     ></div>
                     Terasz
                 </button>
-                <button onclick={() => (setColor("color-purple"))}>
+                <button onclick={() => setColor("color-purple")}>
                     <div
-                        class="color-preview {selectedColor === 'color-purple' ? 'selected' : ''}"
+                        class="color-preview {selectedColor === 'color-purple'
+                            ? 'selected'
+                            : ''}"
                         style="background: var(--kolora-color-purple);"
                     ></div>
                     Akusztik
                 </button>
-                <button onclick={() => (setColor("color-yellow"))}>
+                <button onclick={() => setColor("color-yellow")}>
                     <div
-                        class="color-preview {selectedColor === 'color-yellow' ? 'selected' : ''}"
+                        class="color-preview {selectedColor === 'color-yellow'
+                            ? 'selected'
+                            : ''}"
                         style="background: var(--kolora-color-yellow);"
                     ></div>
                     Extra
@@ -91,13 +130,35 @@
         gap: calc(var(--spacing) / 2);
     }
 
+    .theme-toggle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: calc(var(--spacing) / 2);
+    }
+
+    .btn {
+        flex: 1;
+        padding: calc(var(--spacing) / 2);
+        border: 2px solid var(--primary-variant-color);
+        background: transparent;
+        color: var(--on-primary-color);
+    }
+
+    .btn.selected {
+        background: var(--primary-variant-color);
+        color: var(--on-primary-variant-color);
+        border-radius: var(--corner-radius);
+    }
+
     .color-preview {
         display: inline-block;
         width: 20px;
         aspect-ratio: 1;
         border-radius: var(--corner-radius);
         border: 2px solid black;
-        transition: all .2s ease-out;
+        transition: all 0.2s ease-out;
     }
 
     .color-preview.selected {

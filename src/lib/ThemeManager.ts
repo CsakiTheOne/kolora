@@ -6,7 +6,7 @@ export default class ThemeManager {
      * Each theme has a corresponding CSS class that is added to the body element.
      * See src/app.css for the CSS rules.
      */
-    static themes = ["theme-light", "theme-dark", "theme-retro"];
+    static themes = ["theme-system", "theme-light", "theme-dark", "theme-retro"];
     static themeColors = ["color-blue", "color-purple", "color-yellow"];
 
     static init() {
