@@ -219,7 +219,7 @@
 {#if isWelcomeScreenOpen}
     <div class="welcome-screen">
         <canvas
-            style="position: absolute; top: 0; left: 0; z-index: 0;"
+            style="position: absolute; top: 0; left: 0; z-index: {elapsedTime < 1100 ? 10 : 0};"
             bind:this={welcomeScreenBackground}
         >
         </canvas>
@@ -244,7 +244,7 @@
                 Ez egy helyhez kötött üzenőfal, ahol verseket, kis történeteket
                 és egyéb gondolatokat hagyhatsz másoknak.
             </p>
-            <a href="/"> Kik vagyunk? Mi az a Kolora Egyesület? </a>
+            <a href="/?source=poi"> Kik vagyunk? Mi az a Kolora Egyesület? </a>
             <a href="/feeds">
                 <span class="mdi mdi-map"></span>
                 Hol vannak még ilyenek?
@@ -516,7 +516,7 @@
     .welcome-screen {
         position: relative;
         width: 100vw;
-        height: 100dvh;
+        height: 100svh;
     }
 
     .welcome-screen-content-holder {
