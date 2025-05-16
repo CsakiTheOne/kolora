@@ -168,6 +168,7 @@
         margin: 0 calc(var(--spacing) / 2);
         border-radius: calc(var(--corner-radius) * 2);
         min-width: 20px;
+        max-width: 350px;
         height: 100%;
 
         overflow: hidden;

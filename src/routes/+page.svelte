@@ -139,7 +139,7 @@
     <h2>Barátaink</h2>
     <h3>Bandák, zenészek, akik koncerteztek nálunk</h3>
     <Carousel
-        style="aspect-ratio: 21/9;"
+        style="aspect-ratio: 21/9; max-height: 300px;"
         pages={KoloraLocalDb.musicians.map((musician) => ({
             title: musician.name,
             background: `url('${musician.bannerImageUrl}')`,
