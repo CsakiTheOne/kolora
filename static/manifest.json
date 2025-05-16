@@ -26,17 +26,38 @@
       {
         "name": "Tagok",
         "url": "/members",
-        "description": "A Kolora Egyesület tagjainak listája."
+        "description": "A Kolora Egyesület tagjainak listája.",
+        "icons": [
+          {
+            "src": "/kolora.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          }
+        ]
       },
       {
         "name": "Üzenőfalak",
         "url": "/feeds",
-        "description": "Helyhez kötött üzenőfalak országszerte."
+        "description": "Helyhez kötött üzenőfalak országszerte.",
+        "icons": [
+          {
+            "src": "/kolora.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          }
+        ]
       },
       {
         "name": "Kódok",
         "url": "/codes",
-        "description": "Járj Kolorás rendezvényekre, kövesd a közösségi profiljainkat és légy figyelmes!"
+        "description": "Járj Kolorás rendezvényekre, kövesd a közösségi profiljainkat és légy figyelmes!",
+        "icons": [
+          {
+            "src": "/kolora.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          }
+        ]
       }
     ]
   }
