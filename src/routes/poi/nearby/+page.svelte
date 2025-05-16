@@ -14,7 +14,7 @@
     function openFallbackUrl() {
         rtdb.config.feeds.getQrCodeFallbackUrl().then((url) => {
             if (url) {
-                window.location.replace(url);
+                window.location.replace(url === "/" ? "/?source=sticker" : url);
             } else {
                 errorMessage = "Nem sikerült megnyitni a QR kódot.";
             }

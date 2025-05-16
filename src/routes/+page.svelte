@@ -29,6 +29,19 @@
     let groupPhotoDeltaX = $state(0);
     let groupPhotoDeltaY = $state(0);
 
+    /**
+     * The source from which the user arrived at this page.
+     * For example: "sticker" if the user arrived from a QR code sticker.
+     */
+    let arrivedFrom = $state("");
+
+    onMount(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has("source")) {
+            arrivedFrom = urlParams.get("source") || "";
+        }
+    });
+
     $effect(() => {
         windowWidth;
         const groupPhotoW = document.getElementById("group-photo")?.clientWidth;
@@ -283,6 +296,13 @@
             />
         </a>
     </div>
+    {#if arrivedFrom === "sticker"}
+        <Divider />
+        <p>
+            Egy matricáról érkeztél ide? De jó! Ha te is szeretnél egy ilyet,
+            látogass el a rendezvényeinkre! :D
+        </p>
+    {/if}
 </main>
 <Footer />
 
