@@ -24,6 +24,11 @@
     "handle_links": "preferred",
     "shortcuts": [
       {
+        "name": "Tagok",
+        "url": "/members",
+        "description": "A Kolora Egyesület tagjainak listája."
+      },
+      {
         "name": "Üzenőfalak",
         "url": "/feeds",
         "description": "Helyhez kötött üzenőfalak országszerte."
