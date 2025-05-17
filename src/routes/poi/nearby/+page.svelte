@@ -29,6 +29,7 @@
             (error) => {
                 errorMessage =
                     "Hiba történt a helymeghatározás során. Kérlek ellenőrizd a hely engedélyeket a böngésző és telefon beállításaiban.";
+                openFallbackUrl();
             },
             {
                 enableHighAccuracy: true,
