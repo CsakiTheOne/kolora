@@ -57,7 +57,7 @@
 <Header selectedTab="Főoldal" />
 <main>
     <h2 id="about">Rólunk</h2>
-    <div id="group-photo">
+    <a id="group-photo" href="/members">
         <FlowerImage
             src={imgKoloraLogo}
             outlineWidth={3}
@@ -113,7 +113,7 @@
             outlineWidth={3}
             style="left: calc(50% + {groupPhotoDeltaX}px * 3); top: calc(50% + {groupPhotoDeltaY}px);"
         />
-    </div>
+    </a>
     <div class="adaptive-col-row" style="align-items: start;">
         <div>
             <h3 style="margin-bottom: calc(var(--spacing) / 2);">
@@ -308,6 +308,7 @@
 
 <style>
     #group-photo {
+        display: block;
         position: relative;
         width: 100%;
         aspect-ratio: 2/1;

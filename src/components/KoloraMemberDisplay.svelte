@@ -23,7 +23,7 @@
     </div>
     <div class="member-info">
         <div>
-            <h3>{name}</h3>
+            <h3 id={name.toLowerCase().replace(" ", "-")}>{name}</h3>
             {#if tags}
                 <div class="tags">
                     {#each tags as tag}
