@@ -141,10 +141,8 @@
         </h3>
         <p>
             <a href="/timeline">
-                <button class="btn">
-                    <span class="mdi mdi-timeline"></span>
-                    2024 visszatekintés
-                </button>
+                <span class="mdi mdi-timeline"></span>
+                2024 visszatekintés
             </a>
         </p>
     </div>
@@ -165,7 +163,7 @@
     />
     <p style="text-align: center;">
         <button
-            class="btn"
+            class="btn fab"
             onclick={() => {
                 const songsCount = KoloraLocalDb.musicians.flatMap(
                     (musician) => musician.songUrls,
@@ -212,7 +210,7 @@
     </ul>
     <p style="text-align: center;">
         <button
-            class="btn"
+            class="btn fab"
             onclick={() => {
                 const videosCount = KoloraLocalDb.slamPerformances.length;
                 const randomVideo =
@@ -228,14 +226,17 @@
     </p>
     <h3>Kedvenc helyeink</h3>
     <div class="adaptive-col-row">
-        <div style="flex: 1; text-align: center;">
+        <div style="flex: 1; text-align: center; justify-items: center;">
             <img
                 src={imgMuseumCafeLogo}
                 alt="Museum Café"
                 style="width: 100%; max-width: 300px; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--corner-radius);"
             />
             <h4 style="padding: calc(var(--spacing) / 2);">Museum Café</h4>
-            <div style="font-size: 1.2rem;">
+            <div
+                style="font-size: 1.2rem; width: calc(100% - var(--spacing));"
+                class="button-group"
+            >
                 <a
                     href="https://maps.app.goo.gl/nR419Mg19cqQWBeu8"
                     target="_blank"
@@ -256,14 +257,17 @@
                 </a>
             </div>
         </div>
-        <div style="flex: 1; text-align: center;">
+        <div style="flex: 1; text-align: center; justify-items: center;">
             <img
                 src={imgNyolcasMuhelyLogo}
                 alt="Nyolcas Műhely"
                 style="width: 100%; max-width: 300px; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--corner-radius);"
             />
             <h4 style="padding: calc(var(--spacing) / 2);">Nyolcas Műhely</h4>
-            <div style="font-size: 1.2rem;">
+            <div
+                style="font-size: 1.2rem; width: calc(100% - var(--spacing));"
+                class="button-group"
+            >
                 <a
                     href="https://maps.app.goo.gl/G797KP5NgJ8qD3Jv9"
                     target="_blank"

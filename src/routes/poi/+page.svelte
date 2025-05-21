@@ -443,7 +443,7 @@
                                 Mű csatolása
                             </button>
                             <button
-                                class="btn"
+                                class="btn fab"
                                 disabled={!postDraft.content}
                                 onclick={() => {
                                     if (!poi) {
@@ -574,6 +574,7 @@
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: flex-end;
+        align-items: center;
         gap: var(--spacing);
     }
 </style>
