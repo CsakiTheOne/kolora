@@ -34,37 +34,36 @@
 {#if isOpen}
     <Backdrop close={() => (isOpen = false)}>
         <div class="theme-dialog">
-            <div class="theme-toggle">
+            <div class="button-group">
                 <button
-                    class="btn {selectedTheme === 'theme-light'
-                        ? 'selected'
-                        : ''}"
-                    style="flex: 1; border: 2px solid var(--primary-variant-color);"
+                    class={selectedTheme === "theme-light" ? "selected" : ""}
                     onclick={() => setTheme("theme-light")}
                 >
                     <span class="mdi mdi-brightness-7"></span>
                     Világos
                 </button>
                 <button
-                    class="btn {selectedTheme === 'theme-dark'
-                        ? 'selected'
-                        : ''}"
-                    style="flex: 1; border: 2px solid var(--primary-variant-color);"
+                    class={selectedTheme === "theme-dark" ? "selected" : ""}
                     onclick={() => setTheme("theme-dark")}
                 >
                     <span class="mdi mdi-brightness-5"></span>
                     Sötét
                 </button>
             </div>
-            <button
-                class="btn {selectedTheme === 'theme-system' ? 'selected' : ''}"
-                onclick={() => setTheme("theme-system")}
-            >
-                <span class="mdi mdi-brightness-auto"></span>
-                Rendszer téma követése
-            </button>
-            <ul class="outlined-list">
-                <button onclick={() => setColor("color-default")}>
+            <div class="button-group">
+                <button
+                    class={selectedTheme === "theme-system" ? "selected" : ""}
+                    onclick={() => setTheme("theme-system")}
+                >
+                    <span class="mdi mdi-brightness-auto"></span>
+                    Rendszer téma követése
+                </button>
+            </div>
+            <div class="button-group">
+                <button
+                    onclick={() => setColor("color-default")}
+                    class={selectedColor === "color-default" ? "selected" : ""}
+                >
                     <div
                         class="color-preview {!selectedColor ||
                         selectedColor === 'color-default'
@@ -72,36 +71,41 @@
                             : ''}"
                         style="background: var(--kolora-color-red);"
                     ></div>
-                    Slam
                 </button>
-                <button onclick={() => setColor("color-blue")}>
+                <button
+                    onclick={() => setColor("color-blue")}
+                    class={selectedColor === "color-blue" ? "selected" : ""}
+                >
                     <div
                         class="color-preview {selectedColor === 'color-blue'
                             ? 'selected'
                             : ''}"
                         style="background: var(--kolora-color-blue);"
                     ></div>
-                    Terasz
                 </button>
-                <button onclick={() => setColor("color-purple")}>
+                <button
+                    onclick={() => setColor("color-purple")}
+                    class={selectedColor === "color-purple" ? "selected" : ""}
+                >
                     <div
                         class="color-preview {selectedColor === 'color-purple'
                             ? 'selected'
                             : ''}"
                         style="background: var(--kolora-color-purple);"
                     ></div>
-                    Akusztik
                 </button>
-                <button onclick={() => setColor("color-yellow")}>
+                <button
+                    onclick={() => setColor("color-yellow")}
+                    class={selectedColor === "color-yellow" ? "selected" : ""}
+                >
                     <div
                         class="color-preview {selectedColor === 'color-yellow'
                             ? 'selected'
                             : ''}"
                         style="background: var(--kolora-color-yellow);"
                     ></div>
-                    Extra
                 </button>
-            </ul>
+            </div>
         </div>
     </Backdrop>
 {/if}
@@ -130,23 +134,14 @@
         gap: calc(var(--spacing) / 2);
     }
 
-    .theme-toggle {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: calc(var(--spacing) / 2);
-    }
-
-    .btn {
-        flex: 1;
+    .button-group > * {
         padding: calc(var(--spacing) / 2);
         border: 2px solid var(--primary-variant-color);
         background: transparent;
         color: var(--on-primary-color);
     }
 
-    .btn.selected {
+    .button-group > *.selected {
         background: var(--primary-variant-color);
         color: var(--on-primary-variant-color);
         border-radius: var(--corner-radius);
