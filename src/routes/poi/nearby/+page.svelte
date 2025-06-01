@@ -9,7 +9,7 @@
     let errorMessage = $state("");
     let places: POI[] = $state([]);
 
-    let distanceToView = $state(0);
+    let distanceToOpen = $state(0);
 
     function openFallbackUrl() {
         rtdb.config.feeds.getQrCodeFallbackUrl().then((url) => {
@@ -61,7 +61,7 @@
             nearestPlace.longitude,
         );
 
-        if (distanceMeters <= distanceToView) {
+        if (distanceMeters <= distanceToOpen) {
             window.location.replace(`/poi?id=${nearestPlace.id}`);
         } else {
             openFallbackUrl();
@@ -71,8 +71,8 @@
     onMount(() => {
         let locationWatcher: number | null;
 
-        rtdb.config.feeds.getDistanceToView().then((d) => {
-            distanceToView = d;
+        rtdb.config.feeds.getDistanceToOpen().then((d) => {
+            distanceToOpen = d;
         });
 
         firestore.pois.getAll().then((pois) => {
