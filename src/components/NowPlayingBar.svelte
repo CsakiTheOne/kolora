@@ -15,8 +15,8 @@
         {
             name: "Kortárs ",
             location: "Museum Café",
-            start: new Date("2025-06-01T18:00:00"),
-            end: new Date("2025-06-01T20:00:00"),
+            start: new Date("2025-06-01T19:30:00"),
+            end: new Date("2025-06-01T21:00:00"),
             nowPlayingText: "Maya és Chad Gustavson @ Museum Café",
         },
     ];
