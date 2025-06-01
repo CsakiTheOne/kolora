@@ -24,6 +24,7 @@
     import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
     import pfpTolnaiZsofi from "$lib/images/members/tolnai-zsofi.jpg";
     import FlowerImage from "../components/FlowerImage.svelte";
+    import NowPlayingBar from "../components/NowPlayingBar.svelte";
 
     let windowWidth = $state(0);
     let groupPhotoDeltaX = $state(0);
@@ -56,6 +57,7 @@
 
 <Header selectedTab="Főoldal" />
 <main>
+    <NowPlayingBar />
     <h2 id="about">Rólunk</h2>
     <a id="group-photo" href="/members">
         <FlowerImage
