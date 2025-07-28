@@ -39,22 +39,88 @@
         </Alert>
     {:else}
         <h2>
-            <span class="mdi mdi-tools"></span>
-            Eszközök és források
+            <span class="mdi mdi-link"></span>
+            Linkek
         </h2>
         <ul class="outlined-list">
-            <a href="./design-system">
+            <a
+                href="https://drive.google.com/file/d/1rFCE90fvVLDRNbrLTmK1_LFk0916UVp_/view?usp=drive_link"
+                target="_blank"
+            >
                 <li>
-                    <span class="mdi mdi-palette"></span>
-                    Design rendszer
+                    <p style="display: flex; gap: 4px;">
+                        <span class="mdi mdi-palette"></span>
+                        <span style="flex: 1; text-align: left;">
+                            Figma template: Kolora design system 2024_25.fig
+                        </span>
+                        <span class="mdi mdi-download"></span>
+                    </p>
+                    <p class="text-small">
+                        A Levi által készített Figma projekt, amiből gyorsan
+                        tudunk eseményekhez való grafikákat alkotni.
+                    </p>
                 </li>
             </a>
-            <a href="./post-generator">
+            <a
+                href="https://drive.google.com/drive/folders/1akxU9BGE1xXlYTHlrtUMhzKm8Cl8E2bu?usp=sharing"
+                target="_blank"
+            >
                 <li>
-                    <span class="mdi mdi-post"></span>
-                    Poszt készítő
+                    <p>
+                        <span class="mdi mdi-google-drive"></span>
+                        Kolorás Drive mappa (owned by Csáki)
+                    </p>
+                    <p class="text-small">
+                        Nyugodtan pakolásszatok ide. 200GB-on osztoszkodnak a
+                        saját dolgaim, családom és ez a Kolorás mappa.
+                        Hozzáférésért zaklassatok.
+                    </p>
                 </li>
             </a>
+            <a href="https://studio.youtube.com/" target="_blank">
+                <li>
+                    <span class="mdi mdi-youtube-studio"></span>
+                    YouTube Studio
+                </li>
+            </a>
+            <a href="https://m.me/CsakiTheOne" target="_blank">
+                <li>
+                    <p>
+                        <span class="mdi mdi-help"></span>
+                        Hiányzik valami?
+                    </p>
+                    <p class="text-small">
+                        Ha van olyan eszköz, link, vagy bármi, ami szerinted
+                        hasznos lehet a Kolora tagoknak, szólj Csákinak és
+                        iderakja.
+                    </p>
+                </li>
+            </a>
+        </ul>
+
+        <h2>
+            <span class="mdi mdi-tools"></span>
+            Eszközök
+        </h2>
+        <ul class="outlined-list">
+            <button
+                style="text-align: left;"
+                onclick={() => {
+                    navigator.clipboard.writeText(
+                        `${window.location.origin}/member-tools/auto-login`,
+                    );
+                }}
+            >
+                <p>
+                    <span class="mdi mdi-account"></span>
+                    Kolora fiók létrehozás egyszerűen
+                </p>
+                <p class="text-small">
+                    Ha valakinek szeretnél segíteni a Kolora fiók létrehozásban,
+                    akkor csak küldd el neki a linket, amit ide kattintva
+                    kimásolhatsz.
+                </p>
+            </button>
         </ul>
         <ul class="outlined-list">
             <a href="/poi/nearby">
@@ -101,26 +167,6 @@
                 </p>
             </li>
         </ul>
-        <ul class="outlined-list">
-            <button
-                style="text-align: left;"
-                onclick={() => {
-                    navigator.clipboard.writeText(
-                        `${window.location.origin}/member-tools/auto-login`,
-                    );
-                }}
-            >
-                <p>
-                    <span class="mdi mdi-account"></span>
-                    Kolora fiók létrehozás egyszerűen
-                </p>
-                <p class="text-small">
-                    Ha valakinek szeretnél segíteni a Kolora fiók létrehozásban,
-                    akkor csak küldd el neki a linket, amit ide kattintva
-                    kimásolhatsz.
-                </p>
-            </button>
-        </ul>
 
         <h2>
             <span class="mdi mdi-progress-wrench"></span>
@@ -134,46 +180,10 @@
             <li>Jelenleg nincs fejlesztés alatt álló oldal</li>
         </ul>
 
-        <h2>
-            <span class="mdi mdi-link"></span>
-            Linkek
-        </h2>
-        <ul class="outlined-list">
-            <a
-                href="https://drive.google.com/drive/folders/1akxU9BGE1xXlYTHlrtUMhzKm8Cl8E2bu?usp=sharing"
-                target="_blank"
-            >
-                <li>
-                    <span class="mdi mdi-google-drive"></span>
-                    Csáki Kolorás Drive mappája
-                </li>
-            </a>
-            <a href="https://studio.youtube.com/" target="_blank">
-                <li>
-                    <span class="mdi mdi-youtube-studio"></span>
-                    YouTube Studio
-                </li>
-            </a>
-            <a href="https://m.me/CsakiTheOne" target="_blank">
-                <li>
-                    <p>
-                        <span class="mdi mdi-help"></span>
-                        Hiányzik valami?
-                    </p>
-                    <p class="text-small">
-                        Ha van olyan eszköz, link, vagy bármi, ami szerinted
-                        hasznos lehet a Kolora tagoknak, szólj Csákinak és
-                        iderakja.
-                    </p>
-                </li>
-            </a>
-        </ul>
-
         <h2>Nem használt elemek</h2>
         <p>
-            "Ezek a komponensek egyszer elkészültek, de végül nem igazán
-            kerültek publikusan az oldalra. Ha már vannak, gondoltam iderakom."
-            - Csáki
+            Ezek a komponensek egyszer elkészültek, de végül nem igazán kerültek
+            publikusan az oldalra. Ha már vannak, gondoltam iderakom.
         </p>
         <Countdown
             targetDateTime={new Date(
