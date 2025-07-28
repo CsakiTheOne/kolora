@@ -77,6 +77,14 @@
                     </p>
                 </li>
             </a>
+            <a href="https://www.figma.com" target="_blank">
+                <li>
+                    <p>
+                        <span class="mdi mdi-palette"></span>
+                        Figma
+                    </p>
+                </li>
+            </a>
             <a href="https://studio.youtube.com/" target="_blank">
                 <li>
                     <span class="mdi mdi-youtube-studio"></span>
