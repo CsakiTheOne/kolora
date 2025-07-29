@@ -85,6 +85,17 @@
                     </p>
                 </li>
             </a>
+            <a
+                href="https://mini-qr-code-generator.vercel.app/"
+                target="_blank"
+            >
+                <li>
+                    <p>
+                        <span class="mdi mdi-qrcode"></span>
+                        QR kód generátor
+                    </p>
+                </li>
+            </a>
             <a href="https://studio.youtube.com/" target="_blank">
                 <li>
                     <span class="mdi mdi-youtube-studio"></span>
