@@ -2,8 +2,11 @@ import ThemeManager from "./ThemeManager";
 import imgMusicianBodonyiDani from "$lib/images/musicians/bodonyi-dani-banner.jpg";
 import imgMusicianCrescendoSelecta from "$lib/images/musicians/crescendo-selecta-banner.jpg";
 import imgMusicianEgy5Egy from "$lib/images/musicians/egy5egy-banner.jpg";
+import imgMusicianFarkasMarton from "$lib/images/musicians/farkas-marton.jpg";
+import imgMusicianFeltucat from "$lib/images/musicians/feltucat-banner.jpg";
 import imgMusicianJex from "$lib/images/musicians/jex-banner.png";
 import imgMusicianKalafaticsImre from "$lib/images/musicians/kalafatics-imre.png";
+import imgMusicianKam from "$lib/images/musicians/kam.jpg";
 import imgMusicianKory from "$lib/images/musicians/kory.jpg";
 import imgMusicianLoophia from "$lib/images/musicians/loophia-banner.jpg";
 import imgMusicianNaez from "$lib/images/musicians/naez-logo.jpg";
@@ -28,6 +31,16 @@ export default class KoloraLocalDb {
             websiteUrl: "https://www.facebook.com/egy5egyzenekar",
         },
         {
+            name: "Farkas Márton",
+            bannerImageUrl: imgMusicianFarkasMarton,
+            websiteUrl: "https://www.instagram.com/markasfarci/",
+        },
+        {
+            name: "Féltucat",
+            bannerImageUrl: imgMusicianFeltucat,
+            websiteUrl: "https://www.instagram.com/_feltucat/",
+        },
+        {
             name: "The JEX",
             bannerImageUrl: imgMusicianJex,
             websiteUrl: "https://linktr.ee/thejexofficial",
@@ -39,6 +52,18 @@ export default class KoloraLocalDb {
         {
             name: "Kalafatics Imre",
             bannerImageUrl: imgMusicianKalafaticsImre,
+        },
+        {
+            name: "KAM",
+            bannerImageUrl: imgMusicianKam,
+            websiteUrl: "https://www.instagram.com/here.i.kam._",
+            songUrls: [
+                "https://youtu.be/SjhUrbH7Smw?si=tps6QZEg0pBj0eKi",
+                "https://youtu.be/LyLAv5muR4Y?si=9m5I5En5CVjL7-TA",
+                "https://youtu.be/81Ro_B_HSmk?si=zzBIqbQXRaDY_7ub",
+                "https://youtu.be/ofFus_iSGuQ?si=L9gQ83zssT3iqpgT",
+                "https://youtu.be/WrAPhuqWyg8?si=HzO3VEK2VB51i3NR",
+            ],
         },
         {
             name: ".kory",
