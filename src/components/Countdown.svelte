@@ -5,6 +5,7 @@
         targetDateTime,
         backgroundColor = "var(--primary-color)",
         color = "var(--on-primary-color)",
+        style = "",
         ...props
     } = $props();
 
@@ -47,12 +48,12 @@
 
 <div
     class="countdown"
-    style="--background-color: {backgroundColor}; --color: {color}"
+    style="--background-color: {backgroundColor}; --color: {color}; {style}"
     {...props}
 >
     {#if days > 0}
         <h1 class="section">{days}</h1>
-        <h1 class="section">-</h1>
+        <h1 class="section">nap</h1>
     {/if}
     <h1 class="section">{hours}</h1>
     <h1 class="section">:</h1>
