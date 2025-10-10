@@ -52,8 +52,10 @@
     {...props}
 >
     {#if days > 0}
-        <h1 class="section">{days}</h1>
-        <h1 class="section">nap</h1>
+        <div style="display: flex; flex-direction: row; justify-content: center; gap: .2rem; padding: .5rem;">
+            <h1 class="section">{days}</h1>
+            <h1 class="section">nap</h1>
+        </div>
     {/if}
     <h1 class="section">{hours}</h1>
     <h1 class="section">:</h1>
@@ -78,9 +80,9 @@
         padding: 0.5rem;
         text-align: center;
         overflow: hidden;
-        transition: all .1s ease-out;
+        transition: all 0.1s ease-out;
     }
-    
+
     .section::after {
         content: "";
         display: inline-block;
