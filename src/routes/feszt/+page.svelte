@@ -2,6 +2,8 @@
     import Countdown from "../../components/Countdown.svelte";
     import Footer from "../../components/Footer.svelte";
     import poster from "$lib/images/gallery/2025-kolora-feszt/poster.png";
+    import cookie from "$lib/images/utils/cookie.svg?raw";
+    import { onMount } from "svelte";
 
     const events: Array<{
         type:
@@ -55,6 +57,16 @@
     ];
 
     const isEventStarted = new Date() >= new Date("2025-10-18T16:30:00");
+    let currentTime = new Date();
+
+    onMount(() => {
+        const tickInterval = setInterval(() => {
+            currentTime = new Date();
+            console.log(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
+        }, 1000);
+
+        return () => clearInterval(tickInterval);
+    });
 
     function getCurrentEvents() {
         const now = new Date();
@@ -81,23 +93,26 @@
     }
 </script>
 
-<main>
-    {#if !isEventStarted}
-        <Countdown
-            style="margin: auto;"
-            targetDateTime={new Date("2025-10-18T16:30:00")}
-        />
-        <img src={poster} alt="" style="display: block; margin: auto; width: 100%; max-width: 480px !important; border-radius: var(--corner-radius);" />
-        <a
-            href="https://fb.me/e/3zo01rz4a"
-            target="_blank"
-            class="btn fab"
-            style="margin: auto;"
-        >
-            <span class="mdi mdi-facebook"></span>
-            Facebook esemény
-        </a>
-    {:else}
+{#if !isEventStarted}
+    <div class="cookie-clock" style="--seconds: {currentTime.getSeconds()}; --minutes: {currentTime.getMinutes()}; --hours: {currentTime.getHours()};">
+        {@html cookie}
+        {@html cookie}
+        {@html cookie}
+        <main>
+            <h1>Kolora Feszt</h1>
+            <Countdown targetDateTime={new Date("2025-10-18T16:30:00")} />
+            <a
+                class="btn"
+                href="https://www.facebook.com/events/1461881778384144"
+                target="_blank"
+            >
+                <span class="mdi mdi-facebook"></span>
+                Facebook esemény
+            </a>
+        </main>
+    </div>
+{:else}
+    <main>
         <h1 style="text-align: center;">Kolora Feszt</h1>
         <section>
             <h2>Jelenleg zajló események</h2>
@@ -130,8 +145,8 @@
                 <p>Nincs több esemény a közeljövőben.</p>
             {/if}
         </section>
-    {/if}
-</main>
+    </main>
+{/if}
 <Footer />
 
 <style>
@@ -148,5 +163,58 @@
         --on-background-color: #33214b !important;
         --spacing: 20px !important;
         --corner-radius: 10px !important;
+    }
+
+    .cookie-clock {
+        position: relative;
+        width: 100vw;
+        height: 100svh;
+        overflow: hidden;
+    }
+
+    .cookie-clock main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    :global(.cookie-clock svg) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        aspect-ratio: 1 / 1;
+        z-index: -1;
+    }
+
+    :global(.cookie-clock svg:nth-child(1)) {
+        height: 90svh;
+        :global(path) {
+            fill: #33214b;
+            transform-origin: center;
+            rotate: calc(var(--hours) * -15deg);
+        }
+    }
+
+    :global(.cookie-clock svg:nth-child(2)) {
+        height: 70svh;
+        :global(path) {
+            fill: #8d552e;
+            transform-origin: center;
+            rotate: calc(var(--minutes) * -6deg);
+        }
+    }
+
+    :global(.cookie-clock svg:nth-child(3)) {
+        height: 50svh;
+        :global(path) {
+            fill: #d5c3b6;
+            transform-origin: center;
+            rotate: calc(var(--seconds) * -1deg);
+        }
     }
 </style>
