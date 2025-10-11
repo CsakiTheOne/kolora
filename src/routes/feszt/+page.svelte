@@ -2,7 +2,7 @@
     import Countdown from "../../components/Countdown.svelte";
     import Footer from "../../components/Footer.svelte";
     import poster from "$lib/images/gallery/2025-kolora-feszt/poster.png";
-    import cookie from "$lib/images/utils/cookie.svg?raw";
+    import cookie from "$lib/images/utils/cookie-clock.svg?raw";
     import { onMount } from "svelte";
     import Carousel from "../../components/Carousel.svelte";
     import imgMusicianBodonyiDani from "$lib/images/musicians/bodonyi-dani-banner.jpg";
@@ -165,12 +165,7 @@
     onMount(() => {
         const tickInterval = setInterval(() => {
             currentTime = new Date();
-            console.log(
-                currentTime.getHours(),
-                currentTime.getMinutes(),
-                currentTime.getSeconds(),
-            );
-        }, 1000);
+        }, 1000 / 30);
 
         return () => clearInterval(tickInterval);
     });
@@ -203,7 +198,7 @@
 {#if !isEventStarted}
     <div
         class="cookie-clock"
-        style="--seconds: {currentTime.getSeconds()}; --minutes: {currentTime.getMinutes()}; --hours: {currentTime.getHours()};"
+        style="--millis: {currentTime.getMilliseconds()}; --seconds: {currentTime.getSeconds()}; --minutes: {currentTime.getMinutes()}; --hours: {currentTime.getHours()};"
     >
         {@html cookie}
         {@html cookie}
@@ -347,8 +342,13 @@
         height: 90svh;
         :global(path) {
             fill: #33214b;
+        }
+        :global(circle) {
+            fill: #d5c3b6;
+        }
+        :global(g) {
             transform-origin: center;
-            rotate: calc(var(--hours) * -15deg);
+            rotate: calc(var(--hours) * -30deg + (var(--minutes) * -30deg / 60) );
         }
     }
 
@@ -356,8 +356,13 @@
         height: 70svh;
         :global(path) {
             fill: #8d552e;
+        }
+        :global(circle) {
+            fill: #d5c3b6;
+        }
+        :global(g) {
             transform-origin: center;
-            rotate: calc((var(--minutes) * 60 + var(--seconds)) * 0.5deg);
+            rotate: calc((var(--minutes) * -6deg + var(--seconds)) * -6deg / 60);
         }
     }
 
@@ -365,8 +370,13 @@
         height: 50svh;
         :global(path) {
             fill: #d5c3b6;
+        }
+        :global(circle) {
+            fill: #8d552e;
+        }
+        :global(g) {
             transform-origin: center;
-            rotate: calc(var(--seconds) * -1deg);
+            rotate: calc(var(--seconds) * -6deg + (var(--millis) * -6deg / 1000));
         }
     }
 </style>
