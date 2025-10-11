@@ -52,7 +52,9 @@
     {...props}
 >
     {#if days > 0}
-        <div style="display: flex; flex-direction: row; justify-content: center; gap: .2rem; padding: .5rem;">
+        <div
+            style="display: flex; flex-direction: row; justify-content: center; gap: .2rem; padding-bottom: .2rem;"
+        >
             <h1 class="section">{days}</h1>
             <h1 class="section">nap</h1>
         </div>

@@ -4,6 +4,12 @@
     import poster from "$lib/images/gallery/2025-kolora-feszt/poster.png";
     import cookie from "$lib/images/utils/cookie.svg?raw";
     import { onMount } from "svelte";
+    import Carousel from "../../components/Carousel.svelte";
+    import imgMusicianBodonyiDani from "$lib/images/musicians/bodonyi-dani-banner.jpg";
+    import imgMusicianFeltucat from "$lib/images/musicians/feltucat-banner.jpg";
+    import imgMusicianKalafaticsImre from "$lib/images/musicians/kalafatics-imre.png";
+    import imgMusicianLoophia from "$lib/images/musicians/loophia-banner.jpg";
+    import imgMusicianNaez from "$lib/images/musicians/naez-logo.jpg";
 
     const events: Array<{
         type:
@@ -13,46 +19,143 @@
             | "könyvbemutató"
             | "slam"
             | "workshop"
-            | "egyéb";
+            | "fényfestés";
         name: string;
         day: string; // YYYY-MM-DD
         start: string; // HH:MM
         end: string; // HH:MM
+        imageUrl?: string;
     }> = [
         {
             type: "koncert",
-            name: "Acoustic Session",
-            day: "2025-09-10",
+            name: "Tearaža",
+            day: "2025-10-17",
+            start: "17:00",
+            end: "18:00",
+        },
+        {
+            type: "koncert",
+            name: "Somnium",
+            day: "2025-10-17",
             start: "18:00",
-            end: "19:30",
+            end: "19:00",
+        },
+        {
+            type: "koncert",
+            name: "Wake And Bake",
+            day: "2025-10-17",
+            start: "19:00",
+            end: "20:00",
         },
         {
             type: "DJ",
-            name: "Electronic Night",
-            day: "2025-09-10",
+            name: "Kama3 aka. Riot City",
+            day: "2025-10-17",
             start: "20:00",
+            end: "21:00",
+        },
+        {
+            type: "DJ",
+            name: "blameyourbrother",
+            day: "2025-10-17",
+            start: "21:00",
+            end: "22:00",
+        },
+        {
+            type: "kiállítás",
+            name: "Szvath Marci",
+            day: "2025-10-17",
+            start: "16:30",
             end: "23:00",
         },
         {
             type: "workshop",
-            name: "Fotózás workshp",
-            day: "2025-09-10",
-            start: "14:00",
-            end: "16:00",
+            name: "Kalafatics Imi & Tóth Zsombor",
+            day: "2025-10-17",
+            start: "17:30",
+            end: "18:30",
+            imageUrl: imgMusicianKalafaticsImre,
+        },
+        {
+            type: "workshop",
+            name: "Vesztu",
+            day: "2025-10-17",
+            start: "19:30",
+            end: "20:30",
+        },
+        {
+            type: "fényfestés",
+            name: "Fényfestés: Whitelights",
+            day: "2025-10-17",
+            start: "21:00",
+            end: "23:00",
+        },
+        {
+            type: "koncert",
+            name: "Féltucat",
+            day: "2025-10-18",
+            start: "18:30",
+            end: "19:30",
+            imageUrl: imgMusicianFeltucat,
+        },
+        {
+            type: "koncert",
+            name: "Porszem",
+            day: "2025-10-18",
+            start: "19:30",
+            end: "20:30",
+        },
+        {
+            type: "koncert",
+            name: "Naez",
+            day: "2025-10-18",
+            start: "20:30",
+            end: "21:30",
+            imageUrl: imgMusicianNaez,
+        },
+        {
+            type: "koncert",
+            name: "Loophia",
+            day: "2025-10-18",
+            start: "21:30",
+            end: "22:30",
+            imageUrl: imgMusicianLoophia,
+        },
+        {
+            type: "DJ",
+            name: "Bodonyi Dani",
+            day: "2025-10-18",
+            start: "22:30",
+            end: "23:30",
+            imageUrl: imgMusicianBodonyiDani,
+        },
+        {
+            type: "DJ",
+            name: "OnlyFangs",
+            day: "2025-10-18",
+            start: "23:30",
+            end: "00:30",
+        },
+        {
+            type: "DJ",
+            name: "HYPERtänzer",
+            day: "2025-10-18",
+            start: "00:30",
+            end: "01:30",
         },
         {
             type: "kiállítás",
-            name: "Modern Művészet Tárlat",
-            day: "2025-09-10",
-            start: "10:00",
-            end: "22:00",
+            name: "Szvath Marci",
+            day: "2025-10-18",
+            start: "17:00",
+            end: "23:00",
         },
         {
-            type: "könyvbemutató",
-            name: "Kortárs Magyar Irodalom",
-            day: "2025-09-10",
-            start: "16:30",
-            end: "17:30",
+            type: "fényfestés",
+            name: "Fényfestés: Whitelights",
+            day: "2025-10-18",
+            start: "22:00",
+            end: "01:00",
         },
     ];
 
@@ -62,7 +165,11 @@
     onMount(() => {
         const tickInterval = setInterval(() => {
             currentTime = new Date();
-            console.log(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
+            console.log(
+                currentTime.getHours(),
+                currentTime.getMinutes(),
+                currentTime.getSeconds(),
+            );
         }, 1000);
 
         return () => clearInterval(tickInterval);
@@ -94,23 +201,64 @@
 </script>
 
 {#if !isEventStarted}
-    <div class="cookie-clock" style="--seconds: {currentTime.getSeconds()}; --minutes: {currentTime.getMinutes()}; --hours: {currentTime.getHours()};">
+    <div
+        class="cookie-clock"
+        style="--seconds: {currentTime.getSeconds()}; --minutes: {currentTime.getMinutes()}; --hours: {currentTime.getHours()};"
+    >
         {@html cookie}
         {@html cookie}
         {@html cookie}
-        <main>
-            <h1>Kolora Feszt</h1>
-            <Countdown targetDateTime={new Date("2025-10-18T16:30:00")} />
-            <a
-                class="btn"
-                href="https://www.facebook.com/events/1461881778384144"
-                target="_blank"
-            >
-                <span class="mdi mdi-facebook"></span>
-                Facebook esemény
-            </a>
-        </main>
     </div>
+    <div class="preshow-content">
+        <h1>Kolora Feszt</h1>
+        <Countdown targetDateTime={new Date("2025-10-18T16:30:00")} />
+        <a
+            class="btn"
+            href="https://www.facebook.com/events/1461881778384144"
+            target="_blank"
+        >
+            <span class="mdi mdi-facebook"></span>
+            Facebook esemény
+        </a>
+    </div>
+    <main>
+        <h2>Fellépők, művészek</h2>
+        <h3>Péntek</h3>
+        <Carousel
+            style="aspect-ratio: 21 / 9;"
+            pages={events
+                .filter((e) => e.day === "2025-10-17")
+                .map((e) => ({
+                    title: e.name,
+                    text: e.type,
+                    background: e.imageUrl
+                        ? `url(${e.imageUrl}) center/cover`
+                        : "var(--secondary-color)",
+                }))}
+        />
+        <h3>Szombat</h3>
+        <Carousel
+            style="aspect-ratio: 21 / 9;"
+            pages={events
+                .filter((e) => e.day === "2025-10-18")
+                .map((e) => ({
+                    title: e.name,
+                    text: e.type,
+                    background: e.imageUrl
+                        ? `url(${e.imageUrl}) center/cover`
+                        : "var(--secondary-color)",
+                }))}
+        />
+        <h2>Helyszín</h2>
+        <iframe
+            title="8-as Műhely"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2711.679136145763!2d18.40916337631081!3d47.18371847115417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f7a71b44a165%3A0xdbce9b61da28b53d!2s8-as%20M%C5%B1hely!5e0!3m2!1sen!2shu!4v1760118055477!5m2!1sen!2shu"
+            width="100%"
+            style="border:0; aspect-ratio: 5 / 4;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+    </main>
 {:else}
     <main>
         <h1 style="text-align: center;">Kolora Feszt</h1>
@@ -162,7 +310,7 @@
         --on-secondary-variant-color: #33214b !important;
         --on-background-color: #33214b !important;
         --spacing: 20px !important;
-        --corner-radius: 10px !important;
+        --corner-radius: 16px !important;
     }
 
     .cookie-clock {
@@ -172,13 +320,17 @@
         overflow: hidden;
     }
 
-    .cookie-clock main {
+    .preshow-content {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        height: 100%;
+        gap: var(--spacing);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100svh;
     }
 
     :global(.cookie-clock svg) {
@@ -205,7 +357,7 @@
         :global(path) {
             fill: #8d552e;
             transform-origin: center;
-            rotate: calc(var(--minutes) * -6deg);
+            rotate: calc((var(--minutes) * 60 + var(--seconds)) * 0.5deg);
         }
     }
 
