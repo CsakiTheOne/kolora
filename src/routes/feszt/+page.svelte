@@ -160,11 +160,14 @@
     ];
 
     const isEventStarted = new Date() >= new Date("2025-10-18T16:30:00");
-    let currentTime = new Date();
+    let currentCountdownTime = new Date();
 
     onMount(() => {
         const tickInterval = setInterval(() => {
-            currentTime = new Date();
+            const now = new Date();
+            const eventStart = new Date("2025-10-18T16:30:00");
+            const remainingMs = eventStart.getTime() - now.getTime();
+            currentCountdownTime = new Date(remainingMs);
         }, 1000 / 30);
 
         return () => clearInterval(tickInterval);
@@ -198,7 +201,7 @@
 {#if !isEventStarted}
     <div
         class="cookie-clock"
-        style="--millis: {currentTime.getMilliseconds()}; --seconds: {currentTime.getSeconds()}; --minutes: {currentTime.getMinutes()}; --hours: {currentTime.getHours()};"
+        style="--millis: {currentCountdownTime.getMilliseconds()}; --seconds: {currentCountdownTime.getSeconds()}; --minutes: {currentCountdownTime.getMinutes()}; --hours: {currentCountdownTime.getHours()};"
     >
         {@html cookie}
         {@html cookie}
@@ -348,7 +351,7 @@
         }
         :global(g) {
             transform-origin: center;
-            rotate: calc(var(--hours) * -30deg + (var(--minutes) * -30deg / 60) );
+            rotate: calc(var(--hours) * 30deg + var(--minutes) * 30deg / 60);
         }
     }
 
@@ -362,7 +365,7 @@
         }
         :global(g) {
             transform-origin: center;
-            rotate: calc((var(--minutes) * -6deg + var(--seconds)) * -6deg / 60);
+            rotate: calc(var(--minutes) * 6deg + var(--seconds) * 6deg / 60);
         }
     }
 
@@ -376,7 +379,7 @@
         }
         :global(g) {
             transform-origin: center;
-            rotate: calc(var(--seconds) * -6deg + (var(--millis) * -6deg / 1000));
+            rotate: calc(var(--seconds) * 6deg + var(--millis) * 6deg / 1000);
         }
     }
 </style>
