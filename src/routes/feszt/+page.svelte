@@ -14,10 +14,9 @@
     const events: Array<{
         type:
             | "DJ"
-            | "kiállítás"
-            | "koncert"
+            | "kiállító"
+            | "banda"
             | "könyvbemutató"
-            | "slam"
             | "workshop"
             | "fényfestés";
         name: string;
@@ -27,21 +26,21 @@
         imageUrl?: string;
     }> = [
         {
-            type: "koncert",
+            type: "banda",
             name: "Tearaža",
             day: "2025-10-17",
             start: "17:00",
             end: "18:00",
         },
         {
-            type: "koncert",
+            type: "banda",
             name: "Somnium",
             day: "2025-10-17",
             start: "18:00",
             end: "19:00",
         },
         {
-            type: "koncert",
+            type: "banda",
             name: "Wake And Bake",
             day: "2025-10-17",
             start: "19:00",
@@ -62,7 +61,7 @@
             end: "22:00",
         },
         {
-            type: "kiállítás",
+            type: "kiállító",
             name: "Szvath Marci",
             day: "2025-10-17",
             start: "16:30",
@@ -85,13 +84,13 @@
         },
         {
             type: "fényfestés",
-            name: "Fényfestés: Whitelights",
+            name: "Whitelights",
             day: "2025-10-17",
             start: "21:00",
             end: "23:00",
         },
         {
-            type: "koncert",
+            type: "banda",
             name: "Féltucat",
             day: "2025-10-18",
             start: "18:30",
@@ -99,14 +98,14 @@
             imageUrl: imgMusicianFeltucat,
         },
         {
-            type: "koncert",
+            type: "banda",
             name: "Porszem",
             day: "2025-10-18",
             start: "19:30",
             end: "20:30",
         },
         {
-            type: "koncert",
+            type: "banda",
             name: "Naez",
             day: "2025-10-18",
             start: "20:30",
@@ -114,7 +113,7 @@
             imageUrl: imgMusicianNaez,
         },
         {
-            type: "koncert",
+            type: "banda",
             name: "Loophia",
             day: "2025-10-18",
             start: "21:30",
@@ -144,7 +143,7 @@
             end: "01:30",
         },
         {
-            type: "kiállítás",
+            type: "kiállító",
             name: "Szvath Marci",
             day: "2025-10-18",
             start: "17:00",
@@ -152,7 +151,7 @@
         },
         {
             type: "fényfestés",
-            name: "Fényfestés: Whitelights",
+            name: "Whitelights",
             day: "2025-10-18",
             start: "22:00",
             end: "01:00",
@@ -221,32 +220,28 @@
     </div>
     <main>
         <h2>Fellépők, művészek</h2>
-        <h3>Péntek</h3>
-        <Carousel
-            style="aspect-ratio: 21 / 9;"
-            pages={events
-                .filter((e) => e.day === "2025-10-17")
-                .map((e) => ({
-                    title: e.name,
-                    text: e.type,
-                    background: e.imageUrl
-                        ? `url(${e.imageUrl}) center/cover`
-                        : "var(--secondary-color)",
-                }))}
-        />
-        <h3>Szombat</h3>
-        <Carousel
-            style="aspect-ratio: 21 / 9;"
-            pages={events
-                .filter((e) => e.day === "2025-10-18")
-                .map((e) => ({
-                    title: e.name,
-                    text: e.type,
-                    background: e.imageUrl
-                        ? `url(${e.imageUrl}) center/cover`
-                        : "var(--secondary-color)",
-                }))}
-        />
+        <div class="adaptive-col-row" style="align-items: stretch;">
+            <div style="flex: 1;">
+                <h3>Péntek</h3>
+                <ul>
+                    {#each events.filter((e) => e.day === "2025-10-17") as event}
+                        <li>
+                            <strong>{event.name}</strong> ({event.type})
+                        </li>
+                    {/each}
+                </ul>
+            </div>
+            <div style="flex: 1;">
+                <h3>Szombat</h3>
+                <ul>
+                    {#each events.filter((e) => e.day === "2025-10-18") as event}
+                        <li>
+                            <strong>{event.name}</strong> ({event.type})
+                        </li>
+                    {/each}
+                </ul>
+            </div>
+        </div>
         <h2>Helyszín</h2>
         <iframe
             title="8-as Műhely"
