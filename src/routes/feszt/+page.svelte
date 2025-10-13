@@ -159,13 +159,13 @@
         },
     ];
 
-    const isEventStarted = new Date() >= new Date("2025-10-18T16:30:00");
+    const isEventStarted = new Date() >= new Date("2025-10-17T16:30:00");
     let currentCountdownTime = new Date();
 
     onMount(() => {
         const tickInterval = setInterval(() => {
             const now = new Date();
-            const eventStart = new Date("2025-10-18T16:30:00");
+            const eventStart = new Date("2025-10-17T16:30:00");
             const remainingMs = eventStart.getTime() - now.getTime();
             currentCountdownTime = new Date(remainingMs);
         }, 1000 / 30);
@@ -209,7 +209,7 @@
     </div>
     <div class="preshow-content">
         <h1>Kolora Feszt</h1>
-        <Countdown targetDateTime={new Date("2025-10-18T16:30:00")} />
+        <Countdown targetDateTime={new Date("2025-10-17T16:30:00")} />
         <a
             class="btn"
             href="https://www.facebook.com/events/1461881778384144"
