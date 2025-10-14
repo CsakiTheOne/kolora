@@ -10,6 +10,17 @@
     import imgMusicianKalafaticsImre from "$lib/images/musicians/kalafatics-imre.png";
     import imgMusicianLoophia from "$lib/images/musicians/loophia-banner.jpg";
     import imgMusicianNaez from "$lib/images/musicians/naez-logo.jpg";
+    import Divider from "../../components/Divider.svelte";
+
+    const eventTypeIcon = {
+        DJ: "📀",
+        kiállító: "🖼️",
+        banda: "🎸",
+        könyvbemutató: "📚",
+        workshop: "🎨",
+        fényfestés: "💡",
+        egyéb: "❓",
+    };
 
     const events: Array<{
         type:
@@ -24,7 +35,7 @@
         day: string; // YYYY-MM-DD
         start: string; // HH:MM
         end: string; // HH:MM
-        imageUrl?: string;
+        url?: string;
     }> = [
         // Péntek
         {
@@ -47,6 +58,7 @@
             day: "2025-10-17",
             start: "16:30",
             end: "19:00",
+            url: "https://instagram.com/vesztutattoo"
         },
         {
             type: "kiállító",
@@ -141,9 +153,11 @@
             end: "03:00",
         },
     ];
+
     const eventStartDate = new Date("2025-10-17T16:30:00");
 
     const isEventStarted = new Date() >= eventStartDate;
+
     let currentCountdownTime = new Date();
 
     onMount(() => {
@@ -203,81 +217,115 @@
                 Facebook esemény
             </a>
         </div>
-        <main>
-            <h2>Fellépők, művészek</h2>
-            <div class="adaptive-col-row" style="align-items: stretch;">
-                <div style="flex: 1;">
-                    <h3>Péntek</h3>
-                    <ul>
-                        {#each events.filter((e) => e.day === "2025-10-17" || (e.day === "2025-10-18" && parseInt(e.start.substring(0, 2)) < 12)) as event}
-                            {#if event.type !== "egyéb"}
-                                <li>{event.name}</li>
-                            {/if}
-                        {/each}
-                    </ul>
-                </div>
-                <div style="flex: 1;">
-                    <h3>Szombat</h3>
-                    <ul>
-                        {#each events.filter((e) => e.day === "2025-10-18" && parseInt(e.start.substring(0, 2)) >= 12 || (e.day === "2025-10-19" && parseInt(e.start.substring(0, 2)) < 12)) as event}
-                            {#if event.type !== "egyéb"}
-                                <li>{event.name}</li>
-                            {/if}
-                        {/each}
-                    </ul>
-                </div>
-            </div>
-            <h2>Helyszín</h2>
-            <iframe
-                title="8-as Műhely"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2711.679136145763!2d18.40916337631081!3d47.18371847115417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f7a71b44a165%3A0xdbce9b61da28b53d!2s8-as%20M%C5%B1hely!5e0!3m2!1sen!2shu!4v1760118055477!5m2!1sen!2shu"
-                width="100%"
-                style="border:0; aspect-ratio: 5 / 4;"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-        </main>
     {:else}
         <main>
             <h1 style="text-align: center;">Kolora Feszt</h1>
-            <section>
-                <h2>Jelenleg zajló események</h2>
-                {#if getCurrentEvents().length > 0}
-                    <ul>
-                        {#each getCurrentEvents() as event}
+            <h2>Jelenleg zajló események</h2>
+            {#if getCurrentEvents().length > 0}
+                <ul class="outlined-list">
+                    {#each getCurrentEvents() as event}
+                        {#if event.url}
+                            <a href={event.url} target="_blank">
+                                <p class="text-small">
+                                    {event.start} - {event.end}
+                                </p>
+                                <p>
+                                    <strong>{event.name}</strong> ({event.type})
+                                </p>
+                            </a>
+                        {:else}
                             <li>
-                                <strong>{event.name}</strong> ({event.type}) - {event.start}
-                                - {event.end}
+                                <p class="text-small">
+                                    {event.start} - {event.end}
+                                </p>
+                                <p>
+                                    <strong>{event.name}</strong> ({event.type})
+                                </p>
                             </li>
-                        {/each}
-                    </ul>
-                {:else}
-                    <p>Jelenleg nincs zajló esemény.</p>
-                {/if}
-            </section>
-            <section>
-                <h2>Következő események</h2>
-                {#if getNextEvents().length > 0}
-                    <ul>
-                        {#each getNextEvents() as event}
+                        {/if}
+                    {/each}
+                </ul>
+            {:else}
+                <p>Jelenleg nincs zajló esemény.</p>
+            {/if}
+            <h2>Következő események</h2>
+            {#if getNextEvents().length > 0}
+                <ul class="outlined-list">
+                    {#each getNextEvents() as event}
+                        {#if event.url}
+                            <a href={event.url} target="_blank">
+                                <p class="text-small">
+                                    {event.day.substring(8, 10)}. {event.start} - {event.end}
+                                </p>
+                                <p>
+                                    <strong>{event.name}</strong> ({event.type})
+                                </p>
+                            </a>
+                        {:else}
                             <li>
-                                <strong>{event.name}</strong> ({event.type}) - {event.day}
-                                {event.start}
-                                - {event.end}
+                                <p class="text-small">
+                                    {event.day.substring(8, 10)}. {event.start} - {event.end}
+                                </p>
+                                <p>
+                                    <strong>{event.name}</strong> ({event.type})
+                                </p>
                             </li>
-                        {/each}
-                    </ul>
-                {:else}
-                    <p>Nincs több esemény a közeljövőben.</p>
-                {/if}
-            </section>
+                        {/if}
+                    {/each}
+                </ul>
+            {:else}
+                <p>Nincs több esemény a közeljövőben.</p>
+            {/if}
+            <Divider />
         </main>
     {/if}
+    <main>
+        <h2>Fellépők, művészek</h2>
+        <div class="adaptive-col-row" style="align-items: stretch;">
+            <div style="flex: 1;">
+                <h3>Péntek</h3>
+                <ul>
+                    {#each events.filter((e) => e.day === "2025-10-17" || (e.day === "2025-10-18" && parseInt(e.start.substring(0, 2)) < 12)) as event}
+                        {#if event.type !== "egyéb"}
+                            <li>
+                                <strong>{event.name}</strong>
+                                ({eventTypeIcon[event.type]}
+                                {event.type})
+                            </li>
+                        {/if}
+                    {/each}
+                </ul>
+            </div>
+            <div style="flex: 1;">
+                <h3>Szombat</h3>
+                <ul>
+                    {#each events.filter((e) => (e.day === "2025-10-18" && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === "2025-10-19" && parseInt(e.start.substring(0, 2)) < 12)) as event}
+                        {#if event.type !== "egyéb"}
+                            <li>
+                                <strong>{event.name}</strong>
+                                ({eventTypeIcon[event.type]}
+                                {event.type})
+                            </li>
+                        {/if}
+                    {/each}
+                </ul>
+            </div>
+        </div>
+        <h2>Helyszín</h2>
+        <iframe
+            title="8-as Műhely"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2711.679136145763!2d18.40916337631081!3d47.18371847115417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f7a71b44a165%3A0xdbce9b61da28b53d!2s8-as%20M%C5%B1hely!5e0!3m2!1sen!2shu!4v1760118055477!5m2!1sen!2shu"
+            width="100%"
+            style="border:0; aspect-ratio: 5 / 4;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+    </main>
     <Footer />
 </div>
 
 <style>
-    :global(.theme-override) {
+    .theme-override {
         --primary-color: #8d552e !important;
         --primary-variant-color: #d5c3b6 !important;
         --secondary-color: #33214b !important;
@@ -291,7 +339,6 @@
         --spacing: 20px !important;
         --corner-radius: 16px !important;
         background-color: var(--background-color);
-        z-index: -2;
     }
 
     .cookie-clock {
@@ -312,6 +359,7 @@
         left: 0;
         width: 100vw;
         height: 100svh;
+        z-index: 2;
     }
 
     :global(.cookie-clock svg) {
@@ -321,7 +369,7 @@
         transform: translate(-50%, -50%);
         width: auto;
         aspect-ratio: 1 / 1;
-        z-index: -1;
+        z-index: 1;
     }
 
     :global(.cookie-clock svg:nth-child(1)) {

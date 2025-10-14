@@ -24,8 +24,8 @@ export default class ThemeManager {
      * @param cssVariableName Example: "--primary-color"
      * @returns HEX color value of the CSS variable
      */
-    static getThemeColor(cssVariableName: string): string {
-        return getComputedStyle(document.body).getPropertyValue(cssVariableName);
+    static getThemeColor(cssVariableName: string, context?: HTMLElement): string {
+        return getComputedStyle(context || document.body).getPropertyValue(cssVariableName);
     }
 
     static get theme() {

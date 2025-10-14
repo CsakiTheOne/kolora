@@ -17,7 +17,7 @@
         canvas.height = 30;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = ThemeManager.getThemeColor("--primary-color");
+        ctx.strokeStyle = ThemeManager.getThemeColor("--primary-color", canvas);
         ctx.lineWidth = Math.min(10, window.innerWidth / 100);
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
