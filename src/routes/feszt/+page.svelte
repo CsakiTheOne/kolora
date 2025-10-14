@@ -179,25 +179,25 @@
     });
 
     function getCurrentEvents() {
-        const now = new Date();
+        const now = new Date().getTime();
         return events.filter((event) => {
-            const start = new Date(`${event.day}T${event.start}`);
-            const end = new Date(`${event.day}T${event.end}`);
+            const start = new Date(`${event.day}T${event.start}`).getTime();
+            const end = new Date(`${event.day}T${event.end}`).getTime();
             return now >= start && now <= end;
         });
     }
 
     function getNextEvents() {
-        const now = new Date();
+        const now = new Date().getTime();
         return events
             .filter((event) => {
-                const start = new Date(`${event.day}T${event.start}`);
+                const start = new Date(`${event.day}T${event.start}`).getTime();
                 return start > now;
             })
             .sort((a, b) => {
-                const startA = new Date(`${a.day}T${a.start}`);
-                const startB = new Date(`${b.day}T${b.start}`);
-                return startA.getTime() - startB.getTime();
+                const startA = new Date(`${a.day}T${a.start}`).getTime();
+                const startB = new Date(`${b.day}T${b.start}`).getTime();
+                return startA - startB;
             })
             .slice(0, 3);
     }
@@ -264,8 +264,7 @@
                         {#if event.url}
                             <a href={event.url} target="_blank">
                                 <p class="text-small">
-                                    {event.day.substring(8, 10)}. {event.start} -
-                                    {event.end}
+                                    {event.start} - {event.end}
                                 </p>
                                 <p>
                                     <strong>{event.name}</strong> ({event.type})
@@ -275,8 +274,7 @@
                         {:else}
                             <li>
                                 <p class="text-small">
-                                    {event.day.substring(8, 10)}. {event.start} -
-                                    {event.end}
+                                    {event.start} - {event.end}
                                 </p>
                                 <p>
                                     <strong>{event.name}</strong> ({event.type})
