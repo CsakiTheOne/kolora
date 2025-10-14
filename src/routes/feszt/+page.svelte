@@ -58,7 +58,7 @@
             day: "2025-10-17",
             start: "16:30",
             end: "19:00",
-            url: "https://instagram.com/vesztutattoo"
+            url: "https://www.instagram.com/vesztutattoo/",
         },
         {
             type: "kiállító",
@@ -66,6 +66,7 @@
             day: "2025-10-17",
             start: "16:30",
             end: "04:00",
+            url: "https://www.instagram.com/zagyva.graphics/",
         },
         {
             type: "banda",
@@ -231,6 +232,7 @@
                                 </p>
                                 <p>
                                     <strong>{event.name}</strong> ({event.type})
+                                    <span class="mdi mdi-link"></span>
                                 </p>
                             </a>
                         {:else}
@@ -255,16 +257,19 @@
                         {#if event.url}
                             <a href={event.url} target="_blank">
                                 <p class="text-small">
-                                    {event.day.substring(8, 10)}. {event.start} - {event.end}
+                                    {event.day.substring(8, 10)}. {event.start} -
+                                    {event.end}
                                 </p>
                                 <p>
                                     <strong>{event.name}</strong> ({event.type})
+                                    <span class="mdi mdi-link"></span>
                                 </p>
                             </a>
                         {:else}
                             <li>
                                 <p class="text-small">
-                                    {event.day.substring(8, 10)}. {event.start} - {event.end}
+                                    {event.day.substring(8, 10)}. {event.start} -
+                                    {event.end}
                                 </p>
                                 <p>
                                     <strong>{event.name}</strong> ({event.type})
@@ -287,11 +292,21 @@
                 <ul>
                     {#each events.filter((e) => e.day === "2025-10-17" || (e.day === "2025-10-18" && parseInt(e.start.substring(0, 2)) < 12)) as event}
                         {#if event.type !== "egyéb"}
-                            <li>
-                                <strong>{event.name}</strong>
-                                ({eventTypeIcon[event.type]}
-                                {event.type})
-                            </li>
+                            {#if event.url}
+                                <li>
+                                    <a href={event.url} target="_blank">
+                                        <strong>{event.name}</strong>
+                                        ({eventTypeIcon[event.type]}
+                                        {event.type})
+                                    </a>
+                                </li>
+                            {:else}
+                                <li>
+                                    <strong>{event.name}</strong>
+                                    ({eventTypeIcon[event.type]}
+                                    {event.type})
+                                </li>
+                            {/if}
                         {/if}
                     {/each}
                 </ul>
@@ -412,5 +427,10 @@
             transform-origin: center;
             rotate: calc(var(--seconds) * 6deg + var(--millis) * 6deg / 1000);
         }
+    }
+
+    ul.outlined-list :is(a, button) {
+        background-color: var(--primary-color);
+        color: var(--on-primary-color) !important;
     }
 </style>
