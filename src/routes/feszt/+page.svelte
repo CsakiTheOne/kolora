@@ -74,6 +74,7 @@
             day: "2025-10-17",
             start: "20:00",
             end: "21:00",
+            url: "https://www.instagram.com/somniumzenekar/",
         },
         {
             type: "banda",
@@ -110,6 +111,7 @@
             day: "2025-10-18",
             start: "18:00",
             end: "18:50",
+            url: "https://www.instagram.com/_feltucat/",
         },
         {
             type: "banda",
@@ -117,6 +119,7 @@
             day: "2025-10-18",
             start: "19:10",
             end: "20:00",
+            url: "https://www.instagram.com/porszemband/",
         },
         {
             type: "banda",
@@ -124,6 +127,7 @@
             day: "2025-10-18",
             start: "20:20",
             end: "21:10",
+            url: "https://www.instagram.com/tearaza_band/",
         },
         {
             type: "banda",
@@ -131,6 +135,7 @@
             day: "2025-10-18",
             start: "21:30",
             end: "22:20",
+            url: "https://www.instagram.com/naez.official/",
         },
         {
             type: "banda",
@@ -138,6 +143,7 @@
             day: "2025-10-18",
             start: "22:40",
             end: "23:30",
+            url: "https://www.instagram.com/loophia_/",
         },
         {
             type: "DJ",
@@ -145,6 +151,7 @@
             day: "2025-10-19",
             start: "00:00",
             end: "01:00",
+            url: "https://www.instagram.com/daniel_bodonyi/",
         },
         {
             type: "DJ",
@@ -316,11 +323,21 @@
                 <ul>
                     {#each events.filter((e) => (e.day === "2025-10-18" && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === "2025-10-19" && parseInt(e.start.substring(0, 2)) < 12)) as event}
                         {#if event.type !== "egyéb"}
-                            <li>
-                                <strong>{event.name}</strong>
-                                ({eventTypeIcon[event.type]}
-                                {event.type})
-                            </li>
+                            {#if event.url}
+                                <li>
+                                    <a href={event.url} target="_blank">
+                                        <strong>{event.name}</strong>
+                                        ({eventTypeIcon[event.type]}
+                                        {event.type})
+                                    </a>
+                                </li>
+                            {:else}
+                                <li>
+                                    <strong>{event.name}</strong>
+                                    ({eventTypeIcon[event.type]}
+                                    {event.type})
+                                </li>
+                            {/if}
                         {/if}
                     {/each}
                 </ul>
@@ -354,6 +371,10 @@
         --spacing: 20px !important;
         --corner-radius: 16px !important;
         background-color: var(--background-color);
+    }
+
+    a:not(.btn) {
+        color: var(--secondary-color);
     }
 
     .cookie-clock {
