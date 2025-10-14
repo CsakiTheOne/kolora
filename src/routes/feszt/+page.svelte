@@ -216,14 +216,24 @@
         <div class="preshow-content">
             <h1>Kolora Feszt</h1>
             <Countdown targetDateTime={eventStartDate} />
-            <a
-                class="btn"
-                href="https://www.facebook.com/events/1461881778384144"
-                target="_blank"
-            >
-                <span class="mdi mdi-facebook"></span>
-                Facebook esemény
-            </a>
+            <p>
+                <a
+                    class="btn"
+                    href="https://www.facebook.com/events/1461881778384144"
+                    target="_blank"
+                >
+                    <span class="mdi mdi-facebook"></span>
+                    Fb esemény
+                </a>
+                <a
+                    class="btn"
+                    href="https://www.facebook.com/share/17UY2tKn5P/"
+                    target="_blank"
+                >
+                    <span class="mdi mdi-gift"></span>
+                    Nyereményjáték
+                </a>
+            </p>
         </div>
     {:else}
         <main>
@@ -369,6 +379,7 @@
         --spacing: 20px !important;
         --corner-radius: 16px !important;
         background-color: var(--background-color);
+        color: var(--on-background-color);
     }
 
     a:not(.btn) {
