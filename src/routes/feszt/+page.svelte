@@ -39,13 +39,6 @@
     }> = [
         // Péntek
         {
-            type: "egyéb",
-            name: "Megnyitó, Kerekasztal beszélgetés",
-            day: "2025-10-17",
-            start: "17:00",
-            end: "19:00",
-        },
-        {
             type: "workshop",
             name: "Kalafatics Imi & Tóth Zsombor",
             day: "2025-10-17",
@@ -65,8 +58,15 @@
             name: "Szvath Marci",
             day: "2025-10-17",
             start: "16:30",
-            end: "04:00",
+            end: "23:59",
             url: "https://www.instagram.com/zagyva.graphics/",
+        },
+        {
+            type: "egyéb",
+            name: "Megnyitó, Kerekasztal beszélgetés",
+            day: "2025-10-17",
+            start: "17:00",
+            end: "19:00",
         },
         {
             type: "banda",
@@ -166,9 +166,15 @@
 
     const isEventStarted = new Date() >= eventStartDate;
 
-    let currentCountdownTime = new Date();
+    let currentCountdownTime = $state(new Date());
+    let selectedDay = $state(17);
 
     onMount(() => {
+        const now = new Date();
+        if (now.getDate() === 18 || now.getDate() === 19) {
+            selectedDay = 18;
+        }
+
         const tickInterval = setInterval(() => {
             const now = new Date();
             const remainingMs = eventStartDate.getTime() - now.getTime();
@@ -267,7 +273,7 @@
             {:else}
                 <p>Jelenleg nincs zajló esemény.</p>
             {/if}
-            <h2>Következő események</h2>
+            <h2>Következik</h2>
             {#if getNextEvents().length > 0}
                 <ul class="outlined-list">
                     {#each getNextEvents() as event}
@@ -300,57 +306,53 @@
         </main>
     {/if}
     <main>
-        <h2>Fellépők, művészek</h2>
-        <div class="adaptive-col-row" style="align-items: stretch;">
-            <div style="flex: 1;">
-                <h3>Péntek</h3>
-                <ul>
-                    {#each events.filter((e) => e.day === "2025-10-17" || (e.day === "2025-10-18" && parseInt(e.start.substring(0, 2)) < 12)) as event}
-                        {#if event.type !== "egyéb"}
-                            {#if event.url}
-                                <li>
-                                    <a href={event.url} target="_blank">
-                                        <strong>{event.name}</strong>
-                                        ({eventTypeIcon[event.type]}
-                                        {event.type})
-                                    </a>
-                                </li>
-                            {:else}
-                                <li>
-                                    <strong>{event.name}</strong>
-                                    ({eventTypeIcon[event.type]}
-                                    {event.type})
-                                </li>
-                            {/if}
-                        {/if}
-                    {/each}
-                </ul>
-            </div>
-            <div style="flex: 1;">
-                <h3>Szombat</h3>
-                <ul>
-                    {#each events.filter((e) => (e.day === "2025-10-18" && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === "2025-10-19" && parseInt(e.start.substring(0, 2)) < 12)) as event}
-                        {#if event.type !== "egyéb"}
-                            {#if event.url}
-                                <li>
-                                    <a href={event.url} target="_blank">
-                                        <strong>{event.name}</strong>
-                                        ({eventTypeIcon[event.type]}
-                                        {event.type})
-                                    </a>
-                                </li>
-                            {:else}
-                                <li>
-                                    <strong>{event.name}</strong>
-                                    ({eventTypeIcon[event.type]}
-                                    {event.type})
-                                </li>
-                            {/if}
-                        {/if}
-                    {/each}
-                </ul>
-            </div>
+        <h2>Menetrend</h2>
+        <div class="button-group">
+            <button
+                onclick={() => (selectedDay = 17)}
+                class:selected={selectedDay === 17}>Péntek</button
+            >
+            <button
+                onclick={() => (selectedDay = 18)}
+                class:selected={selectedDay === 18}>Szombat</button
+            >
         </div>
+        <p>
+            Kapunyitás:
+            {#if selectedDay === 17}
+                16:30
+            {:else if selectedDay === 18}
+                17:00
+            {:else}
+                Nem nyitjuk ki :P
+            {/if}
+        </p>
+        <ul class="outlined-list">
+            {#each events.filter((e) => (e.day === `2025-10-${selectedDay}` && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === `2025-10-${selectedDay + 1}` && parseInt(e.start.substring(0, 2)) < 12)) as event}
+                {#if event.type !== "egyéb"}
+                    {#if event.url}
+                        <a href={event.url} target="_blank">
+                            <p class="text-small">
+                                {event.start} - {event.end}
+                            </p>
+                            <p>
+                                <strong>{event.name}</strong> ({event.type})
+                                <span class="mdi mdi-link"></span>
+                            </p>
+                        </a>
+                    {:else}
+                        <li>
+                            <p class="text-small">
+                                {event.start} - {event.end}
+                            </p>
+                            <p>
+                                <strong>{event.name}</strong> ({event.type})
+                            </p>
+                        </li>
+                    {/if}
+                {/if}
+            {/each}
+        </ul>
         <h2>Helyszín</h2>
         <iframe
             title="8-as Műhely"
@@ -462,5 +464,17 @@
     ul.outlined-list :is(a, button) {
         background-color: var(--primary-color);
         color: var(--on-primary-color) !important;
+    }
+
+    .button-group > * {
+        border: 2px solid var(--primary-color);
+        background: transparent;
+        color: var(--on-background-color);
+    }
+
+    .button-group > *.selected {
+        background: var(--primary-color);
+        color: var(--on-primary-color);
+        border-radius: var(--corner-radius);
     }
 </style>
