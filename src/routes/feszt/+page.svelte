@@ -39,6 +39,13 @@
     }> = [
         // Péntek
         {
+            type: "egyéb",
+            name: "1. nap - Kapunyitás",
+            day: "2025-10-17",
+            start: "16:30",
+            end: "16:30",
+        },
+        {
             type: "workshop",
             name: "Kalafatics Imi & Tóth Zsombor",
             day: "2025-10-17",
@@ -70,13 +77,6 @@
             url: "https://www.instagram.com/zagyva.graphics/",
         },
         {
-            type: "egyéb",
-            name: "Megnyitó, Kerekasztal beszélgetés",
-            day: "2025-10-17",
-            start: "17:00",
-            end: "19:00",
-        },
-        {
             type: "banda",
             name: "Somnium",
             day: "2025-10-17",
@@ -96,7 +96,7 @@
             name: "OnlyFangs",
             day: "2025-10-17",
             start: "23:00",
-            end: "00:00",
+            end: "23:59",
         },
         {
             type: "DJ",
@@ -113,6 +113,13 @@
             end: "02:00",
         },
         // Szombat
+        {
+            type: "egyéb",
+            name: "2. nap - Kapunyitás",
+            day: "2025-10-18",
+            start: "17:00",
+            end: "17:00",
+        },
         {
             type: "banda",
             name: "Féltucat",
@@ -221,7 +228,7 @@
                 const startB = new Date(`${b.day}T${b.start}`).getTime();
                 return startA - startB;
             })
-            .slice(0, 3);
+            .slice(0, 2);
     }
 </script>
 
@@ -250,26 +257,56 @@
             {#if getCurrentEvents().length > 0}
                 <ul class="outlined-list">
                     {#each getCurrentEvents() as event}
-                        {#if event.url}
-                            <a href={event.url} target="_blank">
-                                <p class="text-small">
-                                    {event.start} - {event.end}
-                                </p>
-                                <p>
-                                    <strong>{event.name}</strong> ({event.type})
-                                    <span class="mdi mdi-link"></span>
-                                </p>
-                            </a>
-                        {:else}
-                            <li>
-                                <p class="text-small">
-                                    {event.start} - {event.end}
-                                </p>
-                                <p>
-                                    <strong>{event.name}</strong> ({event.type})
-                                </p>
-                            </li>
-                        {/if}
+                        <li>
+                            <p class="text-small">
+                                {event.start} - {event.end}
+                            </p>
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center;"
+                            >
+                                {#if event.url}
+                                    <a href={event.url} target="_blank">
+                                        <p>
+                                            <strong>{event.name}</strong>
+                                            {#if event.type !== "egyéb"}
+                                                ({event.type})
+                                            {/if}
+                                            <span class="mdi mdi-link"></span>
+                                        </p>
+                                    </a>
+                                {:else}
+                                    <p>
+                                        <strong>{event.name}</strong>
+                                        {#if event.type !== "egyéb"}
+                                            ({event.type})
+                                        {/if}
+                                    </p>
+                                {/if}
+                                <button
+                                    class="btn icon-button"
+                                    onclick={() => {
+                                        if (favorites.includes(event.name))
+                                            favorites = favorites.filter(
+                                                (e) => e !== event.name,
+                                            );
+                                        else
+                                            favorites = [
+                                                ...favorites,
+                                                event.name,
+                                            ];
+                                    }}
+                                    aria-label="Kedvencekhez adás"
+                                >
+                                    <span
+                                        class="mdi {favorites.includes(
+                                            event.name,
+                                        )
+                                            ? 'mdi-star'
+                                            : 'mdi-star-outline'}"
+                                    ></span>
+                                </button>
+                            </div>
+                        </li>
                     {/each}
                 </ul>
             {:else}
@@ -279,26 +316,56 @@
             {#if getNextEvents().length > 0}
                 <ul class="outlined-list">
                     {#each getNextEvents() as event}
-                        {#if event.url}
-                            <a href={event.url} target="_blank">
-                                <p class="text-small">
-                                    {event.start} - {event.end}
-                                </p>
-                                <p>
-                                    <strong>{event.name}</strong> ({event.type})
-                                    <span class="mdi mdi-link"></span>
-                                </p>
-                            </a>
-                        {:else}
-                            <li>
-                                <p class="text-small">
-                                    {event.start} - {event.end}
-                                </p>
-                                <p>
-                                    <strong>{event.name}</strong> ({event.type})
-                                </p>
-                            </li>
-                        {/if}
+                        <li>
+                            <p class="text-small">
+                                {event.start} - {event.end}
+                            </p>
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center;"
+                            >
+                                {#if event.url}
+                                    <a href={event.url} target="_blank">
+                                        <p>
+                                            <strong>{event.name}</strong>
+                                            {#if event.type !== "egyéb"}
+                                                ({event.type})
+                                            {/if}
+                                            <span class="mdi mdi-link"></span>
+                                        </p>
+                                    </a>
+                                {:else}
+                                    <p>
+                                        <strong>{event.name}</strong>
+                                        {#if event.type !== "egyéb"}
+                                            ({event.type})
+                                        {/if}
+                                    </p>
+                                {/if}
+                                <button
+                                    class="btn icon-button"
+                                    onclick={() => {
+                                        if (favorites.includes(event.name))
+                                            favorites = favorites.filter(
+                                                (e) => e !== event.name,
+                                            );
+                                        else
+                                            favorites = [
+                                                ...favorites,
+                                                event.name,
+                                            ];
+                                    }}
+                                    aria-label="Kedvencekhez adás"
+                                >
+                                    <span
+                                        class="mdi {favorites.includes(
+                                            event.name,
+                                        )
+                                            ? 'mdi-star'
+                                            : 'mdi-star-outline'}"
+                                    ></span>
+                                </button>
+                            </div>
+                        </li>
                     {/each}
                 </ul>
             {:else}
@@ -348,68 +415,45 @@
                 .filter((e) => !favoritesOnly || favorites.includes(e.name))
                 .filter((e) => (e.day === `2025-10-${selectedDay}` && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === `2025-10-${selectedDay + 1}` && parseInt(e.start.substring(0, 2)) < 12)) as event}
                 {#if event.type !== "egyéb"}
-                    {#if event.url}
-                        <a href={event.url} target="_blank">
-                            <p class="text-small">
-                                {event.start} - {event.end}
-                            </p>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: center;"
-                            >
-                                <p>
-                                    <strong>{event.name}</strong> ({event.type})
-                                    <span class="mdi mdi-link"></span>
-                                </p>
-                                <input
-                                    type="checkbox"
-                                    class="outlined-input"
-                                    style="margin-top: -16px;"
-                                    checked={favorites.includes(event.name)}
-                                    onchange={() => {
-                                        if (favorites.includes(event.name))
-                                            favorites = favorites.filter(
-                                                (e) => e !== event.name,
-                                            );
-                                        else
-                                            favorites = [
-                                                ...favorites,
-                                                event.name,
-                                            ];
-                                    }}
-                                />
-                            </div>
-                        </a>
-                    {:else}
-                        <li>
-                            <p class="text-small">
-                                {event.start} - {event.end}
-                            </p>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: center;"
-                            >
+                    <li>
+                        <p class="text-small">
+                            {event.start} - {event.end}
+                        </p>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center;"
+                        >
+                            {#if event.url}
+                                <a href={event.url} target="_blank">
+                                    <p>
+                                        <strong>{event.name}</strong>
+                                        ({event.type})
+                                        <span class="mdi mdi-link"></span>
+                                    </p>
+                                </a>
+                            {:else}
                                 <p>
                                     <strong>{event.name}</strong> ({event.type})
                                 </p>
-                                <input
-                                    type="checkbox"
-                                    class="outlined-input"
-                                    style="margin-top: -16px;"
-                                    checked={favorites.includes(event.name)}
-                                    onchange={() => {
-                                        if (favorites.includes(event.name))
-                                            favorites = favorites.filter(
-                                                (e) => e !== event.name,
-                                            );
-                                        else
-                                            favorites = [
-                                                ...favorites,
-                                                event.name,
-                                            ];
-                                    }}
-                                />
-                            </div>
-                        </li>
-                    {/if}
+                            {/if}
+                            <button
+                                class="btn icon-button"
+                                onclick={() => {
+                                    if (favorites.includes(event.name))
+                                        favorites = favorites.filter(
+                                            (e) => e !== event.name,
+                                        );
+                                    else favorites = [...favorites, event.name];
+                                }}
+                                aria-label="Kedvencekhez adás"
+                            >
+                                <span
+                                    class="mdi {favorites.includes(event.name)
+                                        ? 'mdi-star'
+                                        : 'mdi-star-outline'}"
+                                ></span>
+                            </button>
+                        </div>
+                    </li>
                 {/if}
             {/each}
         </ul>
@@ -435,7 +479,9 @@
         </p>
         <h3>Csináltál jó fotókat az eseményről?</h3>
         <p>
-            Küldd el nekünk: <a href="mailto:koloraegyesulet@gmail.com"
+            Küldd el nekünk: <a
+                href="mailto:koloraegyesulet@gmail.com"
+                style="color: var(--secondary-color);"
                 >koloraegyesulet@gmail.com</a
             >
         </p>
@@ -465,12 +511,6 @@
         --corner-radius: 16px !important;
         background-color: var(--background-color);
         color: var(--on-background-color);
-    }
-
-    a:not(.btn),
-    a:not(.btn):hover,
-    a:not(.btn):visited {
-        color: var(--secondary-color) !important;
     }
 
     .cookie-clock {
@@ -514,7 +554,7 @@
         }
         :global(g) {
             transform-origin: center;
-            rotate: calc(var(--hours) * 30deg + var(--minutes) * 30deg / 60);
+            rotate: calc((var(--hours) - 1) * 30deg + var(--minutes) * 30deg / 60);
         }
     }
 
