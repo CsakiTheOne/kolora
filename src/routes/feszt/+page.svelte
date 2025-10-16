@@ -62,6 +62,14 @@
             url: "https://www.instagram.com/zagyva.graphics/",
         },
         {
+            type: "kiállító",
+            name: "Szvath Marci",
+            day: "2025-10-18",
+            start: "0:00",
+            end: "23:59",
+            url: "https://www.instagram.com/zagyva.graphics/",
+        },
+        {
             type: "egyéb",
             name: "Megnyitó, Kerekasztal beszélgetés",
             day: "2025-10-17",
@@ -223,22 +231,8 @@
             <h1>Kolora Feszt</h1>
             <Countdown targetDateTime={eventStartDate} />
             <p>
-                <a
-                    class="btn"
-                    href="https://www.facebook.com/events/1461881778384144"
-                    target="_blank"
-                >
-                    <span class="mdi mdi-facebook"></span>
-                    Fb esemény
-                </a>
-                <a
-                    class="btn"
-                    href="https://www.facebook.com/share/17UY2tKn5P/"
-                    target="_blank"
-                >
-                    <span class="mdi mdi-gift"></span>
-                    Nyereményjáték
-                </a>
+                Menetrend <br />
+                <span class="mdi mdi-chevron-down"></span>
             </p>
         </div>
     {:else}
@@ -319,16 +313,20 @@
         </div>
         <p>
             Kapunyitás:
-            {#if selectedDay === 17}
-                16:30
-            {:else if selectedDay === 18}
-                17:00
-            {:else}
-                Nem nyitjuk ki :P
-            {/if}
+            <strong>
+                {#if selectedDay === 17}
+                    16:30
+                {:else if selectedDay === 18}
+                    17:00
+                {:else}
+                    Nem nyitjuk ki :P
+                {/if}
+            </strong>
         </p>
         <ul class="outlined-list">
-            {#each events.filter((e) => (e.day === `2025-10-${selectedDay}` && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === `2025-10-${selectedDay + 1}` && parseInt(e.start.substring(0, 2)) < 12)) as event}
+            {#each events
+                .filter((e, i, arr) => arr.findIndex((event) => event.name === e.name) === i)
+                .filter((e) => (e.day === `2025-10-${selectedDay}` && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === `2025-10-${selectedDay + 1}` && parseInt(e.start.substring(0, 2)) < 12)) as event}
                 {#if event.type !== "egyéb"}
                     {#if event.url}
                         <a href={event.url} target="_blank">
@@ -362,6 +360,17 @@
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
+        <h2>További infók</h2>
+        <p>
+            <a
+                class="btn"
+                href="https://www.facebook.com/events/1461881778384144"
+                target="_blank"
+            >
+                <span class="mdi mdi-facebook"></span>
+                Facebook esemény
+            </a>
+        </p>
     </main>
     <Footer />
 </div>
