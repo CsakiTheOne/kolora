@@ -176,12 +176,16 @@
 
     let currentCountdownTime = $state(new Date());
     let selectedDay = $state(17);
+    let favorites = $state<string[]>([]);
+    let favoritesOnly = $state(false);
 
     onMount(() => {
         const now = new Date();
         if (now.getDate() === 18 || now.getDate() === 19) {
             selectedDay = 18;
         }
+
+        favorites = JSON.parse(localStorage.getItem("feszt-favorites") || "[]");
 
         const tickInterval = setInterval(() => {
             const now = new Date();
@@ -190,6 +194,10 @@
         }, 1000 / 30);
 
         return () => clearInterval(tickInterval);
+    });
+
+    $effect(() => {
+        localStorage.setItem("feszt-favorites", JSON.stringify(favorites));
     });
 
     function getCurrentEvents() {
@@ -311,21 +319,33 @@
                 class:selected={selectedDay === 18}>Szombat</button
             >
         </div>
-        <p>
-            Kapunyitás:
-            <strong>
-                {#if selectedDay === 17}
-                    16:30
-                {:else if selectedDay === 18}
-                    17:00
-                {:else}
-                    Nem nyitjuk ki :P
-                {/if}
-            </strong>
-        </p>
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; gap: var(--spacing);"
+        >
+            <span>
+                Kapunyitás:
+                <strong>
+                    {#if selectedDay === 17}
+                        16:30
+                    {:else if selectedDay === 18}
+                        17:00
+                    {:else}
+                        Nem nyitjuk ki :P
+                    {/if}
+                </strong>
+            </span>
+            <span style="margin-top: -10px;">
+                <input
+                    type="checkbox"
+                    class="switch"
+                    bind:checked={favoritesOnly}
+                /> Csak kedvencek
+            </span>
+        </div>
         <ul class="outlined-list">
             {#each events
                 .filter((e, i, arr) => arr.findIndex((event) => event.name === e.name) === i)
+                .filter((e) => !favoritesOnly || favorites.includes(e.name))
                 .filter((e) => (e.day === `2025-10-${selectedDay}` && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === `2025-10-${selectedDay + 1}` && parseInt(e.start.substring(0, 2)) < 12)) as event}
                 {#if event.type !== "egyéb"}
                     {#if event.url}
@@ -333,19 +353,61 @@
                             <p class="text-small">
                                 {event.start} - {event.end}
                             </p>
-                            <p>
-                                <strong>{event.name}</strong> ({event.type})
-                                <span class="mdi mdi-link"></span>
-                            </p>
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center;"
+                            >
+                                <p>
+                                    <strong>{event.name}</strong> ({event.type})
+                                    <span class="mdi mdi-link"></span>
+                                </p>
+                                <input
+                                    type="checkbox"
+                                    class="outlined-input"
+                                    style="margin-top: -16px;"
+                                    checked={favorites.includes(event.name)}
+                                    onchange={() => {
+                                        if (favorites.includes(event.name))
+                                            favorites = favorites.filter(
+                                                (e) => e !== event.name,
+                                            );
+                                        else
+                                            favorites = [
+                                                ...favorites,
+                                                event.name,
+                                            ];
+                                    }}
+                                />
+                            </div>
                         </a>
                     {:else}
                         <li>
                             <p class="text-small">
                                 {event.start} - {event.end}
                             </p>
-                            <p>
-                                <strong>{event.name}</strong> ({event.type})
-                            </p>
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center;"
+                            >
+                                <p>
+                                    <strong>{event.name}</strong> ({event.type})
+                                </p>
+                                <input
+                                    type="checkbox"
+                                    class="outlined-input"
+                                    style="margin-top: -16px;"
+                                    checked={favorites.includes(event.name)}
+                                    onchange={() => {
+                                        if (favorites.includes(event.name))
+                                            favorites = favorites.filter(
+                                                (e) => e !== event.name,
+                                            );
+                                        else
+                                            favorites = [
+                                                ...favorites,
+                                                event.name,
+                                            ];
+                                    }}
+                                />
+                            </div>
                         </li>
                     {/if}
                 {/if}
