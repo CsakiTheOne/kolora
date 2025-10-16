@@ -371,6 +371,18 @@
                 Facebook esemény
             </a>
         </p>
+        <h3>Csináltál jó fotókat az eseményről?</h3>
+        <p>
+            Küldd el nekünk: <a href="mailto:koloraegyesulet@gmail.com"
+                >koloraegyesulet@gmail.com</a
+            >
+        </p>
+        <p>
+            <a class="btn" href="/contacts/">
+                <span class="mdi mdi-at"></span>
+                További elérhetőségek
+            </a>
+        </p>
     </main>
     <Footer />
 </div>
@@ -393,8 +405,10 @@
         color: var(--on-background-color);
     }
 
-    a:not(.btn) {
-        color: var(--secondary-color);
+    a:not(.btn),
+    a:not(.btn):hover,
+    a:not(.btn):visited {
+        color: var(--secondary-color) !important;
     }
 
     .cookie-clock {
