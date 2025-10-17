@@ -200,7 +200,14 @@
             currentCountdownTime = new Date(remainingMs);
         }, 1000 / 30);
 
-        return () => clearInterval(tickInterval);
+        const autoRefreshTimeout = setTimeout(() => {
+            location.reload();
+        }, 1000 * 60 * 5);
+
+        return () => {
+            clearInterval(tickInterval);
+            clearTimeout(autoRefreshTimeout);
+        };
     });
 
     $effect(() => {
