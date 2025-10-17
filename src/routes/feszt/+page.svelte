@@ -179,12 +179,15 @@
 
     const eventStartDate = new Date("2025-10-17T16:30:00");
 
-    const isEventStarted = new Date() >= eventStartDate;
-
+    let currentTime = $state(new Date());
     let currentCountdownTime = $state(new Date());
     let selectedDay = $state(17);
     let favorites = $state<string[]>([]);
     let favoritesOnly = $state(false);
+
+    const isEventStarted = $derived(
+        currentTime.getTime() >= eventStartDate.getTime(),
+    );
 
     onMount(() => {
         const now = new Date();
@@ -195,14 +198,11 @@
         favorites = JSON.parse(localStorage.getItem("feszt-favorites") || "[]");
 
         const tickInterval = setInterval(() => {
+            currentTime = new Date();
             const now = new Date();
             const remainingMs = eventStartDate.getTime() - now.getTime();
             currentCountdownTime = new Date(remainingMs);
         }, 1000 / 30);
-
-        const autoRefreshTimeout = setTimeout(() => {
-            location.reload();
-        }, 1000 * 60 * 5);
 
         return () => {
             clearInterval(tickInterval);
@@ -214,29 +214,29 @@
         localStorage.setItem("feszt-favorites", JSON.stringify(favorites));
     });
 
-    function getCurrentEvents() {
-        const now = new Date().getTime();
-        return events.filter((event) => {
+    const currentEvents = $derived(
+        events.filter((event) => {
             const start = new Date(`${event.day}T${event.start}`).getTime();
             const end = new Date(`${event.day}T${event.end}`).getTime();
-            return now >= start && now <= end;
-        });
-    }
+            return (
+                currentTime.getTime() >= start && currentTime.getTime() <= end
+            );
+        }),
+    );
 
-    function getNextEvents() {
-        const now = new Date().getTime();
-        return events
+    const upcomingEvents = $derived(
+        events
             .filter((event) => {
                 const start = new Date(`${event.day}T${event.start}`).getTime();
-                return start > now;
+                return start > currentTime.getTime();
             })
             .sort((a, b) => {
                 const startA = new Date(`${a.day}T${a.start}`).getTime();
                 const startB = new Date(`${b.day}T${b.start}`).getTime();
                 return startA - startB;
             })
-            .slice(0, 2);
-    }
+            .slice(0, 2),
+    );
 </script>
 
 <div class="theme-override">
@@ -261,9 +261,9 @@
         <main>
             <h1 style="text-align: center;">Kolora Feszt</h1>
             <h2>Jelenleg zajló események</h2>
-            {#if getCurrentEvents().length > 0}
+            {#if currentEvents.length > 0}
                 <ul class="outlined-list">
-                    {#each getCurrentEvents() as event}
+                    {#each currentEvents as event}
                         <li>
                             <p class="text-small">
                                 {event.start} - {event.end}
@@ -320,9 +320,9 @@
                 <p>Jelenleg nincs zajló esemény.</p>
             {/if}
             <h2>Következik</h2>
-            {#if getNextEvents().length > 0}
+            {#if upcomingEvents.length > 0}
                 <ul class="outlined-list">
-                    {#each getNextEvents() as event}
+                    {#each upcomingEvents as event}
                         <li>
                             <p class="text-small">
                                 {event.start} - {event.end}
@@ -561,7 +561,9 @@
         }
         :global(g) {
             transform-origin: center;
-            rotate: calc((var(--hours) - 1) * 30deg + var(--minutes) * 30deg / 60);
+            rotate: calc(
+                (var(--hours) - 1) * 30deg + var(--minutes) * 30deg / 60
+            );
         }
     }
 
