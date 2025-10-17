@@ -37,14 +37,6 @@
         end: string; // HH:MM
         url?: string;
     }> = [
-        // Péntek
-        {
-            type: "egyéb",
-            name: "1. nap - Kapunyitás",
-            day: "2025-10-17",
-            start: "16:30",
-            end: "16:30",
-        },
         {
             type: "workshop",
             name: "Kalafatics Imi & Tóth Zsombor",
@@ -54,10 +46,25 @@
         },
         {
             type: "workshop",
+            name: "Kalafatics Imi & Tóth Zsombor",
+            day: "2025-10-18",
+            start: "17:00",
+            end: "17:00",
+        },
+        {
+            type: "workshop",
             name: "Vesztu",
             day: "2025-10-17",
             start: "16:30",
             end: "19:00",
+            url: "https://www.instagram.com/vesztutattoo/",
+        },
+        {
+            type: "workshop",
+            name: "Vesztu",
+            day: "2025-10-18",
+            start: "17:00",
+            end: "17:00",
             url: "https://www.instagram.com/vesztutattoo/",
         },
         {
@@ -72,9 +79,17 @@
             type: "kiállító",
             name: "Szvath Marci",
             day: "2025-10-18",
-            start: "0:00",
-            end: "23:59",
+            start: "17:00",
+            end: "17:00",
             url: "https://www.instagram.com/zagyva.graphics/",
+        },
+        // Péntek
+        {
+            type: "egyéb",
+            name: "1. nap - Kapunyitás",
+            day: "2025-10-17",
+            start: "16:30",
+            end: "16:30",
         },
         {
             type: "banda",
@@ -206,7 +221,6 @@
 
         return () => {
             clearInterval(tickInterval);
-            clearTimeout(autoRefreshTimeout);
         };
     });
 
@@ -266,7 +280,10 @@
                     {#each currentEvents as event}
                         <li>
                             <p class="text-small">
-                                {event.start} - {event.end}
+                                {event.start}
+                                {#if event.start !== event.end}
+                                    - {event.end}
+                                {/if}
                             </p>
                             <div
                                 style="display: flex; justify-content: space-between; align-items: center;"
@@ -325,7 +342,10 @@
                     {#each upcomingEvents as event}
                         <li>
                             <p class="text-small">
-                                {event.start} - {event.end}
+                                {event.start}
+                                {#if event.start !== event.end}
+                                    - {event.end}
+                                {/if}
                             </p>
                             <div
                                 style="display: flex; justify-content: space-between; align-items: center;"
@@ -418,13 +438,15 @@
         </div>
         <ul class="outlined-list">
             {#each events
-                .filter((e, i, arr) => arr.findIndex((event) => event.name === e.name) === i)
                 .filter((e) => !favoritesOnly || favorites.includes(e.name))
                 .filter((e) => (e.day === `2025-10-${selectedDay}` && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === `2025-10-${selectedDay + 1}` && parseInt(e.start.substring(0, 2)) < 12)) as event}
                 {#if event.type !== "egyéb"}
                     <li>
                         <p class="text-small">
-                            {event.start} - {event.end}
+                            {event.start}
+                            {#if event.start !== event.end}
+                                - {event.end}
+                            {/if}
                         </p>
                         <div
                             style="display: flex; justify-content: space-between; align-items: center;"
