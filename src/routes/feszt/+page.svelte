@@ -4,23 +4,7 @@
     import poster from "$lib/images/gallery/2025-kolora-feszt/poster.png";
     import cookie from "$lib/images/utils/cookie-clock.svg?raw";
     import { onMount } from "svelte";
-    import Carousel from "../../components/Carousel.svelte";
-    import imgMusicianBodonyiDani from "$lib/images/musicians/bodonyi-dani-banner.jpg";
-    import imgMusicianFeltucat from "$lib/images/musicians/feltucat-banner.jpg";
-    import imgMusicianKalafaticsImre from "$lib/images/musicians/kalafatics-imre.png";
-    import imgMusicianLoophia from "$lib/images/musicians/loophia-banner.jpg";
-    import imgMusicianNaez from "$lib/images/musicians/naez-logo.jpg";
     import Divider from "../../components/Divider.svelte";
-
-    const eventTypeIcon = {
-        DJ: "📀",
-        kiállító: "🖼️",
-        banda: "🎸",
-        könyvbemutató: "📚",
-        workshop: "🎨",
-        fényfestés: "💡",
-        egyéb: "❓",
-    };
 
     const events: Array<{
         type:
@@ -46,25 +30,10 @@
         },
         {
             type: "workshop",
-            name: "Kalafatics Imi & Tóth Zsombor",
-            day: "2025-10-18",
-            start: "17:00",
-            end: "17:00",
-        },
-        {
-            type: "workshop",
             name: "Vesztu",
             day: "2025-10-17",
             start: "16:30",
             end: "19:00",
-            url: "https://www.instagram.com/vesztutattoo/",
-        },
-        {
-            type: "workshop",
-            name: "Vesztu",
-            day: "2025-10-18",
-            start: "17:00",
-            end: "17:00",
             url: "https://www.instagram.com/vesztutattoo/",
         },
         {
@@ -73,14 +42,6 @@
             day: "2025-10-17",
             start: "16:30",
             end: "23:59",
-            url: "https://www.instagram.com/zagyva.graphics/",
-        },
-        {
-            type: "kiállító",
-            name: "Szvath Marci",
-            day: "2025-10-18",
-            start: "17:00",
-            end: "17:00",
             url: "https://www.instagram.com/zagyva.graphics/",
         },
         // Péntek
@@ -193,320 +154,74 @@
     ];
 
     const eventStartDate = new Date("2025-10-17T16:30:00");
-
-    let currentTime = $state(new Date());
-    let currentCountdownTime = $state(new Date());
-    let selectedDay = $state(17);
-    let favorites = $state<string[]>([]);
-    let favoritesOnly = $state(false);
-
-    const isEventStarted = $derived(
-        currentTime.getTime() >= eventStartDate.getTime(),
-    );
-
-    onMount(() => {
-        const now = new Date();
-        if (now.getDate() === 18 || now.getDate() === 19) {
-            selectedDay = 18;
-        }
-
-        favorites = JSON.parse(localStorage.getItem("feszt-favorites") || "[]");
-
-        const tickInterval = setInterval(() => {
-            currentTime = new Date();
-            const now = new Date();
-            const remainingMs = eventStartDate.getTime() - now.getTime();
-            currentCountdownTime = new Date(remainingMs);
-        }, 1000 / 30);
-
-        return () => {
-            clearInterval(tickInterval);
-        };
-    });
-
-    $effect(() => {
-        localStorage.setItem("feszt-favorites", JSON.stringify(favorites));
-    });
-
-    const currentEvents = $derived(
-        events.filter((event) => {
-            const start = new Date(`${event.day}T${event.start}`).getTime();
-            const end = new Date(`${event.day}T${event.end}`).getTime();
-            return (
-                currentTime.getTime() >= start && currentTime.getTime() <= end
-            );
-        }),
-    );
-
-    const upcomingEvents = $derived(
-        events
-            .filter((event) => {
-                const start = new Date(`${event.day}T${event.start}`).getTime();
-                return start > currentTime.getTime();
-            })
-            .sort((a, b) => {
-                const startA = new Date(`${a.day}T${a.start}`).getTime();
-                const startB = new Date(`${b.day}T${b.start}`).getTime();
-                return startA - startB;
-            })
-            .slice(0, 2),
-    );
 </script>
 
 <div class="theme-override">
-    {#if !isEventStarted}
-        <div
-            class="cookie-clock"
-            style="--millis: {currentCountdownTime.getMilliseconds()}; --seconds: {currentCountdownTime.getSeconds()}; --minutes: {currentCountdownTime.getMinutes()}; --hours: {currentCountdownTime.getHours()};"
-        >
-            {@html cookie}
-            {@html cookie}
-            {@html cookie}
-        </div>
-        <div class="preshow-content">
-            <h1>Kolora Feszt</h1>
-            <Countdown targetDateTime={eventStartDate} />
-            <p>
-                Menetrend <br />
-                <span class="mdi mdi-chevron-down"></span>
-            </p>
-        </div>
-    {:else}
-        <main>
-            <h1 style="text-align: center;">Kolora Feszt</h1>
-            <h2>Jelenleg zajló események</h2>
-            {#if currentEvents.length > 0}
-                <ul class="outlined-list">
-                    {#each currentEvents as event}
-                        <li>
-                            <p class="text-small">
-                                {event.start}
-                                {#if event.start !== event.end}
-                                    - {event.end}
-                                {/if}
-                            </p>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: center;"
-                            >
-                                {#if event.url}
-                                    <a href={event.url} target="_blank">
-                                        <p>
-                                            <strong>{event.name}</strong>
-                                            {#if event.type !== "egyéb"}
-                                                ({event.type})
-                                            {/if}
-                                            <span class="mdi mdi-link"></span>
-                                        </p>
-                                    </a>
-                                {:else}
-                                    <p>
-                                        <strong>{event.name}</strong>
-                                        {#if event.type !== "egyéb"}
-                                            ({event.type})
-                                        {/if}
-                                    </p>
-                                {/if}
-                                <button
-                                    class="btn icon-button"
-                                    onclick={() => {
-                                        if (favorites.includes(event.name))
-                                            favorites = favorites.filter(
-                                                (e) => e !== event.name,
-                                            );
-                                        else
-                                            favorites = [
-                                                ...favorites,
-                                                event.name,
-                                            ];
-                                    }}
-                                    aria-label="Kedvencekhez adás"
-                                >
-                                    <span
-                                        class="mdi {favorites.includes(
-                                            event.name,
-                                        )
-                                            ? 'mdi-star'
-                                            : 'mdi-star-outline'}"
-                                    ></span>
-                                </button>
-                            </div>
-                        </li>
-                    {/each}
-                </ul>
-            {:else}
-                <p>Jelenleg nincs zajló esemény.</p>
-            {/if}
-            <h2>Következik</h2>
-            {#if upcomingEvents.length > 0}
-                <ul class="outlined-list">
-                    {#each upcomingEvents as event}
-                        <li>
-                            <p class="text-small">
-                                {event.start}
-                                {#if event.start !== event.end}
-                                    - {event.end}
-                                {/if}
-                            </p>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: center;"
-                            >
-                                {#if event.url}
-                                    <a href={event.url} target="_blank">
-                                        <p>
-                                            <strong>{event.name}</strong>
-                                            {#if event.type !== "egyéb"}
-                                                ({event.type})
-                                            {/if}
-                                            <span class="mdi mdi-link"></span>
-                                        </p>
-                                    </a>
-                                {:else}
-                                    <p>
-                                        <strong>{event.name}</strong>
-                                        {#if event.type !== "egyéb"}
-                                            ({event.type})
-                                        {/if}
-                                    </p>
-                                {/if}
-                                <button
-                                    class="btn icon-button"
-                                    onclick={() => {
-                                        if (favorites.includes(event.name))
-                                            favorites = favorites.filter(
-                                                (e) => e !== event.name,
-                                            );
-                                        else
-                                            favorites = [
-                                                ...favorites,
-                                                event.name,
-                                            ];
-                                    }}
-                                    aria-label="Kedvencekhez adás"
-                                >
-                                    <span
-                                        class="mdi {favorites.includes(
-                                            event.name,
-                                        )
-                                            ? 'mdi-star'
-                                            : 'mdi-star-outline'}"
-                                    ></span>
-                                </button>
-                            </div>
-                        </li>
-                    {/each}
-                </ul>
-            {:else}
-                <p>Nincs több esemény a közeljövőben.</p>
-            {/if}
-            <Divider />
-        </main>
-    {/if}
+    <div class="cookies">
+        {@html cookie}
+        {@html cookie}
+        {@html cookie}
+    </div>
+    <div class="preshow-content">
+        <h1>Kolora Feszt</h1>
+        <h2>
+            Köszönjük, hogy <br />
+            eljöttetek! &lt;3
+        </h2>
+    </div>
+
     <main>
-        <h2>Menetrend</h2>
-        <div class="button-group">
-            <button
-                onclick={() => (selectedDay = 17)}
-                class:selected={selectedDay === 17}>Péntek</button
-            >
-            <button
-                onclick={() => (selectedDay = 18)}
-                class:selected={selectedDay === 18}>Szombat</button
-            >
-        </div>
-        <div
-            style="display: flex; justify-content: space-between; align-items: center; gap: var(--spacing);"
-        >
-            <span>
-                Kapunyitás:
-                <strong>
-                    {#if selectedDay === 17}
-                        16:30
-                    {:else if selectedDay === 18}
-                        17:00
-                    {:else}
-                        Nem nyitjuk ki :P
-                    {/if}
-                </strong>
-            </span>
-            <span style="margin-top: -10px;">
-                <input
-                    type="checkbox"
-                    class="switch"
-                    bind:checked={favoritesOnly}
-                /> Csak kedvencek
-            </span>
-        </div>
+        <h2>Fellépők, művészek</h2>
+        <p>Bandák</p>
         <ul class="outlined-list">
-            {#each events
-                .filter((e) => !favoritesOnly || favorites.includes(e.name))
-                .filter((e) => (e.day === `2025-10-${selectedDay}` && parseInt(e.start.substring(0, 2)) >= 12) || (e.day === `2025-10-${selectedDay + 1}` && parseInt(e.start.substring(0, 2)) < 12)) as event}
-                {#if event.type !== "egyéb"}
-                    <li>
-                        <p class="text-small">
-                            {event.start}
-                            {#if event.start !== event.end}
-                                - {event.end}
-                            {/if}
-                        </p>
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center;"
-                        >
-                            {#if event.url}
-                                <a href={event.url} target="_blank">
-                                    <p>
-                                        <strong>{event.name}</strong>
-                                        ({event.type})
-                                        <span class="mdi mdi-link"></span>
-                                    </p>
-                                </a>
-                            {:else}
-                                <p>
-                                    <strong>{event.name}</strong> ({event.type})
-                                </p>
-                            {/if}
-                            <button
-                                class="btn icon-button"
-                                onclick={() => {
-                                    if (favorites.includes(event.name))
-                                        favorites = favorites.filter(
-                                            (e) => e !== event.name,
-                                        );
-                                    else favorites = [...favorites, event.name];
-                                }}
-                                aria-label="Kedvencekhez adás"
-                            >
-                                <span
-                                    class="mdi {favorites.includes(event.name)
-                                        ? 'mdi-star'
-                                        : 'mdi-star-outline'}"
-                                ></span>
-                            </button>
-                        </div>
-                    </li>
+            {#each events.filter((event) => event.type === "banda") as event}
+                {#if event.url}
+                    <a href={event.url} target="_blank">
+                        {event.name}
+                        <span class="mdi mdi-link"></span>
+                    </a>
+                {:else}
+                    <li>{event.name}</li>
+                {/if}
+            {/each}
+        </ul>
+        <p>DJ-k</p>
+        <ul class="outlined-list">
+            {#each events.filter((event) => event.type === "DJ") as event}
+                {#if event.url}
+                    <a href={event.url} target="_blank">
+                        {event.name}
+                        <span class="mdi mdi-link"></span>
+                    </a>
+                {:else}
+                    <li>{event.name}</li>
+                {/if}
+            {/each}
+        </ul>
+        <p>Workshop vezetők, kiállítók</p>
+        <ul class="outlined-list">
+            {#each events.filter((event) => event.type === "kiállító" || event.type === "workshop") as event}
+                {#if event.url}
+                    <a href={event.url} target="_blank">
+                        {event.name}
+                        <span class="mdi mdi-link"></span>
+                    </a>
+                {:else}
+                    <li>{event.name}</li>
                 {/if}
             {/each}
         </ul>
         <h2>Helyszín</h2>
+        <p>Köszönjük a Nyolcas Műhelynek!</p>
         <iframe
             title="8-as Műhely"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2711.679136145763!2d18.40916337631081!3d47.18371847115417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f7a71b44a165%3A0xdbce9b61da28b53d!2s8-as%20M%C5%B1hely!5e0!3m2!1sen!2shu!4v1760118055477!5m2!1sen!2shu"
             width="100%"
-            style="border:0; aspect-ratio: 5 / 4;"
+            style="border:0; aspect-ratio: 16 / 9;"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
-        <h2>További infók</h2>
-        <p>
-            <a
-                class="btn"
-                href="https://www.facebook.com/events/1461881778384144"
-                target="_blank"
-            >
-                <span class="mdi mdi-facebook"></span>
-                Facebook esemény
-            </a>
-        </p>
-        <h3>Csináltál jó fotókat az eseményről?</h3>
+        <h2>Csináltál jó fotókat az eseményről?</h2>
         <p>
             Küldd el nekünk: <a
                 href="mailto:koloraegyesulet@gmail.com"
@@ -542,7 +257,7 @@
         color: var(--on-background-color);
     }
 
-    .cookie-clock {
+    .cookies {
         position: relative;
         width: 100vw;
         height: 100svh;
@@ -563,7 +278,7 @@
         z-index: 2;
     }
 
-    :global(.cookie-clock svg) {
+    :global(.cookies svg) {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -571,9 +286,14 @@
         width: auto;
         aspect-ratio: 1 / 1;
         z-index: 1;
+
+        :global(g) {
+            transform-origin: center;
+            rotate: 180deg;
+        }
     }
 
-    :global(.cookie-clock svg:nth-child(1)) {
+    :global(.cookies svg:nth-child(1)) {
         height: 90svh;
         :global(path) {
             fill: #33214b;
@@ -581,15 +301,9 @@
         :global(circle) {
             fill: #d5c3b6;
         }
-        :global(g) {
-            transform-origin: center;
-            rotate: calc(
-                (var(--hours) - 1) * 30deg + var(--minutes) * 30deg / 60
-            );
-        }
     }
 
-    :global(.cookie-clock svg:nth-child(2)) {
+    :global(.cookies svg:nth-child(2)) {
         height: 70svh;
         :global(path) {
             fill: #8d552e;
@@ -597,23 +311,15 @@
         :global(circle) {
             fill: #d5c3b6;
         }
-        :global(g) {
-            transform-origin: center;
-            rotate: calc(var(--minutes) * 6deg + var(--seconds) * 6deg / 60);
-        }
     }
 
-    :global(.cookie-clock svg:nth-child(3)) {
+    :global(.cookies svg:nth-child(3)) {
         height: 50svh;
         :global(path) {
             fill: #d5c3b6;
         }
         :global(circle) {
             fill: #8d552e;
-        }
-        :global(g) {
-            transform-origin: center;
-            rotate: calc(var(--seconds) * 6deg + var(--millis) * 6deg / 1000);
         }
     }
 
