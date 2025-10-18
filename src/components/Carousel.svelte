@@ -79,6 +79,11 @@
                 tabindex="0"
             >
                 <div class="page-content">
+                    {#if !page.background && page.fallbackContent}
+                        <div class="fallback-content">
+                            {@html page.fallbackContent}
+                        </div>
+                    {/if}
                     {#if page.title}
                         <h4
                             style="width: calc({maxPageWidth}px - var(--spacing));"
@@ -152,7 +157,7 @@
     }
 
     .carousel-container:hover > .btn {
-        opacity: .8;
+        opacity: 0.8;
     }
 
     .carousel-container > .btn.prevPage {
@@ -181,12 +186,20 @@
 
     .page-content {
         display: inline-flex;
+        position: relative;
         flex-direction: column;
         justify-content: end;
         gap: calc(var(--spacing) / 2);
         padding: calc(var(--spacing) / 2);
         width: 100%;
         height: 100%;
+    }
+
+    .page-content .fallback-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .page-content h4 {

@@ -96,18 +96,21 @@ export default class KoloraLocalDb {
             ],
         },
         {
-            name: "Nedel'a",
-            bannerImageUrl: imgMusicianNedela,
-            websiteUrl: "https://linktr.ee/nedela_zenekar",
-            songUrls: [
-                "https://youtu.be/kDXxczfc9ik?si=klf2zb7hHnnK0u-X",
-                "https://youtu.be/uWwkJXTX5rk?si=2Po9ujGyQGMAuhmz",
-            ],
+            name: "Porszem",
+            websiteUrl: "https://www.instagram.com/porszemband/",
+        },
+        {
+            name: "Somnium",
+            websiteUrl: "https://www.instagram.com/somniumzenekar/",
         },
         {
             name: "SZER",
             bannerImageUrl: imgMusicianSzer,
             websiteUrl: "https://www.instagram.com/szer_zenekar/",
+        },
+        {
+            name: "Tearaža",
+            websiteUrl: "https://www.instagram.com/tearaza_band/",
         },
         {
             name: "Waiting Room",
@@ -124,6 +127,9 @@ export default class KoloraLocalDb {
                 "https://youtu.be/_F-gC_YQ3v8?si=6YQh8l04Ge6qmkGW",
                 "https://youtu.be/ktqHOTsD2m8?si=Dq_XZ2JrVBmnwkGZ",
             ],
+        },
+        {
+            name: "Wake And Bake",
         },
     ];
 

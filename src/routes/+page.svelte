@@ -162,12 +162,13 @@
         style="aspect-ratio: 21/9; max-height: 300px;"
         pages={KoloraLocalDb.musicians.map((musician) => ({
             title: musician.name,
-            background: `url('${musician.bannerImageUrl}')`,
+            background: musician.bannerImageUrl ? `url('${musician.bannerImageUrl}')` : undefined,
             onclick: () => {
                 if (musician.websiteUrl) {
                     window.open(musician.websiteUrl, "_blank");
                 }
             },
+            fallbackContent: `<span class='mdi mdi-${musician.websiteUrl ? "instagram" : "music-note"}' style='font-size: 4rem;'></span>`,
         }))}
     />
     <p style="text-align: center;">
