@@ -5,6 +5,9 @@
     import cookie from "$lib/images/utils/cookie-clock.svg?raw";
     import { onMount } from "svelte";
     import Divider from "../../components/Divider.svelte";
+    import imgSectionBands from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-bands.jpg";
+    import imgSectionDJs from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-djs.jpg";
+    import imgSectionWorkshops from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-workshops.jpg";
 
     const events: Array<{
         type:
@@ -173,44 +176,53 @@
     <main>
         <h2>Fellépők, művészek</h2>
         <p>Bandák</p>
-        <ul class="outlined-list">
-            {#each events.filter((event) => event.type === "banda") as event}
-                {#if event.url}
-                    <a href={event.url} target="_blank">
-                        {event.name}
-                        <span class="mdi mdi-link"></span>
-                    </a>
-                {:else}
-                    <li>{event.name}</li>
-                {/if}
-            {/each}
-        </ul>
+        <div class="list-section">
+            <ul class="outlined-list">
+                {#each events.filter((event) => event.type === "banda") as event}
+                    {#if event.url}
+                        <a href={event.url} target="_blank">
+                            {event.name}
+                            <span class="mdi mdi-link"></span>
+                        </a>
+                    {:else}
+                        <li>{event.name}</li>
+                    {/if}
+                {/each}
+            </ul>
+            <img src={imgSectionBands} alt="" />
+        </div>
         <p>DJ-k</p>
-        <ul class="outlined-list">
-            {#each events.filter((event) => event.type === "DJ") as event}
-                {#if event.url}
-                    <a href={event.url} target="_blank">
-                        {event.name}
-                        <span class="mdi mdi-link"></span>
-                    </a>
-                {:else}
-                    <li>{event.name}</li>
-                {/if}
-            {/each}
-        </ul>
+        <div class="list-section">
+            <ul class="outlined-list">
+                {#each events.filter((event) => event.type === "DJ") as event}
+                    {#if event.url}
+                        <a href={event.url} target="_blank">
+                            {event.name}
+                            <span class="mdi mdi-link"></span>
+                        </a>
+                    {:else}
+                        <li>{event.name}</li>
+                    {/if}
+                {/each}
+            </ul>
+            <img src={imgSectionDJs} alt="" />
+        </div>
         <p>Workshop vezetők, kiállítók</p>
-        <ul class="outlined-list">
-            {#each events.filter((event) => event.type === "kiállító" || event.type === "workshop") as event}
-                {#if event.url}
-                    <a href={event.url} target="_blank">
-                        {event.name}
-                        <span class="mdi mdi-link"></span>
-                    </a>
-                {:else}
-                    <li>{event.name}</li>
-                {/if}
-            {/each}
-        </ul>
+        <div class="list-section">
+            <ul class="outlined-list">
+                {#each events.filter((event) => event.type === "kiállító" || event.type === "workshop") as event}
+                    {#if event.url}
+                        <a href={event.url} target="_blank">
+                            {event.name}
+                            <span class="mdi mdi-link"></span>
+                        </a>
+                    {:else}
+                        <li>{event.name}</li>
+                    {/if}
+                {/each}
+            </ul>
+            <img src={imgSectionWorkshops} alt="" />
+        </div>
         <h2>Helyszín</h2>
         <p>Köszönjük a Nyolcas Műhelynek!</p>
         <iframe
@@ -323,20 +335,24 @@
         }
     }
 
+    .list-section {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing);
+        align-items: center;
+    }
+
+    .list-section ul {
+        flex: 1;
+    }
+
+    .list-section img {
+        width: 40%;
+        border-radius: var(--corner-radius);
+    }
+
     ul.outlined-list :is(a, button) {
         background-color: var(--primary-color);
         color: var(--on-primary-color) !important;
-    }
-
-    .button-group > * {
-        border: 2px solid var(--primary-color);
-        background: transparent;
-        color: var(--on-background-color);
-    }
-
-    .button-group > *.selected {
-        background: var(--primary-color);
-        color: var(--on-primary-color);
-        border-radius: var(--corner-radius);
     }
 </style>
