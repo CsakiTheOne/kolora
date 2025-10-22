@@ -3,7 +3,7 @@
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
     import ThemeToolbarIcon from "./ThemeToolbarIcon.svelte";
 
-    const { path = [], currentPage, ...rest } = $props();
+    const { path = [], currentPage, hideThemeButton, ...rest } = $props();
 </script>
 
 <header {...rest}>
@@ -11,14 +11,16 @@
         <a href="/" style="height: 48px;">
             <img class="header-logo" src={koloraLogo} alt="Kolora logó" />
         </a>
-    
+
         {#each path as { title, href }}
             <a {href}>{title}</a> &gt;
         {/each}
         <span>{currentPage}</span>
     </div>
     <div class="toolbar">
-        <ThemeToolbarIcon />
+        {#if !hideThemeButton}
+            <ThemeToolbarIcon />
+        {/if}
         <AccountToolbarIcon />
     </div>
 </header>

@@ -8,6 +8,7 @@
     import imgSectionBands from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-bands.jpg";
     import imgSectionDJs from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-djs.jpg";
     import imgSectionWorkshops from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-workshops.jpg";
+    import SmallHeader from "../../components/SmallHeader.svelte";
 
     const events: Array<{
         type:
@@ -160,6 +161,10 @@
 </script>
 
 <div class="theme-override">
+    <div class="header">
+        <SmallHeader currentPage="Kolora Feszt" hideThemeButton />
+    </div>
+
     <div class="cookies">
         {@html cookie}
         {@html cookie}
@@ -269,6 +274,11 @@
         color: var(--on-background-color);
     }
 
+    .header {
+        position: relative;
+        z-index: 3;
+    }
+
     .cookies {
         position: relative;
         width: 100vw;
@@ -339,7 +349,7 @@
         display: flex;
         flex-direction: row;
         gap: var(--spacing);
-        align-items: center;
+        align-items: flex-start;
     }
 
     .list-section ul {
