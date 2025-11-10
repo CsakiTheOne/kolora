@@ -117,6 +117,15 @@
                     <button
                         onclick={() => {
                             isOpen = false;
+                            window.location.href = "/feeds";
+                        }}
+                    >
+                        <span class="mdi mdi-comment-quote"></span>
+                        Üzenőfalak (kivezetés alatt)
+                    </button>
+                    <button
+                        onclick={() => {
+                            isOpen = false;
                             window.location.href = "/codes";
                         }}
                     >

@@ -20,11 +20,6 @@
             title: "Tagok",
             url: "/members",
         },
-        {
-            icon: "comment-quote",
-            title: "Üzenőfalak",
-            url: "/feeds",
-        },
         { icon: "at", title: "Elérhetőségek", url: "/contacts" },
     ];
 

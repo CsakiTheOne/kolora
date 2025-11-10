@@ -40,48 +40,14 @@
     {:else}
         <h2>
             <span class="mdi mdi-link"></span>
-            Linkek
+            Linkek, források, eszközök
         </h2>
         <ul class="outlined-list">
-            <a
-                href="https://drive.google.com/file/d/1rFCE90fvVLDRNbrLTmK1_LFk0916UVp_/view?usp=drive_link"
-                target="_blank"
-            >
+            <a href="https://discord.gg/y9cVqnEcvg">
                 <li>
-                    <p style="display: flex; gap: 4px;">
-                        <span class="mdi mdi-palette"></span>
-                        <span style="flex: 1; text-align: left;">
-                            Figma template: Kolora design system 2024_25.fig
-                        </span>
-                        <span class="mdi mdi-download"></span>
-                    </p>
+                    <p>Kolora Discord szerver</p>
                     <p class="text-small">
-                        A Levi által készített Figma projekt, amiből gyorsan
-                        tudunk eseményekhez való grafikákat alkotni.
-                    </p>
-                </li>
-            </a>
-            <a
-                href="https://drive.google.com/drive/folders/1akxU9BGE1xXlYTHlrtUMhzKm8Cl8E2bu?usp=sharing"
-                target="_blank"
-            >
-                <li>
-                    <p>
-                        <span class="mdi mdi-google-drive"></span>
-                        Kolorás Drive mappa (owned by Csáki)
-                    </p>
-                    <p class="text-small">
-                        Nyugodtan pakolásszatok ide. 200GB-on osztoszkodnak a
-                        saját dolgaim, családom és ez a Kolorás mappa.
-                        Hozzáférésért zaklassatok.
-                    </p>
-                </li>
-            </a>
-            <a href="https://www.figma.com" target="_blank">
-                <li>
-                    <p>
-                        <span class="mdi mdi-palette"></span>
-                        Figma
+                        Fontos linkek, forrásaink ide költöztek.
                     </p>
                 </li>
             </a>
@@ -96,31 +62,7 @@
                     </p>
                 </li>
             </a>
-            <a href="https://studio.youtube.com/" target="_blank">
-                <li>
-                    <span class="mdi mdi-youtube-studio"></span>
-                    YouTube Studio
-                </li>
-            </a>
-            <a href="https://m.me/CsakiTheOne" target="_blank">
-                <li>
-                    <p>
-                        <span class="mdi mdi-help"></span>
-                        Hiányzik valami?
-                    </p>
-                    <p class="text-small">
-                        Ha van olyan eszköz, link, vagy bármi, ami szerinted
-                        hasznos lehet a Kolora tagoknak, szólj Csákinak és
-                        iderakja.
-                    </p>
-                </li>
-            </a>
         </ul>
-
-        <h2>
-            <span class="mdi mdi-tools"></span>
-            Eszközök
-        </h2>
         <ul class="outlined-list">
             <button
                 style="text-align: left;"
@@ -142,19 +84,6 @@
             </button>
         </ul>
         <ul class="outlined-list">
-            <a href="/poi/nearby">
-                <li>
-                    <p>
-                        <span class="mdi mdi-map-marker"></span>
-                        Legközelebbi üzenőfal megnyitása
-                    </p>
-                    <p class="text-small">
-                        Mindig a hozzád legközelebb lévő üzenőfalra vezet. Ez
-                        megkönnyíti a QR kódok használatát. Ha nincs a környéken
-                        üzenőfal, akkor simán a főoldalra visz.
-                    </p>
-                </li>
-            </a>
             <button
                 onclick={() => {
                     navigator.clipboard.writeText(
@@ -163,12 +92,11 @@
                 }}
             >
                 <span class="mdi mdi-content-copy"></span>
-                Legközelebbi üzenőfal link másolása
+                QR kódos matricák linkjének másolása
             </button>
             <li>
                 <p>
-                    Mi történjen ha valaki beolvassa a QR kódot, de nincs
-                    üzenőfal a közelben?
+                    Mi történjen ha valaki beolvassa a QR kódot az egyik matricánkon?
                 </p>
                 <input
                     type="text"
@@ -196,24 +124,12 @@
             még nem publikusak.
         </p>
         <ul class="outlined-list">
-            <li>Jelenleg nincs fejlesztés alatt álló oldal</li>
+            <a href="/anyam-kinja">
+                <li>
+                    <p>Anyám kinja rövidfilm by Klein Anna</p>
+                </li>
+            </a>
         </ul>
-
-        <h2>Nem használt elemek</h2>
-        <p>
-            Ezek a komponensek egyszer elkészültek, de végül nem igazán kerültek
-            publikusan az oldalra. Ha már vannak, gondoltam iderakom.
-        </p>
-        <Countdown
-            targetDateTime={new Date(
-                new Date().getFullYear() + 1,
-                2,
-                20,
-                5,
-                30,
-            )}
-        />
-        <Kiseger />
     {/if}
 </main>
 <Footer />

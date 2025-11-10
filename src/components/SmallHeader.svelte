@@ -3,7 +3,7 @@
     import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
     import ThemeToolbarIcon from "./ThemeToolbarIcon.svelte";
 
-    const { path = [], currentPage, hideThemeButton, ...rest } = $props();
+    const { path = [], currentPage, hideThemeButton = false, ...rest } = $props();
 </script>
 
 <header {...rest}>
