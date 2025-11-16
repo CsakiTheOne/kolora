@@ -1,6 +1,5 @@
 import ThemeManager from "./ThemeManager";
 import imgMusicianBodonyiDani from "$lib/images/musicians/bodonyi-dani-banner.jpg";
-import imgMusicianCrescendoSelecta from "$lib/images/musicians/crescendo-selecta-banner.jpg";
 import imgMusicianEgy5Egy from "$lib/images/musicians/egy5egy-banner.jpg";
 import imgMusicianFarkasMarton from "$lib/images/musicians/farkas-marton.jpg";
 import imgMusicianFeltucat from "$lib/images/musicians/feltucat-banner.jpg";
