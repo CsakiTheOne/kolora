@@ -4,6 +4,7 @@
     import ScrollToTopButton from "../components/ScrollToTopButton.svelte";
     import { onMount } from "svelte";
     import UserManager from "$lib/UserManager.svelte";
+    import Snowfall from "../components/Snowfall.svelte";
 
     onMount(() => {
         const userManager = UserManager.instance;
@@ -15,5 +16,6 @@
     });
 </script>
 
+<Snowfall />
 <ScrollToTopButton />
 <slot />
