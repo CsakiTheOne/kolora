@@ -4,7 +4,7 @@
     let canvas: HTMLCanvasElement;
     let ctx: CanvasRenderingContext2D;
     let snowflakes: Snowflake[] = [];
-    let animationId;
+    let animationId: number;
 
     class Snowflake {
         x: number;
@@ -50,7 +50,7 @@
     function init() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        ctx = canvas.getContext("2d");
+        ctx = canvas.getContext("2d")!!;
 
         snowflakes = [];
         for (let i = 0; i < 100; i++) {
