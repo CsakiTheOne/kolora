@@ -10,7 +10,7 @@ import imgMusicianKam from "$lib/images/musicians/kam.jpg";
 import imgMusicianKory from "$lib/images/musicians/kory.jpg";
 import imgMusicianLoophia from "$lib/images/musicians/loophia-banner.jpg";
 import imgMusicianNaez from "$lib/images/musicians/naez-logo.jpg";
-import imgMusicianNedela from "$lib/images/musicians/nedela-banner.jpg";
+import imgMusicianSomnium from "$lib/images/musicians/somnium-banner.jpg";
 import imgMusicianSzer from "$lib/images/musicians/szer-banner.jpg";
 import imgMusicianWaitingRoom from "$lib/images/musicians/waiting-room-banner.jpg";
 import { recordEvent } from "./firebase/analytics";
@@ -101,6 +101,7 @@ export default class KoloraLocalDb {
         },
         {
             name: "Somnium",
+            bannerImageUrl: imgMusicianSomnium,
             websiteUrl: "https://www.instagram.com/somniumzenekar/",
         },
         {

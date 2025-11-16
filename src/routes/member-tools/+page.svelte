@@ -124,7 +124,7 @@
             még nem publikusak.
         </p>
         <ul class="outlined-list">
-            <a href="/anyam-kinja">
+            <a href="/projects/anyam-kinja">
                 <li>
                     <p>Anyám kinja rövidfilm by Klein Anna</p>
                 </li>

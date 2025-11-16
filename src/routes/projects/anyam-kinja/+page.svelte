@@ -1,6 +1,6 @@
 <script>
-    import Footer from "../../components/Footer.svelte";
-    import SmallHeader from "../../components/SmallHeader.svelte";
+    import Footer from "../../../components/Footer.svelte";
+    import SmallHeader from "../../../components/SmallHeader.svelte";
 </script>
 
 <SmallHeader currentPage="Anyám Kínja" />

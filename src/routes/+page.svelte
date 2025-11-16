@@ -57,14 +57,6 @@
 
 <Header selectedTab="Főoldal" />
 <main>
-    <p style="text-align: center;">
-        <a href="/feszt">
-            <button class="btn fab">
-                <span class="mdi mdi-party-popper"></span>
-                Kolora Feszt
-            </button>
-        </a>
-    </p>
     <h2 id="about">Rólunk</h2>
     <a id="group-photo" href="/members">
         <FlowerImage

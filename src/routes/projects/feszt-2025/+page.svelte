@@ -1,14 +1,14 @@
 <script lang="ts">
-    import Countdown from "../../components/Countdown.svelte";
-    import Footer from "../../components/Footer.svelte";
+    import Countdown from "../../../components/Countdown.svelte";
+    import Footer from "../../../components/Footer.svelte";
     import poster from "$lib/images/gallery/2025-kolora-feszt/poster.png";
     import cookie from "$lib/images/utils/cookie-clock.svg?raw";
     import { onMount } from "svelte";
-    import Divider from "../../components/Divider.svelte";
+    import Divider from "../../../components/Divider.svelte";
     import imgSectionBands from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-bands.jpg";
     import imgSectionDJs from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-djs.jpg";
     import imgSectionWorkshops from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-workshops.jpg";
-    import SmallHeader from "../../components/SmallHeader.svelte";
+    import SmallHeader from "../../../components/SmallHeader.svelte";
 
     const events: Array<{
         type:
