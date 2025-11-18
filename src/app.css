@@ -232,7 +232,7 @@ h1,
     text-decoration: none;
 }
 
-.text-small {
-    font-size: .8rem;
+.text-small, .text-small * {
+    font-size: .8rem !important;
     opacity: .7;
 }

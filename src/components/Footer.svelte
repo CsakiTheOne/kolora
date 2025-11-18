@@ -18,6 +18,10 @@
         <a href="https://www.youtube.com/@koloraegyesulet" target="_blank">
             <span class="mdi mdi-youtube"></span>
         </a>
+
+        <a href="/contacts">
+            <span class="mdi mdi-dots-horizontal"></span>
+        </a>
     </p>
     <p style="text-align: center;">
         <a href="/impressum"> Impresszum </a>
