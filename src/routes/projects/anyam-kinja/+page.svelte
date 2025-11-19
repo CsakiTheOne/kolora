@@ -5,12 +5,14 @@
 
 <div class="theme-override">
     <main style="min-height: 100svh;">
-        <h1>Anyám Kínja</h1>
-        <p class="text-small">
-            Klein Anna kisfilmje a <a href="/" style="color: inherit;"
-                >Kolora Egyesület</a
-            > támogatásával.
-        </p>
+        <div>
+            <h1>Anyám Kínja</h1>
+            <p class="text-small">
+                Klein Anna kisfilmje a <a href="/" style="color: inherit;"
+                    >Kolora Egyesület</a
+                > támogatásával.
+            </p>
+        </div>
         <p>
             Mit jelent gondoskodni valakiről, aki már nem a régi?<br />
             Mit jelent még egyszer, utoljára gyereknek lenni egy felnőtt testben?<br
@@ -34,6 +36,9 @@
         <p>
             A Te segítségeddel viszont egy olyan filmet készíthetünk, amely
             méltóan beszél azokról, akik csendben hordozzák mások életét.
+        </p>
+        <p>
+            //TODO: Patreon, Kickstarter és hasonló linkek ide
         </p>
         <div class="movie-placeholder">
             <p>Hamarosan...</p>
@@ -70,7 +75,7 @@
     main > p {
         background-color: #000000;
         color: #ffffff;
-        padding: calc(var(--spacing) * .5);
+        padding: calc(var(--spacing) * 0.5);
         box-shadow: 4px 4px 0px #cccccc;
     }
 
@@ -83,7 +88,7 @@
         justify-content: center;
         font-style: italic;
         color: #000000;
-        background: #f5f5f5;
+        background: #888;
         font-weight: 500;
     }
 </style>
