@@ -6,8 +6,8 @@
 <div class="theme-override">
     <main style="min-height: 100svh;">
         <div>
-            <h1>Anyám Kínja</h1>
-            <p class="text-small">
+            <h1 style="text-align: center;">Anyám Kínja</h1>
+            <p class="text-small" style="text-align: center;">
                 Klein Anna kisfilmje a <a href="/" style="color: inherit;"
                     >Kolora Egyesület</a
                 > támogatásával.
@@ -37,9 +37,7 @@
             A Te segítségeddel viszont egy olyan filmet készíthetünk, amely
             méltóan beszél azokról, akik csendben hordozzák mások életét.
         </p>
-        <p>
-            //TODO: Patreon, Kickstarter és hasonló linkek ide
-        </p>
+        <p>//TODO: Patreon, Kickstarter és hasonló linkek ide</p>
         <div class="movie-placeholder">
             <p>Hamarosan...</p>
         </div>
