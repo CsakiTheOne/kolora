@@ -25,6 +25,7 @@
     import pfpTolnaiZsofi from "$lib/images/members/tolnai-zsofi.jpg";
     import FlowerImage from "../components/FlowerImage.svelte";
     import NowPlayingBar from "../components/NowPlayingBar.svelte";
+    import VerticalTimelineItem from "../components/VerticalTimelineItem.svelte";
 
     let windowWidth = $state(0);
     let groupPhotoDeltaX = $state(0);
@@ -57,6 +58,52 @@
 
 <Header selectedTab="Főoldal" />
 <main>
+    <h2>2026</h2>
+    <VerticalTimelineItem
+        title="Slam workshop"
+        facebookLink="https://www.facebook.com/events/1379818337094216/1379818340427549/"
+        subtitle="Január 4-től minden Vasárnap a Museum Caféban"
+    >
+        <p>
+            Hangolódó workshop a Február 21-ei slam verseny + open mic
+            eseményre. Akár versenyzőnek készülsz, akár csak szívesen
+            kiruccannál a hétköznapokból, várunk szeretettel a Museum Caféba
+            Vasárnaponként.
+        </p>
+        <p>
+            Mit csinálunk? Mi lesz itt? Különböző szójátékok és fejlesztő
+            feladatok, lehetőség saját művek megosztására és ezekről
+            visszajelzések szerzésére. Mindeközben jó hangulat, barátokkal
+            iszogatás és vicces story-k mesélése az előadói képességeink
+            fejlesztése érdekében.
+        </p>
+        <p>Workshop vezető: Csáki</p>
+    </VerticalTimelineItem>
+    <VerticalTimelineItem
+        title="Slam poetry verseny + open mic"
+        subtitle="Február 21., Nyolcas Műhely"
+    >
+        <p>További részletekkel érkezünk hamarosan!</p>
+        <p>
+            Addig is lesd meg milyen volt <a
+                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=Ibcs4FJlK1w7gyDb"
+                target="_blank">2025-ben</a
+            >
+            és
+            <a
+                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=jtAm4LUpC0ScQs7F"
+                target="_blank">2024-ben</a
+            >!
+        </p>
+    </VerticalTimelineItem>
+    <VerticalTimelineItem title="???" subtitle="Április 11.">
+        <p>
+            Idén sem maradunk otthon a Magyar Költészet Napján!
+        </p>
+    </VerticalTimelineItem>
+    <VerticalTimelineItem title="Kolora Feszt 2026" isLastItem={true}>
+        <p>Újra eljön a Kolora Feszt! További részletekkel később jövünk.</p>
+    </VerticalTimelineItem>
     <h2 id="about">Rólunk</h2>
     <a id="group-photo" href="/members">
         <FlowerImage
@@ -154,7 +201,9 @@
         style="aspect-ratio: 21/9; max-height: 300px;"
         pages={KoloraLocalDb.musicians.map((musician) => ({
             title: musician.name,
-            background: musician.bannerImageUrl ? `url('${musician.bannerImageUrl}')` : undefined,
+            background: musician.bannerImageUrl
+                ? `url('${musician.bannerImageUrl}')`
+                : undefined,
             onclick: () => {
                 if (musician.websiteUrl) {
                     window.open(musician.websiteUrl, "_blank");
