@@ -6,10 +6,6 @@
 <Header selectedTab="Projektek" />
 <main>
     <ul class="outlined-list">
-        <button onclick={() => alert("6b c3 ad 6e 6a 61")}>
-            <span class="mdi mdi-help"></span>
-            61 6e 79 c3 a1 6d
-        </button>
         <a href="/projects/feszt-2025">
             <p>
                 <span class="mdi mdi-party-popper"></span>
