@@ -77,8 +77,9 @@
     onMount(() => {
         const isDecember = new Date().getMonth() === 11;
         const isSnowForced = window.location.search.includes("snow=true");
+        const isSnowDisabled = window.location.search.includes("snow=false");
 
-        if (!isDecember && !isSnowForced) {
+        if (!isDecember && !isSnowForced || isSnowDisabled) {
             return;
         }
 
