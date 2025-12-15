@@ -59,6 +59,10 @@
 <Header selectedTab="Főoldal" />
 <main>
     <h2>2026</h2>
+    <p>
+        Kellemes ünnepeket kíván a Kolora Egyesület! Már készülünk a következő
+        évre. Zene lesz! És még ezek is:
+    </p>
     <VerticalTimelineItem
         title="Slam workshop"
         facebookLink="https://www.facebook.com/events/1379818337094216/1379818340427549/"
@@ -96,9 +100,13 @@
             >!
         </p>
     </VerticalTimelineItem>
-    <VerticalTimelineItem title="???" subtitle="Április 11.">
+    <VerticalTimelineItem
+        title="Költészet napi kincsvadászat"
+        subtitle="Április 11."
+    >
         <p>
-            Idén sem maradunk otthon a Magyar Költészet Napján!
+            Idén sem maradunk otthon a Magyar Költészet Napján! A kincsvadászat
+            visszatér, hasonlóan a 2024-es eseményhez.
         </p>
     </VerticalTimelineItem>
     <VerticalTimelineItem title="Kolora Feszt 2026" isLastItem={true}>
