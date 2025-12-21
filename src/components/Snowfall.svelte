@@ -53,7 +53,7 @@
         ctx = canvas.getContext("2d")!!;
 
         snowflakes = [];
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 60; i++) {
             snowflakes.push(new Snowflake(canvas.width, canvas.height));
         }
     }
