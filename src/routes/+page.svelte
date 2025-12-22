@@ -65,8 +65,7 @@
     </p>
     <VerticalTimelineItem
         title="Slam workshop"
-        facebookLink="https://www.facebook.com/events/1379818337094216/1379818340427549/"
-        subtitle="Január 4-től minden Vasárnap a Museum Caféban"
+        subtitle="Január 4-től minden Vasárnap a Museum Caféban a versenyig"
     >
         <p>
             Hangolódó workshop a Február 21-ei slam verseny + open mic
@@ -82,6 +81,17 @@
             fejlesztése érdekében.
         </p>
         <p>Workshop vezető: Csáki</p>
+        <p>
+            <a
+                href="https://www.facebook.com/events/1379818337094216/1379818340427549/"
+                target="_blank"
+            >
+                <button class="btn">
+                    <span class="mdi mdi-facebook"></span>
+                    Facebook esemény
+                </button>
+            </a>
+        </p>
     </VerticalTimelineItem>
     <VerticalTimelineItem
         title="Slam poetry verseny + open mic"
