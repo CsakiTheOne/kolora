@@ -122,6 +122,7 @@
     <VerticalTimelineItem title="Kolora Feszt 2026" isLastItem={true}>
         <p>Újra eljön a Kolora Feszt! További részletekkel később jövünk.</p>
     </VerticalTimelineItem>
+    <Divider />
     <h2 id="about">Rólunk</h2>
     <a id="group-photo" href="/members">
         <FlowerImage
