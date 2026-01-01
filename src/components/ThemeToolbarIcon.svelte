@@ -69,6 +69,17 @@
                         selectedColor === 'color-default'
                             ? 'selected'
                             : ''}"
+                        style="background: #dcb37e;"
+                    ></div>
+                </button>
+                <button
+                    onclick={() => setColor("color-red")}
+                    class={selectedColor === "color-red" ? "selected" : ""}
+                >
+                    <div
+                        class="color-preview {selectedColor === 'color-red'
+                            ? 'selected'
+                            : ''}"
                         style="background: var(--kolora-color-red);"
                     ></div>
                 </button>
@@ -115,7 +126,7 @@
         position: fixed;
         top: calc(var(--spacing) / 2);
         right: calc(var(--spacing) / 2);
-        width: 280px;
+        width: 320px;
         border: none;
         border-radius: var(--corner-radius);
         display: flex;

@@ -26,6 +26,7 @@
     import FlowerImage from "../components/FlowerImage.svelte";
     import NowPlayingBar from "../components/NowPlayingBar.svelte";
     import VerticalTimelineItem from "../components/VerticalTimelineItem.svelte";
+    import InstagramKoloraFeszt2025 from "../components/embeds/InstagramKoloraFeszt2025.svelte";
 
     let windowWidth = $state(0);
     let groupPhotoDeltaX = $state(0);
@@ -60,12 +61,12 @@
 <main>
     <h2>2026</h2>
     <p>
-        Kellemes ünnepeket kíván a Kolora Egyesület! Már készülünk a következő
-        évre. Zene lesz! És még ezek is:
+        Boldog új évet kíván a Kolora Egyesület! Már készülünk az idei
+        művelődésre. Zene lesz! És még ezek is:
     </p>
     <VerticalTimelineItem
         title="Slam workshop"
-        subtitle="Január 4-től minden Vasárnap a Museum Caféban a versenyig"
+        subtitle="Január 4-től, a versenyig minden Vasárnap a Museum Caféban"
     >
         <p>
             Hangolódó workshop a Február 21-ei slam verseny + open mic
@@ -119,8 +120,17 @@
             visszatér, hasonlóan a 2024-es eseményhez.
         </p>
     </VerticalTimelineItem>
-    <VerticalTimelineItem title="Kolora Feszt 2026" isLastItem={true}>
+    <VerticalTimelineItem
+        title="Kolora Feszt 2026"
+        subtitle="Idén ősszel"
+        isLastItem={true}
+    >
         <p>Újra eljön a Kolora Feszt! További részletekkel később jövünk.</p>
+        <p>
+            <a href="https://www.instagram.com/reel/DRmmJq3j8vt" target="_blank">
+                Ilyen volt a tavalyi!
+            </a>
+        </p>
     </VerticalTimelineItem>
     <Divider />
     <h2 id="about">Rólunk</h2>
@@ -210,6 +220,14 @@
             <a href="/timeline">
                 <span class="mdi mdi-timeline"></span>
                 2024 visszatekintés
+            </a>
+            <a href="https://instagram.com/koloraegyesulet" target="_blank">
+                <span class="mdi mdi-instagram"></span>
+                Kolora Insta
+            </a>
+            <a href="https://www.youtube.com/@koloraegyesulet" target="_blank">
+                <span class="mdi mdi-youtube"></span>
+                Kolora YouTube
             </a>
         </p>
     </div>

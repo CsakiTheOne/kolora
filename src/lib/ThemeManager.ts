@@ -7,7 +7,7 @@ export default class ThemeManager {
      * See src/app.css for the CSS rules.
      */
     static themes = ["theme-system", "theme-light", "theme-dark", "theme-retro"];
-    static themeColors = ["color-blue", "color-purple", "color-yellow"];
+    static themeColors = ["color-default", "color-red", "color-blue", "color-purple", "color-yellow"];
 
     static init() {
         if (browser) {
@@ -16,6 +16,9 @@ export default class ThemeManager {
             document.body.classList.remove(...this.themeColors);
             document.body.classList.add(this.color);
             document.head.querySelector("meta[name=theme-color]")?.setAttribute("content", this.getThemeColor("--primary-color"));
+            if (document.body.classList.length === 0) {
+                document.body.classList.add("color-default");
+            }
         }
     }
 
