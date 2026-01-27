@@ -26,7 +26,7 @@
     import FlowerImage from "../components/FlowerImage.svelte";
     import NowPlayingBar from "../components/NowPlayingBar.svelte";
     import VerticalTimelineItem from "../components/VerticalTimelineItem.svelte";
-    import InstagramKoloraFeszt2025 from "../components/embeds/InstagramKoloraFeszt2025.svelte";
+    import imgMuhelySlamFbBanner from "$lib/images/events/muhely_slam_2026_fb_banner.png";
 
     let windowWidth = $state(0);
     let groupPhotoDeltaX = $state(0);
@@ -93,23 +93,49 @@
                 </button>
             </a>
         </p>
+        <p>
+            <a href="https://fb.me/e/j5761ZoFT" target="_blank">
+                <button class="btn"> Dekó készítős különkiadás </button>
+            </a>
+        </p>
+        <p>
+            <a
+                href="https://www.instagram.com/inkognito_kollektiva/"
+                target="_blank"
+            >
+                <button class="btn">
+                    Utolsó workshop-ot az Inkognitó Kollektíva szervezi
+                </button>
+            </a>
+        </p>
     </VerticalTimelineItem>
     <VerticalTimelineItem
         title="Slam poetry verseny + open mic"
         subtitle="Február 21., Nyolcas Műhely"
     >
-        <p>További részletekkel érkezünk hamarosan!</p>
-        <p>
-            Addig is lesd meg milyen volt <a
-                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=Ibcs4FJlK1w7gyDb"
-                target="_blank">2025-ben</a
-            >
-            és
-            <a
-                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=jtAm4LUpC0ScQs7F"
-                target="_blank">2024-ben</a
-            >!
-        </p>
+        <h3>Facebook esemény és infók:</h3>
+        <a href="https://fb.me/e/47pGUtgMU" target="_blank">
+            <img
+                style="max-width: 100%; width: 350px; border-radius: var(--corner-radius);"
+                src={imgMuhelySlamFbBanner}
+                alt=""
+            />
+        </a>
+        <h3>Előző évek:</h3>
+        <ul>
+            <li>
+                <a
+                    href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=Ibcs4FJlK1w7gyDb"
+                    target="_blank">2025</a
+                >
+            </li>
+            <li>
+                <a
+                    href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=jtAm4LUpC0ScQs7F"
+                    target="_blank">2024</a
+                >
+            </li>
+        </ul>
     </VerticalTimelineItem>
     <VerticalTimelineItem
         title="Költészet napi kincsvadászat"
@@ -127,7 +153,10 @@
     >
         <p>Újra eljön a Kolora Feszt! További részletekkel később jövünk.</p>
         <p>
-            <a href="https://www.instagram.com/reel/DRmmJq3j8vt" target="_blank">
+            <a
+                href="https://www.instagram.com/reel/DRmmJq3j8vt"
+                target="_blank"
+            >
                 Ilyen volt a tavalyi!
             </a>
         </p>
