@@ -82,6 +82,26 @@
             fejlesztése érdekében.
         </p>
         <p>Workshop vezető: Csáki</p>
+        <h4>Menetrend</h4>
+        <ul>
+            <li>
+                Február 1: Sztárvendégként csatlakozik az Odalökött
+                Költészetből, a tavalyi slam versenyünk közönségdíjasa, <a
+                    href="https://youtu.be/FtIpUYlfJKY?si=LmyAAmomK1FpRGID"
+                    target="_blank">Vucskó Vera</a
+                >
+            </li>
+            <li>
+                Február 8: Dupla, disco workshop! <a
+                    href="https://fb.me/e/j5761ZoFT"
+                    target="_blank">Dekó készítés</a
+                > és buli tematikájú slam workshop
+            </li>
+            <li>
+                Február 15: Utolsó workshop a Muziban. Beugró társasjátékos
+                különkiadás, váltólázzal és hasonló játékos feladatokkal
+            </li>
+        </ul>
         <p>
             <a
                 href="https://www.facebook.com/events/1379818337094216/1379818340427549/"
@@ -93,27 +113,12 @@
                 </button>
             </a>
         </p>
-        <p>
-            <a href="https://fb.me/e/j5761ZoFT" target="_blank">
-                <button class="btn"> Dekó készítős különkiadás </button>
-            </a>
-        </p>
-        <p>
-            <a
-                href="https://www.instagram.com/inkognito_kollektiva/"
-                target="_blank"
-            >
-                <button class="btn">
-                    Utolsó workshop-ot az Inkognitó Kollektíva szervezi
-                </button>
-            </a>
-        </p>
     </VerticalTimelineItem>
     <VerticalTimelineItem
         title="Slam poetry verseny + open mic"
         subtitle="Február 21., Nyolcas Műhely"
     >
-        <h3>Facebook esemény és infók:</h3>
+        <h4>Facebook esemény és infók:</h4>
         <a href="https://fb.me/e/47pGUtgMU" target="_blank">
             <img
                 style="max-width: 100%; width: 350px; border-radius: var(--corner-radius);"
@@ -121,7 +126,7 @@
                 alt=""
             />
         </a>
-        <h3>Előző évek:</h3>
+        <h4>Előző évek:</h4>
         <ul>
             <li>
                 <a

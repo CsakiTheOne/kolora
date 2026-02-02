@@ -33,7 +33,7 @@
             >WholesomeWare</a
         > lehetőséget ad a rajzolni, festeni vagy bármilyen vizuális formában alkotni
         kedvelőknek, hogy műveiket feldobhassák egy kis interaktivitással és a brand
-        nevét viselő alkalmazásban meg is oszthatják ezeket.
+        nevét viselő alkalmazásban meg is oszthassák ezeket.
     </p>
     <p>
         <a
