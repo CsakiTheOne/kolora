@@ -20,6 +20,11 @@
             title: "Tagok",
             url: "/members",
         },
+        {
+            icon: "folder-multiple",
+            title: "Projektek",
+            url: "/projects",
+        },
         { icon: "at", title: "Elérhetőségek", url: "/contacts" },
     ];
 

@@ -43,5 +43,12 @@
             <button class="btn">WholesomeWare app beszerzése</button>
         </a>
     </p>
+    <h2>És sokminden más...</h2>
+    <ul class="outlined-list">
+        <a href="/timeline">2024 visszatekintés</a>
+        <a href="https://www.youtube.com/@koloraegyesulet" target="_blank">
+            YouTube csatornánk
+        </a>
+    </ul>
 </main>
 <Footer />
