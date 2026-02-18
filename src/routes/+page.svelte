@@ -8,6 +8,7 @@
     import imgMuseumCafeLogo from "$lib/images/logos/museum-cafe.jpg";
     import imgNyolcasMuhelyLogo from "$lib/images/logos/nyolcas-muhely.jpg";
     import imgBrotondProductionsLogo from "$lib/images/logos/brotond-productions.jpg";
+    import imgInkognitoKollektivaLogo from "$lib/images/logos/inkognito-kollektiva.jpg";
     import imgWholesomeWareLogo from "$lib/images/logos/wholesomeware.png";
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
     import { onMount } from "svelte";
@@ -60,60 +61,7 @@
 <Header selectedTab="Főoldal" />
 <main>
     <h2>2026</h2>
-    <p>
-        Boldog új évet kíván a Kolora Egyesület! Már készülünk az idei
-        művelődésre. Zene lesz! És még ezek is:
-    </p>
-    <VerticalTimelineItem
-        title="Slam workshop"
-        subtitle="Január 4-től, a versenyig minden Vasárnap a Museum Caféban"
-    >
-        <p>
-            Hangolódó workshop a Február 21-ei slam verseny + open mic
-            eseményre. Akár versenyzőnek készülsz, akár csak szívesen
-            kiruccannál a hétköznapokból, várunk szeretettel a Museum Caféba
-            Vasárnaponként.
-        </p>
-        <p>
-            Mit csinálunk? Mi lesz itt? Különböző szójátékok és fejlesztő
-            feladatok, lehetőség saját művek megosztására és ezekről
-            visszajelzések szerzésére. Mindeközben jó hangulat, barátokkal
-            iszogatás és vicces story-k mesélése az előadói képességeink
-            fejlesztése érdekében.
-        </p>
-        <p>Workshop vezető: Csáki</p>
-        <h4>Menetrend</h4>
-        <ul>
-            <li>
-                Február 1: Sztárvendégként csatlakozik az Odalökött
-                Költészetből, a tavalyi slam versenyünk közönségdíjasa, <a
-                    href="https://youtu.be/FtIpUYlfJKY?si=LmyAAmomK1FpRGID"
-                    target="_blank">Vucskó Vera</a
-                >
-            </li>
-            <li>
-                Február 8: Dupla, disco workshop! <a
-                    href="https://fb.me/e/j5761ZoFT"
-                    target="_blank">Dekó készítés</a
-                > és buli tematikájú slam workshop
-            </li>
-            <li>
-                Február 15: Utolsó workshop a Muziban. Beugró társasjátékos
-                különkiadás, váltólázzal és hasonló játékos feladatokkal
-            </li>
-        </ul>
-        <p>
-            <a
-                href="https://www.facebook.com/events/1379818337094216/1379818340427549/"
-                target="_blank"
-            >
-                <button class="btn">
-                    <span class="mdi mdi-facebook"></span>
-                    Facebook esemény
-                </button>
-            </a>
-        </p>
-    </VerticalTimelineItem>
+    <p>Ezekre számíthattok idén tőlünk (és még ki tudja mennyi minden másra):</p>
     <VerticalTimelineItem
         title="Slam poetry verseny + open mic"
         subtitle="Február 21., Nyolcas Műhely"
@@ -121,7 +69,7 @@
         <h4>Facebook esemény és infók:</h4>
         <a href="https://fb.me/e/47pGUtgMU" target="_blank">
             <img
-                style="max-width: 100%; width: 350px; border-radius: var(--corner-radius);"
+                style="max-width: 100%; width: 350px; border-radius: var(--corner-radius); box-shadow: 0 0 10px var(--primary-color);"
                 src={imgMuhelySlamFbBanner}
                 alt=""
             />
@@ -149,6 +97,14 @@
         <p>
             Idén sem maradunk otthon a Magyar Költészet Napján! A kincsvadászat
             visszatér, hasonlóan a 2024-es eseményhez.
+        </p>
+    </VerticalTimelineItem>
+    <VerticalTimelineItem
+        title="3 éves Kolora"
+        subtitle="Június 21 környéke"
+    >
+        <p>
+            🎂
         </p>
     </VerticalTimelineItem>
     <VerticalTimelineItem
@@ -419,6 +375,17 @@
                 image={imgBrotondProductionsLogo}
                 name="Brotond Productions"
                 title="Aki kivágja az unalmas részeket"
+            />
+        </a>
+        <a
+            href="https://www.instagram.com/inkognito_kollektiva/"
+            target="_blank"
+            style="flex: 1;"
+        >
+            <ProfileShowcase
+                image={imgInkognitoKollektivaLogo}
+                name="INKognitó Kollektíva"
+                title="Barátaink a Hang-Szín-Tér művészeti iskolából"
             />
         </a>
     </div>
