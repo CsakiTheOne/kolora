@@ -36,18 +36,6 @@
         ]
       },
       {
-        "name": "Üzenőfalak",
-        "url": "/feeds",
-        "description": "Helyhez kötött üzenőfalak országszerte.",
-        "icons": [
-          {
-            "src": "/kolora.png",
-            "sizes": "512x512",
-            "type": "image/png"
-          }
-        ]
-      },
-      {
         "name": "Kódok",
         "url": "/codes",
         "description": "Járj Kolorás rendezvényekre, kövesd a közösségi profiljainkat és légy figyelmes!",

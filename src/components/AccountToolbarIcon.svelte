@@ -81,16 +81,7 @@
                         }}
                     >
                         <span class="mdi mdi-account-circle"></span>
-                        Profil és műveim
-                    </button>
-                    <button
-                        onclick={() => {
-                            isOpen = false;
-                            window.location.href = "/edit";
-                        }}
-                    >
-                        <span class="mdi mdi-plus"></span>
-                        Új alkotás
+                        Profil
                     </button>
                     {#if UserManager.instance.koloraUser?.roles.includes(ROLES.KOLORA_MEMBER)}
                         <button
@@ -114,15 +105,6 @@
                             Dashboard
                         </button>
                     {/if}
-                    <button
-                        onclick={() => {
-                            isOpen = false;
-                            window.location.href = "/feeds";
-                        }}
-                    >
-                        <span class="mdi mdi-comment-quote"></span>
-                        Üzenőfalak (kivezetés alatt)
-                    </button>
                     <button
                         onclick={() => {
                             isOpen = false;

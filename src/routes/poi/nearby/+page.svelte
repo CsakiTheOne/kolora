@@ -1,15 +1,6 @@
 <script lang="ts">
-    import firestore from "$lib/firebase/firestore";
-    import type POI from "$lib/model/POI";
-    import PoiUtils from "$lib/PoiUtils";
     import { onMount } from "svelte";
-    import Alert from "../../../components/Alert.svelte";
     import rtdb from "$lib/firebase/rtdb";
-
-    let errorMessage = $state("");
-    let places: POI[] = $state([]);
-
-    let distanceToOpen = $state(0);
 
     function openFallbackUrl() {
         rtdb.config.feeds.getQrCodeFallbackUrl().then((url) => {
@@ -27,6 +18,7 @@
     });
 </script>
 
+<!-- LEGACY COMPONENT! MUST KEEP TO KEEP STICKERS WORKING -->
 <main>
     <p>
         <span class="mdi mdi-loading mdi-spin"></span>
