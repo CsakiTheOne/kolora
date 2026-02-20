@@ -120,16 +120,8 @@
             Építkezési terület
         </h2>
         <p>
-            Itt vannak a weboldal azon részei, amelyek nincsenek készen, ezért
-            még nem publikusak.
+            Egy weboldal újraírás van készülőben egy teljesen új, friss és izgalmas design-nal. Itt lehet majd nézegetni, kipróbálni, kattintgatni kiadás előtt.
         </p>
-        <ul class="outlined-list">
-            <a href="/projects/anyam-kinja">
-                <li>
-                    <p>Anyám kinja rövidfilm by Klein Anna</p>
-                </li>
-            </a>
-        </ul>
     {/if}
 </main>
 <Footer />
