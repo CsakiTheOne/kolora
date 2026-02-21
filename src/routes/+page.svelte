@@ -101,7 +101,7 @@
     </VerticalTimelineItem>
     <VerticalTimelineItem
         title="3 éves Kolora"
-        subtitle="Június 21 környéke"
+        subtitle="Idén Júniusban"
     >
         <p>
             🎂
