@@ -1,0 +1,46 @@
+@import url('./kolora.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--kolora-color-red);
+    color: white;
+}
+
+.container-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.irregular-box-container {
+    background-color: white;
+    clip-path: polygon(25px 3px, 100% 0, calc(100% - 20px) 100%, 0 calc(100% - 3px), 25px 3px);
+    padding: 4px;
+}
+
+.irregular-box {
+    background-color: black;
+    color: white;
+    clip-path: polygon(25px 3px, 100% 0, calc(100% - 20px) 100%, 0 calc(100% - 3px), 25px 3px);
+    padding: 15px 35px;
+}
+
+button {
+    appearance: none;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--kolora-color-red-variant);
+    color: black;
+}
