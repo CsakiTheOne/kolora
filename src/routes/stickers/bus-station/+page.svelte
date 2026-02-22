@@ -1,10 +1,10 @@
 <script>
-    import Card from "../../../components/legacy/Card.svelte";
-    import ExtraContentDivider from "../../../components/legacy/ExtraContentDivider.svelte";
-    import PoemDisplay from "../../../components/legacy/PoemDisplay.svelte";
+    import Card from "../../../components/stickers-legacy/Card.svelte";
+    import ExtraContentDivider from "../../../components/stickers-legacy/ExtraContentDivider.svelte";
+    import PoemDisplay from "../../../components/stickers-legacy/PoemDisplay.svelte";
     import utcazene2024Poster from "$lib/images/utcazene.jpg";
-    import StickerFoundCallout from "../../../components/legacy/StickerFoundCallout.svelte";
-    import FoundByRandomExplanation from "../../../components/legacy/FoundByRandomExplanation.svelte";
+    import StickerFoundCallout from "../../../components/stickers-legacy/StickerFoundCallout.svelte";
+    import FoundByRandomExplanation from "../../../components/stickers-legacy/FoundByRandomExplanation.svelte";
 </script>
 
 <StickerFoundCallout/>
