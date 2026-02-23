@@ -14,8 +14,7 @@
         <div class="links">
             <p style="rotate: -18deg; translate: -25px 0;">
                 <a href="mailto:koloraegyesulet@gmail.com" target="_blank">
-                    koloraegyesulet
-                    @gmail.com
+                    <span>koloraegyesulet @gmail.com</span>
                 </a>
             </p>
             <p style="rotate: -7deg; translate: -15px 0;">
@@ -23,7 +22,7 @@
                     href="https://www.facebook.com/profile.php?id=100094619973134"
                     target="_blank"
                 >
-                    Fb: Kolora Egyesület
+                    <span>Fb: Kolora Egyesület</span>
                 </a>
             </p>
             <p style="rotate: 1deg; translate: -15px 0;">
@@ -31,7 +30,7 @@
                     href="https://www.instagram.com/koloraegyesulet/"
                     target="_blank"
                 >
-                    Insta: @koloraegyesulet
+                    <span>Insta: @koloraegyesulet</span>
                 </a>
             </p>
             <p style="rotate: 8deg; translate: -25px 0;">
@@ -39,7 +38,7 @@
                     href="https://www.youtube.com/@koloraegyesulet"
                     target="_blank"
                 >
-                    YouTube: Kolora Egyesület
+                    <span>YouTube: Kolora Egyesület</span>
                 </a>
             </p>
             <p style="rotate: 20deg; translate: -45px 0;">
@@ -47,7 +46,7 @@
                     href="https://www.facebook.com/groups/1307732380629023"
                     target="_blank"
                 >
-                    fehérvári író-költő-slammerek Fb csoport
+                    <span>fehérvári író-költő-slammerek Fb csoport</span>
                 </a>
             </p>
         </div>
@@ -57,7 +56,7 @@
         <div class="links">
             <p style="rotate: 10deg; translate: 35px 0;">
                 <a href="mailto:jockahun@gmail.com" target="_blank">
-                    jockahun@gmail.com
+                    <span>jockahun@gmail.com</span>
                 </a>
             </p>
             <p style="rotate: 3deg; translate: 20px 0;">
@@ -65,12 +64,12 @@
                     href="https://instagram.com/wholesomewarestuff"
                     target="_blank"
                 >
-                    Insta: @wholesomewarestuff
+                    <span>Insta: @wholesomewarestuff</span>
                 </a>
             </p>
             <p style="rotate: -10deg; translate: 25px 0;">
                 <a href="https://m.me/CsakiTheOne" target="_blank">
-                    Messenger: Csáki
+                    <span>Messenger: Csáki</span>
                 </a>
             </p>
         </div>
@@ -87,6 +86,8 @@
         align-items: center;
         gap: 24px;
         padding: 50px 6px;
+        --link-shape: polygon(0 40%, 100% 0, 98% 100%, 0 60%);
+        --link-shape-reverse: polygon(0 0, 100% 40%, 100% 60%, 2% 100%);
     }
 
     .entity {
@@ -122,15 +123,14 @@
     .links > p {
         background-color: white;
         text-transform: uppercase;
-        font-size: small;
         font-weight: bold;
-        clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 60%);
+        clip-path: var(--link-shape);
         padding: 4px;
         text-align: right;
     }
 
     #wholesomeware .links > p {
-        clip-path: polygon(0 0, 100% 40%, 100% 60%, 0 100%);
+        clip-path: var(--link-shape-reverse);
         text-align: left;
     }
 
@@ -143,19 +143,18 @@
         padding: 25px 10px 25px 30%;
         color: inherit;
         text-decoration: none;
-        clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 60%);
+        clip-path: var(--link-shape);
         background-color: black;
         color: white;
     }
 
     #wholesomeware .links > p > a {
-        clip-path: polygon(0 0, 100% 40%, 100% 60%, 0 100%);
+        clip-path: var(--link-shape-reverse);
         padding: 25px 30% 25px 10px;
         justify-content: start;
     }
 
     .links > p > a:hover {
         background-color: var(--kolora-color-red);
-        color: black;
     }
 </style>
