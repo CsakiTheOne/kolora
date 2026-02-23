@@ -7,7 +7,6 @@
     const { children } = $props();
 
     onMount(() => {
-        document.body.style.backgroundImage = `url(${dottedBackground})`;
         // Import the punk font
         const font = new FontFace("Hit me, punk!", `url(${punkFont})`);
         font.load().then((loadedFont) => {
@@ -19,10 +18,6 @@
 {@render children()}
 
 <style>
-    :global(body) {
-        background-size: 16px;
-    }
-
     :global(h1, .punk-font) {
         font-family: "Hit me, punk!", cursive;
         font-size: xxx-large;

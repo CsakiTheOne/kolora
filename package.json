@@ -29,6 +29,7 @@
 	"type": "module",
 	"dependencies": {
 		"@mdi/font": "^7.4.47",
+		"@pictogrammers/memory-svg": "^1.5.0",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"firebase": "^11.1.0",
 		"sveaflet": "^0.1.4",

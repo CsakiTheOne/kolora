@@ -6,9 +6,8 @@
 </script>
 
 <Header />
-<main>
+<main class="container-column">
     <h1>Elérhetőségek</h1>
-    <h2>Kolora Egyesület</h2>
     <div id="kolora" class="entity">
         <div class="img" style="background-image: url('{logoKolora}');"></div>
         <div class="links">
@@ -52,6 +51,10 @@
         </div>
     </div>
     <h2>WholesomeWare</h2>
+    <p>
+        Ha bármi kérdés vagy probléma merülne fel a weboldallal kapcsolatban,
+        keress bátran!
+    </p>
     <div id="wholesomeware" class="entity">
         <div class="links">
             <p style="rotate: 10deg;">
@@ -82,10 +85,7 @@
 
 <style>
     main {
-        display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 32px;
         padding: 50px 10px;
         --link-shape: polygon(0 40%, 100% 0, 98% 100%, 0 60%);
         --link-shape-reverse: polygon(0 0, 100% 40%, 100% 60%, 2% 100%);
@@ -98,6 +98,7 @@
         justify-content: center;
         width: 100%;
         gap: 10px;
+        margin: 30px 0;
     }
 
     .entity .img {

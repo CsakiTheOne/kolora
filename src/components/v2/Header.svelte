@@ -1,11 +1,19 @@
 <script>
     import logoKolora from "$lib/images/logos/kolora_minimal.png";
+    import iconMusicNote from "@pictogrammers/memory-svg/svg/music-note.svg?raw";
+    import iconImage from "@pictogrammers/memory-svg/svg/image.svg?raw";
+    import iconChatProcessing from "@pictogrammers/memory-svg/svg/chat-processing.svg?raw";
+    import iconPencil from "@pictogrammers/memory-svg/svg/pencil.svg?raw";
 </script>
 
 <div class="header-top">
-    <a class="logo-container" href="/v2">
-        <img class="logo" src={logoKolora} alt="Kolora logo" />
+    <attr title="Zene">{@html iconMusicNote}</attr>
+    <attr title="Kiállítás">{@html iconImage}</attr>
+    <a class="logo-container" href="/v2" title="Kolora!">
+        <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
     </a>
+    <attr title="Slam">{@html iconChatProcessing}</attr>
+    <attr title="Workshop">{@html iconPencil}</attr>
 </div>
 <div class="sticky">
     <div class="pages">
@@ -34,8 +42,20 @@
     .header-top {
         background-color: black;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        justify-content: space-evenly;
+    }
+
+    :global(.header-top svg) {
+        width: 24px;
+        height: auto;
+        margin: 0.5rem;
+        opacity: .7;
+    }
+
+    :global(.header-top svg path) {
+        fill: white;
     }
 
     .sticky {
