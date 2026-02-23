@@ -21,8 +21,8 @@ body {
 .container-column {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .irregular-box-container {
@@ -48,6 +48,5 @@ button {
 }
 
 button:hover {
-    background-color: var(--kolora-color-red-variant);
-    color: black;
+    background-color: var(--kolora-color-red);
 }

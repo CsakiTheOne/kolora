@@ -1,23 +1,23 @@
 <script>
     import logoKolora from "$lib/images/logos/kolora_minimal.png";
-    import logoWholesomeWare from "$lib/images/logos/wholesomeware_minimal.png";
+    import logoWholesomeWare from "$lib/images/logos/wholesomeware_minimal_mono.png";
+    import Header from "../../../components/v2/Header.svelte";
     import IrregularContainer from "../../../components/v2/IrregularContainer.svelte";
 </script>
 
+<Header />
 <main>
     <h1>Elérhetőségek</h1>
     <h2>Kolora Egyesület</h2>
     <div id="kolora" class="entity">
-        <IrregularContainer>
-            <img src={logoKolora} alt="" style="padding: 30px;" />
-        </IrregularContainer>
+        <div class="img" style="background-image: url('{logoKolora}');"></div>
         <div class="links">
-            <p style="rotate: -18deg; translate: -25px 0;">
+            <p style="rotate: -16deg;">
                 <a href="mailto:koloraegyesulet@gmail.com" target="_blank">
                     <span>koloraegyesulet @gmail.com</span>
                 </a>
             </p>
-            <p style="rotate: -7deg; translate: -15px 0;">
+            <p style="rotate: -8deg;">
                 <a
                     href="https://www.facebook.com/profile.php?id=100094619973134"
                     target="_blank"
@@ -25,7 +25,7 @@
                     <span>Fb: Kolora Egyesület</span>
                 </a>
             </p>
-            <p style="rotate: 1deg; translate: -15px 0;">
+            <p style="rotate: 0deg;">
                 <a
                     href="https://www.instagram.com/koloraegyesulet/"
                     target="_blank"
@@ -33,7 +33,7 @@
                     <span>Insta: @koloraegyesulet</span>
                 </a>
             </p>
-            <p style="rotate: 8deg; translate: -25px 0;">
+            <p style="rotate: 8deg;">
                 <a
                     href="https://www.youtube.com/@koloraegyesulet"
                     target="_blank"
@@ -41,12 +41,12 @@
                     <span>YouTube: Kolora Egyesület</span>
                 </a>
             </p>
-            <p style="rotate: 20deg; translate: -45px 0;">
+            <p style="rotate: 16deg;">
                 <a
                     href="https://www.facebook.com/groups/1307732380629023"
                     target="_blank"
                 >
-                    <span>fehérvári író-költő-slammerek Fb csoport</span>
+                    <span>író-költő-slammerek Fb csoport</span>
                 </a>
             </p>
         </div>
@@ -54,12 +54,12 @@
     <h2>WholesomeWare</h2>
     <div id="wholesomeware" class="entity">
         <div class="links">
-            <p style="rotate: 10deg; translate: 35px 0;">
+            <p style="rotate: 10deg;">
                 <a href="mailto:jockahun@gmail.com" target="_blank">
                     <span>jockahun@gmail.com</span>
                 </a>
             </p>
-            <p style="rotate: 3deg; translate: 20px 0;">
+            <p style="rotate: 0deg;">
                 <a
                     href="https://instagram.com/wholesomewarestuff"
                     target="_blank"
@@ -67,15 +67,16 @@
                     <span>Insta: @wholesomewarestuff</span>
                 </a>
             </p>
-            <p style="rotate: -10deg; translate: 25px 0;">
+            <p style="rotate: -10deg;">
                 <a href="https://m.me/CsakiTheOne" target="_blank">
                     <span>Messenger: Csáki</span>
                 </a>
             </p>
         </div>
-        <IrregularContainer>
-            <img src={logoWholesomeWare} alt="" />
-        </IrregularContainer>
+        <div
+            class="img"
+            style="background-image: url('{logoWholesomeWare}');"
+        ></div>
     </div>
 </main>
 
@@ -84,8 +85,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 24px;
-        padding: 50px 6px;
+        gap: 32px;
+        padding: 50px 10px;
         --link-shape: polygon(0 40%, 100% 0, 98% 100%, 0 60%);
         --link-shape-reverse: polygon(0 0, 100% 40%, 100% 60%, 2% 100%);
     }
@@ -96,37 +97,36 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+        gap: 10px;
     }
 
-    .entity img {
-        width: 100%;
-        height: auto;
+    .entity .img {
+        width: 192px;
+        height: 192px;
+        background-color: black;
+        background-size: 70%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50%;
     }
 
-    :global(.entity > *:has(img)) {
-        width: 250px;
-        max-width: 40%;
-    }
-
-    :global(.entity > .outer > .inner) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 200px;
-        padding: 20px;
-    }
-
-    .links {
-        z-index: 2;
+    .entity > .links {
+        flex: 1;
+        max-width: 320px;
     }
 
     .links > p {
         background-color: white;
         text-transform: uppercase;
         font-weight: bold;
+        font-size: small;
         clip-path: var(--link-shape);
         padding: 4px;
         text-align: right;
+    }
+
+    .links > p:hover {
+        scale: 1.05;
     }
 
     #wholesomeware .links > p {
@@ -140,7 +140,7 @@
         align-items: center;
         justify-content: end;
         gap: 10px;
-        padding: 25px 10px 25px 30%;
+        padding: 25px 10px 25px 20px;
         color: inherit;
         text-decoration: none;
         clip-path: var(--link-shape);
@@ -150,7 +150,7 @@
 
     #wholesomeware .links > p > a {
         clip-path: var(--link-shape-reverse);
-        padding: 25px 30% 25px 10px;
+        padding: 25px 20px 25px 10px;
         justify-content: start;
     }
 

@@ -1,23 +1,29 @@
 <script>
-    import IrregularContainer from "../../components/v2/IrregularContainer.svelte";
+    import Header from "../../components/v2/Header.svelte";
+import IrregularContainer from "../../components/v2/IrregularContainer.svelte";
 </script>
 
+<Header />
 <main class="container-column">
     <h1>Kolora weboldal redesign</h1>
-    <a
-        href="/"
-        class="irregular-box-container"
-        style="align-self: flex-start"
-        target="_self"
-    >
-        <button class="irregular-box">Vissza a régi design-ra</button>
-    </a>
     <p>
         A weboldalunk újratervezés alatt van. Ezen az oldalon megtekintheted a
         fejlesztés alatt álló új design-t.
     </p>
+    <h2>Oldalak készen és tervezés alatt</h2>
+    <p>
+        Ezek az oldalak mind készítés alatt vannak és nagy változtatásokon
+        mennek keresztül.
+    </p>
+    <a
+        href="/v2/contacts"
+        class="irregular-box-container"
+        style="align-self: flex-start"
+    >
+        <button class="irregular-box">Elérhetőségek</button>
+    </a>
+    <h2>Ihletek</h2>
     <IrregularContainer>
-        <h2>Ihletek</h2>
         <iframe
             width="100%"
             style="aspect-ratio: 16 / 9"
