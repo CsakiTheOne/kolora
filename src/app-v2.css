@@ -1,4 +1,9 @@
 @import url('./kolora.css');
+@import url('./utils.css');
+
+:root {
+    --polygon-irregular-box: polygon(25px 3px, 100% 0, calc(100% - 20px) 100%, 0 calc(100% - 3px), 25px 3px);
+}
 
 * {
     margin: 0;
@@ -20,14 +25,14 @@ body {
 
 .irregular-box-container {
     background-color: white;
-    clip-path: polygon(25px 3px, 100% 0, calc(100% - 20px) 100%, 0 calc(100% - 3px), 25px 3px);
+    clip-path: var(--polygon-irregular-box);
     padding: 4px;
 }
 
 .irregular-box {
     background-color: black;
     color: white;
-    clip-path: polygon(25px 3px, 100% 0, calc(100% - 20px) 100%, 0 calc(100% - 3px), 25px 3px);
+    clip-path: var(--polygon-irregular-box);
     padding: 15px 35px;
 }
 
