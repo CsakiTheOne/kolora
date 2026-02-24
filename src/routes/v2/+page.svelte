@@ -3,7 +3,7 @@
 import IrregularContainer from "../../components/v2/IrregularContainer.svelte";
 </script>
 
-<Header />
+<Header selectedPageIndex={0} />
 <main class="container-column">
     <h1>Kolora weboldal redesign</h1>
     <p>

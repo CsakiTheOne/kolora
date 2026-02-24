@@ -4,6 +4,8 @@
     import iconImage from "@pictogrammers/memory-svg/svg/image.svg?raw";
     import iconChatProcessing from "@pictogrammers/memory-svg/svg/chat-processing.svg?raw";
     import iconPencil from "@pictogrammers/memory-svg/svg/pencil.svg?raw";
+
+    const { selectedPageIndex = -1 } = $props();
 </script>
 
 <div class="header-top">
@@ -17,10 +19,10 @@
 </div>
 <div class="sticky">
     <div class="pages">
-        <a href="/v2">Főoldal</a>
-        <a href="/v2">Projektek</a>
-        <a href="/v2">Tagok</a>
-        <a href="/v2/contacts">Elérhetőségek</a>
+        <a class:selected={selectedPageIndex === 0} href="/v2">Főoldal</a>
+        <a class:selected={selectedPageIndex === 1} href="/v2">Projektek</a>
+        <a class:selected={selectedPageIndex === 2} href="/v2/members">Tagok</a>
+        <a class:selected={selectedPageIndex === 3} href="/v2/contacts">Elérhetőségek</a>
         <a href="/" target="_self">Vissza a régi design-ra</a>
     </div>
     <svg
@@ -51,11 +53,23 @@
         width: 24px;
         height: auto;
         margin: 0.5rem;
-        opacity: .7;
+        opacity: 0.7;
     }
 
-    :global(.header-top svg path) {
-        fill: white;
+    :global(.header-top attr:nth-child(1) svg path) {
+        fill: #b388eb;
+    }
+
+    :global(.header-top attr:nth-child(2) svg path) {
+        fill: #dda448;
+    }
+
+    :global(.header-top attr:nth-child(4) svg path) {
+        fill: #dc7f9b;
+    }
+
+    :global(.header-top attr:nth-child(5) svg path) {
+        fill: #86bbd8;
     }
 
     .sticky {
@@ -100,7 +114,12 @@
         rotate: -2deg;
     }
 
-    .pages a:hover {
+    .pages a.selected {
+        background-color: white;
+        color: black;
+    }
+
+    .pages a:not(.selected):hover {
         background-color: var(--kolora-color-red);
     }
 </style>

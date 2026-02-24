@@ -5,7 +5,7 @@
     import IrregularContainer from "../../../components/v2/IrregularContainer.svelte";
 </script>
 
-<Header />
+<Header selectedPageIndex={3} />
 <main class="container-column">
     <h1>Elérhetőségek</h1>
     <div id="kolora" class="entity">
@@ -86,7 +86,6 @@
 <style>
     main {
         align-items: center;
-        padding: 50px 10px;
         --link-shape: polygon(0 40%, 100% 0, 98% 100%, 0 60%);
         --link-shape-reverse: polygon(0 0, 100% 40%, 100% 60%, 2% 100%);
     }
@@ -97,7 +96,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        gap: 10px;
+        gap: 4px;
         margin: 30px 0;
     }
 
