@@ -116,7 +116,7 @@
     }
 
     .links > p {
-        background-color: white;
+        background-color: black;
         text-transform: uppercase;
         font-weight: bold;
         font-size: small;
@@ -144,8 +144,8 @@
         color: inherit;
         text-decoration: none;
         clip-path: var(--link-shape);
-        background-color: black;
-        color: white;
+        background-color: white;
+        color: black;
     }
 
     #wholesomeware .links > p > a {
@@ -156,5 +156,6 @@
 
     .links > p > a:hover {
         background-color: var(--kolora-color-red);
+        color: white;
     }
 </style>

@@ -9,20 +9,33 @@
 </script>
 
 <div class="header-top">
-    <attr title="Zene">{@html iconMusicNote}</attr>
-    <attr title="Kiállítás">{@html iconImage}</attr>
-    <a class="logo-container" href="/v2" title="Kolora!">
-        <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
-    </a>
-    <attr title="Slam">{@html iconChatProcessing}</attr>
-    <attr title="Workshop">{@html iconPencil}</attr>
+    <div class="texts">
+        <span>Zene</span>
+        <span>Kiállítás</span>
+        <a href="/v2">Kolora!</a>
+        <span>Slam</span>
+        <span>Workshop</span>
+    </div>
+    <div class="icons">
+        <attr title="Zene">{@html iconMusicNote}</attr>
+        <attr title="Kiállítás">{@html iconImage}</attr>
+        <a class="logo-container" href="/v2" title="Kolora!">
+            <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
+        </a>
+        <attr title="Slam">{@html iconChatProcessing}</attr>
+        <attr title="Workshop">{@html iconPencil}</attr>
+    </div>
 </div>
 <div class="sticky">
     <div class="pages">
         <a class:selected={selectedPageIndex === 0} href="/v2">Főoldal</a>
-        <a class:selected={selectedPageIndex === 1} href="/v2/projects">Projektek</a>
+        <a class:selected={selectedPageIndex === 1} href="/v2/projects"
+            >Projektek</a
+        >
         <a class:selected={selectedPageIndex === 2} href="/v2/members">Tagok</a>
-        <a class:selected={selectedPageIndex === 3} href="/v2/contacts">Elérhetőségek</a>
+        <a class:selected={selectedPageIndex === 3} href="/v2/contacts"
+            >Elérhetőségek</a
+        >
         <a href="/" target="_self">Vissza a régi design-ra</a>
     </div>
     <svg
@@ -36,40 +49,78 @@
         xml:space="preserve"
         preserveAspectRatio="none"
     >
-        <path d="M0 0 H10 V10 Z" fill="black" />
+        <path d="M0 0 H10 V10 Z" fill="var(--kolora-color-red)" />
     </svg>
 </div>
 
 <style>
     .header-top {
-        background-color: black;
+        background-color: var(--kolora-color-red);
+        display: grid;
+    }
+
+    .header-top > * {
+        grid-row: 1;
+        grid-column: 1;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
+        transition: all .1s ease-in-out;
     }
 
     :global(.header-top svg) {
         width: 24px;
         height: auto;
         margin: 0.5rem;
-        opacity: 0.7;
     }
 
-    :global(.header-top attr:nth-child(1) svg path) {
+    .header-top > .texts {
+        opacity: 0;
+        height: 68px;
+        translate: 0 16px;
+    }
+
+    .header-top:hover > .texts {
+        opacity: 1;
+        translate: 0 0;
+    }
+
+    .header-top:hover > .icons {
+        opacity: 0;
+        translate: 0 -16px;
+    }
+
+    .header-top > .texts > * {
+        flex: 1;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .header-top a {
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+
+    .header-top :is(:global(attr:nth-child(1) svg path), span:nth-child(1)) {
         fill: #b388eb;
+        color: #b388eb;
     }
 
-    :global(.header-top attr:nth-child(2) svg path) {
+    .header-top :is(:global(attr:nth-child(2) svg path), span:nth-child(2)) {
         fill: #dda448;
+        color: #dda448;
     }
 
-    :global(.header-top attr:nth-child(4) svg path) {
+    .header-top :is(:global(attr:nth-child(4) svg path), span:nth-child(4)) {
         fill: #dc7f9b;
+        color: #dc7f9b;
     }
 
-    :global(.header-top attr:nth-child(5) svg path) {
+    .header-top :is(:global(attr:nth-child(5) svg path), span:nth-child(5)) {
         fill: #86bbd8;
+        color: #86bbd8;
     }
 
     .sticky {
@@ -83,7 +134,7 @@
     }
 
     .pages {
-        background-color: black;
+        background-color: var(--kolora-color-red);
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -120,6 +171,6 @@
     }
 
     .pages a:not(.selected):hover {
-        background-color: var(--kolora-color-red);
+        background-color: var(--kolora-color-red-variant);
     }
 </style>

@@ -30,7 +30,7 @@
                                     'Elnök',
                                     'Alelnök',
                                 ].includes(tag)
-                                    ? 'var(--kolora-color-red)'
+                                    ? 'black'
                                     : tag === 'Piros'
                                       ? '#dd0000e0'
                                       : 'white'}; color: {[

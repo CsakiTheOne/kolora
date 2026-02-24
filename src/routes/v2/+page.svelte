@@ -10,18 +10,6 @@ import IrregularContainer from "../../components/v2/IrregularContainer.svelte";
         A weboldalunk újratervezés alatt van. Ezen az oldalon megtekintheted a
         fejlesztés alatt álló új design-t.
     </p>
-    <h2>Oldalak készen és tervezés alatt</h2>
-    <p>
-        Ezek az oldalak mind készítés alatt vannak és nagy változtatásokon
-        mennek keresztül.
-    </p>
-    <a
-        href="/v2/contacts"
-        class="irregular-box-container"
-        style="align-self: flex-start"
-    >
-        <button class="irregular-box">Elérhetőségek</button>
-    </a>
     <h2>Ihletek</h2>
     <IrregularContainer>
         <iframe

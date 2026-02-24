@@ -14,8 +14,8 @@
 }
 
 body {
-    background-color: var(--kolora-color-red);
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .container-column {
@@ -25,14 +25,19 @@ body {
     padding: 1rem;
 }
 
+main > h1 {
+    width: 100%;
+    text-align: left;
+}
+
 .irregular-box-container {
-    background-color: white;
+    background-color: black;
     clip-path: var(--polygon-irregular-box);
     padding: 4px;
 }
 
 .irregular-box {
-    background-color: black;
+    background-color: var(--kolora-color-red);
     color: white;
     clip-path: var(--polygon-irregular-box);
     padding: 15px 35px;
@@ -48,7 +53,8 @@ button {
 }
 
 button:hover {
-    background-color: var(--kolora-color-red);
+    background-color: white;
+    color: black;
 }
 
 a {

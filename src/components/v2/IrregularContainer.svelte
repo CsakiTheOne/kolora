@@ -16,12 +16,12 @@
 
 <style>
     .outer {
-        background-color: white;
+        background-color: black;
         clip-path: var(--polygon-irregular-box);
     }
 
     .inner {
-        background-color: black;
+        background-color: var(--kolora-color-red);
         color: white;
         clip-path: var(--polygon-irregular-box);
     }

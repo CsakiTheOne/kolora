@@ -191,6 +191,6 @@
 <style>
     p {
         text-align: justify;
-        font-size: small;
+        font-size: .9rem;
     }
 </style>
