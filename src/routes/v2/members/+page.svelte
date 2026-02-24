@@ -31,35 +31,38 @@
             30+ év lokálpatriotizmus.<br />
         </p>
     </KoloraMemberDisplay>
-    <KoloraMemberDisplay
-        profilePictureUrl={pfpBodonyiDaniel}
-        name="Bodonyi Dani"
-        tags={["Alelnök", "DJ", "Műsorvezető"]}
-    >
-        <p>
-            Az életem a zene, a zene és a zene. Ja és ne felejtsük ki a zenét
-            sem. Rádiós zenei szerkesztőként állandóan követem a könnyűzene
-            jelenét és így látom csak igazán, hogy mennyi rejtett erőtartalék
-            van a pop zenei felszín alatt. Célom az egyesületben, hogy minél
-            többféle zenével és zenésszel ismertessem meg a közönséget,
-            elősegítve egy olyan jövőt, ahol nem csak mai sláger meg mai sláger
-            között válogathat az ember.
-        </p>
-    </KoloraMemberDisplay>
-    <KoloraMemberDisplay
-        profilePictureUrl={pfpTothNikolett}
-        name="Tóth Nikolett - Niki"
-        tags={["Alelnök", "Író", "Felderítő"]}
-    >
-        <p>
-            Csókok bókok! Én lennék az egyik alelnöke ennek a csoda csapatnak.
-            Ha kell bármit kiderítek bárkiről/bármiről. Ha elkap az ihlet írni
-            szoktam, novellákat vagy monológokat. Bármikor vevő vagyok egy
-            bulira vagy csak egy beszélgetésre is. Tárt karokkal és egy hatalmas
-            öleléssel várok mindenkit ebbe a különleges kis társaságba. Légy
-            bármilyen különc itt otthonodra fogsz találni. &lt;3
-        </p>
-    </KoloraMemberDisplay>
+    <div class="adaptive-col-row">
+        <KoloraMemberDisplay
+            profilePictureUrl={pfpBodonyiDaniel}
+            name="Bodonyi Dani"
+            tags={["Alelnök", "DJ", "Műsorvezető"]}
+        >
+            <p>
+                Az életem a zene, a zene és a zene. Ja és ne felejtsük ki a
+                zenét sem. Rádiós zenei szerkesztőként állandóan követem a
+                könnyűzene jelenét és így látom csak igazán, hogy mennyi rejtett
+                erőtartalék van a pop zenei felszín alatt. Célom az
+                egyesületben, hogy minél többféle zenével és zenésszel
+                ismertessem meg a közönséget, elősegítve egy olyan jövőt, ahol
+                nem csak mai sláger meg mai sláger között válogathat az ember.
+            </p>
+        </KoloraMemberDisplay>
+        <KoloraMemberDisplay
+            profilePictureUrl={pfpTothNikolett}
+            name="Tóth Nikolett - Niki"
+            tags={["Alelnök", "Író", "Felderítő"]}
+        >
+            <p>
+                Csókok bókok! Én lennék az egyik alelnöke ennek a csoda
+                csapatnak. Ha kell bármit kiderítek bárkiről/bármiről. Ha elkap
+                az ihlet írni szoktam, novellákat vagy monológokat. Bármikor
+                vevő vagyok egy bulira vagy csak egy beszélgetésre is. Tárt
+                karokkal és egy hatalmas öleléssel várok mindenkit ebbe a
+                különleges kis társaságba. Légy bármilyen különc itt otthonodra
+                fogsz találni. &lt;3
+            </p>
+        </KoloraMemberDisplay>
+    </div>
     <!-- Tagok -->
     <KoloraMemberDisplay
         profilePictureUrl={pfpCsaktornyaiAdam}
@@ -145,12 +148,6 @@
         profilePictureUrl={pfpReszegiRamona}
         name="Reszegi Ramóna"
         tags={["Feltörekvő énekes"]}
-        links={[
-            {
-                name: "Nedel'a zenekar Insta",
-                url: "https://www.instagram.com/nedela_zenekar",
-            },
-        ]}
     >
         <p>
             Egy életvidám pörgős arc vagyok szeretek szervezni, segíteni ahol
@@ -194,5 +191,6 @@
 <style>
     p {
         text-align: justify;
+        font-size: small;
     }
 </style>

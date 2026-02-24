@@ -50,3 +50,7 @@ button {
 button:hover {
     background-color: var(--kolora-color-red);
 }
+
+a {
+    color: var(--kolora-color-yellow)
+}

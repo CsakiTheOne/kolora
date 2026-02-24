@@ -20,7 +20,7 @@
 <div class="sticky">
     <div class="pages">
         <a class:selected={selectedPageIndex === 0} href="/v2">Főoldal</a>
-        <a class:selected={selectedPageIndex === 1} href="/v2">Projektek</a>
+        <a class:selected={selectedPageIndex === 1} href="/v2/projects">Projektek</a>
         <a class:selected={selectedPageIndex === 2} href="/v2/members">Tagok</a>
         <a class:selected={selectedPageIndex === 3} href="/v2/contacts">Elérhetőségek</a>
         <a href="/" target="_self">Vissza a régi design-ra</a>
