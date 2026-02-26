@@ -1,6 +1,6 @@
 <script>
     import Header from "../../components/v2/Header.svelte";
-import IrregularContainer from "../../components/v2/IrregularContainer.svelte";
+    import IrregularContainer from "../../components/v2/IrregularContainer.svelte";
 </script>
 
 <Header selectedPageIndex={0} />
@@ -11,11 +11,21 @@ import IrregularContainer from "../../components/v2/IrregularContainer.svelte";
         fejlesztés alatt álló új design-t.
     </p>
     <h2>Ihletek</h2>
-    <IrregularContainer>
+    <IrregularContainer style="max-width: 600px;">
         <iframe
             width="100%"
             style="aspect-ratio: 16 / 9"
             src="https://www.youtube.com/embed/9KdP2idt6LE?si=kk8qKLDm29sz1i2T"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+        <iframe
+            width="100%"
+            style="aspect-ratio: 16 / 9"
+            src="https://www.youtube.com/embed/8mo1Pbjqxhc?si=rlsB3lom2XrhERwn"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
