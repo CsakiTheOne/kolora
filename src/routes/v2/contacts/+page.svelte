@@ -8,78 +8,85 @@
 <Header selectedPageIndex={3} />
 <main class="container-column">
     <h1>Elérhetőségek</h1>
-    <div id="kolora" class="entity">
-        <div class="img" style="background-image: url('{logoKolora}');"></div>
-        <div class="links">
-            <p style="rotate: -16deg;">
-                <a href="mailto:koloraegyesulet@gmail.com" target="_blank">
-                    <span>koloraegyesulet @gmail.com</span>
-                </a>
-            </p>
-            <p style="rotate: -8deg;">
-                <a
-                    href="https://www.facebook.com/profile.php?id=100094619973134"
-                    target="_blank"
-                >
-                    <span>Fb: Kolora Egyesület</span>
-                </a>
-            </p>
-            <p style="rotate: 0deg;">
-                <a
-                    href="https://www.instagram.com/koloraegyesulet/"
-                    target="_blank"
-                >
-                    <span>Insta: @koloraegyesulet</span>
-                </a>
-            </p>
-            <p style="rotate: 8deg;">
-                <a
-                    href="https://www.youtube.com/@koloraegyesulet"
-                    target="_blank"
-                >
-                    <span>YouTube: Kolora Egyesület</span>
-                </a>
-            </p>
-            <p style="rotate: 16deg;">
-                <a
-                    href="https://www.facebook.com/groups/1307732380629023"
-                    target="_blank"
-                >
-                    <span>író-költő-slammerek Fb csoport</span>
-                </a>
-            </p>
+    <div class="adaptive-col-row">
+        <div id="kolora" class="entity">
+            <div
+                class="img"
+                style="background-image: url('{logoKolora}');"
+            ></div>
+            <div class="links">
+                <p style="rotate: -16deg;">
+                    <a href="mailto:koloraegyesulet@gmail.com" target="_blank">
+                        <span>koloraegyesulet @gmail.com</span>
+                    </a>
+                </p>
+                <p style="rotate: -8deg;">
+                    <a
+                        href="https://www.facebook.com/profile.php?id=100094619973134"
+                        target="_blank"
+                    >
+                        <span>Fb: Kolora Egyesület</span>
+                    </a>
+                </p>
+                <p style="rotate: 0deg;">
+                    <a
+                        href="https://www.instagram.com/koloraegyesulet/"
+                        target="_blank"
+                    >
+                        <span>Insta: @koloraegyesulet</span>
+                    </a>
+                </p>
+                <p style="rotate: 8deg;">
+                    <a
+                        href="https://www.youtube.com/@koloraegyesulet"
+                        target="_blank"
+                    >
+                        <span>YouTube: Kolora Egyesület</span>
+                    </a>
+                </p>
+                <p style="rotate: 16deg;">
+                    <a
+                        href="https://www.facebook.com/groups/1307732380629023"
+                        target="_blank"
+                    >
+                        <span>író-költő-slammerek Fb csoport</span>
+                    </a>
+                </p>
+            </div>
         </div>
-    </div>
-    <h2>WholesomeWare</h2>
-    <p>
-        Ha bármi kérdés vagy probléma merülne fel a weboldallal kapcsolatban,
-        keress bátran!
-    </p>
-    <div id="wholesomeware" class="entity">
-        <div class="links">
-            <p style="rotate: 10deg;">
-                <a href="mailto:jockahun@gmail.com" target="_blank">
-                    <span>jockahun@gmail.com</span>
-                </a>
+        <div>
+            <h2>WholesomeWare</h2>
+            <p>
+                Ha bármi kérdés vagy probléma merülne fel a weboldallal
+                kapcsolatban, keress bátran!
             </p>
-            <p style="rotate: 0deg;">
-                <a
-                    href="https://instagram.com/wholesomewarestuff"
-                    target="_blank"
-                >
-                    <span>Insta: @wholesomewarestuff</span>
-                </a>
-            </p>
-            <p style="rotate: -10deg;">
-                <a href="https://m.me/CsakiTheOne" target="_blank">
-                    <span>Messenger: Csáki</span>
-                </a>
-            </p>
+            <div id="wholesomeware" class="entity">
+                <div class="links">
+                    <p style="rotate: 10deg;">
+                        <a href="mailto:jockahun@gmail.com" target="_blank">
+                            <span>jockahun@gmail.com</span>
+                        </a>
+                    </p>
+                    <p style="rotate: 0deg;">
+                        <a
+                            href="https://instagram.com/wholesomewarestuff"
+                            target="_blank"
+                        >
+                            <span>Insta: @wholesomewarestuff</span>
+                        </a>
+                    </p>
+                    <p style="rotate: -10deg;">
+                        <a href="https://m.me/CsakiTheOne" target="_blank">
+                            <span>Messenger: Csáki</span>
+                        </a>
+                    </p>
+                </div>
+                <div
+                    class="img"
+                    style="background-image: url('{logoWholesomeWare}');"
+                ></div>
+            </div>
         </div>
-        <div
-            class="img"
-            style="background-image: url('{logoWholesomeWare}');"
-        ></div>
     </div>
 </main>
 
@@ -95,7 +102,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        width: 100%;
         gap: 4px;
         margin: 30px 0;
     }
