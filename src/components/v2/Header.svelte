@@ -6,27 +6,24 @@
     import iconPencil from "@pictogrammers/memory-svg/svg/pencil.svg?raw";
 
     const { selectedPageIndex = -1 } = $props();
+
+    let scrollY = $state(0);
 </script>
 
+<svelte:window bind:scrollY />
+
 <div class="header-top">
-    <div class="texts">
-        <span>Zene</span>
-        <span>Kiállítás</span>
-        <a href="/v2">Kolora!</a>
-        <span>Slam</span>
-        <span>Workshop</span>
-    </div>
-    <div class="icons">
-        <attr title="Zene">{@html iconMusicNote}</attr>
-        <attr title="Kiállítás">{@html iconImage}</attr>
-        <a class="logo-container" href="/v2" title="Kolora!">
-            <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
-        </a>
-        <attr title="Slam">{@html iconChatProcessing}</attr>
-        <attr title="Workshop">{@html iconPencil}</attr>
-    </div>
+    <a class="logo-container" href="/v2" title="Kolora!">
+        <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
+    </a>
+    <attr title="Zene">{@html iconMusicNote}</attr>
+    <attr title="Kiállítás">{@html iconImage}</attr>
+    <attr title="Slam">{@html iconChatProcessing}</attr>
+    <attr title="Workshop">{@html iconPencil}</attr>
+    <div></div>
+    <div></div>
 </div>
-<div class="sticky">
+<div class="sticky {scrollY >= 128 ? 'scrolled' : ''}">
     <div class="pages">
         <a class:selected={selectedPageIndex === 0} href="/v2">Főoldal</a>
         <a class:selected={selectedPageIndex === 1} href="/v2/projects"
@@ -36,37 +33,20 @@
         <a class:selected={selectedPageIndex === 3} href="/v2/contacts"
             >Elérhetőségek</a
         >
-        <a href="/" target="_self">Vissza a régi design-ra</a>
     </div>
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        x="0px"
-        y="0px"
-        width="100%"
-        height="8px"
-        viewBox="0 0 10 10"
-        xml:space="preserve"
-        preserveAspectRatio="none"
-    >
-        <path d="M0 0 H10 V10 Z" fill="var(--kolora-color-red)" />
-    </svg>
 </div>
+<a style="display: block; margin: 1rem;" href="/" target="_self"
+    >Vissza a régi design-ra</a
+>
 
 <style>
     .header-top {
-        background-color: var(--kolora-color-red);
-        display: grid;
-    }
-
-    .header-top > * {
-        grid-row: 1;
-        grid-column: 1;
+        border-top: 10px solid var(--kolora-color-red);
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-evenly;
-        transition: all .1s ease-in-out;
+        justify-content: space-between;
+        transition: all 0.1s ease-in-out;
     }
 
     :global(.header-top svg) {
@@ -75,26 +55,9 @@
         margin: 0.5rem;
     }
 
-    .header-top > .texts {
-        opacity: 0;
-        height: 68px;
-        translate: 0 16px;
-    }
-
-    .header-top:hover > .texts {
-        opacity: 1;
-        translate: 0 0;
-    }
-
-    .header-top:hover > .icons {
-        opacity: 0;
-        translate: 0 -16px;
-    }
-
-    .header-top > .texts > * {
-        flex: 1;
-        padding: 8px;
-        text-align: center;
+    .logo-container {
+        background-color: var(--kolora-color-red);
+        clip-path: polygon(0 0, 100% 0, 0 100%);
     }
 
     .header-top a {
@@ -103,24 +66,31 @@
         text-decoration: none;
     }
 
-    .header-top :is(:global(attr:nth-child(1) svg path), span:nth-child(1)) {
+    .header-top :global(attr:nth-child(2) svg path) {
         fill: #b388eb;
         color: #b388eb;
     }
 
-    .header-top :is(:global(attr:nth-child(2) svg path), span:nth-child(2)) {
+    .header-top :global(attr:nth-child(3) svg path) {
         fill: #dda448;
         color: #dda448;
     }
 
-    .header-top :is(:global(attr:nth-child(4) svg path), span:nth-child(4)) {
+    .header-top :global(attr:nth-child(4) svg path) {
         fill: #dc7f9b;
         color: #dc7f9b;
     }
 
-    .header-top :is(:global(attr:nth-child(5) svg path), span:nth-child(5)) {
+    .header-top :global(attr:nth-child(5) svg path) {
         fill: #86bbd8;
         color: #86bbd8;
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+        margin-right: 32px;
+        margin-bottom: 32px;
     }
 
     .sticky {
@@ -133,30 +103,29 @@
         z-index: 99999;
     }
 
+    .scrolled {
+        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+        background-color: white;
+    }
+
     .pages {
-        background-color: var(--kolora-color-red);
         width: 100%;
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         align-items: center;
         gap: 1rem;
         padding: 1rem;
-        overflow-x: auto;
-    }
-
-    .logo {
-        width: 64px;
-        height: 64px;
+        background-color: white;
     }
 
     .pages a {
-        color: white;
+        color: black;
         text-decoration: none;
         font-weight: bold;
         text-transform: uppercase;
         padding: 0.5rem 1rem;
-        border: 2px solid white;
+        border: 2px solid black;
         white-space: nowrap;
         rotate: 2deg;
     }
@@ -166,8 +135,8 @@
     }
 
     .pages a.selected {
-        background-color: white;
-        color: black;
+        background-color: var(--kolora-color-red);
+        color: white;
     }
 
     .pages a:not(.selected):hover {

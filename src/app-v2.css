@@ -56,7 +56,3 @@ button:hover {
     background-color: white;
     color: black;
 }
-
-a {
-    color: var(--kolora-color-yellow)
-}
