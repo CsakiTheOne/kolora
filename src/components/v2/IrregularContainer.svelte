@@ -21,7 +21,7 @@
     }
 
     .inner {
-        background-color: var(--kolora-color-red);
+        background-color: var(--kolora-color-base);
         color: white;
         clip-path: var(--polygon-irregular-box);
     }

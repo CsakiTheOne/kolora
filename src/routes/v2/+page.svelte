@@ -1,6 +1,6 @@
 <script>
+    import ComicPanel from "../../components/v2/ComicPanel.svelte";
     import Header from "../../components/v2/Header.svelte";
-    import IrregularContainer from "../../components/v2/IrregularContainer.svelte";
 </script>
 
 <Header selectedPageIndex={0} />
@@ -11,7 +11,7 @@
         fejlesztés alatt álló új design-t.
     </p>
     <h2>Ihletek</h2>
-    <IrregularContainer style="max-width: 600px;">
+    <ComicPanel style="max-width: 600px;">
         <iframe
             width="100%"
             style="aspect-ratio: 16 / 9"
@@ -32,5 +32,5 @@
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
         ></iframe>
-    </IrregularContainer>
+    </ComicPanel>
 </main>

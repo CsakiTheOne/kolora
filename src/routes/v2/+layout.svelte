@@ -18,7 +18,7 @@
 {@render children()}
 
 <style>
-    :global(h1, .punk-font) {
+    :global(.punk-font) {
         font-family: "Hit me, punk!", cursive;
         font-size: xxx-large;
         font-weight: normal;

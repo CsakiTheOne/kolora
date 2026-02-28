@@ -2,7 +2,7 @@
     import logoKolora from "$lib/images/logos/kolora_minimal.png";
     import logoWholesomeWare from "$lib/images/logos/wholesomeware_minimal_mono.png";
     import Header from "../../../components/v2/Header.svelte";
-    import IrregularContainer from "../../../components/v2/IrregularContainer.svelte";
+    import ComicPanel from "../../../components/v2/ComicPanel.svelte";
 </script>
 
 <Header selectedPageIndex={3} />
@@ -161,7 +161,7 @@
     }
 
     .links > p > a:hover {
-        background-color: var(--kolora-color-red);
+        background-color: var(--kolora-color-base);
         color: white;
     }
 </style>

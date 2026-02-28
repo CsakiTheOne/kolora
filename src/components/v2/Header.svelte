@@ -33,15 +33,13 @@
         <a class:selected={selectedPageIndex === 3} href="/v2/contacts"
             >Elérhetőségek</a
         >
+        <a href="/" target="_self">Régi design</a>
     </div>
 </div>
-<a style="display: block; margin: 1rem;" href="/" target="_self"
-    >Vissza a régi design-ra</a
->
 
 <style>
     .header-top {
-        border-top: 10px solid var(--kolora-color-red);
+        border-top: 10px solid var(--kolora-color-base);
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -56,7 +54,7 @@
     }
 
     .logo-container {
-        background-color: var(--kolora-color-red);
+        background-color: var(--kolora-color-base);
         clip-path: polygon(0 0, 100% 0, 0 100%);
     }
 
@@ -87,8 +85,8 @@
     }
 
     .logo {
-        width: 48px;
-        height: 48px;
+        width: 42px;
+        height: 42px;
         margin-right: 32px;
         margin-bottom: 32px;
     }
@@ -135,11 +133,11 @@
     }
 
     .pages a.selected {
-        background-color: var(--kolora-color-red);
+        background-color: var(--kolora-color-base);
         color: white;
     }
 
     .pages a:not(.selected):hover {
-        background-color: var(--kolora-color-red-variant);
+        background-color: var(--kolora-color-base-variant);
     }
 </style>

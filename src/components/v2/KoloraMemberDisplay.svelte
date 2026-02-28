@@ -1,5 +1,5 @@
 <script lang="ts">
-    import IrregularContainer from "./IrregularContainer.svelte";
+    import ComicPanel from "./ComicPanel.svelte";
 
     const {
         profilePictureUrl = "",
@@ -10,62 +10,69 @@
     } = $props();
 </script>
 
-<IrregularContainer innerPaddings="0">
-    <div class="member">
-        <div class="pfp-container">
-            {#if profilePictureUrl}
-                <img src={profilePictureUrl} alt={name} />
-            {:else}
-                <span class="mdi mdi-account-circle"></span>
-            {/if}
-        </div>
-        <div class="member-info">
-            <div>
-                <h2 id={name.toLowerCase().replace(" ", "-")}>{name}</h2>
-                {#if tags}
-                    <div class="tags">
-                        {#each tags as tag}
-                            <span
-                                style="background-color: {[
-                                    'Elnök',
-                                    'Alelnök',
-                                ].includes(tag)
-                                    ? 'black'
-                                    : tag === 'Piros'
-                                      ? '#dd0000e0'
-                                      : 'white'}; color: {[
-                                    'Elnök',
-                                    'Alelnök',
-                                    'Piros',
-                                ].includes(tag)
-                                    ? 'white'
-                                    : 'black'};"
-                            >
-                                {tag}
-                            </span>
-                        {/each}
-                    </div>
+<div style="position: relative; overflow: hidden;">
+    <div
+        class="member-bg"
+        style="background-image: url({profilePictureUrl});"
+    ></div>
+    <ComicPanel style="background: transparent;">
+        <div class="member">
+            <div class="pfp-container">
+                {#if profilePictureUrl}
+                    <img src={profilePictureUrl} alt={name} />
+                {:else}
+                    <span class="mdi mdi-account-circle"></span>
                 {/if}
             </div>
-            {#if children}
+            <div class="member-info">
                 <div>
-                    {@render children()}
+                    <h2 id={name.toLowerCase().replace(" ", "-")}>{name}</h2>
+                    {#if tags}
+                        <div class="tags">
+                            {#each tags as tag}
+                                <span
+                                    style="background-color: {tag === 'Piros'
+                                        ? 'red'
+                                        : 'var(--kolora-color-base)'};"
+                                >
+                                    {tag}
+                                </span>
+                            {/each}
+                        </div>
+                    {/if}
                 </div>
-            {/if}
-            {#if links.length > 0}
-                <ul>
-                    {#each links as link}
-                        <a href={link.url} target="_blank">
-                            <li>{link.name}</li>
-                        </a>
-                    {/each}
-                </ul>
-            {/if}
+                {#if children}
+                    <div>
+                        {@render children()}
+                    </div>
+                {/if}
+                {#if links.length > 0}
+                    <ul>
+                        {#each links as link}
+                            <a href={link.url} target="_blank">
+                                <li>{link.name}</li>
+                            </a>
+                        {/each}
+                    </ul>
+                {/if}
+            </div>
         </div>
-    </div>
-</IrregularContainer>
+    </ComicPanel>
+</div>
 
 <style>
+    .member-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px) brightness(0.5);
+        z-index: -1;
+    }
+
     .member {
         display: flex;
         flex-direction: row;
@@ -83,7 +90,8 @@
 
     .pfp-container img {
         width: 100%;
-        height: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
         object-fit: cover;
     }
 
