@@ -188,18 +188,8 @@
                 }))}
             />
         </div>
-        <div
-            style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;"
-        >
-            {#each KoloraLocalDb.musicians as musician}
-                <a href={musician.websiteUrl} target="_blank">
-                    <span class="mdi mdi-music"></span>
-                    {musician.name}
-                </a>
-            {/each}
-        </div>
         <h3>Slammer-ek, akik szavaltak a színpadainkon</h3>
-        <ul class="outlined-list">
+        <ul class="outlined-list" style="margin-left: 1rem;">
             <a
                 href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=ZgSwslL_bq3PGCae"
                 target="_blank"
