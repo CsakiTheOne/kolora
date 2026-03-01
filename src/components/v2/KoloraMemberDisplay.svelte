@@ -10,66 +10,78 @@
     } = $props();
 </script>
 
-<div style="position: relative; overflow: hidden;">
+<div class="comic-panel">
+    <div class="comic-dots panel-blue"></div>
     <div
         class="member-bg"
         style="background-image: url({profilePictureUrl});"
     ></div>
-    <ComicPanel style="background: transparent;">
-        <div class="member">
-            <div class="pfp-container">
-                {#if profilePictureUrl}
-                    <img src={profilePictureUrl} alt={name} />
-                {:else}
-                    <span class="mdi mdi-account-circle"></span>
-                {/if}
-            </div>
-            <div class="member-info">
-                <div>
-                    <h2 id={name.toLowerCase().replace(" ", "-")}>{name}</h2>
-                    {#if tags}
-                        <div class="tags">
-                            {#each tags as tag}
-                                <span
-                                    style="background-color: {tag === 'Piros'
-                                        ? 'red'
-                                        : 'var(--kolora-color-base)'};"
-                                >
-                                    {tag}
-                                </span>
-                            {/each}
-                        </div>
-                    {/if}
-                </div>
-                {#if children}
-                    <div>
-                        {@render children()}
+    <div class="member">
+        <div class="pfp-container">
+            {#if profilePictureUrl}
+                <img src={profilePictureUrl} alt={name} />
+            {:else}
+                <span class="mdi mdi-account-circle"></span>
+            {/if}
+        </div>
+        <div class="member-info">
+            <div>
+                <h2 id={name.toLowerCase().replace(" ", "-")}>{name}</h2>
+                {#if tags}
+                    <div class="tags">
+                        {#each tags as tag}
+                            <span
+                                style="background-color: {tag === 'Piros'
+                                    ? 'red'
+                                    : 'var(--kolora-color-base)'};"
+                            >
+                                {tag}
+                            </span>
+                        {/each}
                     </div>
                 {/if}
-                {#if links.length > 0}
-                    <ul>
-                        {#each links as link}
-                            <a href={link.url} target="_blank">
-                                <li>{link.name}</li>
-                            </a>
-                        {/each}
-                    </ul>
-                {/if}
             </div>
+            {#if children}
+                <div>
+                    {@render children()}
+                </div>
+            {/if}
+            {#if links.length > 0}
+                <ul>
+                    {#each links as link}
+                        <a href={link.url} target="_blank">
+                            <li>{link.name}</li>
+                        </a>
+                    {/each}
+                </ul>
+            {/if}
         </div>
-    </ComicPanel>
+    </div>
 </div>
 
 <style>
+    .comic-panel {
+        position: relative;
+        padding: 4px;
+        background-color: black;
+        z-index: -3;
+    }
+
+    .comic-dots,
     .member-bg {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 4px;
+        left: 4px;
+        width: calc(100% - 8px);
+        height: calc(100% - 8px);
+        z-index: -2;
+    }
+
+    .member-bg {
         background-size: cover;
         background-position: center;
-        filter: blur(8px) brightness(0.5);
+        filter: blur(8px);
+        opacity: 0.5;
         z-index: -1;
     }
 
@@ -78,6 +90,7 @@
         flex-direction: row;
         align-content: stretch;
         gap: 1rem;
+        color: white;
     }
 
     .pfp-container {

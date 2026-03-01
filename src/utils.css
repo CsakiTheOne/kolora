@@ -1,3 +1,31 @@
+.static-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    gap: 1rem;
+}
+
+.static-row>.comic-panel:first-child {
+    margin-right: -16px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
+}
+
+.static-row>.comic-panel:first-child>* {
+    padding-right: 32px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
+}
+
+.static-row>.comic-panel:last-child {
+    margin-left: -16px;
+    clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.static-row>.comic-panel:last-child>* {
+    padding-left: calc(32px + 1rem);
+    clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%);
+}
+
 .adaptive-col-row {
     display: flex;
     flex-direction: column;
@@ -8,8 +36,29 @@
     flex: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .adaptive-col-row {
         flex-direction: row;
+        align-items: stretch;
+    }
+
+    .adaptive-col-row>.comic-panel:first-child {
+        margin-right: -16px;
+        clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
+    }
+
+    .adaptive-col-row>.comic-panel:first-child>* {
+        padding-right: 32px;
+        clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
+    }
+
+    .adaptive-col-row>.comic-panel:last-child {
+        margin-left: -16px;
+        clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .adaptive-col-row>.comic-panel:last-child>* {
+        padding-left: calc(32px + 1rem);
+        clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%);
     }
 }

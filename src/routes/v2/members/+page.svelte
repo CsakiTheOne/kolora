@@ -2,6 +2,7 @@
     import pfpVolgyesiTamas from "$lib/images/members/volgyesi-tamas.jpg";
     import pfpBodonyiDaniel from "$lib/images/members/bodonyi-daniel.jpg";
     import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
+    import pfpAlex from "$lib/images/members/alex.jpg";
     import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
     import pfpGergelyEmma from "$lib/images/members/gergely-emma.jpg";
     import pfpReszegiRamona from "$lib/images/members/reszegi-ramona.jpg";
@@ -65,6 +66,18 @@
     </div>
     <!-- Tagok -->
     <KoloraMemberDisplay
+        profilePictureUrl={pfpAlex}
+        name="Alex"
+        tags={["Fotós", "Grafikus"]}
+    >
+        <p>
+            Heyho! Mindenértő ezermestenek tartom magam! Leginkább fotózok és
+            plakátokat tervezek. De kedvenc tulajdonságom, hogy bármiből asztalt
+            csinálok! Azon kívül, ha nem a legrandomabb sidequest-en vagyok,
+            nyugodtan bármivel kereshettek!:)
+        </p>
+    </KoloraMemberDisplay>
+    <KoloraMemberDisplay
         profilePictureUrl={pfpCsaktornyaiAdam}
         name="Csáki"
         tags={["Szoftvermérnök", "Táncos"]}
@@ -126,7 +139,6 @@
             me anytime, tárt karokkal várok mindenkit &lt;&lt;3
         </p>
     </KoloraMemberDisplay>
-    <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
     <KoloraMemberDisplay
         profilePictureUrl={pfpKissBalint}
         name="Piros"
@@ -191,6 +203,6 @@
 <style>
     p {
         text-align: justify;
-        font-size: .9rem;
+        font-size: 0.9rem;
     }
 </style>

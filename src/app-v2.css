@@ -37,7 +37,7 @@ main > h1 {
 }
 
 .irregular-box {
-    background-color: var(--kolora-color-red);
+    background-color: var(--kolora-color-base);
     color: white;
     clip-path: var(--polygon-irregular-box);
     padding: 15px 35px;

@@ -1,22 +1,38 @@
 <script>
-    const { style = "", class: className = "", children, ...rest } = $props();
+    let scrollY = $state(0);
+
+    const {
+        outerStyle = "",
+        innerStyle = "",
+        outerClass = "",
+        innerClass = "",
+        children = null,
+        ...rest
+    } = $props();
 </script>
 
-<section class="comic-panel {className}" {style} {...rest}>
-    {@render children()}
+<svelte:window bind:scrollY />
+
+<section class="comic-panel {outerClass}" style={outerStyle} {...rest}>
+    <div
+        class="content comic-dots panel-base {innerClass}"
+        style="background-position: 0 {scrollY}px; {innerStyle}"
+    >
+        {#if children}
+            {@render children()}
+        {/if}
+    </div>
 </section>
 
 <style>
     section {
-        background-image: radial-gradient(
-            rgba(0, 0, 0, 0.2) 25%,
-            transparent 25%
-        );
-        background-position: 0 0;
-        background-size: 32px 32px;
-        background-color: var(--kolora-color-base);
-        color: white;
-        border: 4px solid black;
+        background-color: black;
+        padding: 4px;
+    }
+
+    .content {
         padding: 1rem;
+        width: 100%;
+        height: 100%;
     }
 </style>
