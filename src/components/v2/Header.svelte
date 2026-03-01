@@ -125,11 +125,15 @@
         padding: 0.5rem 1rem;
         border: 2px solid black;
         white-space: nowrap;
-        rotate: 2deg;
+        rotate: 3deg;
     }
 
     .pages a:nth-child(2n) {
-        rotate: -2deg;
+        rotate: -3deg;
+    }
+
+    .pages a:hover {
+        scale: 1.05;
     }
 
     .pages a.selected {
@@ -138,6 +142,6 @@
     }
 
     .pages a:not(.selected):hover {
-        background-color: var(--kolora-color-base-variant);
+        background-color: var(--kolora-color-red-variant);
     }
 </style>

@@ -1,6 +1,6 @@
 <script>
     import KoloraLocalDb from "$lib/KoloraLocalDb";
-    import Carousel from "../../components/Carousel.svelte";
+    import Carousel from "../../components/v2/Carousel.svelte";
     import ComicPanel from "../../components/v2/ComicPanel.svelte";
     import Divider from "../../components/v2/Divider.svelte";
     import Header from "../../components/v2/Header.svelte";
@@ -13,8 +13,8 @@
 
 <Header selectedPageIndex={0} />
 <main class="container-column">
-    <ComicPanel innerClass="container-column panel-yellow">
-        <h1>Rólunk</h1>
+    <ComicPanel innerClass="container-column panel-base">
+        <h2>Rólunk</h2>
         <div class="adaptive-col-row" style="align-items: start;">
             <div
                 style="flex: 1; display: flex; flex-direction: column; gap: 1rem;"
@@ -63,50 +63,6 @@
                 </p>
             </div>
         </div>
-    </ComicPanel>
-    <ComicPanel innerClass="container-column">
-        <h1>Barátaink</h1>
-        <h2>Bandák, zenészek, akik koncerteztek nálunk</h2>
-        <div
-            style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;"
-        >
-            {#each KoloraLocalDb.musicians as musician}
-                <a href={musician.websiteUrl} target="_blank">
-                    <span class="mdi mdi-music"></span>
-                    {musician.name}
-                </a>
-            {/each}
-        </div>
-        <h2>Slammer-ek, akik szavaltak a színpadainkon</h2>
-        <ul class="outlined-list">
-            <a
-                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=ZgSwslL_bq3PGCae"
-                target="_blank"
-            >
-                <li>2025 Februárban a Nyolcas Műhelyben</li>
-            </a>
-            <a
-                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xPDOFOpHZzC-rmqEI-ACJQN&si=TqNCBi9R7jrkTCA6"
-                target="_blank"
-            >
-                <li>
-                    A Múzeumok éjszakáján és egyben Kolora első szülinapján a
-                    Museum Caféban
-                </li>
-            </a>
-            <a
-                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=29xPCtemxvLsO1Xb"
-                target="_blank"
-            >
-                <li>2024 Márciusban a Nyolcas Műhelyben</li>
-            </a>
-            <a
-                href="https://youtu.be/zbqaZEAduWE?si=Ktoj_Yxrbc9rw6yV"
-                target="_blank"
-            >
-                <li>2023-ban, az első rendezvényünkön, az Akusztikus esten</li>
-            </a>
-        </ul>
     </ComicPanel>
     <div class="adaptive-col-row">
         <ComicPanel
@@ -182,10 +138,10 @@
             </div>
         </ComicPanel>
         <ComicPanel
-            innerClass="container-column panel-red"
+            innerClass="container-column panel-yellow"
             outerStyle="width: 100%;"
         >
-            <h2>További partnereink</h2>
+            <h2>Barátaink</h2>
             <div class="adaptive-col-row">
                 <a
                     href="https://www.instagram.com/brotond_productions/"
@@ -212,8 +168,69 @@
             </div>
         </ComicPanel>
     </div>
+    <ComicPanel innerClass="container-column panel-red">
+        <h2>Művészek</h2>
+        <h3>Bandák, zenészek, akik koncerteztek nálunk</h3>
+        <div style="display: flex; justify-content: center;">
+            <Carousel
+                style="aspect-ratio: 21/9; max-height: 300px;"
+                pages={KoloraLocalDb.musicians.map((musician) => ({
+                    title: musician.name,
+                    background: musician.bannerImageUrl
+                        ? `url('${musician.bannerImageUrl}')`
+                        : undefined,
+                    onclick: () => {
+                        if (musician.websiteUrl) {
+                            window.open(musician.websiteUrl, "_blank");
+                        }
+                    },
+                    fallbackContent: `<span class='mdi mdi-${musician.websiteUrl ? "instagram" : "music-note"}' style='font-size: 4rem;'></span>`,
+                }))}
+            />
+        </div>
+        <div
+            style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;"
+        >
+            {#each KoloraLocalDb.musicians as musician}
+                <a href={musician.websiteUrl} target="_blank">
+                    <span class="mdi mdi-music"></span>
+                    {musician.name}
+                </a>
+            {/each}
+        </div>
+        <h3>Slammer-ek, akik szavaltak a színpadainkon</h3>
+        <ul class="outlined-list">
+            <a
+                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=ZgSwslL_bq3PGCae"
+                target="_blank"
+            >
+                <li>2025 Februárban a Nyolcas Műhelyben</li>
+            </a>
+            <a
+                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xPDOFOpHZzC-rmqEI-ACJQN&si=TqNCBi9R7jrkTCA6"
+                target="_blank"
+            >
+                <li>
+                    A Múzeumok éjszakáján és egyben Kolora első szülinapján a
+                    Museum Caféban
+                </li>
+            </a>
+            <a
+                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xMmwMn8J0c9Y0gX22sGSfW8&si=29xPCtemxvLsO1Xb"
+                target="_blank"
+            >
+                <li>2024 Márciusban a Nyolcas Műhelyben</li>
+            </a>
+            <a
+                href="https://youtu.be/zbqaZEAduWE?si=Ktoj_Yxrbc9rw6yV"
+                target="_blank"
+            >
+                <li>2023-ban, az első rendezvényünkön, az Akusztikus esten</li>
+            </a>
+        </ul>
+    </ComicPanel>
     <Divider />
-    <h1>Kolora weboldal redesign</h1>
+    <h2>Kolora weboldal redesign</h2>
     <p>
         A weboldalunk újratervezés alatt van. Ezen az oldalon megtekintheted a
         fejlesztés alatt álló új design-t.

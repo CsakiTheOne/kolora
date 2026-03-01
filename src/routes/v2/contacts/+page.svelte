@@ -3,6 +3,7 @@
     import logoWholesomeWare from "$lib/images/logos/wholesomeware_minimal_mono.png";
     import Header from "../../../components/v2/Header.svelte";
     import ComicPanel from "../../../components/v2/ComicPanel.svelte";
+    import ComicPanelWithBackground from "../../../components/v2/ComicPanelWithBackground.svelte";
 </script>
 
 <Header selectedPageIndex={3} />
@@ -59,54 +60,49 @@
                 </div>
             </div></ComicPanel
         >
-        <div class="comic-panel wholesomeware-panel">
-            <div class="comic-dots panel-blue"></div>
-            <div
-                class="member-bg"
-                style="background-image: url('https://raw.githubusercontent.com/WholesomeWare/.github/refs/heads/main/assets/header_title.jpg');"
-            ></div>
-            <div class="wholesomeware-content">
-                <div class="container-column" style="width: 100%; height: 100%; color: white;">
-                    <h2>WholesomeWare</h2>
-                    <p>
-                        Ha bármi kérdés vagy probléma merülne fel a weboldallal
-                        kapcsolatban, keress bátran!
-                    </p>
-                    <div id="wholesomeware" class="entity">
-                        <div class="links">
-                            <p style="rotate: 10deg;">
-                                <a
-                                    href="mailto:jockahun@gmail.com"
-                                    target="_blank"
-                                >
-                                    <span>jockahun@gmail.com</span>
-                                </a>
-                            </p>
-                            <p style="rotate: 0deg;">
-                                <a
-                                    href="https://instagram.com/wholesomewarestuff"
-                                    target="_blank"
-                                >
-                                    <span>Insta: @wholesomewarestuff</span>
-                                </a>
-                            </p>
-                            <p style="rotate: -10deg;">
-                                <a
-                                    href="https://m.me/CsakiTheOne"
-                                    target="_blank"
-                                >
-                                    <span>Messenger: Csáki</span>
-                                </a>
-                            </p>
-                        </div>
-                        <div
-                            class="img"
-                            style="background-image: url('{logoWholesomeWare}');"
-                        ></div>
+        <ComicPanelWithBackground
+            backgroundUrl="https://raw.githubusercontent.com/WholesomeWare/.github/refs/heads/main/assets/header_title.jpg"
+        >
+            <div class="container-column" style="width: 100%; height: 100%; color: white;">
+                <h2>WholesomeWare</h2>
+                <p>
+                    Ha bármi kérdés vagy probléma merülne fel a weboldallal
+                    kapcsolatban, keress bátran!
+                </p>
+                <div id="wholesomeware" class="entity">
+                    <div class="links">
+                        <p style="rotate: 10deg;">
+                            <a
+                                href="mailto:jockahun@gmail.com"
+                                target="_blank"
+                            >
+                                <span>jockahun@gmail.com</span>
+                            </a>
+                        </p>
+                        <p style="rotate: 0deg;">
+                            <a
+                                href="https://instagram.com/wholesomewarestuff"
+                                target="_blank"
+                            >
+                                <span>Insta: @wholesomewarestuff</span>
+                            </a>
+                        </p>
+                        <p style="rotate: -10deg;">
+                            <a
+                                href="https://m.me/CsakiTheOne"
+                                target="_blank"
+                            >
+                                <span>Messenger: Csáki</span>
+                            </a>
+                        </p>
                     </div>
+                    <div
+                        class="img"
+                        style="background-image: url('{logoWholesomeWare}');"
+                    ></div>
                 </div>
             </div>
-        </div>
+        </ComicPanelWithBackground>
     </div>
 </main>
 
@@ -182,37 +178,5 @@
     .links > p > a:hover {
         background-color: var(--kolora-color-base);
         color: white;
-    }
-
-    .wholesomeware-panel {
-        position: relative;
-        width: 100%;
-        padding: 4px;
-        background: black;
-    }
-
-    .wholesomeware-panel .comic-dots,
-    .wholesomeware-panel .member-bg {
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        width: calc(100% - 8px);
-        height: calc(100% - 8px);
-        z-index: 0;
-    }
-
-    .wholesomeware-panel .member-bg {
-        background-size: cover;
-        background-position: center;
-        filter: blur(8px);
-        opacity: 0.5;
-        z-index: 1;
-    }
-
-    .wholesomeware-content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
     }
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ComicPanel from "./ComicPanel.svelte";
+    import ComicPanelWithBackground from "./ComicPanelWithBackground.svelte";
 
     const {
         profilePictureUrl = "",
@@ -10,12 +10,7 @@
     } = $props();
 </script>
 
-<div class="comic-panel">
-    <div class="comic-dots panel-blue"></div>
-    <div
-        class="member-bg"
-        style="background-image: url({profilePictureUrl});"
-    ></div>
+<ComicPanelWithBackground backgroundUrl={profilePictureUrl}>
     <div class="member">
         <div class="pfp-container">
             {#if profilePictureUrl}
@@ -57,34 +52,9 @@
             {/if}
         </div>
     </div>
-</div>
+</ComicPanelWithBackground>
 
 <style>
-    .comic-panel {
-        position: relative;
-        padding: 4px;
-        background-color: black;
-        z-index: -3;
-    }
-
-    .comic-dots,
-    .member-bg {
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        width: calc(100% - 8px);
-        height: calc(100% - 8px);
-        z-index: -2;
-    }
-
-    .member-bg {
-        background-size: cover;
-        background-position: center;
-        filter: blur(8px);
-        opacity: 0.5;
-        z-index: -1;
-    }
-
     .member {
         display: flex;
         flex-direction: row;
