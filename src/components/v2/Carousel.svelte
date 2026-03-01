@@ -2,7 +2,7 @@
     import { browser } from "$app/environment";
     import { onMount } from "svelte";
 
-    const { pages, ...rest } = $props();
+    const { style = "", pages, ...rest } = $props();
 
     const spacing = 16;
     let carousel: HTMLElement | null = $state(null);
@@ -66,7 +66,7 @@
 
 <div
     class="carousel-container"
-    style="--spacing: {spacing}px; max-width: 100%;"
+    style="--spacing: {spacing}px; max-width: 100%; {style}"
 >
     <div class="carousel" bind:this={carousel} {...rest}>
         {#each pages as page}
@@ -113,7 +113,7 @@
             });
         }}
     >
-        &lt;
+        <span>&lt;</span>
     </button>
     <button
         class="btn nextPage"
@@ -124,7 +124,7 @@
             });
         }}
     >
-        &gt;
+        <span>&gt;</span>
     </button>
 </div>
 
@@ -134,6 +134,7 @@
         text-wrap: nowrap;
         overflow-y: hidden;
         overflow-x: scroll;
+        aspect-ratio: 21/9;
     }
 
     .carousel-container {
@@ -153,20 +154,26 @@
         font-weight: bold;
         z-index: 1;
         opacity: 0;
+        rotate: 45deg;
         transition: opacity 0.2s;
         cursor: pointer;
     }
 
+    .carousel-container > .btn > span {
+        display: inline-block;
+        rotate: -45deg;
+    }
+
     .carousel-container:hover > .btn {
-        opacity: 0.9;
+        opacity: 1;
     }
 
     .carousel-container > .btn.prevPage {
-        left: 1rem;
+        left: 0;
     }
 
     .carousel-container > .btn.nextPage {
-        right: 1rem;
+        right: 0;
     }
 
     .page-wrapper {
