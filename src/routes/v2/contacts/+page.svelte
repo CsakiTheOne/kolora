@@ -123,9 +123,9 @@
     }
 
     .entity .img {
-        width: 192px;
-        height: 192px;
-        background-size: 70%;
+        width: 128px;
+        height: 128px;
+        background-size: 100%;
         background-repeat: no-repeat;
         background-position: center;
         border-radius: 50%;
