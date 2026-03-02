@@ -13,14 +13,15 @@
             innerClass="container-column panel-blue"
             outerClass="event-panel"
         >
-            <h2>Kolora Feszt 2025</h2>
+            <h2>Kolora Feszt</h2>
             <p>
                 Az első összművészeti fesztiválunk, ahol környékbeli alkotók és
                 előadók mutatkoztak be Székesfehérváron. Bandák, kiállítás, DJ-k
                 és workshop-ok.
             </p>
+            <b>2026 hamarosan</b>
             <a class="cta-link" href="/projects/feszt-2025" target="_self">
-                Visszatekintés az esemény oldalára
+                2025-ös program
             </a>
         </ComicPanel>
 
@@ -34,8 +35,9 @@
                 Székesfehérváron, amelyekhez telefont érintve verseket és egyéb
                 meglepetéseket lehetett találni.
             </p>
+            <b>2026 hamarosan</b>
             <a class="cta-link yellow" href="/stickers" target="_self">
-                Visszatekintés az esemény oldalára
+                2024 kincsei
             </a>
         </ComicPanel>
     </div>
