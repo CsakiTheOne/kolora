@@ -20,9 +20,11 @@
                 és workshop-ok.
             </p>
             <b>2026 hamarosan</b>
-            <a class="cta-link" href="/projects/feszt-2025" target="_self">
-                2025-ös program
-            </a>
+            <p>
+                <a class="cta-link" href="/projects/feszt-2025" target="_self">
+                    2025-ös program
+                </a>
+            </p>
         </ComicPanel>
 
         <ComicPanel
@@ -36,9 +38,11 @@
                 meglepetéseket lehetett találni.
             </p>
             <b>2026 hamarosan</b>
-            <a class="cta-link yellow" href="/stickers" target="_self">
-                2024 kincsei
-            </a>
+            <p>
+                <a class="cta-link yellow" href="/stickers" target="_self">
+                    2024 kincsei
+                </a>
+            </p>
         </ComicPanel>
     </div>
 
@@ -55,13 +59,15 @@
             alkotni kedvelőknek, hogy műveiket feldobhassák egy kis interaktivitással
             és a brand nevét viselő alkalmazásban meg is oszthassák ezeket.
         </p>
-        <a
-            class="cta-link"
-            href="https://play.google.com/store/apps/details?id=com.csakitheone.wholesomeware&pcampaignid=web_share"
-            target="_blank"
-        >
-            WholesomeWare app beszerzése
-        </a>
+        <p>
+            <a
+                class="cta-link"
+                href="https://play.google.com/store/apps/details?id=com.csakitheone.wholesomeware&pcampaignid=web_share"
+                target="_blank"
+            >
+                WholesomeWare app beszerzése
+            </a>
+        </p>
     </ComicPanel>
 
     <Divider />

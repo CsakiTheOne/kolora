@@ -51,8 +51,8 @@
     .background-blur {
         background-size: cover;
         background-position: center;
-        filter: blur(8px);
-        opacity: 0.5;
+        filter: blur(2px);
+        opacity: 0.2;
         z-index: 1;
     }
 

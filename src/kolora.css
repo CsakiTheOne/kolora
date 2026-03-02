@@ -21,8 +21,9 @@
     color: var(--kolora-color-yellow);
 }
 
-:is(.panel-yellow) a {
-    color: var(--kolora-color-base);
+.panel-yellow a, .panel-yellow a * {
+    color: var(--kolora-color-red);
+    background-color: var(--kolora-color-yellow);
 }
 
 .panel-base {

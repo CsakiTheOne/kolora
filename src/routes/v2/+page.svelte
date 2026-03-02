@@ -64,15 +64,13 @@
             </div>
         </div>
     </ComicPanel>
-    <div class="adaptive-col-row">
+    <div class="static-row">
         <ComicPanel
             innerClass="container-column panel-blue"
             outerStyle="width: 100%;"
         >
             <h2>Kedvenc helyeink</h2>
-            <div
-                style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"
-            >
+            <div class="adaptive-col-row">
                 <div
                     style="flex: 1; text-align: center; justify-items: center;"
                 >
