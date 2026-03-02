@@ -71,7 +71,7 @@
             honnan indultunk, és hol tart most a Kolora.
         </p>
         <div class="link-wall">
-            <a class="irregular-box-container" href="/timeline">
+            <a class="irregular-box-container" href="/v2/timeline">
                 <button class="irregular-box">2024 visszatekintés</button>
             </a>
             <a

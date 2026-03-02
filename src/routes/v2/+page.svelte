@@ -42,7 +42,7 @@
             >
                 <h3>Miket csináltunk eddig?</h3>
                 <p>
-                    <a href="/timeline">
+                    <a href="/v2/timeline">
                         <span class="mdi mdi-timeline"></span>
                         2024 visszatekintés
                     </a>
