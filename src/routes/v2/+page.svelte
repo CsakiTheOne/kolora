@@ -188,6 +188,22 @@
                 }))}
             />
         </div>
+        <p style="text-align: center;">
+            <button
+                class="btn"
+                onclick={() => {
+                    const songsCount = KoloraLocalDb.musicians.flatMap(
+                        (musician) => musician.songUrls,
+                    ).length;
+                    const randomSong = KoloraLocalDb.musicians.flatMap(
+                        (musician) => musician.songUrls,
+                    )[Math.floor(Math.random() * songsCount)];
+                    window.open(randomSong, "_blank");
+                }}
+            >
+                Hallgassunk random valamit
+            </button>
+        </p>
         <h3>Slammer-ek, akik szavaltak a színpadainkon</h3>
         <ul class="outlined-list" style="margin-left: 1rem;">
             <a

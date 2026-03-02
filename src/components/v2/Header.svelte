@@ -70,6 +70,12 @@
         align-items: center;
         color: black;
         font-weight: bold;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, .7);
+    }
+
+    .header-top attr :global(svg path) {
+        stroke: black;
+        stroke-width: .15px;
     }
 
     .header-top attr .desktop-visible {
@@ -83,23 +89,23 @@
     }
 
     .header-top attr:nth-child(2) :is(:global(svg path), span) {
-        fill: #b388eb;
-        color: #b388eb;
+        fill: var(--kolora-color-purple-variant);
+        color: var(--kolora-color-purple-variant);
     }
 
     .header-top attr:nth-child(3) :is(:global(svg path), span) {
-        fill: #dda448;
-        color: #dda448;
+        fill: var(--kolora-color-yellow);
+        color: var(--kolora-color-yellow);
     }
 
     .header-top attr:nth-child(4) :is(:global(svg path), span) {
-        fill: #dc7f9b;
-        color: #dc7f9b;
+        fill: var(--kolora-color-red-variant);
+        color: var(--kolora-color-red-variant);
     }
 
     .header-top attr:nth-child(5) :is(:global(svg path), span) {
-        fill: #86bbd8;
-        color: #86bbd8;
+        fill: var(--kolora-color-blue-variant);
+        color: var(--kolora-color-blue-variant);
     }
 
     .logo {

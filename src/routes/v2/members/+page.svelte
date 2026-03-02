@@ -203,6 +203,5 @@
 <style>
     p {
         text-align: justify;
-        font-size: 0.9rem;
     }
 </style>

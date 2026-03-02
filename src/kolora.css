@@ -11,18 +11,18 @@
 }
 
 .comic-dots {
-    background-image: radial-gradient(rgba(0, 0, 0, 0.15) 25%,
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 25%,
             transparent 25%);
     background-position: 0 0;
     background-size: 32px 32px;
 }
 
-:is(.panel-base, .panel-blue, .panel-blue-variant, .panel-purple, .panel-purple-variant, .panel-red, .panel-red-variant) a {
+:is(.panel-base, .panel-blue, .panel-blue-variant, .panel-purple, .panel-purple-variant, .panel-red, .panel-red-variant, .panel-yellow-variant) a {
     color: var(--kolora-color-yellow);
 }
 
-:is(.panel-yellow, .panel-yellow-variant) a {
-    color: var(--kolora-color-red);
+:is(.panel-yellow) a {
+    color: var(--kolora-color-base);
 }
 
 .panel-base {

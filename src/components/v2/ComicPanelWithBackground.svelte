@@ -3,6 +3,8 @@
      * A ComicPanel variant with a blurred background image effect.
      * Uses the same layering approach as KoloraMemberDisplay.
      */
+    let scrollY = $state(0);
+
     const {
         backgroundUrl,
         outerStyle = "",
@@ -13,8 +15,10 @@
     } = $props();
 </script>
 
+<svelte:window bind:scrollY />
+
 <div class="comic-panel {outerClass}" style={outerStyle}>
-    <div class="comic-dots panel-blue"></div>
+    <div class="comic-dots panel-blue" style="background-position: 0 {scrollY}px;"></div>
     <div
         class="background-blur"
         style="background-image: url('{backgroundUrl}');"
