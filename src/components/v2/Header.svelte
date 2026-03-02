@@ -16,10 +16,10 @@
     <a class="logo-container" href="/v2" title="Kolora!">
         <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
     </a>
-    <attr title="Zene">{@html iconMusicNote}</attr>
-    <attr title="Kiállítás">{@html iconImage}</attr>
-    <attr title="Slam">{@html iconChatProcessing}</attr>
-    <attr title="Workshop">{@html iconPencil}</attr>
+    <attr title="Zene">{@html iconMusicNote} <span class="desktop-visible">Zene</span></attr>
+    <attr title="Kiállítás">{@html iconImage} <span class="desktop-visible">Kiállítás</span></attr>
+    <attr title="Slam">{@html iconChatProcessing} <span class="desktop-visible">Slam</span></attr>
+    <attr title="Workshop">{@html iconPencil} <span class="desktop-visible">Workshop</span></attr>
     <div></div>
     <div></div>
 </div>
@@ -64,22 +64,40 @@
         text-decoration: none;
     }
 
-    .header-top :global(attr:nth-child(2) svg path) {
+    .header-top attr {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: black;
+        font-weight: bold;
+    }
+
+    .header-top attr .desktop-visible {
+        display: none;
+    }
+
+    @media (min-width: 600px) {
+        .header-top attr .desktop-visible {
+            display: inline;
+        }
+    }
+
+    .header-top attr:nth-child(2) :is(:global(svg path), span) {
         fill: #b388eb;
         color: #b388eb;
     }
 
-    .header-top :global(attr:nth-child(3) svg path) {
+    .header-top attr:nth-child(3) :is(:global(svg path), span) {
         fill: #dda448;
         color: #dda448;
     }
 
-    .header-top :global(attr:nth-child(4) svg path) {
+    .header-top attr:nth-child(4) :is(:global(svg path), span) {
         fill: #dc7f9b;
         color: #dc7f9b;
     }
 
-    .header-top :global(attr:nth-child(5) svg path) {
+    .header-top attr:nth-child(5) :is(:global(svg path), span) {
         fill: #86bbd8;
         color: #86bbd8;
     }
