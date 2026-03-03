@@ -79,7 +79,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.75rem;
+        gap: .5rem;
         min-width: 24px;
         padding: 0;
     }
@@ -87,6 +87,7 @@
     .dot {
         width: 1rem;
         height: 1rem;
+        flex: 0 0 auto;
         background-color: var(--kolora-color-base);
         border: 3px solid black;
         rotate: 45deg;
@@ -99,8 +100,7 @@
 
     .line {
         width: 6px;
-        min-height: 100%;
-        flex: 1;
+        flex: 1 0 auto;
         background-color: black;
     }
 
