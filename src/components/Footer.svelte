@@ -20,6 +20,7 @@
         height="10px"
         viewBox="0 0 100 10"
         preserveAspectRatio="none"
+        style="margin-bottom: -1px;"
     >
         <path
             d="M 0 10 L 8 2 L 15 6 L 22 3 L 30 7 L 38 2 L 45 5 L 52 2 L 60 6 L 68 3 L 75 7 L 82 5 L 90 2 L 100 10 Z"

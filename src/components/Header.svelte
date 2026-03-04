@@ -5,7 +5,7 @@
     import iconChatProcessing from "@pictogrammers/memory-svg/svg/chat-processing.svg?raw";
     import iconPencil from "@pictogrammers/memory-svg/svg/pencil.svg?raw";
 
-    const { selectedPageIndex = -1 } = $props();
+    const { selectedPageIndex = -1, hideButtons = false } = $props();
 
     let scrollY = $state(0);
 </script>
@@ -16,26 +16,38 @@
     <a class="logo-container" href="/" title="Kolora!">
         <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
     </a>
-    <attr title="Zene">{@html iconMusicNote} <span class="desktop-visible">Zene</span></attr>
-    <attr title="Kiállítás">{@html iconImage} <span class="desktop-visible">Kiállítás</span></attr>
-    <attr title="Slam">{@html iconChatProcessing} <span class="desktop-visible">Slam</span></attr>
-    <attr title="Workshop">{@html iconPencil} <span class="desktop-visible">Workshop</span></attr>
+    <attr title="Zene"
+        >{@html iconMusicNote} <span class="desktop-visible">Zene</span></attr
+    >
+    <attr title="Kiállítás"
+        >{@html iconImage} <span class="desktop-visible">Kiállítás</span></attr
+    >
+    <attr title="Slam"
+        >{@html iconChatProcessing}
+        <span class="desktop-visible">Slam</span></attr
+    >
+    <attr title="Workshop"
+        >{@html iconPencil} <span class="desktop-visible">Workshop</span></attr
+    >
     <div></div>
     <div></div>
 </div>
-<div class="sticky {scrollY >= 128 ? 'scrolled' : ''}">
-    <div class="pages">
-        <a class:selected={selectedPageIndex === 0} href="/">Főoldal</a>
-        <a class:selected={selectedPageIndex === 1} href="/projects"
-            >Projektek</a
-        >
-        <a class:selected={selectedPageIndex === 2} href="/members">Tagok</a>
-        <a class:selected={selectedPageIndex === 3} href="/contacts"
-            >Elérhetőségek</a
-        >
-        <a href="/legacy" target="_self">Régi design</a>
+{#if !hideButtons}
+    <div class="sticky {scrollY >= 128 ? 'scrolled' : ''}">
+        <div class="pages">
+            <a class:selected={selectedPageIndex === 0} href="/">Főoldal</a>
+            <a class:selected={selectedPageIndex === 1} href="/projects"
+                >Projektek</a
+            >
+            <a class:selected={selectedPageIndex === 2} href="/members">Tagok</a
+            >
+            <a class:selected={selectedPageIndex === 3} href="/contacts"
+                >Elérhetőségek</a
+            >
+            <a href="/legacy" target="_self">Régi design</a>
+        </div>
     </div>
-</div>
+{/if}
 
 <style>
     .header-top {
@@ -70,12 +82,12 @@
         align-items: center;
         color: black;
         font-weight: bold;
-        text-shadow: 1px 1px 0 rgba(0, 0, 0, .7);
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.7);
     }
 
     .header-top attr :global(svg path) {
         stroke: black;
-        stroke-width: .15px;
+        stroke-width: 0.15px;
     }
 
     .header-top attr .desktop-visible {

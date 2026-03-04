@@ -70,3 +70,8 @@
     background-color: var(--kolora-color-yellow-variant);
     color: white;
 }
+
+.panel-black {
+    background-color: #282828;
+    color: white;
+}
