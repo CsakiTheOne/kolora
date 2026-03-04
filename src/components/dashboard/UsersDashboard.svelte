@@ -3,7 +3,6 @@
     import type KoloraUser from "$lib/model/KoloraUser";
     import { ROLES } from "$lib/model/KoloraUser";
     import { onMount } from "svelte";
-    import Alert from "../Alert.svelte";
 
     let users: KoloraUser[] = $state([]);
     let userQuery = $state("");
@@ -47,12 +46,10 @@
         userQuery = e.target?.value;
     }}
 />
-<Alert>
-    <p>
-        Kiosztható szerepkörök:<br />
-        {Object.values(ROLES).join(", ")}
-    </p>
-</Alert>
+<p>
+    Kiosztható szerepkörök:<br />
+    {Object.values(ROLES).join(", ")}
+</p>
 {#each filteredUsers as user}
     <div class="card">
         <button
