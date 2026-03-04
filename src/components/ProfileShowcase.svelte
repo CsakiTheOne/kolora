@@ -1,18 +1,14 @@
 <script>
-    const {
-        image,
-        name,
-        title = "",
-        onclick = () => {},
-        ...rest
-    } = $props();
+    const { image, name, title = "", onclick = () => {}, ...rest } = $props();
 </script>
 
 <div class="profile-showcase" role="button" {onclick} tabindex="0" {...rest}>
     <img src={image} alt={name} />
     <div>
         <h4>{name}</h4>
-        <p>{title}</p>
+        {#if title}
+            <p style="margin-top: 0.25rem; font-size: small;">{title}</p>
+        {/if}
     </div>
 </div>
 
