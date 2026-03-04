@@ -5,13 +5,14 @@
     import ComicPanel from "../../components/ComicPanel.svelte";
     import ComicPanelWithBackground from "../../components/ComicPanelWithBackground.svelte";
     import Footer from "../../components/Footer.svelte";
+    import headerImg from "$lib/images/header.webp";
 </script>
 
 <Header selectedPageIndex={3} />
 <main class="container-column">
     <h1>Elérhetőségek</h1>
     <div class="adaptive-col-row">
-        <ComicPanel outerStyle="width: 100%;">
+        <ComicPanelWithBackground innerClass="panel-base" outerStyle="width: 100%;" backgroundUrl={headerImg}>
             <div id="kolora" class="entity">
                 <div
                     class="img"
@@ -59,8 +60,8 @@
                         </a>
                     </p>
                 </div>
-            </div></ComicPanel
-        >
+            </div>
+        </ComicPanelWithBackground>
         <ComicPanelWithBackground
             backgroundUrl="https://raw.githubusercontent.com/WholesomeWare/.github/refs/heads/main/assets/header_title.jpg"
         >

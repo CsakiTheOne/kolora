@@ -1,5 +1,5 @@
 <script>
-    import "../../app.css";
+    import "../../app-legacy.css";
 
     const { children } = $props();
 </script>

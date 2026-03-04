@@ -10,7 +10,7 @@
         outerStyle = "",
         innerStyle = "",
         outerClass = "",
-        innerClass = "",
+        innerClass = "panel-blue",
         children = null,
     } = $props();
 </script>
@@ -18,7 +18,7 @@
 <svelte:window bind:scrollY />
 
 <div class="comic-panel {outerClass}" style={outerStyle}>
-    <div class="comic-dots panel-blue" style="background-position: 0 {scrollY}px;"></div>
+    <div class="comic-dots {innerClass}" style="background-position: 0 {scrollY}px;"></div>
     <div
         class="background-blur"
         style="background-image: url('{backgroundUrl}');"
@@ -61,5 +61,7 @@
         width: 100%;
         height: 100%;
         z-index: 2;
+        padding: 1rem;
+        background-color: transparent;
     }
 </style>

@@ -399,11 +399,11 @@
     >
         <p style="text-align: center;">
             <button
-                style="appearance: none; border: none; background: transparent;"
+                style="appearance: none; border: none; background: none;"
                 onclick={() => alert("230621")}
             >
                 <img
-                    style="width: 128px; cursor: help;"
+                    style="width: 128px; cursor: help; background-color: white;"
                     src={imgKoloraSzitakoto}
                     alt=""
                 />

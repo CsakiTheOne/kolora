@@ -10,11 +10,13 @@
     import imgBrotondProductionsLogo from "$lib/images/logos/brotond-productions.jpg";
     import imgInkognitoKollektivaLogo from "$lib/images/logos/inkognito-kollektiva.jpg";
     import Footer from "../components/Footer.svelte";
+    import ComicPanelWithBackground from "../components/ComicPanelWithBackground.svelte";
+    import headerImage from "$lib/images/header.webp";
 </script>
 
 <Header selectedPageIndex={0} />
 <main class="container-column">
-    <ComicPanel innerClass="container-column panel-base">
+    <ComicPanelWithBackground innerClass="container-column panel-base" backgroundUrl={headerImage}>
         <h2>Rólunk</h2>
         <div class="adaptive-col-row" style="align-items: start;">
             <div
@@ -64,7 +66,7 @@
                 </p>
             </div>
         </div>
-    </ComicPanel>
+    </ComicPanelWithBackground>
     <div class="static-row">
         <ComicPanel
             innerClass="container-column panel-blue"
