@@ -1,6 +1,6 @@
 <script lang="ts">
     import KoloraUser, { ROLES } from "$lib/model/KoloraUser";
-    import SmallHeader from "../../components/SmallHeader.svelte";
+    import SmallHeader from "../../components/legacy/SmallHeader.svelte";
     import UserManager from "$lib/UserManager.svelte";
     import UsersDashboard from "../../components/dashboard/UsersDashboard.svelte";
 

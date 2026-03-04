@@ -1,7 +1,6 @@
 <script>
-    import Footer from "../../components/Footer.svelte";
-    import Header from "../../components/Header.svelte";
     import VerticalTimelineItem from "../../components/VerticalTimelineItem.svelte";
+    import Header from "../../components/Header.svelte";
     import Carousel from "../../components/Carousel.svelte";
     import KoloraLocalDb from "$lib/KoloraLocalDb";
     import ThemeManager from "$lib/ThemeManager";
@@ -13,14 +12,13 @@
     import imgKoloraBirthdayCake from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/kolora-birthday-cake.jpg";
     import imgMusicianNaez from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/naez-csoportkep.jpg";
     import imgEsztiWithHat from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/eszti-kalap-huzas.jpg";
-    import imgMuseumCafeLogo from "$lib/images/logos/museum-cafe.jpg";
     import imgNyolcasMuhelyLogo from "$lib/images/logos/nyolcas-muhely.jpg";
     import vidKispirosKincsvadaszat from "$lib/images/gallery/kolteszet-napi-kincsvadaszat/kispiros-km.mp4";
 </script>
 
-<Header selectedTab="Főoldal" />
-<main>
-    <VerticalTimelineItem title="2024 visszatekintés">
+<Header selectedPageIndex={-1} />
+<main class="container-column timeline-page">
+    <VerticalTimelineItem title="2024 visszatekintés" panelClass="panel-base">
         <p>
             Az elmúlt évben a Kolora Egyesület számos rendezvényt szervezett,
             amelyek közül néhányat itt láthatsz. Hogy megünnepeljük a 2024-es
@@ -33,6 +31,7 @@
     <VerticalTimelineItem
         title="Kolora teraszok + spontán zene"
         subtitle="Egész évben"
+        panelClass="panel-blue"
     >
         <p>
             Az évben több alkalommal is megrendeztük a Kolora teraszt a Museum
@@ -56,6 +55,7 @@
         title="Waiting Room + egy5egy félakusztik koncert @ Museum Café"
         subtitle="Augusztus 4."
         facebookLink="https://fb.me/e/2h0gQUyOj"
+        panelClass="panel-purple"
     >
         <Carousel
             style="aspect-ratio: 21/9;"
@@ -86,7 +86,7 @@
                 href="https://www.facebook.com/reel/913230383947981"
                 target="_blank"
             >
-                <button class="btn">
+                <button class="timeline-link-btn">
                     <span class="mdi mdi-facebook"></span>
                     A Waiting Room promo videója az eseményről
                 </button>
@@ -99,6 +99,7 @@
         subtitle="Június 22."
         instagramLink="https://www.instagram.com/p/C8MQxtZsmon"
         facebookLink="https://fb.me/e/3OIvmblM7"
+        panelClass="panel-red"
     >
         <p>
             Slam, Næz, Bodonyi Dani, fényfestés, italok és torta. Egy éves lett
@@ -152,6 +153,7 @@
         subtitle="Április 21."
         instagramLink="https://www.instagram.com/reel/C5yrfY-spoy"
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=pfbid0VC2b49YoPt5S19JSeRFWTPzmGH1nktiDYBaQZGQJbo71pvPbCLSq4YLecYXbvV1ql&id=100094619973134"
+        panelClass="panel-blue-variant"
     >
         <iframe
             loading="lazy"
@@ -169,7 +171,7 @@
                 href="https://youtu.be/p-_4iC-xHoo?si=nStmUZVY8CfajXPy"
                 target="_blank"
             >
-                <button class="btn">
+                <button class="timeline-link-btn">
                     <span class="mdi mdi-youtube"></span>
                     Ki, vagy mi az a Loophia?
                 </button>
@@ -178,7 +180,7 @@
                 href="https://www.facebook.com/permalink.php?story_fbid=pfbid0VC2b49YoPt5S19JSeRFWTPzmGH1nktiDYBaQZGQJbo71pvPbCLSq4YLecYXbvV1ql&id=100094619973134"
                 target="_blank"
             >
-                <button class="btn">
+                <button class="timeline-link-btn">
                     <span class="mdi mdi-image-multiple"></span>
                     Fotók Seffer Istvántól
                 </button>
@@ -191,13 +193,14 @@
         subtitle="Április 11."
         instagramLink="https://www.instagram.com/p/C5jJoSmNd-w"
         facebookLink="https://fb.me/e/1MldHJc9c"
+        panelClass="panel-yellow"
     >
         <div
             class="adaptive-col-row"
-            style="width: 100%; gap: var(--spacing); align-items: stretch;"
+            style="width: 100%; gap: 1rem; align-items: stretch;"
         >
             <div
-                style="display: flex; flex-direction: column; gap: var(--spacing); justify-content: space-evenly;"
+                style="display: flex; flex-direction: column; gap: 1rem; justify-content: space-evenly;"
             >
                 <p>
                     A magyar költészet napján Csáki egy kincsvadászatot
@@ -207,7 +210,7 @@
                 </p>
                 <p>
                     <a href="/stickers">
-                        <button class="btn">
+                        <button class="timeline-link-btn dark">
                             <span class="mdi mdi-map"></span>
                             2024 költészet napi kincsvadászat
                         </button>
@@ -220,7 +223,8 @@
                     > mozgalom ihlette.
                 </p>
             </div>
-            <div style="max-width: 40%;">
+            <div class="kincsvadaszat-video">
+                <!-- svelte-ignore a11y-media-has-caption -->
                 <video style="max-height: 350px;" controls>
                     <source src={vidKispirosKincsvadaszat} type="video/mp4" />
                 </video>
@@ -237,6 +241,7 @@
         subtitle="Április 7."
         instagramLink="https://www.instagram.com/p/C5giBg0sakJ"
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=273894045774593&id=100094619973134&ref=embed_post"
+        panelClass="panel-purple-variant"
     >
         <p>
             Imre spontán koncertjeivel sokan találkozhattunk már a Museum
@@ -253,7 +258,7 @@
                 href="https://drive.google.com/drive/folders/1eYo9prYNlx-O-QW9c0mNNhwDve-oCsNd?usp=sharing"
                 target="_blank"
             >
-                <button class="btn">
+                <button class="timeline-link-btn dark">
                     <span class="mdi mdi-image-multiple"></span>
                     Még több kép Tenki Mártontól
                 </button>
@@ -266,6 +271,7 @@
         subtitle="Március 14."
         instagramLink="https://www.instagram.com/stories/highlights/17871723279011747/"
         facebookLink="https://fb.me/e/5qV6UfabB"
+        panelClass="panel-red-variant"
     >
         <p style="flex: 1; width: 100%;">
             A Nyolcas Műhely adott otthont a Kolora Egyesület 2024-es évnyitó
@@ -303,6 +309,7 @@
         title="Nedel'a koncert @ Museum Café"
         subtitle="Március 10."
         instagramLink="https://www.instagram.com/p/C3x3_VxsfWk"
+        panelClass="panel-base"
     >
         <a
             href={KoloraLocalDb.getMusician("Nedel'a")?.websiteUrl}
@@ -319,7 +326,7 @@
                 href="https://drive.google.com/drive/folders/1CDQVRaAfFphdRu1rksA7nAJYi40Ad9sK?usp=sharing"
                 target="_blank"
             >
-                <button class="btn">
+                <button class="timeline-link-btn">
                     <span class="mdi mdi-image-multiple"></span>
                     Képek Emesétől
                 </button>
@@ -332,6 +339,7 @@
         subtitle="Február 25."
         facebookLink="https://www.facebook.com/permalink.php?story_fbid=pfbid0GffCQPFqTkqZTbrEXGCiq5wVYXpSksXKvrdz2RmGuQDWytgJowzap5yZrrHYZxnRl&id=100094619973134"
         instagramLink="https://www.instagram.com/p/C4n0kGGsKUc"
+        panelClass="panel-blue"
     >
         <p>
             Szvoren Eszter és Völgyesi Toma voltak az irodalom tanáraink idén,
@@ -353,6 +361,7 @@
         title="The JEX koncert @ Museum Café"
         subtitle="Február 1."
         instagramLink="https://www.instagram.com/p/C2ajW1FMa27"
+        panelClass="panel-purple"
     >
         <p>
             Ott voltunk a The JEX saját szervezésű koncertjén a Museum Caféban.
@@ -373,7 +382,7 @@
                 href="https://drive.google.com/drive/folders/1yeck-4Eu4Rxg58ufvpE3rcbPlpEQn50L?usp=sharing"
                 target="_blank"
             >
-                <button class="btn">
+                <button class="timeline-link-btn">
                     <span class="mdi mdi-image-multiple"></span>
                     Képek Emesétől
                 </button>
@@ -385,10 +394,11 @@
         title="2023"
         instagramLink="https://www.instagram.com/p/CuZs8OqsdHT"
         isLastItem={true}
+        panelClass="panel-red"
     >
         <p style="text-align: center;">
             <button
-                style="appearance: none; border: none; border-radius: 50%;"
+                style="appearance: none; border: none; background: transparent;"
                 onclick={() => alert("230621")}
             >
                 <img
@@ -402,10 +412,54 @@
         </p>
     </VerticalTimelineItem>
 </main>
-<Footer />
 
 <style>
-    main img {
-        border-radius: var(--corner-radius);
+    .timeline-page {
+        padding-bottom: 3rem;
+    }
+
+    .timeline-page :global(img) {
+        border-radius: 0;
+        border: 4px solid black;
+    }
+
+    .timeline-page :global(iframe),
+    .timeline-page :global(video) {
+        border: 4px solid black;
+        background-color: black;
+    }
+
+    .timeline-page :global(video) {
+        width: 100%;
+        height: auto;
+    }
+
+    .timeline-link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 0.9rem;
+        border: 3px solid black;
+        background-color: var(--kolora-color-base);
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .timeline-link-btn.dark {
+        background-color: black;
+        color: white;
+    }
+
+    .kincsvadaszat-video {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    @media (min-width: 1024px) {
+        .kincsvadaszat-video {
+            width: 40%;
+            max-width: none;
+        }
     }
 </style>

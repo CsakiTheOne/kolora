@@ -1,16 +1,16 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import Footer from "../../components/Footer.svelte";
+    import Footer from "../../components/legacy/Footer.svelte";
     import KoloraUser, { ROLES } from "$lib/model/KoloraUser";
     import firestore from "$lib/firebase/firestore";
     import { initializeFirebase } from "$lib/firebase/firebase";
-    import Badge from "../../components/Badge.svelte";
+    import Badge from "../../components/legacy/Badge.svelte";
     import SvelteMarkdown from "svelte-markdown";
     import MarkdownLink from "../../components/markdown-renderers/MarkdownLink.svelte";
-    import SmallHeader from "../../components/SmallHeader.svelte";
+    import SmallHeader from "../../components/legacy/SmallHeader.svelte";
     import MarkdownStrictHtml from "../../components/markdown-renderers/MarkdownStrictHtml.svelte";
     import { deleteAccount, getCurrentUser } from "$lib/firebase/auth";
-    import Divider from "../../components/Divider.svelte";
+    import Divider from "../../components/legacy/Divider.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let koloraUser = $state(new KoloraUser());

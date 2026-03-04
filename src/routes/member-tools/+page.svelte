@@ -2,11 +2,11 @@
     import { ROLES } from "$lib/model/KoloraUser";
     import UserManager from "$lib/UserManager.svelte";
     import { onMount } from "svelte";
-    import Alert from "../../components/Alert.svelte";
-    import Countdown from "../../components/Countdown.svelte";
-    import Footer from "../../components/Footer.svelte";
+    import Alert from "../../components/legacy/Alert.svelte";
+    import Countdown from "../../components/legacy/Countdown.svelte";
+    import Footer from "../../components/legacy/Footer.svelte";
     import Kiseger from "../../components/Kiseger.svelte";
-    import SmallHeader from "../../components/SmallHeader.svelte";
+    import SmallHeader from "../../components/legacy/SmallHeader.svelte";
     import rtdb from "$lib/firebase/rtdb";
 
     let qrFallbackUrl = $state("");

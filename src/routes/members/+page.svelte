@@ -1,10 +1,8 @@
 <script lang="ts">
-    import Footer from "../../components/Footer.svelte";
-    import Header from "../../components/Header.svelte";
-    import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
     import pfpVolgyesiTamas from "$lib/images/members/volgyesi-tamas.jpg";
     import pfpBodonyiDaniel from "$lib/images/members/bodonyi-daniel.jpg";
     import pfpTothNikolett from "$lib/images/members/toth-nikolett.jpg";
+    import pfpAlex from "$lib/images/members/alex.jpg";
     import pfpMeszarosEmese from "$lib/images/members/meszaros-emese.jpg";
     import pfpGergelyEmma from "$lib/images/members/gergely-emma.jpg";
     import pfpReszegiRamona from "$lib/images/members/reszegi-ramona.jpg";
@@ -12,12 +10,13 @@
     import pfpKissBalint from "$lib/images/members/kiss-balint.webp";
     import pfpCsaktornyaiAdam from "$lib/images/members/csaktornyai-adam.jpg";
     import pfpTolnaiZsofi from "$lib/images/members/tolnai-zsofi.jpg";
-    import Alert from "../../components/Alert.svelte";
+    import Header from "../../components/Header.svelte";
+    import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
 </script>
 
-<Header selectedTab="Tagok" />
-<main>
-    <h2>Tagok</h2>
+<Header selectedPageIndex={2} />
+<main class="container-column">
+    <h1>Tagok</h1>
 
     <!-- Elnökség -->
     <KoloraMemberDisplay
@@ -33,36 +32,51 @@
             30+ év lokálpatriotizmus.<br />
         </p>
     </KoloraMemberDisplay>
-    <KoloraMemberDisplay
-        profilePictureUrl={pfpBodonyiDaniel}
-        name="Bodonyi Dani"
-        tags={["Alelnök", "DJ", "Műsorvezető"]}
-    >
-        <p>
-            Az életem a zene, a zene és a zene. Ja és ne felejtsük ki a zenét
-            sem. Rádiós zenei szerkesztőként állandóan követem a könnyűzene
-            jelenét és így látom csak igazán, hogy mennyi rejtett erőtartalék
-            van a pop zenei felszín alatt. Célom az egyesületben, hogy minél
-            többféle zenével és zenésszel ismertessem meg a közönséget,
-            elősegítve egy olyan jövőt, ahol nem csak mai sláger meg mai sláger
-            között válogathat az ember.
-        </p>
-    </KoloraMemberDisplay>
-    <KoloraMemberDisplay
-        profilePictureUrl={pfpTothNikolett}
-        name="Tóth Nikolett - Niki"
-        tags={["Alelnök", "Író", "Felderítő"]}
-    >
-        <p>
-            Csókok bókok! Én lennék az egyik alelnöke ennek a csoda csapatnak.
-            Ha kell bármit kiderítek bárkiről/bármiről. Ha elkap az ihlet írni
-            szoktam, novellákat vagy monológokat. Bármikor vevő vagyok egy
-            bulira vagy csak egy beszélgetésre is. Tárt karokkal és egy hatalmas
-            öleléssel várok mindenkit ebbe a különleges kis társaságba. Légy
-            bármilyen különc itt otthonodra fogsz találni. &lt;3
-        </p>
-    </KoloraMemberDisplay>
+    <div class="adaptive-col-row">
+        <KoloraMemberDisplay
+            profilePictureUrl={pfpBodonyiDaniel}
+            name="Bodonyi Dani"
+            tags={["Alelnök", "DJ", "Műsorvezető"]}
+        >
+            <p>
+                Az életem a zene, a zene és a zene. Ja és ne felejtsük ki a
+                zenét sem. Rádiós zenei szerkesztőként állandóan követem a
+                könnyűzene jelenét és így látom csak igazán, hogy mennyi rejtett
+                erőtartalék van a pop zenei felszín alatt. Célom az
+                egyesületben, hogy minél többféle zenével és zenésszel
+                ismertessem meg a közönséget, elősegítve egy olyan jövőt, ahol
+                nem csak mai sláger meg mai sláger között válogathat az ember.
+            </p>
+        </KoloraMemberDisplay>
+        <KoloraMemberDisplay
+            profilePictureUrl={pfpTothNikolett}
+            name="Tóth Nikolett - Niki"
+            tags={["Alelnök", "Író", "Felderítő"]}
+        >
+            <p>
+                Csókok bókok! Én lennék az egyik alelnöke ennek a csoda
+                csapatnak. Ha kell bármit kiderítek bárkiről/bármiről. Ha elkap
+                az ihlet írni szoktam, novellákat vagy monológokat. Bármikor
+                vevő vagyok egy bulira vagy csak egy beszélgetésre is. Tárt
+                karokkal és egy hatalmas öleléssel várok mindenkit ebbe a
+                különleges kis társaságba. Légy bármilyen különc itt otthonodra
+                fogsz találni. &lt;3
+            </p>
+        </KoloraMemberDisplay>
+    </div>
     <!-- Tagok -->
+    <KoloraMemberDisplay
+        profilePictureUrl={pfpAlex}
+        name="Alex"
+        tags={["Fotós", "Grafikus"]}
+    >
+        <p>
+            Heyho! Mindenértő ezermestenek tartom magam! Leginkább fotózok és
+            plakátokat tervezek. De kedvenc tulajdonságom, hogy bármiből asztalt
+            csinálok! Azon kívül, ha nem a legrandomabb sidequest-en vagyok,
+            nyugodtan bármivel kereshettek!:)
+        </p>
+    </KoloraMemberDisplay>
     <KoloraMemberDisplay
         profilePictureUrl={pfpCsaktornyaiAdam}
         name="Csáki"
@@ -125,7 +139,6 @@
             me anytime, tárt karokkal várok mindenkit &lt;&lt;3
         </p>
     </KoloraMemberDisplay>
-    <!--KoloraMemberDisplay name="Móré Gergő (wip)" /-->
     <KoloraMemberDisplay
         profilePictureUrl={pfpKissBalint}
         name="Piros"
@@ -147,12 +160,6 @@
         profilePictureUrl={pfpReszegiRamona}
         name="Reszegi Ramóna"
         tags={["Feltörekvő énekes"]}
-        links={[
-            {
-                name: "Nedel'a zenekar Insta",
-                url: "https://www.instagram.com/nedela_zenekar",
-            },
-        ]}
     >
         <p>
             Egy életvidám pörgős arc vagyok szeretek szervezni, segíteni ahol
@@ -183,10 +190,7 @@
             >, vagy minimum hazai kortársat, na szevasz.
         </p>
     </KoloraMemberDisplay>
-    <KoloraMemberDisplay
-    profilePictureUrl={pfpTolnaiZsofi}
-    name="Tolnai Zsófi"
-    >
+    <KoloraMemberDisplay profilePictureUrl={pfpTolnaiZsofi} name="Tolnai Zsófi">
         <p>
             Szevasz! Zsófi vagyok. Horgolva néha verset írok, vagy kerámián
             éppen túrázok de egy kávéra mindig nyitott vagyok. Bodajktól a
@@ -194,22 +198,9 @@
             most indulnom is kell, bármi van az üzeneted várom! :))
         </p>
     </KoloraMemberDisplay>
-
-    <Alert icon="information" title="De várj, ez még nem minden!">
-        <p>
-            Akár a te bemutatkozásod is itt lehet! Ha szeretnél csatlakozni
-            hozzánk, keress a <a href="/contacts">megadott elérhetőségeinken</a>
-            (vagy ha épp ott iszogatunk, akkor a Museum Caféban).
-        </p>
-    </Alert>
 </main>
-<Footer />
 
 <style>
-    main {
-        row-gap: calc(var(--spacing) * 2);
-    }
-
     p {
         text-align: justify;
     }

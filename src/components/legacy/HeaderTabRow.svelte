@@ -14,18 +14,18 @@
         url?: string,
         badge?: string,
     }[] = [
-        { icon: "home", title: "Főoldal", url: "/" },
+        { icon: "home", title: "Főoldal", url: "/legacy" },
         {
             icon: "account-group",
             title: "Tagok",
-            url: "/members",
+            url: "/legacy/members",
         },
         {
             icon: "folder-multiple",
             title: "Projektek",
-            url: "/projects",
+            url: "/legacy/projects",
         },
-        { icon: "at", title: "Elérhetőségek", url: "/contacts" },
+        { icon: "at", title: "Elérhetőségek", url: "/legacy/contacts" },
     ];
 
     $effect(() => {

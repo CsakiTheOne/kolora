@@ -1,7 +1,5 @@
 <script lang="ts">
-    import Badge from "./Badge.svelte";
-    import flowerShape from "$lib/images/utils/flower-shape.png";
-    import FlowerImage from "./FlowerImage.svelte";
+    import ComicPanelWithBackground from "./ComicPanelWithBackground.svelte";
 
     const {
         profilePictureUrl = "",
@@ -12,105 +10,105 @@
     } = $props();
 </script>
 
-<div class="member">
-    <div class="pfp-container">
-        {#if profilePictureUrl}
-            <FlowerImage src={profilePictureUrl} outlineWidth={2} alt={name} />
-        {:else}
-            <div class="tint" style="mask-image: url('{flowerShape}');"></div>
-            <span class="mdi mdi-account-circle"></span>
-        {/if}
-    </div>
-    <div class="member-info">
-        <div>
-            <h3 id={name.toLowerCase().replace(" ", "-")}>{name}</h3>
-            {#if tags}
-                <div class="tags">
-                    {#each tags as tag}
-                        <Badge
-                            style="background: {(['Elnök', 'Alelnök'].includes(
-                                tag,
-                            ) &&
-                                'var(--primary-color)') ||
-                                (tag === 'Piros' &&
-                                    '#dd0000e0')}; color: white;"
-                        >
-                            {tag}
-                        </Badge>
-                    {/each}
-                </div>
+<ComicPanelWithBackground backgroundUrl={profilePictureUrl}>
+    <div class="member">
+        <div class="pfp-container">
+            {#if profilePictureUrl}
+                <img src={profilePictureUrl} alt={name} />
+            {:else}
+                <span class="mdi mdi-account-circle"></span>
             {/if}
         </div>
-        {#if children}
+        <div class="member-info">
             <div>
-                {@render children()}
+                <h2 id={name.toLowerCase().replace(" ", "-")}>{name}</h2>
+                {#if tags}
+                    <div class="tags">
+                        {#each tags as tag}
+                            <span
+                                style="background-color: {tag === 'Piros'
+                                    ? 'red'
+                                    : 'var(--kolora-color-base)'};"
+                            >
+                                {tag}
+                            </span>
+                        {/each}
+                    </div>
+                {/if}
             </div>
-        {/if}
-        {#if links.length > 0}
-            <ul>
-                {#each links as link}
-                    <a href={link.url} target="_blank">
-                        <li>{link.name}</li>
-                    </a>
-                {/each}
-            </ul>
-        {/if}
+            {#if children}
+                <div>
+                    {@render children()}
+                </div>
+            {/if}
+            {#if links.length > 0}
+                <ul>
+                    {#each links as link}
+                        <a href={link.url} target="_blank">
+                            <li>{link.name}</li>
+                        </a>
+                    {/each}
+                </ul>
+            {/if}
+        </div>
     </div>
-</div>
+</ComicPanelWithBackground>
 
 <style>
     .member {
         display: flex;
         flex-direction: row;
-        gap: var(--spacing);
+        align-content: stretch;
+        gap: 1rem;
+        color: white;
     }
 
     .pfp-container {
-        width: 72px;
-        height: 72px;
+        width: 200px;
+        min-width: 128px;
+        max-width: 30vw;
+        aspect-ratio: 1/1;
         position: relative;
-        border-radius: 50%;
-        overflow: hidden;
-        scale: 1.2;
     }
 
-    :global(.pfp-container > img),
-    .pfp-container > .tint {
-        position: absolute;
+    .pfp-container img {
         width: 100%;
-        height: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
         object-fit: cover;
-        mask-size: cover;
-        mask-position: center;
     }
 
-    .pfp-container > .tint {
-        background: var(--secondary-color);
-    }
-
-    .pfp-container > .mdi-account-circle {
+    .pfp-container .mdi-account-circle {
         position: absolute;
         top: 50%;
         left: 50%;
         translate: -50% -50%;
         font-size: 2rem;
-        color: var(--on-primary-color);
+        color: var(--kolora-color-red-variant);
     }
 
     .member-info {
-        width: calc(100% - 72px - var(--spacing));
+        flex: 1;
         display: flex;
         flex-direction: column;
-        gap: calc(var(--spacing) / 2);
+        gap: 0.5rem;
+        padding: 0.5rem 1rem 1rem 0;
     }
 
     .tags {
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
-        gap: calc(var(--spacing) / 2);
-        padding-top: calc(var(--spacing) / 4);
-        overflow-x: auto;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding-top: 0.5rem;
         white-space: nowrap;
+    }
+
+    .tags > span {
+        padding: 2px;
+    }
+
+    li {
+        margin-left: 1rem;
     }
 </style>

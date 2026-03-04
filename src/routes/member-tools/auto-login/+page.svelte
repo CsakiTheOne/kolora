@@ -2,9 +2,9 @@
     import { loginWithGoogle } from "$lib/firebase/auth";
     import UserManager from "$lib/UserManager.svelte";
     import { onMount } from "svelte";
-    import SmallHeader from "../../../components/SmallHeader.svelte";
-    import Footer from "../../../components/Footer.svelte";
-    import Divider from "../../../components/Divider.svelte";
+    import SmallHeader from "../../../components/legacy/SmallHeader.svelte";
+    import Footer from "../../../components/legacy/Footer.svelte";
+    import Divider from "../../../components/legacy/Divider.svelte";
 
     $effect(() => {
         if (!UserManager.instance.isLoaded) return;

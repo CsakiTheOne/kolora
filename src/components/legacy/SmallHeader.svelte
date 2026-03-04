@@ -8,7 +8,7 @@
 
 <header {...rest}>
     <div class="left">
-        <a href="/" style="height: 48px;">
+        <a href="/legacy" style="height: 48px;">
             <img class="header-logo" src={koloraLogo} alt="Kolora logó" />
         </a>
 

@@ -1,94 +1,182 @@
 <script>
-    import Footer from "../../components/Footer.svelte";
+    import logoKolora from "$lib/images/logos/kolora_minimal.png";
+    import logoWholesomeWare from "$lib/images/logos/wholesomeware_minimal_mono.png";
     import Header from "../../components/Header.svelte";
-    import logoKolora from "$lib/images/logos/kolora.png";
-    import logoWholesomeWare from "$lib/images/logos/wholesomeware.png";
-    import ProfileShowcase from "../../components/ProfileShowcase.svelte";
-    import Divider from "../../components/Divider.svelte";
+    import ComicPanel from "../../components/ComicPanel.svelte";
+    import ComicPanelWithBackground from "../../components/ComicPanelWithBackground.svelte";
 </script>
 
-<Header selectedTab="Elérhetőségek" />
-<main>
-    <ProfileShowcase
-        name="Kolora Egysület"
-        image={logoKolora}
-    />
-    <p>
-        <a href="mailto:koloraegyesulet@gmail.com" target="_blank">
-            <span class="mdi mdi-email"></span>
-            Email: koloraegyesulet@gmail.com
-        </a>
-    </p>
-    <p>
-        <a
-            href="https://www.facebook.com/profile.php?id=100094619973134"
-            target="_blank"
+<Header selectedPageIndex={3} />
+<main class="container-column">
+    <h1>Elérhetőségek</h1>
+    <div class="adaptive-col-row">
+        <ComicPanel outerStyle="width: 100%;">
+            <div id="kolora" class="entity">
+                <div
+                    class="img"
+                    style="background-image: url('{logoKolora}');"
+                ></div>
+                <div class="links">
+                    <p style="rotate: -16deg;">
+                        <a
+                            href="mailto:koloraegyesulet@gmail.com"
+                            target="_blank"
+                        >
+                            <span>koloraegyesulet @gmail.com</span>
+                        </a>
+                    </p>
+                    <p style="rotate: -8deg;">
+                        <a
+                            href="https://www.facebook.com/profile.php?id=100094619973134"
+                            target="_blank"
+                        >
+                            <span>Fb: Kolora Egyesület</span>
+                        </a>
+                    </p>
+                    <p style="rotate: 0deg;">
+                        <a
+                            href="https://www.instagram.com/koloraegyesulet/"
+                            target="_blank"
+                        >
+                            <span>Insta: @koloraegyesulet</span>
+                        </a>
+                    </p>
+                    <p style="rotate: 8deg;">
+                        <a
+                            href="https://www.youtube.com/@koloraegyesulet"
+                            target="_blank"
+                        >
+                            <span>YouTube: Kolora Egyesület</span>
+                        </a>
+                    </p>
+                    <p style="rotate: 16deg;">
+                        <a
+                            href="https://www.facebook.com/groups/1307732380629023"
+                            target="_blank"
+                        >
+                            <span>író-költő-slammerek Fb csoport</span>
+                        </a>
+                    </p>
+                </div>
+            </div></ComicPanel
         >
-            <span class="mdi mdi-facebook"></span>
-            Facebook: Kolora Egyesület
-        </a>
-    </p>
-    <p>
-        <a href="https://www.instagram.com/koloraegyesulet/" target="_blank">
-            <span class="mdi mdi-instagram"></span>
-            Instagram: @koloraegyesulet
-        </a>
-    </p>
-    <p>
-        <a href="https://www.youtube.com/@koloraegyesulet" target="_blank">
-            <span class="mdi mdi-youtube"></span>
-            YouTube: Kolora Egyesület
-        </a>
-    </p>
-    <p>
-        <a
-            href="https://www.facebook.com/groups/1307732380629023"
-            target="_blank"
+        <ComicPanelWithBackground
+            backgroundUrl="https://raw.githubusercontent.com/WholesomeWare/.github/refs/heads/main/assets/header_title.jpg"
         >
-            <span class="mdi mdi-account-group"></span>
-            fehérvári író-költő-slammerek Facebook csoport
-        </a>
-    </p>
-
-    <Divider />
-
-    <ProfileShowcase
-        name="WholesomeWare"
-        image={logoWholesomeWare}
-    />
-    <p>
-        Ha bármi probléma vagy kérdés van az oldallal kapcsolatban, ezeken a
-        módokon elérhetsz:
-    </p>
-    <p>
-        <a href="mailto:jockahun@gmail.com" target="_blank">
-            <span class="mdi mdi-email"></span>
-            Email: jockahun@gmail.com
-        </a>
-    </p>
-    <p>
-        <a href="https://instagram.com/wholesomewarestuff" target="_blank">
-            <span class="mdi mdi-instagram"></span>
-            Instagram: @wholesomewarestuff
-        </a>
-    </p>
-    <p>
-        <a href="https://m.me/CsakiTheOne" target="_blank">
-            <span class="mdi mdi-facebook-messenger"></span>
-            Messenger: Csáki
-        </a>
-    </p>
-
-    <!--h2>Általában erre vagyunk</h2>
-    <iframe
-        title="Museum Café"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2711.3903565053556!2d18.40735387631114!3d47.18937167115461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769f7aef6eb0f7b%3A0xd732c4ac54d33b21!2sMuseum%20Caf%C3%A9!5e0!3m2!1sen!2shu!4v1731753946627!5m2!1sen!2shu"
-        width="100%"
-        height="350"
-        style="border:0;"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-    ></iframe-->
+            <div class="container-column" style="width: 100%; height: 100%; color: white;">
+                <h2>WholesomeWare</h2>
+                <p>
+                    Ha bármi kérdés vagy probléma merülne fel a weboldallal
+                    kapcsolatban, keress bátran!
+                </p>
+                <div id="wholesomeware" class="entity">
+                    <div class="links">
+                        <p style="rotate: 10deg;">
+                            <a
+                                href="mailto:jockahun@gmail.com"
+                                target="_blank"
+                            >
+                                <span>jockahun@gmail.com</span>
+                            </a>
+                        </p>
+                        <p style="rotate: 0deg;">
+                            <a
+                                href="https://instagram.com/wholesomewarestuff"
+                                target="_blank"
+                            >
+                                <span>Insta: @wholesomewarestuff</span>
+                            </a>
+                        </p>
+                        <p style="rotate: -10deg;">
+                            <a
+                                href="https://m.me/CsakiTheOne"
+                                target="_blank"
+                            >
+                                <span>Messenger: Csáki</span>
+                            </a>
+                        </p>
+                    </div>
+                    <div
+                        class="img"
+                        style="background-image: url('{logoWholesomeWare}');"
+                    ></div>
+                </div>
+            </div>
+        </ComicPanelWithBackground>
+    </div>
 </main>
-<Footer />
+
+<style>
+    main {
+        align-items: center;
+        --link-shape: polygon(0 40%, 100% 0, 98% 100%, 0 60%);
+        --link-shape-reverse: polygon(0 0, 100% 40%, 100% 60%, 2% 100%);
+    }
+
+    .entity {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        margin: 30px 0;
+    }
+
+    .entity .img {
+        width: 128px;
+        height: 128px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50%;
+    }
+
+    .entity > .links {
+        flex: 1;
+        max-width: 320px;
+    }
+
+    .links > p {
+        background-color: black;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: small;
+        clip-path: var(--link-shape);
+        padding: 4px;
+        text-align: right;
+    }
+
+    .links > p:hover {
+        scale: 1.05;
+    }
+
+    #wholesomeware .links > p {
+        clip-path: var(--link-shape-reverse);
+        text-align: left;
+    }
+
+    .links > p > a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+        gap: 10px;
+        padding: 25px 10px 25px 20px;
+        color: inherit;
+        text-decoration: none;
+        clip-path: var(--link-shape);
+        background-color: white;
+        color: black;
+    }
+
+    #wholesomeware .links > p > a {
+        clip-path: var(--link-shape-reverse);
+        padding: 25px 20px 25px 10px;
+        justify-content: start;
+    }
+
+    .links > p > a:hover {
+        background-color: var(--kolora-color-base);
+        color: white;
+    }
+</style>

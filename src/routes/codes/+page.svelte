@@ -1,9 +1,9 @@
 <script>
     import KoloraLocalDb from "$lib/KoloraLocalDb";
-    import Alert from "../../components/Alert.svelte";
-    import Badge from "../../components/Badge.svelte";
-    import Footer from "../../components/Footer.svelte";
-    import Header from "../../components/Header.svelte";
+    import Alert from "../../components/legacy/Alert.svelte";
+    import Badge from "../../components/legacy/Badge.svelte";
+    import Footer from "../../components/legacy/Footer.svelte";
+    import Header from "../../components/legacy/Header.svelte";
 
     let code = $state("");
 </script>

@@ -1,9 +1,12 @@
 <script lang="ts">
-    import ThemeManager from "$lib/ThemeManager";
-
     let canvas: HTMLCanvasElement | null = $state(null);
     let ctx: CanvasRenderingContext2D | null = $state(null);
     let scrollY: number = $state(0);
+    let innerWidth: number = $state(0);
+
+    const {
+        color = "var(--kolora-color-base)",
+    } = $props();
 
     $effect(() => {
         if (!canvas) return;
@@ -14,23 +17,27 @@
         if (!canvas || !ctx) return;
 
         canvas.width = canvas.parentElement?.clientWidth || 0;
-        canvas.height = 30;
+        canvas.height = 32;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = ThemeManager.getThemeColor("--primary-color", canvas);
-        ctx.lineWidth = Math.min(10, window.innerWidth / 100);
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
+        ctx.strokeStyle =
+            canvas.computedStyleMap().get("color")?.toString() || "black";
+        ctx.lineWidth = Math.max(8, innerWidth / 200);
+        ctx.lineCap = "butt";
+        ctx.lineJoin = "miter";
         ctx.beginPath();
-        // Sine wave
-        for (let i = 16; i < canvas.width - 16; i++) {
-            const offset = scrollY / 10;
-            const y = canvas.height / 2 + Math.sin((i + offset) / 10) * 8;
-            ctx.lineTo(i, y);
+        // zigzag pattern
+        const zigzagSize = 24;
+        for (let x = ctx.lineWidth; x < canvas.width; x += zigzagSize) {
+            const y =
+                ((x - ctx.lineWidth) / zigzagSize) % 2 === 0
+                    ? ctx.lineWidth
+                    : canvas.height - ctx.lineWidth;
+            ctx.lineTo(x, y);
         }
         ctx.stroke();
     });
 </script>
 
-<svelte:window bind:scrollY />
-<canvas bind:this={canvas}></canvas>
+<svelte:window bind:scrollY bind:innerWidth />
+<canvas style="color: {color};" bind:this={canvas}></canvas>

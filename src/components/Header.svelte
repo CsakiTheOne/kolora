@@ -1,87 +1,171 @@
 <script>
-    import HeaderTabRow from "./HeaderTabRow.svelte";
-    import headerImage from "$lib/images/header.webp";
-    import AccountToolbarIcon from "./AccountToolbarIcon.svelte";
-    import ThemeToolbarIcon from "./ThemeToolbarIcon.svelte";
+    import logoKolora from "$lib/images/logos/kolora_minimal.png";
+    import iconMusicNote from "@pictogrammers/memory-svg/svg/music-note.svg?raw";
+    import iconImage from "@pictogrammers/memory-svg/svg/image.svg?raw";
+    import iconChatProcessing from "@pictogrammers/memory-svg/svg/chat-processing.svg?raw";
+    import iconPencil from "@pictogrammers/memory-svg/svg/pencil.svg?raw";
 
-    const { selectedTab = "", ...rest } = $props();
+    const { selectedPageIndex = -1 } = $props();
+
+    let scrollY = $state(0);
 </script>
 
-<header {...rest}>
-    <div style="background-image: url({headerImage});" class="background"></div>
-    <div class="column">
-        <p>Művészet? Kultúra? Székesfehérvár?</p>
-        <a href="/" id="kolora-title"><h1>kolora!</h1></a>
-    </div>
-    <div class="toolbar">
-        <ThemeToolbarIcon />
-        <AccountToolbarIcon />
-    </div>
+<svelte:window bind:scrollY />
 
-    <div class="main-container">
-        <HeaderTabRow {selectedTab} />
+<div class="header-top">
+    <a class="logo-container" href="/" title="Kolora!">
+        <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
+    </a>
+    <attr title="Zene">{@html iconMusicNote} <span class="desktop-visible">Zene</span></attr>
+    <attr title="Kiállítás">{@html iconImage} <span class="desktop-visible">Kiállítás</span></attr>
+    <attr title="Slam">{@html iconChatProcessing} <span class="desktop-visible">Slam</span></attr>
+    <attr title="Workshop">{@html iconPencil} <span class="desktop-visible">Workshop</span></attr>
+    <div></div>
+    <div></div>
+</div>
+<div class="sticky {scrollY >= 128 ? 'scrolled' : ''}">
+    <div class="pages">
+        <a class:selected={selectedPageIndex === 0} href="/">Főoldal</a>
+        <a class:selected={selectedPageIndex === 1} href="/projects"
+            >Projektek</a
+        >
+        <a class:selected={selectedPageIndex === 2} href="/members">Tagok</a>
+        <a class:selected={selectedPageIndex === 3} href="/contacts"
+            >Elérhetőségek</a
+        >
+        <a href="/legacy" target="_self">Régi design</a>
     </div>
-</header>
+</div>
 
 <style>
-    header {
-        position: relative;
-        color: var(--on-primary-color);
-        max-height: min-content;
-    }
-
-    .background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        background-position: center;
-        background-size: cover;
-        z-index: -1;
-    }
-
-    .background::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--primary-color);
-        opacity: 0.7;
-    }
-
-    .toolbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+    .header-top {
+        border-top: 10px solid var(--kolora-color-base);
         display: flex;
         flex-direction: row;
-        justify-content: end;
         align-items: center;
-        height: 48px;
-        padding: 0 calc(var(--spacing) / 2);
-        overflow: hidden;
+        justify-content: space-between;
+        transition: all 0.1s ease-in-out;
     }
 
-    :global(.toolbar > span) {
-        font-size: 1.3rem;
-        padding: calc(var(--spacing) / 2);
-        cursor: pointer;
+    :global(.header-top svg) {
+        width: 24px;
+        height: auto;
+        margin: 0.5rem;
     }
 
-    .column {
+    .logo-container {
+        background-color: var(--kolora-color-base);
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+
+    .header-top a {
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+
+    .header-top attr {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: black;
+        font-weight: bold;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, .7);
+    }
+
+    .header-top attr :global(svg path) {
+        stroke: black;
+        stroke-width: .15px;
+    }
+
+    .header-top attr .desktop-visible {
+        display: none;
+    }
+
+    @media (min-width: 600px) {
+        .header-top attr .desktop-visible {
+            display: inline;
+        }
+    }
+
+    .header-top attr:nth-child(2) :is(:global(svg path), span) {
+        fill: var(--kolora-color-purple-variant);
+        color: var(--kolora-color-purple-variant);
+    }
+
+    .header-top attr:nth-child(3) :is(:global(svg path), span) {
+        fill: var(--kolora-color-yellow);
+        color: var(--kolora-color-yellow);
+    }
+
+    .header-top attr:nth-child(4) :is(:global(svg path), span) {
+        fill: var(--kolora-color-red-variant);
+        color: var(--kolora-color-red-variant);
+    }
+
+    .header-top attr:nth-child(5) :is(:global(svg path), span) {
+        fill: var(--kolora-color-blue-variant);
+        color: var(--kolora-color-blue-variant);
+    }
+
+    .logo {
+        width: 42px;
+        height: 42px;
+        margin-right: 32px;
+        margin-bottom: 32px;
+    }
+
+    .sticky {
+        position: sticky;
+        top: 0;
+        margin-top: -1px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        padding: calc(var(--spacing) * 2);
-        gap: calc(var(--spacing) * 2);
+        z-index: 99999;
     }
 
-    header a {
-        color: var(--on-primary-color) !important;
+    .scrolled {
+        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+        background-color: white;
+    }
+
+    .pages {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: white;
+    }
+
+    .pages a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 0.5rem 1rem;
+        border: 2px solid black;
+        white-space: nowrap;
+        rotate: 3deg;
+    }
+
+    .pages a:nth-child(2n) {
+        rotate: -3deg;
+    }
+
+    .pages a:hover {
+        scale: 1.05;
+    }
+
+    .pages a.selected {
+        background-color: var(--kolora-color-base);
+        color: white;
+    }
+
+    .pages a:not(.selected):hover {
+        background-color: var(--kolora-color-red-variant);
     }
 </style>
