@@ -1,13 +1,17 @@
 <script>
-    import Alert from "../../components/legacy/Alert.svelte";
-    import Footer from "../../components/legacy/Footer.svelte";
-    import Header from "../../components/legacy/Header.svelte";
+    import Header from "../../components/Header.svelte";
+    import ComicPanel from "../../components/ComicPanel.svelte";
+    import Footer from "../../components/Footer.svelte";
 </script>
 
-<Header />
-<main>
-    <h2>Impresszum</h2>
-    <Alert icon="xml" title="A weblap fejlesztője és adminisztrátora">
+<Header selectedPageIndex={-1} />
+<main class="container-column">
+    <h1>Impresszum</h1>
+    <ComicPanel innerClass="container-column">
+        <h2>
+            <span class="mdi mdi-xml"></span>
+            A weblap fejlesztője és adminisztrátora
+        </h2>
         <p><strong>Csáktornyai Ádám (Csáki)</strong></p>
         <p>Elérhetőségek:</p>
         <p>
@@ -32,23 +36,25 @@
             Ha bármi probléma vagy kérdés van az oldallal kapcsolatban, keress
             bátran!
         </p>
-    </Alert>
-    <h2>Felhasznált szellemi alkotások</h2>
-    <p>
-        A fotókat, videókat és egyéb média tartalmakat a Kolora Egyesület tagjai
-        és barátai készítették. E tartalmak a készítők tulajdonát képezik.
-    </p>
-    <h3>Technológiák</h3>
-    <ul>
-        <a href="https://svelte.dev" target="_blank">
-            <li>SvelteKit</li>
-        </a>
-        <a href="https://firebase.google.com" target="_blank">
-            <li>Firebase</li>
-        </a>
-        <a href="https://pictogrammers.com" target="_blank">
-            <li>Pictogrammers ikonok</li>
-        </a>
-    </ul>
+    </ComicPanel>
+    <ComicPanel innerClass="container-column">
+        <h2>Felhasznált szellemi alkotások</h2>
+        <p>
+            A fotókat, videókat és egyéb média tartalmakat a Kolora Egyesület tagjai
+            és barátai készítették. E tartalmak a készítők tulajdonát képezik.
+        </p>
+        <h3>Technológiák</h3>
+        <ul>
+            <li>
+                <a href="https://svelte.dev" target="_blank">SvelteKit</a>
+            </li>
+            <li>
+                <a href="https://firebase.google.com" target="_blank">Firebase</a>
+            </li>
+            <li>
+                <a href="https://pictogrammers.com" target="_blank">Pictogrammers ikonok</a>
+            </li>
+        </ul>
+    </ComicPanel>
 </main>
 <Footer />

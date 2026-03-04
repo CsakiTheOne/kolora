@@ -14,6 +14,7 @@
     import imgEsztiWithHat from "$lib/images/gallery/muzeumok-ejszakaja-kolora-szulinap-1/eszti-kalap-huzas.jpg";
     import imgNyolcasMuhelyLogo from "$lib/images/logos/nyolcas-muhely.jpg";
     import vidKispirosKincsvadaszat from "$lib/images/gallery/kolteszet-napi-kincsvadaszat/kispiros-km.mp4";
+    import Footer from "../../components/Footer.svelte";
 </script>
 
 <Header selectedPageIndex={-1} />
@@ -412,6 +413,7 @@
         </p>
     </VerticalTimelineItem>
 </main>
+<Footer />
 
 <style>
     .timeline-page {

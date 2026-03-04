@@ -9,6 +9,7 @@
     import ProfileShowcase from "../components/ProfileShowcase.svelte";
     import imgBrotondProductionsLogo from "$lib/images/logos/brotond-productions.jpg";
     import imgInkognitoKollektivaLogo from "$lib/images/logos/inkognito-kollektiva.jpg";
+    import Footer from "../components/Footer.svelte";
 </script>
 
 <Header selectedPageIndex={0} />
@@ -233,39 +234,5 @@
             </a>
         </ul>
     </ComicPanel>
-    <Divider />
-    <h2>Kolora weboldal redesign</h2>
-    <p>
-        A weboldalunk újratervezés alatt van. Ezen az oldalon megtekintheted a
-        fejlesztés alatt álló új design-t.
-    </p>
-    <h2>Ihletek</h2>
-    <ComicPanel innerClass="container-column">
-        <div class="adaptive-col-row" style="width: 100%;">
-            <div style="flex: 1;">
-                <iframe
-                    width="100%"
-                    style="aspect-ratio: 16 / 9;"
-                    src="https://www.youtube.com/embed/9KdP2idt6LE?si=kk8qKLDm29sz1i2T"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                ></iframe>
-            </div>
-            <div style="flex: 1;">
-                <iframe
-                    width="100%"
-                    style="aspect-ratio: 16 / 9;"
-                    src="https://www.youtube.com/embed/8mo1Pbjqxhc?si=rlsB3lom2XrhERwn"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                ></iframe>
-            </div>
-        </div>
-    </ComicPanel>
 </main>
+<Footer />

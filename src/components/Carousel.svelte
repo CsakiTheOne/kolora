@@ -121,11 +121,11 @@
     }
 
     .carousel-container > .btn.prevPage {
-        left: 0;
+        left: -40px;
     }
 
     .carousel-container > .btn.nextPage {
-        right: 0;
+        right: -4px;
     }
 
     .page-wrapper {

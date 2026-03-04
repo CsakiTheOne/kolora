@@ -4,6 +4,7 @@
     import Header from "../../components/Header.svelte";
     import ComicPanel from "../../components/ComicPanel.svelte";
     import ComicPanelWithBackground from "../../components/ComicPanelWithBackground.svelte";
+    import Footer from "../../components/Footer.svelte";
 </script>
 
 <Header selectedPageIndex={3} />
@@ -63,7 +64,10 @@
         <ComicPanelWithBackground
             backgroundUrl="https://raw.githubusercontent.com/WholesomeWare/.github/refs/heads/main/assets/header_title.jpg"
         >
-            <div class="container-column" style="width: 100%; height: 100%; color: white;">
+            <div
+                class="container-column"
+                style="width: 100%; height: 100%; color: white;"
+            >
                 <h2>WholesomeWare</h2>
                 <p>
                     Ha bármi kérdés vagy probléma merülne fel a weboldallal
@@ -72,10 +76,7 @@
                 <div id="wholesomeware" class="entity">
                     <div class="links">
                         <p style="rotate: 10deg;">
-                            <a
-                                href="mailto:jockahun@gmail.com"
-                                target="_blank"
-                            >
+                            <a href="mailto:jockahun@gmail.com" target="_blank">
                                 <span>jockahun@gmail.com</span>
                             </a>
                         </p>
@@ -88,10 +89,7 @@
                             </a>
                         </p>
                         <p style="rotate: -10deg;">
-                            <a
-                                href="https://m.me/CsakiTheOne"
-                                target="_blank"
-                            >
+                            <a href="https://m.me/CsakiTheOne" target="_blank">
                                 <span>Messenger: Csáki</span>
                             </a>
                         </p>
@@ -105,6 +103,7 @@
         </ComicPanelWithBackground>
     </div>
 </main>
+<Footer />
 
 <style>
     main {

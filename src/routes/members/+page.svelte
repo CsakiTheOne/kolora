@@ -12,6 +12,7 @@
     import pfpTolnaiZsofi from "$lib/images/members/tolnai-zsofi.jpg";
     import Header from "../../components/Header.svelte";
     import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
+    import Footer from "../../components/Footer.svelte";
 </script>
 
 <Header selectedPageIndex={2} />
@@ -199,6 +200,7 @@
         </p>
     </KoloraMemberDisplay>
 </main>
+<Footer />
 
 <style>
     p {

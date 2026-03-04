@@ -2,6 +2,7 @@
     import Header from "../../components/Header.svelte";
     import ComicPanel from "../../components/ComicPanel.svelte";
     import Divider from "../../components/Divider.svelte";
+    import Footer from "../../components/Footer.svelte";
 </script>
 
 <Header selectedPageIndex={1} />
@@ -95,6 +96,7 @@
         </div>
     </ComicPanel>
 </main>
+<Footer />
 
 <style>
     :global(.event-panel),
