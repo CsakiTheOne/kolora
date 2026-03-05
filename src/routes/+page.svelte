@@ -174,7 +174,7 @@
         <h3>Bandák, zenészek, akik koncerteztek nálunk</h3>
         <div style="display: flex; justify-content: center;">
             <Carousel
-                style="aspect-ratio: 21/9; max-height: 300px;"
+                style="max-height: 250px; width: 100%;"
                 pages={KoloraLocalDb.musicians.map((musician) => ({
                     title: musician.name,
                     background: musician.bannerImageUrl

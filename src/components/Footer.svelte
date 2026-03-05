@@ -6,7 +6,7 @@
     let footerContainer: HTMLElement | null = $state(null);
     let isFooterReachingBottom = $state(false);
 
-    onMount(() => {
+    $effect(() => {
         isFooterReachingBottom = footerContainer
             ? footerContainer.getBoundingClientRect().bottom >=
               window.innerHeight

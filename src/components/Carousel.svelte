@@ -8,8 +8,9 @@
 <div
     class="carousel-container"
     style="--spacing: {spacing}px; max-width: 100%; {style}"
+    {...rest}
 >
-    <div class="carousel" bind:this={carousel} {...rest}>
+    <div class="carousel" bind:this={carousel}>
         {#each pages as page}
             <div
                 class="page-wrapper"
@@ -75,6 +76,7 @@
         display: flex;
         gap: var(--spacing);
         width: 100%;
+        height: 100%;
         overflow-y: hidden;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
