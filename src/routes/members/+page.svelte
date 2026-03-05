@@ -201,9 +201,3 @@
     </KoloraMemberDisplay>
 </main>
 <Footer />
-
-<style>
-    p {
-        text-align: justify;
-    }
-</style>

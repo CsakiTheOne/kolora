@@ -76,6 +76,7 @@
         height: auto;
         aspect-ratio: 1/1;
         object-fit: cover;
+        clip-path: polygon(0 5%, 95% 0, 100% 95%, 5% 100%);
     }
 
     .pfp-container .mdi-account-circle {
