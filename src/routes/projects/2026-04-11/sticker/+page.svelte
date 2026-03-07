@@ -2,6 +2,9 @@
     import { onMount } from "svelte";
     import ComicPanel from "../../../../components/ComicPanel.svelte";
     import Footer from "../../../../components/Footer.svelte";
+    import ComicPanelWithBackground from "../../../../components/ComicPanelWithBackground.svelte";
+    import koloraLogo from "$lib/images/logos/kolora.png";
+    import inkognitoLogo from "$lib/images/logos/inkognito-kollektiva.jpg";
 
     let id: string = $state("");
 
@@ -23,24 +26,26 @@
     </ComicPanel>
     <h2>Kik csinálták ezt?</h2>
     <div class="static-row">
-        <ComicPanel
+        <ComicPanelWithBackground
             outerStyle="width: 100%;"
             innerClass="container-column panel-base"
+            backgroundUrl={koloraLogo}
         >
             <a href="/">
                 <h3>Kolora Egyesület</h3>
             </a>
             <p style="font-size: small;">fehérvári összművészeti egyesület</p>
-        </ComicPanel>
-        <ComicPanel
+        </ComicPanelWithBackground>
+        <ComicPanelWithBackground
             outerStyle="width: 100%;"
             innerClass="container-column panel-black"
+            backgroundUrl={inkognitoLogo}
         >
             <a href="https://instagram.com/inkognito_kollektiva" target="_blank">
                 <h3>INKognitó Kollektíva</h3>
             </a>
             <p style="font-size: small;">bodajki művész közösség</p>
-        </ComicPanel>
+        </ComicPanelWithBackground>
     </div>
     <h2>Vers</h2>
     <pre>
