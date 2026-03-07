@@ -38,7 +38,7 @@
                 Székesfehérváron, amelyekhez telefont érintve verseket és egyéb
                 meglepetéseket lehetett találni.
             </p>
-            <b>2026<a href="/projects/kolteszet-napja-2026" style="opacity: 0; cursor: text;">.</a>hamarosan</b>
+            <b>2026<a href="/projects/2026-04-11" style="opacity: 0; cursor: text;">.</a>hamarosan</b>
             <p>
                 <a class="cta-link yellow" href="/stickers" target="_self">
                     2024 kincsei
