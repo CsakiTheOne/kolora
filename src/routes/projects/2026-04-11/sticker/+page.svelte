@@ -15,7 +15,7 @@
 </script>
 
 <main class="container-column">
-    <h1>Költészet napi kincsvadászat 2026</h1>
+    <h1>Kincset találtál!</h1>
     <p>Matrica ID: {id}</p>
     <ComicPanel innerClass="container-column panel-yellow">
         <p>
