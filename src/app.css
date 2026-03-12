@@ -61,7 +61,7 @@ button:hover {
     color: black;
 }
 
-a {
+a:not(.btn) {
     color: var(--kolora-color-yellow);
     font-weight: 600;
 }

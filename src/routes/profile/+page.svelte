@@ -16,6 +16,7 @@
         loginWithGoogle,
         logout,
     } from "$lib/firebase/auth";
+    import UserManager from "$lib/UserManager.svelte";
 
     let isOwnerLoggedIn = $state(false);
     let isAuthLoaded = $state(false);
@@ -148,11 +149,6 @@
     {:else if !viewedUserId}
         <ComicPanel innerClass="container-column panel-blue">
             <h1>Profil</h1>
-            <h2>Jelentkezz be a fiókodhoz</h2>
-            <p>
-                Az account modal helyett most innen tudsz bejelentkezni,
-                kijelentkezni és kezelni a profilodat.
-            </p>
             <div class="actions">
                 <button class="btn" onclick={loginWithGoogle}>
                     <span class="mdi mdi-google"></span>
@@ -162,7 +158,7 @@
         </ComicPanel>
     {:else}
         <ComicPanel innerClass="container-column panel-blue">
-            <h1>Művész profil</h1>
+            <h1>Profil</h1>
 
             <h2>
                 <span class="mdi mdi-account-circle"></span>
@@ -194,6 +190,12 @@
                         <span class="mdi mdi-logout"></span>
                         Kijelentkezés
                     </button>
+                    {#if UserManager.instance.koloraUser?.roles?.includes(ROLES.KOLORA_MEMBER)}
+                        <a class="btn go-own-profile" href="/member-tools">
+                            <span class="mdi mdi-toolbox"></span>
+                            Kolora eszközök
+                        </a>
+                    {/if}
                     {#if explicitProfileId && !isOwnerLoggedIn}
                         <a class="btn go-own-profile" href="/profile">
                             <span class="mdi mdi-account"></span>
@@ -235,8 +237,7 @@
                     <a
                         href="https://www.markdownguide.org/cheat-sheet/"
                         target="_blank"
-                    >Markdown formázást</a>, a beágyazott YouTube videókat és a
-                    következő változókat: {"{createdAt}"}, {"{visitedPlaces}"}.
+                    >Markdown formázást</a> és a beágyazott YouTube videókat.
                 </p>
 
                 <div class="actions">

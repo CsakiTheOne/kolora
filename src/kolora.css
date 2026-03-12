@@ -17,11 +17,11 @@
     background-size: 32px 32px;
 }
 
-:is(.panel-base, .panel-blue, .panel-blue-variant, .panel-purple, .panel-purple-variant, .panel-red, .panel-red-variant, .panel-yellow-variant) a {
+:is(.panel-base, .panel-blue, .panel-blue-variant, .panel-purple, .panel-purple-variant, .panel-red, .panel-red-variant, .panel-yellow-variant) a:not(.btn) {
     color: var(--kolora-color-yellow);
 }
 
-.panel-yellow a, .panel-yellow a * {
+.panel-yellow a, .panel-yellow a:not(.btn) * {
     color: var(--kolora-color-red);
     background-color: var(--kolora-color-yellow);
 }
