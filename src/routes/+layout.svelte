@@ -11,10 +11,16 @@
     const { children } = $props();
 
     onMount(() => {
+        const unmountUserManager = UserManager.instance.mount();
+
         const font = new FontFace("Hit me, punk!", `url(${punkFont})`);
         font.load().then((loadedFont) => {
             document.fonts.add(loadedFont);
         });
+
+        return () => {
+            unmountUserManager();
+        };
     });
 </script>
 

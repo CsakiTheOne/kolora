@@ -4,6 +4,7 @@
     import iconImage from "@pictogrammers/memory-svg/svg/image.svg?raw";
     import iconChatProcessing from "@pictogrammers/memory-svg/svg/chat-processing.svg?raw";
     import iconPencil from "@pictogrammers/memory-svg/svg/pencil.svg?raw";
+    import iconAccountBox from "@pictogrammers/memory-svg/svg/account-box.svg?raw";
 
     const { selectedPageIndex = -1, hideButtons = false } = $props();
 
@@ -30,7 +31,9 @@
         >{@html iconPencil} <span class="desktop-visible">Workshop</span></attr
     >
     <div></div>
-    <div></div>
+    <a href="/profile" style="padding: 0.5rem;" title="Profil">
+        {@html iconAccountBox}
+    </a>
 </div>
 {#if !hideButtons}
     <div class="sticky {scrollY >= 128 ? 'scrolled' : ''}">
@@ -57,6 +60,10 @@
         align-items: center;
         justify-content: space-between;
         transition: all 0.1s ease-in-out;
+    }
+
+    .header-top > * {
+        display: inline-block;
     }
 
     :global(.header-top svg) {
