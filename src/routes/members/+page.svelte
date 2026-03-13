@@ -146,6 +146,10 @@
         tags={["Szervező", "Piros"]}
         links={[
             {
+                name: "CEO of BILOX",
+                url: "https://www.instagram.com/bilox.event/",
+            },
+            {
                 name: "Member of Insanity Crew",
                 url: "https://www.instagram.com/insanitycrew_events",
             },

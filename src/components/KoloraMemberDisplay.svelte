@@ -10,7 +10,10 @@
     } = $props();
 </script>
 
-<ComicPanelWithBackground backgroundUrl={profilePictureUrl}>
+<ComicPanelWithBackground
+    innerClass={tags.includes("Elnök") ? "panel-yellow" : (name === "Piros") ? "panel-red" : "panel-blue"}
+    backgroundUrl={profilePictureUrl}
+>
     <div class="member">
         <div class="pfp-container">
             {#if profilePictureUrl}
