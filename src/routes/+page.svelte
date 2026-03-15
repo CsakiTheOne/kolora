@@ -206,7 +206,13 @@
             </button>
         </p>
         <h3>Slammer-ek, akik szavaltak a színpadainkon</h3>
-        <ul class="outlined-list" style="margin-left: 1rem;">
+        <ul class="outlined-list panel-yellow">
+            <a
+                href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNe35XTWCtrG7R14RrMrzr1&si=aykx3qFShYdCoxBW"
+                target="_blank"
+            >
+                <li>2026 Februárban a Nyolcas Műhelyben</li>
+            </a>
             <a
                 href="https://youtube.com/playlist?list=PLxSO3Z5lw-xNuIBuUYZcll7J_jcdIZZ43&si=ZgSwslL_bq3PGCae"
                 target="_blank"

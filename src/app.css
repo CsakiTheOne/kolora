@@ -29,7 +29,7 @@ p {
     padding: 1rem;
 }
 
-main > h1 {
+main>h1 {
     width: 100%;
     text-align: left;
 }
@@ -71,4 +71,86 @@ a:not(.btn) {
     color: black;
     padding: 0.5rem 1rem;
     border: 4px solid black;
+}
+
+.outlined-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    border: 4px solid black;
+}
+
+.outlined-list > * {
+    padding: 0.5rem;
+}
+
+.outlined-list > *:not(:last-child) {
+    border-bottom: 4px solid black;
+}
+
+.comic-dots {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 25%,
+            transparent 25%);
+    background-position: 0 0;
+    background-size: 32px 32px;
+}
+
+:is(.panel-base, .panel-blue, .panel-blue-variant, .panel-purple, .panel-purple-variant, .panel-red, .panel-red-variant, .panel-yellow-variant) a:not(.btn) {
+    color: var(--kolora-color-yellow);
+}
+
+.panel-yellow a,
+.panel-yellow a:not(.btn) * {
+    color: var(--kolora-color-red);
+    background-color: var(--kolora-color-yellow);
+}
+
+.panel-base {
+    background-color: var(--kolora-color-base);
+    color: white;
+}
+
+.panel-blue {
+    background-color: var(--kolora-color-blue);
+    color: white;
+}
+
+.panel-blue-variant {
+    background-color: var(--kolora-color-blue-variant);
+    color: black;
+}
+
+.panel-purple {
+    background-color: var(--kolora-color-purple);
+    color: white;
+}
+
+.panel-purple-variant {
+    background-color: var(--kolora-color-purple-variant);
+    color: black;
+}
+
+.panel-red {
+    background-color: var(--kolora-color-red);
+    color: white;
+}
+
+.panel-red-variant {
+    background-color: var(--kolora-color-red-variant);
+    color: black;
+}
+
+.panel-yellow {
+    background-color: var(--kolora-color-yellow);
+    color: black;
+}
+
+.panel-yellow-variant {
+    background-color: var(--kolora-color-yellow-variant);
+    color: white;
+}
+
+.panel-black {
+    background-color: #282828;
+    color: white;
 }
