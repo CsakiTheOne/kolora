@@ -88,6 +88,10 @@ a:not(.btn) {
     border-bottom: 4px solid black;
 }
 
+pre {
+    text-wrap: inherit;
+}
+
 .comic-dots {
     background-image: radial-gradient(rgba(0, 0, 0, 0.1) 25%,
             transparent 25%);

@@ -40,17 +40,33 @@
         </p>
     </ComicPanel>
     <Divider />
-    <h2>Teszt versike</h2>
-    <pre>A rózsa vörös,
-Az ibolya kék,
-Ha a kódom működne
-Annak nagyon örülnék.
+    <ComicPanel innerClass="container-column panel-blue">
+        <h2>Feleségem ha felmegy a facebookra</h2>
+        <pre>Feleségem ha felmegy a facebookra,
+ott a seggét mindenkinek szétrúgja.
+Jaj annak, ki arra bármit nyelvtanilag helytelenül riposztol,
+mit az én kis feleségem a facebookon kiposztol!
 
-A kóddal nincs gond,
-Mindig csak javítom.
-A laptopom olyan szar,
-Mindjárt ki is hajítom.</pre>
-    <p>- Csáki</p>
+Harciasan népnevel és hitoktat,
+szellemi és nyelvi fölényt fitogtat,
+nem tűri, hogy egyetlen kis vesszőhiba megtorlatlan maradjon,
+notórius nyelvtannáci az én édes galambom.
+
+Bámulom őt szerelemtől kamaszon,
+feleségem virtuális amazon,
+pengeéles szarkazmusát feje fölött suhogtatva lépeget,
+és
+mellékesen megnézi a vicces cicás képeket.
+
+Feleségem monitorján három csetbox van nyitva,
+boldog, kinek küld egy szmájlit kék-fehér kis ablakába kattintva.
+Én meg csak itt búslakodok magamba,
+senki nem ír az üzenőfalamra,
+úgy kisírom emiatt a szemeimet, kisangyalom, reggelre,
+hogy
+a facebookon még a saját asszonykám se taggel be.</pre>
+        <p>- Varró Dániel</p>
+    </ComicPanel>
     <Divider />
     <h2>Kik csinálták ezt?</h2>
     <div class="static-row">

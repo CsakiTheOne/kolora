@@ -7,6 +7,7 @@
     import koloraLogo from "$lib/images/logos/kolora.png";
     import inkognitoLogo from "$lib/images/logos/inkognito-kollektiva.jpg";
     import Divider from "../../../../../components/Divider.svelte";
+    import ladybug from "$lib/images/events/2026-04-11/kacalibogi.png";
 
     let source: string = $state("");
 
@@ -40,17 +41,31 @@
         </p>
     </ComicPanel>
     <Divider />
-    <h2>Teszt versike</h2>
-    <pre>A rózsa vörös,
-Az ibolya kék,
-Ha a kódom működne
-Annak nagyon örülnék.
+    <ComicPanel innerClass="container-column panel-red">
+        <h2>Volt egyszer egy katica</h2>
+        <pre>Volt egyszer egy katica
+elveszett egy pöttye
+szegénykének emiatt 
+potyogott a könnye.
 
-A kóddal nincs gond,
-Mindig csak javítom.
-A laptopom olyan szar,
-Mindjárt ki is hajítom.</pre>
-    <p>- Csáki</p>
+Kereste az ágy alatt, 
+a fenyőfán, a réten, 
+bárányfelhőn, amögött,
+kikészült egészen.
+
+Egyszer aztán benézett 
+a tükörbe is végre
+- s meglátta a kóbor pettyet
+az orra tövébe'.
+
+Mi ebből a tanulság? 
+Csak annyi, kisbarátom
+hogyha bármi hiányozna, 
+előbb keresd magadban, 
+aztán a nagyvilágon.</pre>
+        <p>- Storcz Erzsébet</p>
+    </ComicPanel>
+    <img style="aspect-ratio: 2 / 1; object-fit: cover;" src={ladybug} alt="" />
     <Divider />
     <h2>Kik csinálták ezt?</h2>
     <div class="static-row">

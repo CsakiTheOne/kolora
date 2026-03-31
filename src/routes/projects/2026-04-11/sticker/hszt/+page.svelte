@@ -7,6 +7,7 @@
     import koloraLogo from "$lib/images/logos/kolora.png";
     import inkognitoLogo from "$lib/images/logos/inkognito-kollektiva.jpg";
     import Divider from "../../../../../components/Divider.svelte";
+    import forg from "$lib/images/events/2026-04-11/forg.png";
 
     let source: string = $state("");
 
@@ -19,6 +20,14 @@
 
         const stickerId = url.pathname.split("/").slice(-2, -1)[0];
         firestore["event-2026-04-11"].visitSticker(stickerId, source);
+
+        const foundStickers = JSON.parse(
+            localStorage.getItem("event-2026-04-11-found-stickers") || "[]",
+        );
+        localStorage.setItem(
+            "event-2026-04-11-found-stickers",
+            JSON.stringify([...new Set([...foundStickers, stickerId])]),
+        );
     });
 </script>
 
@@ -32,21 +41,34 @@
         </p>
     </ComicPanel>
     <Divider />
-    <h2>PIECE A SHIT</h2>
-    <pre>When I see a frog
+    <ComicPanel innerClass="container-column panel-black">
+        <h2>PIECE A SHIT</h2>
+        <pre>When I see a frog
 
 & it takes a hop away from me
 
 it's like
 
 what the fuck man.</pre>
-    <p>- Sam Pink</p>
-    <p>
-        A fönti vers a <i
-            >99 Poems to Cure Whatever's Wrong with You Or Create the Problem's
-            You Need</i
-        > című kötetből származik.
-    </p>
+        <p>- Sam Pink</p>
+        <p>
+            Egy vers a <i
+                >99 Poems to Cure Whatever's Wrong with You Or Create the
+                Problem's You Need</i
+            > című kötetből.
+        </p>
+    </ComicPanel>
+    <img style="aspect-ratio: 1 / 1; object-fit: cover;" src={forg} alt="" />
+    <iframe
+        width="100%"
+        style="aspect-ratio: 9 / 16; border-radius: 4px;"
+        src="https://www.youtube.com/embed/7wMsgOHqDPA?si=gNQwEM9RnD1u_Quc"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
     <Divider />
     <h2>Kik csinálták ezt?</h2>
     <div class="static-row">
