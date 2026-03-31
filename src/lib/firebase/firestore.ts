@@ -1,4 +1,4 @@
-import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion, getCountFromServer } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion, getCountFromServer, DocumentReference, type DocumentData } from "firebase/firestore";
 import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 
@@ -74,6 +74,19 @@ const firestore = {
         delete: (id: string): Promise<void> => {
             return deleteDoc(doc(db, "users", id));
         }
+    },
+    "event-2026-04-11": {
+        visitSticker: (stickerId: string, source: string): Promise<DocumentReference<DocumentData, DocumentData>> => {
+            if (!source) {
+                return Promise.reject(new Error(`Not storing visit to sticker ${stickerId}: missing source. This is probably not a new visit.`));
+            }
+            const visitData = {
+                stickerId: stickerId,
+                source: source,
+                visitedAt: new Date().toLocaleString("hu-HU"),
+            };
+            return addDoc(collection(db, "2026-04-11"), visitData);
+        },
     },
 };
 
