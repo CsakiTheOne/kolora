@@ -158,3 +158,13 @@ pre {
     background-color: #282828;
     color: white;
 }
+
+/*.TODO: remove after april 1st */
+a, button {
+    display: inline-block;
+    transition: all .5s ease;
+}
+a:hover, button:hover {
+    opacity: 0 !important;
+    rotate: 20deg !important;
+}
