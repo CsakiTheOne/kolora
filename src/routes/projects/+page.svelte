@@ -38,9 +38,15 @@
                 Székesfehérváron, amelyekhez telefont érintve verseket és egyéb
                 meglepetéseket lehetett találni.
             </p>
-            <b>2026<a href="/projects/2026-04-11" style="opacity: 0; cursor: text;">.</a>hamarosan</b>
             <p>
-                <a class="cta-link yellow" href="/stickers" target="_self">
+                <a href="/projects/2026-04-11">2026 kincsei</a>
+            </p>
+            <p>
+                2025? Abban az évben kísérleteztünk a hely alapú üzenőfalakkal.
+                Köszönjük, hogy kipróbáltátok! &lt;3
+            </p>
+            <p>
+                <a class="yellow" href="/stickers" target="_self">
                     2024 kincsei
                 </a>
             </p>
