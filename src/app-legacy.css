@@ -1,8 +1,18 @@
-@import url('./kolora.css');
 @import url('./anims.css');
 @import url('./collection-styles.css');
 @import url('./input.css');
-@import url('./utils.css');
+
+:root {
+    --kolora-color-base: #87243f;
+    --kolora-color-blue: #313b72;
+    --kolora-color-blue-variant: #86bbd8;
+    --kolora-color-purple: #531253;
+    --kolora-color-purple-variant: #b68cf0;
+    --kolora-color-red: #931621;
+    --kolora-color-red-variant: #dc7f9b;
+    --kolora-color-yellow: #dda448;
+    --kolora-color-yellow-variant: #554640;
+}
 
 body {
     --primary-color: #342a56;

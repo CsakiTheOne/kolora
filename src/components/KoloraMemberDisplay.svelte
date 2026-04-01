@@ -63,7 +63,6 @@
         flex-direction: row;
         align-content: stretch;
         gap: 1rem;
-        color: white;
     }
 
     .pfp-container {
@@ -110,6 +109,7 @@
 
     .tags > span {
         padding: 2px;
+        color: white;
     }
 
     li {
