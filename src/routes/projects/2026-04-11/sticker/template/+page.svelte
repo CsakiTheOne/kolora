@@ -52,6 +52,10 @@ A laptopom olyan szar,
 Mindjárt ki is hajítom.</pre>
     <p>- Csáki</p>
     <Divider />
+    <h2>Hol találok még kincseket? Mennyi van még?</h2>
+    <a class="irregular-box-container" href="/projects/2026-04-11">
+        <button class="irregular-box">Irány az esemény oldala</button>
+    </a>
     <h2>Kik csinálták ezt?</h2>
     <div class="static-row">
         <ComicPanelWithBackground

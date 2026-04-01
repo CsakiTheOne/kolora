@@ -107,6 +107,7 @@
         color: white;
         clip-path: var(--polygon-irregular-box);
         padding: 15px 35px;
+        width: 100%;
     }
 
     .btn {
