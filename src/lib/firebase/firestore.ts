@@ -76,6 +76,46 @@ const firestore = {
         }
     },
     "event-2026-04-11": {
+        getAllStats: (): Promise<{ stickerId: string; source: string; visitedAt: string }[]> => {
+            return getDocs(collection(db, "2026-04-11"))
+                .then((querySnapshot) => {
+                    const stats: { stickerId: string; source: string; visitedAt: string }[] = [];
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        stats.push({
+                            stickerId: data.stickerId,
+                            source: data.source,
+                            visitedAt: data.visitedAt,
+                        });
+                    });
+                    return stats;
+                })
+                .catch((error) => {
+                    console.error("Error getting stats: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        getStatsAfter: (startDate: Date): Promise<{ stickerId: string; source: string; visitedAt: string }[]> => {
+            const startDateString = startDate.toLocaleString("hu-HU");
+            const statsQuery = query(collection(db, "2026-04-11"), where("visitedAt", ">", startDateString));
+            return getDocs(statsQuery)
+                .then((querySnapshot) => {
+                    const stats: { stickerId: string; source: string; visitedAt: string }[] = [];
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        stats.push({
+                            stickerId: data.stickerId,
+                            source: data.source,
+                            visitedAt: data.visitedAt,
+                        });
+                    });
+                    return stats;
+                })
+                .catch((error) => {
+                    console.error("Error getting stats: ", error);
+                    return Promise.reject(error);
+                });
+        },
         visitSticker: (stickerId: string, source: string): Promise<DocumentReference<DocumentData, DocumentData>> => {
             if (!source) {
                 return Promise.reject(new Error(`Not storing visit to sticker ${stickerId}: missing source. This is probably not a new visit.`));
