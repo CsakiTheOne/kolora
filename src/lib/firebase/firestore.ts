@@ -1,4 +1,4 @@
-import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion, getCountFromServer, DocumentReference, type DocumentData } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion, getCountFromServer, DocumentReference, type DocumentData, orderBy } from "firebase/firestore";
 import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 
@@ -97,7 +97,7 @@ const firestore = {
         },
         getStatsAfter: (startDate: Date): Promise<{ stickerId: string; source: string; visitedAt: string }[]> => {
             const startDateString = startDate.toLocaleString("hu-HU");
-            const statsQuery = query(collection(db, "2026-04-11"), where("visitedAt", ">", startDateString));
+            const statsQuery = query(collection(db, "2026-04-11"), where("visitedAt", ">", startDateString), orderBy("visitedAt", "asc"));
             return getDocs(statsQuery)
                 .then((querySnapshot) => {
                     const stats: { stickerId: string; source: string; visitedAt: string }[] = [];

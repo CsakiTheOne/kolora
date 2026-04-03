@@ -6,7 +6,7 @@
     import { onMount } from "svelte";
 
     const stickersByArea = {
-        Bodajk: ["hszt"],
+        Bodajk: ["bodajk-tav", "hszt"],
         Székesfehérvár: ["puhakucko", "nyolcas-muhely", "muzi"],
     };
 
