@@ -7,7 +7,7 @@
     import { browser } from "$app/environment";
 
     const stickersByArea = {
-        Bodajk: ["bodajk-tav", "hszt"],
+        Bodajk: ["bodajk-tav", "g-buszmeg", "hszt"],
         Székesfehérvár: ["buszpu", "puhakucko", "nyolcas-muhely", "muzi"],
     };
 
