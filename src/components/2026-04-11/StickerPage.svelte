@@ -74,5 +74,13 @@
             <p style="font-size: small;">bodajki művész közösség</p>
         </ComicPanelWithBackground>
     </div>
+    <ComicPanel innerClass="container-column panel-yellow">
+        <p>
+            Az eseményt a <a
+                href="https://www.facebook.com/groups/570212437568903"
+                target="_blank">Posztolj verset az utcára!</a
+            > mozgalom ihlette.
+        </p>
+    </ComicPanel>
 </main>
 <Footer />
