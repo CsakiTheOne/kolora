@@ -4,6 +4,7 @@
     import Header from "../../../components/Header.svelte";
     import logoInkognito from "$lib/images/logos/inkognito-kollektiva.jpg";
     import { onMount } from "svelte";
+    import { browser } from "$app/environment";
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "hszt"],
@@ -14,6 +15,8 @@
     let isEventSoon = $state(false);
 
     onMount(() => {
+        if (!browser) return;
+
         const storedStickers = localStorage.getItem(
             "event-2026-04-11-found-stickers",
         );
