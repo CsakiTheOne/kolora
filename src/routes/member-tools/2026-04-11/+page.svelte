@@ -18,7 +18,7 @@
     }
 
     const defaultSince = new Date();
-    defaultSince.setHours(defaultSince.getHours() - 1);
+    defaultSince.setHours(defaultSince.getHours() - 8);
 
     let isLoading = $state(false);
     let error = $state("");
@@ -244,6 +244,29 @@
                 {/if}
             </ComicPanel>
         {/if}
+    </ComicPanel>
+    <ComicPanel innerClass="container-column panel-red">
+        <h2>Veszély zóna</h2>
+        <button
+            class="btn"
+            onclick={() => {
+                const confirmDelete = confirm(
+                    "Biztosan törölni szeretnéd a Költészet napi kincsvadászat 2026 statisztikákat? Ez a művelet nem visszavonható.",
+                );
+                if (confirmDelete) {
+                    firestore["event-2026-04-11"]
+                        .deleteAllStats()
+                        .then(() => {
+                            alert("Statisztikák sikeresen törölve.");
+                        })
+                        .catch(() => {
+                            alert(
+                                "Hiba történt a statisztikák törlése közben.",
+                            );
+                        });
+                }
+            }}>Minden statisztika törlése</button
+        >
     </ComicPanel>
 </main>
 <Footer />

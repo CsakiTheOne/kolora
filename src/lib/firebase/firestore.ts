@@ -1,4 +1,4 @@
-import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion, getCountFromServer, DocumentReference, type DocumentData, orderBy } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, setDoc, addDoc, collection, getDocs, where, query, deleteDoc, updateDoc, arrayUnion, getCountFromServer, DocumentReference, type DocumentData, orderBy, runTransaction } from "firebase/firestore";
 import { initializeFirebase } from "./firebase";
 import KoloraUser from "$lib/model/KoloraUser";
 
@@ -126,6 +126,18 @@ const firestore = {
                 visitedAt: new Date().toLocaleString("hu-HU"),
             };
             return addDoc(collection(db, "2026-04-11"), visitData);
+        },
+        deleteAllStats: (): Promise<void> => {
+            return runTransaction(db, async (transaction) => {
+                const statsQuery = query(collection(db, "2026-04-11"));
+                const querySnapshot = await getDocs(statsQuery);
+                querySnapshot.forEach((doc) => {
+                    transaction.delete(doc.ref);
+                });
+            }).catch((error) => {
+                console.error("Error deleting stats: ", error);
+                return Promise.reject(error);
+            });
         },
     },
 };
