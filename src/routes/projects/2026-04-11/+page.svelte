@@ -35,7 +35,7 @@
     <p>Esemény indul: Április 11-én</p>
     <p>
         A Magyar Költészet Napja alkalmából matricákat rejtünk el az utcákon,
-        amelyekhez telefont érintve verseket és egyéb tartalmakat találhatsz.
+        amelyekhez telefont érintve verseket és egyéb meglepetéseket találhatsz.
     </p>
     <p>
         Az eseményt a <a
@@ -47,15 +47,15 @@
         <h2>Matricák, amiket megtaláltál ezen az eszközön</h2>
 
         {#if foundStickers.length === 0}
-            <p>Még nem találtál meg egyetlen matricát sem!</p>
             {#if isEventSoon}
+                <p>Még nem találtál meg egyetlen matricát sem!</p>
                 {#each Object.entries(stickersByArea) as [area, stickers]}
                     <h3>{area} (0/{stickers.length})</h3>
                 {/each}
             {:else}
                 <p>
                     A helyszínek hamarosan elérhetőek lesznek, gyere vissza
-                    később!
+                    később! Tervezett települések: Székesfehérvár és Bodajk.
                 </p>
             {/if}
         {:else}
