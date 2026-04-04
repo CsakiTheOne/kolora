@@ -8,7 +8,7 @@
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt"],
-        Székesfehérvár: ["buszpu", "puhakucko", "nyolcas-muhely", "muzi"],
+        Székesfehérvár: ["buszpu", "puhakucko", "nyolcas-muhely", "muzi", "teleki"],
     };
 
     let foundStickers: string[] = $state([]);
