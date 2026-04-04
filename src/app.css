@@ -215,7 +215,7 @@
         clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
     }
 
-    .static-row>.comic-panel:first-child>.content {
+    .static-row>.comic-panel:first-child>* {
         padding-right: 32px !important;
         clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
     }
@@ -225,7 +225,7 @@
         clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%);
     }
 
-    .static-row>.comic-panel:last-child>.content {
+    .static-row>.comic-panel:last-child>* {
         padding-left: calc(32px + 1rem) !important;
         clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%);
     }
@@ -251,7 +251,7 @@
             clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
         }
 
-        .adaptive-col-row>.comic-panel:first-child>.content {
+        .adaptive-col-row>.comic-panel:first-child>* {
             padding-right: 32px !important;
             clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
         }
@@ -261,7 +261,7 @@
             clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%);
         }
 
-        .adaptive-col-row>.comic-panel:last-child>.content {
+        .adaptive-col-row>.comic-panel:last-child>* {
             padding-left: calc(32px + 1rem) !important;
             clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%);
         }
