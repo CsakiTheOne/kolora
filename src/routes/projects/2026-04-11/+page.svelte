@@ -69,7 +69,7 @@
                     ).length}/{stickers.length})
                 </h3>
                 <ul class="outlined-list panel-yellow">
-                    {#each stickers as sticker}
+                    {#each stickers.filter( (sticker) => foundStickers.includes(sticker), ) as sticker}
                         <a href="/projects/2026-04-11/sticker/{sticker}">
                             #{sticker}
                         </a>
