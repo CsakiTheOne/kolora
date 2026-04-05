@@ -60,4 +60,25 @@ Köszönöm a bíztatást, én is slam-mer lettem.</pre>
             </i>
         </p>
     </ComicPanel>
+    <ComicPanel innerClass="container-column panel-yellow">
+        <p>
+            <i>
+                Írtam egy dalt arról, ahogy McDonald's-ban dolgoztam 18 évesen.
+            </i><br />
+            - MonochroMenace
+        </p>
+        <iframe
+            class="w-full"
+            title="Spotify - Minimum Rage"
+            data-testid="embed-iframe"
+            style="border-radius:12px; aspect-ratio: 16 / 9;"
+            src="https://open.spotify.com/embed/track/5WIHM3sAiArCXH3xZ3eym2?utm_source=generator&theme=0"
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+        ></iframe>
+        <a class="btn" style="background-color: var(--kolora-color-red); color: var(--kolora-color-yellow) !important;" href="https://youtu.be/J8vjHOyVxUA?si=ktBe0qPtMVKdcAne" target="_blank">
+            Videóklip YouTube-on
+        </a>
+    </ComicPanel>
 </StickerPage>
