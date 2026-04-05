@@ -57,4 +57,13 @@ nyomat
 omat.</pre>
         <p>- Kiss Judit Ágnes</p>
     </ComicPanel>
+    <iframe
+        class="w-full aspect-video"
+        src="https://www.youtube.com/embed/dKd-v5QVytE?si=6hzih09qtxbapKoD"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
 </StickerPage>
