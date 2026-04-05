@@ -4,16 +4,30 @@
 </script>
 
 <StickerPage>
-    <iframe
-        class="w-full"
-        style="aspect-ratio: 9 / 16;"
-        src="https://www.youtube.com/embed/lZTsGdubUUw?si=7Z8-sJceBPiyn2ud"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-    ></iframe>
+    <ComicPanel innerClass="container-column">
+        <h2>Bájoló</h2>
+        <pre>Rebbenő szemmel
+ülök a fényben,
+rózsafa ugrik
+át a sövényen,
+ugrik a fény is,
+gyűlik a felleg,
+surran a villám,
+s már feleselget
+fenn a magasban
+dörgedelem
+vad dörgedelemmel,
+kékje lehervad
+lenn a tavaknak,
+s tükre megárad,
+jöjj be a házba,
+vesd le ruhádat,
+már esik is kint,
+vesd le az inged,
+mossa az eső
+össze szívünket.</pre>
+        <p>- Radnóti Miklós</p>
+    </ComicPanel>
     <ComicPanel innerClass="container-column panel-yellow-variant">
         <h2>Helka első CD-je: Tündevény</h2>
         <p>
@@ -55,4 +69,14 @@
             Webshop
         </a>
     </ComicPanel>
+    <iframe
+        class="w-full"
+        style="aspect-ratio: 9 / 16;"
+        src="https://www.youtube.com/embed/lZTsGdubUUw?si=7Z8-sJceBPiyn2ud"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
 </StickerPage>
