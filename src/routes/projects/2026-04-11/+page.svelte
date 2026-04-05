@@ -95,7 +95,7 @@
             {/each}
         {/if}
     </ComicPanel>
-    <ComicPanel innerClass="flex flex-row gap-4 panel-black">
+    <ComicPanel innerClass="flex flex-row items-start gap-4 panel-black">
         <img src={logoInkognito} alt="" style="width: 92px; height: auto;" />
         <p>
             Az idei esemény az <a
