@@ -17,6 +17,7 @@
             "puhakucko",
             "tanchaz",
             "teleki",
+            "vpg",
         ],
     };
 

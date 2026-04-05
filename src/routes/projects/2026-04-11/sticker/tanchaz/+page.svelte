@@ -4,67 +4,55 @@
 </script>
 
 <StickerPage>
-    <ComicPanel innerClass="container-column panel-blue">
-        <h2>Celæna és Æisa népdal feldolgozásai</h2>
-        <div class="flex flex-row gap-4">
-            <div class="flex-1">
-                <iframe
-                    class="w-full aspect-square"
-                    src="https://www.youtube.com/embed/PfINS-p9Kqk?si=REMh1QWvPwmMu2Tc"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                ></iframe>
-            </div>
-            <div class="flex-1">
-                <iframe
-                    class="w-full aspect-square"
-                    src="https://www.youtube.com/embed/mi0QyqIZRK8?si=A-QwZRWXRyzmzFcS"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                ></iframe>
-            </div>
-        </div>
+    <iframe
+        class="w-full"
+        style="aspect-ratio: 9 / 16;"
+        src="https://www.youtube.com/embed/lZTsGdubUUw?si=7Z8-sJceBPiyn2ud"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+    <ComicPanel innerClass="container-column panel-yellow-variant">
+        <h2>Helka első CD-je: Tündevény</h2>
+        <p>
+            <i>Mese kezdődik. Álom vagy valóság? A válasz a te kezedben.</i>
+        </p>
         <iframe
-            class="w-full aspect-video"
-            src="https://www.youtube.com/embed/K9sXsJc285k?si=t_jrgmDK-Q3Qz3rq"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
+            class="w-full rounded"
+            style="aspect-ratio: 16 / 9;"
+            title="Spotify album embed"
+            data-testid="embed-iframe"
+            src="https://open.spotify.com/embed/album/763f4JjmRS3VGE0NQNIOMQ?utm_source=generator"
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
         ></iframe>
         <div class="flex flex-row gap-4">
-            <div class="flex-1">
-                <iframe
-                    class="w-full aspect-square"
-                    src="https://www.youtube.com/embed/N8aqzCKS6pg?si=MjeA-KjQd8NUbsPO"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                ></iframe>
-            </div>
-            <div class="flex-1 flex flex-col">
-                <a
-                    class="btn"
-                    style="background-color: #1ed760;"
-                    href="https://open.spotify.com/artist/1iO2JTW6PN5qPN7Obq94EA?si=73WDTnYSRT2mKMbczCxZIw"
-                    target="_blank">Spotify: Celæna</a
-                >
-                <a
-                    class="btn"
-                    style="background-color: #1ed760;"
-                    href="https://open.spotify.com/artist/31I8M8cZYfzIjW5Fa1iG8x?si=fpZXD00bTD6T7Cjov6LOZw"
-                    target="_blank">Spotify: Æisa</a
-                >
-            </div>
+            <a
+                class="btn flex-1"
+                style="background-color: #ff0032;"
+                href="https://youtube.com/playlist?list=OLAK5uy_lKeijD6mtR9m5wB7KFYugXC0VYNztlO24&si=7pRNE9-qDVzQAPDg"
+                target="_blank"
+            >
+                YouTube
+            </a>
+            <a
+                class="btn flex-1"
+                style="background-color: #ff0032;"
+                href="https://music.youtube.com/playlist?list=OLAK5uy_nLt1ns-ZzeDWAZs8XCQRLoSfqJXYwDYUs&si=CgPe5L02ZWVw9yPN"
+                target="_blank"
+            >
+                YT Music
+            </a>
         </div>
+        <a
+            class="btn"
+            href="https://www.helkamusic.hu/webshop/t%C3%BCndev%C3%A9ny-cd-%C3%A9s-silent-book"
+            target="_blank"
+        >
+            Webshop
+        </a>
     </ComicPanel>
 </StickerPage>
