@@ -62,33 +62,48 @@ for a little while, and then they leave.</pre>
             target="_blank">Elolvasom eredeti nyelven</a
         >
     </ComicPanel>
-    <ComicPanel innerClass="container-column">
-        <h2>A borozó</h2>
-        <pre>Gondüző borocska mellett
-Vígan illan életem;
-Gondüző borocska mellett,
-Sors, hatalmad nevetem.
- 
-És mit ámultok? ha mondom,
-Hogy csak a bor istene,
-Akit én imádok, aki
-E kebelnek mindene.
- 
-És a bor vidám hevében
-Füttyentek rád, zord világ!
-Szívemet hol annyi kínnak
-Skorpiói szaggaták.
- 
-Bor taníta húrjaimra
-Csalni nyájas éneket;
-Bor taníta elfeledni,
-Csalfa lyányok, titeket.
- 
-Egykor majd borocska mellől
-A halál ha űzni jő:
-Még egy korty - s nevetve dűlök
-Jégöledbe, temető!</pre>
-        <p>- Petőfi Sándor</p>
+    <ComicPanel innerClass="container-column panel-yellow-variant">
+        <h2>Babzsák</h2>
+        <pre>Rendeltem százliternyi tölteléket.
+A kis golyók rugalmassága csökken,
+ahogy egymással folyton összeérnek
+és megtörnek, mint a sejtek a bőrben.
+
+Egyszer csak lent ültem már a földön
+sajgó derékkel, pár tömött év után,
+és azt gondoltam, ezt most még újratöltöm,
+feszesítek a hasas, bő ruhán.
+
+Három nap múlva meg is jött csomagban.
+Figyelmeztettek, hogy kell majd valaki,
+aki segít, hogy mellé ne folyassam,
+a babzsák száját végig tartani.
+
+Biztos nehéz, de mégse lehetetlen.
+Lejött velem a fiam a garázsba,
+és amíg én a huzatot leszedtem,
+a töltelékről a madzagot levágta.
+
+Vagy két órán át küzdöttünk, hiába.
+Nagyon figyeltünk, mégse működött,
+repült a műhó, alig jutott a zsákba,
+szétterült lassan, mint a színházi köd.
+
+Aztán lassacskán csak meglett a babzsák.
+Aznap volt a huszadik szülinapja:
+a fiam ingerülten nekilátott,
+hogy még a huzatot is visszarakja.
+
+Gyömöszöltük és húzkodtuk, miközben
+várták már őt, de félúton megállt,
+nyomorgattam az oldalát és nyögtem,
+de a babzsák csak nem hagyta magát.
+
+Végül neki már indulnia kellett,
+üzent is később, hogy rendben odaért,
+míg én a tömött huzatot törölgettem,
+ahogy húsz éve a nővérek a vért.</pre>
+        <p>- Tóth Krisztina</p>
     </ComicPanel>
     <iframe
         width="100%"
