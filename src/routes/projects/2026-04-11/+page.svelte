@@ -8,7 +8,7 @@
     import Divider from "../../../components/Divider.svelte";
 
     const stickersByArea = {
-        Bodajk: ["bodajk-tav", "g-buszmeg", "hszt"],
+        Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
         Székesfehérvár: [
             "buszpu",
             "deak",

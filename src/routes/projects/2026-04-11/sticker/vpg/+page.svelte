@@ -4,7 +4,7 @@
 </script>
 
 <StickerPage>
-    <ComicPanel innerClass="container-column">
+    <ComicPanel innerClass="container-column panel-red">
         <h2>Odébblökött</h2>
         <pre>Fuh de lazák ezek a slam-merek,
 Hát én így szavalni nem merek.
