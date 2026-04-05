@@ -5,6 +5,7 @@
     import logoInkognito from "$lib/images/logos/inkognito-kollektiva.jpg";
     import { onMount } from "svelte";
     import { browser } from "$app/environment";
+    import Divider from "../../../components/Divider.svelte";
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt"],
@@ -76,13 +77,20 @@
                         foundStickers.includes(sticker),
                     ).length}/{stickers.length})
                 </h3>
-                <ul class="outlined-list panel-yellow">
-                    {#each stickers.filter( (sticker) => foundStickers.includes(sticker), ) as sticker}
-                        <a href="/projects/2026-04-11/sticker/{sticker}">
-                            #{sticker}
-                        </a>
-                    {/each}
-                </ul>
+                {#if stickers.filter( (sticker) => foundStickers.includes(sticker), ).length === 0}
+                    <p>
+                        Még nem találtál meg egyetlen matricát sem ezen a
+                        helyszínen!
+                    </p>
+                {:else}
+                    <ul class="outlined-list panel-yellow">
+                        {#each stickers.filter( (sticker) => foundStickers.includes(sticker), ) as sticker}
+                            <a href="/projects/2026-04-11/sticker/{sticker}">
+                                #{sticker}
+                            </a>
+                        {/each}
+                    </ul>
+                {/if}
             {/each}
         {/if}
     </ComicPanel>
@@ -95,5 +103,19 @@
             > támogatásával valósul meg. Lessétek meg őket is!
         </p>
     </ComicPanel>
+    <button
+        class="btn"
+        style="background-color: var(--kolora-color-red); color: white;"
+        onclick={() => {
+            const confirmed = confirm(
+                "Biztosan törölni szeretnéd a haladásodat? Ezt nem lehet visszavonni!",
+            );
+            if (!confirmed) return;
+            localStorage.removeItem("event-2026-04-11-found-stickers");
+            foundStickers = [];
+        }}
+    >
+        Haladás törlése
+    </button>
 </main>
 <Footer />
