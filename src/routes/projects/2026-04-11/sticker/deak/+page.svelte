@@ -15,5 +15,5 @@
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
     ></iframe>
-    <img style="border: 4px solid black;" src={aiCupcakeMeme} alt="" />
+    <!--img style="border: 4px solid black;" src={aiCupcakeMeme} alt="" /-->
 </StickerPage>
