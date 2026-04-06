@@ -9,15 +9,19 @@
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
-        Székesfehérvár: [
-            "arpad",
+        "Székesfehérvár, centrum": [
             "buszpu",
-            "deak",
+            "ciszter",
             "muzi",
-            "nyolcas-muhely",
             "puhakucko",
-            "tanchaz",
             "teleki",
+        ],
+        "Székesfehérvár, gyűrűn kívül": ["arpad", "vaci"],
+        "Székesfehérvár, tó és tánc": ["tanchaz", "toparti"],
+        "Székesfehérvár, vasút környéke": [
+            "deak",
+            "nyolcas-muhely",
+            "vasut",
             "vpg",
         ],
     };
