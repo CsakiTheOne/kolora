@@ -45,6 +45,15 @@
             (eventDate.getTime() - now.getTime()) / (1000 * 3600 * 24);
         isEventSoon = diffInDays <= 4;
     });
+
+    function findAllStickers() {
+        const allStickers = Object.values(stickersByArea).flat();
+        foundStickers = allStickers;
+        localStorage.setItem(
+            "event-2026-04-11-found-stickers",
+            JSON.stringify(foundStickers),
+        );
+    }
 </script>
 
 <Header hideButtons />
@@ -106,7 +115,9 @@
             Az idei esemény az <a
                 href="https://instagram.com/inkognito_kollektiva"
                 target="_blank">INKognitó Kollektíva</a
-            > támogatásával valósul meg. Lessétek meg őket is!
+            >
+            támogatásával valósul meg. Lessétek meg őket
+            <span onclick={findAllStickers}>is!</span>
         </p>
     </ComicPanel>
     <button
