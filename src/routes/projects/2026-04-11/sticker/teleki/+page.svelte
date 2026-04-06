@@ -2,10 +2,38 @@
     import StickerPage from "../../../../../components/2026-04-11/StickerPage.svelte";
     import ComicPanelWithBackground from "../../../../../components/ComicPanelWithBackground.svelte";
     import goldenRatio from "$lib/images/events/2026-04-11/golden-ratio.png";
+    import ComicPanel from "../../../../../components/ComicPanel.svelte";
 </script>
 
 <StickerPage>
-    <ComicPanelWithBackground backgroundUrl={goldenRatio} innerClass="container-column panel-base">
+    <ComicPanel innerClass="container-column panel-red">
+        <h2>Emelt matek</h2>
+        <pre>Láttál már harmadfokú egyenlet rendszereket?
+Nyugi, csak a jéghegy csúcsa ez.
+Itt több művelet van, mint szám,
+Mert emelt szinten tanulod a matematikát.
+
+Nem elég órán figyelni és keményen dolgozni,
+A háziból sem szoktunk már egy-kettőt kapni.
+Időd más tantárgyakra ne szánd,
+Mert emelt szinten tanulod a matematikát.
+
+Mit nekem a nyelvvizsga, Cisco tanfolyam,
+Történelem témazáró? Már egyáltalán nem zavar.
+Csak egy menjen, nem kell semmi más,
+Mert emelt szinten tanulod a matematikát.
+
+S mire mész így az életben?
+Tényleg ennyire kell a matek?
+Még szép! Ne is merj mondani mást!
+Mert emelt szinten tanulod a matematikát.</pre>
+        <p>- Csáki</p>
+    </ComicPanel>
+
+    <ComicPanelWithBackground
+        backgroundUrl={goldenRatio}
+        innerClass="container-column panel-yellow"
+    >
         <h2>Aranymetszés</h2>
         <pre>1: Állj!
 2: Figyelj.
