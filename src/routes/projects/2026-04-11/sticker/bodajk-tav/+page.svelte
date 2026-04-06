@@ -54,4 +54,23 @@ Van, amikor a csend mondja ki helyettünk:
 „igen, ez az. Itt jó lenni.”</pre>
         <p>- Éles Barbara</p>
     </ComicPanel>
+    <iframe
+        class="w-full aspect-video"
+        src="https://www.youtube.com/embed/Uw5OLnN7UvM?si=006KtGdq4fw3d5Wx"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+    ></iframe>
+    <iframe
+        class="w-full aspect-video"
+        title="Just the two of us"
+        data-testid="embed-iframe"
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/track/5fdNHVZHbWB1AaXk4RBGVD?utm_source=generator&theme=0"
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+    ></iframe>
 </StickerPage>
