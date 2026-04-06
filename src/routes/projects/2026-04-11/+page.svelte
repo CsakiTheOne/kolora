@@ -10,6 +10,7 @@
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
         Székesfehérvár: [
+            "arpad",
             "buszpu",
             "deak",
             "muzi",
