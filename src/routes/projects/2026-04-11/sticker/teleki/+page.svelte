@@ -96,4 +96,33 @@ Mert emelt szinten tanulod a matematikát.</pre>
 21: És majd úgy illünk egymáshoz, ahogy egy az egy egész hatszáz tizennyolchoz.</pre>
         <p>- Csáki</p>
     </ComicPanelWithBackground>
+    <ComicPanel innerClass="container-column panel-black">
+        <iframe
+            class="w-full aspect-square"
+            src="https://www.youtube.com/embed/xjh_IE9bKOI?si=SLmHL6ToAvCmJCyw"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+        <div class="flex flex-row gap-4">
+            <a
+                class="btn flex-1"
+                style="background-color: #1DB954;"
+                href="https://open.spotify.com/track/7tvuLLroI0n6uYBWuFig5d?si=a172c1a5e7714a1a"
+                target="_blank"
+            >
+                Spotify
+            </a>
+            <a
+                class="btn flex-1"
+                style="background-color: #FF0000;"
+                href="https://music.youtube.com/watch?v=mBgviceBzFs&si=OOilU8d7G0nif9NJ"
+                target="_blank"
+            >
+                YT Music
+            </a>
+        </div>
+    </ComicPanel>
 </StickerPage>
