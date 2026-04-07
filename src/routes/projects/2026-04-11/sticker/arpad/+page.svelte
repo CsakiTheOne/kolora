@@ -1,10 +1,12 @@
 <script>
     import StickerPage from "../../../../../components/2026-04-11/StickerPage.svelte";
     import ComicPanel from "../../../../../components/ComicPanel.svelte";
+    import ComicPanelWithBackground from "../../../../../components/ComicPanelWithBackground.svelte";
+    import telezold from "$lib/images/events/2026-04-11/telezold.png";
 </script>
 
 <StickerPage>
-    <ComicPanel innerClass="container-column">
+    <ComicPanelWithBackground backgroundUrl={telezold} innerClass="container-column panel-blue">
         <h2>Telezöld</h2>
         <p>
             Senki nem tudja, hogy pontosan hogyan, de egyszer csak a város
@@ -26,7 +28,7 @@
                 target="_blank">100 szóban Budapest pályázatra</a
             > készült.
         </p>
-    </ComicPanel>
+    </ComicPanelWithBackground>
     <iframe
         class="w-full aspect-video"
         src="https://www.youtube.com/embed/3QGO3BtuUbk?si=_evLBwz6GyUW5h_7"
