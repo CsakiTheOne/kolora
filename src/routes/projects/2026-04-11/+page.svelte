@@ -5,7 +5,6 @@
     import logoInkognito from "$lib/images/logos/inkognito-kollektiva.jpg";
     import { onMount } from "svelte";
     import { browser } from "$app/environment";
-    import Divider from "../../../components/Divider.svelte";
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
@@ -16,7 +15,6 @@
             "puhakucko",
             "teleki",
         ],
-        "Székesfehérvár, gyűrűn kívül": ["arpad", "vaci"],
         "Székesfehérvár, tó és tánc": ["tanchaz", "toparti"],
         "Székesfehérvár, vasút környéke": [
             "deak",
@@ -24,6 +22,7 @@
             "vasut",
             "vpg",
         ],
+        "Székesfehérvár, gyűrűn kívül": ["arpad", "vaci"],
     };
 
     let foundStickers: string[] = $state([]);
@@ -43,7 +42,7 @@
         const now = new Date();
         const diffInDays =
             (eventDate.getTime() - now.getTime()) / (1000 * 3600 * 24);
-        isEventSoon = diffInDays <= 4;
+        isEventSoon = diffInDays <= 7;
     });
 
     function findAllStickers() {
@@ -66,6 +65,7 @@
     </p>
     <p>
         Az eseményt a <a
+            style="color: var(--kolora-color-red); font-weight: bold;"
             href="https://www.facebook.com/groups/570212437568903"
             target="_blank">Posztolj verset az utcára!</a
         > mozgalom ihlette.
@@ -108,6 +108,33 @@
                 {/if}
             {/each}
         {/if}
+    </ComicPanel>
+    <ComicPanel innerClass="container-column panel-yellow">
+        <h2>Tanácsok a kereséshez</h2>
+        <p>
+            A matricák Április 11-e folyamán kerülnek kihelyezésre. Érdemes
+            szombat délután kirándulni, hogy minél többet megtalálj!
+        </p>
+        <p>
+            Vannak matricák, amelyek távolabb esnek a többitől. Ezeket más
+            napokon is megkeresheted. Mindem matrica kint lesz amíg az időjárás
+            vagy egy lelkiismeretes takarító el nem távolítja őket.
+        </p>
+        <h3>Jó, vannak kategóriák, de mégis hol keressem?</h3>
+        <p>
+            Idén igyekeztünk a középiskolásoknak kedvezni, így a matricák nagy
+            része olyan helyeken lesz, ahol ők is gyakran megfordulnak.
+            Iskoláik, ingázó útvonaluk, kedvelt találkozóhelyeik környéke.
+        </p>
+        <h3>
+            Ha valamelyiket nem találom vagy túl messze van, sosem tudom meg,
+            hogy mi van rajta?
+        </h3>
+        <p>
+            Nem maradsz le semmiről! Minden matrica tartalmát meg fogjuk osztani
+            ezen az oldalon, így ha nem is sikerül megtalálnod egyiket sem,
+            akkor is élvezheted a verseket és meglepetéseket!
+        </p>
     </ComicPanel>
     <ComicPanel innerClass="flex flex-row items-start gap-4 panel-black">
         <img src={logoInkognito} alt="" style="width: 92px; height: auto;" />
