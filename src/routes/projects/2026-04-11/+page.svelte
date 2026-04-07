@@ -120,6 +120,28 @@
             napokon is megkeresheted. Mindem matrica kint lesz amíg az időjárás
             vagy egy lelkiismeretes takarító el nem távolítja őket.
         </p>
+        <h3>Gyere barátokkal!</h3>
+        <code
+            class="p-2"
+            style="user-select: all; background-color: var(--kolora-color-yellow-variant); color: white;"
+            >https://kolora.web.app/projects/2026-04-11/</code
+        >
+        <button
+            class="btn"
+            style="background-color: var(--kolora-color-base); color: white;"
+            onclick={() =>
+                navigator.clipboard.writeText(
+                    "https://kolora.web.app/projects/2026-04-11/",
+                )}
+        >
+            Oldal linkjének másolása
+        </button>
+        <a
+            class="btn"
+            style="background-color: var(--kolora-color-blue); color: white !important;"
+            href="https://www.facebook.com/events/1684966296007506/"
+            target="_blank">Facebook esemény</a
+        >
         <h3>Jó, vannak kategóriák, de mégis hol keressem?</h3>
         <p>
             Idén igyekeztünk a középiskolásoknak kedvezni, így a matricák nagy
