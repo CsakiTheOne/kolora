@@ -142,12 +142,19 @@
             href="https://www.facebook.com/events/1684966296007506/"
             target="_blank">Facebook esemény</a
         >
-        <h3>Jó, vannak kategóriák, de mégis hol keressem?</h3>
+        <h3>Jó, vannak kategóriák, de mégis hol keressem a matricákat?</h3>
         <p>
             Idén igyekeztünk a középiskolásoknak kedvezni, így a matricák nagy
             része olyan helyeken lesz, ahol ők is gyakran megfordulnak.
             Iskoláik, ingázó útvonaluk, kedvelt találkozóhelyeik környéke.
         </p>
+        <a
+            href="https://www.facebook.com/events/1408358167265774/"
+            target="_blank"
+        >
+            Amúgy tudtátok, hogy a Nyolcasban Kifordított Buli lesz 10 és 11-én
+            este?
+        </a>
         <h3>
             Ha valamelyiket nem találom vagy túl messze van, sosem tudom meg,
             hogy mi van rajta?
