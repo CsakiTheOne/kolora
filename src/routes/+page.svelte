@@ -16,7 +16,19 @@
 
 <Header selectedPageIndex={0} />
 <main class="container-column">
-    <ComicPanelWithBackground innerClass="container-column panel-base" backgroundUrl={headerImage}>
+    <a href="/projects/2026-04-11/">
+        <ComicPanel innerClass="container-column panel-yellow">
+            <h2>Költészet napi kincsvadászat 2026</h2>
+            <p>Kezdés: Április 11-én</p>
+            <p>
+                <a href="/projects/2026-04-11/">Több infóért katt ide!</a>
+            </p>
+        </ComicPanel>
+    </a>
+    <ComicPanelWithBackground
+        innerClass="container-column panel-base"
+        backgroundUrl={headerImage}
+    >
         <h2>Rólunk</h2>
         <div class="adaptive-col-row" style="align-items: start;">
             <div
