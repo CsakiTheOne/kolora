@@ -109,7 +109,7 @@
             {/each}
         {/if}
     </ComicPanel>
-    <ComicPanel innerClass="container-column panel-yellow">
+    <ComicPanel innerClass="container-column panel-purple">
         <h2>Tanácsok a kereséshez</h2>
         <p>
             A matricák Április 11-e folyamán kerülnek kihelyezésre. Érdemes
@@ -121,11 +121,10 @@
             vagy egy lelkiismeretes takarító el nem távolítja őket.
         </p>
         <h3>Gyere barátokkal!</h3>
-        <code
-            class="p-2"
-            style="user-select: all; background-color: var(--kolora-color-yellow-variant); color: white;"
-            >https://kolora.web.app/projects/2026-04-11/</code
-        >
+        <p>
+            Küldd el a barátaidnak is ezt az oldalt, és induljatok közösen
+            kincsvadászatra!
+        </p>
         <button
             class="btn"
             style="background-color: var(--kolora-color-base); color: white;"
