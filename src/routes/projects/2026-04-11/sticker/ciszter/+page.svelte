@@ -4,7 +4,7 @@
 </script>
 
 <StickerPage>
-    <ComicPanel innerClass="container-column panel-blue-variant">
+    <ComicPanel innerClass="container-column panel-blue">
         <h2>Csendes csodák</h2>
         <pre>Ne várd, hogy a föld meghasadjon
 És tűz nyelje el Sodomát.

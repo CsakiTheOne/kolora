@@ -5,6 +5,14 @@
 </script>
 
 <StickerPage>
+    <ComicPanel innerClass="container-column">
+        <h2>Buszvezetők</h2>
+        <pre>A buszvezetők mind mogorvák,
+Odacsukják az utasok orrát.
+Ahogy az orrok ellilulnak,
+A buszvezetők felvidulnak.</pre>
+        <p>- Varró Dániel</p>
+    </ComicPanel>
     <a
         style="border: 4px solid black;"
         href="https://www.facebook.com/photo?fbid=941373935258896&set=pcb.941375488592074"

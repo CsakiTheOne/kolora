@@ -2,9 +2,16 @@
     import StickerPage from "../../../../../components/2026-04-11/StickerPage.svelte";
     import ComicPanel from "../../../../../components/ComicPanel.svelte";
     import heartcode from "$lib/images/events/2026-04-11/heartcode.svg";
+    import nngFejleszto from "$lib/images/events/2026-04-11/nng_fejleszto.jpg";
 </script>
 
 <StickerPage>
+    <ComicPanel innerClass="container-column panel-blue">
+        <a href={nngFejleszto} target="_blank">
+            <img src={nngFejleszto} alt="" />
+        </a>
+        <p>Vers: Varró Dániel, illusztráció: Baranyai (b) András</p>
+    </ComicPanel>
     <ComicPanel innerClass="container-column panel-black">
         <h2>Heartcode</h2>
         <img src={heartcode} alt="" />
