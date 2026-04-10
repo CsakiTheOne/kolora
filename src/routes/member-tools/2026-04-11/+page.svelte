@@ -17,14 +17,16 @@
         return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
     }
 
-    const defaultSince = new Date();
-    defaultSince.setHours(defaultSince.getHours() - 8);
+    const defaultSince = new Date(2026, 3, 11, 0, 0, 0);
 
     let isLoading = $state(false);
     let error = $state("");
     let recentSince = $state(toDatetimeLocalString(defaultSince));
     let lastRefreshed = $state<Date | null>(null);
 
+    const isCsaki = $derived(
+        UserManager.instance.koloraUser?.id === "hi1b98VKT0Pzu8ql8QsUqmVYubl1",
+    );
     /*const isMember = $derived(
         UserManager.instance.koloraUser?.roles?.includes(ROLES.KOLORA_MEMBER),
     );*/
@@ -227,17 +229,49 @@
                 {:else}
                     <ul class="outlined-list recent-list">
                         {#each [...recentStats].reverse() as entry}
-                            <li class="recent-row">
+                            <li class="flex flex-row items-center gap-4">
                                 <span class="mdi mdi-sticker-outline"></span>
-                                <span class="recent-sticker"
-                                    >#{entry.stickerId}</span
-                                >
-                                <span class="recent-source muted"
-                                    >{entry.source}</span
-                                >
-                                <span class="recent-time"
-                                    >{entry.visitedAt}</span
-                                >
+                                <div class="flex-1 flex flex-col">
+                                    <div
+                                        class="flex flex-row gap-4 items-center"
+                                    >
+                                        <span class="recent-sticker"
+                                            >#{entry.stickerId}</span
+                                        >
+                                        <span class="recent-source muted"
+                                            >src: {entry.source}</span
+                                        >
+                                    </div>
+                                    <span class="recent-time"
+                                        >{entry.visitedAt}</span
+                                    >
+                                </div>
+                                {#if isCsaki}
+                                    <button
+                                        class="btn panel-red"
+                                        onclick={() => {
+                                            const confirmDelete = confirm(
+                                                `Biztosan törölni szeretnéd a ${entry.visitedAt} időpontban történt látogatást?`,
+                                            );
+                                            if (confirmDelete) {
+                                                firestore["event-2026-04-11"]
+                                                    .deleteRecordByDate(
+                                                        entry.visitedAt,
+                                                    )
+                                                    .then(() => {
+                                                        loadStats();
+                                                    })
+                                                    .catch(() => {
+                                                        alert(
+                                                            "Hiba történt a látogatás törlése közben.",
+                                                        );
+                                                    });
+                                            }
+                                        }}
+                                    >
+                                        X
+                                    </button>
+                                {/if}
                             </li>
                         {/each}
                     </ul>
@@ -245,29 +279,31 @@
             </ComicPanel>
         {/if}
     </ComicPanel>
-    <ComicPanel innerClass="container-column panel-red">
-        <h2>Veszély zóna</h2>
-        <button
-            class="btn"
-            onclick={() => {
-                const confirmDelete = confirm(
-                    "Biztosan törölni szeretnéd a Költészet napi kincsvadászat 2026 statisztikákat? Ez a művelet nem visszavonható.",
-                );
-                if (confirmDelete) {
-                    firestore["event-2026-04-11"]
-                        .deleteAllStats()
-                        .then(() => {
-                            alert("Statisztikák sikeresen törölve.");
-                        })
-                        .catch(() => {
-                            alert(
-                                "Hiba történt a statisztikák törlése közben.",
-                            );
-                        });
-                }
-            }}>Minden statisztika törlése</button
-        >
-    </ComicPanel>
+    {#if isCsaki}
+        <ComicPanel innerClass="container-column panel-red">
+            <h2>Veszély zóna</h2>
+            <button
+                class="btn"
+                onclick={() => {
+                    const confirmDelete = confirm(
+                        "Biztosan törölni szeretnéd a Költészet napi kincsvadászat 2026 statisztikákat? Ez a művelet nem visszavonható.",
+                    );
+                    if (confirmDelete) {
+                        firestore["event-2026-04-11"]
+                            .deleteAllStats()
+                            .then(() => {
+                                loadStats();
+                            })
+                            .catch(() => {
+                                alert(
+                                    "Hiba történt a statisztikák törlése közben.",
+                                );
+                            });
+                    }
+                }}>Minden statisztika törlése</button
+            >
+        </ComicPanel>
+    {/if}
 </main>
 <Footer />
 
@@ -397,14 +433,6 @@
     .recent-list {
         max-height: 400px;
         overflow-y: auto;
-    }
-
-    .recent-row {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.4rem 0.5rem;
-        flex-wrap: wrap;
     }
 
     .recent-sticker {

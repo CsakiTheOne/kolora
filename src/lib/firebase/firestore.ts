@@ -127,6 +127,21 @@ const firestore = {
             };
             return addDoc(collection(db, "2026-04-11"), visitData);
         },
+        deleteRecordByDate: (visitedAt: string): Promise<void> => {
+            const statsQuery = query(collection(db, "2026-04-11"), where("visitedAt", "==", visitedAt));
+            return getDocs(statsQuery)
+                .then((querySnapshot) => {
+                    const deletePromises: Promise<void>[] = [];
+                    querySnapshot.forEach((doc) => {
+                        deletePromises.push(deleteDoc(doc.ref));
+                    });
+                    return Promise.all(deletePromises).then(() => { });
+                })
+                .catch((error) => {
+                    console.error("Error deleting record by date: ", error);
+                    return Promise.reject(error);
+                });
+        },
         deleteAllStats: (): Promise<void> => {
             return runTransaction(db, async (transaction) => {
                 const statsQuery = query(collection(db, "2026-04-11"));
