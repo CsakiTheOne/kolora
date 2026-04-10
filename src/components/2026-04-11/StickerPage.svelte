@@ -10,6 +10,7 @@
 
     const { children } = $props();
 
+    let stickerId: string = $state("");
     let source: string = $state("");
 
     onMount(() => {
@@ -19,7 +20,7 @@
         url.searchParams.delete("source");
         window.history.replaceState({}, document.title, url.toString());
 
-        const stickerId = url.pathname.split("/").slice(-2, -1)[0];
+        stickerId = url.pathname.split("/").slice(-2, -1)[0];
         firestore["event-2026-04-11"].visitSticker(stickerId, source);
 
         const foundStickers = JSON.parse(
@@ -82,5 +83,8 @@
             > mozgalom ihlette.
         </p>
     </ComicPanel>
+    <p style="font-size: small; color: gray;">
+        id: {stickerId}, source: {source}
+    </p>
 </main>
 <Footer />
