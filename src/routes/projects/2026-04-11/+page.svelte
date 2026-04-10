@@ -5,6 +5,9 @@
     import logoInkognito from "$lib/images/logos/inkognito-kollektiva.jpg";
     import { onMount } from "svelte";
     import { browser } from "$app/environment";
+    import paperTexture from "$lib/images/events/2026-04-11/paper.jpg";
+    import mapBodajk from "$lib/images/events/2026-04-11/map_bodajk.png";
+    import mapSzfvCentrum from "$lib/images/events/2026-04-11/map_szfv_centrum.png";
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
@@ -25,8 +28,16 @@
         "Székesfehérvár, gyűrűn kívül": ["arpad", "vaci"],
     };
 
+    //TODO: térképek hozzáadása, amint ki vannak rakva a matricák egy helyen
+    const maps: Record<string, string> = {
+        Bodajk: mapBodajk,
+        "Székesfehérvár, centrum": "",//mapSzfvCentrum,
+        "Székesfehérvár, tó és tánc": "",
+        "Székesfehérvár, vasút környéke": "",
+        "Székesfehérvár, gyűrűn kívül": "",
+    };
+
     let foundStickers: string[] = $state([]);
-    let isEventSoon = $state(false);
 
     onMount(() => {
         if (!browser) return;
@@ -37,12 +48,6 @@
         if (storedStickers) {
             foundStickers = JSON.parse(storedStickers);
         }
-
-        const eventDate = new Date("2026-04-11T00:00:00");
-        const now = new Date();
-        const diffInDays =
-            (eventDate.getTime() - now.getTime()) / (1000 * 3600 * 24);
-        isEventSoon = diffInDays <= 7;
     });
 
     function findAllStickers() {
@@ -73,41 +78,33 @@
     <ComicPanel innerClass="container-column">
         <h2>Matricák, amiket megtaláltál ezen az eszközön</h2>
 
-        {#if foundStickers.length === 0}
-            {#if isEventSoon}
-                <p>Még nem találtál meg egyetlen matricát sem!</p>
-                {#each Object.entries(stickersByArea) as [area, stickers]}
-                    <h3>{area} (0/{stickers.length})</h3>
-                {/each}
-            {:else}
-                <p>
-                    A helyszínek hamarosan elérhetőek lesznek, gyere vissza
-                    később! Tervezett települések: Székesfehérvár és Bodajk.
-                </p>
+        {#each Object.entries(stickersByArea) as [area, stickers]}
+            <h3>
+                {area} ({stickers.filter((sticker) =>
+                    foundStickers.includes(sticker),
+                ).length}/{stickers.length})
+            </h3>
+            {#if maps[area]}
+                <div class="relative aspect-video rounded overflow-hidden bg-white">
+                    <div class="absolute w-full h-full opacity-60" style="background-image: url({paperTexture}); background-size: cover;"></div>
+                    <img class="absolute w-full h-full" style="filter: brightness(0.5) saturate(2);" src={maps[area]} alt="{area} térkép" />
+                </div>
             {/if}
-        {:else}
-            {#each Object.entries(stickersByArea) as [area, stickers]}
-                <h3>
-                    {area} ({stickers.filter((sticker) =>
-                        foundStickers.includes(sticker),
-                    ).length}/{stickers.length})
-                </h3>
-                {#if stickers.filter( (sticker) => foundStickers.includes(sticker), ).length === 0}
-                    <p>
-                        Még nem találtál meg egyetlen matricát sem ezen a
-                        helyszínen!
-                    </p>
-                {:else}
-                    <ul class="outlined-list panel-yellow">
-                        {#each stickers.filter( (sticker) => foundStickers.includes(sticker), ) as sticker}
-                            <a href="/projects/2026-04-11/sticker/{sticker}">
-                                #{sticker}
-                            </a>
-                        {/each}
-                    </ul>
-                {/if}
-            {/each}
-        {/if}
+            {#if stickers.filter( (sticker) => foundStickers.includes(sticker), ).length === 0}
+                <p class="opacity-50">
+                    Még nem találtál meg egyetlen matricát sem ezen a
+                    helyszínen!
+                </p>
+            {:else}
+                <ul class="outlined-list panel-yellow">
+                    {#each stickers.filter( (sticker) => foundStickers.includes(sticker), ) as sticker}
+                        <a href="/projects/2026-04-11/sticker/{sticker}">
+                            #{sticker}
+                        </a>
+                    {/each}
+                </ul>
+            {/if}
+        {/each}
     </ComicPanel>
     <ComicPanel innerClass="container-column panel-purple">
         <h2>Tanácsok a kereséshez</h2>
