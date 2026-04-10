@@ -66,4 +66,26 @@ omat.</pre>
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
     ></iframe>
+    <ComicPanel innerClass="container-column panel-purple">
+        <h2>Kávézó látogatási szokások</h2>
+        <p class="italic">
+            "Sziasztok! Ismételten szakdolgozás van láthatáron, ezúttal Lángi
+            Eszter barátunk kéri a segítségeteket, végre NEM csak a Z
+            generációsoktól 🫶
+        </p>
+        <p class="italic">
+            A kérdőív célja felmérni, hogy a design, a fenntarthatóság és a
+            különböző szolgáltatások milyen módon befolyásolják a fogyasztói
+            döntéseket egy kávézóban, és ezek alapján milyen fejlesztési
+            lehetőségek lennének relevánsak.
+        </p>
+        <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdcMfB5mNETrCxKFRbZ7bu-8ykbk2sCT8qO6PBg3dskrc1bFQ/viewform"
+            target="_blank"
+        >
+            Kitöltöm a kérdőívet!
+        </a>
+        <p class="italic">Minden kitöltést köszönünk!"</p>
+        <p>- Puhakuckó kávézó, Székesfehérvár</p>
+    </ComicPanel>
 </StickerPage>
