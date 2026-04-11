@@ -150,12 +150,6 @@
                     <p class="stat-value">{allStats.length}</p>
                 </ComicPanel>
                 <ComicPanel
-                    innerClass="container-column panel-purple-variant stat-card"
-                >
-                    <p class="stat-label">Egyedi forrás</p>
-                    <p class="stat-value">{statsBySource.length}</p>
-                </ComicPanel>
-                <ComicPanel
                     innerClass="container-column panel-red-variant stat-card"
                 >
                     <p class="stat-label">Látogatás ettől:</p>
@@ -166,6 +160,26 @@
                         onchange={loadStats}
                     />
                     <p class="stat-value">{recentStats.length}</p>
+                </ComicPanel>
+
+                <!-- Source breakdown -->
+                <ComicPanel innerClass="container-column panel-blue-variant">
+                    <h2>
+                        <span class="mdi mdi-source-branch"></span>
+                        Forrás szerint
+                    </h2>
+                    {#if statsBySource.length === 0}
+                        <p>Nincs adat.</p>
+                    {:else}
+                        <ul class="outlined-list">
+                            {#each statsBySource as { source, count }}
+                                <li class="source-row">
+                                    <span class="source-name">{source}</span>
+                                    <span class="source-count">{count}</span>
+                                </li>
+                            {/each}
+                        </ul>
+                    {/if}
                 </ComicPanel>
             </div>
 
@@ -192,26 +206,6 @@
                                     ></div>
                                 </div>
                                 <span class="sticker-count">{count}</span>
-                            </li>
-                        {/each}
-                    </ul>
-                {/if}
-            </ComicPanel>
-
-            <!-- Source breakdown -->
-            <ComicPanel innerClass="container-column panel-blue-variant">
-                <h2>
-                    <span class="mdi mdi-source-branch"></span>
-                    Látogatások forrás szerint
-                </h2>
-                {#if statsBySource.length === 0}
-                    <p>Nincs adat.</p>
-                {:else}
-                    <ul class="outlined-list">
-                        {#each statsBySource as { source, count }}
-                            <li class="source-row">
-                                <span class="source-name">{source}</span>
-                                <span class="source-count">{count}</span>
                             </li>
                         {/each}
                     </ul>

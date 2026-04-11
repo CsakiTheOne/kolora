@@ -34,10 +34,10 @@
     //TODO: térképek hozzáadása, amint ki vannak rakva a matricák egy helyen
     const maps: Record<string, string> = {
         Bodajk: mapBodajk,
-        "Székesfehérvár, centrum": "",//mapSzfvCentrum,
-        "Székesfehérvár, tó és tánc": "",//mapToTanc,
-        "Székesfehérvár, vasút környéke": "",//mapVasut,
-        "Székesfehérvár, gyűrűn kívül": "",//mapGyuru,
+        "Székesfehérvár, centrum": mapSzfvCentrum,
+        "Székesfehérvár, tó és tánc": mapToTanc,
+        "Székesfehérvár, vasút környéke": mapVasut,
+        "Székesfehérvár, gyűrűn kívül": mapGyuru,
     };
 
     let foundStickers: string[] = $state([]);
