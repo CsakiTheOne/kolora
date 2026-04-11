@@ -88,7 +88,7 @@
                 ).length}/{stickers.length})
             </h3>
             {#if maps[area]}
-                <div class="relative aspect-video rounded overflow-hidden bg-white">
+                <div class="relative aspect-video rounded overflow-hidden bg-white max-w-xl">
                     <div class="absolute w-full h-full opacity-60" style="background-image: url({paperTexture}); background-size: cover;"></div>
                     <img class="absolute w-full h-full" style="filter: brightness(0.5) saturate(2);" src={maps[area]} alt="{area} térkép" />
                 </div>
