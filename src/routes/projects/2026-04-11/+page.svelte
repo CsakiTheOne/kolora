@@ -9,6 +9,7 @@
     import mapBodajk from "$lib/images/events/2026-04-11/map_bodajk.png";
     import mapSzfvCentrum from "$lib/images/events/2026-04-11/map_szfv_centrum.png";
     import mapToTanc from "$lib/images/events/2026-04-11/map_to_tanc.png";
+    import mapVasut from "$lib/images/events/2026-04-11/map_vasut.png";
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
@@ -34,7 +35,7 @@
         Bodajk: mapBodajk,
         "Székesfehérvár, centrum": "",//mapSzfvCentrum,
         "Székesfehérvár, tó és tánc": "",//mapToTanc,
-        "Székesfehérvár, vasút környéke": "",
+        "Székesfehérvár, vasút környéke": "",//mapVasut,
         "Székesfehérvár, gyűrűn kívül": "",
     };
 
