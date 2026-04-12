@@ -12,8 +12,16 @@
     function visitDateToDate(visitedAt: string): Date {
         // visitedAt format: "YYYY. MM. DD. HH:mm:ss"
         const lastSpacceIndex = visitedAt.lastIndexOf(" ");
-        const datePart = visitedAt.substring(0, lastSpacceIndex).replace(/\.\s/g, "-").replace(/\./g, "");
-        const timePart = visitedAt.substring(lastSpacceIndex + 1).replace(/:\s/g, ":").split(":").map((p) => p.padStart(2, "0")).join(":");
+        const datePart = visitedAt
+            .substring(0, lastSpacceIndex)
+            .replace(/\.\s/g, "-")
+            .replace(/\./g, "");
+        const timePart = visitedAt
+            .substring(lastSpacceIndex + 1)
+            .replace(/:\s/g, ":")
+            .split(":")
+            .map((p) => p.padStart(2, "0"))
+            .join(":");
         const isoString = `${datePart}T${timePart}`;
         return new Date(isoString);
     }
@@ -224,9 +232,15 @@
                     <div class="flex flex-row items-center">
                         {#each statsBySource as { source, count }}
                             <div
-                                class="flex-1 border-4 flex flex-row items-center gap-2 p-2"
+                                class="flex-1 border-2 flex flex-row items-center gap-2 p-2"
                             >
-                                <span class="source-name">{source}</span>
+                                {#if source === "nfc"}
+                                    <span class="mdi mdi-nfc-variant"></span>
+                                {:else if source === "qr"}
+                                    <span class="mdi mdi-qrcode"></span>
+                                {:else}
+                                    <span class="source-name">{source}</span>
+                                {/if}
                                 <span class="source-count">{count}</span>
                             </div>
                         {/each}
