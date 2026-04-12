@@ -150,6 +150,10 @@
         }
     }
 
+    function linkBySticker(stickerId: string): string {
+        return `/projects/2026-04-11/sticker/${stickerId}/`;
+    }
+
     onMount(() => {
         isLoading = true;
         const unsubscribe = firestore["event-2026-04-11"].listenAll((stats) => {
@@ -273,12 +277,14 @@
                     <ul class="list-none flex flex-col gap-2">
                         {#each statsBySticker.filter(({ count }) => count > 1) as { stickerId, count }}
                             <li class="flex items-center gap-3">
-                                <span
-                                    class="font-mono text-[.9rem] min-w-[130px] font-bold"
-                                    >#{stickerId}</span
+                                <a
+                                    class="font-mono text-sm flex-1 font-bold"
+                                    href={linkBySticker(stickerId)}
                                 >
+                                    #{stickerId}
+                                </a>
                                 <div
-                                    class="flex-1 h-[18px] bg-white/15 border-2 border-current"
+                                    class="flex-2 h-6 bg-white/15 border-2 border-current"
                                 >
                                     <div
                                         class="h-full bg-[var(--kolora-color-yellow)] transition-[width] duration-[400ms] ease-in-out min-w-[2px]"
@@ -286,33 +292,44 @@
                                             100}%"
                                     ></div>
                                 </div>
-                                <span
-                                    class="font-bold min-w-[1.5rem] text-right"
+                                <span class="font-bold w-4 text-right"
                                     >{count}</span
                                 >
                             </li>
                         {/each}
                     </ul>
-                    <h3>Egyszer látogatták</h3>
-                    <p>
-                        {statsBySticker
-                            .filter(({ count }) => count === 1)
-                            .map((s) => `#${s.stickerId}`)
-                            .join(", ")}
-                    </p>
-                    <h3>Még felfedezetlen</h3>
-                    <p>
-                        {Object.keys(stickersByArea)
-                            .flatMap((area) => stickersByArea[area])
-                            .filter(
-                                (stickerId) =>
-                                    !statsBySticker.some(
-                                        (s) => s.stickerId === stickerId,
-                                    ),
-                            )
-                            .map((id) => `#${id}`)
-                            .join(", ")}
-                    </p>
+                    {#if statsBySticker.some(({ count }) => count === 1)}
+                        <h3>Egyszer látogatták</h3>
+                        <p class="font-mono text-sm">
+                            {@html statsBySticker
+                                .filter(({ count }) => count === 1)
+                                .map(
+                                    (s) =>
+                                        `<a class="font-mono" href="${linkBySticker(s.stickerId)}">#${s.stickerId}</a>`,
+                                )
+                                .join(", ")}
+                        </p>
+                    {/if}
+                    {#if Object.keys(stickersByArea)
+                        .flatMap((area) => stickersByArea[area])
+                        .some((stickerId) => !statsBySticker.some((s) => s.stickerId === stickerId))}
+                        <h3>Még felfedezetlen</h3>
+                        <p class="font-mono text-sm">
+                            {@html Object.keys(stickersByArea)
+                                .flatMap((area) => stickersByArea[area])
+                                .filter(
+                                    (stickerId) =>
+                                        !statsBySticker.some(
+                                            (s) => s.stickerId === stickerId,
+                                        ),
+                                )
+                                .map(
+                                    (id) =>
+                                        `<a class="font-mono" href="${linkBySticker(id)}">#${id}</a>`,
+                                )
+                                .join(", ")}
+                        </p>
+                    {/if}
                 {/if}
             </ComicPanel>
 
@@ -333,7 +350,10 @@
                         onchange={loadStats}
                     />
                 </div>
-                <svg viewBox="0 0 1280 720" class="w-full aspect-video">
+                <svg
+                    viewBox="0 0 1280 720"
+                    class="w-full aspect-video outline-4"
+                >
                     <rect
                         x="0"
                         y="0"
@@ -346,21 +366,27 @@
                             <rect
                                 x={(i / readsByDay.length) * 1280}
                                 y={720 - (count / maxDayCount) * 720}
-                                width={1280 / readsByDay.length - 4}
+                                width={(1280 / readsByDay.length) * 0.9}
                                 height={(count / maxDayCount) * 720}
-                                fill="var(--kolora-color-purple)"
+                                fill="var(--kolora-color-purple-variant)"
                             />
                             <text
                                 x={(i / readsByDay.length) * 1280 + 8}
-                                y={720 -
-                                    (count / maxDayCount) * 720 +
-                                    8 +
-                                    64 +
-                                    count * 2}
-                                fill="var(--kolora-color-purple-variant)"
-                                font-size={64 + count * 2}
+                                y={720 - (count / maxDayCount) * 720 + 8 + 56}
+                                fill="var(--kolora-color-purple)"
+                                font-size={56}
                             >
                                 {count}
+                            </text>
+                            <text
+                                x={(i / readsByDay.length) * 1280 +
+                                    ((1280 / readsByDay.length) * 0.9) / 2 -
+                                    32}
+                                y={720 - 16}
+                                fill="var(--kolora-color-purple)"
+                                font-size={28}
+                            >
+                                {day.slice(5).replace("-", "/")}
                             </text>
                         {/each}
                     {:else}
@@ -407,9 +433,12 @@
                                 <span class="font-mono">{entry.source}</span>
                             {/if}
                             <div class="flex-1 flex gap-4 items-baseline">
-                                <span class="font-mono font-bold flex-1"
-                                    >#{entry.stickerId}</span
+                                <a
+                                    class="font-mono font-bold flex-1"
+                                    href={linkBySticker(entry.stickerId)}
                                 >
+                                    #{entry.stickerId}
+                                </a>
                                 <span class="text-xs whitespace-nowrap"
                                     >{entry.visitedAt}</span
                                 >
