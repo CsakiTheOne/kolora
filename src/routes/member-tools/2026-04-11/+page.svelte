@@ -9,6 +9,16 @@
 
     type StatEntry = { stickerId: string; source: string; visitedAt: string };
 
+    function visitDateToDate(visitedAt: string): Date {
+        // visitedAt format: "YYYY. MM. DD. HH:mm:ss"
+        const lastSpacceIndex = visitedAt.lastIndexOf(" ");
+        const datePart = visitedAt.substring(0, lastSpacceIndex).replace(/\.\s/g, "-").replace(/\./g, "");
+        const timePart = visitedAt.substring(lastSpacceIndex + 1).replace(/:\s/g, ":").split(":").map((p) => p.padStart(2, "0")).join(":");
+        const isoString = `${datePart}T${timePart}`;
+        console.log("Parsed date:", new Date(isoString), isoString);
+        return new Date(isoString);
+    }
+
     let allStats: StatEntry[] = $state([]);
     let recentStats: StatEntry[] = $state([]);
     function toDatetimeLocalString(d: Date): string {
@@ -89,7 +99,7 @@
                 dayCounts[dayKey] = 0;
             }
             for (const s of allStats) {
-                const dayKey = new Date(s.visitedAt)
+                const dayKey = visitDateToDate(s.visitedAt)
                     .toISOString()
                     .split("T")[0];
                 if (dayKey in dayCounts) {
@@ -120,7 +130,11 @@
                 firestore["event-2026-04-11"].getStatsAfter(cutoff),
             ]);
             allStats = all;
-            recentStats = recent.sort((a, b) => new Date(b.visitedAt).getTime() - new Date(a.visitedAt).getTime());
+            recentStats = recent.sort(
+                (a, b) =>
+                    visitDateToDate(b.visitedAt).getTime() -
+                    visitDateToDate(a.visitedAt).getTime(),
+            );
             lastRefreshed = new Date();
         } catch (e) {
             error = "Nem sikerült betölteni az adatokat.";
