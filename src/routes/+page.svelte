@@ -18,7 +18,7 @@
 <main class="container-column">
     <ComicPanel innerClass="container-column panel-yellow">
         <h2>Költészet napi kincsvadászat 2026</h2>
-        <p>Kezdés: Április 11-én</p>
+        <p>Április 11-től</p>
         <p>
             <a href="/projects/2026-04-11/">Több infóért katt ide!</a>
         </p>

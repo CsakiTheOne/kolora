@@ -11,6 +11,7 @@
     import mapToTanc from "$lib/images/events/2026-04-11/map_to_tanc.png";
     import mapVasut from "$lib/images/events/2026-04-11/map_vasut.png";
     import mapGyuru from "$lib/images/events/2026-04-11/map_gyuru.png";
+    import Divider from "../../../components/Divider.svelte";
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
@@ -63,10 +64,10 @@
     }
 </script>
 
-<Header hideButtons />
+<Header />
 <main class="container-column">
     <h1>Költészet napi kincsvadászat 2026</h1>
-    <p>Esemény indul: Április 11-én</p>
+    <p>Április 11-től</p>
     <p>
         A Magyar Költészet Napja alkalmából matricákat rejtünk el az utcákon,
         amelyekhez telefont érintve verseket és egyéb meglepetéseket találhatsz.
@@ -88,9 +89,19 @@
                 ).length}/{stickers.length})
             </h3>
             {#if maps[area]}
-                <div class="relative aspect-video rounded overflow-hidden bg-white max-w-xl">
-                    <div class="absolute w-full h-full opacity-60" style="background-image: url({paperTexture}); background-size: cover;"></div>
-                    <img class="absolute w-full h-full" style="filter: brightness(0.5) saturate(2);" src={maps[area]} alt="{area} térkép" />
+                <div
+                    class="relative aspect-video rounded overflow-hidden bg-white max-w-xl"
+                >
+                    <div
+                        class="absolute w-full h-full opacity-60"
+                        style="background-image: url({paperTexture}); background-size: cover;"
+                    ></div>
+                    <img
+                        class="absolute w-full h-full"
+                        style="filter: brightness(0.5) saturate(2);"
+                        src={maps[area]}
+                        alt="{area} térkép"
+                    />
                 </div>
             {/if}
             {#if stickers.filter( (sticker) => foundStickers.includes(sticker), ).length === 0}
@@ -108,17 +119,21 @@
                 </ul>
             {/if}
         {/each}
+
+        <Divider color="var(--kolora-color-yellow)" />
+
+        <h2>Matricák, amelyek már nincsenek a helyükön</h2>
+        <p>
+            Nincs meg egy matrica? Szólj Csákinak és ha tényleg eltűnt, akkor
+            megosztjuk a tartalmát ezen az oldalon.
+        </p>
     </ComicPanel>
     <ComicPanel innerClass="container-column panel-purple">
         <h2>Tanácsok a kereséshez</h2>
         <p>
-            A matricák Április 11-e folyamán kerülnek kihelyezésre. Érdemes
-            szombat délután kirándulni, hogy minél többet megtalálj!
-        </p>
-        <p>
-            Vannak matricák, amelyek távolabb esnek a többitől. Ezeket más
-            napokon is megkeresheted. Mindem matrica kint lesz amíg az időjárás
-            vagy egy lelkiismeretes takarító el nem távolítja őket.
+            A matricák Április 11-e folyamán kerülnek kihelyezésre. Minden
+            matrica kint lesz amíg az időjárás vagy egy lelkiismeretes takarító
+            el nem távolítja őket.
         </p>
         <h3>Gyere barátokkal!</h3>
         <p>
@@ -147,13 +162,6 @@
             része olyan helyeken lesz, ahol ők is gyakran megfordulnak.
             Iskoláik, ingázó útvonaluk, kedvelt találkozóhelyeik környéke.
         </p>
-        <a
-            href="https://www.facebook.com/events/1408358167265774/"
-            target="_blank"
-        >
-            Amúgy tudtátok, hogy a Nyolcasban Kifordított Buli lesz 10 és 11-én
-            este?
-        </a>
         <h3>
             Ha valamelyiket nem találom vagy túl messze van, sosem tudom meg,
             hogy mi van rajta?
@@ -161,7 +169,7 @@
         <p>
             Nem maradsz le semmiről! Minden matrica tartalmát meg fogjuk osztani
             ezen az oldalon, így ha nem is sikerül megtalálnod egyiket sem,
-            akkor is élvezheted a verseket és meglepetéseket!
+            akkor is élvezheted a verseket és meglepetéseket később!
         </p>
     </ComicPanel>
     <ComicPanel innerClass="flex flex-row items-start gap-4 panel-black">
