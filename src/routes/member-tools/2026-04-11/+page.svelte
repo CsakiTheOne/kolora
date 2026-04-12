@@ -196,7 +196,7 @@
     {:else}
         <div class="flex flex-row items-center gap-2 flex-wrap">
             <span
-                class="live-dot bg-green-300"
+                class="live-dot bg-green-500"
                 class:bg-yellow-500={isLoading}
                 title="Élő frissítés"
             ></span>
