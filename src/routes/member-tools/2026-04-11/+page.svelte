@@ -168,7 +168,7 @@
 
 <Header selectedPageIndex={-1} />
 <main class="container-column">
-    <h1>
+    <h1 class="uppercase">
         <span class="mdi mdi-chart-bar"></span>
         Kincsvadászat 2026 — Statisztikák
     </h1>
@@ -180,7 +180,7 @@
         </p>
     {:else if false}
         <!-- TODO: Add member check later if needed -->
-        <h2>
+        <h2 class="uppercase">
             <span class="mdi mdi-lock"></span>
             Nincs hozzáférésed ehhez az oldalhoz
         </h2>
@@ -189,7 +189,7 @@
             <a class="btn" href="/profile">Profil oldal megnyitása</a>
         </p>
     {:else}
-        <div class="toolbar">
+        <div class="flex flex-row items-center gap-4 flex-wrap">
             <button class="btn" onclick={loadStats} disabled={isLoading}>
                 <span
                     class="mdi {isLoading
@@ -199,7 +199,7 @@
                 Frissítés
             </button>
             {#if lastRefreshed}
-                <p class="text-small muted">
+                <p class="text-sm opacity-70">
                     Utoljára frissítve: {lastRefreshed.toLocaleTimeString(
                         "hu-HU",
                     )}
@@ -208,21 +208,29 @@
         </div>
 
         {#if error}
-            <p class="error-text">
+            <p class="text-[var(--kolora-color-red-variant)] font-bold">
                 <span class="mdi mdi-alert"></span>
                 {error}
             </p>
         {/if}
 
         <!-- Summary cards -->
-        <div class="stats-grid">
-            <ComicPanel innerClass="container-column stat-card">
-                <p class="stat-label">Összes látogatás</p>
-                <p class="stat-value">{allStats.length}</p>
+        <div
+            class="grid [grid-template-columns:repeat(auto-fit,minmax(140px,1fr))] gap-4 w-full"
+        >
+            <ComicPanel
+                innerClass="container-column items-center text-center !gap-1"
+            >
+                <p class="text-sm font-bold uppercase flex items-center gap-1">
+                    Összes látogatás
+                </p>
+                <p class="stat-value text-[2.5rem] font-bold">
+                    {allStats.length}
+                </p>
             </ComicPanel>
             <!-- Source breakdown -->
             <ComicPanel innerClass="container-column panel-blue">
-                <p class="stat-label">
+                <p class="text-sm font-bold uppercase flex items-center gap-1">
                     <span class="mdi mdi-source-branch"></span>
                     Forrás szerint
                 </p>
@@ -239,9 +247,11 @@
                                 {:else if source === "qr"}
                                     <span class="mdi mdi-qrcode"></span>
                                 {:else}
-                                    <span class="source-name">{source}</span>
+                                    <span class="font-mono">{source}</span>
                                 {/if}
-                                <span class="source-count">{count}</span>
+                                <span class="font-bold whitespace-nowrap"
+                                    >{count}</span
+                                >
                             </div>
                         {/each}
                     </div>
@@ -251,114 +261,129 @@
 
         <Divider color="var(--kolora-color-yellow)" />
 
-        <!-- Per-sticker breakdown -->
-        <ComicPanel innerClass="container-column panel-purple">
-            <h2>
-                <span class="mdi mdi-sticker"></span>
-                Látogatások matricánként
-            </h2>
-            {#if statsBySticker.length === 0}
-                <p>Nincs adat.</p>
-            {:else}
-                <ul class="sticker-list">
-                    {#each statsBySticker.filter(({ count }) => count > 1) as { stickerId, count }}
-                        <li class="sticker-row">
-                            <span class="sticker-id">#{stickerId}</span>
-                            <div class="bar-track">
-                                <div
-                                    class="bar-fill"
-                                    style="width: {(count / maxCount) * 100}%"
-                                ></div>
-                            </div>
-                            <span class="sticker-count">{count}</span>
-                        </li>
-                    {/each}
-                </ul>
-                <h3>Egyszer látogatták</h3>
-                <p>
-                    {statsBySticker
-                        .filter(({ count }) => count === 1)
-                        .map((s) => `#${s.stickerId}`)
-                        .join(", ")}
-                </p>
-                <h3>Még felfedezetlen</h3>
-                <p>
-                    {Object.keys(stickersByArea)
-                        .flatMap((area) => stickersByArea[area])
-                        .filter(
-                            (stickerId) =>
-                                !statsBySticker.some(
-                                    (s) => s.stickerId === stickerId,
-                                ),
-                        )
-                        .map((id) => `#${id}`)
-                        .join(", ")}
-                </p>
-            {/if}
-        </ComicPanel>
-
-        <!-- Per day breakdown -->
-        <ComicPanel innerClass="container-column panel-yellow">
-            <h2>
-                <span class="mdi mdi-calendar"></span>
-                Látogatások naponta
-            </h2>
-            <div class="flex flex-row gap-2 items-center">
-                Szűrés ettől:
-                <input
-                    type="datetime-local"
-                    class="datetime-input flex-1"
-                    bind:value={recentSince}
-                    onchange={loadStats}
-                />
-            </div>
-            <svg viewBox="0 0 1280 720" class="w-full aspect-video">
-                <rect
-                    x="0"
-                    y="0"
-                    width="1280"
-                    height="720"
-                    fill="var(--kolora-color-yellow-variant)"
-                />
-                {#if readsByDay.length > 0}
-                    {#each readsByDay as { day, count }, i (day)}
-                        <rect
-                            x={(i / readsByDay.length) * 1280}
-                            y={720 - (count / maxDayCount) * 720}
-                            width={1280 / readsByDay.length - 4}
-                            height={(count / maxDayCount) * 720}
-                            fill="var(--kolora-color-purple)"
-                        />
-                        <text
-                            x={(i / readsByDay.length) * 1280 + 8}
-                            y={720 -
-                                (count / maxDayCount) * 720 +
-                                8 +
-                                64 +
-                                count * 2}
-                            fill="var(--kolora-color-purple-variant)"
-                            font-size={64 + count * 2}
-                        >
-                            {count}
-                        </text>
-                    {/each}
+        <div class="flex flex-col gap-4 lg:flex-row">
+            <ComicPanel
+                outerClass="lg:flex-1"
+                innerClass="container-column panel-purple"
+            >
+                <h2 class="uppercase">
+                    <span class="mdi mdi-sticker"></span>
+                    Látogatások matricánként
+                </h2>
+                {#if statsBySticker.length === 0}
+                    <p>Nincs adat.</p>
                 {:else}
-                    <text
-                        x="50%"
-                        y="50%"
-                        text-anchor="middle"
-                        fill="rgba(255, 255, 255, 0.5)"
-                        font-size="128"
-                    >
-                        Nincs adat.
-                    </text>
+                    <ul class="list-none flex flex-col gap-2">
+                        {#each statsBySticker.filter(({ count }) => count > 1) as { stickerId, count }}
+                            <li class="flex items-center gap-3">
+                                <span
+                                    class="font-mono text-[.9rem] min-w-[130px] font-bold"
+                                    >#{stickerId}</span
+                                >
+                                <div
+                                    class="flex-1 h-[18px] bg-white/15 border-2 border-current"
+                                >
+                                    <div
+                                        class="h-full bg-[var(--kolora-color-yellow)] transition-[width] duration-[400ms] ease-in-out min-w-[2px]"
+                                        style="width: {(count / maxCount) *
+                                            100}%"
+                                    ></div>
+                                </div>
+                                <span
+                                    class="font-bold min-w-[1.5rem] text-right"
+                                    >{count}</span
+                                >
+                            </li>
+                        {/each}
+                    </ul>
+                    <h3>Egyszer látogatták</h3>
+                    <p>
+                        {statsBySticker
+                            .filter(({ count }) => count === 1)
+                            .map((s) => `#${s.stickerId}`)
+                            .join(", ")}
+                    </p>
+                    <h3>Még felfedezetlen</h3>
+                    <p>
+                        {Object.keys(stickersByArea)
+                            .flatMap((area) => stickersByArea[area])
+                            .filter(
+                                (stickerId) =>
+                                    !statsBySticker.some(
+                                        (s) => s.stickerId === stickerId,
+                                    ),
+                            )
+                            .map((id) => `#${id}`)
+                            .join(", ")}
+                    </p>
                 {/if}
-            </svg>
-        </ComicPanel>
+            </ComicPanel>
+
+            <ComicPanel
+                outerClass="lg:flex-1"
+                innerClass="container-column panel-yellow"
+            >
+                <h2 class="uppercase">
+                    <span class="mdi mdi-calendar"></span>
+                    Látogatások naponta
+                </h2>
+                <div class="flex flex-row gap-2 items-center">
+                    Szűrés ettől:
+                    <input
+                        type="datetime-local"
+                        class="bg-transparent border-2 border-current font-bold p-1 cursor-pointer flex-1"
+                        bind:value={recentSince}
+                        onchange={loadStats}
+                    />
+                </div>
+                <svg viewBox="0 0 1280 720" class="w-full aspect-video">
+                    <rect
+                        x="0"
+                        y="0"
+                        width="1280"
+                        height="720"
+                        fill="var(--kolora-color-yellow-variant)"
+                    />
+                    {#if readsByDay.length > 0}
+                        {#each readsByDay as { day, count }, i (day)}
+                            <rect
+                                x={(i / readsByDay.length) * 1280}
+                                y={720 - (count / maxDayCount) * 720}
+                                width={1280 / readsByDay.length - 4}
+                                height={(count / maxDayCount) * 720}
+                                fill="var(--kolora-color-purple)"
+                            />
+                            <text
+                                x={(i / readsByDay.length) * 1280 + 8}
+                                y={720 -
+                                    (count / maxDayCount) * 720 +
+                                    8 +
+                                    64 +
+                                    count * 2}
+                                fill="var(--kolora-color-purple-variant)"
+                                font-size={64 + count * 2}
+                            >
+                                {count}
+                            </text>
+                        {/each}
+                    {:else}
+                        <text
+                            x="50%"
+                            y="50%"
+                            text-anchor="middle"
+                            fill="rgba(255, 255, 255, 0.5)"
+                            font-size="128"
+                        >
+                            Nincs adat.
+                        </text>
+                    {/if}
+                </svg>
+            </ComicPanel>
+        </div>
 
         <!-- Recent visits log -->
         <ComicPanel innerClass="container-column panel-black">
-            <h2>
+            <h2 class="uppercase">
                 <span class="mdi mdi-clock-outline"></span>
                 Legutóbbi látogatások ({recentStats.length})
             </h2>
@@ -366,7 +391,7 @@
                 Szűrés ettől:
                 <input
                     type="datetime-local"
-                    class="datetime-input flex-1"
+                    class="bg-transparent border-2 border-current font-bold p-1 cursor-pointer flex-1"
                     bind:value={recentSince}
                     onchange={loadStats}
                 />
@@ -374,26 +399,27 @@
             {#if recentStats.length === 0}
                 <p>Nincs látogatás a kiválasztott időszakban.</p>
             {:else}
-                <ul class="outlined-list recent-list">
+                <ul class="outlined-list">
                     {#each recentStats as entry}
                         <li class="flex flex-row items-center gap-4">
-                            <span class="mdi mdi-sticker-outline"></span>
-                            <div class="flex-1 flex flex-col">
-                                <div class="flex flex-row gap-4 items-center">
-                                    <span class="recent-sticker"
-                                        >#{entry.stickerId}</span
-                                    >
-                                    <span class="recent-source muted"
-                                        >src: {entry.source}</span
-                                    >
-                                </div>
-                                <span class="recent-time"
+                            {#if entry.source === "nfc"}
+                                <span class="mdi mdi-nfc-variant"></span>
+                            {:else if entry.source === "qr"}
+                                <span class="mdi mdi-qrcode"></span>
+                            {:else}
+                                <span class="font-mono">{entry.source}</span>
+                            {/if}
+                            <div class="flex-1 flex gap-4 items-baseline">
+                                <span class="font-mono font-bold flex-1"
+                                    >#{entry.stickerId}</span
+                                >
+                                <span class="text-xs whitespace-nowrap"
                                     >{entry.visitedAt}</span
                                 >
                             </div>
                             {#if isCsaki}
                                 <button
-                                    class="btn panel-red"
+                                    class="btn panel-red p-2"
                                     onclick={() => {
                                         const confirmDelete = confirm(
                                             `Biztosan törölni szeretnéd a ${entry.visitedAt} időpontban történt látogatást?`,
@@ -425,7 +451,7 @@
     {/if}
     {#if isCsaki}
         <ComicPanel innerClass="container-column panel-red">
-            <h2>Veszély zóna</h2>
+            <h2 class="uppercase">Veszély zóna</h2>
             <button
                 class="btn"
                 onclick={() => {
@@ -452,142 +478,7 @@
 <Footer />
 
 <style>
-    h1,
-    h2 {
-        text-transform: uppercase;
-    }
-
-    .toolbar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .muted {
-        opacity: 0.7;
-    }
-
-    .error-text {
-        color: var(--kolora-color-red-variant);
-        font-weight: bold;
-    }
-
-    /* Summary cards */
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 1rem;
-        width: 100%;
-    }
-
-    :global(.stat-card) {
-        align-items: center;
-        text-align: center;
-        gap: 0.25rem !important;
-    }
-
-    .stat-label {
-        font-size: 0.85rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-    }
-
     .stat-value {
-        font-size: 2.5rem;
-        font-weight: bold;
         font-family: "Arsenal", Arial, Helvetica, sans-serif;
-    }
-
-    .datetime-input {
-        background: transparent;
-        border: 2px solid currentColor;
-        color: inherit;
-        font-weight: bold;
-        padding: 0.25rem;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    /* Bar chart */
-    .sticker-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .sticker-row {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .sticker-id {
-        font-family: monospace;
-        font-size: 0.9rem;
-        min-width: 130px;
-        font-weight: bold;
-    }
-
-    .bar-track {
-        flex: 1;
-        height: 18px;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 2px solid currentColor;
-    }
-
-    .bar-fill {
-        height: 100%;
-        background-color: var(--kolora-color-yellow);
-        transition: width 0.4s ease;
-        min-width: 2px;
-    }
-
-    .sticker-count {
-        font-weight: bold;
-        min-width: 1.5rem;
-        text-align: right;
-    }
-
-    /* Source list */
-    .source-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-
-    .source-name {
-        font-family: monospace;
-        word-break: break-all;
-    }
-
-    .source-count {
-        font-weight: bold;
-        white-space: nowrap;
-    }
-
-    .recent-sticker {
-        font-family: monospace;
-        font-weight: bold;
-    }
-
-    .recent-source {
-        flex: 1;
-        font-size: 0.85rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .recent-time {
-        font-size: 0.8rem;
-        white-space: nowrap;
     }
 </style>
