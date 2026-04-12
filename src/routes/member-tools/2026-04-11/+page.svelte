@@ -16,6 +16,24 @@
         return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
     }
 
+    const stickersByArea: Record<string, string[]> = {
+        Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
+        "Székesfehérvár, centrum": [
+            "buszpu",
+            "ciszter",
+            "muzi",
+            "puhakucko",
+            "teleki",
+        ],
+        "Székesfehérvár, tó és tánc": ["tanchaz", "toparti"],
+        "Székesfehérvár, vasút környéke": [
+            "deak",
+            "nyolcas-muhely",
+            "vasut",
+            "vpg",
+        ],
+        "Székesfehérvár, gyűrűn kívül": ["arpad", "vaci"],
+    };
     const defaultSince = new Date(2026, 3, 11, 0, 0, 0);
 
     let isLoading = $state(false);
@@ -102,7 +120,7 @@
                 firestore["event-2026-04-11"].getStatsAfter(cutoff),
             ]);
             allStats = all;
-            recentStats = recent;
+            recentStats = recent.sort((a, b) => new Date(b.visitedAt).getTime() - new Date(a.visitedAt).getTime());
             lastRefreshed = new Date();
         } catch (e) {
             error = "Nem sikerült betölteni az adatokat.";
@@ -216,7 +234,7 @@
                 <p>Nincs adat.</p>
             {:else}
                 <ul class="sticker-list">
-                    {#each statsBySticker as { stickerId, count }}
+                    {#each statsBySticker.filter(({ count }) => count > 1) as { stickerId, count }}
                         <li class="sticker-row">
                             <span class="sticker-id">#{stickerId}</span>
                             <div class="bar-track">
@@ -229,6 +247,26 @@
                         </li>
                     {/each}
                 </ul>
+                <h3>Egyszer látogatták</h3>
+                <p>
+                    {statsBySticker
+                        .filter(({ count }) => count === 1)
+                        .map((s) => `#${s.stickerId}`)
+                        .join(", ")}
+                </p>
+                <h3>Még felfedezetlen</h3>
+                <p>
+                    {Object.keys(stickersByArea)
+                        .flatMap((area) => stickersByArea[area])
+                        .filter(
+                            (stickerId) =>
+                                !statsBySticker.some(
+                                    (s) => s.stickerId === stickerId,
+                                ),
+                        )
+                        .map((id) => `#${id}`)
+                        .join(", ")}
+                </p>
             {/if}
         </ComicPanel>
 
@@ -266,7 +304,11 @@
                         />
                         <text
                             x={(i / readsByDay.length) * 1280 + 8}
-                            y={720 - (count / maxDayCount) * 720 + 8 + 64 + count * 2}
+                            y={720 -
+                                (count / maxDayCount) * 720 +
+                                8 +
+                                64 +
+                                count * 2}
                             fill="var(--kolora-color-purple-variant)"
                             font-size={64 + count * 2}
                         >
@@ -306,7 +348,7 @@
                 <p>Nincs látogatás a kiválasztott időszakban.</p>
             {:else}
                 <ul class="outlined-list recent-list">
-                    {#each [...recentStats].reverse() as entry}
+                    {#each recentStats as entry}
                         <li class="flex flex-row items-center gap-4">
                             <span class="mdi mdi-sticker-outline"></span>
                             <div class="flex-1 flex flex-col">
