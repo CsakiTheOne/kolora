@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { ROLES } from "$lib/model/KoloraUser";
     import UserManager from "$lib/UserManager.svelte";
     import firestore from "$lib/firebase/firestore";
     import ComicPanel from "../../../components/ComicPanel.svelte";
@@ -56,6 +55,42 @@
         Math.max(1, ...statsBySticker.map((s) => s.count)),
     );
 
+    const readsByDay = $derived(
+        (() => {
+            const startingDate = new Date(recentSince);
+            startingDate.setDate(startingDate.getDate() + 1);
+            const today = new Date();
+            today.setDate(today.getDate() + 1); // include today
+            const dayCounts: Record<string, number> = {};
+            for (
+                let d = new Date(startingDate);
+                d <= today;
+                d.setDate(d.getDate() + 1)
+            ) {
+                const dayKey = d.toISOString().split("T")[0];
+                dayCounts[dayKey] = 0;
+            }
+            for (const s of allStats) {
+                const dayKey = new Date(s.visitedAt)
+                    .toISOString()
+                    .split("T")[0];
+                if (dayKey in dayCounts) {
+                    dayCounts[dayKey]++;
+                }
+            }
+            const result = Object.entries(dayCounts).map(([day, count]) => ({
+                day,
+                count,
+            }));
+            console.log("Reads by day:", result);
+            return result;
+        })(),
+    );
+
+    const maxDayCount = $derived(
+        Math.max(1, ...readsByDay.map((d) => d.count)),
+    );
+
     async function loadStats() {
         isLoading = true;
         error = "";
@@ -94,185 +129,231 @@
 
 <Header selectedPageIndex={-1} />
 <main class="container-column">
-    <ComicPanel innerClass="container-column panel-blue">
-        <h1>
-            <span class="mdi mdi-chart-bar"></span>
-            Kincsvadászat 2026 — Statisztikák
-        </h1>
+    <h1>
+        <span class="mdi mdi-chart-bar"></span>
+        Kincsvadászat 2026 — Statisztikák
+    </h1>
 
-        {#if !UserManager.instance.isLoaded}
-            <p>
-                <span class="mdi mdi-loading mdi-spin"></span>
-                Betöltés...
-            </p>
-        {:else if false}
-            <!-- TODO: Add member check later if needed -->
-            <h2>
-                <span class="mdi mdi-lock"></span>
-                Nincs hozzáférésed ehhez az oldalhoz
-            </h2>
-            <p>Ez az oldal csak Kolora tagoknak érhető el.</p>
-            <p>
-                <a class="btn" href="/profile">Profil oldal megnyitása</a>
-            </p>
-        {:else}
-            <div class="toolbar">
-                <button class="btn" onclick={loadStats} disabled={isLoading}>
-                    <span
-                        class="mdi {isLoading
-                            ? 'mdi-loading mdi-spin'
-                            : 'mdi-refresh'}"
-                    ></span>
-                    Frissítés
-                </button>
-                {#if lastRefreshed}
-                    <p class="text-small muted">
-                        Utoljára frissítve: {lastRefreshed.toLocaleTimeString(
-                            "hu-HU",
-                        )}
-                    </p>
-                {/if}
-            </div>
-
-            {#if error}
-                <p class="error-text">
-                    <span class="mdi mdi-alert"></span>
-                    {error}
+    {#if !UserManager.instance.isLoaded}
+        <p>
+            <span class="mdi mdi-loading mdi-spin"></span>
+            Betöltés...
+        </p>
+    {:else if false}
+        <!-- TODO: Add member check later if needed -->
+        <h2>
+            <span class="mdi mdi-lock"></span>
+            Nincs hozzáférésed ehhez az oldalhoz
+        </h2>
+        <p>Ez az oldal csak Kolora tagoknak érhető el.</p>
+        <p>
+            <a class="btn" href="/profile">Profil oldal megnyitása</a>
+        </p>
+    {:else}
+        <div class="toolbar">
+            <button class="btn" onclick={loadStats} disabled={isLoading}>
+                <span
+                    class="mdi {isLoading
+                        ? 'mdi-loading mdi-spin'
+                        : 'mdi-refresh'}"
+                ></span>
+                Frissítés
+            </button>
+            {#if lastRefreshed}
+                <p class="text-small muted">
+                    Utoljára frissítve: {lastRefreshed.toLocaleTimeString(
+                        "hu-HU",
+                    )}
                 </p>
             {/if}
+        </div>
 
-            <!-- Summary cards -->
-            <div class="stats-grid">
-                <ComicPanel
-                    innerClass="container-column panel-yellow stat-card"
-                >
-                    <p class="stat-label">Összes látogatás</p>
-                    <p class="stat-value">{allStats.length}</p>
-                </ComicPanel>
-                <ComicPanel
-                    innerClass="container-column panel-red-variant stat-card"
-                >
-                    <p class="stat-label">Látogatás ettől:</p>
-                    <input
-                        type="datetime-local"
-                        class="datetime-input"
-                        bind:value={recentSince}
-                        onchange={loadStats}
-                    />
-                    <p class="stat-value">{recentStats.length}</p>
-                </ComicPanel>
+        {#if error}
+            <p class="error-text">
+                <span class="mdi mdi-alert"></span>
+                {error}
+            </p>
+        {/if}
 
-                <!-- Source breakdown -->
-                <ComicPanel innerClass="container-column panel-blue-variant">
-                    <h2>
-                        <span class="mdi mdi-source-branch"></span>
-                        Forrás szerint
-                    </h2>
-                    {#if statsBySource.length === 0}
-                        <p>Nincs adat.</p>
-                    {:else}
-                        <ul class="outlined-list">
-                            {#each statsBySource as { source, count }}
-                                <li class="source-row">
-                                    <span class="source-name">{source}</span>
-                                    <span class="source-count">{count}</span>
-                                </li>
-                            {/each}
-                        </ul>
-                    {/if}
-                </ComicPanel>
-            </div>
-
-            <Divider color="var(--kolora-color-yellow)" />
-
-            <!-- Per-sticker breakdown -->
-            <ComicPanel innerClass="container-column panel-purple">
-                <h2>
-                    <span class="mdi mdi-sticker"></span>
-                    Látogatások matricánként
-                </h2>
-                {#if statsBySticker.length === 0}
+        <!-- Summary cards -->
+        <div class="stats-grid">
+            <ComicPanel innerClass="container-column stat-card">
+                <p class="stat-label">Összes látogatás</p>
+                <p class="stat-value">{allStats.length}</p>
+            </ComicPanel>
+            <!-- Source breakdown -->
+            <ComicPanel innerClass="container-column panel-blue">
+                <p class="stat-label">
+                    <span class="mdi mdi-source-branch"></span>
+                    Forrás szerint
+                </p>
+                {#if statsBySource.length === 0}
                     <p>Nincs adat.</p>
                 {:else}
-                    <ul class="sticker-list">
-                        {#each statsBySticker as { stickerId, count }}
-                            <li class="sticker-row">
-                                <span class="sticker-id">#{stickerId}</span>
-                                <div class="bar-track">
-                                    <div
-                                        class="bar-fill"
-                                        style="width: {(count / maxCount) *
-                                            100}%"
-                                    ></div>
-                                </div>
-                                <span class="sticker-count">{count}</span>
-                            </li>
+                    <div class="flex flex-row items-center">
+                        {#each statsBySource as { source, count }}
+                            <div
+                                class="flex-1 border-4 flex flex-row items-center gap-2 p-2"
+                            >
+                                <span class="source-name">{source}</span>
+                                <span class="source-count">{count}</span>
+                            </div>
                         {/each}
-                    </ul>
+                    </div>
                 {/if}
             </ComicPanel>
+        </div>
 
-            <!-- Recent visits log -->
-            <ComicPanel innerClass="container-column panel-black">
-                <h2>
-                    <span class="mdi mdi-clock-outline"></span>
-                    Legutóbbi látogatások
-                </h2>
-                {#if recentStats.length === 0}
-                    <p>Nincs látogatás a kiválasztott időszakban.</p>
+        <Divider color="var(--kolora-color-yellow)" />
+
+        <!-- Per-sticker breakdown -->
+        <ComicPanel innerClass="container-column panel-purple">
+            <h2>
+                <span class="mdi mdi-sticker"></span>
+                Látogatások matricánként
+            </h2>
+            {#if statsBySticker.length === 0}
+                <p>Nincs adat.</p>
+            {:else}
+                <ul class="sticker-list">
+                    {#each statsBySticker as { stickerId, count }}
+                        <li class="sticker-row">
+                            <span class="sticker-id">#{stickerId}</span>
+                            <div class="bar-track">
+                                <div
+                                    class="bar-fill"
+                                    style="width: {(count / maxCount) * 100}%"
+                                ></div>
+                            </div>
+                            <span class="sticker-count">{count}</span>
+                        </li>
+                    {/each}
+                </ul>
+            {/if}
+        </ComicPanel>
+
+        <!-- Per day breakdown -->
+        <ComicPanel innerClass="container-column panel-yellow">
+            <h2>
+                <span class="mdi mdi-calendar"></span>
+                Látogatások naponta
+            </h2>
+            <div class="flex flex-row gap-2 items-center">
+                Szűrés ettől:
+                <input
+                    type="datetime-local"
+                    class="datetime-input flex-1"
+                    bind:value={recentSince}
+                    onchange={loadStats}
+                />
+            </div>
+            <svg viewBox="0 0 1280 720" class="w-full aspect-video">
+                <rect
+                    x="0"
+                    y="0"
+                    width="1280"
+                    height="720"
+                    fill="var(--kolora-color-yellow-variant)"
+                />
+                {#if readsByDay.length > 0}
+                    {#each readsByDay as { day, count }, i (day)}
+                        <rect
+                            x={(i / readsByDay.length) * 1280}
+                            y={720 - (count / maxDayCount) * 720}
+                            width={1280 / readsByDay.length - 4}
+                            height={(count / maxDayCount) * 720}
+                            fill="var(--kolora-color-purple)"
+                        />
+                        <text
+                            x={(i / readsByDay.length) * 1280 + 8}
+                            y={720 - (count / maxDayCount) * 720 + 8 + 64 + count * 2}
+                            fill="var(--kolora-color-purple-variant)"
+                            font-size={64 + count * 2}
+                        >
+                            {count}
+                        </text>
+                    {/each}
                 {:else}
-                    <ul class="outlined-list recent-list">
-                        {#each [...recentStats].reverse() as entry}
-                            <li class="flex flex-row items-center gap-4">
-                                <span class="mdi mdi-sticker-outline"></span>
-                                <div class="flex-1 flex flex-col">
-                                    <div
-                                        class="flex flex-row gap-4 items-center"
+                    <text
+                        x="50%"
+                        y="50%"
+                        text-anchor="middle"
+                        fill="rgba(255, 255, 255, 0.5)"
+                        font-size="128"
+                    >
+                        Nincs adat.
+                    </text>
+                {/if}
+            </svg>
+        </ComicPanel>
+
+        <!-- Recent visits log -->
+        <ComicPanel innerClass="container-column panel-black">
+            <h2>
+                <span class="mdi mdi-clock-outline"></span>
+                Legutóbbi látogatások ({recentStats.length})
+            </h2>
+            <div class="flex flex-row gap-2 items-center">
+                Szűrés ettől:
+                <input
+                    type="datetime-local"
+                    class="datetime-input flex-1"
+                    bind:value={recentSince}
+                    onchange={loadStats}
+                />
+            </div>
+            {#if recentStats.length === 0}
+                <p>Nincs látogatás a kiválasztott időszakban.</p>
+            {:else}
+                <ul class="outlined-list recent-list">
+                    {#each [...recentStats].reverse() as entry}
+                        <li class="flex flex-row items-center gap-4">
+                            <span class="mdi mdi-sticker-outline"></span>
+                            <div class="flex-1 flex flex-col">
+                                <div class="flex flex-row gap-4 items-center">
+                                    <span class="recent-sticker"
+                                        >#{entry.stickerId}</span
                                     >
-                                        <span class="recent-sticker"
-                                            >#{entry.stickerId}</span
-                                        >
-                                        <span class="recent-source muted"
-                                            >src: {entry.source}</span
-                                        >
-                                    </div>
-                                    <span class="recent-time"
-                                        >{entry.visitedAt}</span
+                                    <span class="recent-source muted"
+                                        >src: {entry.source}</span
                                     >
                                 </div>
-                                {#if isCsaki}
-                                    <button
-                                        class="btn panel-red"
-                                        onclick={() => {
-                                            const confirmDelete = confirm(
-                                                `Biztosan törölni szeretnéd a ${entry.visitedAt} időpontban történt látogatást?`,
-                                            );
-                                            if (confirmDelete) {
-                                                firestore["event-2026-04-11"]
-                                                    .deleteRecordByDate(
-                                                        entry.visitedAt,
-                                                    )
-                                                    .then(() => {
-                                                        loadStats();
-                                                    })
-                                                    .catch(() => {
-                                                        alert(
-                                                            "Hiba történt a látogatás törlése közben.",
-                                                        );
-                                                    });
-                                            }
-                                        }}
-                                    >
-                                        X
-                                    </button>
-                                {/if}
-                            </li>
-                        {/each}
-                    </ul>
-                {/if}
-            </ComicPanel>
-        {/if}
-    </ComicPanel>
+                                <span class="recent-time"
+                                    >{entry.visitedAt}</span
+                                >
+                            </div>
+                            {#if isCsaki}
+                                <button
+                                    class="btn panel-red"
+                                    onclick={() => {
+                                        const confirmDelete = confirm(
+                                            `Biztosan törölni szeretnéd a ${entry.visitedAt} időpontban történt látogatást?`,
+                                        );
+                                        if (confirmDelete) {
+                                            firestore["event-2026-04-11"]
+                                                .deleteRecordByDate(
+                                                    entry.visitedAt,
+                                                )
+                                                .then(() => {
+                                                    loadStats();
+                                                })
+                                                .catch(() => {
+                                                    alert(
+                                                        "Hiba történt a látogatás törlése közben.",
+                                                    );
+                                                });
+                                        }
+                                    }}
+                                >
+                                    X
+                                </button>
+                            {/if}
+                        </li>
+                    {/each}
+                </ul>
+            {/if}
+        </ComicPanel>
+    {/if}
     {#if isCsaki}
         <ComicPanel innerClass="container-column panel-red">
             <h2>Veszély zóna</h2>
@@ -421,12 +502,6 @@
     .source-count {
         font-weight: bold;
         white-space: nowrap;
-    }
-
-    /* Recent log */
-    .recent-list {
-        max-height: 400px;
-        overflow-y: auto;
     }
 
     .recent-sticker {
