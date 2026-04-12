@@ -95,6 +95,22 @@ const firestore = {
                     return Promise.reject(error);
                 });
         },
+        listenAll: (callback: (stats: { stickerId: string; source: string; visitedAt: string }[]) => void): () => void => {
+            const colRef = collection(db, "2026-04-11");
+            const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
+                const stats: { stickerId: string; source: string; visitedAt: string }[] = [];
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    stats.push({
+                        stickerId: data.stickerId,
+                        source: data.source,
+                        visitedAt: data.visitedAt,
+                    });
+                });
+                callback(stats);
+            });
+            return unsubscribe;
+        },
         getStatsAfter: (startDate: Date): Promise<{ stickerId: string; source: string; visitedAt: string }[]> => {
             const startDateString = startDate.toLocaleString("hu-HU");
             const statsQuery = query(collection(db, "2026-04-11"), where("visitedAt", ">", startDateString), orderBy("visitedAt", "asc"));

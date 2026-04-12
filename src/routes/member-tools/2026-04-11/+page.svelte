@@ -27,7 +27,17 @@
     }
 
     let allStats: StatEntry[] = $state([]);
-    let recentStats: StatEntry[] = $state([]);
+    const recentStats = $derived(
+        allStats
+            .filter(
+                (s) => visitDateToDate(s.visitedAt) >= new Date(recentSince),
+            )
+            .sort(
+                (a, b) =>
+                    visitDateToDate(b.visitedAt).getTime() -
+                    visitDateToDate(a.visitedAt).getTime(),
+            ),
+    );
     function toDatetimeLocalString(d: Date): string {
         const pad = (n: number) => String(n).padStart(2, "0");
         return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
@@ -130,18 +140,7 @@
         isLoading = true;
         error = "";
         try {
-            const cutoff = new Date(recentSince);
-
-            const [all, recent] = await Promise.all([
-                firestore["event-2026-04-11"].getAllStats(),
-                firestore["event-2026-04-11"].getStatsAfter(cutoff),
-            ]);
-            allStats = all;
-            recentStats = recent.sort(
-                (a, b) =>
-                    visitDateToDate(b.visitedAt).getTime() -
-                    visitDateToDate(a.visitedAt).getTime(),
-            );
+            allStats = await firestore["event-2026-04-11"].getAllStats();
             lastRefreshed = new Date();
         } catch (e) {
             error = "Nem sikerült betölteni az adatokat.";
@@ -152,11 +151,13 @@
     }
 
     onMount(() => {
-        loadStats();
-
-        /*if (UserManager.instance.isLoaded && isMember) {
-            loadStats();
-        }*/
+        isLoading = true;
+        const unsubscribe = firestore["event-2026-04-11"].listenAll((stats) => {
+            allStats = stats;
+            lastRefreshed = new Date();
+            isLoading = false;
+        });
+        return unsubscribe;
     });
 
     /*$effect(() => {
@@ -189,20 +190,16 @@
             <a class="btn" href="/profile">Profil oldal megnyitása</a>
         </p>
     {:else}
-        <div class="flex flex-row items-center gap-4 flex-wrap">
-            <button class="btn" onclick={loadStats} disabled={isLoading}>
-                <span
-                    class="mdi {isLoading
-                        ? 'mdi-loading mdi-spin'
-                        : 'mdi-refresh'}"
-                ></span>
-                Frissítés
-            </button>
+        <div class="flex flex-row items-center gap-2 flex-wrap">
+            <span
+                class="live-dot bg-green-300"
+                class:bg-yellow-500={isLoading}
+                title="Élő frissítés"
+            ></span>
+            <span class="bg-green-200 px-1 rounded text-sm">Élő adatok</span>
             {#if lastRefreshed}
                 <p class="text-sm opacity-70">
-                    Utoljára frissítve: {lastRefreshed.toLocaleTimeString(
-                        "hu-HU",
-                    )}
+                    Utolsó változás: {lastRefreshed.toLocaleTimeString("hu-HU")}
                 </p>
             {/if}
         </div>
@@ -480,5 +477,24 @@
 <style>
     .stat-value {
         font-family: "Arsenal", Arial, Helvetica, sans-serif;
+    }
+
+    .live-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        animation: blink 1.4s ease-in-out infinite;
+        flex-shrink: 0;
+    }
+
+    @keyframes blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.2;
+        }
     }
 </style>
