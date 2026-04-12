@@ -15,7 +15,6 @@
         const datePart = visitedAt.substring(0, lastSpacceIndex).replace(/\.\s/g, "-").replace(/\./g, "");
         const timePart = visitedAt.substring(lastSpacceIndex + 1).replace(/:\s/g, ":").split(":").map((p) => p.padStart(2, "0")).join(":");
         const isoString = `${datePart}T${timePart}`;
-        console.log("Parsed date:", new Date(isoString), isoString);
         return new Date(isoString);
     }
 
