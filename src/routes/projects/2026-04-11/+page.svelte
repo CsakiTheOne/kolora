@@ -35,6 +35,8 @@
         "Székesfehérvár, gyűrűn kívül": ["arpad", "vaci"],
     };
 
+    const lostStickers = ["buszpu"];
+
     //TODO: térképek hozzáadása, amint ki vannak rakva a matricák egy helyen
     const maps: Record<string, string> = {
         Bodajk: mapBodajk,
@@ -87,7 +89,10 @@
 <main class="container-column">
     <h1>Költészet napi kincsvadászat 2026</h1>
     <p>
-        Április 11-től - Összes kincs látogatás: <span class="font-bold" style="color: var(--kolora-color-red)">{allStats.length}</span>
+        Április 11-től - Összes kincs látogatás: <span
+            class="font-bold"
+            style="color: var(--kolora-color-red)">{allStats.length}</span
+        >
     </p>
     <p>
         A Magyar Költészet Napja alkalmából matricákat rejtünk el az utcákon,
@@ -155,6 +160,11 @@
         <Divider color="var(--kolora-color-yellow)" />
 
         <h2>Matricák, amelyek már nincsenek a helyükön</h2>
+        {#each lostStickers as sticker}
+            <a href="/projects/2026-04-11/sticker/{sticker}">
+                #{sticker}
+            </a>
+        {/each}
         <p>
             Nincs meg egy matrica? Szólj Csákinak és ha tényleg eltűnt, akkor
             megosztjuk a tartalmát ezen az oldalon.
