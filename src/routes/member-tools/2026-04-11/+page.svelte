@@ -26,6 +26,7 @@
         return new Date(isoString);
     }
 
+    let isLive = $state(false);
     let allStats: StatEntry[] = $state([]);
     const recentStats = $derived(
         allStats
@@ -161,7 +162,12 @@
             lastRefreshed = new Date();
             isLoading = false;
         });
-        return unsubscribe;
+        isLive = true;
+
+        return () => {
+            unsubscribe();
+            isLive = false;
+        };
     });
 
     /*$effect(() => {
@@ -195,15 +201,20 @@
         </p>
     {:else}
         <div class="flex flex-row items-center gap-2 flex-wrap">
-            <span
-                class="live-dot bg-green-500"
-                class:bg-yellow-500={isLoading}
-                title="Élő frissítés"
-            ></span>
-            <span class="bg-green-200 px-1 rounded text-sm">Élő adatok</span>
+            {#if isLive}
+                <span
+                    class="live-dot bg-green-500"
+                    class:bg-yellow-500={isLoading}
+                    title="Élő frissítés"
+                ></span>
+                <span class="bg-green-200 px-1 rounded text-sm">Élő adatok</span
+                >
+            {:else}
+                <span class="mdi mdi-loading mdi-spin"></span>
+            {/if}
             {#if lastRefreshed}
                 <p class="text-sm opacity-70">
-                    Utolsó változás: {lastRefreshed.toLocaleTimeString("hu-HU")}
+                    Utolsó lekérés: {lastRefreshed.toLocaleTimeString("hu-HU")}
                 </p>
             {/if}
         </div>
