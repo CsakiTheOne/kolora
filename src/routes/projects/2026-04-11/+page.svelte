@@ -12,6 +12,9 @@
     import mapVasut from "$lib/images/events/2026-04-11/map_vasut.png";
     import mapGyuru from "$lib/images/events/2026-04-11/map_gyuru.png";
     import Divider from "../../../components/Divider.svelte";
+    import firestore from "$lib/firebase/firestore";
+
+    type StatEntry = { stickerId: string; source: string; visitedAt: string };
 
     const stickersByArea = {
         Bodajk: ["bodajk-tav", "g-buszmeg", "hszt", "ltp-buszmeg"],
@@ -42,6 +45,16 @@
     };
 
     let foundStickers: string[] = $state([]);
+    let allStats: StatEntry[] = $state([]);
+
+    const statsBySticker = $derived(
+        [...new Set(allStats.map((s) => s.stickerId))]
+            .map((stickerId) => ({
+                stickerId,
+                count: allStats.filter((s) => s.stickerId === stickerId).length,
+            }))
+            .sort((a, b) => b.count - a.count),
+    );
 
     onMount(() => {
         if (!browser) return;
@@ -52,6 +65,12 @@
         if (storedStickers) {
             foundStickers = JSON.parse(storedStickers);
         }
+
+        firestore["event-2026-04-11"]
+            .getAllStats()
+            .then((stats: StatEntry[]) => {
+                allStats = stats;
+            });
     });
 
     function findAllStickers() {
@@ -67,7 +86,9 @@
 <Header />
 <main class="container-column">
     <h1>Költészet napi kincsvadászat 2026</h1>
-    <p>Április 11-től</p>
+    <p>
+        Április 11-től - Összes kincs látogatás: <span class="font-bold" style="color: var(--kolora-color-red)">{allStats.length}</span>
+    </p>
     <p>
         A Magyar Költészet Napja alkalmából matricákat rejtünk el az utcákon,
         amelyekhez telefont érintve verseket és egyéb meglepetéseket találhatsz.
@@ -104,20 +125,31 @@
                     />
                 </div>
             {/if}
-            {#if stickers.filter( (sticker) => foundStickers.includes(sticker), ).length === 0}
-                <p class="opacity-50">
-                    Még nem találtál meg egyetlen matricát sem ezen a
-                    helyszínen!
-                </p>
-            {:else}
-                <ul class="outlined-list panel-yellow">
-                    {#each stickers.filter( (sticker) => foundStickers.includes(sticker), ) as sticker}
+            <ul class="outlined-list panel-yellow">
+                {#each stickers as sticker}
+                    {#if foundStickers.includes(sticker)}
                         <a href="/projects/2026-04-11/sticker/{sticker}">
                             #{sticker}
                         </a>
-                    {/each}
-                </ul>
-            {/if}
+                    {:else}
+                        <li
+                            style="background-color: var(--kolora-color-yellow-variant);"
+                            class="text-white flex flex-row items-center gap-2"
+                        >
+                            <span class="font-mono flex-1">
+                                #{sticker[0]}{sticker
+                                    .split("")
+                                    .slice(1)
+                                    .map((c) => "?")
+                                    .join("")}
+                            </span>
+                            {#if !statsBySticker.find((s) => s.stickerId === sticker)}
+                                <span>(még senki nem találta)</span>
+                            {/if}
+                        </li>
+                    {/if}
+                {/each}
+            </ul>
         {/each}
 
         <Divider color="var(--kolora-color-yellow)" />

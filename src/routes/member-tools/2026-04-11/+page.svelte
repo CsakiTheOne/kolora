@@ -128,7 +128,6 @@
                 day,
                 count,
             }));
-            console.log("Reads by day:", result);
             return result;
         })(),
     );
