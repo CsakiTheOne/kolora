@@ -73,7 +73,7 @@ Van, amikor a csend mondja ki helyettünk:
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
     ></iframe>
-    <ComicPanel>
+    <ComicPanel innerClass="container-column">
         <h2>Szerelmes klisé-átdolgozás</h2>
         <pre>Azt kívánom, hogy legyünk 85 évesek
 Úgy legalább nem olyan ijesztő az a maradék élet sem.
