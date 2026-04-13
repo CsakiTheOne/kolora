@@ -114,57 +114,62 @@
                     foundStickers.includes(sticker),
                 ).length}/{stickers.length})
             </h3>
-            {#if maps[area]}
-                <div
-                    class="relative aspect-video rounded overflow-hidden bg-white max-w-xl"
-                >
+            <div
+                class="flex flex-col items-stretch md:flex-row gap-4 md:items-start"
+            >
+                {#if maps[area]}
                     <div
-                        class="absolute w-full h-full opacity-60"
-                        style="background-image: url({paperTexture}); background-size: cover;"
-                    ></div>
-                    <img
-                        class="absolute w-full h-full"
-                        style="filter: brightness(0.5) saturate(2);"
-                        src={maps[area]}
-                        alt="{area} térkép"
-                    />
-                </div>
-            {/if}
-            <ul class="outlined-list panel-yellow">
-                {#each stickers as sticker}
-                    {#if foundStickers.includes(sticker)}
-                        <a href="/projects/2026-04-11/sticker/{sticker}">
-                            #{sticker}
-                        </a>
-                    {:else}
-                        <li
-                            style="background-color: var(--kolora-color-yellow-variant);"
-                            class="text-white flex flex-row items-center gap-2"
-                        >
-                            <span class="font-mono flex-1">
-                                #{sticker[0]}{sticker
-                                    .split("")
-                                    .slice(1)
-                                    .map((c) => "?")
-                                    .join("")}
-                            </span>
-                            {#if !statsBySticker.find((s) => s.stickerId === sticker)}
-                                <span>(még senki nem találta)</span>
-                            {/if}
-                        </li>
-                    {/if}
-                {/each}
-            </ul>
+                        class="relative aspect-video rounded overflow-hidden bg-white md:flex-2 lg:flex-1"
+                    >
+                        <div
+                            class="absolute w-full h-full opacity-60"
+                            style="background-image: url({paperTexture}); background-size: cover;"
+                        ></div>
+                        <img
+                            class="absolute w-full h-full"
+                            style="filter: brightness(0.5) saturate(2);"
+                            src={maps[area]}
+                            alt="{area} térkép"
+                        />
+                    </div>
+                {/if}
+                <ul class="outlined-list panel-yellow md:flex-1">
+                    {#each stickers as sticker}
+                        {#if foundStickers.includes(sticker) || lostStickers.includes(sticker)}
+                            <a href="/projects/2026-04-11/sticker/{sticker}">
+                                #{sticker}
+                                {#if lostStickers.includes(sticker)}
+                                    <br />
+                                    <span class="text-sm font-thin">
+                                        (mindenkinek feloldva, mert a matrica
+                                        eltűnt)
+                                    </span>
+                                {/if}
+                            </a>
+                        {:else}
+                            <li
+                                style="background-color: var(--kolora-color-yellow-variant);"
+                                class="text-white flex flex-row items-center gap-2"
+                            >
+                                <span class="font-mono flex-1">
+                                    #{sticker[0]}{sticker
+                                        .split("")
+                                        .slice(1)
+                                        .map((c) => "?")
+                                        .join("")}
+                                </span>
+                                {#if !statsBySticker.find((s) => s.stickerId === sticker)}
+                                    <span>(még senki nem találta)</span>
+                                {/if}
+                            </li>
+                        {/if}
+                    {/each}
+                </ul>
+            </div>
         {/each}
 
         <Divider color="var(--kolora-color-yellow)" />
 
-        <h2>Matricák, amelyek már nincsenek a helyükön</h2>
-        {#each lostStickers as sticker}
-            <a href="/projects/2026-04-11/sticker/{sticker}">
-                #{sticker}
-            </a>
-        {/each}
         <p>
             Nincs meg egy matrica? Szólj Csákinak és ha tényleg eltűnt, akkor
             megosztjuk a tartalmát ezen az oldalon.
