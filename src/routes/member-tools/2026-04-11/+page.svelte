@@ -70,8 +70,9 @@
     let lastRefreshed = $state<Date | null>(null);
 
     let isLocalhost = $state(false);
+    let isAdvancedParam = $state(false);
     const allowDelete = $derived(
-        /*UserManager.instance.koloraUser?.id === "hi1b98VKT0Pzu8ql8QsUqmVYubl1" ||*/ isLocalhost,
+        (isAdvancedParam && UserManager.instance.koloraUser?.id === "hi1b98VKT0Pzu8ql8QsUqmVYubl1") || isLocalhost,
     );
     /*const isMember = $derived(
         UserManager.instance.koloraUser?.roles?.includes(ROLES.KOLORA_MEMBER),
@@ -157,6 +158,7 @@
 
     onMount(() => {
         isLocalhost = window.location.hostname === "localhost";
+        isAdvancedParam = new URLSearchParams(window.location.search).has("adv");
 
         isLoading = true;
         const unsubscribe = firestore["event-2026-04-11"].listenAll((stats) => {
