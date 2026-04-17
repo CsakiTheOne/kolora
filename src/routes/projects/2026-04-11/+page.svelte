@@ -140,7 +140,7 @@
                                 #{sticker}
                                 {#if lostStickers.includes(sticker)}
                                     <br />
-                                    <span class="text-sm font-thin">
+                                    <span class="text-sm font-light">
                                         (mindenkinek feloldva, mert a matrica
                                         eltűnt)
                                     </span>

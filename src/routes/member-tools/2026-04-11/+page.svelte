@@ -69,8 +69,10 @@
     let recentSince = $state(toDatetimeLocalString(defaultSince));
     let lastRefreshed = $state<Date | null>(null);
 
-    const isCsaki = $derived(
-        UserManager.instance.koloraUser?.id === "hi1b98VKT0Pzu8ql8QsUqmVYubl1",
+    let isLocalhost = $state(false);
+    let isAdvancedParam = $state(false);
+    const allowDelete = $derived(
+        (isAdvancedParam && UserManager.instance.koloraUser?.id === "hi1b98VKT0Pzu8ql8QsUqmVYubl1") || isLocalhost,
     );
     /*const isMember = $derived(
         UserManager.instance.koloraUser?.roles?.includes(ROLES.KOLORA_MEMBER),
@@ -155,6 +157,9 @@
     }
 
     onMount(() => {
+        isLocalhost = window.location.hostname === "localhost";
+        isAdvancedParam = new URLSearchParams(window.location.search).has("adv");
+
         isLoading = true;
         const unsubscribe = firestore["event-2026-04-11"].listenAll((stats) => {
             allStats = stats;
@@ -226,10 +231,9 @@
         {/if}
 
         <!-- Summary cards -->
-        <div
-            class="grid [grid-template-columns:repeat(auto-fit,minmax(140px,1fr))] gap-4 w-full"
-        >
+        <div class="flex gap-4 flex-row">
             <ComicPanel
+                outerClass="flex-1 md:flex-2"
                 innerClass="container-column items-center text-center !gap-1"
             >
                 <p class="text-sm font-bold uppercase flex items-center gap-1">
@@ -240,7 +244,10 @@
                 </p>
             </ComicPanel>
             <!-- Source breakdown -->
-            <ComicPanel innerClass="container-column panel-blue">
+            <ComicPanel
+                class="flex-1"
+                innerClass="container-column panel-blue"
+            >
                 <p class="text-sm font-bold uppercase flex items-center gap-1">
                     <span class="mdi mdi-source-branch"></span>
                     Forrás szerint
@@ -412,6 +419,39 @@
                     {/if}
                 </svg>
             </ComicPanel>
+
+            <ComicPanel innerClass="container-column">
+                <h2>Utolsó aktivitások</h2>
+                <ul>
+                    {#each Object.entries(stickersByArea)
+                        .flatMap(([_, stickers]) => stickers)
+                        .map((stickerId) => {
+                            const lastVisit = allStats
+                                .filter((s) => s.stickerId === stickerId)
+                                .sort((a, b) => visitDateToDate(b.visitedAt).getTime() - visitDateToDate(a.visitedAt).getTime())[0];
+                            return { stickerId, lastVisit };
+                        })
+                        .filter(({ lastVisit }) => lastVisit !== undefined)
+                        .sort((a, b) => b.lastVisit?.visitedAt.localeCompare(a.lastVisit?.visitedAt) || 0) as { stickerId, lastVisit }}
+                        <li
+                            class="flex flex-row items-center gap-2 p-1"
+                            title={lastVisit
+                                ? `Utolsó látogatás: ${lastVisit.visitedAt}`
+                                : "Még nem látogatták"}
+                        >
+                            <a
+                                class="font-mono flex-1"
+                                href={linkBySticker(stickerId)}>#{stickerId}</a
+                            >
+                            {#if lastVisit}
+                                <span class="text-sm whitespace-nowrap"
+                                    >{lastVisit.visitedAt.slice(6)}</span
+                                >
+                            {/if}
+                        </li>
+                    {/each}
+                </ul>
+            </ComicPanel>
         </div>
 
         <!-- Recent visits log -->
@@ -453,7 +493,7 @@
                                     >{entry.visitedAt}</span
                                 >
                             </div>
-                            {#if isCsaki}
+                            {#if allowDelete}
                                 <button
                                     class="btn panel-red p-2"
                                     onclick={() => {
@@ -485,7 +525,7 @@
             {/if}
         </ComicPanel>
     {/if}
-    {#if isCsaki}
+    {#if allowDelete}
         <ComicPanel innerClass="container-column panel-red">
             <h2 class="uppercase">Veszély zóna</h2>
             <button
