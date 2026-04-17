@@ -35,7 +35,7 @@
         "Székesfehérvár, gyűrűn kívül": ["arpad", "vaci"],
     };
 
-    const lostStickers = ["buszpu"];
+    const lostStickers = ["buszpu", "teleki"];
 
     //TODO: térképek hozzáadása, amint ki vannak rakva a matricák egy helyen
     const maps: Record<string, string> = {
