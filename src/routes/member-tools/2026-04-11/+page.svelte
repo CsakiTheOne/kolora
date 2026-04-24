@@ -390,8 +390,16 @@
                                 fill="var(--kolora-color-purple-variant)"
                             />
                             <text
+                                x={(i / readsByDay.length) * 1280 + 4}
+                                y={720 - Math.max((count / maxDayCount) * 720, 156) + 8 + 56 + 4}
+                                fill="var(--kolora-color-purple-variant)"
+                                font-size={64}
+                            >
+                                {count}
+                            </text>
+                            <text
                                 x={(i / readsByDay.length) * 1280 + 8}
-                                y={720 - (count / maxDayCount) * 720 + 8 + 56}
+                                y={720 - Math.max((count / maxDayCount) * 720, 156) + 8 + 56}
                                 fill="var(--kolora-color-purple)"
                                 font-size={56}
                             >
@@ -401,11 +409,21 @@
                                 x={(i / readsByDay.length) * 1280 +
                                     ((1280 / readsByDay.length) * 0.9) / 2 -
                                     32}
+                                y={720 - 28 - 16}
+                                fill="var(--kolora-color-purple)"
+                                font-size={28}
+                            >
+                                {day.slice(5, 7)}
+                            </text>
+                            <text
+                                x={(i / readsByDay.length) * 1280 +
+                                    ((1280 / readsByDay.length) * 0.9) / 2 -
+                                    32}
                                 y={720 - 16}
                                 fill="var(--kolora-color-purple)"
                                 font-size={28}
                             >
-                                {day.slice(5).replace("-", "/")}
+                                {day.slice(8, 10)}
                             </text>
                         {/each}
                     {:else}

@@ -35,9 +35,8 @@
         "Székesfehérvár, gyűrűn kívül": ["arpad", "vaci"],
     };
 
-    const lostStickers = ["buszpu", "teleki"];
+    //const lostStickers = ["buszpu", "teleki"];
 
-    //TODO: térképek hozzáadása, amint ki vannak rakva a matricák egy helyen
     const maps: Record<string, string> = {
         Bodajk: mapBodajk,
         "Székesfehérvár, centrum": mapSzfvCentrum,
@@ -106,7 +105,7 @@
         > mozgalom ihlette.
     </p>
     <ComicPanel innerClass="container-column">
-        <h2>Matricák, amiket megtaláltál ezen az eszközön</h2>
+        <h2>Matricák</h2>
 
         {#each Object.entries(stickersByArea) as [area, stickers]}
             <h3>
@@ -135,34 +134,12 @@
                 {/if}
                 <ul class="outlined-list panel-yellow md:flex-1">
                     {#each stickers as sticker}
-                        {#if foundStickers.includes(sticker) || lostStickers.includes(sticker)}
-                            <a href="/projects/2026-04-11/sticker/{sticker}">
-                                #{sticker}
-                                {#if lostStickers.includes(sticker)}
-                                    <br />
-                                    <span class="text-sm font-light">
-                                        (mindenkinek feloldva, mert a matrica
-                                        eltűnt)
-                                    </span>
-                                {/if}
-                            </a>
-                        {:else}
-                            <li
-                                style="background-color: var(--kolora-color-yellow-variant);"
-                                class="text-white flex flex-row items-center gap-2"
-                            >
-                                <span class="font-mono flex-1">
-                                    #{sticker[0]}{sticker
-                                        .split("")
-                                        .slice(1)
-                                        .map((c) => "?")
-                                        .join("")}
-                                </span>
-                                {#if !statsBySticker.find((s) => s.stickerId === sticker)}
-                                    <span>(még senki nem találta)</span>
-                                {/if}
-                            </li>
-                        {/if}
+                        <a class="flex flex-row gap-2 justify-between" href="/projects/2026-04-11/sticker/{sticker}">
+                            <span>#{sticker}</span>
+                            {#if foundStickers.includes(sticker)}
+                                <span>🏆</span>
+                            {/if}
+                        </a>
                     {/each}
                 </ul>
             </div>
@@ -171,8 +148,7 @@
         <Divider color="var(--kolora-color-yellow)" />
 
         <p>
-            Nincs meg egy matrica? Szólj Csákinak és ha tényleg eltűnt, akkor
-            megosztjuk a tartalmát ezen az oldalon.
+            🏆 = Megtaláltad!
         </p>
     </ComicPanel>
     <ComicPanel innerClass="container-column panel-purple">

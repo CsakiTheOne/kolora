@@ -23,13 +23,15 @@
         stickerId = url.pathname.split("/").slice(-2, -1)[0];
         firestore["event-2026-04-11"].visitSticker(stickerId, source);
 
-        const foundStickers = JSON.parse(
-            localStorage.getItem("event-2026-04-11-found-stickers") || "[]",
-        );
-        localStorage.setItem(
-            "event-2026-04-11-found-stickers",
-            JSON.stringify([...new Set([...foundStickers, stickerId])]),
-        );
+        if (source) {
+            const foundStickers = JSON.parse(
+                localStorage.getItem("event-2026-04-11-found-stickers") || "[]",
+            );
+            localStorage.setItem(
+                "event-2026-04-11-found-stickers",
+                JSON.stringify([...new Set([...foundStickers, stickerId])]),
+            );
+        }
     });
 </script>
 
