@@ -72,7 +72,10 @@
     let isLocalhost = $state(false);
     let isAdvancedParam = $state(false);
     const allowDelete = $derived(
-        (isAdvancedParam && UserManager.instance.koloraUser?.id === "hi1b98VKT0Pzu8ql8QsUqmVYubl1") || isLocalhost,
+        (isAdvancedParam &&
+            UserManager.instance.koloraUser?.id ===
+                "hi1b98VKT0Pzu8ql8QsUqmVYubl1") ||
+            isLocalhost,
     );
     /*const isMember = $derived(
         UserManager.instance.koloraUser?.roles?.includes(ROLES.KOLORA_MEMBER),
@@ -158,7 +161,9 @@
 
     onMount(() => {
         isLocalhost = window.location.hostname === "localhost";
-        isAdvancedParam = new URLSearchParams(window.location.search).has("adv");
+        isAdvancedParam = new URLSearchParams(window.location.search).has(
+            "adv",
+        );
 
         isLoading = true;
         const unsubscribe = firestore["event-2026-04-11"].listenAll((stats) => {
@@ -244,10 +249,7 @@
                 </p>
             </ComicPanel>
             <!-- Source breakdown -->
-            <ComicPanel
-                class="flex-1"
-                innerClass="container-column panel-blue"
-            >
+            <ComicPanel class="flex-1" innerClass="container-column panel-blue">
                 <p class="text-sm font-bold uppercase flex items-center gap-1">
                     <span class="mdi mdi-source-branch"></span>
                     Forrás szerint
@@ -432,7 +434,7 @@
                             return { stickerId, lastVisit };
                         })
                         .filter(({ lastVisit }) => lastVisit !== undefined)
-                        .sort((a, b) => b.lastVisit?.visitedAt.localeCompare(a.lastVisit?.visitedAt) || 0) as { stickerId, lastVisit }}
+                        .sort((a, b) => visitDateToDate(b.lastVisit.visitedAt).getTime() - visitDateToDate(a.lastVisit.visitedAt).getTime()) as { stickerId, lastVisit }}
                         <li
                             class="flex flex-row items-center gap-2 p-1"
                             title={lastVisit
