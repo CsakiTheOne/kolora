@@ -6,6 +6,7 @@
         innerStyle = "",
         outerClass = "",
         innerClass = "",
+        onclick = null,
         children = null,
         ...rest
     } = $props();
@@ -13,7 +14,7 @@
 
 <svelte:window bind:scrollY />
 
-<section class="comic-panel {outerClass}" style={outerStyle} {...rest}>
+<section class="comic-panel {outerClass}" style={outerStyle} onclick={onclick} {...rest}>
     <div
         class="content comic-dots panel-base {innerClass}"
         style="background-position: 0 {scrollY}px; {innerStyle}"

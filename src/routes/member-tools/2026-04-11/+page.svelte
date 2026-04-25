@@ -28,6 +28,8 @@
 
     let isLive = $state(false);
     let allStats: StatEntry[] = $state([]);
+    let selectedPanel: string = $state("");
+
     const recentStats = $derived(
         allStats
             .filter(
@@ -159,6 +161,10 @@
         return `/projects/2026-04-11/sticker/${stickerId}/`;
     }
 
+    function togglePanel(panelName: string) {
+        selectedPanel = selectedPanel === panelName ? "" : panelName;
+    }
+
     onMount(() => {
         isLocalhost = window.location.hostname === "localhost";
         isAdvancedParam = new URLSearchParams(window.location.search).has(
@@ -238,8 +244,11 @@
         <!-- Summary cards -->
         <div class="flex gap-4 flex-row">
             <ComicPanel
-                outerClass="flex-1 md:flex-2"
+                outerClass="flex-1 md:flex-2 {selectedPanel === 'all-visits'
+                    ? 'fullscreen'
+                    : ''}"
                 innerClass="container-column items-center text-center !gap-1"
+                onclick={() => togglePanel("all-visits")}
             >
                 <p class="text-sm font-bold uppercase flex items-center gap-1">
                     Összes látogatás
@@ -249,7 +258,13 @@
                 </p>
             </ComicPanel>
             <!-- Source breakdown -->
-            <ComicPanel class="flex-1" innerClass="container-column panel-blue">
+            <ComicPanel
+                outerClass="flex-1 {selectedPanel === 'by-source'
+                    ? 'fullscreen'
+                    : ''}"
+                innerClass="container-column panel-blue"
+                onclick={() => togglePanel("by-source")}
+            >
                 <p class="text-sm font-bold uppercase flex items-center gap-1">
                     <span class="mdi mdi-source-branch"></span>
                     Forrás szerint
@@ -283,8 +298,11 @@
 
         <div class="flex flex-col gap-4 lg:flex-row">
             <ComicPanel
-                outerClass="lg:flex-1"
+                outerClass="lg:flex-1 {selectedPanel === 'by-sticker'
+                    ? 'fullscreen'
+                    : ''}"
                 innerClass="container-column panel-purple"
+                onclick={() => togglePanel("by-sticker")}
             >
                 <h2 class="uppercase">
                     <span class="mdi mdi-sticker"></span>
@@ -293,7 +311,7 @@
                 {#if statsBySticker.length === 0}
                     <p>Nincs adat.</p>
                 {:else}
-                    <ul class="list-none flex flex-col gap-2">
+                    <ul class="list-none flex flex-col gap-2 w-full">
                         {#each statsBySticker.filter(({ count }) => count > 1) as { stickerId, count }}
                             <li class="flex items-center gap-3">
                                 <a
@@ -353,8 +371,11 @@
             </ComicPanel>
 
             <ComicPanel
-                outerClass="lg:flex-1"
+                outerClass="lg:flex-1 {selectedPanel === 'by-day'
+                    ? 'fullscreen'
+                    : ''}"
                 innerClass="container-column panel-yellow"
+                onclick={() => togglePanel("by-day")}
             >
                 <h2 class="uppercase">
                     <span class="mdi mdi-calendar"></span>
@@ -391,7 +412,11 @@
                             />
                             <text
                                 x={(i / readsByDay.length) * 1280 + 4}
-                                y={720 - Math.max((count / maxDayCount) * 720, 156) + 8 + 56 + 4}
+                                y={720 -
+                                    Math.max((count / maxDayCount) * 720, 156) +
+                                    8 +
+                                    56 +
+                                    4}
                                 fill="var(--kolora-color-purple-variant)"
                                 font-size={64}
                             >
@@ -399,7 +424,10 @@
                             </text>
                             <text
                                 x={(i / readsByDay.length) * 1280 + 8}
-                                y={720 - Math.max((count / maxDayCount) * 720, 156) + 8 + 56}
+                                y={720 -
+                                    Math.max((count / maxDayCount) * 720, 156) +
+                                    8 +
+                                    56}
                                 fill="var(--kolora-color-purple)"
                                 font-size={56}
                             >
@@ -440,9 +468,15 @@
                 </svg>
             </ComicPanel>
 
-            <ComicPanel innerClass="container-column">
+            <ComicPanel
+                outerClass={selectedPanel === "last-activities"
+                    ? "fullscreen"
+                    : ""}
+                innerClass="container-column"
+                onclick={() => togglePanel("last-activities")}
+            >
                 <h2>Utolsó aktivitások</h2>
-                <ul>
+                <ul class="w-full">
                     {#each Object.entries(stickersByArea)
                         .flatMap(([_, stickers]) => stickers)
                         .map((stickerId) => {
@@ -475,7 +509,11 @@
         </div>
 
         <!-- Recent visits log -->
-        <ComicPanel innerClass="container-column panel-black">
+        <ComicPanel
+            outerClass={selectedPanel === "recent-visits" ? "fullscreen" : ""}
+            innerClass="container-column panel-black"
+            onclick={() => togglePanel("recent-visits")}
+        >
             <h2 class="uppercase">
                 <span class="mdi mdi-clock-outline"></span>
                 Legutóbbi látogatások ({recentStats.length})
@@ -595,5 +633,21 @@
         50% {
             opacity: 0.2;
         }
+    }
+
+    :global(.comic-panel.fullscreen) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999999;
+    }
+
+    :global(.comic-panel.fullscreen .content) {
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
     }
 </style>
