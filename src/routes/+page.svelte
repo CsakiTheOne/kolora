@@ -18,9 +18,7 @@
 <main class="container-column">
     <ComicPanel innerClass="container-column panel-yellow">
         <h2>3 éves lesz a Kolora idén Júniusban!</h2>
-        <p>
-            Szülinapi buli részletek hamarosan...
-        </p>
+        <p>Szülinapi buli részletek hamarosan...</p>
     </ComicPanel>
     <Divider />
     <ComicPanelWithBackground
