@@ -17,17 +17,17 @@
 <Header selectedPageIndex={0} />
 <main class="container-column">
     <ComicPanel innerClass="container-column panel-yellow">
-        <h2>Költészet napi kincsvadászat 2026</h2>
-        <p>Április 11-től</p>
+        <h2>3 éves lesz a Kolora idén Júniusban!</h2>
         <p>
-            <a href="/projects/2026-04-11/">Több infóért katt ide!</a>
+            Szülinapi buli részletek hamarosan...
         </p>
     </ComicPanel>
+    <Divider />
     <ComicPanelWithBackground
         innerClass="container-column panel-base"
         backgroundUrl={headerImage}
     >
-        <h2>Rólunk</h2>
+        <h2>Kolora Egyesület</h2>
         <div class="adaptive-col-row" style="align-items: start;">
             <div
                 style="flex: 1; display: flex; flex-direction: column; gap: 1rem;"
