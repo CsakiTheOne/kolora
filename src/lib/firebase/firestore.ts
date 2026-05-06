@@ -73,7 +73,43 @@ const firestore = {
         },
         delete: (id: string): Promise<void> => {
             return deleteDoc(doc(db, "users", id));
-        }
+        },
+    },
+    artists: {
+        getAll: (): Promise<object[]> => {
+            return getDocs(collection(db, "artists"))
+                .then((querySnapshot) => {
+                    const artists: object[] = [];
+                    querySnapshot.forEach((doc) => {
+                        artists.push({ ...doc.data(), id: doc.id });
+                    });
+                    return artists;
+                })
+                .catch((error) => {
+                    console.error("Error getting artists: ", error);
+                    return Promise.reject(error);
+                });
+        },
+        set: (id: string, data: object | null): Promise<void> => {
+            if (!data) {
+                return deleteDoc(doc(db, "artists", id));
+            }
+            return setDoc(doc(db, "artists", id), data, { merge: true });
+        },
+        add: (data: object): Promise<DocumentReference<DocumentData, DocumentData>> => {
+            return addDoc(collection(db, "artists"), data);
+        },
+        listen: (callback: (artists: object[]) => void): () => void => {
+            const colRef = collection(db, "artists");
+            const unsubscribe = onSnapshot(colRef, (querySnapshot) => {
+                const artists: object[] = [];
+                querySnapshot.forEach((doc) => {
+                    artists.push({ ...doc.data(), id: doc.id });
+                });
+                callback(artists);
+            });
+            return unsubscribe;
+        },
     },
     "event-2026-04-11": {
         getAllStats: (): Promise<{ stickerId: string; source: string; visitedAt: string }[]> => {
