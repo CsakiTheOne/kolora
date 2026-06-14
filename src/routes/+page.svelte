@@ -16,10 +16,40 @@
 
 <Header selectedPageIndex={0} />
 <main class="container-column">
-    <ComicPanel innerClass="container-column panel-yellow">
-        <h2>3 éves lesz a Kolora idén Júniusban!</h2>
-        <p>Szülinapi buli részletek hamarosan...</p>
-    </ComicPanel>
+    <div class="flex flex-row items-center justify-center gap-6 md:gap-12">
+        <div class="text-xl font-bold flex flex-col items-center gap-4">
+            <span
+                class="inline-block scale-200"
+                style="transform: rotate({Math.random() * 16}deg)">→</span
+            >
+            <span
+                class="inline-block scale-200"
+                style="transform: rotate({Math.random() * 16 - 8}deg)">→</span
+            >
+            <span
+                class="inline-block scale-200"
+                style="transform: rotate({Math.random() * 16 - 16}deg)">→</span
+            >
+        </div>
+        <ComicPanel innerClass="container-column panel-yellow">
+            <h2>3 éves lesz a Kolora!</h2>
+            <p>Szülinapi buli: Június 28. Museum Café</p>
+        </ComicPanel>
+        <div class="text-xl font-bold flex flex-col items-center gap-4">
+            <span
+                class="inline-block scale-200"
+                style="transform: rotate({Math.random() * 16 - 16}deg)">←</span
+            >
+            <span
+                class="inline-block scale-200"
+                style="transform: rotate({Math.random() * 16 - 8}deg)">←</span
+            >
+            <span
+                class="inline-block scale-200"
+                style="transform: rotate({Math.random() * 16}deg)">←</span
+            >
+        </div>
+    </div>
     <Divider />
     <ComicPanelWithBackground
         innerClass="container-column panel-base"
