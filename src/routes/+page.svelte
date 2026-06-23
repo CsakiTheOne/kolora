@@ -16,40 +16,25 @@
 
 <Header selectedPageIndex={0} />
 <main class="container-column">
-    <div class="flex flex-row items-center justify-center gap-6 md:gap-12">
-        <div class="text-xl font-bold flex flex-col items-center gap-4">
-            <span
-                class="inline-block scale-200"
-                style="transform: rotate({Math.random() * 16}deg)">→</span
-            >
-            <span
-                class="inline-block scale-200"
-                style="transform: rotate({Math.random() * 16 - 8}deg)">→</span
-            >
-            <span
-                class="inline-block scale-200"
-                style="transform: rotate({Math.random() * 16 - 16}deg)">→</span
-            >
-        </div>
-        <ComicPanel innerClass="container-column panel-yellow">
-            <h2>3 éves lesz a Kolora!</h2>
-            <p>Szülinapi buli: Június 28. Museum Café</p>
-        </ComicPanel>
-        <div class="text-xl font-bold flex flex-col items-center gap-4">
-            <span
-                class="inline-block scale-200"
-                style="transform: rotate({Math.random() * 16 - 16}deg)">←</span
-            >
-            <span
-                class="inline-block scale-200"
-                style="transform: rotate({Math.random() * 16 - 8}deg)">←</span
-            >
-            <span
-                class="inline-block scale-200"
-                style="transform: rotate({Math.random() * 16}deg)">←</span
-            >
-        </div>
-    </div>
+    <ComicPanel innerClass="container-column panel-yellow">
+        <h2>3 éves lesz a Kolora!</h2>
+        <p>Szülinapi buli: Június 28. Museum Café</p>
+        <b>Menetrend:</b>
+        <ul class="outlined-list">
+            <a href="https://maps.app.goo.gl/nR419Mg19cqQWBeu8" target="_blank">
+                17:30 - Kapunyitás
+            </a>
+            <a href="https://www.instagram.com/kvaterkaperka/" target="_blank">
+                18:00 - Kvaterka
+            </a>
+            <a href="https://www.instagram.com/thejexofficial/" target="_blank">
+                19:00 - The Jex
+            </a>
+            <a href="https://www.instagram.com/daniel_bodonyi/" target="_blank">
+                20:00 - Bodonyi Dani (DJ)
+            </a>
+        </ul>
+    </ComicPanel>
     <Divider />
     <ComicPanelWithBackground
         innerClass="container-column panel-base"
