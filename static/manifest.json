@@ -2,7 +2,7 @@
     "background_color": "#89023d",
     "dir": "ltr",
     "display": "standalone",
-    "name": "Kolora Egyesület",
+    "name": "Kolora",
     "orientation": "natural",
     "scope": "/",
     "short_name": "Kolora",
@@ -26,7 +26,7 @@
       {
         "name": "Tagok",
         "url": "/members",
-        "description": "A Kolora Egyesület tagjainak listája.",
+        "description": "A Kolora tagjainak listája.",
         "icons": [
           {
             "src": "/kolora.png",

@@ -22,7 +22,7 @@
 <main>
     <VerticalTimelineItem title="2024 visszatekintés">
         <p>
-            Az elmúlt évben a Kolora Egyesület számos rendezvényt szervezett,
+            Az elmúlt évben a Kolora számos rendezvényt szervezett,
             amelyek közül néhányat itt láthatsz. Hogy megünnepeljük a 2024-es
             évet, ezt a weboldalt raktuk össze, ahol nosztalgiázhatunk egy
             kicsit.
@@ -268,7 +268,7 @@
         facebookLink="https://fb.me/e/5qV6UfabB"
     >
         <p style="flex: 1; width: 100%;">
-            A Nyolcas Műhely adott otthont a Kolora Egyesület 2024-es évnyitó
+            A Nyolcas Műhely adott otthont a Kolora 2024-es évnyitó
             slam versenyének, ahol 18 előadást láthattunk. Köztük volt 6
             tehetséges versenyző és sok új ember, akik először álltak a
             színpadra. Köszönjük a helyet a Nyolcas Műhelynek és a támogatást

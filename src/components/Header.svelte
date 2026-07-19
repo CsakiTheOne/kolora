@@ -15,7 +15,7 @@
 
 <div class="header-top">
     <a class="logo-container" href="/" title="Kolora!">
-        <img class="logo" src={logoKolora} alt="Kolora Egyesület" />
+        <img class="logo" src={logoKolora} alt="Kolora" />
     </a>
     <attr title="Zene"
         >{@html iconMusicNote} <span class="desktop-visible">Zene</span></attr

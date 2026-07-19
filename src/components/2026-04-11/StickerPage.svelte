@@ -59,9 +59,9 @@
             backgroundUrl={koloraLogo}
         >
             <a href="/">
-                <h3>Kolora Egyesület</h3>
+                <h3>Kolora</h3>
             </a>
-            <p style="font-size: small;">fehérvári összművészeti egyesület</p>
+            <p style="font-size: small;">fehérvári összművészeti közösség</p>
         </ComicPanelWithBackground>
         <ComicPanelWithBackground
             outerStyle="width: 100%;"

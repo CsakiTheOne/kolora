@@ -20,7 +20,7 @@
         innerClass="container-column panel-base"
         backgroundUrl={headerImage}
     >
-        <h2>Kolora Egyesület</h2>
+        <h2>Kolora</h2>
         <div class="adaptive-col-row" style="align-items: start;">
             <div
                 style="flex: 1; display: flex; flex-direction: column; gap: 1rem;"

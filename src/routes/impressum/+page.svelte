@@ -40,7 +40,7 @@
     <ComicPanel innerClass="container-column">
         <h2>Felhasznált szellemi alkotások</h2>
         <p>
-            A fotókat, videókat és egyéb média tartalmakat a Kolora Egyesület tagjai
+            A fotókat, videókat és egyéb média tartalmakat a Kolora tagjai
             és barátai készítették. E tartalmak a készítők tulajdonát képezik.
         </p>
         <h3>Technológiák</h3>

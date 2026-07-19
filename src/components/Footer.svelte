@@ -57,7 +57,7 @@
             <a href="/data"> Adatkezelési irányelvek </a>
         </p>
         <p style="text-align: right;">
-            &copy; {new Date().getFullYear()} Kolora Egyesület<br />
+            &copy; {new Date().getFullYear()} Kolora<br />
             Weboldalt készítette: WholesomeWare
         </p>
     </footer>

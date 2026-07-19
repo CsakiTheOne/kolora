@@ -24,7 +24,7 @@
                             href="mailto:koloraegyesulet@gmail.com"
                             target="_blank"
                         >
-                            <span>koloraegyesulet @gmail.com</span>
+                            <span>koloraegyesulet@gmail.com</span>
                         </a>
                     </p>
                     <p style="rotate: -8deg;">
