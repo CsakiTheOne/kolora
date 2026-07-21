@@ -13,6 +13,12 @@
     import Header from "../../components/Header.svelte";
     import KoloraMemberDisplay from "../../components/KoloraMemberDisplay.svelte";
     import Footer from "../../components/Footer.svelte";
+    import { onMount } from "svelte";
+    import { goto } from "$app/navigation";
+
+    onMount(() => {
+        window.location = "https://http.cat/503";
+    });
 </script>
 
 <Header selectedPageIndex={2} />
