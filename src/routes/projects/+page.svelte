@@ -20,9 +20,13 @@
                 előadók mutatkoztak be Székesfehérváron. Bandák, kiállítás, DJ-k
                 és workshop-ok.
             </p>
-            <b>2026 hamarosan</b>
             <p>
-                <a class="cta-link" href="/projects/feszt-2025" target="_self">
+                <a href="/projects/feszt-2026" target="_self">
+                    2026-os program
+                </a>
+            </p>
+            <p>
+                <a href="/projects/feszt-2025" target="_self">
                     2025-ös program
                 </a>
             </p>

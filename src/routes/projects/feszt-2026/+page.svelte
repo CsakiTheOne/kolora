@@ -1,196 +1,182 @@
 <script lang="ts">
-    import Countdown from "../../../components/legacy/Countdown.svelte";
-    import Footer from "../../../components/legacy/Footer.svelte";
-    import poster from "$lib/images/gallery/2025-kolora-feszt/poster.png";
-    import cookie from "$lib/images/utils/cookie-clock.svg?raw";
-    import { onMount } from "svelte";
-    import Divider from "../../../components/legacy/Divider.svelte";
-    import imgSectionBands from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-bands.jpg";
-    import imgSectionDJs from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-djs.jpg";
-    import imgSectionWorkshops from "$lib/images/gallery/2025-kolora-feszt/kolora-feszt-section-workshops.jpg";
-    import SmallHeader from "../../../components/legacy/SmallHeader.svelte";
-
-    const events: Array<{
-        type:
-            | "DJ"
-            | "kiállító"
-            | "banda"
-            | "könyvbemutató"
-            | "workshop"
-            | "fényfestés"
-            | "egyéb";
-        name: string;
-        day: string; // YYYY-MM-DD
-        start: string; // HH:MM
-        end: string; // HH:MM
-        url?: string;
-    }> = [
-        {
-            type: "workshop",
-            name: "Kalafatics Imi & Tóth Zsombor",
-            day: "2025-10-17",
-            start: "16:30",
-            end: "19:00",
-        },
-        {
-            type: "workshop",
-            name: "Vesztu",
-            day: "2025-10-17",
-            start: "16:30",
-            end: "19:00",
-            url: "https://www.instagram.com/vesztutattoo/",
-        },
-        {
-            type: "kiállító",
-            name: "Szvath Marci",
-            day: "2025-10-17",
-            start: "16:30",
-            end: "23:59",
-            url: "https://www.instagram.com/zagyva.graphics/",
-        },
-        // Péntek
-        {
-            type: "egyéb",
-            name: "1. nap - Kapunyitás",
-            day: "2025-10-17",
-            start: "16:30",
-            end: "16:30",
-        },
-        {
-            type: "banda",
-            name: "Somnium",
-            day: "2025-10-17",
-            start: "20:00",
-            end: "21:00",
-            url: "https://www.instagram.com/somniumzenekar/",
-        },
-        {
-            type: "banda",
-            name: "Wake And Bake",
-            day: "2025-10-17",
-            start: "21:30",
-            end: "22:30",
-        },
-        {
-            type: "DJ",
-            name: "OnlyFangs",
-            day: "2025-10-17",
-            start: "23:00",
-            end: "23:59",
-        },
-        {
-            type: "DJ",
-            name: "Kama3 aka. Riot City",
-            day: "2025-10-18",
-            start: "00:00",
-            end: "01:00",
-        },
-        {
-            type: "DJ",
-            name: "blameyourbrother.",
-            day: "2025-10-18",
-            start: "01:00",
-            end: "02:00",
-        },
-        // Szombat
-        {
-            type: "egyéb",
-            name: "2. nap - Kapunyitás",
-            day: "2025-10-18",
-            start: "17:00",
-            end: "17:00",
-        },
-        {
-            type: "banda",
-            name: "Féltucat",
-            day: "2025-10-18",
-            start: "18:00",
-            end: "18:50",
-            url: "https://www.instagram.com/_feltucat/",
-        },
-        {
-            type: "banda",
-            name: "Porszem",
-            day: "2025-10-18",
-            start: "19:10",
-            end: "20:00",
-            url: "https://www.instagram.com/porszemband/",
-        },
-        {
-            type: "banda",
-            name: "Tearaža",
-            day: "2025-10-18",
-            start: "20:20",
-            end: "21:10",
-            url: "https://www.instagram.com/tearaza_band/",
-        },
-        {
-            type: "banda",
-            name: "Naez",
-            day: "2025-10-18",
-            start: "21:30",
-            end: "22:20",
-            url: "https://www.instagram.com/naez.official/",
-        },
-        {
-            type: "banda",
-            name: "Loophia",
-            day: "2025-10-18",
-            start: "22:40",
-            end: "23:30",
-            url: "https://www.instagram.com/loophia_/",
-        },
-        {
-            type: "DJ",
-            name: "Bodonyi Dani",
-            day: "2025-10-19",
-            start: "00:00",
-            end: "01:00",
-            url: "https://www.instagram.com/daniel_bodonyi/",
-        },
-        {
-            type: "DJ",
-            name: "HYPERtänzer",
-            day: "2025-10-19",
-            start: "01:00",
-            end: "03:00",
-        },
-    ];
-
-    const eventStartDate = new Date("2025-10-17T16:30:00");
+    import bannerAnimation from "$lib/images/events/kolora-feszt-2026/kolora-feszt-2026-banner-video.gif";
+    import Icon from "@iconify/svelte";
 </script>
 
 <div class="theme-override">
-    <div class="header">
-        <SmallHeader currentPage="Kolora Feszt" hideThemeButton />
+    <div class="bg-container">
+        <div class="blob blob-red"></div>
+        <div class="blob blob-cyan"></div>
+        <div class="blob blob-purple"></div>
+        <div class="noise-overlay"></div>
     </div>
-    <main class="container-column">
-        <h1>Mit bámulsz? Nem kéne itt lenned</h1>
-        <img style="max-width: 640px;" src="http://http.cat/401" alt="" />
+    <main>
+        <img
+            class="w-full max-h-80 object-cover shadow-teal-700 shadow-lg"
+            src={bannerAnimation}
+            alt=""
+        />
+        <section class="flex flex-col gap-4 p-4">
+            <div class="glass-card flex flex-col gap-4 p-4">
+                <p>
+                    Ismét jön a Kolora és a Nyolcas Műhely egy közösen
+                    szervezett eseménnyel! Érkezik, közeledik, szinte szalad
+                    felénk a második Kolora Fesztivál!
+                </p>
+                <p>
+                    Koncertek, interaktív kiállítás, workshop-ok, DJ-k és mennyi
+                    minden más!
+                </p>
+                <p>Fellépők, részletek hamarosan...</p>
+            </div>
+            <a
+                class="glass-card flex items-center justify-center gap-2"
+                href="https://www.facebook.com/events/1745352100080025"
+                target="_blank"
+            >
+                <Icon icon="mdi:facebook" width={24} />
+                <span>Facebook esemény</span>
+            </a>
+        </section>
     </main>
-    <Footer />
 </div>
 
 <style>
-    .theme-override {
-        /*--primary-color: #8d552e !important;
-        --primary-variant-color: #d5c3b6 !important;
-        --secondary-color: #33214b !important;
-        --secondary-variant-color: #6ea6c4 !important;
-        --background-color: #d5c3b6 !important;
-        --on-primary-color: #d5c3b6 !important;
-        --on-primary-variant-color: #33214b !important;
-        --on-secondary-color: #d5c3b6 !important;
-        --on-secondary-variant-color: #33214b !important;
-        --on-background-color: #33214b !important;
-        --spacing: 20px !important;
-        --corner-radius: 16px !important;
-        background-color: var(--background-color);
-        color: var(--on-background-color);*/
+    @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+    :global(h1, h2, h3, h4, h5, h6) {
+        font-family: "League Spartan", sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
     }
 
-    .header {
+    .theme-override {
         position: relative;
-        z-index: 3;
+        /* Primary vibrant accents sampled from the bright red/orange shapes */
+        --primary-color: #d12c00 !important;
+        --primary-variant-color: #f15a24 !important;
+
+        /* Secondary accents sampled from the bright cyan & deep purple/indigo blobs */
+        --secondary-color: #00ffea !important;
+        --secondary-variant-color: #271a47 !important;
+
+        /* Base background sampled from the deep teal shadow background */
+        --background-color: #0b5d63 !important;
+
+        /* Text/Icon colors tuned for high contrast against primary, secondary, and background */
+        --on-primary-color: #ffffff !important;
+        --on-primary-variant-color: #271a47 !important;
+        --on-secondary-color: #0b5d63 !important;
+        --on-secondary-variant-color: #ffffff !important;
+        --on-background-color: #ffffff !important;
+
+        color: var(--on-background-color);
+    }
+
+    .bg-container {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0;
+        background-color: var(--background-color);
+    }
+
+    main {
+        width: 100%;
+        position: absolute;
+        z-index: 10;
+    }
+
+    .glass-card {
+        background: #271a4780;
+        backdrop-filter: blur(20px);
+        border-radius: 1.5rem;
+        padding: 1rem;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 8px 32px 0 rgba(31, 38, 135, 0.37),
+            0 2px 8px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    a.glass-card {
+        background: #d12c0040;
+        color: var(--on-primary-color);
+        text-transform: uppercase;
+    }
+
+    /* Shared blob styles */
+    .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(30px);
+        opacity: 0.85;
+        /* Hardware acceleration for smoother animations */
+        will-change: transform;
+        animation: morph 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Top Red/Orange Area */
+    .blob-red {
+        top: -10%;
+        left: 30%;
+        width: 55vw;
+        height: 55vw;
+        background-color: #d12c00;
+        animation-duration: 18s;
+    }
+
+    /* Bright Cyan Area */
+    .blob-cyan {
+        bottom: -15%;
+        left: -10%;
+        width: 70vw;
+        height: 70vw;
+        background-color: #0cd4b1;
+        animation-duration: 22s;
+        animation-delay: -5s;
+    }
+
+    /* Dark Purple/Blue Patches */
+    .blob-purple {
+        top: 40%;
+        right: -10%;
+        width: 50vw;
+        height: 50vw;
+        background-color: #271a47;
+        animation-duration: 20s;
+        animation-direction: alternate-reverse;
+    }
+
+    /* The slow, wandering animation */
+    @keyframes morph {
+        0% {
+            transform: translate(0, 0) scale(1);
+        }
+        33% {
+            transform: translate(8%, 12%) scale(1.1);
+        }
+        66% {
+            transform: translate(-10%, 5%) scale(0.9);
+        }
+        100% {
+            transform: translate(12%, -15%) scale(1.05);
+        }
+    }
+
+    /* The crucial grain/noise texture overlay */
+    .noise-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none; /* Allows clicking through to content below */
+        z-index: 5;
+        opacity: 0.75;
+        mix-blend-mode: overlay;
+        /* Inline SVG for fractal noise */
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 </style>
