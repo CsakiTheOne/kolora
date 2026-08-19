@@ -1,6 +1,33 @@
 <script lang="ts">
     import bannerAnimation from "$lib/images/events/kolora-feszt-2026/kolora-feszt-2026-banner-video.gif";
     import Icon from "@iconify/svelte";
+    import { onMount } from "svelte";
+
+    let days = $state(0);
+    let hours = $state(0);
+    let minutes = $state(0);
+    let seconds = $state(0);
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const eventDate = new Date("2026-09-24T00:00:00").getTime();
+        const distance = eventDate - now;
+
+        if (distance > 0) {
+            days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            hours = Math.floor(
+                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+            );
+            minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        }
+    }
+
+    onMount(() => {
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+        return () => clearInterval(interval);
+    });
 </script>
 
 <div class="theme-override">
@@ -12,11 +39,23 @@
     </div>
     <main>
         <img
-            class="w-full max-h-80 object-cover shadow-teal-700 shadow-lg"
+            class="w-full max-h-80 object-cover shadow-teal-600 shadow-lg"
             src={bannerAnimation}
             alt=""
         />
-        <section class="flex flex-col gap-4 p-4">
+        <section class="flex flex-col gap-6 p-6 sm:px-16 lg:px-32">
+            <p
+                class="glass-text text-[2.6rem] font-extrabold flex gap-2 items-center justify-center"
+            >
+                {#if days > 0}
+                    {days} nap
+                {/if}
+                {#if hours > 0 || days > 0}
+                    {hours.toString().padStart(2, "0")}:
+                {/if}{minutes.toString().padStart(2, "0")}:{seconds
+                    .toString()
+                    .padStart(2, "0")}
+            </p>
             <div class="glass-card flex flex-col gap-4 p-4">
                 <p>
                     Ismét jön a Kolora és a Nyolcas Műhely egy közösen
@@ -92,7 +131,7 @@
     }
 
     .glass-card {
-        background: #271a4780;
+        background: #271a4760;
         backdrop-filter: blur(20px);
         border-radius: 1.5rem;
         padding: 1rem;
@@ -101,6 +140,15 @@
             0 8px 32px 0 rgba(31, 38, 135, 0.37),
             0 2px 8px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .glass-text {
+        font-family: "League Spartan", sans-serif;
+        color: #00ffea80;
+        text-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.2),
+            0 2px 4px rgba(0, 0, 0, 0.4),
+            0 4px 12px rgba(31, 38, 135, 0.3);
     }
 
     a.glass-card {
