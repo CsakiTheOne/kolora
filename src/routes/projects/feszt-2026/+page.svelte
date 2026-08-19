@@ -31,11 +31,39 @@
 </script>
 
 <main>
-    <img
-        class="w-full max-h-80 object-cover shadow-teal-600 shadow-lg"
-        src={bannerAnimation}
-        alt=""
-    />
+    <div class="relative">
+        <img
+            class="w-full max-h-80 object-cover shadow-teal-600 shadow-lg"
+            src={bannerAnimation}
+            alt=""
+        />
+        <button
+            class="glass-card absolute bottom-0 right-4 sm:right-16 lg:right-32 translate-y-[50%]"
+            onclick={() => {
+                // Share current page URL via share API
+                const url = window.location.href;
+                if (navigator.share) {
+                    navigator
+                        .share({
+                            title: "Kolora Feszt 2026",
+                            text: "Nézd meg a Kolora Feszt 2026 eseményét!",
+                            url,
+                        })
+                        .then(() => console.log("Successful share"))
+                        .catch((error) => console.log("Error sharing", error));
+                } else {
+                    navigator.clipboard
+                        .writeText(url)
+                        .then(() => alert("URL copied to clipboard!"))
+                        .catch((error) =>
+                            console.log("Error copying URL", error),
+                        );
+                }
+            }}
+        >
+            <Icon icon="mdi:share-variant" width={24} />
+        </button>
+    </div>
     <section class="flex flex-col gap-6 p-6 pb-16 sm:px-16 lg:px-32">
         <p
             class="glass-text text-[3.6rem] text-center font-extrabold flex gap-2 items-center justify-center"
@@ -92,6 +120,7 @@
             0 8px 32px 0 rgba(31, 38, 135, 0.37),
             0 2px 8px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.18);
+        transition: all 0.3s ease-in-out;
     }
 
     .glass-text {
@@ -108,5 +137,9 @@
         background: #d12c0040;
         color: var(--on-primary-color);
         text-transform: uppercase;
+    }
+
+    button.glass-card:hover, button.glass-card:active {
+        color: var(--on-primary-color);
     }
 </style>
