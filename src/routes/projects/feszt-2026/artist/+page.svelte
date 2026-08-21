@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { KoloraFeszt2026 } from "$lib/events/Feszt2026/Feszt2026";
     import Icon from "@iconify/svelte";
-    import type { PageData } from "./$types";
 
-    let { data }: { data: PageData } = $props();
-    const { artist } = data;
+    const artistSlug = new URLSearchParams(window.location.search).get("slug");
+    const artist = KoloraFeszt2026.artists.find(
+        (artist) => artist.slug === artistSlug,
+    )!;
 </script>
 
 <main>
@@ -25,7 +27,49 @@
         <h1>{artist.name}</h1>
     </div>
     <section class="flex flex-col gap-6 p-6 pb-16 sm:px-16 lg:px-32">
-        <p class="glass-card leading-relaxed">{artist.description}</p>
+        <p class="glass-card leading-relaxed text-lg">{artist.description}</p>
+
+        {#if artist.spotifyUrl && artist.spotifyUrl.includes("open.spotify.com/artist/")}
+            <div class="glass-card p-0!">
+                <iframe
+                    title="Spotify Embed"
+                    data-testid="embed-iframe"
+                    src={artist.spotifyUrl
+                        .replace(
+                            "open.spotify.com/artist/",
+                            "open.spotify.com/embed/artist/",
+                        )
+                        .replace("?si=", "?utm_source=generator&si=")}
+                    width="100%"
+                    height="352"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                ></iframe>
+            </div>
+        {/if}
+
+        {#if artist.youtubeUrl}
+            <a
+                class="glass-card flex items-center justify-center gap-2"
+                href={artist.youtubeUrl}
+                target="_blank"
+            >
+                <Icon icon="mdi:youtube" width={24} />
+                <span>YouTube</span>
+            </a>
+        {/if}
+        
+        {#if artist.instagramUrl}
+            <a
+                class="glass-card flex items-center justify-center gap-2"
+                href={artist.instagramUrl}
+                target="_blank"
+            >
+                <Icon icon="mdi:instagram" width={24} />
+                <span>Instagram</span>
+            </a>
+        {/if}
     </section>
 </main>
 
