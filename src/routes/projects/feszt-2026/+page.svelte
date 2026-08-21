@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { KoloraFeszt2026 } from "$lib/events/Feszt2026/Feszt2026";
     import bannerAnimation from "$lib/images/events/kolora-feszt-2026/kolora-feszt-2026-banner-video.gif";
     import Icon from "@iconify/svelte";
     import { onMount } from "svelte";
@@ -88,7 +89,24 @@
                 Koncertek, interaktív kiállítás, workshop-ok, DJ-k és mennyi
                 minden más!
             </p>
-            <p>Fellépők, részletek hamarosan...</p>
+        </div>
+        <div class="columns-1 sm:columns-2 xl:columns-3 gap-4">
+            {#each KoloraFeszt2026.artists as artist (artist.slug)}
+                <a
+                    class="glass-card relative aspect-video flex flex-col justify-end gap-4 p-4 mb-4"
+                    href={`/projects/feszt-2026/artist?slug=${artist.slug}`}
+                >
+                    <img
+                        src={artist.imageUrl}
+                        alt={artist.name}
+                        class="absolute w-full h-full object-cover inset-0 -z-10 opacity-80"
+                    />
+                    <h3>{artist.name}</h3>
+                </a>
+            {/each}
+            <div class="glass-card p-4">
+                További fellépők és részletek hamarosan...
+            </div>
         </div>
         <a
             class="glass-card flex items-center justify-center gap-2"
@@ -121,6 +139,7 @@
             0 2px 8px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.18);
         transition: all 0.3s ease-in-out;
+        overflow: hidden;
     }
 
     .glass-text {
@@ -139,7 +158,8 @@
         text-transform: uppercase;
     }
 
-    button.glass-card:hover, button.glass-card:active {
+    button.glass-card:hover,
+    button.glass-card:active {
         color: var(--on-primary-color);
     }
 </style>
