@@ -15,9 +15,10 @@ export interface Artist {
 export interface Artwork {
     slug: string;
     artistSlug: string;
-    name: string;
     spotifyUrl?: string;
     youtubeUrl?: string;
+    ytMusicUrl?: string;
+    notes?: string;
 }
 
 export const KoloraFeszt2026 = {
@@ -43,5 +44,43 @@ export const KoloraFeszt2026 = {
             instagramUrl: "https://www.instagram.com/kvaterkaperka/",
         },
     ] as Artist[],
-    artworks: [] as Artwork[],
+    artworks: [
+        {
+            slug: "festival-of-light",
+            artistSlug: "lexi",
+            ytMusicUrl: "https://music.youtube.com/watch?v=ZYqh_Ze0QqE&si=EypNwLX6aYsXw5lI",
+            notes: "Festival of Light - Audiomachine",
+        },
+        {
+            slug: "kisah-romantis",
+            artistSlug: "lexi",
+            ytMusicUrl: "https://music.youtube.com/watch?v=L6VgXgDrPfM&si=WeIWfniUT7pB5xqT",
+            notes: "Kisah Romantis - The Bakuucakar & Lalahuta",
+        },
+        {
+            slug: "wolf-in-sheeps-clothing",
+            artistSlug: "lexi",
+            ytMusicUrl: "https://music.youtube.com/watch?v=VM6bPbOnK9w&si=zY_lCE7pEuuh7qWk",
+            notes: "Wolf in Sheep's Clothing feat. William Beckett - Set It Off",
+        },
+        {
+            slug: "flight-of-the-silverbird",
+            artistSlug: "lexi",
+            ytMusicUrl: "https://music.youtube.com/watch?v=u2OBz9mcPJ4&si=iVJnsa8cALXvtbMV",
+            notes: "Flight of the Silverbird - Thomas Bergersen",
+        },
+        {
+            slug: "megalovania-epic-version",
+            artistSlug: "lexi",
+            spotifyUrl: "https://open.spotify.com/track/3DtQrGA4FVij8XcFL4V9yE?si=6b7578cd4a084178",
+            youtubeUrl: "https://youtu.be/TrqObE57shk?is=V2CtVfFl_7vWpYmF",
+            notes: "Megalovania (Epic Version) - Carameii",
+        },
+        {
+            slug: "sanemi-and-gyomei-vs-kokushibo-v2",
+            artistSlug: "lexi",
+            youtubeUrl: "https://youtu.be/ZhewkECoUjI?is=kbzherGWb_qIMLRm",
+            notes: "Sanemi and Gyomei vs Kokushibo V2 (Fanmade) - Gareth Ryan",
+        },
+    ] as Artwork[],
 };
