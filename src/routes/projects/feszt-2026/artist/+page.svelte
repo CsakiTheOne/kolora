@@ -52,13 +52,15 @@
             </a>
             <h1>{artist.name}</h1>
         </div>
-        <section class="flex flex-col gap-6 p-6 pb-16 sm:px-16 lg:px-32">
-            <p class="glass-card leading-relaxed text-lg">
+        <section
+            class="columns-1 sm:columns-2 xl:columns-3 gap-6 p-6 pb-16 sm:px-16 lg:px-32"
+        >
+            <p class="glass-card leading-relaxed text-lg mb-6">
                 {artist.description}
             </p>
 
             {#if artist.spotifyUrl && artist.spotifyUrl.includes("open.spotify.com/artist/")}
-                <div class="glass-card p-0!">
+                <div class="glass-card p-0! mb-6">
                     <iframe
                         title="Spotify Embed"
                         data-testid="embed-iframe"
@@ -78,9 +80,9 @@
             {/if}
 
             {#if artist.youtubeUrl}
-                {#if artist.youtubeUrl.includes("channel")}
+                {#if artist.youtubeUrl.includes("channel") || artist.youtubeUrl.includes("/@")}
                     <a
-                        class="glass-card flex items-center justify-center gap-2"
+                        class="glass-card flex items-center justify-center gap-2 mb-6"
                         href={artist.youtubeUrl}
                         target="_blank"
                     >
@@ -88,7 +90,7 @@
                         <span>YouTube</span>
                     </a>
                 {:else}
-                    <div class="glass-card p-0!">
+                    <div class="glass-card p-0! mb-6">
                         <iframe
                             class="aspect-video"
                             width="100%"
@@ -107,7 +109,7 @@
 
             {#if artist.instagramUrl}
                 <a
-                    class="glass-card flex items-center justify-center gap-2"
+                    class="glass-card flex items-center justify-center gap-2 mb-6"
                     href={artist.instagramUrl}
                     target="_blank"
                 >

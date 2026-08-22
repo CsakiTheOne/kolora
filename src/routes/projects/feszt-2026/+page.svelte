@@ -90,10 +90,10 @@
                 minden más!
             </p>
         </div>
-        <div class="columns-1 sm:columns-2 xl:columns-3 gap-4">
+        <div class="columns-1 sm:columns-2 xl:columns-3 gap-6">
             {#each KoloraFeszt2026.artists as artist (artist.slug)}
                 <a
-                    class="glass-card relative aspect-video flex flex-col justify-end gap-4 p-4 mb-4"
+                    class="glass-card relative aspect-video flex flex-row items-end justify-between gap-4 p-4 mb-6"
                     href={`/projects/feszt-2026/artist?slug=${artist.slug}`}
                 >
                     <img
@@ -102,6 +102,7 @@
                         class="absolute w-full h-full object-cover inset-0 -z-10 opacity-80"
                     />
                     <h3>{artist.name}</h3>
+                    <span class="text-sm lowercase!">{artist.category}</span>
                 </a>
             {/each}
             <div class="glass-card p-4">

@@ -3,6 +3,7 @@ import imgKvaterka from "./images/kvaterka.webp";
 
 export interface Artist {
     slug: string;
+    category: string;
     name: string;
     description: string;
     imageUrl: string;
@@ -15,6 +16,7 @@ export const KoloraFeszt2026 = {
     artists: [
         {
             slug: "egy5egy",
+            category: "zenekar",
             name: "egy5egy",
             description: "Kapukód, busz, akkordmenet. Azok vagyunk, akiknek látni akartok. Néha szomorú, néha boldog, kicsit lázadó, kicsit belekényelmesedő. Amit a helyzet hoz.",
             imageUrl: imgEgy5egy,
@@ -24,6 +26,7 @@ export const KoloraFeszt2026 = {
         },
         {
             slug: "kvaterka",
+            category: "zenekar",
             name: "Kvaterka",
             description: "Dunamenti sanzonrock, kávéházi new wave. A Kvaterka számos műfaj szintézisét keveri palettáján egységes koncepcióvá. Szövegcentrikus zenéjükre nagy hatással volt a 80-as évek pesti undergroundja és a Cseh-Másik-Bereményi szerzőtriász munkássága.",
             imageUrl: imgKvaterka,
