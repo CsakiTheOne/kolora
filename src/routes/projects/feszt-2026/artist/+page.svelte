@@ -36,7 +36,7 @@
         </div>
     {:else}
         <div
-            class="relative aspect-video flex flex-col justify-end p-4 shadow-teal-600 shadow-lg"
+            class="relative aspect-video w-full max-h-92 flex flex-col justify-end p-4 shadow-teal-600 shadow-lg"
         >
             <img
                 class="absolute inset-0 w-full h-full object-cover -z-10"
@@ -78,14 +78,31 @@
             {/if}
 
             {#if artist.youtubeUrl}
-                <a
-                    class="glass-card flex items-center justify-center gap-2"
-                    href={artist.youtubeUrl}
-                    target="_blank"
-                >
-                    <Icon icon="mdi:youtube" width={24} />
-                    <span>YouTube</span>
-                </a>
+                {#if artist.youtubeUrl.includes("channel")}
+                    <a
+                        class="glass-card flex items-center justify-center gap-2"
+                        href={artist.youtubeUrl}
+                        target="_blank"
+                    >
+                        <Icon icon="mdi:youtube" width={24} />
+                        <span>YouTube</span>
+                    </a>
+                {:else}
+                    <div class="glass-card p-0!">
+                        <iframe
+                            class="aspect-video"
+                            width="100%"
+                            src="https://www.youtube.com/embed/{artist.youtubeUrl
+                                .split('/')
+                                .pop()}"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                {/if}
             {/if}
 
             {#if artist.instagramUrl}
@@ -114,6 +131,7 @@
             0 2px 8px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.18);
         transition: all 0.3s ease-in-out;
+        overflow: hidden;
     }
 
     .glass-text {
