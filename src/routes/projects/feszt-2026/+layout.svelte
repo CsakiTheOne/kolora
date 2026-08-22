@@ -1,10 +1,15 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import "../../../Feszt2026.css";
 
     const { children } = $props();
 
-    let windowWidth = $state(typeof window !== "undefined" ? window.innerWidth : 1200);
-    let windowHeight = $state(typeof window !== "undefined" ? window.innerHeight : 800);
+    let windowWidth = $state(
+        typeof window !== "undefined" ? window.innerWidth : 1200,
+    );
+    let windowHeight = $state(
+        typeof window !== "undefined" ? window.innerHeight : 800,
+    );
 
     function generateNoiseOverlaySvg(): string {
         const w = windowWidth / 2;
@@ -32,7 +37,10 @@
         <div class="blob blob-red"></div>
         <div class="blob blob-cyan"></div>
         <div class="blob blob-purple"></div>
-        <div class="noise-overlay" style="background-image: {noiseBackgroundImage}"></div>
+        <div
+            class="noise-overlay"
+            style="background-image: {noiseBackgroundImage}"
+        ></div>
     </div>
     {@render children()}
 </div>

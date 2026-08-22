@@ -109,6 +109,13 @@
                 További fellépők és részletek hamarosan...
             </div>
         </div>
+        <!--a
+            href="/projects/feszt-2026/artwork"
+            class="glass-card flex items-center justify-center gap-2"
+        >
+            <Icon icon="material-symbols:wall-art" width={24} />
+            Interaktív kiállítás
+        </a-->
         <a
             class="glass-card flex items-center justify-center gap-2"
             href="https://www.facebook.com/events/1745352100080025"
@@ -127,40 +134,3 @@
         </a>
     </section>
 </main>
-
-<style>
-    .glass-card {
-        background: #271a4760;
-        backdrop-filter: blur(20px);
-        border-radius: 1.5rem;
-        padding: 1rem;
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.3),
-            0 8px 32px 0 rgba(31, 38, 135, 0.37),
-            0 2px 8px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        transition: all 0.3s ease-in-out;
-        overflow: hidden;
-    }
-
-    .glass-text {
-        font-family: "League Spartan", sans-serif;
-        opacity: 0.5;
-        color: #00ffea;
-        text-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.2),
-            0 2px 4px rgba(0, 0, 0, 0.4),
-            0 4px 12px rgba(31, 38, 135, 0.3);
-    }
-
-    a.glass-card {
-        background: #d12c0040;
-        color: var(--on-primary-color);
-        text-transform: uppercase;
-    }
-
-    button.glass-card:hover,
-    button.glass-card:active {
-        color: var(--on-primary-color);
-    }
-</style>

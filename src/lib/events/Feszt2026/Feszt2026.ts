@@ -12,6 +12,14 @@ export interface Artist {
     instagramUrl?: string;
 }
 
+export interface Artwork {
+    slug: string;
+    artistSlug: string;
+    name: string;
+    spotifyUrl?: string;
+    youtubeUrl?: string;
+}
+
 export const KoloraFeszt2026 = {
     artists: [
         {
@@ -35,4 +43,5 @@ export const KoloraFeszt2026 = {
             instagramUrl: "https://www.instagram.com/kvaterkaperka/",
         },
     ] as Artist[],
+    artworks: [] as Artwork[],
 };
