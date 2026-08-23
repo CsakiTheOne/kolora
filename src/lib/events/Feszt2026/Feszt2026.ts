@@ -1,5 +1,6 @@
 import imgEgy5egy from "./images/egy5egy.webp";
 import imgKvaterka from "./images/kvaterka.webp";
+import imgBruminko from "./images/bruminko.webp";
 
 export interface Artist {
     slug: string;
@@ -42,6 +43,13 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/artist/4saOqPzmr82yEkBYPjHjPH",
             youtubeUrl: "https://youtu.be/A-3XY6MWvxg?si=SX7Ki1V5yyGelpZD",
             instagramUrl: "https://www.instagram.com/kvaterkaperka/",
+        },
+        {
+            slug: "bruminko",
+            category: "zenekar",
+            name: "Bruminko",
+            description: "Brumiko Győri Brúnó projektje, amelyben az alternatív pop, az elektronikus hangzás és a személyes hangvételű dalszövegek találkoznak. A Brumiko-dalok gyakran melankolikus, mégis játékos hangulatúak, és az intim, lo-fi világot modern popérzékenységgel ötvözik. Élőben minimalista felállásban, közvetlen hangulatú koncerteken szólalnak meg a dalok.",
+            imageUrl: imgBruminko,
         },
     ] as Artist[],
     artworks: [
