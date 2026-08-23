@@ -1,6 +1,6 @@
 import imgEgy5egy from "./images/egy5egy.webp";
 import imgKvaterka from "./images/kvaterka.webp";
-import imgBruminko from "./images/bruminko.webp";
+import imgBrumiko from "./images/brumiko.webp";
 
 export interface Artist {
     slug: string;
@@ -11,6 +11,7 @@ export interface Artist {
     spotifyUrl?: string;
     youtubeUrl?: string;
     instagramUrl?: string;
+    hidden?: boolean;
 }
 
 export interface Artwork {
@@ -45,18 +46,32 @@ export const KoloraFeszt2026 = {
             instagramUrl: "https://www.instagram.com/kvaterkaperka/",
         },
         {
-            slug: "bruminko",
+            slug: "brumiko",
             category: "zenekar",
-            name: "Bruminko",
+            name: "Brumiko",
             description: "Brumiko Győri Brúnó projektje, amelyben az alternatív pop, az elektronikus hangzás és a személyes hangvételű dalszövegek találkoznak. A Brumiko-dalok gyakran melankolikus, mégis játékos hangulatúak, és az intim, lo-fi világot modern popérzékenységgel ötvözik. Élőben minimalista felállásban, közvetlen hangulatú koncerteken szólalnak meg a dalok.",
-            imageUrl: imgBruminko,
+            imageUrl: imgBrumiko,
+            spotifyUrl: "https://open.spotify.com/artist/5SVttRH8PTal59RNTpPGpE",
+            youtubeUrl: "https://youtu.be/qLJHVMCXeOc",
+            instagramUrl: "https://www.instagram.com/brumiko_projekt/",
+            hidden: true,
+        },
+        {
+            slug: "lexi",
+            category: "festő",
+            name: "Lexi",
+            description: "TODO: Bemutatkozás szöveg",
+            instagramUrl: "https://www.instagram.com/the_lexiart_gallery/",
+            hidden: true,
         },
     ] as Artist[],
     artworks: [
         {
             slug: "festival-of-light",
             artistSlug: "lexi",
-            ytMusicUrl: "https://music.youtube.com/watch?v=ZYqh_Ze0QqE&si=EypNwLX6aYsXw5lI",
+            spotifyUrl: "https://open.spotify.com/track/0Kqk2Aag1a7qX7i4dCmlzw",
+            youtubeUrl: "https://youtu.be/lcoLjDXXAeI",
+            ytMusicUrl: "https://music.youtube.com/watch?v=ZYqh_Ze0QqE",
             notes: "Festival of Light - Audiomachine",
         },
         {

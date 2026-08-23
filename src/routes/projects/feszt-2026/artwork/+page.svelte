@@ -37,14 +37,14 @@
 </script>
 
 <main class="flex flex-col gap-6 p-6 pb-16 sm:px-16 lg:px-32">
-    <a
-        href="/projects/feszt-2026"
-        class="glass-card p-3! self-start flex items-center justify-center gap-2"
-    >
-        <Icon icon="mdi:arrow-left" width={24} />
-        <span>Vissza</span>
-    </a>
     {#if !artwork}
+        <a
+            href="/projects/feszt-2026"
+            class="glass-card p-3! self-start flex items-center justify-center gap-2"
+        >
+            <Icon icon="mdi:arrow-left" width={24} />
+            <span>Vissza</span>
+        </a>
         <h1>Hogyan működik a kiállítás?</h1>
         <div class="glass-card flex flex-col gap-4">
             <p>
@@ -69,9 +69,26 @@
             kapj!
         </p>
     {:else}
-        <h1>{artwork.notes}</h1>
+        {#if artist}
+            <div class="glass-card flex flex-col gap-4">
+                <h2>{artist.name}</h2>
+                <p class="text-sm opacity-75">{artist.description}</p>
+                {#if artist.instagramUrl}
+                    <a
+                        class="flex flex-row items-center justify-center gap-2 self-end"
+                        href={artist.instagramUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Icon icon="mdi:instagram" width={24} />
+                        Instagram
+                    </a>
+                {/if}
+            </div>
+        {/if}
+        <h1 class="text-center">{artwork.notes}</h1>
         {#if artwork.spotifyUrl}
-            <div class="glass-card p-0! mb-6">
+            <div class="glass-card p-0!">
                 <iframe
                     title="Spotify Embed"
                     data-testid="embed-iframe"
@@ -90,5 +107,50 @@
                 ></iframe>
             </div>
         {/if}
+        {#if artwork.youtubeUrl}
+            <div class="glass-card p-0!">
+                <iframe
+                    class="aspect-video"
+                    width="100%"
+                    src={artwork.youtubeUrl.replace(
+                        "https://youtu.be/",
+                        "https://www.youtube.com/embed/",
+                    )}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        {/if}
+        {#if artwork.ytMusicUrl}
+            <a
+                class="glass-card bg-red-700/50! flex flex-row items-center justify-center gap-2"
+                href={artwork.ytMusicUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <Icon icon="simple-icons:youtubemusic" width={24} />
+                Hallgasd meg YT Music-on
+            </a>
+        {/if}
+        <hr />
+        <button
+            class="glass-card p-3! flex items-center justify-center gap-2"
+            onclick={() => {
+                artwork = null;
+                artist = null;
+            }}
+        >
+            <Icon icon="material-symbols:wall-art" width={24} />
+            <span>Interaktív kiállítás</span>
+        </button>
+        <a
+            href="/projects/feszt-2026"
+            class="glass-card p-3! flex items-center justify-center gap-2"
+        >
+            <Icon icon="mdi:arrow-left" width={24} />
+            <span>Vissza az esemény főoldalára</span>
+        </a>
     {/if}
 </main>
