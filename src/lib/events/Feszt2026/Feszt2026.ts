@@ -54,7 +54,6 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/artist/5SVttRH8PTal59RNTpPGpE",
             youtubeUrl: "https://youtu.be/qLJHVMCXeOc",
             instagramUrl: "https://www.instagram.com/brumiko_projekt/",
-            hidden: true,
         },
         {
             slug: "lexi",
