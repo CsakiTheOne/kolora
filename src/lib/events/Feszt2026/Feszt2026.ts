@@ -1,6 +1,7 @@
 import imgEgy5egy from "./images/egy5egy.webp";
 import imgKvaterka from "./images/kvaterka.webp";
 import imgBrumiko from "./images/brumiko.webp";
+import imgDeafSoundcheck from "./images/deaf-soundcheck.webp";
 
 export interface Artist {
     slug: string;
@@ -54,6 +55,16 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/artist/5SVttRH8PTal59RNTpPGpE",
             youtubeUrl: "https://youtu.be/qLJHVMCXeOc",
             instagramUrl: "https://www.instagram.com/brumiko_projekt/",
+        },
+        {
+            slug: "deaf-soundcheck",
+            category: "zenekar",
+            name: "Deaf Soundcheck",
+            description: "A DEAF SOUNDCHECK egy Budapesti alternatív rockzenekar. Fura szövegek, még furább hangzásvilág egy kis Indie és Posztrockkal vegyítve. A zenekar 2024-ben alakult, és még abban az évben megjelentette első négyszámos angol EP-jét Demos & Stuff címmel, azóta folyamatosan koncertezik és anyanyelvén folytatja a muzsikálást.  Szeretnénk itthonra a kísértetiesen kisérleties zenéket behozni és egy klafa közösséget kialakítani",
+            imageUrl: imgDeafSoundcheck,
+            spotifyUrl: "https://open.spotify.com/artist/46wls20a4TAvvtQCfrwvOr",
+            youtubeUrl: "https://youtu.be/L4pGclCtpGM",
+            instagramUrl: "https://www.instagram.com/deafsoundcheck/",
         },
         {
             slug: "lexi",
