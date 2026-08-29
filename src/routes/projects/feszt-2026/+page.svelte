@@ -95,14 +95,23 @@
                 <a
                     class="glass-card relative aspect-video flex flex-row items-end justify-between gap-4 p-4 mb-6"
                     href={`/projects/feszt-2026/artist?slug=${artist.slug}`}
+                    style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
                 >
                     <img
                         src={artist.imageUrl}
                         alt={artist.name}
                         class="absolute w-full h-full object-cover inset-0 -z-10 opacity-80"
+                        style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
                     />
-                    <h3>{artist.name}</h3>
-                    <span class="text-sm lowercase!">{artist.category}</span>
+                    <h3 style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}>
+                        {artist.name}
+                    </h3>
+                    <span
+                        class="text-sm lowercase!"
+                        style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
+                    >
+                        {artist.category}
+                    </span>
                 </a>
             {/each}
             <div class="glass-card p-4">

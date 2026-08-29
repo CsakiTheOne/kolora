@@ -1,5 +1,6 @@
 <script>
     import "@mdi/font/css/materialdesignicons.min.css";
+    import { onNavigate } from "$app/navigation";
     import "../app.css";
     import { page } from "$app/stores";
     import ScrollToTopButton from "../components/ScrollToTopButton.svelte";
@@ -9,6 +10,17 @@
     import punkFont from "$lib/fonts/Hit me, punk! 01.ttf";
 
     const { children } = $props();
+
+    onNavigate((navigation) => {
+        if (!document.startViewTransition) return;
+
+        return new Promise((resolve) => {
+            document.startViewTransition(async () => {
+                resolve();
+                await navigation.complete;
+            });
+        });
+    });
 
     onMount(() => {
         const unmountUserManager = UserManager.instance.mount();

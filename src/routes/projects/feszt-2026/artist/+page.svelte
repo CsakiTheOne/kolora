@@ -37,11 +37,13 @@
     {:else}
         <div
             class="relative aspect-video w-full max-h-92 flex flex-col justify-end p-4 shadow-teal-600 shadow-lg"
+            style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
         >
             <img
                 class="absolute inset-0 w-full h-full object-cover -z-10"
                 src={artist.imageUrl}
                 alt={artist.name}
+                style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
             />
             <a
                 href="/projects/feszt-2026"
@@ -50,7 +52,12 @@
                 <Icon icon="mdi:arrow-left" width={24} />
                 <span>Vissza</span>
             </a>
-            <h1>{artist.name}</h1>
+            <h1 style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}>
+                {artist.name}
+            </h1>
+            <p style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}>
+                {artist.category}
+            </p>
         </div>
         <section
             class="columns-1 sm:columns-2 xl:columns-3 gap-6 p-6 pb-16 sm:px-16 lg:px-32"
