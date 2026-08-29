@@ -2,6 +2,7 @@ import imgEgy5egy from "./images/egy5egy.webp";
 import imgKvaterka from "./images/kvaterka.webp";
 import imgBrumiko from "./images/brumiko.webp";
 import imgDeafSoundcheck from "./images/deaf-soundcheck.webp";
+import imgCarnivora from "./images/carnivora_cropped.webp";
 
 export interface Artist {
     slug: string;
@@ -65,6 +66,15 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/artist/46wls20a4TAvvtQCfrwvOr",
             youtubeUrl: "https://youtu.be/L4pGclCtpGM",
             instagramUrl: "https://www.instagram.com/deafsoundcheck/",
+        },
+        {
+            slug: "carnivora",
+            category: "zenekar",
+            name: "Carnivora",
+            description: "Egy szál akusztikus gitár, két énekhang és a huszonéves hétköznapok őszinte pillanatai. Zenévé formálják mindazt, amit a saját bőrükön tapasztalnak meg a világból. Érzelmes, változatos műfajú dalaikban saját felnövéstörténeteiket, csalódásaikat és apró örömeiket mesélik el, intim és magával ragadó hangulatot teremtve a közönségnek.",
+            imageUrl: imgCarnivora,
+            youtubeUrl: "https://youtu.be/Nl7dzU15QtI",
+            instagramUrl: "https://www.instagram.com/carnivora_music/",
         },
         {
             slug: "lexi",
