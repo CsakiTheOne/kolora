@@ -3,6 +3,7 @@ import imgKvaterka from "./images/kvaterka.webp";
 import imgBrumiko from "./images/brumiko.webp";
 import imgDeafSoundcheck from "./images/deaf-soundcheck.webp";
 import imgCarnivora from "./images/carnivora_cropped.webp";
+import imgKam from "./images/kam.webp";
 
 export interface Artist {
     slug: string;
@@ -75,6 +76,16 @@ export const KoloraFeszt2026 = {
             imageUrl: imgCarnivora,
             youtubeUrl: "https://youtu.be/Nl7dzU15QtI",
             instagramUrl: "https://www.instagram.com/carnivora_music/",
+        },
+        {
+            slug: "kam",
+            category: "zenész",
+            name: "KAM",
+            description: "21 éves, budapesti feltörekvő zenész. Többnyire akusztikus, gitáros fellépésekkel járja az országot, és olyan rendezvények szavaztak már neki bizalmat, mint a Miskolci Piknik, Veszprémi, Debreceni vagy a Budapesti Utcazene Fesztivál, emellett a Petőfi rádióban is szerepelt. Célja, hogy az őszinte, saját, indie-pop dalait még a zuhany alatt is énekelje a közönsége.",
+            imageUrl: imgKam,
+            spotifyUrl: "https://open.spotify.com/artist/0rK35UA0oz3k3LDpdGgQHO",
+            youtubeUrl: "https://www.youtube.com/channel/UCPj0fJ0Zbnt7eooeyb1vTYw",
+            instagramUrl: "https://www.instagram.com/here.i.kam._/",
         },
         {
             slug: "lexi",
