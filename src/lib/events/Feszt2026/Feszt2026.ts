@@ -70,7 +70,7 @@ export const KoloraFeszt2026 = {
         },
         {
             slug: "carnivora",
-            category: "zenekar",
+            category: "duó",
             name: "Carnivora",
             description: "Egy szál akusztikus gitár, két énekhang és a huszonéves hétköznapok őszinte pillanatai. Zenévé formálják mindazt, amit a saját bőrükön tapasztalnak meg a világból. Érzelmes, változatos műfajú dalaikban saját felnövéstörténeteiket, csalódásaikat és apró örömeiket mesélik el, intim és magával ragadó hangulatot teremtve a közönségnek.",
             imageUrl: imgCarnivora,
