@@ -4,6 +4,7 @@ import imgBrumiko from "./images/brumiko.webp";
 import imgDeafSoundcheck from "./images/deaf-soundcheck.webp";
 import imgCarnivora from "./images/carnivora_cropped.webp";
 import imgKam from "./images/kam.webp";
+import imgPorszem from "./images/porszem.webp";
 
 export interface Artist {
     slug: string;
@@ -86,6 +87,16 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/artist/0rK35UA0oz3k3LDpdGgQHO",
             youtubeUrl: "https://www.youtube.com/channel/UCPj0fJ0Zbnt7eooeyb1vTYw",
             instagramUrl: "https://www.instagram.com/here.i.kam._/",
+        },
+        {
+            slug: "porszem",
+            category: "zenekar",
+            name: "Porszem",
+            description: "Nem szeretjük magunkat... zeneileg beskatulyázni. Egy biztos, hogy kifejezetten versfeldolgozások terén tevékenykedünk. A Porszem zenei palettája a görög ódák lágy és elszenderítő hangulatvilágától a piszkos rakendrollig (🤘😎👍) terjed. Ha szükséged van egy kis háttérzajra a lapátolás, vagy az Excel-táblázatok varázslása közepette, mindenképp kapcsolj rá a Porszem-fm rádióra (👁👄👁👂 🎶🎶 📻)! Hogy a jövő dalát naprakészen halljad, hallgass minket még tegnap a világháló különböző pontjain! ✌️😎 ☮️☮️",
+            imageUrl: imgPorszem,
+            spotifyUrl: "https://open.spotify.com/artist/7GBHZCNkbwsN1xo59Y98FN",
+            youtubeUrl: "https://www.youtube.com/channel/UCwB944VGOicgwddVpNNz9MQ",
+            instagramUrl: "https://www.instagram.com/porszemband/",
         },
         {
             slug: "lexi",
