@@ -4,6 +4,7 @@ import imgBrumiko from "./images/brumiko.webp";
 import imgDeafSoundcheck from "./images/deaf-soundcheck.webp";
 import imgCarnivora from "./images/carnivora_cropped.webp";
 import imgKam from "./images/kam.webp";
+import imgBolygo from "./images/bolygo.webp";
 import imgPorszem from "./images/porszem.webp";
 
 export interface Artist {
@@ -89,6 +90,16 @@ export const KoloraFeszt2026 = {
             instagramUrl: "https://www.instagram.com/here.i.kam._/",
         },
         {
+            slug: "bolygo",
+            category: "zenekar",
+            name: "Bolygó",
+            description: "A pécsi székhelyű zenekar második nagylemezén új hangzásokkal kísérletezik: az 'ami nincs még azt akarom' című 10 számos albumon keverednek az őszinte szövegek, a shoegaze-es éteri gitártémák és a feszes progresszív groove-ok.",
+            imageUrl: imgBolygo,
+            spotifyUrl: "https://open.spotify.com/artist/71tlOMdMDHWLGVsLaYUghg",
+            youtubeUrl: "https://youtu.be/kULElwLqmb4",
+            instagramUrl: "https://www.instagram.com/bolygo_zenekar/",
+        },
+        {
             slug: "porszem",
             category: "zenekar",
             name: "Porszem",
@@ -97,6 +108,7 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/artist/7GBHZCNkbwsN1xo59Y98FN",
             youtubeUrl: "https://www.youtube.com/channel/UCwB944VGOicgwddVpNNz9MQ",
             instagramUrl: "https://www.instagram.com/porszemband/",
+            hidden: true,
         },
         {
             slug: "lexi",
