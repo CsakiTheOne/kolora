@@ -108,7 +108,6 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/artist/7GBHZCNkbwsN1xo59Y98FN",
             youtubeUrl: "https://www.youtube.com/channel/UCwB944VGOicgwddVpNNz9MQ",
             instagramUrl: "https://www.instagram.com/porszemband/",
-            hidden: true,
         },
         {
             slug: "lexi",
