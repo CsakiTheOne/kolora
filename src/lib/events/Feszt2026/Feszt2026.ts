@@ -6,6 +6,7 @@ import imgCarnivora from "./images/carnivora_cropped.webp";
 import imgKam from "./images/kam.webp";
 import imgBolygo from "./images/bolygo.webp";
 import imgPorszem from "./images/porszem.webp";
+import imgKoriander from "./images/koriander.webp";
 
 export interface Artist {
     slug: string;
@@ -108,6 +109,14 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/artist/7GBHZCNkbwsN1xo59Y98FN",
             youtubeUrl: "https://www.youtube.com/channel/UCwB944VGOicgwddVpNNz9MQ",
             instagramUrl: "https://www.instagram.com/porszemband/",
+        },
+        {
+            slug: "koriander",
+            category: "zenekar",
+            name: "korïander",
+            description: "A 2025 telén körvonalazódott korïander műfajokon átívelő gasztronómiai utazás a neo soul a soul funk és a pszichedelikus jazz világában. Szokatlan ritmusok, többszólamú vokál, garantált extázis.",
+            imageUrl: imgKoriander,
+            instagramUrl: "https://www.instagram.com/koriander.wav/",
         },
         {
             slug: "lexi",
