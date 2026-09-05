@@ -36,7 +36,7 @@
         </div>
     {:else}
         <div
-            class="relative aspect-video w-full max-h-92 flex flex-col justify-end p-4 shadow-teal-600 shadow-lg"
+            class="lg:hidden relative aspect-video w-full max-h-92 flex flex-col justify-end p-4 shadow-teal-600 shadow-lg"
             style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
         >
             <img
@@ -45,23 +45,57 @@
                 alt={artist.name}
                 style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
             />
-            <a
-                href="/projects/feszt-2026"
+            <button
+                onclick={() => window.history.back()}
                 class="glass-card absolute p-3! top-4 left-4 flex items-center justify-center gap-2"
             >
                 <Icon icon="mdi:arrow-left" width={24} />
                 <span>Vissza</span>
-            </a>
-            <h1 style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}>
+            </button>
+            <h1
+                style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}
+            >
                 {artist.name}
             </h1>
-            <p style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}>
+            <p
+                style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
+            >
                 {artist.category}
             </p>
         </div>
         <section
             class="columns-1 sm:columns-2 xl:columns-3 gap-6 p-6 pb-16 sm:px-16 lg:px-32"
         >
+            <div
+                class="hidden lg:flex glass-card relative aspect-video mb-6 flex-col justify-end p-4"
+            >
+                <img
+                    class="absolute inset-0 w-full h-full object-cover -z-10"
+                    src={artist.imageUrl}
+                    alt={artist.name}
+                    style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
+                />
+                <button
+                    onclick={() => window.history.back()}
+                    class="glass-card absolute p-2! top-1 left-1 flex items-center justify-center gap-2"
+                >
+                    <Icon icon="mdi:arrow-left" width={24} />
+                    <span>Vissza</span>
+                </button>
+                <div class="flex flex-row items-end justify-between">
+                    <h1
+                        style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}
+                    >
+                        {artist.name}
+                    </h1>
+                    <p
+                        style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
+                    >
+                        {artist.category}
+                    </p>
+                </div>
+            </div>
+
             <p class="glass-card leading-relaxed text-lg mb-6">
                 {artist.description}
             </p>
