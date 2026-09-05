@@ -126,6 +126,28 @@ export const KoloraFeszt2026 = {
             instagramUrl: "https://www.instagram.com/the_lexiart_gallery/",
             hidden: true,
         },
+        {
+            slug: "furi",
+            category: "kiállító",
+            name: "Fűrész",
+            description: "TODO: Bemutatkozás szöveg",
+            hidden: true,
+        },
+        {
+            slug: "boti",
+            category: "kiállító",
+            name: "Boti",
+            description: "TODO: Bemutatkozás szöveg",
+            hidden: true,
+        },
+        {
+            slug: "frida",
+            category: "horgoló",
+            name: "Frida",
+            description: "TODO: Bemutatkozás szöveg",
+            instagramUrl: "https://www.instagram.com/horgolt_sziv/",
+            hidden: true,
+        },
     ] as Artist[],
     artworks: [
         {
