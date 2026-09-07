@@ -119,6 +119,14 @@ export const KoloraFeszt2026 = {
             instagramUrl: "https://www.instagram.com/koriander.wav/",
         },
         {
+            slug: "tearaza",
+            category: "zenekar",
+            name: "Tearaža",
+            description: "A Punk nyers torzított hangzása ötvözve a New Wave-el, sikítozás szatírikus, íronikus szövegekkel telibe az arcodba. Kemény torzulás, feszes ritmusok, fülbemászó dallamok. Köcsög 🐁🎸",
+            instagramUrl: "https://www.instagram.com/tearaza_band/",
+            hidden: true,
+        },
+        {
             slug: "lexi",
             category: "festő",
             name: "Lexi",
