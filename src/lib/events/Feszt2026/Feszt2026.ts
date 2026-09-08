@@ -7,6 +7,7 @@ import imgKam from "./images/kam.webp";
 import imgBolygo from "./images/bolygo.webp";
 import imgPorszem from "./images/porszem.webp";
 import imgKoriander from "./images/koriander.webp";
+import imgTearaza from "./images/tearaza.webp";
 
 export interface Artist {
     slug: string;
@@ -123,12 +124,12 @@ export const KoloraFeszt2026 = {
             category: "zenekar",
             name: "Tearaža",
             description: "A Punk nyers torzított hangzása ötvözve a New Wave-el, sikítozás szatírikus, íronikus szövegekkel telibe az arcodba. Kemény torzulás, feszes ritmusok, fülbemászó dallamok. Köcsög 🐁🎸",
+            imageUrl: imgTearaza,
             instagramUrl: "https://www.instagram.com/tearaza_band/",
-            hidden: true,
         },
         {
             slug: "lexi",
-            category: "festő",
+            category: "kiállító",
             name: "Lexi",
             description: "TODO: Bemutatkozás szöveg",
             instagramUrl: "https://www.instagram.com/the_lexiart_gallery/",
@@ -150,10 +151,24 @@ export const KoloraFeszt2026 = {
         },
         {
             slug: "frida",
-            category: "horgoló",
+            category: "workshop",
             name: "Frida",
             description: "TODO: Bemutatkozás szöveg",
             instagramUrl: "https://www.instagram.com/horgolt_sziv/",
+            hidden: true,
+        },
+        {
+            slug: "imi",
+            category: "workshop",
+            name: "Imi",
+            description: "TODO: Bemutatkozás szöveg",
+            hidden: true,
+        },
+        {
+            slug: "vesztu",
+            category: "workshop",
+            name: "Vesztu",
+            description: "TODO: Bemutatkozás szöveg",
             hidden: true,
         },
     ] as Artist[],
