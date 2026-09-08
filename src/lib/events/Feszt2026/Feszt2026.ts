@@ -8,6 +8,7 @@ import imgBolygo from "./images/bolygo.webp";
 import imgPorszem from "./images/porszem.webp";
 import imgKoriander from "./images/koriander.webp";
 import imgTearaza from "./images/tearaza.webp";
+import imgZenDogz from "./images/zen-dogz.webp";
 
 export interface Artist {
     slug: string;
@@ -49,7 +50,7 @@ export const KoloraFeszt2026 = {
             description: "Dunamenti sanzonrock, kávéházi new wave. A Kvaterka számos műfaj szintézisét keveri palettáján egységes koncepcióvá. Szövegcentrikus zenéjükre nagy hatással volt a 80-as évek pesti undergroundja és a Cseh-Másik-Bereményi szerzőtriász munkássága.",
             imageUrl: imgKvaterka,
             spotifyUrl: "https://open.spotify.com/artist/4saOqPzmr82yEkBYPjHjPH",
-            youtubeUrl: "https://youtu.be/A-3XY6MWvxg?si=SX7Ki1V5yyGelpZD",
+            youtubeUrl: "https://youtu.be/A-3XY6MWvxg",
             instagramUrl: "https://www.instagram.com/kvaterkaperka/",
         },
         {
@@ -128,6 +129,16 @@ export const KoloraFeszt2026 = {
             instagramUrl: "https://www.instagram.com/tearaza_band/",
         },
         {
+            slug: "zen-dogz",
+            category: "zenekar",
+            name: "Zen Dogz",
+            description: "A Zen Dogz egy kísérleti alternatív hiphop zenekar. Stílusa nyers, Budapest éjszakai életének urbánus hangulatát közvetíti. Energikus ütemek és éles szójátékokra épülő szövegek által nyerünk betekintést nem mindennapi mindennapjaikba. Egyedi hangzásviláguk rögtön felismerhető; elektronikus elemek, pszihedelikus gitárok, koszos dob groove-ok autentikus ötvözete.",
+            imageUrl: imgZenDogz,
+            spotifyUrl: "https://open.spotify.com/artist/3T4v8NtoKiYfDusWA2LlRi",
+            youtubeUrl: "https://youtu.be/wn6CwLGO82w",
+            instagramUrl: "https://www.instagram.com/zen_dogz/",
+        },
+        {
             slug: "lexi",
             category: "kiállító",
             name: "Lexi",
@@ -184,25 +195,25 @@ export const KoloraFeszt2026 = {
         {
             slug: "kisah-romantis",
             artistSlug: "lexi",
-            ytMusicUrl: "https://music.youtube.com/watch?v=L6VgXgDrPfM&si=WeIWfniUT7pB5xqT",
+            ytMusicUrl: "https://music.youtube.com/watch?v=L6VgXgDrPfM",
             notes: "Kisah Romantis - The Bakuucakar & Lalahuta",
         },
         {
             slug: "wolf-in-sheeps-clothing",
             artistSlug: "lexi",
-            ytMusicUrl: "https://music.youtube.com/watch?v=VM6bPbOnK9w&si=zY_lCE7pEuuh7qWk",
+            ytMusicUrl: "https://music.youtube.com/watch?v=VM6bPbOnK9w",
             notes: "Wolf in Sheep's Clothing feat. William Beckett - Set It Off",
         },
         {
             slug: "flight-of-the-silverbird",
             artistSlug: "lexi",
-            ytMusicUrl: "https://music.youtube.com/watch?v=u2OBz9mcPJ4&si=iVJnsa8cALXvtbMV",
+            ytMusicUrl: "https://music.youtube.com/watch?v=u2OBz9mcPJ4",
             notes: "Flight of the Silverbird - Thomas Bergersen",
         },
         {
             slug: "megalovania-epic-version",
             artistSlug: "lexi",
-            spotifyUrl: "https://open.spotify.com/track/3DtQrGA4FVij8XcFL4V9yE?si=6b7578cd4a084178",
+            spotifyUrl: "https://open.spotify.com/track/3DtQrGA4FVij8XcFL4V9yE",
             youtubeUrl: "https://youtu.be/TrqObE57shk?is=V2CtVfFl_7vWpYmF",
             notes: "Megalovania (Epic Version) - Carameii",
         },
