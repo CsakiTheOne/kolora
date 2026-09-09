@@ -9,6 +9,8 @@
     let minutes = $state(0);
     let seconds = $state(0);
 
+    let selectedDay = $state(24);
+
     function updateCountdown() {
         const now = new Date().getTime();
         const eventDate = new Date("2026-09-24T00:00:00").getTime();
@@ -25,6 +27,11 @@
     }
 
     onMount(() => {
+        const isSeptember = new Date().getMonth() === 8;
+        const dayOfMonth = new Date().getDate();
+        if (isSeptember && [24, 25, 26].includes(dayOfMonth))
+            selectedDay = dayOfMonth;
+
         updateCountdown();
         const interval = setInterval(updateCountdown, 1000);
         return () => clearInterval(interval);
@@ -65,7 +72,7 @@
             <Icon icon="mdi:share-variant" width={24} />
         </button>
     </div>
-    <section class="flex flex-col gap-6 p-6 pb-16 sm:px-16 lg:px-32">
+    <section class="flex flex-col gap-6 p-6 pb-16 sm:px-16 lg:px-32 2xl:px-64">
         <p
             class="glass-text text-[3.6rem] text-center font-extrabold flex gap-2 items-center justify-center"
             style="line-height: 4rem;"
@@ -90,56 +97,209 @@
                 minden más!
             </p>
         </div>
-        <div class="columns-1 sm:columns-2 xl:columns-3 gap-6">
-            {#each KoloraFeszt2026.artists.filter((a) => a.hidden !== true) as artist (artist.slug)}
-                <a
-                    class="glass-card relative aspect-video flex flex-row items-end justify-between gap-4 p-4 mb-6"
-                    href={`/projects/feszt-2026/artist?slug=${artist.slug}`}
-                    style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
-                >
-                    <img
-                        src={artist.imageUrl}
-                        alt={artist.name}
-                        class="absolute w-full h-full object-cover inset-0 -z-10 opacity-80"
-                        style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
-                    />
-                    <h3 style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}>
-                        {artist.name}
-                    </h3>
-                    <span
-                        class="text-sm lowercase!"
-                        style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
-                    >
-                        {artist.category}
-                    </span>
-                </a>
-            {/each}
-            <div class="glass-card p-4">
-                További fellépők és részletek hamarosan...
-            </div>
+
+        <div class="w-full flex flex-row items-center justify-center gap-4">
+            <a
+                class="glass-card flex items-center justify-center gap-2"
+                href="https://www.tixa.hu/kolora-feszt-20260924"
+                target="_blank"
+            >
+                <Icon icon="mdi:ticket" width={24} />
+            </a>
+            <a
+                class="glass-card flex items-center justify-center gap-2"
+                href="https://www.facebook.com/events/1745352100080025"
+                target="_blank"
+            >
+                <Icon icon="mdi:facebook" width={24} />
+            </a>
+            <a
+                class="glass-card flex items-center justify-center gap-2"
+                href="https://www.instagram.com/koloraegyesulet"
+                target="_blank"
+            >
+                <Icon icon="mdi:instagram" width={24} />
+            </a>
         </div>
-        <!--a
-            href="/projects/feszt-2026/artwork"
-            class="glass-card flex items-center justify-center gap-2"
-        >
-            <Icon icon="material-symbols:wall-art" width={24} />
-            Interaktív kiállítás
-        </a-->
-        <a
-            class="glass-card flex items-center justify-center gap-2"
-            href="https://www.facebook.com/events/1745352100080025"
-            target="_blank"
-        >
-            <Icon icon="mdi:facebook" width={24} />
-            <span>Facebook esemény</span>
-        </a>
-        <a
-            class="glass-card flex items-center justify-center gap-2"
-            href="https://www.instagram.com/koloraegyesulet"
-            target="_blank"
-        >
-            <Icon icon="mdi:instagram" width={24} />
-            <span>Kolora Instagram</span>
-        </a>
+
+        <h2>Lineup</h2>
+
+        <div class="flex flex-row items-center gap-4">
+            <button
+                class="glass-card flex-0 min-w-16 lg:flex-1"
+                class:flex-1={selectedDay === 24}
+                onclick={() => (selectedDay = 24)}
+            >
+                <p class="line-clamp-1 text-ellipsis">
+                    <span>24.</span>
+                    <span
+                        class="hidden lg:inline"
+                        class:inline={selectedDay === 24}>Csütörtök</span
+                    >
+                </p>
+            </button>
+            <button
+                class="glass-card flex-0 min-w-16 lg:flex-1"
+                class:flex-1={selectedDay === 25}
+                onclick={() => (selectedDay = 25)}
+            >
+                <p class="line-clamp-1 text-ellipsis">
+                    <span>25.</span>
+                    <span
+                        class="hidden lg:inline"
+                        class:inline={selectedDay === 25}>Péntek</span
+                    >
+                </p>
+            </button>
+            <button
+                class="glass-card flex-0 min-w-16 lg:flex-1"
+                class:flex-1={selectedDay === 26}
+                onclick={() => (selectedDay = 26)}
+            >
+                <p class="line-clamp-1 text-ellipsis">
+                    <span>26.</span>
+                    <span
+                        class="hidden lg:inline"
+                        class:inline={selectedDay === 26}>Szombat</span
+                    >
+                </p>
+            </button>
+        </div>
+
+        <!-- Large screens: show all days in 3 columns -->
+        <div class="hidden lg:grid grid-cols-3 gap-6">
+            {#each [24, 25, 26] as day (day)}
+                {@const dayLineup = KoloraFeszt2026.lineup.filter(
+                    (item) => item.day === day,
+                )}
+                {@const visibleArtists = dayLineup
+                    .map((item) =>
+                        KoloraFeszt2026.artists.find(
+                            (a) => a.slug === item.artistSlug,
+                        ),
+                    )
+                    .filter(
+                        (a): a is Exclude<typeof a, undefined> =>
+                            a !== undefined && a.hidden !== true,
+                    )}
+                {@const hiddenArtists = dayLineup
+                    .map((item) =>
+                        KoloraFeszt2026.artists.find(
+                            (a) => a.slug === item.artistSlug,
+                        ),
+                    )
+                    .filter(
+                        (a): a is Exclude<typeof a, undefined> =>
+                            a !== undefined && a.hidden === true,
+                    )}
+                {#if visibleArtists.length > 0 || hiddenArtists.length > 0}
+                    <div class="flex flex-col">
+                        <div class="flex flex-col gap-6">
+                            {#each visibleArtists as artist (artist.slug)}
+                                <a
+                                    class="glass-card relative flex flex-row items-end justify-between gap-4 p-4"
+                                    class:aspect-video={artist.imageUrl}
+                                    href={`/projects/feszt-2026/artist?slug=${artist.slug}`}
+                                    style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
+                                >
+                                    {#if artist.imageUrl}
+                                        <img
+                                            src={artist.imageUrl}
+                                            alt={artist.name}
+                                            class="absolute w-full h-full object-cover inset-0 -z-10 opacity-80"
+                                            style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
+                                        />
+                                    {/if}
+                                    <h3
+                                        style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}
+                                    >
+                                        {artist.name}
+                                    </h3>
+                                    <span
+                                        class="text-sm lowercase!"
+                                        style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
+                                    >
+                                        {artist.category}
+                                    </span>
+                                </a>
+                            {/each}
+                            {#each hiddenArtists as artist (artist.slug)}
+                                <div
+                                    class="glass-card relative flex flex-col items-center justify-center gap-2 p-4 opacity-60"
+                                >
+                                    <span class="text-2xl">❓</span>
+                                </div>
+                            {/each}
+                        </div>
+                    </div>
+                {/if}
+            {/each}
+        </div>
+
+        <!-- Small screens: show only selected day -->
+        <div class="lg:hidden">
+            {#if true}
+                {@const dayLineup = KoloraFeszt2026.lineup.filter(
+                    (item) => item.day === selectedDay,
+                )}
+                {@const visibleArtists = dayLineup
+                    .map((item) =>
+                        KoloraFeszt2026.artists.find(
+                            (a) => a.slug === item.artistSlug,
+                        ),
+                    )
+                    .filter(
+                        (a): a is Exclude<typeof a, undefined> =>
+                            a !== undefined && a.hidden !== true,
+                    )}
+                {@const hiddenArtists = dayLineup
+                    .map((item) =>
+                        KoloraFeszt2026.artists.find(
+                            (a) => a.slug === item.artistSlug,
+                        ),
+                    )
+                    .filter(
+                        (a): a is Exclude<typeof a, undefined> =>
+                            a !== undefined && a.hidden === true,
+                    )}
+                <div class="columns-1 gap-6">
+                    {#each visibleArtists as artist (artist.slug)}
+                        <a
+                            class="glass-card relative flex flex-row items-end justify-between gap-4 p-4 mb-6"
+                            class:aspect-video={artist.imageUrl}
+                            href={`/projects/feszt-2026/artist?slug=${artist.slug}`}
+                            style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
+                        >
+                            {#if artist.imageUrl}
+                                <img
+                                    src={artist.imageUrl}
+                                    alt={artist.name}
+                                    class="absolute w-full h-full object-cover inset-0 -z-10 opacity-80"
+                                    style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
+                                />
+                            {/if}
+                            <h3
+                                style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}
+                            >
+                                {artist.name}
+                            </h3>
+                            <span
+                                class="text-sm lowercase!"
+                                style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
+                            >
+                                {artist.category}
+                            </span>
+                        </a>
+                    {/each}
+                    {#each hiddenArtists as artist (artist.slug)}
+                        <div
+                            class="glass-card relative flex flex-col items-center justify-center gap-2 p-4 mb-6 opacity-60"
+                        >
+                            <span class="text-2xl">❓</span>
+                        </div>
+                    {/each}
+                </div>
+            {/if}
+        </div>
     </section>
 </main>

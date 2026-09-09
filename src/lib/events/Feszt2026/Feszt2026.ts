@@ -14,8 +14,8 @@ export interface Artist {
     slug: string;
     category: string;
     name: string;
-    description: string;
-    imageUrl: string;
+    description?: string;
+    imageUrl?: string;
     spotifyUrl?: string;
     youtubeUrl?: string;
     instagramUrl?: string;
@@ -142,7 +142,6 @@ export const KoloraFeszt2026 = {
             slug: "lexi",
             category: "kiállító",
             name: "Lexi",
-            description: "TODO: Bemutatkozás szöveg",
             instagramUrl: "https://www.instagram.com/the_lexiart_gallery/",
             hidden: true,
         },
@@ -150,36 +149,80 @@ export const KoloraFeszt2026 = {
             slug: "furi",
             category: "kiállító",
             name: "Fűrész",
-            description: "TODO: Bemutatkozás szöveg",
             hidden: true,
         },
         {
             slug: "boti",
             category: "kiállító",
             name: "Boti",
-            description: "TODO: Bemutatkozás szöveg",
+            hidden: true,
+        },
+        {
+            slug: "alex",
+            category: "kiállító",
+            name: "Kasó Alex",
+            instagramUrl: "https://www.instagram.com/a_vilagjaro_vilagtalan/",
             hidden: true,
         },
         {
             slug: "frida",
             category: "workshop",
             name: "Frida",
-            description: "TODO: Bemutatkozás szöveg",
+            description: "Horgoló workshop.",
             instagramUrl: "https://www.instagram.com/horgolt_sziv/",
             hidden: true,
         },
         {
             slug: "imi",
             category: "workshop",
-            name: "Imi",
-            description: "TODO: Bemutatkozás szöveg",
+            name: "Kalafatics Imre",
+            description: "Karkötő és övkészítés kártyaszövéssel.",
             hidden: true,
         },
         {
             slug: "vesztu",
             category: "workshop",
             name: "Vesztu",
-            description: "TODO: Bemutatkozás szöveg",
+            description: "Linómetszés workshop.",
+            instagramUrl: "https://www.instagram.com/vesztutattoo/",
+            hidden: true,
+        },
+        {
+            slug: "adami-atelier",
+            category: "workshop",
+            name: "Adami Atelier",
+            description: "Mix & Match, sapka készítő workshop.",
+            instagramUrl: "https://www.instagram.com/adami.atelier/",
+            hidden: true,
+        },
+        {
+            slug: "bodonyi-dani",
+            category: "dj",
+            name: "Bodonyi Dani",
+            hidden: true,
+        },
+        {
+            slug: "hypertanzer",
+            category: "dj",
+            name: "HYPERtänzer",
+            hidden: true,
+        },
+        {
+            slug: "kohi",
+            category: "dj",
+            name: "KØHI",
+            hidden: true,
+        },
+        {
+            slug: "varga",
+            category: "dj",
+            name: "VARGA",
+            hidden: true,
+        },
+        {
+            slug: "h3ad3mpty",
+            category: "dj",
+            name: "H3AD3MPTY",
             hidden: true,
         },
     ] as Artist[],
@@ -224,4 +267,128 @@ export const KoloraFeszt2026 = {
             notes: "Sanemi and Gyomei vs Kokushibo V2 (Fanmade) - Gareth Ryan",
         },
     ] as Artwork[],
+    lineup: [
+        //
+        // Csütörtök (szeptember 24)
+        //
+        // Kiállítások
+        {
+            day: 24,
+            artistSlug: "furi",
+        },
+        {
+            day: 24,
+            artistSlug: "lexi",
+        },
+        {
+            day: 24,
+            artistSlug: "alex",
+        },
+        // Workshop
+        {
+            day: 24,
+            artistSlug: "imi",
+        },
+        // Fellépő
+        {
+            day: 24,
+            artistSlug: "kam",
+        },
+        //
+        // Péntek (szeptember 25)
+        //
+        // Workshopok
+        {
+            day: 25,
+            artistSlug: "frida",
+        },
+        {
+            day: 25,
+            artistSlug: "vesztu",
+        },
+        // Fellépők
+        {
+            day: 25,
+            artistSlug: "bolygo",
+        },
+        {
+            day: 25,
+            artistSlug: "koriander",
+        },
+        {
+            day: 25,
+            artistSlug: "brumiko",
+        },
+        {
+            day: 25,
+            artistSlug: "kvaterka",
+        },
+        // Kolora x Bilox after
+        {
+            day: 25,
+            artistSlug: "bodonyi-dani",
+        },
+        {
+            day: 25,
+            artistSlug: "hypertanzer",
+        },
+        //
+        // Szombat (szeptember 26)
+        //
+        // Workshopok
+        {
+            day: 26,
+            artistSlug: "adami-atelier",
+        },
+        {
+            day: 26,
+            artistSlug: "vesztu",
+        },
+        {
+            day: 26,
+            artistSlug: "imi",
+        },
+        {
+            day: 26,
+            artistSlug: "frida",
+        },
+        // Fellépők
+        {
+            day: 26,
+            artistSlug: "carnivora",
+        },
+        {
+            day: 26,
+            artistSlug: "porszem",
+        },
+        {
+            day: 26,
+            artistSlug: "deaf-soundcheck",
+        },
+        {
+            day: 26,
+            artistSlug: "zen-dogz",
+        },
+        {
+            day: 26,
+            artistSlug: "tearaza",
+        },
+        {
+            day: 26,
+            artistSlug: "egy5egy",
+        },
+        // Kolora x Bilox after
+        {
+            day: 26,
+            artistSlug: "kohi",
+        },
+        {
+            day: 26,
+            artistSlug: "varga",
+        },
+        {
+            day: 26,
+            artistSlug: "h3ad3mpty",
+        },
+    ],
 };

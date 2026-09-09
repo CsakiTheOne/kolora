@@ -39,12 +39,14 @@
             class="lg:hidden relative aspect-video w-full max-h-92 flex flex-col justify-end p-4 shadow-teal-600 shadow-lg"
             style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
         >
-            <img
-                class="absolute inset-0 w-full h-full object-cover -z-10"
-                src={artist.imageUrl}
-                alt={artist.name}
-                style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
-            />
+            {#if artist.imageUrl}
+                <img
+                    class="absolute inset-0 w-full h-full object-cover -z-10"
+                    src={artist.imageUrl}
+                    alt={artist.name}
+                    style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
+                />
+            {/if}
             <button
                 onclick={() => window.history.back()}
                 class="glass-card absolute p-3! top-4 left-4 flex items-center justify-center gap-2"
@@ -69,12 +71,14 @@
             <div
                 class="hidden lg:flex glass-card relative aspect-video mb-6 flex-col justify-end p-4"
             >
-                <img
-                    class="absolute inset-0 w-full h-full object-cover -z-10"
-                    src={artist.imageUrl}
-                    alt={artist.name}
-                    style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
-                />
+                {#if artist.imageUrl}
+                    <img
+                        class="absolute inset-0 w-full h-full object-cover -z-10"
+                        src={artist.imageUrl}
+                        alt={artist.name}
+                        style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
+                    />
+                {/if}
                 <button
                     onclick={() => window.history.back()}
                     class="glass-card absolute p-2! top-1 left-1 flex items-center justify-center gap-2"
@@ -96,9 +100,11 @@
                 </div>
             </div>
 
-            <p class="glass-card leading-relaxed text-lg mb-6">
-                {artist.description}
-            </p>
+            {#if artist.description}
+                <p class="glass-card leading-relaxed text-lg mb-6">
+                    {artist.description}
+                </p>
+            {/if}
 
             {#if artist.spotifyUrl && artist.spotifyUrl.includes("open.spotify.com/artist/")}
                 <div class="glass-card p-0! mb-6">
