@@ -142,14 +142,14 @@ export const KoloraFeszt2026 = {
             slug: "lexi",
             category: "kiállító",
             name: "Lexi",
+            description: "Kiállítás címe: Home",
             instagramUrl: "https://www.instagram.com/the_lexiart_gallery/",
-            hidden: true,
         },
         {
             slug: "furi",
             category: "kiállító",
             name: "Fűrész",
-            hidden: true,
+            description: "Kiállítás címe: Skizofrénia",
         },
         {
             slug: "boti",
@@ -161,8 +161,8 @@ export const KoloraFeszt2026 = {
             slug: "alex",
             category: "kiállító",
             name: "Kasó Alex",
+            description: "Kiállítás címe: Ma még megőrülök",
             instagramUrl: "https://www.instagram.com/a_vilagjaro_vilagtalan/",
-            hidden: true,
         },
         {
             slug: "frida",
@@ -170,14 +170,12 @@ export const KoloraFeszt2026 = {
             name: "Frida",
             description: "Horgoló workshop.",
             instagramUrl: "https://www.instagram.com/horgolt_sziv/",
-            hidden: true,
         },
         {
             slug: "imi",
             category: "workshop",
             name: "Kalafatics Imre",
             description: "Karkötő és övkészítés kártyaszövéssel.",
-            hidden: true,
         },
         {
             slug: "vesztu",
@@ -185,7 +183,6 @@ export const KoloraFeszt2026 = {
             name: "Vesztu",
             description: "Linómetszés workshop.",
             instagramUrl: "https://www.instagram.com/vesztutattoo/",
-            hidden: true,
         },
         {
             slug: "adami-atelier",
@@ -193,37 +190,31 @@ export const KoloraFeszt2026 = {
             name: "Adami Atelier",
             description: "Mix & Match, sapka készítő workshop.",
             instagramUrl: "https://www.instagram.com/adami.atelier/",
-            hidden: true,
         },
         {
             slug: "bodonyi-dani",
             category: "dj",
             name: "Bodonyi Dani",
-            hidden: true,
         },
         {
             slug: "hypertanzer",
             category: "dj",
             name: "HYPERtänzer",
-            hidden: true,
         },
         {
             slug: "kohi",
             category: "dj",
             name: "KØHI",
-            hidden: true,
         },
         {
             slug: "varga",
             category: "dj",
             name: "VARGA",
-            hidden: true,
         },
         {
             slug: "h3ad3mpty",
             category: "dj",
             name: "H3AD3MPTY",
-            hidden: true,
         },
     ] as Artist[],
     artworks: [

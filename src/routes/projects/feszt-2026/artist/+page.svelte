@@ -36,7 +36,9 @@
         </div>
     {:else}
         <div
-            class="lg:hidden relative aspect-video w-full max-h-92 flex flex-col justify-end p-4 shadow-teal-600 shadow-lg"
+            class="lg:hidden relative aspect-video w-full max-h-92 flex flex-col justify-end p-4 shadow-teal-600"
+            class:aspect-video={artist.imageUrl}
+            class:shadow-lg={artist.imageUrl}
             style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
         >
             {#if artist.imageUrl}
@@ -50,6 +52,8 @@
             <button
                 onclick={() => window.history.back()}
                 class="glass-card absolute p-3! top-4 left-4 flex items-center justify-center gap-2"
+                class:absolute={artist.imageUrl}
+                class:mb-4={!artist.imageUrl}
             >
                 <Icon icon="mdi:arrow-left" width={24} />
                 <span>Vissza</span>
@@ -69,7 +73,8 @@
             class="columns-1 sm:columns-2 xl:columns-3 gap-6 p-6 pb-16 sm:px-16 lg:px-32"
         >
             <div
-                class="hidden lg:flex glass-card relative aspect-video mb-6 flex-col justify-end p-4"
+                class="hidden lg:flex glass-card relative mb-6 flex-col justify-end p-4"
+                class:aspect-video={artist.imageUrl}
             >
                 {#if artist.imageUrl}
                     <img
@@ -81,7 +86,9 @@
                 {/if}
                 <button
                     onclick={() => window.history.back()}
-                    class="glass-card absolute p-2! top-1 left-1 flex items-center justify-center gap-2"
+                    class="glass-card p-2! top-1 left-1 flex items-center justify-center gap-2"
+                    class:absolute={artist.imageUrl}
+                    class:mb-4={!artist.imageUrl}
                 >
                     <Icon icon="mdi:arrow-left" width={24} />
                     <span>Vissza</span>
