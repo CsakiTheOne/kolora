@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Icon from "@iconify/svelte";
     import { onMount } from "svelte";
 
     const { ...rest } = $props();
@@ -34,22 +35,22 @@
                 href="https://www.facebook.com/profile.php?id=100094619973134"
                 target="_blank"
             >
-                <span class="mdi mdi-facebook"></span>
+                <Icon icon="mdi:facebook" width={24} />
             </a>
 
             <a
                 href="https://www.instagram.com/koloraegyesulet/"
                 target="_blank"
             >
-                <span class="mdi mdi-instagram"></span>
+                <Icon icon="mdi:instagram" width={24} />
             </a>
 
             <a href="https://www.youtube.com/@koloraegyesulet" target="_blank">
-                <span class="mdi mdi-youtube"></span>
+                <Icon icon="mdi:youtube" width={24} />
             </a>
 
             <a href="/contacts">
-                <span class="mdi mdi-dots-horizontal"></span>
+                <Icon icon="mdi:dots-horizontal" width={24} />
             </a>
         </p>
         <p>

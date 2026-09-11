@@ -52,7 +52,7 @@
         background-color: #0b5d63;
     }
 
-    :global(main) {
+    :global(main, footer) {
         width: 100%;
         position: relative;
         z-index: 10;
