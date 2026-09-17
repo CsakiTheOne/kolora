@@ -14,7 +14,7 @@
 
     function updateCountdown() {
         const now = new Date().getTime();
-        const eventDate = new Date("2026-09-24T00:00:00").getTime();
+        const eventDate = new Date("2026-09-24T18:00:00").getTime();
         const distance = eventDate - now;
 
         if (distance > 0) {
@@ -130,6 +130,9 @@
 
     <div class="columns-2 lg:columns-3">
         {#each KoloraFeszt2026.artists.filter((a) => a.category === "kiállító") as artist (artist.slug)}
+            {@const artistStartTime = KoloraFeszt2026.lineup.find(
+                (item) => item.artistSlug === artist.slug,
+            )?.startTime}
             <a
                 class="glass-card relative flex flex-row items-end justify-between gap-4 p-4 mb-6"
                 class:aspect-video={artist.imageUrl}
@@ -144,9 +147,16 @@
                         style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
                     />
                 {/if}
-                <h3>
-                    {artist.name}
-                </h3>
+                <div class="flex flex-col">
+                    {#if artistStartTime}
+                        <span class="text-sm font-semibold">
+                            {artistStartTime}
+                        </span>
+                    {/if}
+                    <h3>
+                        {artist.name}
+                    </h3>
+                </div>
                 <span class="text-sm lowercase!">
                     {artist.category}
                 </span>
@@ -230,6 +240,9 @@
                 <div class="flex flex-col">
                     <div class="flex flex-col gap-6">
                         {#each visibleArtists as artist (artist.slug)}
+                            {@const artistStartTime = dayLineup.find(
+                                (item) => item.artistSlug === artist.slug,
+                            )?.startTime}
                             <a
                                 class="glass-card relative flex flex-row items-end justify-between gap-4 p-4"
                                 class:aspect-video={artist.imageUrl}
@@ -244,9 +257,16 @@
                                         style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
                                     />
                                 {/if}
-                                <h3>
-                                    {artist.name}
-                                </h3>
+                                <div class="flex flex-col">
+                                    {#if artistStartTime}
+                                        <span class="text-sm font-semibold">
+                                            {artistStartTime}
+                                        </span>
+                                    {/if}
+                                    <h3>
+                                        {artist.name}
+                                    </h3>
+                                </div>
                                 <span class="text-sm lowercase!">
                                     {artist.category}
                                 </span>
@@ -293,6 +313,9 @@
                 )}
             <div class="columns-1 gap-6">
                 {#each visibleArtists as artist (artist.slug)}
+                    {@const artistStartTime = dayLineup.find(
+                        (item) => item.artistSlug === artist.slug,
+                    )?.startTime}
                     <a
                         class="glass-card relative flex flex-row items-end justify-between gap-4 p-4 mb-6"
                         class:aspect-video={artist.imageUrl}
@@ -307,9 +330,16 @@
                                 style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
                             />
                         {/if}
-                        <h3>
-                            {artist.name}
-                        </h3>
+                        <div class="flex flex-col">
+                            {#if artistStartTime}
+                                <span class="text-sm font-semibold">
+                                    {artistStartTime}
+                                </span>
+                            {/if}
+                            <h3>
+                                {artist.name}
+                            </h3>
+                        </div>
                         <span class="text-sm lowercase!">
                             {artist.category}
                         </span>

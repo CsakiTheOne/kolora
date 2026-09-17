@@ -297,11 +297,13 @@ export const KoloraFeszt2026 = {
         {
             day: 24,
             artistSlug: "imi",
+            startTime: "18:00",
         },
         // Fellépő
         {
             day: 24,
             artistSlug: "kam",
+            startTime: "21:00",
         },
         //
         // Péntek (szeptember 25)
@@ -319,27 +321,33 @@ export const KoloraFeszt2026 = {
         {
             day: 25,
             artistSlug: "bolygo",
+            startTime: "19:00",
         },
         {
             day: 25,
             artistSlug: "koriander",
-        },
-        {
-            day: 25,
-            artistSlug: "brumiko",
+            startTime: "20:00",
         },
         {
             day: 25,
             artistSlug: "kvaterka",
+            startTime: "21:00",
+        },
+        {
+            day: 25,
+            artistSlug: "brumiko",
+            startTime: "22:00",
         },
         // Kolora x Bilox after
         {
             day: 25,
             artistSlug: "bodonyi-dani",
+            startTime: "23:00",
         },
         {
             day: 25,
             artistSlug: "hypertanzer",
+            startTime: "00:30",
         },
         //
         // Szombat (szeptember 26)
@@ -365,39 +373,43 @@ export const KoloraFeszt2026 = {
         {
             day: 26,
             artistSlug: "carnivora",
-        },
-        {
-            day: 26,
-            artistSlug: "porszem",
+            startTime: "18:00",
         },
         {
             day: 26,
             artistSlug: "deaf-soundcheck",
-        },
-        {
-            day: 26,
-            artistSlug: "zen-dogz",
-        },
-        {
-            day: 26,
-            artistSlug: "tearaza",
+            startTime: "19:00",
         },
         {
             day: 26,
             artistSlug: "egy5egy",
+            startTime: "21:00",
+        },
+        {
+            day: 26,
+            artistSlug: "zen-dogz",
+            startTime: "22:10",
+        },
+        {
+            day: 26,
+            artistSlug: "tearaza",
+            startTime: "23:20",
         },
         // Kolora x Bilox after
         {
             day: 26,
             artistSlug: "kohi",
+            startTime: "00:30",
         },
         {
             day: 26,
             artistSlug: "varga",
+            startTime: "01:40",
         },
         {
             day: 26,
             artistSlug: "h3ad3mpty",
+            startTime: "02:50",
         },
     ],
 };
