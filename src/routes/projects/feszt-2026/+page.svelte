@@ -154,6 +154,11 @@
         {/each}
     </div>
 
+    <a class="glass-card flex flex-row items-center justify-center gap-2" href="/projects/feszt-2026/artwork">
+        <Icon icon="bi:easel" width={24} />
+        Interaktív kiállítás
+    </a>
+
     <h2>Lineup</h2>
 
     <div class="flex flex-row items-center gap-4">
