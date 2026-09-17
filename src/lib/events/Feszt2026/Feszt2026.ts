@@ -9,6 +9,11 @@ import imgPorszem from "./images/porszem.webp";
 import imgKoriander from "./images/koriander.webp";
 import imgTearaza from "./images/tearaza.webp";
 import imgZenDogz from "./images/zen-dogz.webp";
+import imgBodonyiDani from "./images/dj/bodonyi-dani.webp";
+import imgHyperTanzer from "./images/dj/hypertanzer.webp";
+import imgKohi from "./images/dj/kohi.webp";
+import imgVarga from "./images/dj/varga.webp";
+import imgH3ad3mpty from "./images/dj/h3ad3mpty.webp";
 
 export interface Artist {
     slug: string;
@@ -195,26 +200,31 @@ export const KoloraFeszt2026 = {
             slug: "bodonyi-dani",
             category: "dj",
             name: "Bodonyi Dani",
+            imageUrl: imgBodonyiDani,
         },
         {
             slug: "hypertanzer",
             category: "dj",
             name: "HYPERtänzer",
+            imageUrl: imgHyperTanzer,
         },
         {
             slug: "kohi",
             category: "dj",
             name: "KØHI",
+            imageUrl: imgKohi,
         },
         {
             slug: "varga",
             category: "dj",
             name: "VARGA",
+            imageUrl: imgVarga,
         },
         {
             slug: "h3ad3mpty",
             category: "dj",
             name: "H3AD3MPTY",
+            imageUrl: imgH3ad3mpty,
         },
     ] as Artist[],
     artworks: [
