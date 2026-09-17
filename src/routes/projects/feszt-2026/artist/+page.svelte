@@ -71,6 +71,7 @@
             <div
                 class="hidden lg:flex glass-card relative mb-6 flex-col justify-end p-4"
                 class:aspect-video={artist.imageUrl}
+                style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
             >
                 {#if artist.imageUrl}
                     <img
@@ -101,7 +102,7 @@
 
             {#if artist.description}
                 <p class="glass-card leading-relaxed text-lg mb-6">
-                    {artist.description}
+                    {@html artist.description}
                 </p>
             {/if}
 

@@ -10,6 +10,7 @@ import imgKoriander from "./images/koriander.webp";
 import imgTearaza from "./images/tearaza.webp";
 import imgZenDogz from "./images/zen-dogz.webp";
 import imgLexi from "./images/lexi.webp";
+import imgRKocsyTamas from "./images/r-kocsy-tamas.webp";
 import imgBodonyiDani from "./images/dj/bodonyi-dani.webp";
 import imgHyperTanzer from "./images/dj/hypertanzer.webp";
 import imgKohi from "./images/dj/kohi.webp";
@@ -190,7 +191,8 @@ export const KoloraFeszt2026 = {
             slug: "r-kocsy-tamas",
             category: "kiállító",
             name: "R. Kocsy Tamás",
-            description: "Egész fesztivál alatt megtekinthető kiállítás. Címe: ROZZSDA FOTÓSOROZAT",
+            description: "KOLORA FESZT × ROZZSDA<br><br>R. Kocsy Tamás - ROZZSDA fotósorozat<br><br>A ROZZSDA R. Kocsy Tamás kortárs fotósorozata, amely az ipari felületek, a korrózió, a kopás és az idő nyomain keresztül vizsgálja az anyag változását.<br><br>A KOLORA FESZT Székesfehérvár kulturális és zenei közege új kontextust ad a ROZZSDA képeinek. Az ipari textúrák, a nyers felületek és az intenzív vizuális világ találkozik a fesztivál kortárs, közösségi hangulatával.<br><br>A ROZZSDA nem történetet mesél, hanem érzést és érzetet közvetít. A képeken megjelenő korrózió az idő látható lenyomata - az elmúlás és az átalakulás egyszerre.<br><br>ROZZSDA - láthatatlan idő, látható nyomok.",
+            imageUrl: imgRKocsyTamas,
         },
         {
             slug: "frida",
@@ -312,12 +314,13 @@ export const KoloraFeszt2026 = {
             day: 24,
             artistSlug: "imi",
             startTime: "18:00",
+            endTime: "22:00",
         },
         // Fellépő
         {
             day: 24,
             artistSlug: "kam",
-            startTime: "21:00",
+            startTime: "22:00",
         },
         //
         // Péntek (szeptember 25)
@@ -332,36 +335,47 @@ export const KoloraFeszt2026 = {
             artistSlug: "vesztu",
         },
         // Fellépők
+        /*{
+            day: 25,
+            artistSlug: "bodonyi-dani",
+            startTime: "18:50",
+            endTime: "19:00",
+        },*/
         {
             day: 25,
             artistSlug: "bolygo",
             startTime: "19:00",
+            endTime: "20:50",
         },
         {
             day: 25,
             artistSlug: "koriander",
-            startTime: "20:00",
+            startTime: "20:50",
+            endTime: "21:50",
         },
         {
             day: 25,
             artistSlug: "kvaterka",
-            startTime: "21:00",
+            startTime: "21:50",
+            endTime: "22:50",
         },
         {
             day: 25,
             artistSlug: "brumiko",
-            startTime: "22:00",
+            startTime: "22:50",
+            endTime: "00:40",
         },
         // Kolora x Bilox after
         {
             day: 25,
             artistSlug: "bodonyi-dani",
-            startTime: "23:00",
+            startTime: "00:40",
+            endTime: "02:10",
         },
         {
             day: 25,
             artistSlug: "hypertanzer",
-            startTime: "00:30",
+            startTime: "02:10",
         },
         //
         // Szombat (szeptember 26)
@@ -388,42 +402,55 @@ export const KoloraFeszt2026 = {
             day: 26,
             artistSlug: "carnivora",
             startTime: "18:00",
+            endTime: "19:00",
+        },
+        {
+            day: 26,
+            artistSlug: "porszem",
+            startTime: "19:00",
+            endTime: "20:00",
         },
         {
             day: 26,
             artistSlug: "deaf-soundcheck",
-            startTime: "19:00",
+            startTime: "20:00",
+            endTime: "21:50",
         },
         {
             day: 26,
             artistSlug: "egy5egy",
-            startTime: "21:00",
+            startTime: "21:50",
+            endTime: "23:00",
         },
         {
             day: 26,
             artistSlug: "zen-dogz",
-            startTime: "22:10",
+            startTime: "23:00",
+            endTime: "00:10",
         },
         {
             day: 26,
             artistSlug: "tearaza",
-            startTime: "23:20",
+            startTime: "00:10",
+            endTime: "01:40",
         },
         // Kolora x Bilox after
         {
             day: 26,
-            artistSlug: "kohi",
-            startTime: "00:30",
+            artistSlug: "h3ad3mpty",
+            startTime: "01:40",
+            endTime: "02:50",
         },
         {
             day: 26,
             artistSlug: "varga",
-            startTime: "01:40",
+            startTime: "02:50",
+            endTime: "04:00",
         },
         {
             day: 26,
-            artistSlug: "h3ad3mpty",
-            startTime: "02:50",
+            artistSlug: "kohi",
+            startTime: "04:00",
         },
     ],
 };

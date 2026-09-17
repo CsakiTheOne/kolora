@@ -230,17 +230,7 @@
                     (a): a is Exclude<typeof a, undefined> =>
                         a !== undefined && a.hidden !== true,
                 )}
-            {@const hiddenArtists = dayLineup
-                .map((item) =>
-                    KoloraFeszt2026.artists.find(
-                        (a) => a.slug === item.artistSlug,
-                    ),
-                )
-                .filter(
-                    (a): a is Exclude<typeof a, undefined> =>
-                        a !== undefined && a.hidden === true,
-                )}
-            {#if visibleArtists.length > 0 || hiddenArtists.length > 0}
+            {#if visibleArtists.length > 0}
                 <div class="flex flex-col">
                     <div class="flex flex-col gap-6">
                         <p class="text-sm font-semibold">
@@ -279,13 +269,6 @@
                                 </span>
                             </a>
                         {/each}
-                        {#each hiddenArtists as artist (artist.slug)}
-                            <div
-                                class="glass-card relative flex flex-col items-center justify-center gap-2 p-4 opacity-60"
-                            >
-                                <span class="text-2xl">❓</span>
-                            </div>
-                        {/each}
                     </div>
                 </div>
             {/if}
@@ -307,16 +290,6 @@
                 .filter(
                     (a): a is Exclude<typeof a, undefined> =>
                         a !== undefined && a.hidden !== true,
-                )}
-            {@const hiddenArtists = dayLineup
-                .map((item) =>
-                    KoloraFeszt2026.artists.find(
-                        (a) => a.slug === item.artistSlug,
-                    ),
-                )
-                .filter(
-                    (a): a is Exclude<typeof a, undefined> =>
-                        a !== undefined && a.hidden === true,
                 )}
             <div class="flex flex-col gap-6">
                 {#if Object.keys(KoloraFeszt2026.info).includes(String(selectedDay))}
