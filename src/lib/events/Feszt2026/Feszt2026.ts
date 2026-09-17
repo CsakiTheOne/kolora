@@ -38,6 +38,20 @@ export interface Artwork {
 }
 
 export const KoloraFeszt2026 = {
+    info: {
+        24: {
+            startTime: "18:00",
+            ticketInfo: "Ingyenes nap!",
+        },
+        25: {
+            startTime: "18:00",
+            ticketInfo: "Napijegy a helyszínen",
+        },
+        26: {
+            startTime: "17:00",
+            ticketInfo: "Napijegy a helyszínen",
+        },
+    },
     artists: [
         {
             slug: "egy5egy",

@@ -164,7 +164,10 @@
         {/each}
     </div>
 
-    <a class="glass-card flex flex-row items-center justify-center gap-2" href="/projects/feszt-2026/artwork">
+    <a
+        class="glass-card flex flex-row items-center justify-center gap-2"
+        href="/projects/feszt-2026/artwork"
+    >
         <Icon icon="bi:easel" width={24} />
         Interaktív kiállítás
     </a>
@@ -213,6 +216,7 @@
     <!-- Large screens: show all days in 3 columns -->
     <div class="hidden lg:grid grid-cols-3 gap-6">
         {#each [24, 25, 26] as day (day)}
+            {@const dayInfo = KoloraFeszt2026.info[day]}
             {@const dayLineup = KoloraFeszt2026.lineup.filter(
                 (item) => item.day === day,
             )}
@@ -239,6 +243,9 @@
             {#if visibleArtists.length > 0 || hiddenArtists.length > 0}
                 <div class="flex flex-col">
                     <div class="flex flex-col gap-6">
+                        <p class="text-sm font-semibold">
+                            {dayInfo.startTime} - {dayInfo.ticketInfo}
+                        </p>
                         {#each visibleArtists as artist (artist.slug)}
                             {@const artistStartTime = dayLineup.find(
                                 (item) => item.artistSlug === artist.slug,
@@ -311,13 +318,19 @@
                     (a): a is Exclude<typeof a, undefined> =>
                         a !== undefined && a.hidden === true,
                 )}
-            <div class="columns-1 gap-6">
+            <div class="flex flex-col gap-6">
+                {#if Object.keys(KoloraFeszt2026.info).includes(String(selectedDay))}
+                    {@const dayInfo = KoloraFeszt2026.info[selectedDay]}
+                    <p class="text-sm font-semibold">
+                        {dayInfo.startTime} - {dayInfo.ticketInfo}
+                    </p>
+                {/if}
                 {#each visibleArtists as artist (artist.slug)}
                     {@const artistStartTime = dayLineup.find(
                         (item) => item.artistSlug === artist.slug,
                     )?.startTime}
                     <a
-                        class="glass-card relative flex flex-row items-end justify-between gap-4 p-4 mb-6"
+                        class="glass-card relative flex flex-row items-end justify-between gap-4 p-4"
                         class:aspect-video={artist.imageUrl}
                         href={`/projects/feszt-2026/artist?slug=${artist.slug}`}
                         style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
@@ -344,13 +357,6 @@
                             {artist.category}
                         </span>
                     </a>
-                {/each}
-                {#each hiddenArtists as artist (artist.slug)}
-                    <div
-                        class="glass-card relative flex flex-col items-center justify-center gap-2 p-4 mb-6 opacity-60"
-                    >
-                        <span class="text-2xl">❓</span>
-                    </div>
                 {/each}
             </div>
         {/if}
