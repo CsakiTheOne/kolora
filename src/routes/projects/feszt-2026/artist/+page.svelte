@@ -58,14 +58,10 @@
                 <Icon icon="mdi:arrow-left" width={24} />
                 <span>Vissza</span>
             </button>
-            <h1
-                style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}
-            >
+            <h1>
                 {artist.name}
             </h1>
-            <p
-                style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
-            >
+            <p>
                 {artist.category}
             </p>
         </div>
@@ -94,14 +90,10 @@
                     <span>Vissza</span>
                 </button>
                 <div class="flex flex-row items-end justify-between">
-                    <h1
-                        style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}
-                    >
+                    <h1>
                         {artist.name}
                     </h1>
-                    <p
-                        style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
-                    >
+                    <p>
                         {artist.category}
                     </p>
                 </div>

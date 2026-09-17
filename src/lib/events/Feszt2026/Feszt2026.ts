@@ -9,6 +9,7 @@ import imgPorszem from "./images/porszem.webp";
 import imgKoriander from "./images/koriander.webp";
 import imgTearaza from "./images/tearaza.webp";
 import imgZenDogz from "./images/zen-dogz.webp";
+import imgLexi from "./images/lexi.webp";
 import imgBodonyiDani from "./images/dj/bodonyi-dani.webp";
 import imgHyperTanzer from "./images/dj/hypertanzer.webp";
 import imgKohi from "./images/dj/kohi.webp";
@@ -147,27 +148,35 @@ export const KoloraFeszt2026 = {
             slug: "lexi",
             category: "kiállító",
             name: "Lexi",
-            description: "Kiállítás címe: Home",
+            description: "Egész fesztivál alatt megtekinthető kiállítás. Címe: Home",
+            imageUrl: imgLexi,
             instagramUrl: "https://www.instagram.com/the_lexiart_gallery/",
         },
         {
             slug: "furi",
             category: "kiállító",
             name: "Fűrész",
-            description: "Kiállítás címe: Skizofrénia",
+            description: "Egész fesztivál alatt megtekinthető kiállítás. Címe: Skizofrénia",
         },
         {
             slug: "boti",
             category: "kiállító",
             name: "Boti",
+            description: "Egész fesztivál alatt megtekinthető kiállítás.",
             hidden: true,
         },
         {
             slug: "alex",
             category: "kiállító",
             name: "Kasó Alex",
-            description: "Kiállítás címe: Ma még megőrülök",
+            description: "Egész fesztivál alatt megtekinthető kiállítás. Címe: Ma még megőrülök",
             instagramUrl: "https://www.instagram.com/a_vilagjaro_vilagtalan/",
+        },
+        {
+            slug: "r-kocsy-tamas",
+            category: "kiállító",
+            name: "R. Kocsy Tamás",
+            description: "Egész fesztivál alatt megtekinthető kiállítás. Címe: ROZZSDA FOTÓSOROZAT",
         },
         {
             slug: "frida",
@@ -272,19 +281,6 @@ export const KoloraFeszt2026 = {
         //
         // Csütörtök (szeptember 24)
         //
-        // Kiállítások
-        {
-            day: 24,
-            artistSlug: "furi",
-        },
-        {
-            day: 24,
-            artistSlug: "lexi",
-        },
-        {
-            day: 24,
-            artistSlug: "alex",
-        },
         // Workshop
         {
             day: 24,

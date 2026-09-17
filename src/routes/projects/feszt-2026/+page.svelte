@@ -126,6 +126,34 @@
         </a>
     </div>
 
+    <h2>Egész fesztivál alatt megtekinthető kiállítások</h2>
+
+    <div class="columns-2 lg:columns-3">
+        {#each KoloraFeszt2026.artists.filter((a) => a.category === "kiállító") as artist (artist.slug)}
+            <a
+                class="glass-card relative flex flex-row items-end justify-between gap-4 p-4 mb-6"
+                class:aspect-video={artist.imageUrl}
+                href={`/projects/feszt-2026/artist?slug=${artist.slug}`}
+                style={`view-transition-name: feszt-2026-artist-card-${artist.slug};`}
+            >
+                {#if artist.imageUrl}
+                    <img
+                        src={artist.imageUrl}
+                        alt={artist.name}
+                        class="absolute w-full h-full object-cover inset-0 -z-10 opacity-80"
+                        style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
+                    />
+                {/if}
+                <h3>
+                    {artist.name}
+                </h3>
+                <span class="text-sm lowercase!">
+                    {artist.category}
+                </span>
+            </a>
+        {/each}
+    </div>
+
     <h2>Lineup</h2>
 
     <div class="flex flex-row items-center gap-4">
@@ -211,15 +239,10 @@
                                         style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
                                     />
                                 {/if}
-                                <h3
-                                    style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}
-                                >
+                                <h3>
                                     {artist.name}
                                 </h3>
-                                <span
-                                    class="text-sm lowercase!"
-                                    style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
-                                >
+                                <span class="text-sm lowercase!">
                                     {artist.category}
                                 </span>
                             </a>
@@ -279,15 +302,10 @@
                                 style={`view-transition-name: feszt-2026-artist-image-${artist.slug};`}
                             />
                         {/if}
-                        <h3
-                            style={`view-transition-name: feszt-2026-artist-name-${artist.slug};`}
-                        >
+                        <h3>
                             {artist.name}
                         </h3>
-                        <span
-                            class="text-sm lowercase!"
-                            style={`view-transition-name: feszt-2026-artist-category-${artist.slug};`}
-                        >
+                        <span class="text-sm lowercase!">
                             {artist.category}
                         </span>
                     </a>
