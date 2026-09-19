@@ -10,6 +10,7 @@ import imgKoriander from "./images/koriander.webp";
 import imgTearaza from "./images/tearaza.webp";
 import imgZenDogz from "./images/zen-dogz.webp";
 import imgLexi from "./images/lexi.webp";
+import imgFuri from "./images/furi.jpg";
 import imgRKocsyTamas from "./images/r-kocsy-tamas.webp";
 import imgBodonyiDani from "./images/dj/bodonyi-dani.webp";
 import imgHyperTanzer from "./images/dj/hypertanzer.webp";
@@ -171,7 +172,9 @@ export const KoloraFeszt2026 = {
             slug: "furi",
             category: "kiállító",
             name: "Fűrész",
-            description: "Egész fesztivál alatt megtekinthető kiállítás. Címe: Skizofrénia",
+            description: "grafikus jellegű (???) tömény egzisztenciális krízis ja meg van egy összművészeti közösségem, de csak INKognitó-ban ugye;)<br><br>Kiállítás címe: Skizofrénia",
+            imageUrl: imgFuri,
+            instagramUrl: "https://www.instagram.com/furesz_szarjai/",
         },
         {
             slug: "boti",
