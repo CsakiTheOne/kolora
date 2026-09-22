@@ -17,6 +17,11 @@ import imgHyperTanzer from "./images/dj/hypertanzer.webp";
 import imgKohi from "./images/dj/kohi.webp";
 import imgVarga from "./images/dj/varga.webp";
 import imgH3ad3mpty from "./images/dj/h3ad3mpty.webp";
+import songBoti1 from "./songs/boti_pic1_Edvard_Szabo-Shifting_Tides.m4a";
+import songBoti2 from "./songs/boti_pic2_Pastor_Dániel-Gyermek_még.m4a";
+import songBoti3 from "./songs/boti_pic3_Oneohtrix_Point_Never-Animals.m4a";
+import songBoti4 from "./songs/boti_pic4_Oneohtrix_Point_Never-Lost_But_Never_Alone.m4a";
+import songBoti5 from "./songs/boti_pic5_SZÍDD-On_the_way_home_from_wonderland.m4a";
 
 export interface Artist {
     slug: string;
@@ -36,6 +41,7 @@ export interface Artwork {
     spotifyUrl?: string;
     youtubeUrl?: string;
     ytMusicUrl?: string;
+    resourceUrl?: string;
     notes?: string;
 }
 
@@ -256,6 +262,38 @@ export const KoloraFeszt2026 = {
         },
     ] as Artist[],
     artworks: [
+        // Boti
+        {
+            slug: "boti1",
+            artistSlug: "boti",
+            resourceUrl: songBoti1,
+            notes: "Edvard Szabo - Shifting Tides",
+        },
+        {
+            slug: "boti2",
+            artistSlug: "boti",
+            resourceUrl: songBoti2,
+            notes: "Pastor Dániel - Gyermek még",
+        },
+        {
+            slug: "boti3",
+            artistSlug: "boti",
+            resourceUrl: songBoti3,
+            notes: "Oneohtrix Point Never - Animals",
+        },
+        {
+            slug: "boti4",
+            artistSlug: "boti",
+            resourceUrl: songBoti4,
+            notes: "Oneohtrix Point Never - Lost But Never Alone",
+        },
+        {
+            slug: "boti5",
+            artistSlug: "boti",
+            resourceUrl: songBoti5,
+            notes: "SZÍDD - On the way home from wonderland",
+        },
+        // Lexi
         {
             slug: "festival-of-light",
             artistSlug: "lexi",

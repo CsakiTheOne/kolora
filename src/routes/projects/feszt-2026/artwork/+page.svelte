@@ -12,6 +12,94 @@
     let artwork = $state<Artwork | null>(null);
     let artist = $state<Artist | null>(null);
 
+    let audioEl = $state<HTMLAudioElement | null>(null);
+    let isPlaying = $state(false);
+    let currentTime = $state(0);
+    let duration = $state(0);
+    let volume = $state(0.8);
+    let isMuted = $state(false);
+
+    function formatTime(seconds: number): string {
+        if (!Number.isFinite(seconds) || seconds < 0) {
+            return "0:00";
+        }
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60)
+            .toString()
+            .padStart(2, "0");
+        return `${mins}:${secs}`;
+    }
+
+    async function togglePlay(): Promise<void> {
+        if (!audioEl) {
+            return;
+        }
+        if (audioEl.paused) {
+            await audioEl.play();
+        } else {
+            audioEl.pause();
+        }
+    }
+
+    function onTimeUpdate(): void {
+        if (!audioEl) {
+            return;
+        }
+        currentTime = audioEl.currentTime;
+    }
+
+    function onLoadedMetadata(): void {
+        if (!audioEl) {
+            return;
+        }
+        duration = Number.isFinite(audioEl.duration) ? audioEl.duration : 0;
+        currentTime = audioEl.currentTime;
+        volume = audioEl.volume;
+    }
+
+    function seekTo(event: Event): void {
+        if (!audioEl) {
+            return;
+        }
+        const target = event.currentTarget as HTMLInputElement;
+        const time = Number(target.value);
+        audioEl.currentTime = time;
+        currentTime = time;
+    }
+
+    function setVolume(event: Event): void {
+        if (!audioEl) {
+            return;
+        }
+        const target = event.currentTarget as HTMLInputElement;
+        const nextVolume = Number(target.value);
+        volume = nextVolume;
+        audioEl.volume = nextVolume;
+        isMuted = nextVolume === 0;
+        audioEl.muted = isMuted;
+    }
+
+    function toggleMute(): void {
+        if (!audioEl) {
+            return;
+        }
+        isMuted = !isMuted;
+        audioEl.muted = isMuted;
+    }
+
+    function onPlay(): void {
+        isPlaying = true;
+    }
+
+    function onPause(): void {
+        isPlaying = false;
+    }
+
+    function onEnded(): void {
+        isPlaying = false;
+        currentTime = 0;
+    }
+
     onMount(() => {
         foundArtworkSlugs = localStorage.getItem("foundArtworkSlugs")
             ? JSON.parse(localStorage.getItem("foundArtworkSlugs")!)
@@ -133,6 +221,88 @@
                 <Icon icon="simple-icons:youtubemusic" width={24} />
                 Hallgasd meg YT Music-on
             </a>
+        {/if}
+        {#if artwork.resourceUrl}
+            <div
+                class="glass-card flex flex-row items-center gap-2 text-xs"
+            >
+                <Icon icon="mdi:music-note" width={24} />
+                <div class="bg-white/25 w-px h-8" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="glass-card p-2! bg-transparent! text-white rounded-full"
+                    onclick={togglePlay}
+                    aria-label={isPlaying
+                        ? "Lejatszas szuneteltetese"
+                        : "Lejatszas"}
+                >
+                    <Icon
+                        icon={isPlaying ? "mdi:pause" : "mdi:play"}
+                        width={20}
+                    />
+                </button>
+                <div class="flex flex-col items-start gap-0.5 flex-1">
+                    <span class="tabular-nums text-center opacity-80"
+                        >{formatTime(currentTime)} / {formatTime(
+                            duration,
+                        )}</span
+                    >
+                    <input
+                        type="range"
+                        min="0"
+                        max={duration || 0}
+                        step="0.1"
+                        value={currentTime}
+                        class="w-full accent-white"
+                        oninput={seekTo}
+                        disabled={!duration}
+                        aria-label="Lejatszasi pozicio"
+                    />
+                </div>
+                <div class="bg-white/25 w-px h-8" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="glass-card p-2! bg-transparent! text-white rounded-full"
+                    onclick={toggleMute}
+                    aria-label={isMuted ? "Nemitás feloldasa" : "Nemitás"}
+                >
+                    <Icon
+                        icon={isMuted || volume === 0
+                            ? "mdi:volume-off"
+                            : volume < 0.3
+                              ? "mdi:volume-low"
+                              : volume < 0.7
+                                ? "mdi:volume-medium"
+                                : "mdi:volume-high"}
+                        width={20}
+                    />
+                </button>
+                <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value={isMuted ? 0 : volume}
+                    class="w-16 accent-white"
+                    oninput={setVolume}
+                    aria-label="Hangero"
+                />
+                <audio
+                    bind:this={audioEl}
+                    preload="metadata"
+                    controlsList="nodownload"
+                    oncontextmenu={(event) => event.preventDefault()}
+                    ontimeupdate={onTimeUpdate}
+                    onloadedmetadata={onLoadedMetadata}
+                    onplay={onPlay}
+                    onpause={onPause}
+                    onended={onEnded}
+                    class="hidden"
+                >
+                    <source src={artwork.resourceUrl} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
         {/if}
         <hr />
         <button
