@@ -2,12 +2,22 @@
     import {
         KoloraFeszt2026,
         type Artist,
+        type Artwork,
     } from "$lib/events/Feszt2026/Feszt2026";
     import Icon from "@iconify/svelte";
     import { onMount } from "svelte";
     import { SvelteURLSearchParams } from "svelte/reactivity";
 
     let artist = $state<Artist | null>(null);
+    let artworks = $state<Artwork[] | null>(null);
+    let foundArtworkSlugs = $state<string[]>([]);
+
+    const foundArtworksByArtistCount = $derived(
+        artworks && foundArtworkSlugs
+            ? artworks.filter((art) => foundArtworkSlugs.includes(art.slug))
+                  .length
+            : 0,
+    );
 
     onMount(() => {
         const params = new SvelteURLSearchParams(window.location.search);
@@ -15,7 +25,15 @@
         if (slug) {
             artist =
                 KoloraFeszt2026.artists.find((a) => a.slug === slug) || null;
+            artworks =
+                KoloraFeszt2026.artworks.filter(
+                    (art) => art.artistSlug === slug,
+                ) || null;
         }
+
+        foundArtworkSlugs = localStorage.getItem("foundArtworkSlugs")
+            ? JSON.parse(localStorage.getItem("foundArtworkSlugs")!)
+            : [];
     });
 </script>
 
@@ -163,6 +181,17 @@
                     <Icon icon="mdi:instagram" width={24} />
                     <span>Instagram</span>
                 </a>
+            {/if}
+
+            {#if artworks && artworks.length > 0}
+                <div class="glass-card flex flex-col gap-2">
+                    <p>
+                        Ennek a művésznek {artworks.length} beolvasható műve van
+                        a fesztiválon. Találd meg mind!
+                    </p>
+                    <p>Haladás: {foundArtworksByArtistCount} / {artworks.length}</p>
+                    <meter value="{foundArtworksByArtistCount}" max="{artworks.length}"></meter>
+                </div>
             {/if}
         </section>
     {/if}

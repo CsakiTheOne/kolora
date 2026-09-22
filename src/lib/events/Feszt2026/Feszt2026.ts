@@ -11,6 +11,7 @@ import imgTearaza from "./images/tearaza.webp";
 import imgZenDogz from "./images/zen-dogz.webp";
 import imgLexi from "./images/lexi.webp";
 import imgFuri from "./images/furi.jpg";
+import imgBoti from "./images/boti.webp";
 import imgRKocsyTamas from "./images/r-kocsy-tamas.webp";
 import imgBodonyiDani from "./images/dj/bodonyi-dani.webp";
 import imgHyperTanzer from "./images/dj/hypertanzer.webp";
@@ -185,9 +186,9 @@ export const KoloraFeszt2026 = {
         {
             slug: "boti",
             category: "kiállító",
-            name: "Boti",
-            description: "Egész fesztivál alatt megtekinthető kiállítás.",
-            hidden: true,
+            name: "Botond",
+            description: "Bognár Botond vagyok, grafikus, idén végeztem a Hang Szín Térben, és jelenleg a Pécsi Tudomány Egyetem Művészeti Karán folytatom tanulmányaimat, ez az anyag egy nagyobb sorozat részlete, ami a Homines, magyarul emberek, scetchbookomból dolgoz fel 85 oldalt, amiben többnyire arcokat, embereket terveztem, ebből válogattam ki az 5 kedvencemet. Eltér a szokásos munkáimtól, ez az 5 grafika, az időnkénti zavarodottságot és káoszt hivatott szimulálni, ami gyakran kiséri a munka és alkotásom folyamatát, de eddig még egy munkában se jelentettem szándékosan.",
+            imageUrl: imgBoti,
         },
         {
             slug: "alex",
