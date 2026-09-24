@@ -51,12 +51,15 @@ export const KoloraFeszt2026 = {
     info: {
         24: {
             ticketInfo: "Ingyenes nap!",
+            startTime: "18:00",
         },
         25: {
             ticketInfo: "Napijegy a helyszínen",
+            startTime: "18:00",
         },
         26: {
             ticketInfo: "Napijegy a helyszínen",
+            startTime: "17:00",
         },
     },
     artists: [
