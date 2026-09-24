@@ -1,4 +1,4 @@
-import { get, ref, remove, set } from "firebase/database";
+import { get, ref, remove, set, update } from "firebase/database";
 import { initializeFirebase } from "./firebase";
 
 const db = initializeFirebase().database;
@@ -69,6 +69,33 @@ const rtdb = {
                     return Promise.reject("No user ID provided");
                 }
                 return remove(ref(db, `posts/likes/${postId}/${userId}`));
+            },
+        },
+    },
+    feszt2026: {
+        artworkStats: {
+            /**
+             * Get the view count for an artwork by slug
+             */
+            getViewCount: (artworkSlug: string): Promise<number> => {
+                return get(ref(db, `feszt2026/artwork_stats/${artworkSlug}/views`)).then((snapshot) => {
+                    return snapshot.exists() ? snapshot.val() : 0;
+                });
+            },
+            /**
+             * Increment the view count for an artwork by slug
+             */
+            incrementViewCount: async (artworkSlug: string): Promise<void> => {
+                try {
+                    const snapshot = await get(ref(db, `feszt2026/artwork_stats/${artworkSlug}/views`));
+                    const currentViews = snapshot.exists() ? snapshot.val() : 0;
+                    await set(ref(db, `feszt2026/artwork_stats/${artworkSlug}/views`), currentViews + 1);
+                } catch {
+                    // If there's an error, ensure the field exists with a value
+                    await set(ref(db, `feszt2026/artwork_stats/${artworkSlug}`), {
+                        views: 1,
+                    });
+                }
             },
         },
     },

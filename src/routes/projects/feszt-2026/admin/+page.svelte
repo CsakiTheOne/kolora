@@ -1,10 +1,12 @@
 <script lang="ts">
     import { KoloraFeszt2026 } from "$lib/events/Feszt2026/Feszt2026";
+    import rtdb from "$lib/firebase/rtdb";
     import Icon from "@iconify/svelte";
     import { onMount } from "svelte";
 
     let foundArtworkSlugs = $state<string[]>([]);
     let copiedArtworkSlug = $state<string | null>(null);
+    let artworkViewCounts = $state<Record<string, number>>({});
 
     function getArtworkUrl(slug: string): string {
         const path = `/projects/feszt-2026/artwork?slug=${encodeURIComponent(slug)}`;
@@ -77,8 +79,22 @@
         persistFoundArtworkSlugs();
     }
 
+    async function loadArtworkStats(): Promise<void> {
+        const counts: Record<string, number> = {};
+        for (const artwork of KoloraFeszt2026.artworks) {
+            try {
+                counts[artwork.slug] = await rtdb.feszt2026.artworkStats.getViewCount(artwork.slug);
+            } catch (error) {
+                console.error(`Failed to load view count for ${artwork.slug}:`, error);
+                counts[artwork.slug] = 0;
+            }
+        }
+        artworkViewCounts = counts;
+    }
+
     onMount(() => {
         readFoundArtworkSlugs();
+        loadArtworkStats();
     });
 </script>
 
@@ -109,7 +125,7 @@
                 )}
                 <div class="glass-card p-3">
                     <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                        <div class="min-w-0">
+                        <div class="min-w-0 flex-1">
                             <p class="font-semibold break-all">
                                 {artwork.slug}
                             </p>
@@ -118,6 +134,9 @@
                                 {#if artwork.notes}
                                     · {artwork.notes}
                                 {/if}
+                            </p>
+                            <p class="text-xs opacity-60 mt-1">
+                                👁️ {artworkViewCounts[artwork.slug] ?? 0} megtekintés
                             </p>
                         </div>
 

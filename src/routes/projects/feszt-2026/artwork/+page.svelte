@@ -4,6 +4,7 @@
         type Artist,
         type Artwork,
     } from "$lib/events/Feszt2026/Feszt2026";
+    import rtdb from "$lib/firebase/rtdb";
     import Icon from "@iconify/svelte";
     import { onMount } from "svelte";
     import { SvelteURLSearchParams } from "svelte/reactivity";
@@ -114,6 +115,13 @@
             );
             artwork =
                 KoloraFeszt2026.artworks.find((a) => a.slug === slug) || null;
+            
+            // Track artwork view in Firebase
+            if (artwork) {
+                rtdb.feszt2026.artworkStats.incrementViewCount(slug).catch((error) => {
+                    console.error("Failed to track artwork view:", error);
+                });
+            }
         }
         if (artwork) {
             artist =
