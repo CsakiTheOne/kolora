@@ -77,30 +77,32 @@
     </button>
 </header>
 <main class="flex flex-col gap-6 p-6 pb-16 sm:px-16 lg:px-32 2xl:px-64">
-    <p
-        class="glass-text text-[3.6rem] text-center font-extrabold flex gap-2 items-center justify-center"
-        style="line-height: 4rem;"
-    >
-        {#if days > 0}
-            {days} nap<br />
-        {/if}
-        {#if hours > 0 || days > 0}
-            {hours.toString().padStart(2, "0")}:
-        {/if}{minutes.toString().padStart(2, "0")}:{seconds
-            .toString()
-            .padStart(2, "0")}
-    </p>
-    <div class="glass-card flex flex-col gap-4 p-4">
-        <p>
-            Ismét jön a Kolora és a Nyolcas Műhely egy közösen szervezett
-            eseménnyel! Érkezik, közeledik, szinte szalad felénk a második
-            Kolora Fesztivál!
+    {#if days > 0 || hours > 0 || minutes > 0 || seconds > 0}
+        <p
+            class="glass-text text-[3.6rem] text-center font-extrabold flex gap-2 items-center justify-center"
+            style="line-height: 4rem;"
+        >
+            {#if days > 0}
+                {days} nap<br />
+            {/if}
+            {#if hours > 0 || days > 0}
+                {hours.toString().padStart(2, "0")}:
+            {/if}{minutes.toString().padStart(2, "0")}:{seconds
+                .toString()
+                .padStart(2, "0")}
         </p>
-        <p>
-            Koncertek, interaktív kiállítás, workshop-ok, DJ-k és mennyi minden
-            más!
-        </p>
-    </div>
+        <div class="glass-card flex flex-col gap-4 p-4">
+            <p>
+                Ismét jön a Kolora és a Nyolcas Műhely egy közösen szervezett
+                eseménnyel! Érkezik, közeledik, szinte szalad felénk a második
+                Kolora Fesztivál!
+            </p>
+            <p>
+                Koncertek, interaktív kiállítás, workshop-ok, DJ-k és mennyi
+                minden más!
+            </p>
+        </div>
+    {/if}
 
     <div class="w-full flex flex-row items-center justify-center gap-4">
         <a

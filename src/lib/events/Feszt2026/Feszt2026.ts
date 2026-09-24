@@ -44,6 +44,7 @@ export interface Artwork {
     ytMusicUrl?: string;
     resourceUrl?: string;
     notes?: string;
+    songName?: string;
 }
 
 export const KoloraFeszt2026 = {
@@ -268,31 +269,31 @@ export const KoloraFeszt2026 = {
             slug: "boti1",
             artistSlug: "boti",
             resourceUrl: songBoti1,
-            notes: "Edvard Szabo - Shifting Tides",
+            songName: "Edvard Szabo - Shifting Tides",
         },
         {
             slug: "boti2",
             artistSlug: "boti",
             resourceUrl: songBoti2,
-            notes: "Pastor Dániel - Gyermek még",
+            songName: "Pastor Dániel - Gyermek még",
         },
         {
             slug: "boti3",
             artistSlug: "boti",
             resourceUrl: songBoti3,
-            notes: "Oneohtrix Point Never - Animals",
+            songName: "Oneohtrix Point Never - Animals",
         },
         {
             slug: "boti4",
             artistSlug: "boti",
             resourceUrl: songBoti4,
-            notes: "Oneohtrix Point Never - Lost But Never Alone",
+            songName: "Oneohtrix Point Never - Lost But Never Alone",
         },
         {
             slug: "boti5",
             artistSlug: "boti",
             resourceUrl: songBoti5,
-            notes: "SZÍDD - On the way home from wonderland",
+            songName: "SZÍDD - On the way home from wonderland",
         },
         // Lexi
         {
@@ -301,50 +302,58 @@ export const KoloraFeszt2026 = {
             spotifyUrl: "https://open.spotify.com/track/0Kqk2Aag1a7qX7i4dCmlzw",
             youtubeUrl: "https://youtu.be/lcoLjDXXAeI",
             ytMusicUrl: "https://music.youtube.com/watch?v=ZYqh_Ze0QqE",
-            notes: "Festival of Light - Audiomachine",
+            notes: "Inner beauty",
+            songName: "Festival of Light - Audiomachine",
         },
         {
             slug: "kisah-romantis",
             artistSlug: "lexi",
             ytMusicUrl: "https://music.youtube.com/watch?v=L6VgXgDrPfM",
-            notes: "Kisah Romantis - The Bakuucakar & Lalahuta",
+            notes: "Tribe Dayak",
+            songName: "Kisah Romantis - The Bakuucakar & Lalahuta",
         },
         {
             slug: "wolf-in-sheeps-clothing",
             artistSlug: "lexi",
             ytMusicUrl: "https://music.youtube.com/watch?v=VM6bPbOnK9w",
-            notes: "Wolf in Sheep's Clothing feat. William Beckett - Set It Off",
+            notes: "Sheep in wolf clothing",
+            songName: "Wolf in Sheep's Clothing feat. William Beckett - Set It Off",
         },
         {
             slug: "flight-of-the-silverbird",
             artistSlug: "lexi",
             ytMusicUrl: "https://music.youtube.com/watch?v=u2OBz9mcPJ4",
-            notes: "Flight of the Silverbird - Thomas Bergersen",
+            notes: "Top of the World",
+            songName: "Flight of the Silverbird - Thomas Bergersen",
         },
         {
             slug: "megalovania-epic-version",
             artistSlug: "lexi",
             spotifyUrl: "https://open.spotify.com/track/3DtQrGA4FVij8XcFL4V9yE",
             youtubeUrl: "https://youtu.be/TrqObE57shk",
-            notes: "Megalovania (Epic Version) - Carameii",
+            notes: "Leo",
+            songName: "Megalovania (Epic Version) - Carameii",
         },
         {
             slug: "sanemi-and-gyomei-vs-kokushibo-v2",
             artistSlug: "lexi",
             youtubeUrl: "https://youtu.be/ZhewkECoUjI",
-            notes: "Sanemi and Gyomei vs Kokushibo V2 (Fanmade) - Gareth Ryan",
+            notes: "Mother's love",
+            songName: "Sanemi and Gyomei vs Kokushibo V2 (Fanmade) - Gareth Ryan",
         },
         {
             slug: "xian",
             artistSlug: "lexi",
             ytMusicUrl: "https://music.youtube.com/watch?v=vyuUcTewmBI",
-            notes: "Xian - Antti Martikainen",
+            notes: "Best of me",
+            songName: "Xian - Antti Martikainen",
         },
         {
             slug: "i-wanna-be-like-you",
             artistSlug: "lexi",
             ytMusicUrl: "https://music.youtube.com/watch?v=8bZsVehylvY",
-            notes: "I Wanna Be Like You (Electro Swing Remix) - Dave Wave",
+            notes: "Vibrant",
+            songName: "I Wanna Be Like You (Electro Swing Remix) - Dave Wave",
         },
     ] as Artwork[],
     lineup: [
