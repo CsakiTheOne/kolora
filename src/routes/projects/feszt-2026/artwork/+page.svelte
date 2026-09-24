@@ -147,20 +147,38 @@
             </p>
         </div>
         <h2>Megtalált művek</h2>
-        <p class="glass-card">
-            A kiállítás még zárva van. Térj vissza ide az esemény alatt, hogy
-            számon tartsd a megtalált festményeket.
-        </p>
-        <h2>Jutalmak</h2>
+        <div class="glass-card flex flex-col gap-4">
+            <p>
+                Összesen {KoloraFeszt2026.artworks.filter((a) => foundArtworkSlugs.includes(a.slug)).length} / {KoloraFeszt2026.artworks.length} művet találtál meg!
+            </p>
+            <meter value="{KoloraFeszt2026.artworks.filter((a) => foundArtworkSlugs.includes(a.slug)).length}" max="{KoloraFeszt2026.artworks.length}"></meter>
+        </div>
+        <div class="space-y-3">
+            {#each KoloraFeszt2026.artists.filter((artist) => KoloraFeszt2026.artworks.some((a) => a.artistSlug === artist.slug)) as artist}
+                {@const artistArtworks = KoloraFeszt2026.artworks.filter((a) => a.artistSlug === artist.slug)}
+                {@const foundCount = artistArtworks.filter((a) => foundArtworkSlugs.includes(a.slug)).length}
+                <div class="glass-card p-3 flex flex-col gap-2">
+                    <div class="flex items-center justify-between">
+                        <a href="/projects/feszt-2026/artist?slug={artist.slug}" class="font-medium hover:underline">
+                            {artist.name}
+                        </a>
+                        <span class="text-sm opacity-75">{foundCount} / {artistArtworks.length}</span>
+                    </div>
+                    <meter value="{foundCount}" max="{artistArtworks.length}"></meter>
+                </div>
+            {/each}
+        </div>
+        
+        <!--h2>Jutalmak</h2>
         <p class="glass-card">
             Olvass be minden festményt, hogy a végén egy különleges jutalmat
             kapj!
-        </p>
+        </p-->
     {:else}
         {#if artist}
-            <div class="glass-card flex flex-col gap-4">
+            <div class="glass-card flex flex-col gap-1">
                 <h2>{artist.name}</h2>
-                <p class="text-sm opacity-75">{artist.description}</p>
+                <p class="text-xs opacity-80">{artist.description}</p>
                 {#if artist.instagramUrl}
                     <a
                         class="flex flex-row items-center justify-center gap-2 self-end"

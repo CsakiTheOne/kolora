@@ -50,15 +50,12 @@ export interface Artwork {
 export const KoloraFeszt2026 = {
     info: {
         24: {
-            startTime: "18:00",
             ticketInfo: "Ingyenes nap!",
         },
         25: {
-            startTime: "18:00",
             ticketInfo: "Napijegy a helyszínen",
         },
         26: {
-            startTime: "17:00",
             ticketInfo: "Napijegy a helyszínen",
         },
     },
@@ -308,6 +305,7 @@ export const KoloraFeszt2026 = {
         {
             slug: "kisah-romantis",
             artistSlug: "lexi",
+            spotifyUrl: "https://open.spotify.com/track/1QbeE4BGsSqYkepVDB2QzC",
             ytMusicUrl: "https://music.youtube.com/watch?v=L6VgXgDrPfM",
             notes: "Tribe Dayak",
             songName: "Kisah Romantis - The Bakuucakar & Lalahuta",
@@ -315,6 +313,7 @@ export const KoloraFeszt2026 = {
         {
             slug: "wolf-in-sheeps-clothing",
             artistSlug: "lexi",
+            spotifyUrl: "https://open.spotify.com/track/55Fpeuuc2sbQiy74eA1gTt",
             ytMusicUrl: "https://music.youtube.com/watch?v=VM6bPbOnK9w",
             notes: "Sheep in wolf clothing",
             songName: "Wolf in Sheep's Clothing feat. William Beckett - Set It Off",
@@ -322,6 +321,7 @@ export const KoloraFeszt2026 = {
         {
             slug: "flight-of-the-silverbird",
             artistSlug: "lexi",
+            spotifyUrl: "https://open.spotify.com/track/77PxRQpb4yP8QeVGPdT2zY",
             ytMusicUrl: "https://music.youtube.com/watch?v=u2OBz9mcPJ4",
             notes: "Top of the World",
             songName: "Flight of the Silverbird - Thomas Bergersen",
@@ -337,6 +337,7 @@ export const KoloraFeszt2026 = {
         {
             slug: "sanemi-and-gyomei-vs-kokushibo-v2",
             artistSlug: "lexi",
+            spotifyUrl: "https://open.spotify.com/track/2EVt2H54vLK5iWg5JW2qS0",
             youtubeUrl: "https://youtu.be/ZhewkECoUjI",
             notes: "Mother's love",
             songName: "Sanemi and Gyomei vs Kokushibo V2 (Fanmade) - Gareth Ryan",
@@ -344,6 +345,7 @@ export const KoloraFeszt2026 = {
         {
             slug: "xian",
             artistSlug: "lexi",
+            spotifyUrl: "https://open.spotify.com/track/4SYOv2WFW0Csxj4Iq3bjOO",
             ytMusicUrl: "https://music.youtube.com/watch?v=vyuUcTewmBI",
             notes: "Best of me",
             songName: "Xian - Antti Martikainen",
@@ -364,14 +366,12 @@ export const KoloraFeszt2026 = {
         {
             day: 24,
             artistSlug: "imi",
-            startTime: "18:00",
-            endTime: "22:00",
         },
         // Fellépő
         {
             day: 24,
             artistSlug: "kam",
-            startTime: "22:00",
+            startTime: "21:00",
         },
         //
         // Péntek (szeptember 25)
@@ -389,44 +389,37 @@ export const KoloraFeszt2026 = {
         /*{
             day: 25,
             artistSlug: "bodonyi-dani",
-            startTime: "18:50",
-            endTime: "19:00",
-        },*/
+                                },*/
         {
             day: 25,
             artistSlug: "bolygo",
             startTime: "19:00",
-            endTime: "20:50",
         },
         {
             day: 25,
             artistSlug: "koriander",
-            startTime: "20:50",
-            endTime: "21:50",
+            startTime: "20:00",
         },
         {
             day: 25,
             artistSlug: "kvaterka",
-            startTime: "21:50",
-            endTime: "22:50",
+            startTime: "21:00",
         },
         {
             day: 25,
             artistSlug: "brumiko",
-            startTime: "22:50",
-            endTime: "00:40",
+            startTime: "22:00",
         },
         // Kolora x Bilox after
         {
             day: 25,
             artistSlug: "bodonyi-dani",
-            startTime: "00:40",
-            endTime: "02:10",
+            startTime: "23:00",
         },
         {
             day: 25,
             artistSlug: "hypertanzer",
-            startTime: "02:10",
+            startTime: "00:30",
         },
         //
         // Szombat (szeptember 26)
@@ -453,55 +446,47 @@ export const KoloraFeszt2026 = {
             day: 26,
             artistSlug: "carnivora",
             startTime: "18:00",
-            endTime: "19:00",
         },
         {
             day: 26,
             artistSlug: "porszem",
             startTime: "19:00",
-            endTime: "20:00",
         },
         {
             day: 26,
             artistSlug: "deaf-soundcheck",
             startTime: "20:00",
-            endTime: "21:50",
         },
         {
             day: 26,
             artistSlug: "egy5egy",
-            startTime: "21:50",
-            endTime: "23:00",
+            startTime: "21:00",
         },
         {
             day: 26,
             artistSlug: "zen-dogz",
-            startTime: "23:00",
-            endTime: "00:10",
+            startTime: "22:10",
         },
         {
             day: 26,
             artistSlug: "tearaza",
-            startTime: "00:10",
-            endTime: "01:40",
+            startTime: "23:20",
         },
         // Kolora x Bilox after
         {
             day: 26,
             artistSlug: "h3ad3mpty",
-            startTime: "01:40",
-            endTime: "02:50",
+            startTime: "00:30",
         },
         {
             day: 26,
             artistSlug: "varga",
-            startTime: "02:50",
-            endTime: "04:00",
+            startTime: "01:40",
         },
         {
             day: 26,
             artistSlug: "kohi",
-            startTime: "04:00",
+            startTime: "02:50",
         },
     ],
 };
