@@ -430,10 +430,6 @@ export const KoloraFeszt2026 = {
         // Workshopok
         {
             day: 26,
-            artistSlug: "adami-atelier",
-        },
-        {
-            day: 26,
             artistSlug: "vesztu",
         },
         {
